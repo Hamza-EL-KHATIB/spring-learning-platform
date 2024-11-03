@@ -1,0 +1,153 @@
+{
+  "sections": [
+    {
+      "id": "java-core",
+      "title": "Java Core Concepts",
+      "icon": "Code",
+      "categories": [
+        {
+          "id": "oop",
+          "title": "Object-Oriented Programming",
+          "topics": [
+            {
+              "id": "encapsulation",
+              "title": "Encapsulation",
+              "description": "Data hiding and access control",
+              "content": "content/java/core/oop/encapsulation.md",
+              "examples": [
+                {
+                  "title": "Basic Encapsulation",
+                  "code": "public class BankAccount {\n    private double balance;\n\n    public double getBalance() {\n        return balance;\n    }\n\n    public void deposit(double amount) {\n        if (amount > 0) {\n            balance += amount;\n        }\n    }\n}"
+                }
+              ]
+            },
+            {
+              "id": "inheritance",
+              "title": "Inheritance",
+              "description": "Class inheritance and method overriding",
+              "content": "content/java/core/oop/inheritance.md"
+            },
+            {
+              "id": "polymorphism",
+              "title": "Polymorphism",
+              "description": "Method overloading and overriding",
+              "content": "content/java/core/oop/polymorphism.md"
+            },
+            {
+              "id": "abstraction",
+              "title": "Abstraction",
+              "description": "Abstract classes and interfaces",
+              "content": "content/java/core/oop/abstraction.md"
+            }
+          ]
+        },
+        {
+          "id": "collections",
+          "title": "Collections Framework",
+          "topics": [
+            {
+              "id": "lists",
+              "title": "Lists",
+              "description": "ArrayList, LinkedList, Vector",
+              "content": "content/java/collections/lists.md"
+            },
+            {
+              "id": "sets",
+              "title": "Sets",
+              "description": "HashSet, TreeSet, LinkedHashSet",
+              "content": "content/java/collections/sets.md"
+            },
+            {
+              "id": "maps",
+              "title": "Maps",
+              "description": "HashMap, TreeMap, ConcurrentHashMap",
+              "content": "content/java/collections/maps.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spring",
+      "title": "Spring Framework",
+      "icon": "Box",
+      "categories": [
+        {
+          "id": "core-concepts",
+          "title": "Core Concepts",
+          "topics": [
+            {
+              "id": "ioc",
+              "title": "Inversion of Control",
+              "description": "IoC and Dependency Injection",
+              "content": "content/spring/core/ioc.md"
+            },
+            {
+              "id": "beans",
+              "title": "Spring Beans",
+              "description": "Bean lifecycle and scopes",
+              "content": "content/spring/core/beans.md"
+            }
+          ]
+        },
+        {
+          "id": "spring-boot",
+          "title": "Spring Boot",
+          "topics": [
+            {
+              "id": "auto-configuration",
+              "title": "Auto-configuration",
+              "description": "Spring Boot's auto-configuration features",
+              "content": "content/spring/boot/auto-configuration.md"
+            },
+            {
+              "id": "rest-apis",
+              "title": "REST APIs",
+              "description": "Building REST APIs with Spring Boot",
+              "content": "content/spring/boot/rest-apis.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "Software Architecture",
+      "icon": "Box",
+      "categories": [
+        {
+          "id": "solid",
+          "title": "SOLID Principles",
+          "topics": [
+            {
+              "id": "srp",
+              "title": "Single Responsibility Principle",
+              "content": "content/architecture/solid/srp.md"
+            },
+            {
+              "id": "ocp",
+              "title": "Open/Closed Principle",
+              "content": "content/architecture/solid/ocp.md"
+            }
+          ]
+        },
+        {
+          "id": "patterns",
+          "title": "Design Patterns",
+          "topics": [
+            {
+              "id": "creational",
+              "title": "Creational Patterns",
+              "content": "content/architecture/patterns/creational.md"
+            },
+            {
+              "id": "structural",
+              "title": "Structural Patterns",
+              "content": "content/architecture/patterns/structural.md"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
