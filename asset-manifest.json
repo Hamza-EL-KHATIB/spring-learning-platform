@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/spring-learning-platform/static/css/main.1ba8e10f.css",
+    "main.js": "/spring-learning-platform/static/js/main.0295eac1.js",
+    "index.html": "/spring-learning-platform/index.html",
+    "main.1ba8e10f.css.map": "/spring-learning-platform/static/css/main.1ba8e10f.css.map",
+    "main.0295eac1.js.map": "/spring-learning-platform/static/js/main.0295eac1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ba8e10f.css",
+    "static/js/main.0295eac1.js"
+  ]
+}
