@@ -6,38 +6,26 @@
       "icon": "Code",
       "categories": [
         {
-          "id": "oop",
-          "title": "Object-Oriented Programming",
+          "id": "core-definitions",
+          "title": "Core Definitions",
           "topics": [
             {
-              "id": "encapsulation",
-              "title": "Encapsulation",
-              "description": "Data hiding and access control",
-              "content": "content/java/core/oop/encapsulation.md",
-              "examples": [
-                {
-                  "title": "Basic Encapsulation",
-                  "code": "public class BankAccount {\n    private double balance;\n\n    public double getBalance() {\n        return balance;\n    }\n\n    public void deposit(double amount) {\n        if (amount > 0) {\n            balance += amount;\n        }\n    }\n}"
-                }
-              ]
+              "id": "definitions",
+              "title": "Java Core Definitions",
+              "description": "Basic Java concepts and terminology",
+              "dataSource": "java/definitions.json"
             },
             {
-              "id": "inheritance",
-              "title": "Inheritance",
-              "description": "Class inheritance and method overriding",
-              "content": "content/java/core/oop/inheritance.md"
+              "id": "exceptions",
+              "title": "Exception Handling",
+              "description": "Understanding Java exceptions and error handling",
+              "dataSource": "java/exceptions.json"
             },
             {
-              "id": "polymorphism",
-              "title": "Polymorphism",
-              "description": "Method overloading and overriding",
-              "content": "content/java/core/oop/polymorphism.md"
-            },
-            {
-              "id": "abstraction",
-              "title": "Abstraction",
-              "description": "Abstract classes and interfaces",
-              "content": "content/java/core/oop/abstraction.md"
+              "id": "gc",
+              "title": "Garbage Collection",
+              "description": "Memory management and garbage collection",
+              "dataSource": "java/gc.json"
             }
           ]
         },
@@ -46,22 +34,34 @@
           "title": "Collections Framework",
           "topics": [
             {
-              "id": "lists",
-              "title": "Lists",
-              "description": "ArrayList, LinkedList, Vector",
-              "content": "content/java/collections/lists.md"
-            },
+              "id": "collections-overview",
+              "title": "Collections Overview",
+              "description": "Understanding Java collections framework",
+              "dataSource": "java/collections.json"
+            }
+          ]
+        },
+        {
+          "id": "concurrency",
+          "title": "Multithreading & Concurrency",
+          "topics": [
             {
-              "id": "sets",
-              "title": "Sets",
-              "description": "HashSet, TreeSet, LinkedHashSet",
-              "content": "content/java/collections/sets.md"
-            },
+              "id": "concurrency-basics",
+              "title": "Concurrency Fundamentals",
+              "description": "Core concepts of Java concurrency",
+              "dataSource": "java/concurrency.json"
+            }
+          ]
+        },
+        {
+          "id": "features",
+          "title": "Java Features",
+          "topics": [
             {
-              "id": "maps",
-              "title": "Maps",
-              "description": "HashMap, TreeMap, ConcurrentHashMap",
-              "content": "content/java/collections/maps.md"
+              "id": "java-8-features",
+              "title": "Java 8+ Features",
+              "description": "Modern Java features and enhancements",
+              "dataSource": "java/features.json"
             }
           ]
         }
@@ -70,41 +70,96 @@
     {
       "id": "spring",
       "title": "Spring Framework",
-      "icon": "Box",
+      "icon": "Leaf",
       "categories": [
         {
-          "id": "core-concepts",
-          "title": "Core Concepts",
+          "id": "spring-core",
+          "title": "Spring Core",
           "topics": [
             {
-              "id": "ioc",
-              "title": "Inversion of Control",
-              "description": "IoC and Dependency Injection",
-              "content": "content/spring/core/ioc.md"
+              "id": "core-concepts",
+              "title": "Core Concepts",
+              "description": "Fundamental Spring framework concepts",
+              "dataSource": "spring/core.json"
             },
             {
-              "id": "beans",
-              "title": "Spring Beans",
-              "description": "Bean lifecycle and scopes",
-              "content": "content/spring/core/beans.md"
+              "id": "boot",
+              "title": "Spring Boot",
+              "description": "Spring Boot auto-configuration and features",
+              "dataSource": "spring/boot.json"
             }
           ]
         },
         {
-          "id": "spring-boot",
-          "title": "Spring Boot",
+          "id": "spring-data",
+          "title": "Spring Data & REST",
           "topics": [
             {
-              "id": "auto-configuration",
-              "title": "Auto-configuration",
-              "description": "Spring Boot's auto-configuration features",
-              "content": "content/spring/boot/auto-configuration.md"
+              "id": "data-access",
+              "title": "Data Access",
+              "description": "Spring Data access and repositories",
+              "dataSource": "spring/data.json"
             },
             {
               "id": "rest-apis",
               "title": "REST APIs",
-              "description": "Building REST APIs with Spring Boot",
-              "content": "content/spring/boot/rest-apis.md"
+              "description": "Building REST APIs with Spring",
+              "dataSource": "spring/rest.json"
+            }
+          ]
+        },
+        {
+          "id": "spring-security",
+          "title": "Security",
+          "topics": [
+            {
+              "id": "security-basics",
+              "title": "Security Fundamentals",
+              "description": "Spring Security core concepts",
+              "dataSource": "spring/security.json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "databases",
+      "title": "Database Technologies",
+      "icon": "Database",
+      "categories": [
+        {
+          "id": "orm",
+          "title": "ORM & Hibernate",
+          "topics": [
+            {
+              "id": "hibernate-basics",
+              "title": "Hibernate Basics",
+              "description": "Core Hibernate concepts and usage",
+              "dataSource": "databases/hibernate.json"
+            },
+            {
+              "id": "transactions",
+              "title": "Transactions",
+              "description": "Database transaction management",
+              "dataSource": "databases/transactions.json"
+            }
+          ]
+        },
+        {
+          "id": "sql-nosql",
+          "title": "SQL & NoSQL",
+          "topics": [
+            {
+              "id": "sql",
+              "title": "SQL Databases",
+              "description": "SQL database concepts and best practices",
+              "dataSource": "databases/sql.json"
+            },
+            {
+              "id": "nosql",
+              "title": "NoSQL Databases",
+              "description": "NoSQL database concepts and usage",
+              "dataSource": "databases/nosql.json"
             }
           ]
         }
@@ -116,34 +171,94 @@
       "icon": "Box",
       "categories": [
         {
-          "id": "solid",
-          "title": "SOLID Principles",
+          "id": "design",
+          "title": "Design & Patterns",
           "topics": [
             {
-              "id": "srp",
-              "title": "Single Responsibility Principle",
-              "content": "content/architecture/solid/srp.md"
+              "id": "design-patterns",
+              "title": "Design Patterns",
+              "description": "Common software design patterns",
+              "dataSource": "architecture/design-patterns.json"
             },
             {
-              "id": "ocp",
-              "title": "Open/Closed Principle",
-              "content": "content/architecture/solid/ocp.md"
+              "id": "solid",
+              "title": "SOLID Principles",
+              "description": "SOLID design principles",
+              "dataSource": "architecture/solid.json"
             }
           ]
         },
         {
-          "id": "patterns",
-          "title": "Design Patterns",
+          "id": "best-practices",
+          "title": "Best Practices",
           "topics": [
             {
-              "id": "creational",
-              "title": "Creational Patterns",
-              "content": "content/architecture/patterns/creational.md"
+              "id": "coding-practices",
+              "title": "Coding Best Practices",
+              "description": "Best practices for Java development",
+              "dataSource": "architecture/best-practices.json"
             },
             {
-              "id": "structural",
-              "title": "Structural Patterns",
-              "content": "content/architecture/patterns/structural.md"
+              "id": "performance",
+              "title": "Performance Optimization",
+              "description": "Application performance best practices",
+              "dataSource": "architecture/performance.json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "devops",
+      "title": "DevOps & CI/CD",
+      "icon": "GitBranch",
+      "categories": [
+        {
+          "id": "version-control",
+          "title": "Version Control",
+          "topics": [
+            {
+              "id": "git",
+              "title": "Git Fundamentals",
+              "description": "Git version control system",
+              "dataSource": "devops/git.json"
+            }
+          ]
+        },
+        {
+          "id": "ci-cd",
+          "title": "CI/CD & Containers",
+          "topics": [
+            {
+              "id": "cicd",
+              "title": "CI/CD Pipeline",
+              "description": "Continuous Integration and Deployment",
+              "dataSource": "devops/cicd.json"
+            },
+            {
+              "id": "containers",
+              "title": "Containerization",
+              "description": "Docker and Kubernetes",
+              "dataSource": "devops/containers.json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scrum",
+      "title": "Agile & Scrum",
+      "icon": "Users",
+      "categories": [
+        {
+          "id": "agile-methodologies",
+          "title": "Agile Methodologies",
+          "topics": [
+            {
+              "id": "scrum-basics",
+              "title": "Scrum Fundamentals",
+              "description": "Scrum methodology and practices",
+              "dataSource": "scrum/scrum.json"
             }
           ]
         }

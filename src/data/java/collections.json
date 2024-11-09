@@ -1,0 +1,156 @@
+{
+  "title": "Java Collections Framework",
+  "topics": [
+    {
+      "id": "collection-types",
+      "title": "Collection Types",
+      "description": "The Java Collections Framework provides a set of classes and interfaces to work with groups of objects in different ways.",
+      "types": [
+        {
+          "type": "List",
+          "description": "An ordered collection that allows duplicate elements.",
+          "implementations": [
+            {
+              "name": "ArrayList",
+              "characteristics": [
+                "Dynamic array implementation",
+                "Fast random access",
+                "Slow insertions/deletions in the middle",
+                "Not thread-safe"
+              ]
+            },
+            {
+              "name": "LinkedList",
+              "characteristics": [
+                "Doubly-linked list implementation",
+                "Fast insertions/deletions",
+                "Slow random access",
+                "More memory overhead"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Set",
+          "description": "A collection that does not allow duplicate elements.",
+          "implementations": [
+            {
+              "name": "HashSet",
+              "characteristics": [
+                "Backed by a HashMap",
+                "No duplicates allowed",
+                "No guaranteed order",
+                "O(1) operations for add, remove, and contains"
+              ]
+            },
+            {
+              "name": "TreeSet",
+              "characteristics": [
+                "Implements NavigableSet",
+                "Stores elements in a sorted order",
+                "O(log n) time for operations",
+                "No duplicates allowed"
+              ]
+            },
+            {
+              "name": "LinkedHashSet",
+              "characteristics": [
+                "Maintains insertion order",
+                "O(1) operations for add, remove, and contains",
+                "Higher memory usage due to linked list backing"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Queue",
+          "description": "A collection used to hold multiple elements prior to processing, typically in FIFO order.",
+          "implementations": [
+            {
+              "name": "PriorityQueue",
+              "characteristics": [
+                "Orders elements based on priority",
+                "Not thread-safe",
+                "O(log n) time complexity for insertions"
+              ]
+            },
+            {
+              "name": "LinkedList",
+              "characteristics": [
+                "Can also be used as a Queue implementation",
+                "FIFO behavior for queue operations",
+                "Doubly-linked structure allows fast additions/removals"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Map",
+          "description": "An object that maps keys to values, with no duplicate keys allowed.",
+          "implementations": [
+            {
+              "name": "HashMap",
+              "characteristics": [
+                "No guaranteed order",
+                "Allows null keys and values",
+                "Not thread-safe",
+                "O(1) time complexity for basic operations"
+              ]
+            },
+            {
+              "name": "TreeMap",
+              "characteristics": [
+                "Stores keys in sorted order",
+                "O(log n) time complexity for operations",
+                "No null keys allowed"
+              ]
+            },
+            {
+              "name": "LinkedHashMap",
+              "characteristics": [
+                "Maintains insertion order",
+                "Higher memory usage due to linked list backing",
+                "O(1) time complexity for operations"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "collection-performance",
+      "title": "Collection Performance",
+      "description": "A comparison of performance characteristics for various collection types in terms of access time, insertion, deletion, and memory overhead.",
+      "performance": [
+        {
+          "type": "ArrayList",
+          "accessTime": "O(1)",
+          "insertTime": "O(n) (in the middle)",
+          "deleteTime": "O(n) (in the middle)",
+          "memoryOverhead": "Low"
+        },
+        {
+          "type": "LinkedList",
+          "accessTime": "O(n)",
+          "insertTime": "O(1)",
+          "deleteTime": "O(1)",
+          "memoryOverhead": "High"
+        },
+        {
+          "type": "HashSet",
+          "accessTime": "O(1)",
+          "insertTime": "O(1)",
+          "deleteTime": "O(1)",
+          "memoryOverhead": "Medium"
+        },
+        {
+          "type": "TreeSet",
+          "accessTime": "O(log n)",
+          "insertTime": "O(log n)",
+          "deleteTime": "O(log n)",
+          "memoryOverhead": "High"
+        }
+      ]
+    }
+  ]
+}
