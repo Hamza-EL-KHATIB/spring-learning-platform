@@ -1,75 +1,256 @@
 {
-  "title": "Java 8 Features",
+  "title": "Java 8+ Features",
   "topics": [
     {
       "id": "streams",
       "title": "Stream API",
-      "description": "The Stream API introduces a functional approach to processing collections of objects, allowing for declarative, parallelizable operations.",
+      "description": "The Stream API introduces a functional approach to processing collections of objects.",
       "operations": [
         {
-          "name": "filter()",
-          "description": "Selects elements based on a condition (predicate)."
+          "name": "Basic Operations",
+          "methods": [
+            {
+              "name": "filter()",
+              "description": "Filters elements based on a predicate",
+              "example": "list.stream().filter(n -> n > 10)"
+            },
+            {
+              "name": "map()",
+              "description": "Transforms elements using the given function",
+              "example": "list.stream().map(String::toUpperCase)"
+            },
+            {
+              "name": "flatMap()",
+              "description": "Transforms and flattens elements",
+              "example": "list.stream().flatMap(List::stream)"
+            }
+          ]
         },
         {
-          "name": "map()",
-          "description": "Transforms elements by applying a function to each item in the stream."
+          "name": "Terminal Operations",
+          "methods": [
+            {
+              "name": "collect()",
+              "description": "Accumulates elements into a collection",
+              "example": "stream.collect(Collectors.toList())"
+            },
+            {
+              "name": "reduce()",
+              "description": "Reduces elements to a single value",
+              "example": "stream.reduce(0, Integer::sum)"
+            },
+            {
+              "name": "forEach()",
+              "description": "Performs an action for each element",
+              "example": "stream.forEach(System.out::println)"
+            }
+          ]
         },
         {
-          "name": "reduce()",
-          "description": "Combines elements of the stream to produce a single result."
-        }
-      ],
-      "examples": [
-        {
-          "title": "Basic Stream Usage",
-          "code": "List<String> names = Arrays.asList(\"John\", \"Jane\", \"Bob\");\nnames.stream()\n    .filter(name -> name.startsWith(\"J\"))\n    .map(String::toUpperCase)\n    .forEach(System.out::println);"
+          "name": "Advanced Operations",
+          "methods": [
+            {
+              "name": "distinct()",
+              "description": "Returns unique elements",
+              "example": "stream.distinct()"
+            },
+            {
+              "name": "sorted()",
+              "description": "Sorts elements",
+              "example": "stream.sorted(Comparator.naturalOrder())"
+            },
+            {
+              "name": "peek()",
+              "description": "Performs an action on elements while preserving them",
+              "example": "stream.peek(System.out::println)"
+            }
+          ]
         }
       ]
     },
     {
-      "id": "lambda",
-      "title": "Lambda Expressions",
-      "description": "Lambda expressions introduce a concise way to implement functional interfaces, simplifying the syntax of anonymous classes.",
-      "syntax": "(parameters) -> expression",
-      "useCases": [
-        "Functional interfaces",
-        "Event handlers",
-        "Comparators",
-        "Stream operations"
-      ],
-      "examples": [
+      "id": "completableFuture",
+      "title": "CompletableFuture",
+      "description": "Enhanced Future for asynchronous programming",
+      "features": [
         {
-          "title": "Lambda Example",
-          "code": "Runnable run = () -> System.out.println(\"Hello\");\nComparator<String> comp = (s1, s2) -> s1.length() - s2.length();\nConsumer<String> consumer = str -> System.out.println(str);"
+          "category": "Creation",
+          "methods": [
+            {
+              "name": "supplyAsync()",
+              "description": "Creates a CompletableFuture from a Supplier",
+              "example": "CompletableFuture.supplyAsync(() -> fetchData())"
+            },
+            {
+              "name": "runAsync()",
+              "description": "Creates a CompletableFuture from a Runnable",
+              "example": "CompletableFuture.runAsync(() -> process())"
+            }
+          ]
+        },
+        {
+          "category": "Transformation",
+          "methods": [
+            {
+              "name": "thenApply()",
+              "description": "Transforms the result using a function",
+              "example": "future.thenApply(result -> result.toUpperCase())"
+            },
+            {
+              "name": "thenCompose()",
+              "description": "Chains asynchronous operations",
+              "example": "future.thenCompose(result -> fetchMore(result))"
+            },
+            {
+              "name": "thenCombine()",
+              "description": "Combines two futures",
+              "example": "future1.thenCombine(future2, (r1, r2) -> r1 + r2)"
+            }
+          ]
+        },
+        {
+          "category": "Error Handling",
+          "methods": [
+            {
+              "name": "exceptionally()",
+              "description": "Handles exceptions",
+              "example": "future.exceptionally(ex -> handleError(ex))"
+            },
+            {
+              "name": "handle()",
+              "description": "Handles both success and failure",
+              "example": "future.handle((result, ex) -> ex != null ? handleError(ex) : result)"
+            }
+          ]
         }
       ]
     },
     {
-      "id": "optional",
-      "title": "Optional",
-      "description": "The Optional class provides a container to handle null values more safely, avoiding null pointer exceptions.",
-      "methods": [
+      "id": "dateTime",
+      "title": "Date/Time API",
+      "description": "Modern date and time handling in Java",
+      "classes": [
         {
-          "name": "of()/ofNullable()",
-          "description": "Creates an Optional object, with `ofNullable` allowing null values."
+          "name": "LocalDate",
+          "description": "Date without time or timezone",
+          "examples": [
+            {
+              "operation": "Creation",
+              "code": "LocalDate.now()"
+            },
+            {
+              "operation": "Parsing",
+              "code": "LocalDate.parse(\"2024-01-01\")"
+            },
+            {
+              "operation": "Manipulation",
+              "code": "date.plusDays(1).minusMonths(1)"
+            }
+          ]
         },
         {
-          "name": "isPresent()/isEmpty()",
-          "description": "Checks if the Optional contains a value or is empty."
+          "name": "LocalTime",
+          "description": "Time without date or timezone",
+          "examples": [
+            {
+              "operation": "Creation",
+              "code": "LocalTime.of(13, 30)"
+            },
+            {
+              "operation": "Parsing",
+              "code": "LocalTime.parse(\"13:30:00\")"
+            }
+          ]
         },
         {
-          "name": "ifPresent()",
-          "description": "Executes an action if a value is present."
+          "name": "LocalDateTime",
+          "description": "Date and time without timezone",
+          "examples": [
+            {
+              "operation": "Creation",
+              "code": "LocalDateTime.now()"
+            },
+            {
+              "operation": "Formatting",
+              "code": "dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)"
+            }
+          ]
         },
         {
-          "name": "orElse()/orElseGet()",
-          "description": "Provides a default value if Optional is empty."
+          "name": "ZonedDateTime",
+          "description": "Date and time with timezone",
+          "examples": [
+            {
+              "operation": "Creation",
+              "code": "ZonedDateTime.now(ZoneId.of(\"Europe/Paris\"))"
+            },
+            {
+              "operation": "Conversion",
+              "code": "zonedDateTime.withZoneSameInstant(ZoneId.of(\"America/New_York\"))"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "methodReferences",
+      "title": "Method References",
+      "description": "Shorthand notation for lambda expressions",
+      "types": [
+        {
+          "type": "Static Method Reference",
+          "syntax": "ClassName::staticMethod",
+          "example": "String::valueOf"
+        },
+        {
+          "type": "Instance Method Reference",
+          "syntax": "instance::method",
+          "example": "String::length"
+        },
+        {
+          "type": "Constructor Reference",
+          "syntax": "ClassName::new",
+          "example": "ArrayList::new"
         }
       ],
       "examples": [
         {
-          "title": "Optional Usage",
-          "code": "Optional<String> opt = Optional.of(\"value\");\nString result = opt.orElse(\"default\");\nopt.ifPresent(System.out::println);"
+          "scenario": "With Streams",
+          "code": "list.stream().forEach(System.out::println)"
+        },
+        {
+          "scenario": "With Comparator",
+          "code": "list.sort(String::compareToIgnoreCase)"
+        }
+      ]
+    },
+    {
+      "id": "defaultMethods",
+      "title": "Default Methods",
+      "description": "Interface methods with default implementation",
+      "features": [
+        {
+          "aspect": "Purpose",
+          "description": "Add new methods to interfaces without breaking existing implementations"
+        },
+        {
+          "aspect": "Rules",
+          "points": [
+            "Must be declared with 'default' keyword",
+            "Can be overridden by implementing classes",
+            "Can call other interface methods",
+            "Can't override Object class methods"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Simple Default Method",
+          "code": "interface Vehicle { default void start() { System.out.println(\"Starting vehicle\"); } }"
+        },
+        {
+          "title": "Multiple Default Methods",
+          "code": "interface Collection { default Stream<E> stream() { ... } default Stream<E> parallelStream() { ... } }"
         }
       ]
     }

@@ -1,0 +1,274 @@
+{
+  "title": "Redis Guide",
+  "topics": [
+    {
+      "id": "core-concepts",
+      "title": "Core Concepts",
+      "concepts": [
+        {
+          "name": "In-Memory Database",
+          "description": "Redis stores all data in memory for fast access",
+          "benefits": [
+            "Extremely fast read/write operations",
+            "Low latency",
+            "Support for complex data structures",
+            "Optional persistence"
+          ]
+        },
+        {
+          "name": "Key-Value Store",
+          "description": "Data is stored using key-value pairs",
+          "characteristics": [
+            "Keys are unique strings",
+            "Values can be different data types",
+            "Keys can have expiration (TTL)",
+            "Pattern-based key operations"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data-types",
+      "title": "Redis Data Types",
+      "types": [
+        {
+          "name": "Strings",
+          "description": "Basic key-value pairs",
+          "commands": [
+            {
+              "command": "SET key value",
+              "description": "Set key to hold string value"
+            },
+            {
+              "command": "GET key",
+              "description": "Get value of key"
+            },
+            {
+              "command": "INCR key",
+              "description": "Increment value of key"
+            }
+          ]
+        },
+        {
+          "name": "Lists",
+          "description": "Ordered collection of strings",
+          "commands": [
+            {
+              "command": "LPUSH/RPUSH key value",
+              "description": "Push value to list"
+            },
+            {
+              "command": "LPOP/RPOP key",
+              "description": "Pop value from list"
+            }
+          ]
+        },
+        {
+          "name": "Sets",
+          "description": "Unordered collection of unique strings",
+          "commands": [
+            {
+              "command": "SADD key member",
+              "description": "Add member to set"
+            },
+            {
+              "command": "SMEMBERS key",
+              "description": "Get all members of set"
+            }
+          ]
+        },
+        {
+          "name": "Hashes",
+          "description": "Maps of fields and values",
+          "commands": [
+            {
+              "command": "HSET key field value",
+              "description": "Set field in hash stored at key"
+            },
+            {
+              "command": "HGET key field",
+              "description": "Get value of field in hash"
+            }
+          ]
+        },
+        {
+          "name": "Sorted Sets",
+          "description": "Sets ordered by score",
+          "commands": [
+            {
+              "command": "ZADD key score member",
+              "description": "Add member with score to sorted set"
+            },
+            {
+              "command": "ZRANGE key start stop",
+              "description": "Get range of members"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cache-patterns",
+      "title": "Caching Patterns",
+      "patterns": [
+        {
+          "name": "Cache-Aside (Lazy Loading)",
+          "description": "Load data into cache only when necessary",
+          "implementation": {
+            "pseudocode": "try {\n    value = cache.get(key)\n    if (value == null) {\n        value = db.get(key)\n        cache.set(key, value)\n    }\n    return value\n}",
+            "advantages": [
+              "Only cache what's needed",
+              "Resilient to cache failures",
+              "Prevents cache stampede"
+            ],
+            "disadvantages": [
+              "Cache misses are expensive",
+              "Data can become stale",
+              "Initial request latency"
+            ]
+          }
+        },
+        {
+          "name": "Write-Through",
+          "description": "Write to cache and DB simultaneously",
+          "implementation": {
+            "pseudocode": "try {\n    db.save(data)\n    cache.set(key, data)\n    return success\n}",
+            "advantages": [
+              "Data consistency",
+              "Suitable for write-heavy scenarios",
+              "No stale data"
+            ],
+            "disadvantages": [
+              "Higher write latency",
+              "Cache churn for unused data",
+              "More complex implementation"
+            ]
+          }
+        },
+        {
+          "name": "Write-Behind",
+          "description": "Write to cache and asynchronously update DB",
+          "implementation": {
+            "pseudocode": "try {\n    cache.set(key, data)\n    queue.push(writeOperation)\n    return success\n}\n\n// Background process\nprocess writeQueue() {\n    operation = queue.pop()\n    db.save(operation)\n}",
+            "advantages": [
+              "Better write performance",
+              "Reduced database load",
+              "Batch processing possible"
+            ],
+            "disadvantages": [
+              "Risk of data loss",
+              "Complex error handling",
+              "Eventually consistent"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "database-sync",
+      "title": "Database Synchronization",
+      "strategies": [
+        {
+          "name": "Event-Driven Sync",
+          "description": "Use database events to update cache",
+          "implementation": {
+            "spring": {
+              "code": "@TransactionalEventListener\npublic void onUserUpdate(UserUpdateEvent event) {\n    redisTemplate.opsForValue().set(\"user:\" + event.getUserId(), event.getUser());\n}"
+            },
+            "considerations": [
+              "Event ordering",
+              "Failed event handling",
+              "Concurrent updates"
+            ]
+          }
+        },
+        {
+          "name": "Change Data Capture (CDC)",
+          "description": "Track database changes through logs",
+          "implementation": {
+            "tools": [
+              "Debezium",
+              "Maxwell",
+              "MySQL Binlog"
+            ],
+            "process": [
+              "Monitor database changes",
+              "Convert changes to events",
+              "Update cache accordingly"
+            ]
+          }
+        },
+        {
+          "name": "Periodic Sync",
+          "description": "Regularly sync cache with database",
+          "implementation": {
+            "spring": {
+              "code": "@Scheduled(fixedRate = 300000)\npublic void syncCache() {\n    List<User> users = userRepository.findAll();\n    users.forEach(user -> \n        redisTemplate.opsForValue().set(\"user:\" + user.getId(), user)\n    );\n}"
+            },
+            "considerations": [
+              "Sync frequency",
+              "Resource usage",
+              "Inconsistency window"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "spring-integration",
+      "title": "Spring Redis Integration",
+      "implementations": [
+        {
+          "name": "Configuration",
+          "code": "@Configuration\npublic class RedisConfig {\n    @Bean\n    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {\n        RedisTemplate<String, Object> template = new RedisTemplate<>();\n        template.setConnectionFactory(connectionFactory);\n        return template;\n    }\n}"
+        },
+        {
+          "name": "Cache Abstraction",
+          "examples": [
+            {
+              "description": "Method caching",
+              "code": "@Cacheable(value = \"users\", key = \"#id\")\npublic User getUser(Long id) {\n    return userRepository.findById(id);\n}"
+            },
+            {
+              "description": "Cache eviction",
+              "code": "@CacheEvict(value = \"users\", key = \"#user.id\")\npublic void updateUser(User user) {\n    userRepository.save(user);\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-practices",
+      "title": "Redis Best Practices",
+      "categories": [
+        {
+          "name": "Key Design",
+          "practices": [
+            "Use namespaced keys",
+            "Keep keys short but descriptive",
+            "Consider key expiration",
+            "Use consistent naming conventions"
+          ]
+        },
+        {
+          "name": "Performance",
+          "practices": [
+            "Monitor memory usage",
+            "Use pipelining for bulk operations",
+            "Implement proper error handling",
+            "Set appropriate TTL values"
+          ]
+        },
+        {
+          "name": "Cache Synchronization",
+          "practices": [
+            "Choose appropriate sync strategy",
+            "Handle race conditions",
+            "Implement retry mechanisms",
+            "Monitor sync processes"
+          ]
+        }
+      ]
+    }
+  ]
+}

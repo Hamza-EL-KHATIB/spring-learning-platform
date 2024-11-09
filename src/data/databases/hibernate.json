@@ -1,0 +1,413 @@
+{
+  "title": "Hibernate ORM",
+  "topics": [
+    {
+      "id": "core-concepts",
+      "title": "Core Concepts",
+      "concepts": [
+        {
+          "name": "EntityManager",
+          "description": "Interface used to interact with persistence context",
+          "operations": [
+            {
+              "name": "persist",
+              "description": "Makes an instance managed and persistent",
+              "example": "entityManager.persist(entity);"
+            },
+            {
+              "name": "merge",
+              "description": "Merges changes made to a detached instance",
+              "example": "entityManager.merge(entity);"
+            },
+            {
+              "name": "remove",
+              "description": "Removes an instance",
+              "example": "entityManager.remove(entity);"
+            },
+            {
+              "name": "find",
+              "description": "Finds by primary key",
+              "example": "entityManager.find(Entity.class, id);"
+            }
+          ]
+        },
+        {
+          "name": "Session",
+          "description": "Hibernate-specific interface for persistence operations",
+          "features": [
+            "First-level cache",
+            "CRUD operations",
+            "Transaction management",
+            "Query execution"
+          ]
+        },
+        {
+          "name": "SessionFactory",
+          "description": "Thread-safe factory for Session instances",
+          "characteristics": [
+            "Immutable",
+            "Thread-safe",
+            "Expensive to create",
+            "One per database"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entity-lifecycle",
+      "title": "Entity Lifecycle States",
+      "states": [
+        {
+          "name": "Transient",
+          "description": "Object not associated with persistence context",
+          "characteristics": [
+            "No identifier value",
+            "Not tracked by Hibernate",
+            "Will not be persisted automatically"
+          ]
+        },
+        {
+          "name": "Persistent",
+          "description": "Object associated with persistence context",
+          "characteristics": [
+            "Has identifier value",
+            "Tracked by Hibernate",
+            "Changes are detected and persisted"
+          ]
+        },
+        {
+          "name": "Detached",
+          "description": "Object was persistent but no longer associated",
+          "characteristics": [
+            "Has identifier value",
+            "Not tracked by Hibernate",
+            "Changes not automatically persisted"
+          ]
+        },
+        {
+          "name": "Removed",
+          "description": "Object marked for removal",
+          "characteristics": [
+            "Scheduled for deletion",
+            "Still in persistence context until flush",
+            "Will be removed from database"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mapping-annotations",
+      "title": "JPA Mapping Annotations",
+      "annotations": [
+        {
+          "category": "Entity Mapping",
+          "items": [
+            {
+              "name": "@Entity",
+              "description": "Marks class as entity",
+              "example": "@Entity\npublic class User { }"
+            },
+            {
+              "name": "@Table",
+              "description": "Specifies table details",
+              "example": "@Table(name = \"users\", schema = \"app\")"
+            },
+            {
+              "name": "@Id",
+              "description": "Marks field as primary key",
+              "example": "@Id\nprivate Long id;"
+            }
+          ]
+        },
+        {
+          "category": "Relationship Mapping",
+          "items": [
+            {
+              "name": "@OneToMany",
+              "description": "One-to-many relationship",
+              "example": "@OneToMany(mappedBy = \"user\")\nprivate List<Order> orders;"
+            },
+            {
+              "name": "@ManyToOne",
+              "description": "Many-to-one relationship",
+              "example": "@ManyToOne\n@JoinColumn(name = \"user_id\")\nprivate User user;"
+            },
+            {
+              "name": "@ManyToMany",
+              "description": "Many-to-many relationship",
+              "example": "@ManyToMany\n@JoinTable(name = \"user_roles\")\nprivate Set<Role> roles;"
+            },
+            {
+              "name": "@OneToOne",
+              "description": "One-to-one relationship",
+              "example": "@OneToOne(mappedBy = \"user\")\nprivate UserProfile profile;"
+            }
+          ]
+        },
+        {
+          "category": "Column Mapping",
+          "items": [
+            {
+              "name": "@Column",
+              "description": "Column properties",
+              "example": "@Column(name = \"first_name\", length = 50)"
+            },
+            {
+              "name": "@Temporal",
+              "description": "Date/time field mapping",
+              "example": "@Temporal(TemporalType.TIMESTAMP)"
+            },
+            {
+              "name": "@Enumerated",
+              "description": "Enum mapping",
+              "example": "@Enumerated(EnumType.STRING)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "caching",
+      "title": "Hibernate Caching",
+      "levels": [
+        {
+          "name": "First-Level Cache",
+          "description": "Session-scope cache",
+          "characteristics": [
+            "Mandatory",
+            "Session-bound",
+            "Cannot be disabled",
+            "Automatically managed"
+          ]
+        },
+        {
+          "name": "Second-Level Cache",
+          "description": "SessionFactory-scope cache",
+          "characteristics": [
+            "Optional",
+            "Shared across sessions",
+            "Can be configured",
+            "Provider options available"
+          ],
+          "providers": [
+            {
+              "name": "EhCache",
+              "description": "Popular cache provider"
+            },
+            {
+              "name": "Redis",
+              "description": "Distributed cache solution"
+            },
+            {
+              "name": "Infinispan",
+              "description": "JBoss cache provider"
+            }
+          ]
+        },
+        {
+          "name": "Query Cache",
+          "description": "Caches query results",
+          "configuration": {
+            "property": "hibernate.cache.use_query_cache",
+            "usage": "@QueryHint(name = \"org.hibernate.cacheable\", value = \"true\")"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fetching-strategies",
+      "title": "Fetching Strategies",
+      "description": "Strategies for loading related entities and collections",
+      "strategies": [
+        {
+          "type": "Fetch Type",
+          "options": [
+            {
+              "name": "LAZY",
+              "description": "Load on demand when the property is first accessed",
+              "characteristics": [
+                "Data fetched only when accessed",
+                "Requires active session for access",
+                "Uses Hibernate proxies",
+                "Better memory utilization",
+                "Risk of LazyInitializationException if session closed"
+              ],
+              "defaultFor": [
+                "OneToMany relationships",
+                "ManyToMany relationships"
+              ],
+              "example": {
+                "code": "@OneToMany(fetch = FetchType.LAZY)\nprivate List<Student> students;",
+                "scenario": "Students are only loaded when students collection is accessed"
+              }
+            },
+            {
+              "name": "EAGER",
+              "description": "Load immediately with parent entity",
+              "characteristics": [
+                "Data fetched immediately with parent",
+                "Available after session closes",
+                "No proxy involvement",
+                "Higher initial memory usage",
+                "Risk of unnecessary data loading"
+              ],
+              "defaultFor": [
+                "OneToOne relationships",
+                "ManyToOne relationships"
+              ],
+              "example": {
+                "code": "@ManyToOne(fetch = FetchType.EAGER)\nprivate Course course;",
+                "scenario": "Course is loaded immediately when Student is loaded"
+              }
+            }
+          ],
+          "defaultBehaviors": {
+            "OneToOne": "EAGER",
+            "ManyToOne": "EAGER",
+            "OneToMany": "LAZY",
+            "ManyToMany": "LAZY"
+          },
+          "considerations": [
+            {
+              "aspect": "Session Management",
+              "eager": "Data available after session close",
+              "lazy": "Requires active session for access"
+            },
+            {
+              "aspect": "Memory Usage",
+              "eager": "Higher immediate memory consumption",
+              "lazy": "More efficient memory utilization"
+            },
+            {
+              "aspect": "Performance",
+              "eager": "Slower initial load, no subsequent queries",
+              "lazy": "Faster initial load, potential for N+1 queries"
+            }
+          ],
+          "bestPractices": [
+            "Use LAZY loading as default strategy",
+            "Use EAGER only when related data is always needed",
+            "Consider using fetch joins for specific queries instead of EAGER loading",
+            "Be aware of session scope when using LAZY loading",
+            "Handle LazyInitializationException appropriately"
+          ]
+        }
+      ],
+      "commonProblems": {
+        "lazyInitialization": {
+          "problem": "LazyInitializationException when accessing lazy collections after session close",
+          "solutions": [
+            "Keep session open (OpenSessionInView pattern)",
+            "Initialize collections before session close",
+            "Use fetch joins in specific queries",
+            "Use DTOs to transfer required data"
+          ]
+        },
+        "nPlusOne": {
+          "problem": "Multiple queries executed when accessing lazy collections in a loop",
+          "solutions": [
+            "Use fetch joins",
+            "Batch fetching configuration",
+            "EntityGraph for specific use cases"
+          ]
+        }
+      }
+    },
+    {
+      "id": "query-methods",
+      "title": "Querying Data",
+      "methods": [
+        {
+          "name": "JPQL",
+          "description": "JPA Query Language",
+          "example": {
+            "code": "TypedQuery<User> query = em.createQuery(\n    \"SELECT u FROM User u WHERE u.age > :age\", User.class);\nquery.setParameter(\"age\", 18);"
+          }
+        },
+        {
+          "name": "Criteria API",
+          "description": "Type-safe querying",
+          "example": {
+            "code": "CriteriaBuilder cb = em.getCriteriaBuilder();\nCriteriaQuery<User> query = cb.createQuery(User.class);\nRoot<User> root = query.from(User.class);\nquery.select(root).where(cb.gt(root.get(\"age\"), 18));"
+          }
+        },
+        {
+          "name": "Native SQL",
+          "description": "Direct SQL queries",
+          "example": {
+            "code": "Query query = em.createNativeQuery(\n    \"SELECT * FROM users WHERE age > ?\", User.class);\nquery.setParameter(1, 18);"
+          }
+        }
+      ]
+    },
+    {
+      "id": "performance-optimization",
+      "title": "Performance Optimization",
+      "techniques": [
+        {
+          "category": "Batch Processing",
+          "methods": [
+            {
+              "name": "Batch Inserts",
+              "example": "for (int i = 0; i < entities.size(); i++) {\n    em.persist(entities.get(i));\n    if (i % batchSize == 0) {\n        em.flush();\n        em.clear();\n    }\n}"
+            },
+            {
+              "name": "Batch Size Configuration",
+              "property": "hibernate.jdbc.batch_size"
+            }
+          ]
+        },
+        {
+          "category": "Caching Strategy",
+          "recommendations": [
+            "Use appropriate cache regions",
+            "Configure cache concurrency strategy",
+            "Monitor cache hit/miss ratios"
+          ]
+        },
+        {
+          "category": "Query Optimization",
+          "techniques": [
+            "Use fetch joins appropriately",
+            "Avoid N+1 queries",
+            "Implement pagination",
+            "Use named queries"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-practices",
+      "title": "Best Practices",
+      "categories": [
+        {
+          "name": "Entity Design",
+          "practices": [
+            "Use appropriate fetch types",
+            "Implement equals() and hashCode()",
+            "Make entities serializable",
+            "Use lazy loading by default"
+          ]
+        },
+        {
+          "name": "Transaction Management",
+          "practices": [
+            "Keep transactions short",
+            "Use appropriate isolation levels",
+            "Handle exceptions properly",
+            "Clean up resources"
+          ]
+        },
+        {
+          "name": "Performance",
+          "practices": [
+            "Use batch processing",
+            "Implement proper caching",
+            "Optimize queries",
+            "Monitor performance metrics"
+          ]
+        }
+      ]
+    }
+  ]
+}

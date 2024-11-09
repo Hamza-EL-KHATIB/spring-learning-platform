@@ -4,116 +4,192 @@
     {
       "id": "thread-lifecycle",
       "title": "Thread Lifecycle",
-      "description": "Understanding the lifecycle of a thread in Java, including the various states and transitions.",
+      "description": "States and transitions in a thread's lifecycle",
       "states": [
         {
           "state": "New",
-          "description": "A thread that has been created but not yet started."
+          "description": "Thread is created but not yet started"
         },
         {
           "state": "Runnable",
-          "description": "A thread that is ready to run and waiting for CPU allocation."
+          "description": "Thread is ready for execution and is waiting for CPU"
         },
         {
           "state": "Blocked",
-          "description": "A thread that is blocked waiting for a monitor lock."
+          "description": "Thread is waiting for I/O or a monitor lock"
         },
         {
           "state": "Waiting",
-          "description": "A thread that is waiting indefinitely for another thread to perform a particular action."
+          "description": "Thread is waiting indefinitely for another thread"
         },
         {
-          "state": "Timed Waiting",
-          "description": "A thread that is waiting for another thread to perform an action within a specified waiting time."
+          "state": "Timed_Waiting",
+          "description": "Thread is waiting for a specified time period"
         },
         {
           "state": "Terminated",
-          "description": "A thread that has completed its execution."
+          "description": "Thread has completed its execution"
         }
       ]
     },
     {
       "id": "thread-creation",
-      "title": "Creating Threads",
-      "description": "Different ways to create threads in Java, using Runnable, Thread, and lambda expressions.",
+      "title": "Thread Creation",
       "methods": [
         {
-          "method": "Extending Thread Class",
-          "description": "Override the run method in a subclass of Thread.",
-          "example": "public class MyThread extends Thread {\n    @Override\n    public void run() {\n        System.out.println(\"Thread running\");\n    }\n}"
+          "method": "Extending Thread",
+          "example": "class MyThread extends Thread { public void run() { ... } }",
+          "pros": ["Direct access to thread methods"],
+          "cons": ["Cannot extend other classes"]
         },
         {
-          "method": "Implementing Runnable Interface",
-          "description": "Pass a Runnable instance to the Thread constructor.",
-          "example": "public class MyRunnable implements Runnable {\n    @Override\n    public void run() {\n        System.out.println(\"Runnable running\");\n    }\n}"
+          "method": "Implementing Runnable",
+          "example": "class MyRunnable implements Runnable { public void run() { ... } }",
+          "pros": ["Can extend other classes", "Better for task abstraction"],
+          "cons": ["No direct access to thread methods"]
         },
         {
-          "method": "Using Lambda Expressions",
-          "description": "Simplified thread creation using lambdas with functional interfaces.",
-          "example": "Thread thread = new Thread(() -> System.out.println(\"Lambda thread running\"));"
+          "method": "Lambda Expression",
+          "example": "Thread thread = new Thread(() -> { /* task */ });",
+          "pros": ["Concise", "Functional style"],
+          "cons": ["Limited to simple tasks"]
         }
       ]
     },
     {
-      "id": "synchronization",
-      "title": "Thread Synchronization",
-      "description": "Ensuring thread safety by controlling access to shared resources.",
-      "mechanisms": [
-        {
-          "name": "Synchronized Methods",
-          "description": "Methods that can only be accessed by one thread at a time.",
-          "example": "public synchronized void increment() {\n    count++;\n}"
-        },
-        {
-          "name": "Synchronized Blocks",
-          "description": "Code blocks synchronized on a specific object, allowing finer control over synchronization.",
-          "example": "synchronized(this) {\n    // critical section\n}"
-        },
-        {
-          "name": "Reentrant Locks",
-          "description": "A more flexible alternative to synchronized blocks, allowing more complex locking mechanisms.",
-          "example": "Lock lock = new ReentrantLock();\nlock.lock();\ntry {\n    // critical section\n} finally {\n    lock.unlock();\n}"
-        }
-      ]
-    },
-    {
-      "id": "thread-communication",
-      "title": "Thread Communication",
-      "description": "Mechanisms that allow threads to communicate and coordinate their actions.",
-      "methods": [
-        {
-          "method": "wait()",
-          "description": "Causes the current thread to wait until another thread invokes notify or notifyAll on the same object."
-        },
-        {
-          "method": "notify()",
-          "description": "Wakes up a single thread that is waiting on this object's monitor."
-        },
-        {
-          "method": "notifyAll()",
-          "description": "Wakes up all threads that are waiting on this object's monitor."
-        }
-      ]
-    },
-    {
-      "id": "thread-pools",
-      "title": "Thread Pools",
-      "description": "A thread pool reuses a fixed number of threads for executing tasks, improving resource management.",
+      "id": "executors",
+      "title": "Executor Framework",
+      "description": "High-level threading framework for managing thread pools",
       "types": [
         {
           "type": "Fixed Thread Pool",
-          "description": "A pool with a fixed number of threads.",
-          "example": "ExecutorService fixedPool = Executors.newFixedThreadPool(5);"
+          "creation": "Executors.newFixedThreadPool(n)",
+          "usage": "Fixed number of threads for stable, bounded resources",
+          "bestPractices": [
+            "Size pool based on CPU cores and task type",
+            "Consider task queue size",
+            "Monitor for thread leaks"
+          ]
         },
         {
           "type": "Cached Thread Pool",
-          "description": "A flexible pool that creates new threads as needed, but reuses previously constructed threads when available.",
-          "example": "ExecutorService cachedPool = Executors.newCachedThreadPool();"
+          "creation": "Executors.newCachedThreadPool()",
+          "usage": "Variable number of threads for dynamic workloads",
+          "bestPractices": [
+            "Use for short-lived tasks",
+            "Monitor thread creation",
+            "Set appropriate keep-alive time"
+          ]
         },
         {
           "type": "Scheduled Thread Pool",
-          "description": "A pool that can schedule commands to run after a given delay or periodically.",
-          "example": "ScheduledExecutorService scheduledPool = Executors.newScheduledThreadPool(3);"
+          "creation": "Executors.newScheduledThreadPool(n)",
+          "usage": "For scheduled or periodic tasks",
+          "bestPractices": [
+            "Consider task timing requirements",
+            "Handle task overlap scenarios",
+            "Monitor scheduling drift"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thread-safety",
+      "title": "Thread Safety Mechanisms",
+      "mechanisms": [
+        {
+          "type": "Synchronization",
+          "methods": [
+            {
+              "name": "synchronized keyword",
+              "usage": "synchronized method or block",
+              "example": "synchronized void method() { ... }"
+            },
+            {
+              "name": "Lock interface",
+              "usage": "More flexible locking mechanisms",
+              "example": "Lock lock = new ReentrantLock();"
+            },
+            {
+              "name": "Atomic classes",
+              "usage": "Lock-free thread-safe operations",
+              "example": "AtomicInteger counter = new AtomicInteger();"
+            }
+          ]
+        },
+        {
+          "type": "Volatile",
+          "description": "Ensures visibility of changes across threads",
+          "usage": "volatile keyword",
+          "example": "private volatile boolean flag;"
+        }
+      ]
+    },
+    {
+      "id": "concurrent-collections",
+      "title": "Thread-Safe Collections",
+      "collections": [
+        {
+          "name": "ConcurrentHashMap",
+          "characteristics": [
+            "Lock striping for better performance",
+            "Null keys/values not allowed",
+            "Atomic operations support"
+          ],
+          "usage": "Map<K,V> map = new ConcurrentHashMap<>();"
+        },
+        {
+          "name": "CopyOnWriteArrayList",
+          "characteristics": [
+            "Thread-safe variant of ArrayList",
+            "All mutative operations create a fresh copy",
+            "Ideal for read-heavy scenarios"
+          ],
+          "usage": "List<E> list = new CopyOnWriteArrayList<>();"
+        },
+        {
+          "name": "BlockingQueue",
+          "implementations": [
+            {
+              "name": "ArrayBlockingQueue",
+              "description": "Bounded blocking queue"
+            },
+            {
+              "name": "LinkedBlockingQueue",
+              "description": "Optionally bounded blocking queue"
+            }
+          ],
+          "usage": "BlockingQueue<E> queue = new ArrayBlockingQueue<>(capacity);"
+        }
+      ]
+    },
+    {
+      "id": "concurrency-patterns",
+      "title": "Concurrency Patterns",
+      "patterns": [
+        {
+          "name": "Producer-Consumer",
+          "description": "Separate data production and consumption",
+          "implementation": {
+            "using": "BlockingQueue",
+            "example": "BlockingQueue<Task> queue = new ArrayBlockingQueue<>(capacity);"
+          }
+        },
+        {
+          "name": "Thread Pool",
+          "description": "Reuse threads for multiple tasks",
+          "implementation": {
+            "using": "ExecutorService",
+            "example": "ExecutorService executor = Executors.newFixedThreadPool(nThreads);"
+          }
+        },
+        {
+          "name": "Future Pattern",
+          "description": "Get results from asynchronous computations",
+          "implementation": {
+            "using": "CompletableFuture",
+            "example": "CompletableFuture<Result> future = CompletableFuture.supplyAsync(() -> compute());"
+          }
         }
       ]
     }
