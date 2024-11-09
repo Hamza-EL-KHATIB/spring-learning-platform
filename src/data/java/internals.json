@@ -1,0 +1,96 @@
+{
+  "title": "Java Internals",
+  "topics": [
+    {
+      "id": "memory-management",
+      "title": "Memory Management (Heap vs Stack)",
+      "description": "Java manages memory through a combination of stack memory (for primitive data types and references) and heap memory (for objects).",
+      "sections": [
+        {
+          "type": "Stack Memory",
+          "characteristics": [
+            "Used for static memory allocation",
+            "Thread-specific memory",
+            "Stores references and primitive data types",
+            "Automatically managed",
+            "Faster memory allocation"
+          ],
+          "example": {
+            "title": "Stack Memory Example",
+            "code": "public void calculateSum(int a) {\n    int b = 5;\n    String name = \"John\";\n    double result = a + b;\n}"
+          }
+        },
+        {
+          "type": "Heap Memory",
+          "characteristics": [
+            "Used for dynamic memory allocation",
+            "Shared across threads",
+            "Stores objects and instance variables",
+            "Garbage collected",
+            "Larger and slower than stack"
+          ],
+          "example": {
+            "title": "Heap Memory Example",
+            "code": "public class Memory {\n    private int[] numbers = new int[10];\n    public void createObjects() {\n        Person john = new Person(\"John\");\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "oop-pillars",
+      "title": "Pillars of Object-Oriented Programming (OOP)",
+      "description": "Java follows the four main principles of OOP: Encapsulation, Inheritance, Polymorphism, and Abstraction.",
+      "concepts": [
+        {
+          "name": "Encapsulation",
+          "description": "Encapsulation bundles data and methods operating on that data within a single unit, restricting access to the internal state of an object."
+        },
+        {
+          "name": "Inheritance",
+          "description": "Inheritance allows one class to acquire the properties and behaviors of a parent class, enabling code reuse and establishing a hierarchy."
+        },
+        {
+          "name": "Polymorphism",
+          "description": "Polymorphism enables methods to perform different tasks based on the object instance. It’s achieved through method overloading and overriding."
+        },
+        {
+          "name": "Abstraction",
+          "description": "Abstraction hides implementation details and exposes only essential features, promoting a simplified interface for complex systems."
+        }
+      ]
+    },
+    {
+      "id": "platform-components",
+      "title": "Java Platform Components",
+      "description": "The Java platform includes the JDK, JVM, and JRE, each playing a distinct role in developing and running Java applications.",
+      "components": [
+        {
+          "name": "JVM (Java Virtual Machine)",
+          "description": "An abstract machine that converts Java bytecode into machine-specific instructions. It's responsible for memory management, security, and more."
+        },
+        {
+          "name": "JRE (Java Runtime Environment)",
+          "description": "The JRE provides libraries and the JVM required to run Java applications but does not include development tools like a compiler."
+        },
+        {
+          "name": "JDK (Java Development Kit)",
+          "description": "The JDK includes the JRE along with development tools such as the Java compiler (`javac`), debugger, and documentation generator (`javadoc`)."
+        }
+      ],
+      "tools": [
+        {
+          "name": "javac",
+          "description": "The Java compiler, which converts Java source code into bytecode."
+        },
+        {
+          "name": "java",
+          "description": "The Java application launcher, which starts the JVM and executes bytecode."
+        },
+        {
+          "name": "javadoc",
+          "description": "A documentation generator that creates API documentation from Java source code comments."
+        }
+      ]
+    }
+  ]
+}

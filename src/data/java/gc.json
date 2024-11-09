@@ -1,0 +1,72 @@
+{
+  "title": "Java Garbage Collection",
+  "topics": [
+    {
+      "id": "gc-overview",
+      "title": "Overview of Garbage Collection",
+      "description": "Garbage Collection (GC) in Java is an automated memory management process that frees up memory occupied by objects that are no longer reachable or used by the application."
+    },
+    {
+      "id": "gc-process",
+      "title": "Garbage Collection Process",
+      "steps": [
+        "Java tracks object references to determine which objects are reachable.",
+        "When objects become unreachable, they are marked for collection.",
+        "The garbage collector reclaims memory occupied by these unreachable objects to make space for new allocations."
+      ]
+    },
+    {
+      "id": "gc-types",
+      "title": "Types of Garbage Collectors",
+      "collectors": [
+        {
+          "name": "Serial Garbage Collector",
+          "description": "A single-threaded collector, suitable for single-core systems and applications with small data requirements."
+        },
+        {
+          "name": "Parallel Garbage Collector",
+          "description": "Uses multiple threads for GC operations, making it suitable for high-throughput applications."
+        },
+        {
+          "name": "CMS (Concurrent Mark-Sweep) Garbage Collector",
+          "description": "Designed for applications that prioritize low latency; minimizes pause times by performing GC concurrently with application threads."
+        },
+        {
+          "name": "G1 (Garbage-First) Garbage Collector",
+          "description": "Divides the heap into regions and focuses on collecting regions with the most garbage, making it suitable for larger heaps and minimizing pauses."
+        },
+        {
+          "name": "Z Garbage Collector",
+          "description": "A low-latency collector designed for large heap sizes, keeping pause times very low."
+        }
+      ]
+    },
+    {
+      "id": "gc-phases",
+      "title": "Phases of Garbage Collection",
+      "phases": [
+        {
+          "phase": "Marking",
+          "description": "Identifies objects that are still in use and marks them as reachable."
+        },
+        {
+          "phase": "Sweeping",
+          "description": "Removes objects that are no longer reachable and reclaims their memory."
+        },
+        {
+          "phase": "Compacting",
+          "description": "Reorganizes memory to reduce fragmentation and make memory allocation more efficient."
+        }
+      ]
+    },
+    {
+      "id": "tuning-gc",
+      "title": "Tuning Garbage Collection",
+      "tips": [
+        "Use command-line options like `-XX:+UseG1GC` or `-XX:+UseParallelGC` to select the garbage collector.",
+        "Adjust heap size with `-Xms` (initial heap size) and `-Xmx` (maximum heap size) options to provide adequate memory.",
+        "Monitor GC behavior using tools like VisualVM or Java Flight Recorder for performance insights."
+      ]
+    }
+  ]
+}

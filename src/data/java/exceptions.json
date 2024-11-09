@@ -1,0 +1,91 @@
+{
+  "title": "Java Exception Handling",
+  "topics": [
+    {
+      "id": "exceptions-overview",
+      "title": "Overview of Exceptions",
+      "description": "Exceptions represent unexpected conditions or errors that disrupt the normal flow of a program in Java.",
+      "types": [
+        {
+          "type": "Checked Exceptions",
+          "description": "Exceptions that are checked at compile-time, and must be either caught or declared in the method signature using 'throws'.",
+          "examples": [
+            {
+              "exception": "IOException",
+              "description": "Occurs when an I/O operation fails or is interrupted."
+            },
+            {
+              "exception": "SQLException",
+              "description": "Indicates an error during a database access operation."
+            }
+          ]
+        },
+        {
+          "type": "Unchecked Exceptions",
+          "description": "Exceptions that occur at runtime and do not need to be declared or caught explicitly.",
+          "examples": [
+            {
+              "exception": "NullPointerException",
+              "description": "Occurs when trying to use an object reference that has not been initialized."
+            },
+            {
+              "exception": "ArrayIndexOutOfBoundsException",
+              "description": "Thrown when accessing an invalid index in an array."
+            }
+          ]
+        },
+        {
+          "type": "Errors",
+          "description": "Serious issues beyond the control of the program, typically related to system resources. Errors are not intended to be caught or handled.",
+          "examples": [
+            {
+              "error": "OutOfMemoryError",
+              "description": "Indicates that the JVM has run out of memory."
+            },
+            {
+              "error": "StackOverflowError",
+              "description": "Occurs when there is excessive deep recursion, causing the call stack to exceed its limit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "handling-exceptions",
+      "title": "Handling Exceptions",
+      "description": "Java provides mechanisms to handle exceptions and prevent them from crashing the program.",
+      "methods": [
+        {
+          "method": "try-catch",
+          "description": "Encloses code that may throw an exception in a try block, followed by one or more catch blocks to handle specific exceptions."
+        },
+        {
+          "method": "finally",
+          "description": "A block that executes after try-catch, regardless of whether an exception occurred, typically used for cleanup."
+        },
+        {
+          "method": "throw",
+          "description": "Allows explicit throwing of an exception from a method or code block."
+        },
+        {
+          "method": "throws",
+          "description": "Used in a method signature to declare the types of exceptions the method may throw, passing the responsibility to the caller."
+        }
+      ]
+    },
+    {
+      "id": "custom-exceptions",
+      "title": "Creating Custom Exceptions",
+      "description": "Java allows creation of custom exceptions to represent specific error conditions in an application.",
+      "steps": [
+        "Extend the Exception or RuntimeException class.",
+        "Add constructors to initialize the exception.",
+        "Use the custom exception in application code where needed."
+      ],
+      "example": {
+        "title": "Sample Custom Exception",
+        "code": "public class InvalidInputException extends Exception {\n    public InvalidInputException(String message) {\n        super(message);\n    }\n}"
+      }
+    }
+  ]
+}

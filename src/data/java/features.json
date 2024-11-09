@@ -1,0 +1,77 @@
+{
+  "title": "Java 8 Features",
+  "topics": [
+    {
+      "id": "streams",
+      "title": "Stream API",
+      "description": "The Stream API introduces a functional approach to processing collections of objects, allowing for declarative, parallelizable operations.",
+      "operations": [
+        {
+          "name": "filter()",
+          "description": "Selects elements based on a condition (predicate)."
+        },
+        {
+          "name": "map()",
+          "description": "Transforms elements by applying a function to each item in the stream."
+        },
+        {
+          "name": "reduce()",
+          "description": "Combines elements of the stream to produce a single result."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Basic Stream Usage",
+          "code": "List<String> names = Arrays.asList(\"John\", \"Jane\", \"Bob\");\nnames.stream()\n    .filter(name -> name.startsWith(\"J\"))\n    .map(String::toUpperCase)\n    .forEach(System.out::println);"
+        }
+      ]
+    },
+    {
+      "id": "lambda",
+      "title": "Lambda Expressions",
+      "description": "Lambda expressions introduce a concise way to implement functional interfaces, simplifying the syntax of anonymous classes.",
+      "syntax": "(parameters) -> expression",
+      "useCases": [
+        "Functional interfaces",
+        "Event handlers",
+        "Comparators",
+        "Stream operations"
+      ],
+      "examples": [
+        {
+          "title": "Lambda Example",
+          "code": "Runnable run = () -> System.out.println(\"Hello\");\nComparator<String> comp = (s1, s2) -> s1.length() - s2.length();\nConsumer<String> consumer = str -> System.out.println(str);"
+        }
+      ]
+    },
+    {
+      "id": "optional",
+      "title": "Optional",
+      "description": "The Optional class provides a container to handle null values more safely, avoiding null pointer exceptions.",
+      "methods": [
+        {
+          "name": "of()/ofNullable()",
+          "description": "Creates an Optional object, with `ofNullable` allowing null values."
+        },
+        {
+          "name": "isPresent()/isEmpty()",
+          "description": "Checks if the Optional contains a value or is empty."
+        },
+        {
+          "name": "ifPresent()",
+          "description": "Executes an action if a value is present."
+        },
+        {
+          "name": "orElse()/orElseGet()",
+          "description": "Provides a default value if Optional is empty."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Optional Usage",
+          "code": "Optional<String> opt = Optional.of(\"value\");\nString result = opt.orElse(\"default\");\nopt.ifPresent(System.out::println);"
+        }
+      ]
+    }
+  ]
+}
