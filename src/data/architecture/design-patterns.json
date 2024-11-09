@@ -1,0 +1,244 @@
+{
+  "title": "Design Patterns",
+  "description": "Common design patterns in software development",
+  "categories": [
+    {
+      "name": "Creational Patterns",
+      "description": "Patterns that deal with object creation mechanisms",
+      "patterns": [
+        {
+          "name": "Singleton",
+          "description": "Ensures a class has only one instance and provides global point of access to it",
+          "diagram": "Singleton.png",
+          "use_cases": [
+            "Database connections",
+            "Configuration settings",
+            "Logger instances"
+          ],
+          "implementation": {
+            "code": "public class Singleton {\n    private static volatile Singleton instance;\n    private Singleton() {}\n\n    public static Singleton getInstance() {\n        if (instance == null) {\n            synchronized(Singleton.class) {\n                if (instance == null) {\n                    instance = new Singleton();\n                }\n            }\n        }\n        return instance;\n    }\n}"
+          },
+          "considerations": [
+            "Thread safety",
+            "Lazy initialization",
+            "Double-checked locking"
+          ]
+        },
+        {
+          "name": "Factory Method",
+          "description": "Defines an interface for creating objects but lets subclasses decide which class to instantiate",
+          "diagram": "Factory Method.png",
+          "use_cases": [
+            "Framework document creation",
+            "Cross-platform UI elements",
+            "Plugin architectures"
+          ],
+          "implementation": {
+            "code": "public interface Product {}\n\npublic interface Creator {\n    Product createProduct();\n}\n\npublic class ConcreteCreator implements Creator {\n    @Override\n    public Product createProduct() {\n        return new ConcreteProduct();\n    }\n}"
+          }
+        },
+        {
+          "name": "Abstract Factory",
+          "description": "Provides an interface for creating families of related or dependent objects",
+          "diagram": "Abstract Factory.png",
+          "use_cases": [
+            "Cross-platform UI toolkits",
+            "Database access layer",
+            "Multiple rendering engines"
+          ],
+          "implementation": {
+            "code": "public interface AbstractFactory {\n    ProductA createProductA();\n    ProductB createProductB();\n}"
+          }
+        },
+        {
+          "name": "Builder",
+          "description": "Separates construction of complex object from its representation",
+          "diagram": "Builder.png",
+          "use_cases": [
+            "Complex object construction",
+            "Object with many optional parameters",
+            "Immutable objects"
+          ]
+        },
+        {
+          "name": "Prototype",
+          "description": "Creates new objects by cloning an existing instance",
+          "diagram": "Prototype.png",
+          "use_cases": [
+            "Object creation is expensive",
+            "Dynamic object configuration",
+            "Avoiding subclass explosion"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Structural Patterns",
+      "description": "Patterns that deal with object composition and relationships",
+      "patterns": [
+        {
+          "name": "Adapter",
+          "description": "Converts interface of a class into another interface clients expect",
+          "diagram": "Adapter.png",
+          "use_cases": [
+            "Integration with legacy code",
+            "Third-party library integration",
+            "Multiple interface compatibility"
+          ]
+        },
+        {
+          "name": "Bridge",
+          "description": "Separates abstraction from implementation so they can vary independently",
+          "diagram": "Bridge.png",
+          "use_cases": [
+            "Cross-platform applications",
+            "Multiple variant support",
+            "Interface and implementation separation"
+          ]
+        },
+        {
+          "name": "Composite",
+          "description": "Composes objects into tree structures to represent part-whole hierarchies",
+          "diagram": "Composite.png",
+          "use_cases": [
+            "GUI components",
+            "File system structures",
+            "Organization hierarchies"
+          ]
+        },
+        {
+          "name": "Decorator",
+          "description": "Attaches additional responsibilities to objects dynamically",
+          "diagram": "Decorator.png",
+          "use_cases": [
+            "I/O streams",
+            "UI component enhancement",
+            "Dynamic feature addition"
+          ]
+        },
+        {
+          "name": "Facade",
+          "description": "Provides unified interface to a set of interfaces in a subsystem",
+          "diagram": "Facade.png",
+          "use_cases": [
+            "Complex subsystem simplification",
+            "Library wrapping",
+            "API unification"
+          ]
+        },
+        {
+          "name": "Flyweight",
+          "description": "Uses sharing to support large numbers of fine-grained objects efficiently",
+          "diagram": "Flyweight.png",
+          "use_cases": [
+            "Text formatting",
+            "Game object management",
+            "Character rendering"
+          ]
+        },
+        {
+          "name": "Proxy",
+          "description": "Provides a surrogate or placeholder for another object",
+          "diagram": "Proxy.png",
+          "use_cases": [
+            "Lazy loading",
+            "Access control",
+            "Remote resource access"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Behavioral Patterns",
+      "description": "Patterns that deal with communication between objects",
+      "patterns": [
+        {
+          "name": "Observer",
+          "description": "Defines one-to-many dependency between objects",
+          "diagram": "Observer.png",
+          "use_cases": [
+            "Event handling",
+            "User interface updates",
+            "Pub/sub systems"
+          ]
+        },
+        {
+          "name": "Strategy",
+          "description": "Defines family of algorithms and makes them interchangeable",
+          "diagram": "Strategy.png",
+          "use_cases": [
+            "Payment processing",
+            "Sorting algorithms",
+            "Validation strategies"
+          ]
+        },
+        {
+          "name": "Template Method",
+          "description": "Defines skeleton of algorithm, letting subclasses override specific steps",
+          "diagram": "Template Method.png",
+          "use_cases": [
+            "Framework operations",
+            "Data processing pipelines",
+            "Document generation"
+          ]
+        },
+        {
+          "name": "State",
+          "description": "Allows object to alter behavior when internal state changes",
+          "diagram": "State.png",
+          "use_cases": [
+            "Workflow management",
+            "Game states",
+            "Order processing"
+          ]
+        },
+        {
+          "name": "Visitor",
+          "description": "Represents an operation to be performed on elements of an object structure",
+          "diagram": "Visitor.png",
+          "use_cases": [
+            "Document object model",
+            "Compiler operations",
+            "Object structure traversal"
+          ]
+        }
+      ]
+    }
+  ],
+  "best_practices": {
+    "selection_criteria": [
+      "Problem context",
+      "Flexibility requirements",
+      "Maintenance considerations",
+      "Performance impact"
+    ],
+    "implementation_guidelines": [
+      "Keep it simple",
+      "Consider composition over inheritance",
+      "Program to an interface",
+      "Favor loose coupling"
+    ],
+    "common_pitfalls": [
+      "Over-engineering",
+      "Pattern misuse",
+      "Premature abstraction",
+      "Rigid implementation"
+    ]
+  },
+  "relationships": {
+    "commonly_combined": [
+      {
+        "patterns": ["Factory Method", "Singleton"],
+        "use_case": "Managing shared resource creation"
+      },
+      {
+        "patterns": ["Composite", "Iterator"],
+        "use_case": "Traversing complex structures"
+      },
+      {
+        "patterns": ["Observer", "Mediator"],
+        "use_case": "Event handling systems"
+      }
+    ]
+  }
+}

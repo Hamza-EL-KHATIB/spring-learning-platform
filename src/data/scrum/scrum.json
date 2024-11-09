@@ -1,0 +1,163 @@
+{
+  "title": "Scrum Framework",
+  "description": "An agile framework for managing complex projects",
+  "core_components": {
+    "roles": [
+      {
+        "name": "Scrum Master",
+        "responsibilities": [
+          "Facilitate Scrum events",
+          "Remove impediments",
+          "Coach team on Scrum practices",
+          "Protect team from interruptions"
+        ]
+      },
+      {
+        "name": "Product Owner",
+        "responsibilities": [
+          "Define and prioritize backlog",
+          "Maximize product value",
+          "Represent stakeholder interests",
+          "Make scope decisions"
+        ]
+      },
+      {
+        "name": "Development Team",
+        "responsibilities": [
+          "Deliver product increments",
+          "Self-organize",
+          "Cross-functional collaboration",
+          "Technical implementation"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "Sprint",
+        "duration": "1-4 weeks (typically 2)",
+        "purpose": "Deliver potentially shippable increment",
+        "key_points": [
+          "Fixed time-box",
+          "Consistent duration",
+          "No changes that endanger sprint goal"
+        ]
+      },
+      {
+        "name": "Sprint Planning",
+        "duration": "Up to 8 hours for 1-month sprint",
+        "purpose": "Plan sprint work",
+        "outcomes": [
+          "Sprint goal",
+          "Sprint backlog",
+          "Delivery plan"
+        ]
+      },
+      {
+        "name": "Daily Scrum",
+        "duration": "15 minutes",
+        "purpose": "Synchronize activities",
+        "key_questions": [
+          "What did I do yesterday?",
+          "What will I do today?",
+          "Are there any impediments?"
+        ]
+      },
+      {
+        "name": "Sprint Review",
+        "duration": "Up to 4 hours for 1-month sprint",
+        "purpose": "Inspect increment and adapt backlog",
+        "activities": [
+          "Demo completed work",
+          "Gather feedback",
+          "Update backlog"
+        ]
+      },
+      {
+        "name": "Sprint Retrospective",
+        "duration": "Up to 3 hours for 1-month sprint",
+        "purpose": "Team improvement",
+        "focus_areas": [
+          "People",
+          "Relationships",
+          "Processes",
+          "Tools"
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "name": "Product Backlog",
+        "description": "Ordered list of everything needed in the product",
+        "characteristics": [
+          "Dynamic",
+          "Never complete",
+          "Continuously refined",
+          "Prioritized"
+        ]
+      },
+      {
+        "name": "Sprint Backlog",
+        "description": "Selected items for sprint plus delivery plan",
+        "elements": [
+          "Sprint goal",
+          "Selected product backlog items",
+          "Delivery plan"
+        ]
+      },
+      {
+        "name": "Increment",
+        "description": "Sum of completed items during sprint",
+        "requirements": [
+          "Must be usable",
+          "Must meet Definition of Done",
+          "Must be potentially releasable"
+        ]
+      }
+    ]
+  },
+  "key_concepts": {
+    "transparency": "Everyone sees what's happening",
+    "inspection": "Regular check on progress and artifacts",
+    "adaptation": "Adjust based on inspection results"
+  },
+  "best_practices": {
+    "backlog_management": [
+      "Regular refinement",
+      "Clear acceptance criteria",
+      "Properly sized stories",
+      "INVEST criteria for stories"
+    ],
+    "sprint_execution": [
+      "Protect the team",
+      "Maintain focus",
+      "Daily communication",
+      "Continuous improvement"
+    ],
+    "team_collaboration": [
+      "Self-organization",
+      "Cross-functional skills",
+      "Direct communication",
+      "Shared responsibility"
+    ]
+  },
+  "common_pitfalls": [
+    "Treating Scrum as a rigid process",
+    "Skipping ceremonies",
+    "Poor backlog management",
+    "Lack of team empowerment"
+  ],
+  "metrics": [
+    {
+      "name": "Velocity",
+      "description": "Amount of work completed per sprint"
+    },
+    {
+      "name": "Burndown Chart",
+      "description": "Visual representation of work remaining"
+    },
+    {
+      "name": "Sprint Goal Achievement",
+      "description": "Success rate in meeting sprint goals"
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "title": "Database Transactions",
+  "topics": [
+    {
+      "id": "acid-properties",
+      "title": "ACID Properties",
+      "description": "Core properties that guarantee database transactions are processed reliably",
+      "properties": [
+        {
+          "name": "Atomicity",
+          "description": "All operations in a transaction succeed or entire transaction is rolled back",
+          "key_points": [
+            "Transaction is treated as a single unit",
+            "Either all operations succeed or none do",
+            "If any operation fails, all changes are rolled back"
+          ],
+          "example": {
+            "scenario": "Bank transfer",
+            "code": "// Either both operations succeed or neither does\ndebit(accountA, 100);\ncredit(accountB, 100);"
+          }
+        },
+        {
+          "name": "Consistency",
+          "description": "Transaction brings database from one valid state to another",
+          "key_points": [
+            "All database rules (constraints, cascades, triggers) are enforced",
+            "Data integrity is maintained",
+            "Business rules are preserved"
+          ],
+          "example": {
+            "scenario": "Account balance",
+            "description": "Balance cannot go negative if there's a minimum balance constraint"
+          }
+        },
+        {
+          "name": "Isolation",
+          "description": "Concurrent transactions don't interfere with each other",
+          "key_points": [
+            "Transactions appear to execute sequentially",
+            "Changes from one transaction aren't visible to others until committed",
+            "Different isolation levels provide different guarantees"
+          ],
+          "problems": [
+            {
+              "name": "Dirty Read",
+              "description": "Reading uncommitted changes from another transaction"
+            },
+            {
+              "name": "Non-Repeatable Read",
+              "description": "Getting different values in same transaction when reading same row twice"
+            },
+            {
+              "name": "Phantom Read",
+              "description": "Getting different rows in same transaction when running same query twice"
+            }
+          ]
+        },
+        {
+          "name": "Durability",
+          "description": "Once committed, changes are permanent",
+          "key_points": [
+            "Committed transactions survive system crashes",
+            "Changes are persisted to non-volatile storage",
+            "Transaction logs ensure recoverability"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "isolation-levels",
+      "title": "Transaction Isolation Levels",
+      "levels": [
+        {
+          "name": "READ_UNCOMMITTED",
+          "description": "Lowest isolation level, allows dirty reads",
+          "prevents": [],
+          "allows": ["Dirty Read", "Non-Repeatable Read", "Phantom Read"],
+          "usage": "When absolute fastest performance is needed and data inconsistency is acceptable"
+        },
+        {
+          "name": "READ_COMMITTED",
+          "description": "Prevents dirty reads",
+          "prevents": ["Dirty Read"],
+          "allows": ["Non-Repeatable Read", "Phantom Read"],
+          "usage": "Default level in many databases, good balance of safety and performance"
+        },
+        {
+          "name": "REPEATABLE_READ",
+          "description": "Prevents non-repeatable reads",
+          "prevents": ["Dirty Read", "Non-Repeatable Read"],
+          "allows": ["Phantom Read"],
+          "usage": "When consistency in repeated reads is important"
+        },
+        {
+          "name": "SERIALIZABLE",
+          "description": "Highest isolation level, prevents all concurrency issues",
+          "prevents": ["Dirty Read", "Non-Repeatable Read", "Phantom Read"],
+          "allows": [],
+          "usage": "When absolute data consistency is required"
+        }
+      ],
+      "usage": {
+        "spring": "@Transactional(isolation = Isolation.READ_COMMITTED)",
+        "jdbc": "connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED)"
+      }
+    },
+    {
+      "id": "spring-transaction-management",
+      "title": "Spring Transaction Management",
+      "features": [
+        {
+          "name": "@Transactional",
+          "attributes": [
+            {
+              "name": "propagation",
+              "values": [
+                {
+                  "name": "REQUIRED",
+                  "description": "Use current transaction or create new one",
+                  "default": true
+                },
+                {
+                  "name": "REQUIRES_NEW",
+                  "description": "Always create new transaction"
+                },
+                {
+                  "name": "SUPPORTS",
+                  "description": "Use current transaction or run non-transactional"
+                },
+                {
+                  "name": "NOT_SUPPORTED",
+                  "description": "Run non-transactional, suspend current transaction"
+                },
+                {
+                  "name": "MANDATORY",
+                  "description": "Must run within existing transaction"
+                },
+                {
+                  "name": "NEVER",
+                  "description": "Must run non-transactional"
+                },
+                {
+                  "name": "NESTED",
+                  "description": "Run nested transaction if possible"
+                }
+              ]
+            },
+            {
+              "name": "isolation",
+              "description": "Transaction isolation level"
+            },
+            {
+              "name": "timeout",
+              "description": "Transaction timeout"
+            },
+            {
+              "name": "readOnly",
+              "description": "Read-only transaction hint"
+            },
+            {
+              "name": "rollbackFor",
+              "description": "Exceptions that trigger rollback"
+            }
+          ],
+          "example": {
+            "code": "@Transactional(propagation = Propagation.REQUIRED,\n              isolation = Isolation.READ_COMMITTED,\n              readOnly = false,\n              timeout = 30,\n              rollbackFor = Exception.class)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "transaction-patterns",
+      "title": "Transaction Patterns",
+      "patterns": [
+        {
+          "name": "Unit of Work",
+          "description": "Track changes and write them in a single transaction",
+          "implementation": "JPA/Hibernate persistence context"
+        },
+        {
+          "name": "Optimistic Locking",
+          "description": "Allow concurrent access but verify no changes before commit",
+          "implementation": "@Version annotation in JPA"
+        },
+        {
+          "name": "Pessimistic Locking",
+          "description": "Lock resources when reading to prevent concurrent modifications",
+          "implementation": "SELECT FOR UPDATE queries"
+        }
+      ]
+    },
+    {
+      "id": "best-practices",
+      "title": "Transaction Best Practices",
+      "practices": [
+        {
+          "category": "Transaction Design",
+          "items": [
+            "Keep transactions short",
+            "Don't perform non-DB operations in transactions",
+            "Choose appropriate isolation level",
+            "Handle exceptions properly"
+          ]
+        },
+        {
+          "category": "Performance",
+          "items": [
+            "Use read-only transactions when possible",
+            "Batch operations for bulk updates",
+            "Monitor transaction timeouts",
+            "Consider using optimistic locking"
+          ]
+        },
+        {
+          "category": "Exception Handling",
+          "items": [
+            "Define clear rollback rules",
+            "Handle transaction exceptions appropriately",
+            "Use TransactionTemplate for programmatic transactions",
+            "Consider using @TransactionalEventListener"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "common-pitfalls",
+      "title": "Common Transaction Pitfalls",
+      "pitfalls": [
+        {
+          "problem": "Long-running transactions",
+          "impact": "Resource contention, deadlocks",
+          "solution": "Break into smaller transactions"
+        },
+        {
+          "problem": "Inappropriate isolation level",
+          "impact": "Data inconsistency or poor performance",
+          "solution": "Choose isolation level based on requirements"
+        },
+        {
+          "problem": "@Transactional on private methods",
+          "impact": "Transaction annotation ignored",
+          "solution": "Use public methods or enable AspectJ mode"
+        },
+        {
+          "problem": "Nested transactions misuse",
+          "impact": "Unexpected rollback behavior",
+          "solution": "Understand propagation behaviors"
+        }
+      ]
+    },
+    {
+      "id": "distributed-transactions",
+      "title": "Distributed Transactions",
+      "concepts": [
+        {
+          "name": "Two-Phase Commit (2PC)",
+          "description": "Protocol for coordinating transactions across multiple resources",
+          "phases": [
+            "Prepare phase - all participants prepare to commit",
+            "Commit phase - coordinator decides commit or rollback"
+          ]
+        },
+        {
+          "name": "Eventual Consistency",
+          "description": "Alternative to strict ACID for distributed systems",
+          "patterns": [
+            "Saga Pattern",
+            "Compensation Transactions",
+            "Event-Driven Architecture"
+          ]
+        }
+      ]
+    }
+  ]
+}
