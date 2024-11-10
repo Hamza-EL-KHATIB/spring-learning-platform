@@ -2,7 +2,7 @@ import React from 'react';
 import bootJson from '../../../data/spring/boot.json';
 import { Wrench, Settings, Database, Server, Code } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const BootPage = () => {
 
@@ -18,11 +18,18 @@ const BootPage = () => {
                                 <h4 className="text-lg font-medium text-purple-300 mb-2">{annotation.name}</h4>
                                 <p className="text-gray-300 mb-2">{annotation.description}</p>
                                 {annotation.example && (
-                                    <div className="bg-gray-800/50 rounded-lg p-4 mb-4 border border-purple-500/20">
-                                        <SyntaxHighlighter language="java" style={atomDark}>
-                                            {annotation.example}
-                                        </SyntaxHighlighter>
-                                    </div>
+                                    <SyntaxHighlighter
+                                        language="java"
+                                        style={oneDark}
+                                        customStyle={{
+                                            padding: '1em',
+                                            borderRadius: '0.5em',
+                                            overflow: 'auto',
+                                            backgroundColor: '#282c34',
+                                        }}
+                                    >
+                                        {annotation.example}
+                                    </SyntaxHighlighter>
                                 )}
                             </div>
                         ))}
@@ -30,8 +37,53 @@ const BootPage = () => {
                 )}
                 {concept.description && <p className="text-gray-300 mb-4">{concept.description}</p>}
                 {concept.example && (
+                    <SyntaxHighlighter
+                        language="java"
+                        style={oneDark}
+                        customStyle={{
+                            padding: '1em',
+                            borderRadius: '0.5em',
+                            overflow: 'auto',
+                            backgroundColor: '#282c34',
+                        }}
+                    >
+                        {concept.example.content}
+                    </SyntaxHighlighter>
+                )}
+                {bootJson.topics[3].configuration && bootJson.topics[3].configuration.exposure && (
                     <div className="bg-gray-800/50 rounded-lg p-4 mb-4 border border-purple-500/20">
-                        <SyntaxHighlighter language="java" style={atomDark}>
+                        <h4 className="text-sm font-medium text-purple-300 mb-1">Exposure Configuration:</h4>
+                        <SyntaxHighlighter
+                            language="properties"
+                            style={oneDark}
+                            customStyle={{
+                                padding: '1em',
+                                borderRadius: '0.5em',
+                                overflow: 'auto',
+                                backgroundColor: '#282c34',
+                            }}
+                        >
+                            {bootJson.topics[3].configuration.exposure.example}
+                        </SyntaxHighlighter>
+                        <p className="text-gray-300 mt-2">
+                            <strong>Note:</strong> {bootJson.topics[3].configuration.exposure.security}
+                        </p>
+                    </div>
+                )}
+
+                {concept.example && concept.example.path && (
+                    <div className="bg-gray-800/50 rounded-lg p-4 mb-4 border border-purple-500/20 mt-4">
+                        <h4 className="text-sm font-medium text-purple-300 mb-1">File Path: {concept.example.path}</h4>
+                        <SyntaxHighlighter
+                            language="properties"
+                            style={oneDark}
+                            customStyle={{
+                                padding: '1em',
+                                borderRadius: '0.5em',
+                                overflow: 'auto',
+                                backgroundColor: '#282c34',
+                            }}
+                        >
                             {concept.example.content}
                         </SyntaxHighlighter>
                     </div>
@@ -51,7 +103,16 @@ const BootPage = () => {
                         {type.example.properties && (
                             <div className="bg-gray-800/50 rounded-lg p-4 mb-4 border border-purple-500/20">
                                 <h4 className="text-sm font-medium text-purple-300 mb-1">Properties</h4>
-                                <SyntaxHighlighter language="properties" style={atomDark}>
+                                <SyntaxHighlighter
+                                    language="properties"
+                                    style={oneDark}
+                                    customStyle={{
+                                        padding: '1em',
+                                        borderRadius: '0.5em',
+                                        overflow: 'auto',
+                                        backgroundColor: '#282c34',
+                                    }}
+                                >
                                     {type.example.properties}
                                 </SyntaxHighlighter>
                             </div>
@@ -59,7 +120,16 @@ const BootPage = () => {
                         {type.example.yaml && (
                             <div className="bg-gray-800/50 rounded-lg p-4 mb-4 border border-purple-500/20">
                                 <h4 className="text-sm font-medium text-purple-300 mb-1">YAML</h4>
-                                <SyntaxHighlighter language="yaml" style={atomDark}>
+                                <SyntaxHighlighter
+                                    language="yaml"
+                                    style={oneDark}
+                                    customStyle={{
+                                        padding: '1em',
+                                        borderRadius: '0.5em',
+                                        overflow: 'auto',
+                                        backgroundColor: '#282c34',
+                                    }}
+                                >
                                     {type.example.yaml}
                                 </SyntaxHighlighter>
                             </div>
@@ -67,7 +137,16 @@ const BootPage = () => {
                         {type.example.code && (
                             <div className="bg-gray-800/50 rounded-lg p-4 mb-4 border border-purple-500/20">
                                 <h4 className="text-sm font-medium text-purple-300 mb-1">Code</h4>
-                                <SyntaxHighlighter language="java" style={atomDark}>
+                                <SyntaxHighlighter
+                                    language="java"
+                                    style={oneDark}
+                                    customStyle={{
+                                        padding: '1em',
+                                        borderRadius: '0.5em',
+                                        overflow: 'auto',
+                                        backgroundColor: '#282c34',
+                                    }}
+                                >
                                     {type.example.code}
                                 </SyntaxHighlighter>
                             </div>
@@ -79,7 +158,16 @@ const BootPage = () => {
                         {type.usage.map((usage, usageIdx) => (
                             <div key={usageIdx} className="bg-gray-800/50 rounded-lg p-4 mb-4 border border-purple-500/20">
                                 <h4 className="text-sm font-medium text-purple-300 mb-1">{usage.method}</h4>
-                                <SyntaxHighlighter language="properties" style={atomDark}>
+                                <SyntaxHighlighter
+                                    language="properties"
+                                    style={oneDark}
+                                    customStyle={{
+                                        padding: '1em',
+                                        borderRadius: '0.5em',
+                                        overflow: 'auto',
+                                        backgroundColor: '#282c34',
+                                    }}
+                                >
                                     {usage.example}
                                 </SyntaxHighlighter>
                             </div>
@@ -132,7 +220,16 @@ const BootPage = () => {
                     <div className="mt-4">
                         <h5 className="text-sm font-medium text-gray-400 mb-2">Dependency:</h5>
                         <div className="bg-gray-800/50 rounded-lg p-4 mb-4 border border-purple-500/20">
-                            <SyntaxHighlighter language="java" style={atomDark}>
+                            <SyntaxHighlighter
+                                language="xml"
+                                style={oneDark}
+                                customStyle={{
+                                    padding: '1em',
+                                    borderRadius: '0.5em',
+                                    overflow: 'auto',
+                                    backgroundColor: '#282c34',
+                                }}
+                            >
                                 {server.configuration.dependency}
                             </SyntaxHighlighter>
                         </div>
