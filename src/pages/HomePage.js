@@ -1,64 +1,68 @@
 import React from 'react';
-import { Book, Database, Activity } from 'lucide-react';
+import { Activity, Sparkles, Clock, Star } from 'lucide-react';
 import NavigationStructure from '../components/navigation/NavigationStructure';
 
 const HomePage = () => {
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Hero Section */}
-            <div className="bg-gradient-to-r from-fuchsia-600 via-purple-600 to-cyan-500 text-white">
-                <div className="container mx-auto px-4 py-16">
-                    <h1 className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300">
-                        Spring Framework Learning Platform
-                    </h1>
-                    <p className="text-xl text-purple-100 mb-8">Master Java, Spring, Software Architecture, and DevOps</p>
-                    <div className="flex gap-4">
-                        <button className="bg-cyan-400 text-gray-900 px-6 py-2 rounded-lg font-semibold hover:bg-cyan-300 transition-colors shadow-lg shadow-cyan-500/50">
-                            Get Started
-                        </button>
-                        <button className="border-2 border-pink-400 text-pink-400 px-6 py-2 rounded-lg font-semibold hover:bg-pink-400 hover:text-white transition-colors shadow-lg shadow-pink-500/50">
-                            View Topics
-                        </button>
+            {/* Featured Content as Hero Section */}
+            <div className="bg-gradient-to-r from-fuchsia-600 via-purple-600 to-cyan-500">
+                <div className="container mx-auto px-4 py-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {/* Popular Track */}
+                        <div className="bg-gray-900/90 backdrop-blur rounded-lg p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all shadow-xl">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 bg-purple-500/20 rounded-lg">
+                                    <Star className="w-6 h-6 text-purple-400" />
+                                </div>
+                                <h2 className="text-xl font-bold text-white">Most Popular</h2>
+                            </div>
+                            <h3 className="text-lg font-semibold text-purple-300 mb-2">Spring Boot Essentials</h3>
+                            <p className="text-gray-300 mb-4">Master core Spring Boot concepts and build your first application</p>
+                            <a href="/spring/boot" className="inline-flex items-center text-purple-400 hover:text-purple-300">
+                                Start Learning <Sparkles className="w-4 h-4 ml-2" />
+                            </a>
+                        </div>
+
+                        {/* Latest Content */}
+                        <div className="bg-gray-900/90 backdrop-blur rounded-lg p-6 border border-cyan-500/20 hover:border-cyan-500/40 transition-all shadow-xl">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 bg-cyan-500/20 rounded-lg">
+                                    <Clock className="w-6 h-6 text-cyan-400" />
+                                </div>
+                                <h2 className="text-xl font-bold text-white">Latest Update</h2>
+                            </div>
+                            <h3 className="text-lg font-semibold text-cyan-300 mb-2">Microservices Architecture</h3>
+                            <p className="text-gray-300 mb-4">Learn to build scalable applications with microservices</p>
+                            <a href="/architecture/design-patterns" className="inline-flex items-center text-cyan-400 hover:text-cyan-300">
+                                Explore Now <Sparkles className="w-4 h-4 ml-2" />
+                            </a>
+                        </div>
+
+                        {/* Quick Start */}
+                        <div className="bg-gray-900/90 backdrop-blur rounded-lg p-6 border border-pink-500/20 hover:border-pink-500/40 transition-all shadow-xl">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 bg-pink-500/20 rounded-lg">
+                                    <Activity className="w-6 h-6 text-pink-400" />
+                                </div>
+                                <h2 className="text-xl font-bold text-white">Quick Start</h2>
+                            </div>
+                            <h3 className="text-lg font-semibold text-pink-300 mb-2">Java Collections</h3>
+                            <p className="text-gray-300 mb-4">Essential Java collections framework concepts and usage</p>
+                            <a href="/java/collections" className="inline-flex items-center text-pink-400 hover:text-pink-300">
+                                Get Started <Sparkles className="w-4 h-4 ml-2" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* Main Content - Navigation Structure */}
+            {/* Learning Paths Section */}
             <div className="container mx-auto px-4 py-12">
+                <h2 className="text-2xl font-bold text-white mb-8">Learning Paths</h2>
                 <NavigationStructure />
             </div>
 
-            {/* Featured Content section remains the same */}
-            <div className="container mx-auto px-4 mb-12">
-                <div className="bg-gray-800 rounded-lg shadow-lg p-8 border border-purple-500/30">
-                    <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-300">
-                        Featured Content
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div className="bg-gray-800 border border-cyan-500/30 rounded-lg p-6 hover:border-cyan-400/50 transition-colors shadow-lg">
-                            <div className="text-cyan-400 mb-4">
-                                <Book className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-lg font-semibold mb-2 text-white">Spring Boot Fundamentals</h3>
-                            <p className="text-gray-300">Get started with Spring Boot essentials</p>
-                        </div>
-                        <div className="bg-gray-800 border border-pink-500/30 rounded-lg p-6 hover:border-pink-400/50 transition-colors shadow-lg">
-                            <div className="text-pink-400 mb-4">
-                                <Database className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-lg font-semibold mb-2 text-white">Java Collections</h3>
-                            <p className="text-gray-300">Master the Java Collections Framework</p>
-                        </div>
-                        <div className="bg-gray-800 border border-purple-500/30 rounded-lg p-6 hover:border-purple-400/50 transition-colors shadow-lg">
-                            <div className="text-purple-400 mb-4">
-                                <Activity className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-lg font-semibold mb-2 text-white">Microservices</h3>
-                            <p className="text-gray-300">Build scalable applications with microservices</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 };
