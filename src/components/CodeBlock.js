@@ -1,70 +1,91 @@
 import React from 'react';
 
-const CodeBlock = ({ code }) => {
-    // Clean up and format the code string
-    const formattedCode = code
-        .replace('...', '/* ... */')
-        .replace(/\s+/g, ' ')
-        .trim();
+// Helper function to format code with indentation
+const formatCode = (code) => {
+    let formattedCode = '';
+    let indentLevel = 0;
+    const indent = '    '; // 4 spaces
 
-    // Atom One Dark colors:
-    // Background: #282c34
-    // Text: #abb2bf
-    // Keywords: #c678dd
-    // Functions: #61afef
-    // Strings: #98c379
-    // Numbers: #d19a66
-    // Comments: #5c6370
-    // Operators: #56b6c2
-    // Class names: #e5c07b
-    // Methods: #98c379
-    // Parentheses/Braces: #abb2bf
+    // Split code by lines and add formatting
+    code.split('\n').forEach((line) => {
+        if (line.includes('{')) {
+            formattedCode += `${indent.repeat(indentLevel)}${line.trim()}\n`;
+            indentLevel++;
+        } else if (line.includes('}')) {
+            indentLevel--;
+            formattedCode += `${indent.repeat(indentLevel)}${line.trim()}\n`;
+        } else {
+            formattedCode += `${indent.repeat(indentLevel)}${line.trim()}\n`;
+        }
+    });
+
+    return formattedCode;
+};
+
+const CodeBlock = ({ code }) => {
+    const formattedCode = formatCode(code);
+
+    // Function to render the code with syntax highlighting
+    const renderCodeWithHighlighting = (code) => {
+        // Keywords, types, and modifiers to highlight
+        const keywords = ['class', 'public', 'private', 'protected', 'void', 'new', 'extends', 'implements', 'throws', 'throw'];
+        const modifiers = ['volatile', 'static', 'final', 'abstract', 'synchronized'];
+        const types = ['int', 'float', 'double', 'boolean', 'char', 'byte', 'short', 'long', 'String'];
+
+        // Regex patterns
+        const classNamesPattern = /\b([A-Z][a-zA-Z0-9_]*)\b/g; // Class names starting with uppercase letters
+        const methodNamesPattern = /\b([a-z][a-zA-Z0-9_]*)\s*\(/g; // Methods start with lowercase and followed by '('
+
+        let highlightedCode = code;
+
+        // Highlight keywords
+        keywords.forEach(keyword => {
+            highlightedCode = highlightedCode.replace(
+                new RegExp(`\\b${keyword}\\b`, 'g'),
+                `<span style="color: #c678dd">${keyword}</span>` // purple for keywords
+            );
+        });
+
+        // Highlight modifiers
+        modifiers.forEach(modifier => {
+            highlightedCode = highlightedCode.replace(
+                new RegExp(`\\b${modifier}\\b`, 'g'),
+                `<span style="color: #56b6c2">${modifier}</span>` // cyan for modifiers
+            );
+        });
+
+        // Highlight types
+        types.forEach(type => {
+            highlightedCode = highlightedCode.replace(
+                new RegExp(`\\b${type}\\b`, 'g'),
+                `<span style="color: #e06c75">${type}</span>` // red for types
+            );
+        });
+
+        // Highlight class names
+        highlightedCode = highlightedCode.replace(
+            classNamesPattern,
+            '<span style="color: #e5c07b">$1</span>' // yellow for class names
+        );
+
+        // Highlight method names
+        highlightedCode = highlightedCode.replace(
+            methodNamesPattern,
+            '<span style="color: #61afef">$1</span>(' // blue for methods
+        );
+
+        return highlightedCode;
+    };
 
     return (
-        <div className="rounded-lg p-4" style={{ backgroundColor: '#282c34' }}>
+        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#282c34' }}>
             <pre className="text-sm font-mono overflow-x-auto whitespace-pre-wrap">
-                <code>
-                    {formattedCode.split('{').map((part, i) => {
-                        if (i === 0) {
-                            // Handle keywords
-                            const keywords = ['class', 'public', 'private', 'protected', 'void', 'new', 'extends', 'implements'];
-                            let coloredPart = part;
-                            keywords.forEach(keyword => {
-                                coloredPart = coloredPart.replace(
-                                    new RegExp(`\\b${keyword}\\b`, 'g'),
-                                    `<span style="color: #c678dd">${keyword}</span>`
-                                );
-                            });
-
-                            // Handle class names
-                            coloredPart = coloredPart.replace(
-                                /\b([A-Z][a-zA-Z]*)\b/g,
-                                '<span style="color: #e5c07b">$1</span>'
-                            );
-
-                            return (
-                                <span key={i} style={{ color: '#abb2bf' }}>
-                                    <span dangerouslySetInnerHTML={{ __html: coloredPart }} />
-                                    {i < formattedCode.split('{').length - 1 && (
-                                        <span style={{ color: '#abb2bf' }}>{'{'}</span>
-                                    )}
-                                </span>
-                            );
-                        }
-                        const [code, closing] = part.split('}');
-                        return (
-                            <span key={i}>
-                                <span style={{ color: '#abb2bf' }}>{code}</span>
-                                {closing !== undefined && (
-                                    <>
-                                        <span style={{ color: '#abb2bf' }}>{'}'}</span>
-                                        <span style={{ color: '#abb2bf' }}>{closing}</span>
-                                    </>
-                                )}
-                            </span>
-                        );
-                    })}
-                </code>
+                <code
+                    dangerouslySetInnerHTML={{
+                        __html: renderCodeWithHighlighting(formattedCode),
+                    }}
+                    style={{ color: '#abb2bf' }}
+                />
             </pre>
         </div>
     );
