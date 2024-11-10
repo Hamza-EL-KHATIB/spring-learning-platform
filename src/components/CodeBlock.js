@@ -8,20 +8,25 @@ const formatCode = (code) => {
 
     // Split code by lines and add formatting
     code.split('\n').forEach((line) => {
-        if (line.includes('{')) {
-            formattedCode += `${indent.repeat(indentLevel)}${line.trim()}\n`;
-            indentLevel++;
-        } else if (line.includes('}')) {
-            indentLevel--;
-            formattedCode += `${indent.repeat(indentLevel)}${line.trim()}\n`;
-        } else {
-            formattedCode += `${indent.repeat(indentLevel)}${line.trim()}\n`;
-        }
+        // Split line by `{` or `}` and keep the braces separate
+        const segments = line.split(/(?<=\{)|(?=\{)|(?<=\})|(?=\})/);
+
+        segments.forEach(segment => {
+            const trimmedSegment = segment.trim();
+            if (trimmedSegment === '{') {
+                formattedCode += `${indent.repeat(indentLevel)}${trimmedSegment}\n`;
+                indentLevel++;
+            } else if (trimmedSegment === '}') {
+                indentLevel--;
+                formattedCode += `${indent.repeat(indentLevel)}${trimmedSegment}\n`;
+            } else if (trimmedSegment.length > 0) {
+                formattedCode += `${indent.repeat(indentLevel)}${trimmedSegment}\n`;
+            }
+        });
     });
 
     return formattedCode;
 };
-
 const CodeBlock = ({ code }) => {
     const [copySuccess, setCopySuccess] = useState('');
 
