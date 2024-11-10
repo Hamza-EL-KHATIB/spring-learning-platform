@@ -76,7 +76,7 @@
           "usage": [
             {
               "method": "application-{profile}.properties",
-              "example": "application-dev.properties, application-prod.properties"
+              "example": "application-dev.properties\napplication-prod.properties"
             },
             {
               "method": "@Profile annotation",
