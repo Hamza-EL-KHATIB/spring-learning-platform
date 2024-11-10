@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Helper function to format code with indentation
 const formatCode = (code) => {
@@ -23,6 +23,8 @@ const formatCode = (code) => {
 };
 
 const CodeBlock = ({ code }) => {
+    const [copySuccess, setCopySuccess] = useState('');
+
     const formattedCode = formatCode(code);
 
     // Function to render the code with syntax highlighting
@@ -77,8 +79,40 @@ const CodeBlock = ({ code }) => {
         return highlightedCode;
     };
 
+    // Handle copy button click
+    const handleCopy = () => {
+        // Create a temporary textarea to hold the code for copying
+        const textArea = document.createElement("textarea");
+        textArea.value = code;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand("copy");
+            setCopySuccess('Copied!');
+            setTimeout(() => setCopySuccess(''), 2000);
+        } catch (err) {
+            setCopySuccess('Failed to copy');
+        }
+        document.body.removeChild(textArea);
+    };
+
     return (
-        <div className="rounded-lg p-4 mb-4" style={{ backgroundColor: '#282c34' }}>
+        <div className="relative rounded-lg p-4 mb-4" style={{ backgroundColor: '#282c34' }}>
+            {/* Copy button with icon */}
+            <button
+                onClick={handleCopy}
+                className="absolute top-2 right-2 text-gray-400 bg-gray-800 hover:bg-gray-700 rounded-md p-1"
+                aria-label="Copy to clipboard"
+            >
+                {copySuccess ? (
+                    <span className="text-sm">{copySuccess}</span>
+                ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                )}
+            </button>
             <pre className="text-sm font-mono overflow-x-auto whitespace-pre-wrap">
                 <code
                     dangerouslySetInnerHTML={{
