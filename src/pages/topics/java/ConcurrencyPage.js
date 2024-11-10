@@ -1,7 +1,6 @@
 import React from 'react';
 import { Activity, Code, LayoutGrid, Shield, Database, GitBranch } from 'lucide-react';
 import concurrencyJson from '../../../data/java/concurrency.json';
-//import { CodeBlock } from 'react-code-blocks';
 import CodeBlock from "../../../components/CodeBlock"
 
 const ConcurrencyPage = () => {
