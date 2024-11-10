@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Code, Info, CheckCircle } from 'lucide-react';
+import { Code, Info, AlertCircle } from 'lucide-react';
 
 // Import all JSON files
 import collectionsJson from '../data/java/collections.json';
@@ -88,9 +88,8 @@ const TopicPage = () => {
     useEffect(() => {
         try {
             setLoading(true);
-            console.log('Current section and topic:', { section, topic });
-
             const data = jsonData[section]?.[topic];
+            console.log('Loading data for:', section, topic, data);
             if (data) {
                 setTopicData(data);
                 setError(null);
@@ -104,6 +103,118 @@ const TopicPage = () => {
             setLoading(false);
         }
     }, [section, topic]);
+
+    const renderList = (items, className = "") => (
+        <ul className={`list-disc list-inside space-y-1 ${className}`}>
+            {items.map((item, idx) => (
+                <li key={idx} className="text-gray-300">{item}</li>
+            ))}
+        </ul>
+    );
+
+    const renderExample = (example) => {
+        if (typeof example === 'string') {
+            return <pre className="text-gray-300 text-sm font-mono bg-gray-800 p-4 rounded-lg">{example}</pre>;
+        }
+        if (example.code) {
+            return (
+                <div className="mt-4 bg-gray-800 rounded-lg p-4">
+                    <div className="flex items-center text-sm font-medium text-gray-400 mb-2">
+                        <Code className="w-4 h-4 mr-2" />
+                        {example.title || "Example"}:
+                    </div>
+                    <pre className="text-gray-300 text-sm font-mono overflow-x-auto">
+                        {example.code}
+                    </pre>
+                </div>
+            );
+        }
+        return null;
+    };
+
+    const renderConcept = (concept) => (
+        <div className="bg-gray-700/50 rounded-lg p-4 mt-4">
+            <h3 className="text-lg font-medium text-purple-300 mb-2">
+                {concept.name}
+            </h3>
+            {concept.description && (
+                <p className="text-gray-300 mb-3">{concept.description}</p>
+            )}
+            {concept.benefits && (
+                <div className="mt-3">
+                    <h4 className="text-sm font-medium text-gray-400 mb-2">Benefits:</h4>
+                    {renderList(concept.benefits, "ml-4")}
+                </div>
+            )}
+            {concept.types && concept.types.map((type, idx) => (
+                <div key={idx} className="mt-4 bg-gray-800/50 rounded-lg p-4">
+                    <h4 className="text-md font-medium text-purple-300 mb-2">{type.type}</h4>
+                    <p className="text-gray-300 mb-2">{type.description}</p>
+                    {type.example && renderExample(type.example)}
+                </div>
+            ))}
+            {concept.examples && renderExample(concept.examples)}
+        </div>
+    );
+
+    const renderType = (type) => (
+        <div className="bg-gray-700/50 rounded-lg p-4 mt-4">
+            <h3 className="text-lg font-medium text-purple-300 mb-2">
+                {type.type || type.name}
+            </h3>
+            {type.description && (
+                <p className="text-gray-300 mb-3">{type.description}</p>
+            )}
+            {type.characteristics && (
+                <div className="mt-3">
+                    <h4 className="text-sm font-medium text-gray-400 mb-2">Characteristics:</h4>
+                    {renderList(type.characteristics, "ml-4")}
+                </div>
+            )}
+            {type.implementations && (
+                <div className="mt-4">
+                    <h4 className="text-sm font-medium text-gray-400 mb-2">Implementations:</h4>
+                    {type.implementations.map((impl, idx) => (
+                        <div key={idx} className="mt-2 bg-gray-800/50 rounded-lg p-4">
+                            <h5 className="text-md font-medium text-purple-300 mb-2">{impl.name}</h5>
+                            {impl.characteristics && renderList(impl.characteristics, "ml-4")}
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+
+    const renderTopic = (topic) => (
+        <div className="mb-8 bg-gray-800/50 rounded-lg p-6 border border-purple-500/20">
+            <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
+                <Info className="w-5 h-5 mr-2 text-purple-400" />
+                {topic.title}
+            </h2>
+
+            {topic.description && (
+                <p className="text-gray-300 mb-4">{topic.description}</p>
+            )}
+
+            {/* Render concepts if present */}
+            {topic.concepts && topic.concepts.map((concept, idx) => (
+                <div key={idx}>{renderConcept(concept)}</div>
+            ))}
+
+            {/* Render types if present */}
+            {topic.types && topic.types.map((type, idx) => (
+                <div key={idx}>{renderType(type)}</div>
+            ))}
+
+            {/* If no content is available */}
+            {!topic.description && !topic.concepts && !topic.types && (
+                <div className="flex items-center text-gray-400">
+                    <AlertCircle className="w-5 h-5 mr-2" />
+                    <span>Content coming soon...</span>
+                </div>
+            )}
+        </div>
+    );
 
     if (loading) {
         return (
@@ -119,7 +230,6 @@ const TopicPage = () => {
                 <h1 className="text-2xl font-bold text-white mb-4">Topic Not Found</h1>
                 <p className="text-gray-300">The requested topic could not be loaded.</p>
                 <div className="mt-4 p-4 bg-gray-700/50 rounded-lg">
-                    <p className="text-sm text-gray-400">Debug Information:</p>
                     <p className="text-sm text-gray-400">Section: {section}</p>
                     <p className="text-sm text-gray-400">Topic: {topic}</p>
                     {error && <p className="text-sm text-red-400">Error: {error}</p>}
@@ -128,86 +238,18 @@ const TopicPage = () => {
         );
     }
 
-    const renderSection = (section) => {
-        switch (section.type) {
-            case 'concept':
-                return (
-                    <div className="mb-8">
-                        <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                            <Info className="w-5 h-5 mr-2 text-purple-400" />
-                            {section.title}
-                        </h3>
-                        {section.content.map((item, index) => (
-                            <div key={index} className="bg-gray-800/50 rounded-lg p-6 border border-purple-500/20">
-                                <h4 className="text-lg font-medium text-purple-300 mb-2">{item.title}</h4>
-                                <p className="text-gray-300">{item.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                );
-
-            case 'list':
-                return (
-                    <div className="mb-8">
-                        <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                            <CheckCircle className="w-5 h-5 mr-2 text-purple-400" />
-                            {section.title}
-                        </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {section.items.map((item, index) => (
-                                <div key={index} className="bg-gray-800/50 rounded-lg p-6 border border-purple-500/20">
-                                    <h4 className="text-lg font-medium text-purple-300 mb-2">{item.title}</h4>
-                                    <p className="text-gray-300 mb-3">{item.description}</p>
-                                    {item.examples && (
-                                        <div className="mt-2">
-                                            <div className="text-sm font-medium text-gray-400 mb-1">Examples:</div>
-                                            <div className="flex flex-wrap gap-2">
-                                                {item.examples.map((example, i) => (
-                                                    <span key={i} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400">
-                                                        {example}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                );
-
-            case 'code':
-                return (
-                    <div className="mb-8">
-                        <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                            <Code className="w-5 h-5 mr-2 text-purple-400" />
-                            {section.title}
-                        </h3>
-                        <div className="bg-gray-800/50 rounded-lg p-1 border border-purple-500/20">
-                            <div className="bg-gray-900 rounded-md p-4">
-                                <pre className="text-gray-300 text-sm font-mono">
-                                    <code>{section.code}</code>
-                                </pre>
-                            </div>
-                        </div>
-                    </div>
-                );
-
-            default:
-                return null;
-        }
-    };
-
     return (
         <div className="bg-gray-900 min-h-screen">
             <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
                 <h1 className="text-3xl font-bold text-white mb-2">{topicData.title}</h1>
-                <p className="text-gray-300">{topicData.description}</p>
+                {topicData.description && (
+                    <p className="text-gray-300">{topicData.description}</p>
+                )}
             </div>
 
             <div className="space-y-8">
-                {topicData.sections?.map((section, index) => (
-                    <div key={index}>{renderSection(section)}</div>
+                {topicData.topics?.map((topic, index) => (
+                    <div key={index}>{renderTopic(topic)}</div>
                 ))}
             </div>
         </div>
