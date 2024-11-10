@@ -1,8 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import coreJson from '../../../data/spring/core.json';
 import { Wrench, Settings, Code, LayoutGrid } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+const LifecycleDiagram = ({ keyName, steps }) => {
+    const mermaidRef = useRef(null);
+
+    useEffect(() => {
+        if (window.mermaid && mermaidRef.current) {
+            window.mermaid.init(undefined, mermaidRef.current);
+        }
+    }, [steps]);
+
+    const mermaidDefinition = `
+        graph TD
+        ${steps.map((step, stepIdx) => `step${stepIdx}["${step}"]`).join("\n")}
+        ${steps.slice(0, steps.length - 1).map((_, stepIdx) => `step${stepIdx} --> step${stepIdx + 1}`).join("\n")}
+    `;
+
+    return (
+        <div className="bg-orange-900/50 rounded-xl p-6 mb-8 border border-orange-400 shadow-lg">
+            <h3 className="text-2xl font-bold text-orange-300 mb-4">{keyName.replace(/([A-Z])/g, ' $1').trim()}</h3>
+
+            {/* Original List Representation */}
+            <ul className="list-decimal list-inside text-gray-100">
+                {steps.map((step, stepIdx) => (
+                    <li key={stepIdx}>{step}</li>
+                ))}
+            </ul>
+
+            {/* Diagram Representation using Mermaid */}
+            <div ref={mermaidRef} className="mermaid mt-6 bg-gray-800 rounded-lg p-4">
+                {mermaidDefinition}
+            </div>
+        </div>
+    );
+};
 
 const CorePage = () => {
     // Render IoC Container & Dependency Injection
@@ -254,15 +288,8 @@ const CorePage = () => {
 
     // Render Lifecycle Flow
     const renderLifecycleFlow = (lifecycleFlow) => (
-        lifecycleFlow && Object.entries(lifecycleFlow).map(([key, steps], idx) => (
-            <div key={idx} className="bg-orange-900/50 rounded-xl p-6 mb-8 border border-orange-400 shadow-lg">
-                <h3 className="text-2xl font-bold text-orange-300 mb-4">{key.replace(/([A-Z])/g, ' $1').trim()}</h3>
-                <ul className="list-decimal list-inside text-gray-100">
-                    {steps.map((step, stepIdx) => (
-                        <li key={stepIdx}>{step}</li>
-                    ))}
-                </ul>
-            </div>
+        lifecycleFlow && Object.entries(lifecycleFlow).map(([key, steps]) => (
+            <LifecycleDiagram key={key} keyName={key} steps={steps} />
         ))
     );
 
