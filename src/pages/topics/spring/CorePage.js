@@ -210,6 +210,58 @@ const CorePage = () => {
                         </ul>
                     </div>
                 )}
+                {component.usage && component.example && (
+                    <div className="mt-4">
+                        <h5 className="text-lg font-medium text-teal-300 mb-2">Usage:</h5>
+                        <p className="text-gray-100 mb-2">{component.usage}</p>
+                        <div className="mt-4 bg-gray-800/50 rounded-lg p-4 mb-4 border border-teal-500/20">
+                            <h5 className="text-sm font-medium text-teal-300 mb-1">Example Code:</h5>
+                            <SyntaxHighlighter
+                                language="java"
+                                style={oneDark}
+                                customStyle={{
+                                    padding: '1em',
+                                    borderRadius: '0.5em',
+                                    overflow: 'auto',
+                                    backgroundColor: '#282c34',
+                                }}
+                            >
+                                {component.example.code}
+                            </SyntaxHighlighter>
+                        </div>
+                    </div>
+                )}
+            </div>
+        ))
+    );
+
+    // Render Additional Features
+    const renderAdditionalFeatures = (features) => (
+        features && Object.entries(features).map(([key, value], idx) => (
+            <div key={idx} className="bg-indigo-900/50 rounded-xl p-6 mb-8 border border-indigo-400 shadow-lg">
+                <h3 className="text-2xl font-bold text-indigo-300 mb-4">{key}</h3>
+                <p className="text-gray-100 mb-4">{value.description}</p>
+                <p className="text-sm text-gray-400 mb-2"><strong>Usage:</strong> {value.usage}</p>
+                {value.example && (
+                    <div className="mt-4 bg-gray-800/50 rounded-lg p-4 mb-4 border border-indigo-500/20">
+                        <h5 className="text-sm font-medium text-indigo-300 mb-1">Example:</h5>
+                        <p className="text-gray-100">{value.example}</p>
+                    </div>
+                )}
+            </div>
+        ))
+    );
+
+    // Render Lifecycle Flow
+    const renderLifecycleFlow = (lifecycleFlow) => (
+        lifecycleFlow && Object.entries(lifecycleFlow).map(([key, steps], idx) => (
+            <div key={idx} className="bg-orange-900/50 rounded-xl p-6 mb-8 border border-orange-400 shadow-lg">
+                <h3 className="text-2xl font-bold text-orange-300 mb-4">{key.replace(/([A-Z])/g, ' $1').trim()}</h3>
+                <ul className="list-decimal list-inside text-gray-100">
+                    {steps.map((step, stepIdx) => (
+                        <li key={stepIdx}>{step}</li>
+                    ))}
+                </ul>
             </div>
         ))
     );
@@ -279,6 +331,24 @@ const CorePage = () => {
                 </div>
                 <p className="text-gray-200 mb-6">{coreJson.topics[5]?.description}</p>
                 {renderCoreComponents(coreJson.topics[5]?.components)}
+            </div>
+
+            {/* Additional Features */}
+            <div className="mb-12">
+                <div className="flex items-center mb-6">
+                    <Wrench className="w-8 h-8 mr-3 text-indigo-400" />
+                    <h2 className="text-3xl font-bold text-white">Additional Features</h2>
+                </div>
+                {renderAdditionalFeatures(coreJson.topics[5]?.additionalFeatures)}
+            </div>
+
+            {/* Lifecycle Flow */}
+            <div className="mb-12">
+                <div className="flex items-center mb-6">
+                    <Wrench className="w-8 h-8 mr-3 text-orange-400" />
+                    <h2 className="text-3xl font-bold text-white">Lifecycle Flow</h2>
+                </div>
+                {renderLifecycleFlow(coreJson.topics[5]?.lifecycleFlow)}
             </div>
         </div>
     );
