@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 
 // Helper function to format code with indentation
 const formatCode = (code) => {
+    if (!code || typeof code !== 'string') {
+        return ''; // Return an empty string if the code is not valid
+    }
+
     let formattedCode = '';
     let indentLevel = 0;
     const indent = '    '; // 4 spaces
@@ -27,13 +31,19 @@ const formatCode = (code) => {
 
     return formattedCode;
 };
+
 const CodeBlock = ({ code }) => {
     const [copySuccess, setCopySuccess] = useState('');
 
-    const formattedCode = formatCode(code);
+    // Ensure the code is valid before formatting
+    const formattedCode = code ? formatCode(code) : '';
 
     // Function to render the code with syntax highlighting
     const renderCodeWithHighlighting = (code) => {
+        if (!code) {
+            return '';
+        }
+
         // Keywords, types, and modifiers to highlight
         const keywords = ['class', 'public', 'private', 'protected', 'void', 'new', 'extends', 'implements', 'throws', 'throw'];
         const modifiers = ['volatile', 'static', 'final', 'abstract', 'synchronized'];
@@ -88,7 +98,7 @@ const CodeBlock = ({ code }) => {
     const handleCopy = () => {
         // Create a temporary textarea to hold the code for copying
         const textArea = document.createElement("textarea");
-        textArea.value = code;
+        textArea.value = formattedCode;
         document.body.appendChild(textArea);
         textArea.select();
         try {
@@ -129,5 +139,6 @@ const CodeBlock = ({ code }) => {
         </div>
     );
 };
+
 
 export default CodeBlock;
