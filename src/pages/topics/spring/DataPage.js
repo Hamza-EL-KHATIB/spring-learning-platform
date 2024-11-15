@@ -138,6 +138,24 @@ const DataPage = () => {
         </div>
     );
 
+    const renderAttributes = (attributes) => (
+        <div className="space-y-6">
+            {attributes.map((attr, index) => (
+                <div key={index} className="bg-gray-800 p-4 rounded-lg">
+                    <h4 className="text-cyan-400 font-semibold mb-3">@{attr.name}</h4>
+                    <div className="grid grid-cols-1 gap-2">
+                        {attr.values.map((value, vIndex) => (
+                            <div key={vIndex}
+                                 className="text-gray-300 bg-gray-700/50 px-3 py-2 rounded">
+                                {value}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+
     return (
         <div className="container mx-auto px-4 py-8">
             {/* Title */}
@@ -154,7 +172,7 @@ const DataPage = () => {
             <div className="space-y-8">
                 {data.topics.map((topic) => (
                     <div key={topic.id} className={activeTab === topic.id ? '' : 'hidden'}>
-                        {/* Spring Data JPA Section */}
+                        {/* Concepts Section */}
                         {topic.concepts && topic.concepts.map((concept, index) => (
                             <div key={index} className="bg-gray-800/50 p-6 rounded-lg mb-6">
                                 <h3 className="text-2xl font-bold text-white mb-4">{concept.name}</h3>
@@ -171,6 +189,21 @@ const DataPage = () => {
                                     <div className="mb-6">
                                         <h4 className="text-xl font-semibold text-cyan-400 mb-4">Implementation</h4>
                                         {renderCodeBlock(concept.implementation.code)}
+                                    </div>
+                                )}
+
+                                {/* Add this section for transaction attributes */}
+                                {concept.attributes && (
+                                    <div className="mb-6">
+                                        <h4 className="text-xl font-semibold text-cyan-400 mb-4">Attributes</h4>
+                                        {renderAttributes(concept.attributes)}
+                                    </div>
+                                )}
+
+                                {concept.example && (
+                                    <div className="mb-6">
+                                        <h4 className="text-xl font-semibold text-cyan-400 mb-4">Example</h4>
+                                        {renderCodeBlock(concept.example.code)}
                                     </div>
                                 )}
 
