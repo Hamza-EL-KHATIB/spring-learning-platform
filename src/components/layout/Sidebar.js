@@ -14,9 +14,11 @@ const Sidebar = () => {
                 return [
                     { path: '/java/collections', title: 'Collections Framework' },
                     { path: '/java/concurrency', title: 'Concurrency & Multithreading' },
+                    { path: '/java/definitions', title: 'Java Definitions' },
                     { path: '/java/exceptions', title: 'Exception Handling' },
                     { path: '/java/features', title: 'Java Features' },
-                    { path: '/java/gc', title: 'Garbage Collection' }
+                    { path: '/java/gc', title: 'Garbage Collection' },
+                    { path: '/java/internals', title: 'Java Internals' }
                 ];
             case 'spring':
                 return [
