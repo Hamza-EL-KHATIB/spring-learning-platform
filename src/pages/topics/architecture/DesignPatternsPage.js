@@ -12,6 +12,43 @@ import {
     Combine
 } from 'lucide-react';
 import CodeBlock from '../../../components/CodeBlock';
+import visitorImg from '../../../data/images/Visitor.png'
+import singletonImg from '../../../data/images/Singleton.png'
+import factoryMethodImg from '../../../data/images/Factory Method.png'
+import abstractFactoryImg from '../../../data/images/Abstract Factory.png'
+import builderImg from '../../../data/images/Builder.png'
+import prototypeImg from '../../../data/images/Prototype.png'
+import adapterImg from '../../../data/images/Adapter.png'
+import bridgeImg from '../../../data/images/Bridge.png'
+import compositeImg from '../../../data/images/Composite.png'
+import decoratorImg from '../../../data/images/Decorator.png'
+import facadeImg from '../../../data/images/Facade.png'
+import flyweightImg from '../../../data/images/Flyweight.png'
+import proxyImg from '../../../data/images/Proxy.png'
+import observerImg from '../../../data/images/Observer.png'
+import strategyImg from '../../../data/images/Strategy.png'
+import templateMethodImg from '../../../data/images/Template Method.png'
+import stateImg from '../../../data/images/State.png'
+
+const patternImages = {
+    'Visitor': visitorImg,
+    'Singleton': singletonImg,
+    'Factory Method': factoryMethodImg,
+    'Abstract Factory': abstractFactoryImg,
+    'Builder': builderImg,
+    'Prototype': prototypeImg,
+    'Adapter': adapterImg,
+    'Bridge': bridgeImg,
+    'Composite': compositeImg,
+    'Decorator': decoratorImg,
+    'Facade': facadeImg,
+    'Flyweight': flyweightImg,
+    'Proxy': proxyImg,
+    'Observer': observerImg,
+    'Strategy': strategyImg,
+    'Template Method': templateMethodImg,
+    'State': stateImg
+};
 
 const PatternCard = ({ pattern }) => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -25,9 +62,13 @@ const PatternCard = ({ pattern }) => {
                         <p className="text-gray-300">{pattern.description}</p>
                     </div>
                     <img
-                        src={`../../../../public/images/${pattern.diagram}`}
+                        src={patternImages[pattern.name]}
                         alt={`${pattern.name} diagram`}
                         className="w-32 h-32 object-contain bg-gray-900 rounded-lg p-2"
+                        onError={(e) => {
+                            console.log('Image load error for:', pattern.name);
+                            e.target.style.display = 'none';
+                        }}
                     />
                 </div>
 
