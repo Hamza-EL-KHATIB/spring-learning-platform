@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import solidJson from '../../../data/architecture/solid.json';
 import {
-    Target,
-    BookOpen,
-    Code,
     AlertTriangle,
     CheckCircle2,
     XCircle,
     Lightbulb,
-    ListChecks,
-    RefreshCw
+    ListChecks
 } from 'lucide-react';
 import CodeBlock from '../../../components/CodeBlock';
 
