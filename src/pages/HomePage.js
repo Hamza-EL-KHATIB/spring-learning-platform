@@ -10,6 +10,7 @@ import {
     FolderTree,
     Binary,
     Cpu,
+    Users,
     RefreshCw,
     FileCode,
     XSquare,
@@ -79,6 +80,12 @@ const HomePage = () => {
             items: [
                 { title: "Design Patterns", path: "/architecture/design-patterns", icon: LayoutGrid, description: "Common software patterns" },
                 { title: "SOLID Principles", path: "/architecture/solid", icon: BookOpenCheck, description: "Design principles" }
+            ]
+        },
+        processes: {
+            title: "Processes & Methodologies",
+            items: [
+                { title: "Scrum Framework", path: "/agile/scrum", icon: Users, description: "Agile project management with Scrum" }
             ]
         }
     };
