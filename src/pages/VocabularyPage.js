@@ -3,6 +3,36 @@ import { Search, ChevronRight, Eye, EyeOff, X } from 'lucide-react';
 import vocabularyData from '../data/german/a1.json';
 import './VocabularyPage.css';
 
+// Sidebar Component
+const Sidebar = ({ vocabularyData, activeCategory, setActiveCategory, isSidebarCollapsed, toggleSidebar }) => (
+    <div className={`w-full md:w-64 pr-8 md:mr-6 overflow-y-auto h-full custom-scrollbar mb-6 md:mb-0 ${isSidebarCollapsed ? 'hidden' : ''}`}>
+        <button
+            onClick={toggleSidebar}
+            className="flex items-center text-gray-400 hover:text-white mb-4 md:hidden"
+        >
+            <ChevronRight className={`w-5 h-5 ${isSidebarCollapsed ? '' : 'rotate-180'}`} />
+        </button>
+        <div className="space-y-2">
+            {vocabularyData.map((category, index) => (
+                <button
+                    key={index}
+                    onClick={() => setActiveCategory(index)}
+                    className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                        activeCategory === index
+                            ? 'bg-purple-500/20 text-purple-400'
+                            : 'text-gray-400 hover:bg-gray-800'
+                    }`}
+                >
+                    <div className="flex justify-between items-center">
+                        <span>{category.title}</span>
+                        <span className="text-sm opacity-75">{category.words.length}</span>
+                    </div>
+                </button>
+            ))}
+        </div>
+    </div>
+);
+
 const VocabularyPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [activeCategory, setActiveCategory] = useState(0);
@@ -21,6 +51,7 @@ const VocabularyPage = () => {
         })).filter(category => category.words.length > 0);
 
     const closeModal = () => setSelectedWord(null);
+    const toggleSidebar = () => setIsSidebarCollapsed(!isSidebarCollapsed);
 
     return (
         <div className="h-screen bg-gray-900">
@@ -58,42 +89,19 @@ const VocabularyPage = () => {
                 <div className="max-w-4xl mx-auto flex flex-col md:flex-row h-[calc(100%-5rem)]">
                     {/* Categories Sidebar */}
                     {!searchTerm && (
-                        <div className={`w-full md:w-64 pr-8 md:mr-6 overflow-y-auto h-full custom-scrollbar mb-6 md:mb-0 ${isSidebarCollapsed ? 'hidden' : ''}`}>
-                            <button
-                                onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-                                className="flex items-center text-gray-400 hover:text-white mb-4 md:hidden"
-                            >
-                                {isSidebarCollapsed ? (
-                                    <ChevronRight className="w-5 h-5" />
-                                ) : (
-                                    <ChevronRight className="w-5 h-5 rotate-180" />
-                                )}
-                            </button>
-                            <div className="space-y-2">
-                                {vocabularyData.map((category, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => setActiveCategory(index)}
-                                        className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
-                                            activeCategory === index
-                                                ? 'bg-purple-500/20 text-purple-400'
-                                                : 'text-gray-400 hover:bg-gray-800'
-                                        }`}
-                                    >
-                                        <div className="flex justify-between items-center">
-                                            <span>{category.title}</span>
-                                            <span className="text-sm opacity-75">{category.words.length}</span>
-                                        </div>
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
+                        <Sidebar
+                            vocabularyData={vocabularyData}
+                            activeCategory={activeCategory}
+                            setActiveCategory={setActiveCategory}
+                            isSidebarCollapsed={isSidebarCollapsed}
+                            toggleSidebar={toggleSidebar}
+                        />
                     )}
 
                     {/* Show Categories Button */}
                     {isSidebarCollapsed && (
                         <button
-                            onClick={() => setIsSidebarCollapsed(false)}
+                            onClick={toggleSidebar}
                             className="text-gray-400 hover:text-white mb-4 md:hidden"
                         >
                             <ChevronRight className="w-5 h-5 rotate-180" />
@@ -107,7 +115,7 @@ const VocabularyPage = () => {
                                 <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
                                     {!isSidebarCollapsed && (
                                         <button
-                                            onClick={() => setIsSidebarCollapsed(true)}
+                                            onClick={toggleSidebar}
                                             className="text-gray-400 hover:text-white mr-2 md:hidden"
                                         >
                                             <ChevronRight className="w-5 h-5 rotate-180" />
