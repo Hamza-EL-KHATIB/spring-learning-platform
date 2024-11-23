@@ -6,19 +6,28 @@
         "german": "eins",
         "english": "one",
         "article": null,
-        "examples": ["Ich habe eins.", "Eins plus eins ist zwei."]
+        "examples": [
+          "Ich habe eins.",
+          "Eins plus eins ist zwei."
+        ]
       },
       {
         "german": "zwei",
         "english": "two",
         "article": null,
-        "examples": ["Wir sind zwei Personen.", "Zwei Äpfel kosten einen Euro."]
+        "examples": [
+          "Wir sind zwei Personen.",
+          "Zwei Äpfel kosten einen Euro."
+        ]
       },
       {
         "german": "drei",
         "english": "three",
         "article": null,
-        "examples": ["Er hat drei Bücher.", "Drei mal drei ist neun."]
+        "examples": [
+          "Er hat drei Bücher.",
+          "Drei mal drei ist neun."
+        ]
       },
       {
         "german": "vier",
@@ -33,7 +42,10 @@
         "german": "fünf",
         "english": "five",
         "article": null,
-        "examples": ["Es ist fünf Uhr.", "Ich kaufe fünf Bananen."]
+        "examples": [
+          "Es ist fünf Uhr.",
+          "Ich kaufe fünf Bananen."
+        ]
       },
       {
         "german": "sechs",
@@ -66,19 +78,28 @@
         "german": "neun",
         "english": "nine",
         "article": null,
-        "examples": ["Wir treffen uns um neun.", "Neun Personen sind gekommen."]
+        "examples": [
+          "Wir treffen uns um neun.",
+          "Neun Personen sind gekommen."
+        ]
       },
       {
         "german": "zehn",
         "english": "ten",
         "article": null,
-        "examples": ["Ich habe zehn Euro.", "Zehn Minuten Pause."]
+        "examples": [
+          "Ich habe zehn Euro.",
+          "Zehn Minuten Pause."
+        ]
       },
       {
         "german": "elf",
         "english": "eleven",
         "article": null,
-        "examples": ["Es ist elf Uhr.", "Elf Freunde sollt ihr sein."]
+        "examples": [
+          "Es ist elf Uhr.",
+          "Elf Freunde sollt ihr sein."
+        ]
       },
       {
         "german": "zwölf",
@@ -102,13 +123,19 @@
         "german": "vierzehn",
         "english": "fourteen",
         "article": null,
-        "examples": ["Vierzehn Tage sind zwei Wochen.", "Er hat vierzehn Euro."]
+        "examples": [
+          "Vierzehn Tage sind zwei Wochen.",
+          "Er hat vierzehn Euro."
+        ]
       },
       {
         "german": "fünfzehn",
         "english": "fifteen",
         "article": null,
-        "examples": ["Es ist fünfzehn Uhr.", "Das kostet fünfzehn Euro."]
+        "examples": [
+          "Es ist fünfzehn Uhr.",
+          "Das kostet fünfzehn Euro."
+        ]
       },
       {
         "german": "sechzehn",
@@ -150,7 +177,10 @@
         "german": "zwanzig",
         "english": "twenty",
         "article": null,
-        "examples": ["Ich habe zwanzig Euro.", "Zwanzig Minuten später."]
+        "examples": [
+          "Ich habe zwanzig Euro.",
+          "Zwanzig Minuten später."
+        ]
       },
       {
         "german": "einundzwanzig",
@@ -165,7 +195,10 @@
         "german": "dreißig",
         "english": "thirty",
         "article": null,
-        "examples": ["Er ist dreißig Jahre alt.", "Das kostet dreißig Cent."]
+        "examples": [
+          "Er ist dreißig Jahre alt.",
+          "Das kostet dreißig Cent."
+        ]
       },
       {
         "german": "vierzig",
@@ -180,7 +213,10 @@
         "german": "fünfzig",
         "english": "fifty",
         "article": null,
-        "examples": ["Sie wird fünfzig Jahre alt.", "Fünfzig Prozent Rabatt."]
+        "examples": [
+          "Sie wird fünfzig Jahre alt.",
+          "Fünfzig Prozent Rabatt."
+        ]
       },
       {
         "german": "sechzig",
@@ -302,6 +338,655 @@
     ]
   },
   {
+    "title": "Kardinalzahlen (Cardinal Numbers)",
+    "words": [
+      {
+        "german": "null",
+        "english": "zero",
+        "article": null,
+        "examples": [
+          "Die Temperatur ist null Grad.",
+          "Null ist eine gerade Zahl."
+        ]
+      },
+      {
+        "german": "eins",
+        "english": "one",
+        "article": null,
+        "examples": [
+          "Ich habe eins.",
+          "Eins plus eins ist zwei."
+        ]
+      },
+      {
+        "german": "zwei",
+        "english": "two",
+        "article": null,
+        "examples": [
+          "Wir sind zwei Personen.",
+          "Zwei Äpfel kosten einen Euro."
+        ]
+      },
+      {
+        "german": "drei",
+        "english": "three",
+        "article": null,
+        "examples": [
+          "Er hat drei Bücher.",
+          "Drei mal drei ist neun."
+        ]
+      },
+      {
+        "german": "vier",
+        "english": "four",
+        "article": null,
+        "examples": [
+          "Sie haben vier Kinder.",
+          "Vier geteilt durch zwei ist zwei."
+        ]
+      },
+      {
+        "german": "fünf",
+        "english": "five",
+        "article": null,
+        "examples": [
+          "Es ist fünf Uhr.",
+          "Ich kaufe fünf Bananen."
+        ]
+      },
+      {
+        "german": "sechs",
+        "english": "six",
+        "article": null,
+        "examples": [
+          "Der Würfel zeigt eine sechs.",
+          "Sechs mal sechs ist sechsunddreißig."
+        ]
+      },
+      {
+        "german": "sieben",
+        "english": "seven",
+        "article": null,
+        "examples": [
+          "Der Zug kommt um sieben Uhr.",
+          "Sieben Tage hat die Woche."
+        ]
+      },
+      {
+        "german": "acht",
+        "english": "eight",
+        "article": null,
+        "examples": [
+          "Er arbeitet acht Stunden am Tag.",
+          "Die Schule beginnt um acht Uhr."
+        ]
+      },
+      {
+        "german": "neun",
+        "english": "nine",
+        "article": null,
+        "examples": [
+          "Wir treffen uns um neun.",
+          "Neun Personen sind gekommen."
+        ]
+      },
+      {
+        "german": "zehn",
+        "english": "ten",
+        "article": null,
+        "examples": [
+          "Ich habe zehn Euro.",
+          "Zehn Minuten Pause."
+        ]
+      },
+      {
+        "german": "elf",
+        "english": "eleven",
+        "article": null,
+        "examples": [
+          "Es ist elf Uhr.",
+          "Elf Freunde sollt ihr sein."
+        ]
+      },
+      {
+        "german": "zwölf",
+        "english": "twelve",
+        "article": null,
+        "examples": [
+          "Der Film beginnt um zwölf Uhr.",
+          "Zwölf Monate hat das Jahr."
+        ]
+      },
+      {
+        "german": "dreizehn",
+        "english": "thirteen",
+        "article": null,
+        "examples": [
+          "Sie ist dreizehn Jahre alt.",
+          "Dreizehn ist eine Unglückszahl."
+        ]
+      },
+      {
+        "german": "vierzehn",
+        "english": "fourteen",
+        "article": null,
+        "examples": [
+          "Vierzehn Tage sind zwei Wochen.",
+          "Er hat vierzehn Euro."
+        ]
+      },
+      {
+        "german": "fünfzehn",
+        "english": "fifteen",
+        "article": null,
+        "examples": [
+          "Es ist fünfzehn Uhr.",
+          "Das kostet fünfzehn Euro."
+        ]
+      },
+      {
+        "german": "sechzehn",
+        "english": "sixteen",
+        "article": null,
+        "examples": [
+          "Mit sechzehn darf man Moped fahren.",
+          "Sie ist sechzehn Jahre alt."
+        ]
+      },
+      {
+        "german": "siebzehn",
+        "english": "seventeen",
+        "article": null,
+        "examples": [
+          "Er hat siebzehn Punkte erzielt.",
+          "Siebzehn Uhr ist fünf Uhr nachmittags."
+        ]
+      },
+      {
+        "german": "achtzehn",
+        "english": "eighteen",
+        "article": null,
+        "examples": [
+          "Mit achtzehn ist man volljährig.",
+          "Der Film dauert achtzehn Minuten."
+        ]
+      },
+      {
+        "german": "neunzehn",
+        "english": "nineteen",
+        "article": null,
+        "examples": [
+          "Er wurde neunzehn Jahre alt.",
+          "Neunzehn ist eine Primzahl."
+        ]
+      },
+      {
+        "german": "zwanzig",
+        "english": "twenty",
+        "article": null,
+        "examples": [
+          "Ich habe zwanzig Euro.",
+          "Zwanzig Minuten später."
+        ]
+      },
+      {
+        "german": "einundzwanzig",
+        "english": "twenty-one",
+        "article": null,
+        "examples": [
+          "Sie ist einundzwanzig Jahre alt.",
+          "Einundzwanzig ist eine ungerade Zahl."
+        ]
+      },
+      {
+        "german": "zweiundzwanzig",
+        "english": "twenty-two",
+        "article": null,
+        "examples": [
+          "Er hat zweiundzwanzig Euro.",
+          "Das Spiel endet zweiundzwanzig zu null."
+        ]
+      },
+      {
+        "german": "dreißig",
+        "english": "thirty",
+        "article": null,
+        "examples": [
+          "Er ist dreißig Jahre alt.",
+          "Das kostet dreißig Cent."
+        ]
+      },
+      {
+        "german": "vierzig",
+        "english": "forty",
+        "article": null,
+        "examples": [
+          "Vierzig Personen sind eingeladen.",
+          "Der Film dauert vierzig Minuten."
+        ]
+      },
+      {
+        "german": "fünfzig",
+        "english": "fifty",
+        "article": null,
+        "examples": [
+          "Sie wird fünfzig Jahre alt.",
+          "Fünfzig Prozent Rabatt."
+        ]
+      },
+      {
+        "german": "sechzig",
+        "english": "sixty",
+        "article": null,
+        "examples": [
+          "Der Rentner ist sechzig Jahre alt.",
+          "Eine Stunde hat sechzig Minuten."
+        ]
+      },
+      {
+        "german": "siebzig",
+        "english": "seventy",
+        "article": null,
+        "examples": [
+          "Der Zug fährt siebzig Kilometer pro Stunde.",
+          "Sie feiert ihren siebzigsten Geburtstag."
+        ]
+      },
+      {
+        "german": "achtzig",
+        "english": "eighty",
+        "article": null,
+        "examples": [
+          "Das Buch kostet achtzig Euro.",
+          "Der Mann ist achtzig Jahre alt."
+        ]
+      },
+      {
+        "german": "neunzig",
+        "english": "ninety",
+        "article": null,
+        "examples": [
+          "Neunzig Prozent der Leute stimmen zu.",
+          "Das Auto fährt neunzig Kilometer pro Stunde."
+        ]
+      },
+      {
+        "german": "hundert",
+        "english": "hundred",
+        "article": null,
+        "examples": [
+          "Das Buch kostet hundert Euro.",
+          "Es sind hundert Kilometer."
+        ]
+      },
+      {
+        "german": "einhundert",
+        "english": "one hundred",
+        "article": null,
+        "examples": [
+          "Einhundert Menschen waren anwesend.",
+          "Der Preis beträgt einhundert Euro."
+        ]
+      },
+      {
+        "german": "zweihundert",
+        "english": "two hundred",
+        "article": null,
+        "examples": [
+          "Er hat zweihundert Euro gespart.",
+          "Das Haus ist zweihundert Jahre alt."
+        ]
+      },
+      {
+        "german": "dreihundert",
+        "english": "three hundred",
+        "article": null,
+        "examples": [
+          "Das Paket wiegt dreihundert Gramm.",
+          "Dreihundert Gäste sind eingeladen."
+        ]
+      },
+      {
+        "german": "vierhundert",
+        "english": "four hundred",
+        "article": null,
+        "examples": [
+          "Das Gebäude hat vierhundert Räume.",
+          "Vierhundert Kilometer sind zu fahren."
+        ]
+      },
+      {
+        "german": "fünfhundert",
+        "english": "five hundred",
+        "article": null,
+        "examples": [
+          "Fünfhundert Personen nahmen teil.",
+          "Das Ticket kostet fünfhundert Euro."
+        ]
+      },
+      {
+        "german": "sechshundert",
+        "english": "six hundred",
+        "article": null,
+        "examples": [
+          "Sechshundert Seiten hat das Buch.",
+          "Er fährt sechshundert Kilometer."
+        ]
+      },
+      {
+        "german": "siebenhundert",
+        "english": "seven hundred",
+        "article": null,
+        "examples": [
+          "Die Stadt ist siebenhundert Jahre alt.",
+          "Sie spendeten siebenhundert Euro."
+        ]
+      },
+      {
+        "german": "achthundert",
+        "english": "eight hundred",
+        "article": null,
+        "examples": [
+          "Achthundert Menschen kamen.",
+          "Das Auto kostet achthundert Euro."
+        ]
+      },
+      {
+        "german": "neunhundert",
+        "english": "nine hundred",
+        "article": null,
+        "examples": [
+          "Neunhundert Gäste waren da.",
+          "Er hat neunhundert Euro gespart."
+        ]
+      },
+      {
+        "german": "tausend",
+        "english": "thousand",
+        "article": null,
+        "examples": [
+          "Die Stadt hat tausend Einwohner.",
+          "Er verdient tausend Euro im Monat."
+        ]
+      },
+      {
+        "german": "eintausend",
+        "english": "one thousand",
+        "article": null,
+        "examples": [
+          "Eintausend Meter sind ein Kilometer.",
+          "Eintausend Menschen protestierten."
+        ]
+      },
+      {
+        "german": "zweitausend",
+        "english": "two thousand",
+        "article": null,
+        "examples": [
+          "Das Jahr zweitausend war wichtig.",
+          "Es waren zweitausend Teilnehmer."
+        ]
+      },
+      {
+        "german": "zehntausend",
+        "english": "ten thousand",
+        "article": null,
+        "examples": [
+          "Das Stadion fasst zehntausend Zuschauer.",
+          "Er hat zehntausend Euro gewonnen."
+        ]
+      },
+      {
+        "german": "hunderttausend",
+        "english": "one hundred thousand",
+        "article": null,
+        "examples": [
+          "Hunderttausend Menschen leben in dieser Stadt.",
+          "Das Projekt kostet hunderttausend Euro."
+        ]
+      },
+      {
+        "german": "eine Million",
+        "english": "one million",
+        "article": "die",
+        "examples": [
+          "Die Stadt hat eine Million Einwohner.",
+          "Das Unternehmen hat eine Million Euro investiert."
+        ]
+      },
+      {
+        "german": "zwei Millionen",
+        "english": "two million",
+        "article": "die",
+        "examples": [
+          "Zwei Millionen Menschen sahen die Sendung.",
+          "Das Projekt kostet zwei Millionen Euro."
+        ]
+      },
+      {
+        "german": "eine Milliarde",
+        "english": "one billion",
+        "article": "die",
+        "examples": [
+          "Die Weltbevölkerung beträgt über sieben Milliarden.",
+          "Der Umsatz beträgt eine Milliarde Euro."
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Ordinalzahlen (Ordinal Numbers)",
+    "words": [
+      {
+        "german": "erste",
+        "english": "first",
+        "article": null,
+        "examples": [
+          "Er ist der Erste in der Reihe.",
+          "Heute ist der erste Mai."
+        ]
+      },
+      {
+        "german": "zweite",
+        "english": "second",
+        "article": null,
+        "examples": [
+          "Sie kommt als Zweite ins Ziel.",
+          "Das Büro ist im zweiten Stock."
+        ]
+      },
+      {
+        "german": "dritte",
+        "english": "third",
+        "article": null,
+        "examples": [
+          "Der dritte Monat ist März.",
+          "Ich wohne im dritten Stock."
+        ]
+      },
+      {
+        "german": "vierte",
+        "english": "fourth",
+        "article": null,
+        "examples": [
+          "Der vierte Juli ist ein Feiertag in den USA.",
+          "Das ist mein viertes Auto."
+        ]
+      },
+      {
+        "german": "fünfte",
+        "english": "fifth",
+        "article": null,
+        "examples": [
+          "Er ist das fünfte Kind in der Familie.",
+          "Heute ist der fünfte Oktober."
+        ]
+      },
+      {
+        "german": "sechste",
+        "english": "sixth",
+        "article": null,
+        "examples": [
+          "Der sechste Tag ist Samstag.",
+          "Ich bin im sechsten Semester."
+        ]
+      },
+      {
+        "german": "siebte",
+        "english": "seventh",
+        "article": null,
+        "examples": [
+          "Heute ist der siebte April.",
+          "Das siebte Kapitel ist schwierig."
+        ]
+      },
+      {
+        "german": "achte",
+        "english": "eighth",
+        "article": null,
+        "examples": [
+          "Die achte Klasse ist anspruchsvoll.",
+          "Er wurde am achten August geboren."
+        ]
+      },
+      {
+        "german": "neunte",
+        "english": "ninth",
+        "article": null,
+        "examples": [
+          "Heute ist der neunte November.",
+          "Sie wohnt im neunten Stock."
+        ]
+      },
+      {
+        "german": "zehnte",
+        "english": "tenth",
+        "article": null,
+        "examples": [
+          "Das ist mein zehntes Buch.",
+          "Am zehnten Tag reisen wir ab."
+        ]
+      },
+      {
+        "german": "elfte",
+        "english": "eleventh",
+        "article": null,
+        "examples": [
+          "Der elfte Monat ist November.",
+          "Er kam als Elfter ins Ziel."
+        ]
+      },
+      {
+        "german": "zwölfte",
+        "english": "twelfth",
+        "article": null,
+        "examples": [
+          "Heute ist der zwölfte Dezember.",
+          "Die zwölfte Klasse ist die letzte in der Schule."
+        ]
+      },
+      {
+        "german": "dreizehnte",
+        "english": "thirteenth",
+        "article": null,
+        "examples": [
+          "Der dreizehnte Freitag gilt als Unglückstag.",
+          "Sie feiert ihren dreizehnten Geburtstag."
+        ]
+      },
+      {
+        "german": "vierzehnte",
+        "english": "fourteenth",
+        "article": null,
+        "examples": [
+          "Heute ist der vierzehnte Februar.",
+          "Das ist das vierzehnte Kapitel."
+        ]
+      },
+      {
+        "german": "fünfzehnte",
+        "english": "fifteenth",
+        "article": null,
+        "examples": [
+          "Am fünfzehnten August ist Feiertag.",
+          "Das ist der fünfzehnte Stock."
+        ]
+      },
+      {
+        "german": "zwanzigste",
+        "english": "twentieth",
+        "article": null,
+        "examples": [
+          "Am zwanzigsten März beginnt der Frühling.",
+          "Dies ist der zwanzigste Versuch."
+        ]
+      },
+      {
+        "german": "dreißigste",
+        "english": "thirtieth",
+        "article": null,
+        "examples": [
+          "Er hat am dreißigsten April Geburtstag.",
+          "Das ist die dreißigste Seite im Buch."
+        ]
+      },
+      {
+        "german": "vierzigste",
+        "english": "fortieth",
+        "article": null,
+        "examples": [
+          "Er feiert seinen vierzigsten Geburtstag.",
+          "Das ist das vierzigste Kapitel."
+        ]
+      },
+      {
+        "german": "fünfzigste",
+        "english": "fiftieth",
+        "article": null,
+        "examples": [
+          "Sie ist die fünfzigste Besucherin heute.",
+          "Das ist das fünfzigste Jubiläum."
+        ]
+      },
+      {
+        "german": "hundertste",
+        "english": "hundredth",
+        "article": null,
+        "examples": [
+          "Heute ist der hundertste Tag des Jahres.",
+          "Das ist mein hundertstes Buch."
+        ]
+      },
+      {
+        "german": "zweihundertste",
+        "english": "two hundredth",
+        "article": null,
+        "examples": [
+          "Der zweihundertste Jahrestag wird gefeiert.",
+          "Sie ist die zweihundertste Kundin."
+        ]
+      },
+      {
+        "german": "tausendste",
+        "english": "thousandth",
+        "article": null,
+        "examples": [
+          "Er war der tausendste Besucher.",
+          "Das ist das tausendste Exemplar."
+        ]
+      },
+      {
+        "german": "millionste",
+        "english": "millionth",
+        "article": null,
+        "examples": [
+          "Die millionste Kundin gewinnt einen Preis.",
+          "Das millionste Auto wurde produziert."
+        ]
+      }
+    ]
+  },
+  {
     "title": "Maße und Gewichte (Measurements and Weights)",
     "words": [
       {
@@ -371,7 +1056,10 @@
         "german": "Gramm",
         "english": "gram",
         "article": "das",
-        "examples": ["Ich brauche 200 Gramm Zucker.", "Ein Gramm ist wenig."]
+        "examples": [
+          "Ich brauche 200 Gramm Zucker.",
+          "Ein Gramm ist wenig."
+        ]
       },
       {
         "german": "Pfund",
@@ -400,7 +1088,10 @@
         "german": "Sekunde",
         "english": "second",
         "article": "die",
-        "examples": ["Eine Minute hat sechzig Sekunden.", "Warte eine Sekunde."]
+        "examples": [
+          "Eine Minute hat sechzig Sekunden.",
+          "Warte eine Sekunde."
+        ]
       },
       {
         "german": "Minute",
@@ -429,13 +1120,19 @@
         "german": "schwarz",
         "english": "black",
         "article": null,
-        "examples": ["Die Nacht ist schwarz.", "Er trägt ein schwarzes Hemd."]
+        "examples": [
+          "Die Nacht ist schwarz.",
+          "Er trägt ein schwarzes Hemd."
+        ]
       },
       {
         "german": "weiß",
         "english": "white",
         "article": null,
-        "examples": ["Das Papier ist weiß.", "Sie hat ein weißes Kleid."]
+        "examples": [
+          "Das Papier ist weiß.",
+          "Sie hat ein weißes Kleid."
+        ]
       },
       {
         "german": "grau",
@@ -450,31 +1147,46 @@
         "german": "rot",
         "english": "red",
         "article": null,
-        "examples": ["Die Rose ist rot.", "Sie hat rote Schuhe."]
+        "examples": [
+          "Die Rose ist rot.",
+          "Sie hat rote Schuhe."
+        ]
       },
       {
         "german": "blau",
         "english": "blue",
         "article": null,
-        "examples": ["Das Meer ist blau.", "Er trägt eine blaue Hose."]
+        "examples": [
+          "Das Meer ist blau.",
+          "Er trägt eine blaue Hose."
+        ]
       },
       {
         "german": "gelb",
         "english": "yellow",
         "article": null,
-        "examples": ["Die Sonne ist gelb.", "Ich mag gelbe Blumen."]
+        "examples": [
+          "Die Sonne ist gelb.",
+          "Ich mag gelbe Blumen."
+        ]
       },
       {
         "german": "grün",
         "english": "green",
         "article": null,
-        "examples": ["Die Blätter sind grün.", "Er fährt ein grünes Auto."]
+        "examples": [
+          "Die Blätter sind grün.",
+          "Er fährt ein grünes Auto."
+        ]
       },
       {
         "german": "braun",
         "english": "brown",
         "article": null,
-        "examples": ["Der Tisch ist braun.", "Sie hat braune Augen."]
+        "examples": [
+          "Der Tisch ist braun.",
+          "Sie hat braune Augen."
+        ]
       }
     ]
   },
@@ -494,7 +1206,10 @@
         "german": "Süden",
         "english": "south",
         "article": "der",
-        "examples": ["Die Sonne wandert nach Süden.", "München liegt im Süden."]
+        "examples": [
+          "Die Sonne wandert nach Süden.",
+          "München liegt im Süden."
+        ]
       },
       {
         "german": "Osten",
@@ -509,7 +1224,10 @@
         "german": "Westen",
         "english": "west",
         "article": "der",
-        "examples": ["Die Sonne geht im Westen unter.", "Köln liegt im Westen."]
+        "examples": [
+          "Die Sonne geht im Westen unter.",
+          "Köln liegt im Westen."
+        ]
       }
     ]
   },
@@ -547,7 +1265,10 @@
         "german": "Kind",
         "english": "child",
         "article": "das",
-        "examples": ["Das Kind spielt im Garten.", "Sie haben ein Kind."]
+        "examples": [
+          "Das Kind spielt im Garten.",
+          "Sie haben ein Kind."
+        ]
       },
       {
         "german": "Sohn",
@@ -643,7 +1364,10 @@
         "german": "Onkel",
         "english": "uncle",
         "article": "der",
-        "examples": ["Der Onkel kommt zu Besuch.", "Mein Onkel lebt in Berlin."]
+        "examples": [
+          "Der Onkel kommt zu Besuch.",
+          "Mein Onkel lebt in Berlin."
+        ]
       },
       {
         "german": "Tante",
@@ -757,13 +1481,19 @@
         "german": "Neffe",
         "english": "nephew",
         "article": "der",
-        "examples": ["Mein Neffe spielt Gitarre.", "Der Neffe besucht uns oft."]
+        "examples": [
+          "Mein Neffe spielt Gitarre.",
+          "Der Neffe besucht uns oft."
+        ]
       },
       {
         "german": "Nichte",
         "english": "niece",
         "article": "die",
-        "examples": ["Die Nichte malt ein Bild.", "Ihre Nichte ist sehr klug."]
+        "examples": [
+          "Die Nichte malt ein Bild.",
+          "Ihre Nichte ist sehr klug."
+        ]
       },
       {
         "german": "Kleinfamilie",
@@ -801,7 +1531,10 @@
         "german": "ledig",
         "english": "single",
         "article": null,
-        "examples": ["Er ist ledig.", "Sie ist noch ledig."]
+        "examples": [
+          "Er ist ledig.",
+          "Sie ist noch ledig."
+        ]
       },
       {
         "german": "verheiratet",
@@ -825,19 +1558,28 @@
         "german": "verwitwet",
         "english": "widowed",
         "article": null,
-        "examples": ["Sie ist verwitwet.", "Er ist seit einem Jahr verwitwet."]
+        "examples": [
+          "Sie ist verwitwet.",
+          "Er ist seit einem Jahr verwitwet."
+        ]
       },
       {
         "german": "Ehe",
         "english": "marriage",
         "article": "die",
-        "examples": ["Die Ehe ist glücklich.", "Sie feiern ihre goldene Ehe."]
+        "examples": [
+          "Die Ehe ist glücklich.",
+          "Sie feiern ihre goldene Ehe."
+        ]
       },
       {
         "german": "Ehemann",
         "english": "husband",
         "article": "der",
-        "examples": ["Ihr Ehemann ist Arzt.", "Der Ehemann unterstützt sie."]
+        "examples": [
+          "Ihr Ehemann ist Arzt.",
+          "Der Ehemann unterstützt sie."
+        ]
       },
       {
         "german": "Ehefrau",
@@ -952,7 +1694,10 @@
         "german": "Kopf",
         "english": "head",
         "article": "der",
-        "examples": ["Mein Kopf tut weh.", "Er trägt einen Hut auf dem Kopf."]
+        "examples": [
+          "Mein Kopf tut weh.",
+          "Er trägt einen Hut auf dem Kopf."
+        ]
       },
       {
         "german": "Gesicht",
@@ -967,25 +1712,37 @@
         "german": "Auge",
         "english": "eye",
         "article": "das",
-        "examples": ["Er hat blaue Augen.", "Das linke Auge tut weh."]
+        "examples": [
+          "Er hat blaue Augen.",
+          "Das linke Auge tut weh."
+        ]
       },
       {
         "german": "Nase",
         "english": "nose",
         "article": "die",
-        "examples": ["Ich habe eine verstopfte Nase.", "Die Nase läuft."]
+        "examples": [
+          "Ich habe eine verstopfte Nase.",
+          "Die Nase läuft."
+        ]
       },
       {
         "german": "Mund",
         "english": "mouth",
         "article": "der",
-        "examples": ["Öffne den Mund.", "Sie hat einen großen Mund."]
+        "examples": [
+          "Öffne den Mund.",
+          "Sie hat einen großen Mund."
+        ]
       },
       {
         "german": "Ohr",
         "english": "ear",
         "article": "das",
-        "examples": ["Ich habe Schmerzen im Ohr.", "Sie trägt Ohrringe am Ohr."]
+        "examples": [
+          "Ich habe Schmerzen im Ohr.",
+          "Sie trägt Ohrringe am Ohr."
+        ]
       },
       {
         "german": "Hals",
@@ -1018,43 +1775,64 @@
         "german": "Hand",
         "english": "hand",
         "article": "die",
-        "examples": ["Gib mir deine Hand.", "Er trägt einen Ring an der Hand."]
+        "examples": [
+          "Gib mir deine Hand.",
+          "Er trägt einen Ring an der Hand."
+        ]
       },
       {
         "german": "Finger",
         "english": "finger",
         "article": "der",
-        "examples": ["Sie hat lange Finger.", "Der Finger blutet."]
+        "examples": [
+          "Sie hat lange Finger.",
+          "Der Finger blutet."
+        ]
       },
       {
         "german": "Bein",
         "english": "leg",
         "article": "das",
-        "examples": ["Das Bein tut weh.", "Er kann auf einem Bein stehen."]
+        "examples": [
+          "Das Bein tut weh.",
+          "Er kann auf einem Bein stehen."
+        ]
       },
       {
         "german": "Fuß",
         "english": "foot",
         "article": "der",
-        "examples": ["Der Schuh drückt am Fuß.", "Sie hat kalte Füße."]
+        "examples": [
+          "Der Schuh drückt am Fuß.",
+          "Sie hat kalte Füße."
+        ]
       },
       {
         "german": "Knie",
         "english": "knee",
         "article": "das",
-        "examples": ["Er hat Schmerzen im Knie.", "Sie beugt das Knie."]
+        "examples": [
+          "Er hat Schmerzen im Knie.",
+          "Sie beugt das Knie."
+        ]
       },
       {
         "german": "Rücken",
         "english": "back",
         "article": "der",
-        "examples": ["Der Rücken tut mir weh.", "Er liegt auf dem Rücken."]
+        "examples": [
+          "Der Rücken tut mir weh.",
+          "Er liegt auf dem Rücken."
+        ]
       },
       {
         "german": "Bauch",
         "english": "stomach",
         "article": "der",
-        "examples": ["Ich habe Bauchschmerzen.", "Der Bauch ist voll."]
+        "examples": [
+          "Ich habe Bauchschmerzen.",
+          "Der Bauch ist voll."
+        ]
       }
     ]
   },
@@ -1083,13 +1861,19 @@
         "german": "wütend",
         "english": "angry",
         "article": null,
-        "examples": ["Sie ist wütend auf ihn.", "Er wurde wütend."]
+        "examples": [
+          "Sie ist wütend auf ihn.",
+          "Er wurde wütend."
+        ]
       },
       {
         "german": "müde",
         "english": "tired",
         "article": null,
-        "examples": ["Ich bin sehr müde.", "Er sieht müde aus."]
+        "examples": [
+          "Ich bin sehr müde.",
+          "Er sieht müde aus."
+        ]
       },
       {
         "german": "entspannt",
@@ -1104,13 +1888,19 @@
         "german": "gestresst",
         "english": "stressed",
         "article": null,
-        "examples": ["Er ist gestresst von der Arbeit.", "Sie wirkt gestresst."]
+        "examples": [
+          "Er ist gestresst von der Arbeit.",
+          "Sie wirkt gestresst."
+        ]
       },
       {
         "german": "langweilig",
         "english": "boring",
         "article": null,
-        "examples": ["Der Film ist langweilig.", "Es ist langweilig hier."]
+        "examples": [
+          "Der Film ist langweilig.",
+          "Es ist langweilig hier."
+        ]
       },
       {
         "german": "zufrieden",
@@ -1157,7 +1947,10 @@
         "german": "Nachname",
         "english": "last name",
         "article": "der",
-        "examples": ["Wie ist Ihr Nachname?", "Sein Nachname ist Müller."]
+        "examples": [
+          "Wie ist Ihr Nachname?",
+          "Sein Nachname ist Müller."
+        ]
       },
       {
         "german": "Familienname",
@@ -1226,7 +2019,10 @@
         "german": "Straße",
         "english": "street",
         "article": "die",
-        "examples": ["Ich wohne in der Hauptstraße.", "Welche Straße ist das?"]
+        "examples": [
+          "Ich wohne in der Hauptstraße.",
+          "Welche Straße ist das?"
+        ]
       },
       {
         "german": "Hausnummer",
@@ -1250,7 +2046,10 @@
         "german": "Handy",
         "english": "mobile phone",
         "article": "das",
-        "examples": ["Ich habe mein Handy vergessen.", "Das Handy ist neu."]
+        "examples": [
+          "Ich habe mein Handy vergessen.",
+          "Das Handy ist neu."
+        ]
       },
       {
         "german": "Geburtsort",
@@ -1297,7 +2096,10 @@
         "german": "Mittwoch",
         "english": "Wednesday",
         "article": "der",
-        "examples": ["Mittwoch ist Bergfest.", "Wir treffen uns am Mittwoch."]
+        "examples": [
+          "Mittwoch ist Bergfest.",
+          "Wir treffen uns am Mittwoch."
+        ]
       },
       {
         "german": "Donnerstag",
@@ -1321,7 +2123,10 @@
         "german": "Samstag",
         "english": "Saturday",
         "article": "der",
-        "examples": ["Am Samstag schlafe ich aus.", "Samstag ist Wochenende."]
+        "examples": [
+          "Am Samstag schlafe ich aus.",
+          "Samstag ist Wochenende."
+        ]
       },
       {
         "german": "Sonntag",
@@ -1490,7 +2295,10 @@
         "german": "Sommer",
         "english": "summer",
         "article": "der",
-        "examples": ["Im Sommer ist es warm.", "Wir fahren im Sommer ans Meer."]
+        "examples": [
+          "Im Sommer ist es warm.",
+          "Wir fahren im Sommer ans Meer."
+        ]
       },
       {
         "german": "Herbst",
@@ -1573,7 +2381,10 @@
         "german": "halb drei",
         "english": "half past two",
         "article": null,
-        "examples": ["Es ist halb drei.", "Der Film beginnt um halb drei."]
+        "examples": [
+          "Es ist halb drei.",
+          "Der Film beginnt um halb drei."
+        ]
       }
     ]
   },
@@ -1584,13 +2395,19 @@
         "german": "Tag",
         "english": "day",
         "article": "der",
-        "examples": ["Der Tag ist lang.", "Ich habe heute einen freien Tag."]
+        "examples": [
+          "Der Tag ist lang.",
+          "Ich habe heute einen freien Tag."
+        ]
       },
       {
         "german": "Wochentag",
         "english": "weekday",
         "article": "der",
-        "examples": ["Montag ist ein Wochentag.", "An Wochentagen arbeite ich."]
+        "examples": [
+          "Montag ist ein Wochentag.",
+          "An Wochentagen arbeite ich."
+        ]
       },
       {
         "german": "Wochenende",
@@ -1605,13 +2422,19 @@
         "german": "heute",
         "english": "today",
         "article": null,
-        "examples": ["Heute ist ein schöner Tag.", "Was machst du heute?"]
+        "examples": [
+          "Heute ist ein schöner Tag.",
+          "Was machst du heute?"
+        ]
       },
       {
         "german": "morgen",
         "english": "tomorrow",
         "article": null,
-        "examples": ["Morgen habe ich frei.", "Bis morgen!"]
+        "examples": [
+          "Morgen habe ich frei.",
+          "Bis morgen!"
+        ]
       },
       {
         "german": "übermorgen",
@@ -1626,7 +2449,10 @@
         "german": "gestern",
         "english": "yesterday",
         "article": null,
-        "examples": ["Gestern war ich im Kino.", "Was hast du gestern gemacht?"]
+        "examples": [
+          "Gestern war ich im Kino.",
+          "Was hast du gestern gemacht?"
+        ]
       },
       {
         "german": "vorgestern",
@@ -1650,7 +2476,10 @@
         "german": "Stunde",
         "english": "hour",
         "article": "die",
-        "examples": ["Eine Stunde hat 60 Minuten.", "Ich brauche eine Stunde."]
+        "examples": [
+          "Eine Stunde hat 60 Minuten.",
+          "Ich brauche eine Stunde."
+        ]
       },
       {
         "german": "Minute",
@@ -1670,43 +2499,64 @@
         "german": "Tisch",
         "english": "table",
         "article": "der",
-        "examples": ["Das Essen steht auf dem Tisch.", "Wir sitzen am Tisch."]
+        "examples": [
+          "Das Essen steht auf dem Tisch.",
+          "Wir sitzen am Tisch."
+        ]
       },
       {
         "german": "Stuhl",
         "english": "chair",
         "article": "der",
-        "examples": ["Der Stuhl ist bequem.", "Bitte nimm Platz auf dem Stuhl."]
+        "examples": [
+          "Der Stuhl ist bequem.",
+          "Bitte nimm Platz auf dem Stuhl."
+        ]
       },
       {
         "german": "Bett",
         "english": "bed",
         "article": "das",
-        "examples": ["Ich gehe ins Bett.", "Das Bett ist gemütlich."]
+        "examples": [
+          "Ich gehe ins Bett.",
+          "Das Bett ist gemütlich."
+        ]
       },
       {
         "german": "Lampe",
         "english": "lamp",
         "article": "die",
-        "examples": ["Die Lampe ist kaputt.", "Schalte bitte die Lampe an."]
+        "examples": [
+          "Die Lampe ist kaputt.",
+          "Schalte bitte die Lampe an."
+        ]
       },
       {
         "german": "Schrank",
         "english": "wardrobe",
         "article": "der",
-        "examples": ["Die Kleidung ist im Schrank.", "Der Schrank ist groß."]
+        "examples": [
+          "Die Kleidung ist im Schrank.",
+          "Der Schrank ist groß."
+        ]
       },
       {
         "german": "Sofa",
         "english": "sofa",
         "article": "das",
-        "examples": ["Wir sitzen auf dem Sofa.", "Das Sofa ist neu."]
+        "examples": [
+          "Wir sitzen auf dem Sofa.",
+          "Das Sofa ist neu."
+        ]
       },
       {
         "german": "Fernseher",
         "english": "television",
         "article": "der",
-        "examples": ["Der Fernseher ist aus.", "Ich schaue Fernsehen."]
+        "examples": [
+          "Der Fernseher ist aus.",
+          "Ich schaue Fernsehen."
+        ]
       },
       {
         "german": "Teppich",
@@ -1721,13 +2571,19 @@
         "german": "Spiegel",
         "english": "mirror",
         "article": "der",
-        "examples": ["Der Spiegel hängt im Bad.", "Sie schaut in den Spiegel."]
+        "examples": [
+          "Der Spiegel hängt im Bad.",
+          "Sie schaut in den Spiegel."
+        ]
       },
       {
         "german": "Regal",
         "english": "shelf",
         "article": "das",
-        "examples": ["Die Bücher sind im Regal.", "Das Regal ist voll."]
+        "examples": [
+          "Die Bücher sind im Regal.",
+          "Das Regal ist voll."
+        ]
       }
     ]
   },
@@ -1756,13 +2612,19 @@
         "german": "Zimmer",
         "english": "room",
         "article": "das",
-        "examples": ["Das Zimmer ist hell.", "Ich miete ein Zimmer."]
+        "examples": [
+          "Das Zimmer ist hell.",
+          "Ich miete ein Zimmer."
+        ]
       },
       {
         "german": "Miete",
         "english": "rent",
         "article": "die",
-        "examples": ["Die Miete ist teuer.", "Ich bezahle die Miete monatlich."]
+        "examples": [
+          "Die Miete ist teuer.",
+          "Ich bezahle die Miete monatlich."
+        ]
       },
       {
         "german": "Mieter",
@@ -1786,7 +2648,10 @@
         "german": "Vermieter",
         "english": "landlord (male)",
         "article": "der",
-        "examples": ["Der Vermieter ist freundlich.", "Er ist mein Vermieter."]
+        "examples": [
+          "Der Vermieter ist freundlich.",
+          "Er ist mein Vermieter."
+        ]
       },
       {
         "german": "Vermieterin",
@@ -1810,7 +2675,10 @@
         "german": "Möbel",
         "english": "furniture",
         "article": "die",
-        "examples": ["Die Möbel sind modern.", "Ich kaufe neue Möbel."]
+        "examples": [
+          "Die Möbel sind modern.",
+          "Ich kaufe neue Möbel."
+        ]
       },
       {
         "german": "Küche",
@@ -1852,7 +2720,10 @@
         "german": "Bett",
         "english": "bed",
         "article": "das",
-        "examples": ["Das Bett ist bequem.", "Ich gehe ins Bett."]
+        "examples": [
+          "Das Bett ist bequem.",
+          "Ich gehe ins Bett."
+        ]
       },
       {
         "german": "Stuhl",
@@ -1876,13 +2747,19 @@
         "german": "Schrank",
         "english": "cabinet/wardrobe",
         "article": "der",
-        "examples": ["Die Kleidung hängt im Schrank.", "Der Schrank ist voll."]
+        "examples": [
+          "Die Kleidung hängt im Schrank.",
+          "Der Schrank ist voll."
+        ]
       },
       {
         "german": "Tisch",
         "english": "table",
         "article": "der",
-        "examples": ["Wir essen am Tisch.", "Der Tisch ist gedeckt."]
+        "examples": [
+          "Wir essen am Tisch.",
+          "Der Tisch ist gedeckt."
+        ]
       }
     ]
   },
@@ -1902,7 +2779,10 @@
         "german": "Metall",
         "english": "metal",
         "article": "das",
-        "examples": ["Das Metall ist rostfrei.", "Metall leitet Strom."]
+        "examples": [
+          "Das Metall ist rostfrei.",
+          "Metall leitet Strom."
+        ]
       },
       {
         "german": "Glas",
@@ -1926,7 +2806,10 @@
         "german": "Stoff",
         "english": "fabric",
         "article": "der",
-        "examples": ["Der Stoff ist weich.", "Sie kauft Stoff für ein Kleid."]
+        "examples": [
+          "Der Stoff ist weich.",
+          "Sie kauft Stoff für ein Kleid."
+        ]
       },
       {
         "german": "Baumwolle",
@@ -1941,7 +2824,10 @@
         "german": "Wolle",
         "english": "wool",
         "article": "die",
-        "examples": ["Der Pullover ist aus Wolle.", "Wolle hält warm."]
+        "examples": [
+          "Der Pullover ist aus Wolle.",
+          "Wolle hält warm."
+        ]
       }
     ]
   },
@@ -2065,7 +2951,10 @@
         "german": "Wäsche",
         "english": "laundry",
         "article": "die",
-        "examples": ["Die Wäsche ist sauber.", "Ich hänge die Wäsche auf."]
+        "examples": [
+          "Die Wäsche ist sauber.",
+          "Ich hänge die Wäsche auf."
+        ]
       },
       {
         "german": "Waschsalon",
@@ -2098,7 +2987,10 @@
         "german": "waschen",
         "english": "to wash",
         "article": null,
-        "examples": ["Ich muss meine Kleidung waschen.", "Er wäscht das Auto."]
+        "examples": [
+          "Ich muss meine Kleidung waschen.",
+          "Er wäscht das Auto."
+        ]
       },
       {
         "german": "trocknen",
@@ -2113,7 +3005,10 @@
         "german": "bügeln",
         "english": "to iron",
         "article": null,
-        "examples": ["Sie bügelt das Hemd.", "Ich muss die Wäsche bügeln."]
+        "examples": [
+          "Sie bügelt das Hemd.",
+          "Ich muss die Wäsche bügeln."
+        ]
       },
       {
         "german": "Trockner",
@@ -2151,25 +3046,37 @@
         "german": "Hose",
         "english": "pants",
         "article": "die",
-        "examples": ["Die Hose ist zu lang.", "Ich kaufe eine neue Hose."]
+        "examples": [
+          "Die Hose ist zu lang.",
+          "Ich kaufe eine neue Hose."
+        ]
       },
       {
         "german": "T-Shirt",
         "english": "t-shirt",
         "article": "das",
-        "examples": ["Das T-Shirt ist blau.", "Er trägt ein T-Shirt."]
+        "examples": [
+          "Das T-Shirt ist blau.",
+          "Er trägt ein T-Shirt."
+        ]
       },
       {
         "german": "Pullover",
         "english": "sweater",
         "article": "der",
-        "examples": ["Der Pullover hält warm.", "Sie strickt einen Pullover."]
+        "examples": [
+          "Der Pullover hält warm.",
+          "Sie strickt einen Pullover."
+        ]
       },
       {
         "german": "Kleid",
         "english": "dress",
         "article": "das",
-        "examples": ["Das Kleid ist elegant.", "Sie trägt ein rotes Kleid."]
+        "examples": [
+          "Das Kleid ist elegant.",
+          "Sie trägt ein rotes Kleid."
+        ]
       },
       {
         "german": "Anzug",
@@ -2184,25 +3091,37 @@
         "german": "Jacke",
         "english": "jacket",
         "article": "die",
-        "examples": ["Die Jacke ist warm.", "Ich ziehe meine Jacke an."]
+        "examples": [
+          "Die Jacke ist warm.",
+          "Ich ziehe meine Jacke an."
+        ]
       },
       {
         "german": "Schuh",
         "english": "shoe",
         "article": "der",
-        "examples": ["Die Schuhe sind bequem.", "Ich kaufe neue Schuhe."]
+        "examples": [
+          "Die Schuhe sind bequem.",
+          "Ich kaufe neue Schuhe."
+        ]
       },
       {
         "german": "Socke",
         "english": "sock",
         "article": "die",
-        "examples": ["Die Socken sind bunt.", "Er zieht seine Socken an."]
+        "examples": [
+          "Die Socken sind bunt.",
+          "Er zieht seine Socken an."
+        ]
       },
       {
         "german": "Gürtel",
         "english": "belt",
         "article": "der",
-        "examples": ["Der Gürtel ist aus Leder.", "Ich brauche einen Gürtel."]
+        "examples": [
+          "Der Gürtel ist aus Leder.",
+          "Ich brauche einen Gürtel."
+        ]
       },
       {
         "german": "Hut",
@@ -2217,25 +3136,37 @@
         "german": "Bluse",
         "english": "blouse",
         "article": "die",
-        "examples": ["Die Bluse ist weiß.", "Sie kauft eine neue Bluse."]
+        "examples": [
+          "Die Bluse ist weiß.",
+          "Sie kauft eine neue Bluse."
+        ]
       },
       {
         "german": "Rock",
         "english": "skirt",
         "article": "der",
-        "examples": ["Der Rock ist kurz.", "Sie trägt einen Rock."]
+        "examples": [
+          "Der Rock ist kurz.",
+          "Sie trägt einen Rock."
+        ]
       },
       {
         "german": "Krawatte",
         "english": "tie",
         "article": "die",
-        "examples": ["Er bindet die Krawatte.", "Die Krawatte passt zum Anzug."]
+        "examples": [
+          "Er bindet die Krawatte.",
+          "Die Krawatte passt zum Anzug."
+        ]
       },
       {
         "german": "Mütze",
         "english": "cap",
         "article": "die",
-        "examples": ["Die Mütze hält den Kopf warm.", "Er setzt die Mütze auf."]
+        "examples": [
+          "Die Mütze hält den Kopf warm.",
+          "Er setzt die Mütze auf."
+        ]
       },
       {
         "german": "Mantel",
@@ -2255,7 +3186,10 @@
         "german": "Brot",
         "english": "bread",
         "article": "das",
-        "examples": ["Ich kaufe frisches Brot.", "Zum Frühstück esse ich Brot."]
+        "examples": [
+          "Ich kaufe frisches Brot.",
+          "Zum Frühstück esse ich Brot."
+        ]
       },
       {
         "german": "Butter",
@@ -2279,7 +3213,10 @@
         "german": "Ei",
         "english": "egg",
         "article": "das",
-        "examples": ["Ich koche ein Ei.", "Eier sind reich an Protein."]
+        "examples": [
+          "Ich koche ein Ei.",
+          "Eier sind reich an Protein."
+        ]
       },
       {
         "german": "Apfel",
@@ -2294,7 +3231,10 @@
         "german": "Banane",
         "english": "banana",
         "article": "die",
-        "examples": ["Die Banane ist reif.", "Ich esse eine Banane zum Snack."]
+        "examples": [
+          "Die Banane ist reif.",
+          "Ich esse eine Banane zum Snack."
+        ]
       },
       {
         "german": "Wasser",
@@ -2318,13 +3258,19 @@
         "german": "Tee",
         "english": "tea",
         "article": "der",
-        "examples": ["Ich trinke gerne Tee am Nachmittag.", "Der Tee ist heiß."]
+        "examples": [
+          "Ich trinke gerne Tee am Nachmittag.",
+          "Der Tee ist heiß."
+        ]
       },
       {
         "german": "Kaffee",
         "english": "coffee",
         "article": "der",
-        "examples": ["Morgens brauche ich Kaffee.", "Der Kaffee duftet gut."]
+        "examples": [
+          "Morgens brauche ich Kaffee.",
+          "Der Kaffee duftet gut."
+        ]
       },
       {
         "german": "Gemüse",
@@ -2348,7 +3294,10 @@
         "german": "Karotte",
         "english": "carrot",
         "article": "die",
-        "examples": ["Die Karotte ist orange.", "Hasen essen gern Karotten."]
+        "examples": [
+          "Die Karotte ist orange.",
+          "Hasen essen gern Karotten."
+        ]
       },
       {
         "german": "Zwiebel",
@@ -2372,13 +3321,19 @@
         "german": "Milch",
         "english": "milk",
         "article": "die",
-        "examples": ["Die Milch ist frisch.", "Ich gieße Milch in den Kaffee."]
+        "examples": [
+          "Die Milch ist frisch.",
+          "Ich gieße Milch in den Kaffee."
+        ]
       },
       {
         "german": "Reis",
         "english": "rice",
         "article": "der",
-        "examples": ["Der Reis ist gekocht.", "Wir essen Huhn mit Reis."]
+        "examples": [
+          "Der Reis ist gekocht.",
+          "Wir essen Huhn mit Reis."
+        ]
       },
       {
         "german": "Nudeln",
@@ -2398,19 +3353,28 @@
         "german": "Brot",
         "english": "bread",
         "article": "das",
-        "examples": ["Ich kaufe ein Brot.", "Möchtest du Brot zum Abendessen?"]
+        "examples": [
+          "Ich kaufe ein Brot.",
+          "Möchtest du Brot zum Abendessen?"
+        ]
       },
       {
         "german": "Milch",
         "english": "milk",
         "article": "die",
-        "examples": ["Die Milch ist kalt.", "Ich trinke Milch zum Frühstück."]
+        "examples": [
+          "Die Milch ist kalt.",
+          "Ich trinke Milch zum Frühstück."
+        ]
       },
       {
         "german": "Käse",
         "english": "cheese",
         "article": "der",
-        "examples": ["Der Käse schmeckt gut.", "Ich esse gern Käse."]
+        "examples": [
+          "Der Käse schmeckt gut.",
+          "Ich esse gern Käse."
+        ]
       },
       {
         "german": "Butter",
@@ -2425,13 +3389,19 @@
         "german": "Fleisch",
         "english": "meat",
         "article": "das",
-        "examples": ["Ich esse kein Fleisch.", "Das Fleisch ist zart."]
+        "examples": [
+          "Ich esse kein Fleisch.",
+          "Das Fleisch ist zart."
+        ]
       },
       {
         "german": "Obst",
         "english": "fruit",
         "article": "das",
-        "examples": ["Obst ist gesund.", "Ich kaufe Obst auf dem Markt."]
+        "examples": [
+          "Obst ist gesund.",
+          "Ich kaufe Obst auf dem Markt."
+        ]
       },
       {
         "german": "Gemüse",
@@ -2446,19 +3416,28 @@
         "german": "Reis",
         "english": "rice",
         "article": "der",
-        "examples": ["Der Reis ist gekocht.", "Ich esse gern Reis."]
+        "examples": [
+          "Der Reis ist gekocht.",
+          "Ich esse gern Reis."
+        ]
       },
       {
         "german": "Nudeln",
         "english": "pasta",
         "article": "die",
-        "examples": ["Die Nudeln sind al dente.", "Kinder mögen Nudeln."]
+        "examples": [
+          "Die Nudeln sind al dente.",
+          "Kinder mögen Nudeln."
+        ]
       },
       {
         "german": "Wurst",
         "english": "sausage",
         "article": "die",
-        "examples": ["Er isst eine Wurst.", "Die Wurst ist scharf."]
+        "examples": [
+          "Er isst eine Wurst.",
+          "Die Wurst ist scharf."
+        ]
       }
     ]
   },
@@ -2523,7 +3502,10 @@
         "german": "Kellner",
         "english": "waiter",
         "article": "der",
-        "examples": ["Der Kellner bringt das Essen.", "Wir rufen den Kellner."]
+        "examples": [
+          "Der Kellner bringt das Essen.",
+          "Wir rufen den Kellner."
+        ]
       },
       {
         "german": "Kellnerin",
@@ -2538,7 +3520,10 @@
         "german": "Getränk",
         "english": "drink",
         "article": "das",
-        "examples": ["Möchten Sie ein Getränk?", "Das Getränk ist kalt."]
+        "examples": [
+          "Möchten Sie ein Getränk?",
+          "Das Getränk ist kalt."
+        ]
       },
       {
         "german": "Wasser",
@@ -2553,7 +3538,10 @@
         "german": "Cola",
         "english": "cola",
         "article": "die",
-        "examples": ["Eine Cola bitte.", "Die Cola ist zu süß."]
+        "examples": [
+          "Eine Cola bitte.",
+          "Die Cola ist zu süß."
+        ]
       },
       {
         "german": "Wein",
@@ -2577,13 +3565,19 @@
         "german": "Kaffee",
         "english": "coffee",
         "article": "der",
-        "examples": ["Möchten Sie Kaffee oder Tee?", "Der Kaffee ist heiß."]
+        "examples": [
+          "Möchten Sie Kaffee oder Tee?",
+          "Der Kaffee ist heiß."
+        ]
       },
       {
         "german": "Tee",
         "english": "tea",
         "article": "der",
-        "examples": ["Ich trinke morgens Tee.", "Der Tee ist aus Kräutern."]
+        "examples": [
+          "Ich trinke morgens Tee.",
+          "Der Tee ist aus Kräutern."
+        ]
       },
       {
         "german": "Alkohol",
@@ -2607,13 +3601,19 @@
         "german": "Suppe",
         "english": "soup",
         "article": "die",
-        "examples": ["Die Suppe ist heiß.", "Als Vorspeise gibt es Suppe."]
+        "examples": [
+          "Die Suppe ist heiß.",
+          "Als Vorspeise gibt es Suppe."
+        ]
       },
       {
         "german": "Saft",
         "english": "juice",
         "article": "der",
-        "examples": ["Der Saft ist aus Orangen.", "Ich trinke gern Apfelsaft."]
+        "examples": [
+          "Der Saft ist aus Orangen.",
+          "Ich trinke gern Apfelsaft."
+        ]
       },
       {
         "german": "Apfelstrudel",
@@ -2646,7 +3646,10 @@
         "german": "Rechnung",
         "english": "bill",
         "article": "die",
-        "examples": ["Die Rechnung bitte.", "Die Rechnung stimmt nicht."]
+        "examples": [
+          "Die Rechnung bitte.",
+          "Die Rechnung stimmt nicht."
+        ]
       },
       {
         "german": "Trinkgeld",
@@ -2670,7 +3673,10 @@
         "german": "Dessert",
         "english": "dessert",
         "article": "das",
-        "examples": ["Als Dessert gibt es Eis.", "Das Dessert ist köstlich."]
+        "examples": [
+          "Als Dessert gibt es Eis.",
+          "Das Dessert ist köstlich."
+        ]
       },
       {
         "german": "Burger",
@@ -2703,7 +3709,10 @@
         "german": "Rindfleisch",
         "english": "beef",
         "article": "das",
-        "examples": ["Das Rindfleisch ist zart.", "Sie isst kein Rindfleisch."]
+        "examples": [
+          "Das Rindfleisch ist zart.",
+          "Sie isst kein Rindfleisch."
+        ]
       },
       {
         "german": "Schnitzel",
@@ -2741,25 +3750,37 @@
         "german": "bestellen",
         "english": "to order",
         "article": null,
-        "examples": ["Ich möchte das Steak bestellen.", "Wir bestellen Pizza."]
+        "examples": [
+          "Ich möchte das Steak bestellen.",
+          "Wir bestellen Pizza."
+        ]
       },
       {
         "german": "zahlen",
         "english": "to pay",
         "article": null,
-        "examples": ["Wir möchten bitte zahlen.", "Er zahlt die Rechnung."]
+        "examples": [
+          "Wir möchten bitte zahlen.",
+          "Er zahlt die Rechnung."
+        ]
       },
       {
         "german": "Rechnung",
         "english": "bill",
         "article": "die",
-        "examples": ["Die Rechnung bitte.", "Die Rechnung ist hoch."]
+        "examples": [
+          "Die Rechnung bitte.",
+          "Die Rechnung ist hoch."
+        ]
       },
       {
         "german": "Trinkgeld",
         "english": "tip",
         "article": "das",
-        "examples": ["Gibst du Trinkgeld?", "Das Trinkgeld ist verdient."]
+        "examples": [
+          "Gibst du Trinkgeld?",
+          "Das Trinkgeld ist verdient."
+        ]
       }
     ]
   },
@@ -2806,13 +3827,19 @@
         "german": "Packung",
         "english": "package",
         "article": "die",
-        "examples": ["Die Packung ist groß.", "Bitte eine Packung Nudeln."]
+        "examples": [
+          "Die Packung ist groß.",
+          "Bitte eine Packung Nudeln."
+        ]
       },
       {
         "german": "Tüte",
         "english": "bag",
         "article": "die",
-        "examples": ["Ich nehme eine Tüte Chips.", "Die Tüte reißt leicht."]
+        "examples": [
+          "Ich nehme eine Tüte Chips.",
+          "Die Tüte reißt leicht."
+        ]
       },
       {
         "german": "Schachtel",
@@ -2859,37 +3886,55 @@
         "german": "Lehrer",
         "english": "teacher",
         "article": "der",
-        "examples": ["Der Lehrer erklärt die Aufgabe.", "Sie ist Lehrerin."]
+        "examples": [
+          "Der Lehrer erklärt die Aufgabe.",
+          "Sie ist Lehrerin."
+        ]
       },
       {
         "german": "Schüler",
         "english": "student (pupil)",
         "article": "der",
-        "examples": ["Die Schüler lernen Deutsch.", "Er ist ein guter Schüler."]
+        "examples": [
+          "Die Schüler lernen Deutsch.",
+          "Er ist ein guter Schüler."
+        ]
       },
       {
         "german": "Klasse",
         "english": "class",
         "article": "die",
-        "examples": ["Die Klasse ist groß.", "Wir sind in der gleichen Klasse."]
+        "examples": [
+          "Die Klasse ist groß.",
+          "Wir sind in der gleichen Klasse."
+        ]
       },
       {
         "german": "Buch",
         "english": "book",
         "article": "das",
-        "examples": ["Ich lese ein Buch.", "Das Buch ist interessant."]
+        "examples": [
+          "Ich lese ein Buch.",
+          "Das Buch ist interessant."
+        ]
       },
       {
         "german": "Heft",
         "english": "notebook",
         "article": "das",
-        "examples": ["Schreib es ins Heft.", "Das Heft ist voll."]
+        "examples": [
+          "Schreib es ins Heft.",
+          "Das Heft ist voll."
+        ]
       },
       {
         "german": "Stift",
         "english": "pen",
         "article": "der",
-        "examples": ["Hast du einen Stift?", "Der Stift schreibt gut."]
+        "examples": [
+          "Hast du einen Stift?",
+          "Der Stift schreibt gut."
+        ]
       },
       {
         "german": "Tafel",
@@ -3166,13 +4211,19 @@
         "german": "Job",
         "english": "job",
         "article": "der",
-        "examples": ["Ich suche einen neuen Job.", "Er hat einen Teilzeit-Job."]
+        "examples": [
+          "Ich suche einen neuen Job.",
+          "Er hat einen Teilzeit-Job."
+        ]
       },
       {
         "german": "Arbeit",
         "english": "work",
         "article": "die",
-        "examples": ["Die Arbeit macht Spaß.", "Ich gehe zur Arbeit."]
+        "examples": [
+          "Die Arbeit macht Spaß.",
+          "Ich gehe zur Arbeit."
+        ]
       },
       {
         "german": "Arbeitgeber",
@@ -3322,7 +4373,10 @@
         "german": "Jurist",
         "english": "lawyer (male)",
         "article": "der",
-        "examples": ["Der Jurist kennt das Gesetz.", "Er arbeitet als Jurist."]
+        "examples": [
+          "Der Jurist kennt das Gesetz.",
+          "Er arbeitet als Jurist."
+        ]
       },
       {
         "german": "Juristin",
@@ -3472,7 +4526,10 @@
         "german": "Chef",
         "english": "boss (male)",
         "article": "der",
-        "examples": ["Der Chef ist heute nicht da.", "Er spricht mit dem Chef."]
+        "examples": [
+          "Der Chef ist heute nicht da.",
+          "Er spricht mit dem Chef."
+        ]
       },
       {
         "german": "Chefin",
@@ -3614,13 +4671,19 @@
         "german": "Auto",
         "english": "car",
         "article": "das",
-        "examples": ["Ich fahre mit dem Auto.", "Das Auto ist rot."]
+        "examples": [
+          "Ich fahre mit dem Auto.",
+          "Das Auto ist rot."
+        ]
       },
       {
         "german": "Bus",
         "english": "bus",
         "article": "der",
-        "examples": ["Der Bus kommt um zehn Uhr.", "Wir nehmen den Bus."]
+        "examples": [
+          "Der Bus kommt um zehn Uhr.",
+          "Wir nehmen den Bus."
+        ]
       },
       {
         "german": "Zug",
@@ -3644,19 +4707,28 @@
         "german": "Fahrrad",
         "english": "bicycle",
         "article": "das",
-        "examples": ["Ich fahre gern Fahrrad.", "Das Fahrrad ist neu."]
+        "examples": [
+          "Ich fahre gern Fahrrad.",
+          "Das Fahrrad ist neu."
+        ]
       },
       {
         "german": "Motorrad",
         "english": "motorcycle",
         "article": "das",
-        "examples": ["Er fährt ein Motorrad.", "Das Motorrad ist laut."]
+        "examples": [
+          "Er fährt ein Motorrad.",
+          "Das Motorrad ist laut."
+        ]
       },
       {
         "german": "Taxi",
         "english": "taxi",
         "article": "das",
-        "examples": ["Wir nehmen ein Taxi.", "Das Taxi ist da."]
+        "examples": [
+          "Wir nehmen ein Taxi.",
+          "Das Taxi ist da."
+        ]
       },
       {
         "german": "Straßenbahn",
@@ -3680,7 +4752,10 @@
         "german": "U-Bahn",
         "english": "subway",
         "article": "die",
-        "examples": ["Die U-Bahn ist schnell.", "Wir fahren mit der U-Bahn."]
+        "examples": [
+          "Die U-Bahn ist schnell.",
+          "Wir fahren mit der U-Bahn."
+        ]
       }
     ]
   },
@@ -3691,19 +4766,28 @@
         "german": "Stadt",
         "english": "city",
         "article": "die",
-        "examples": ["Die Stadt ist groß.", "Wir erkunden die Stadt."]
+        "examples": [
+          "Die Stadt ist groß.",
+          "Wir erkunden die Stadt."
+        ]
       },
       {
         "german": "Bus",
         "english": "bus",
         "article": "der",
-        "examples": ["Der Bus kommt in fünf Minuten.", "Ich fahre mit dem Bus."]
+        "examples": [
+          "Der Bus kommt in fünf Minuten.",
+          "Ich fahre mit dem Bus."
+        ]
       },
       {
         "german": "Bahn",
         "english": "train",
         "article": "die",
-        "examples": ["Die Bahn ist verspätet.", "Wir reisen mit der Bahn."]
+        "examples": [
+          "Die Bahn ist verspätet.",
+          "Wir reisen mit der Bahn."
+        ]
       },
       {
         "german": "U-Bahn",
@@ -3745,7 +4829,10 @@
         "german": "Straße",
         "english": "street",
         "article": "die",
-        "examples": ["Die Straße ist belebt.", "Wir gehen die Straße entlang."]
+        "examples": [
+          "Die Straße ist belebt.",
+          "Wir gehen die Straße entlang."
+        ]
       },
       {
         "german": "Platz",
@@ -3787,7 +4874,10 @@
         "german": "Ampel",
         "english": "traffic light",
         "article": "die",
-        "examples": ["Die Ampel ist rot.", "Wir warten an der Ampel."]
+        "examples": [
+          "Die Ampel ist rot.",
+          "Wir warten an der Ampel."
+        ]
       },
       {
         "german": "Kreuzung",
@@ -3802,7 +4892,10 @@
         "german": "Weg",
         "english": "way/path",
         "article": "der",
-        "examples": ["Der Weg führt zum Park.", "Kennst du den Weg?"]
+        "examples": [
+          "Der Weg führt zum Park.",
+          "Kennst du den Weg?"
+        ]
       },
       {
         "german": "Touristeninformation",
@@ -3831,7 +4924,10 @@
         "german": "Deutsch",
         "english": "German",
         "article": null,
-        "examples": ["Ich lerne Deutsch.", "Deutsch ist nicht einfach."]
+        "examples": [
+          "Ich lerne Deutsch.",
+          "Deutsch ist nicht einfach."
+        ]
       },
       {
         "german": "Frankreich",
@@ -3873,7 +4969,10 @@
         "german": "Italien",
         "english": "Italy",
         "article": null,
-        "examples": ["Italien ist berühmt für Pizza.", "Er liebt Italien."]
+        "examples": [
+          "Italien ist berühmt für Pizza.",
+          "Er liebt Italien."
+        ]
       },
       {
         "german": "Italienisch",
@@ -3906,13 +5005,19 @@
         "german": "die USA",
         "english": "USA",
         "article": null,
-        "examples": ["Die USA sind ein großes Land.", "Sie reist in die USA."]
+        "examples": [
+          "Die USA sind ein großes Land.",
+          "Sie reist in die USA."
+        ]
       },
       {
         "german": "China",
         "english": "China",
         "article": null,
-        "examples": ["China hat viele Einwohner.", "Er arbeitet in China."]
+        "examples": [
+          "China hat viele Einwohner.",
+          "Er arbeitet in China."
+        ]
       },
       {
         "german": "Chinesisch",
@@ -3972,13 +5077,19 @@
         "german": "Türkisch",
         "english": "Turkish",
         "article": null,
-        "examples": ["Türkisch ist seine Muttersprache.", "Sie lernt Türkisch."]
+        "examples": [
+          "Türkisch ist seine Muttersprache.",
+          "Sie lernt Türkisch."
+        ]
       },
       {
         "german": "Marokko",
         "english": "Morocco",
         "article": null,
-        "examples": ["Marokko liegt in Nordafrika.", "Er kommt aus Marokko."]
+        "examples": [
+          "Marokko liegt in Nordafrika.",
+          "Er kommt aus Marokko."
+        ]
       },
       {
         "german": "Arabisch",
@@ -3993,7 +5104,10 @@
         "german": "Polen",
         "english": "Poland",
         "article": null,
-        "examples": ["Polen grenzt an Deutschland.", "Wir fahren nach Polen."]
+        "examples": [
+          "Polen grenzt an Deutschland.",
+          "Wir fahren nach Polen."
+        ]
       },
       {
         "german": "Polnisch",
@@ -4058,7 +5172,10 @@
         "german": "Europa",
         "english": "Europe",
         "article": null,
-        "examples": ["Europa hat viele Länder.", "Deutschland liegt in Europa."]
+        "examples": [
+          "Europa hat viele Länder.",
+          "Deutschland liegt in Europa."
+        ]
       },
       {
         "german": "Australien",
@@ -4087,7 +5204,10 @@
         "german": "Hobby",
         "english": "hobby",
         "article": "das",
-        "examples": ["Mein Hobby ist Fotografieren.", "Hast du ein Hobby?"]
+        "examples": [
+          "Mein Hobby ist Fotografieren.",
+          "Hast du ein Hobby?"
+        ]
       },
       {
         "german": "Freizeit",
@@ -4102,13 +5222,19 @@
         "german": "schwimmen",
         "english": "to swim",
         "article": null,
-        "examples": ["Ich gehe gern schwimmen.", "Kannst du schwimmen?"]
+        "examples": [
+          "Ich gehe gern schwimmen.",
+          "Kannst du schwimmen?"
+        ]
       },
       {
         "german": "lesen",
         "english": "to read",
         "article": null,
-        "examples": ["Sie liest ein Buch.", "Ich lese gern Romane."]
+        "examples": [
+          "Sie liest ein Buch.",
+          "Ich lese gern Romane."
+        ]
       },
       {
         "german": "spielen",
@@ -4132,13 +5258,19 @@
         "german": "ins Theater/ins Kino gehen",
         "english": "to go to the theater/cinema",
         "article": null,
-        "examples": ["Morgen gehen wir ins Kino.", "Sie geht gern ins Theater."]
+        "examples": [
+          "Morgen gehen wir ins Kino.",
+          "Sie geht gern ins Theater."
+        ]
       },
       {
         "german": "Oper",
         "english": "opera",
         "article": "die",
-        "examples": ["Die Oper beginnt um 19 Uhr.", "Er mag klassische Oper."]
+        "examples": [
+          "Die Oper beginnt um 19 Uhr.",
+          "Er mag klassische Oper."
+        ]
       },
       {
         "german": "Fernsehen schauen",
@@ -4153,7 +5285,10 @@
         "german": "Gitarre",
         "english": "guitar",
         "article": "die",
-        "examples": ["Er spielt Gitarre.", "Die Gitarre ist verstimmt."]
+        "examples": [
+          "Er spielt Gitarre.",
+          "Die Gitarre ist verstimmt."
+        ]
       },
       {
         "german": "Klavier",
@@ -4168,7 +5303,10 @@
         "german": "tanzen",
         "english": "to dance",
         "article": null,
-        "examples": ["Wir gehen heute Abend tanzen.", "Kannst du Salsa tanzen?"]
+        "examples": [
+          "Wir gehen heute Abend tanzen.",
+          "Kannst du Salsa tanzen?"
+        ]
       },
       {
         "german": "Musik hören",
@@ -4210,19 +5348,28 @@
         "german": "Sport",
         "english": "sport",
         "article": "der",
-        "examples": ["Sport ist gesund.", "Er treibt viel Sport."]
+        "examples": [
+          "Sport ist gesund.",
+          "Er treibt viel Sport."
+        ]
       },
       {
         "german": "Sport treiben",
         "english": "to do sports",
         "article": null,
-        "examples": ["Ich treibe regelmäßig Sport.", "Sie treibt keinen Sport."]
+        "examples": [
+          "Ich treibe regelmäßig Sport.",
+          "Sie treibt keinen Sport."
+        ]
       },
       {
         "german": "joggen",
         "english": "to jog",
         "article": null,
-        "examples": ["Er geht jeden Morgen joggen.", "Joggen hält fit."]
+        "examples": [
+          "Er geht jeden Morgen joggen.",
+          "Joggen hält fit."
+        ]
       },
       {
         "german": "Rad fahren",
@@ -4251,7 +5398,10 @@
         "german": "Kino",
         "english": "cinema",
         "article": "das",
-        "examples": ["Wir gehen ins Kino.", "Im Kino läuft ein neuer Film."]
+        "examples": [
+          "Wir gehen ins Kino.",
+          "Im Kino läuft ein neuer Film."
+        ]
       },
       {
         "german": "Theater",
@@ -4266,7 +5416,10 @@
         "german": "Oper",
         "english": "opera",
         "article": "die",
-        "examples": ["Die Oper ist ausverkauft.", "Er liebt die Oper."]
+        "examples": [
+          "Die Oper ist ausverkauft.",
+          "Er liebt die Oper."
+        ]
       },
       {
         "german": "Konzert",
@@ -4308,7 +5461,10 @@
         "german": "malen",
         "english": "to paint",
         "article": null,
-        "examples": ["Sie malt ein Bild.", "Er malt in seiner Freizeit."]
+        "examples": [
+          "Sie malt ein Bild.",
+          "Er malt in seiner Freizeit."
+        ]
       },
       {
         "german": "Fahrrad",
@@ -4323,13 +5479,19 @@
         "german": "klettern",
         "english": "to climb",
         "article": null,
-        "examples": ["Er klettert auf den Berg.", "Klettern ist sein Hobby."]
+        "examples": [
+          "Er klettert auf den Berg.",
+          "Klettern ist sein Hobby."
+        ]
       },
       {
         "german": "reiten",
         "english": "to ride a horse",
         "article": null,
-        "examples": ["Sie reitet jeden Samstag.", "Reiten macht ihr Spaß."]
+        "examples": [
+          "Sie reitet jeden Samstag.",
+          "Reiten macht ihr Spaß."
+        ]
       },
       {
         "german": "turnen",
@@ -4358,13 +5520,19 @@
         "german": "Spaß",
         "english": "fun",
         "article": "der",
-        "examples": ["Das Spiel macht Spaß.", "Wir hatten viel Spaß."]
+        "examples": [
+          "Das Spiel macht Spaß.",
+          "Wir hatten viel Spaß."
+        ]
       },
       {
         "german": "Spaß haben",
         "english": "to have fun",
         "article": null,
-        "examples": ["Wir werden heute Spaß haben.", "Habt ihr Spaß gehabt?"]
+        "examples": [
+          "Wir werden heute Spaß haben.",
+          "Habt ihr Spaß gehabt?"
+        ]
       },
       {
         "german": "sich entspannen",
@@ -4379,7 +5547,10 @@
         "german": "Spiel",
         "english": "game",
         "article": "das",
-        "examples": ["Das Spiel beginnt um 15 Uhr.", "Wir spielen ein Spiel."]
+        "examples": [
+          "Das Spiel beginnt um 15 Uhr.",
+          "Wir spielen ein Spiel."
+        ]
       },
       {
         "german": "gewinnen",
@@ -4426,7 +5597,10 @@
         "german": "Sport",
         "english": "sport",
         "article": "der",
-        "examples": ["Sport hält fit.", "Sie treibt viel Sport."]
+        "examples": [
+          "Sport hält fit.",
+          "Sie treibt viel Sport."
+        ]
       },
       {
         "german": "Fußball",
@@ -4468,13 +5642,19 @@
         "german": "Laufen",
         "english": "running",
         "article": "das",
-        "examples": ["Laufen stärkt das Herz.", "Sie geht morgens laufen."]
+        "examples": [
+          "Laufen stärkt das Herz.",
+          "Sie geht morgens laufen."
+        ]
       },
       {
         "german": "Radfahren",
         "english": "cycling",
         "article": "das",
-        "examples": ["Radfahren macht Spaß.", "Er liebt das Radfahren."]
+        "examples": [
+          "Radfahren macht Spaß.",
+          "Er liebt das Radfahren."
+        ]
       },
       {
         "german": "Triathlon",
@@ -4498,7 +5678,10 @@
         "german": "Yoga",
         "english": "yoga",
         "article": "das",
-        "examples": ["Yoga entspannt den Körper.", "Er macht täglich Yoga."]
+        "examples": [
+          "Yoga entspannt den Körper.",
+          "Er macht täglich Yoga."
+        ]
       },
       {
         "german": "Marathon",
@@ -4536,7 +5719,10 @@
         "german": "Malerei",
         "english": "painting",
         "article": "die",
-        "examples": ["Die Malerei ist abstrakt.", "Sie studiert Malerei."]
+        "examples": [
+          "Die Malerei ist abstrakt.",
+          "Sie studiert Malerei."
+        ]
       },
       {
         "german": "Künstler",
@@ -4560,13 +5746,19 @@
         "german": "Bild",
         "english": "picture",
         "article": "das",
-        "examples": ["Das Bild hängt an der Wand.", "Ich mag dieses Bild."]
+        "examples": [
+          "Das Bild hängt an der Wand.",
+          "Ich mag dieses Bild."
+        ]
       },
       {
         "german": "Farbe",
         "english": "color",
         "article": "die",
-        "examples": ["Die Farbe ist kräftig.", "Er mischt verschiedene Farben."]
+        "examples": [
+          "Die Farbe ist kräftig.",
+          "Er mischt verschiedene Farben."
+        ]
       },
       {
         "german": "Pinsel",
@@ -4581,7 +5773,10 @@
         "german": "malen",
         "english": "to paint",
         "article": null,
-        "examples": ["Sie malt ein Landschaftsbild.", "Er malt mit Öl."]
+        "examples": [
+          "Sie malt ein Landschaftsbild.",
+          "Er malt mit Öl."
+        ]
       },
       {
         "german": "zeichnen",
@@ -4610,13 +5805,19 @@
         "german": "Arzt",
         "english": "doctor",
         "article": "der",
-        "examples": ["Ich gehe zum Arzt.", "Der Arzt untersucht den Patienten."]
+        "examples": [
+          "Ich gehe zum Arzt.",
+          "Der Arzt untersucht den Patienten."
+        ]
       },
       {
         "german": "Krankenhaus",
         "english": "hospital",
         "article": "das",
-        "examples": ["Sie liegt im Krankenhaus.", "Das Krankenhaus ist groß."]
+        "examples": [
+          "Sie liegt im Krankenhaus.",
+          "Das Krankenhaus ist groß."
+        ]
       },
       {
         "german": "Apotheke",
@@ -4631,31 +5832,46 @@
         "german": "Medikament",
         "english": "medicine",
         "article": "das",
-        "examples": ["Ich nehme ein Medikament.", "Die Medikamente helfen."]
+        "examples": [
+          "Ich nehme ein Medikament.",
+          "Die Medikamente helfen."
+        ]
       },
       {
         "german": "Schmerz",
         "english": "pain",
         "article": "der",
-        "examples": ["Ich habe Kopfschmerzen.", "Der Schmerz ist stark."]
+        "examples": [
+          "Ich habe Kopfschmerzen.",
+          "Der Schmerz ist stark."
+        ]
       },
       {
         "german": "Fieber",
         "english": "fever",
         "article": "das",
-        "examples": ["Sie hat hohes Fieber.", "Das Fieber sinkt."]
+        "examples": [
+          "Sie hat hohes Fieber.",
+          "Das Fieber sinkt."
+        ]
       },
       {
         "german": "Husten",
         "english": "cough",
         "article": "der",
-        "examples": ["Er hat Husten.", "Der Husten ist trocken."]
+        "examples": [
+          "Er hat Husten.",
+          "Der Husten ist trocken."
+        ]
       },
       {
         "german": "Erkältung",
         "english": "cold",
         "article": "die",
-        "examples": ["Ich habe eine Erkältung.", "Die Erkältung geht vorbei."]
+        "examples": [
+          "Ich habe eine Erkältung.",
+          "Die Erkältung geht vorbei."
+        ]
       },
       {
         "german": "Gesundheit",
@@ -4684,25 +5900,37 @@
         "german": "Hilfe",
         "english": "help",
         "article": "die",
-        "examples": ["Ich brauche Hilfe!", "Kannst du mir helfen?"]
+        "examples": [
+          "Ich brauche Hilfe!",
+          "Kannst du mir helfen?"
+        ]
       },
       {
         "german": "Notfall",
         "english": "emergency",
         "article": "der",
-        "examples": ["Das ist ein Notfall.", "Im Notfall rufen Sie 112 an."]
+        "examples": [
+          "Das ist ein Notfall.",
+          "Im Notfall rufen Sie 112 an."
+        ]
       },
       {
         "german": "Unfall",
         "english": "accident",
         "article": "der",
-        "examples": ["Es gab einen Unfall.", "Der Unfall war schlimm."]
+        "examples": [
+          "Es gab einen Unfall.",
+          "Der Unfall war schlimm."
+        ]
       },
       {
         "german": "Arzt",
         "english": "doctor",
         "article": "der",
-        "examples": ["Ich muss zum Arzt.", "Der Arzt kommt sofort."]
+        "examples": [
+          "Ich muss zum Arzt.",
+          "Der Arzt kommt sofort."
+        ]
       },
       {
         "german": "Krankenwagen",
@@ -4717,7 +5945,10 @@
         "german": "Polizei",
         "english": "police",
         "article": "die",
-        "examples": ["Ich rufe die Polizei.", "Die Polizei ist schnell da."]
+        "examples": [
+          "Ich rufe die Polizei.",
+          "Die Polizei ist schnell da."
+        ]
       },
       {
         "german": "Feuerwehr",
@@ -4732,7 +5963,10 @@
         "german": "Feuer",
         "english": "fire",
         "article": "das",
-        "examples": ["Es brennt! Feuer!", "Das Feuer ist gefährlich."]
+        "examples": [
+          "Es brennt! Feuer!",
+          "Das Feuer ist gefährlich."
+        ]
       },
       {
         "german": "Verletzung",
@@ -4779,19 +6013,28 @@
         "german": "Baum",
         "english": "tree",
         "article": "der",
-        "examples": ["Der Baum ist hoch.", "Im Wald gibt es viele Bäume."]
+        "examples": [
+          "Der Baum ist hoch.",
+          "Im Wald gibt es viele Bäume."
+        ]
       },
       {
         "german": "Blume",
         "english": "flower",
         "article": "die",
-        "examples": ["Die Blume duftet gut.", "Er schenkt ihr Blumen."]
+        "examples": [
+          "Die Blume duftet gut.",
+          "Er schenkt ihr Blumen."
+        ]
       },
       {
         "german": "Berg",
         "english": "mountain",
         "article": "der",
-        "examples": ["Der Berg ist schneebedeckt.", "Wir wandern auf den Berg."]
+        "examples": [
+          "Der Berg ist schneebedeckt.",
+          "Wir wandern auf den Berg."
+        ]
       },
       {
         "german": "Fluss",
@@ -4806,37 +6049,55 @@
         "german": "Meer",
         "english": "sea",
         "article": "das",
-        "examples": ["Das Meer ist blau.", "Wir machen Urlaub am Meer."]
+        "examples": [
+          "Das Meer ist blau.",
+          "Wir machen Urlaub am Meer."
+        ]
       },
       {
         "german": "Wald",
         "english": "forest",
         "article": "der",
-        "examples": ["Im Wald ist es ruhig.", "Wir gehen im Wald spazieren."]
+        "examples": [
+          "Im Wald ist es ruhig.",
+          "Wir gehen im Wald spazieren."
+        ]
       },
       {
         "german": "See",
         "english": "lake",
         "article": "der",
-        "examples": ["Der See ist tief.", "Wir schwimmen im See."]
+        "examples": [
+          "Der See ist tief.",
+          "Wir schwimmen im See."
+        ]
       },
       {
         "german": "Hügel",
         "english": "hill",
         "article": "der",
-        "examples": ["Der Hügel ist grün.", "Wir steigen auf den Hügel."]
+        "examples": [
+          "Der Hügel ist grün.",
+          "Wir steigen auf den Hügel."
+        ]
       },
       {
         "german": "Sonne",
         "english": "sun",
         "article": "die",
-        "examples": ["Die Sonne scheint.", "Es ist warm in der Sonne."]
+        "examples": [
+          "Die Sonne scheint.",
+          "Es ist warm in der Sonne."
+        ]
       },
       {
         "german": "Mond",
         "english": "moon",
         "article": "der",
-        "examples": ["Der Mond ist hell.", "Wir sehen den Vollmond."]
+        "examples": [
+          "Der Mond ist hell.",
+          "Wir sehen den Vollmond."
+        ]
       }
     ]
   },
@@ -4856,13 +6117,19 @@
         "german": "Sonne",
         "english": "sun",
         "article": "die",
-        "examples": ["Die Sonne scheint.", "Die Sonne geht im Westen unter."]
+        "examples": [
+          "Die Sonne scheint.",
+          "Die Sonne geht im Westen unter."
+        ]
       },
       {
         "german": "Regen",
         "english": "rain",
         "article": "der",
-        "examples": ["Es gibt heute viel Regen.", "Ich mag den Regen."]
+        "examples": [
+          "Es gibt heute viel Regen.",
+          "Ich mag den Regen."
+        ]
       },
       {
         "german": "Schnee",
@@ -4877,13 +6144,19 @@
         "german": "Wind",
         "english": "wind",
         "article": "der",
-        "examples": ["Der Wind ist kalt.", "Heute ist es sehr windig."]
+        "examples": [
+          "Der Wind ist kalt.",
+          "Heute ist es sehr windig."
+        ]
       },
       {
         "german": "Wolke",
         "english": "cloud",
         "article": "die",
-        "examples": ["Der Himmel ist voller Wolken.", "Die Wolken sind grau."]
+        "examples": [
+          "Der Himmel ist voller Wolken.",
+          "Die Wolken sind grau."
+        ]
       },
       {
         "german": "Temperatur",
@@ -4898,19 +6171,28 @@
         "german": "kalt",
         "english": "cold",
         "article": null,
-        "examples": ["Es ist kalt draußen.", "Mir ist kalt."]
+        "examples": [
+          "Es ist kalt draußen.",
+          "Mir ist kalt."
+        ]
       },
       {
         "german": "warm",
         "english": "warm",
         "article": null,
-        "examples": ["Heute ist es warm.", "Das Wasser ist warm."]
+        "examples": [
+          "Heute ist es warm.",
+          "Das Wasser ist warm."
+        ]
       },
       {
         "german": "heiß",
         "english": "hot",
         "article": null,
-        "examples": ["Im Sommer ist es heiß.", "Der Tee ist heiß."]
+        "examples": [
+          "Im Sommer ist es heiß.",
+          "Der Tee ist heiß."
+        ]
       },
       {
         "german": "Gewitter",
@@ -4925,7 +6207,10 @@
         "german": "Nebel",
         "english": "fog",
         "article": "der",
-        "examples": ["Der Nebel ist dicht.", "Im Herbst gibt es oft Nebel."]
+        "examples": [
+          "Der Nebel ist dicht.",
+          "Im Herbst gibt es oft Nebel."
+        ]
       }
     ]
   },
@@ -4936,7 +6221,10 @@
         "german": "kaufen",
         "english": "to buy",
         "article": null,
-        "examples": ["Ich kaufe ein Buch.", "Wir kaufen Lebensmittel ein."]
+        "examples": [
+          "Ich kaufe ein Buch.",
+          "Wir kaufen Lebensmittel ein."
+        ]
       },
       {
         "german": "Verkäufer",
@@ -4960,7 +6248,10 @@
         "german": "Supermarkt",
         "english": "supermarket",
         "article": "der",
-        "examples": ["Ich gehe zum Supermarkt.", "Der Supermarkt ist groß."]
+        "examples": [
+          "Ich gehe zum Supermarkt.",
+          "Der Supermarkt ist groß."
+        ]
       },
       {
         "german": "Markt",
@@ -4975,7 +6266,10 @@
         "german": "Preis",
         "english": "price",
         "article": "der",
-        "examples": ["Der Preis ist zu hoch.", "Wie ist der Preis?"]
+        "examples": [
+          "Der Preis ist zu hoch.",
+          "Wie ist der Preis?"
+        ]
       },
       {
         "german": "Kasse",
@@ -5058,7 +6352,10 @@
         "german": "Freund",
         "english": "friend (male)",
         "article": "der",
-        "examples": ["Er ist mein bester Freund.", "Ich treffe meinen Freund."]
+        "examples": [
+          "Er ist mein bester Freund.",
+          "Ich treffe meinen Freund."
+        ]
       },
       {
         "german": "Freundin",
@@ -5163,7 +6460,10 @@
         "german": "Liebe",
         "english": "love",
         "article": "die",
-        "examples": ["Liebe ist wichtig.", "Sie sind verliebt."]
+        "examples": [
+          "Liebe ist wichtig.",
+          "Sie sind verliebt."
+        ]
       },
       {
         "german": "Hochzeit",
@@ -5201,7 +6501,10 @@
         "german": "Computer",
         "english": "computer",
         "article": "der",
-        "examples": ["Der Computer ist neu.", "Ich arbeite am Computer."]
+        "examples": [
+          "Der Computer ist neu.",
+          "Ich arbeite am Computer."
+        ]
       },
       {
         "german": "Laptop",
@@ -5383,19 +6686,28 @@
         "german": "Hund",
         "english": "dog",
         "article": "der",
-        "examples": ["Der Hund bellt.", "Sie hat einen Hund als Haustier."]
+        "examples": [
+          "Der Hund bellt.",
+          "Sie hat einen Hund als Haustier."
+        ]
       },
       {
         "german": "Katze",
         "english": "cat",
         "article": "die",
-        "examples": ["Die Katze schnurrt.", "Er liebt seine Katze."]
+        "examples": [
+          "Die Katze schnurrt.",
+          "Er liebt seine Katze."
+        ]
       },
       {
         "german": "Vogel",
         "english": "bird",
         "article": "der",
-        "examples": ["Der Vogel singt.", "Wir füttern die Vögel."]
+        "examples": [
+          "Der Vogel singt.",
+          "Wir füttern die Vögel."
+        ]
       },
       {
         "german": "Fisch",
@@ -5410,13 +6722,19 @@
         "german": "Pferd",
         "english": "horse",
         "article": "das",
-        "examples": ["Sie reitet ein Pferd.", "Das Pferd ist schnell."]
+        "examples": [
+          "Sie reitet ein Pferd.",
+          "Das Pferd ist schnell."
+        ]
       },
       {
         "german": "Kuh",
         "english": "cow",
         "article": "die",
-        "examples": ["Die Kuh gibt Milch.", "Auf dem Bauernhof gibt es Kühe."]
+        "examples": [
+          "Die Kuh gibt Milch.",
+          "Auf dem Bauernhof gibt es Kühe."
+        ]
       },
       {
         "german": "Schaf",
@@ -5431,13 +6749,19 @@
         "german": "Huhn",
         "english": "chicken",
         "article": "das",
-        "examples": ["Das Huhn legt Eier.", "Wir haben ein Huhn im Garten."]
+        "examples": [
+          "Das Huhn legt Eier.",
+          "Wir haben ein Huhn im Garten."
+        ]
       },
       {
         "german": "Schwein",
         "english": "pig",
         "article": "das",
-        "examples": ["Das Schwein ist rosa.", "Schweine sind intelligent."]
+        "examples": [
+          "Das Schwein ist rosa.",
+          "Schweine sind intelligent."
+        ]
       },
       {
         "german": "Kaninchen",
@@ -5827,19 +7151,28 @@
         "german": "Adresse",
         "english": "address",
         "article": "die",
-        "examples": ["Wie ist Ihre Adresse?", "Ich schreibe die Adresse auf."]
+        "examples": [
+          "Wie ist Ihre Adresse?",
+          "Ich schreibe die Adresse auf."
+        ]
       },
       {
         "german": "alle",
         "english": "all",
         "article": null,
-        "examples": ["Alle sind gekommen.", "Ich habe alle Bücher gelesen."]
+        "examples": [
+          "Alle sind gekommen.",
+          "Ich habe alle Bücher gelesen."
+        ]
       },
       {
         "german": "alt",
         "english": "old",
         "article": null,
-        "examples": ["Wie alt bist du?", "Das Haus ist sehr alt."]
+        "examples": [
+          "Wie alt bist du?",
+          "Das Haus ist sehr alt."
+        ]
       },
       {
         "german": "anbieten",
@@ -5881,7 +7214,10 @@
         "german": "Auto",
         "english": "car",
         "article": "das",
-        "examples": ["Er fährt ein neues Auto.", "Das Auto ist rot."]
+        "examples": [
+          "Er fährt ein neues Auto.",
+          "Das Auto ist rot."
+        ]
       },
       {
         "german": "Zahl",
@@ -5941,7 +7277,10 @@
         "german": "Freund",
         "english": "friend (male)",
         "article": "der",
-        "examples": ["Mein Freund heißt Thomas.", "Er ist ein guter Freund."]
+        "examples": [
+          "Mein Freund heißt Thomas.",
+          "Er ist ein guter Freund."
+        ]
       },
       {
         "german": "Freundin",
@@ -5956,7 +7295,10 @@
         "german": "Tag",
         "english": "day",
         "article": "der",
-        "examples": ["Heute ist ein schöner Tag.", "Der Tag beginnt früh."]
+        "examples": [
+          "Heute ist ein schöner Tag.",
+          "Der Tag beginnt früh."
+        ]
       },
       {
         "german": "Monat",
@@ -5980,19 +7322,28 @@
         "german": "Antwort",
         "english": "answer",
         "article": "die",
-        "examples": ["Ich kenne die Antwort nicht.", "Die Antwort ist richtig."]
+        "examples": [
+          "Ich kenne die Antwort nicht.",
+          "Die Antwort ist richtig."
+        ]
       },
       {
         "german": "Frage",
         "english": "question",
         "article": "die",
-        "examples": ["Hast du eine Frage?", "Die Frage ist schwierig."]
+        "examples": [
+          "Hast du eine Frage?",
+          "Die Frage ist schwierig."
+        ]
       },
       {
         "german": "Zeit",
         "english": "time",
         "article": "die",
-        "examples": ["Ich habe heute keine Zeit.", "Die Zeit vergeht schnell."]
+        "examples": [
+          "Ich habe heute keine Zeit.",
+          "Die Zeit vergeht schnell."
+        ]
       },
       {
         "german": "Termin",
