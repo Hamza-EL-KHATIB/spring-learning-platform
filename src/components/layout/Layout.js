@@ -7,12 +7,13 @@ import Sidebar from './Sidebar';
 const Layout = ({ children }) => {
     const location = useLocation();
     const isHomePage = location.pathname === '/';
+    const isVocabulary = location.pathname === '/vocabulary';
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-900">
             <Header />
             <main className="flex-grow container mx-auto px-4 py-8">
-                {isHomePage ? (
+                {isHomePage || isVocabulary ? (
                     children
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
