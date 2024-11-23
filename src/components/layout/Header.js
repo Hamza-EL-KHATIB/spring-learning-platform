@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Github, Menu, X } from "lucide-react";
+import { Github, Menu, X, BookOpen } from "lucide-react";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -32,15 +32,28 @@ const Header = () => {
                             Architecture
                         </Link>
 
-                        {/* Github Link */}
-                        <a
-                            href="https://github.com/Hamza-EL-KHATIB/spring-learning-platform"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-white transition-colors"
-                        >
-                            <Github className="w-6 h-6" />
-                        </a>
+                        {/* Utility Links */}
+                        <div className="flex items-center space-x-4 pl-2 border-l border-gray-700">
+                            {/* German Vocabulary Link */}
+                            <Link
+                                to="/vocabulary"
+                                className="text-gray-400 hover:text-white transition-colors"
+                                title="German A1 Vocabulary"
+                            >
+                                <BookOpen className="w-6 h-6" />
+                            </Link>
+
+                            {/* Github Link */}
+                            <a
+                                href="https://github.com/Hamza-EL-KHATIB/spring-learning-platform"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-400 hover:text-white transition-colors"
+                                title="GitHub Repository"
+                            >
+                                <Github className="w-6 h-6" />
+                            </a>
+                        </div>
                     </div>
 
                     {/* Mobile menu button */}
@@ -85,17 +98,31 @@ const Header = () => {
                         >
                             Architecture
                         </Link>
-                        <a
-                            href="https://github.com/Hamza-EL-KHATIB/spring-learning-platform"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block py-2 text-gray-400 hover:text-white transition-colors"
-                        >
-                            <div className="flex items-center space-x-2">
-                                <Github className="w-5 h-5" />
-                                <span>GitHub</span>
-                            </div>
-                        </a>
+
+                        {/* Utility Links for Mobile */}
+                        <div className="pt-2 mt-2 border-t border-gray-700">
+                            <Link
+                                to="/vocabulary"
+                                className="block py-2 text-gray-400 hover:text-white transition-colors"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                <div className="flex items-center space-x-2">
+                                    <BookOpen className="w-5 h-5" />
+                                    <span>German Vocabulary</span>
+                                </div>
+                            </Link>
+                            <a
+                                href="https://github.com/Hamza-EL-KHATIB/spring-learning-platform"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block py-2 text-gray-400 hover:text-white transition-colors"
+                            >
+                                <div className="flex items-center space-x-2">
+                                    <Github className="w-5 h-5" />
+                                    <span>GitHub</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 )}
             </div>

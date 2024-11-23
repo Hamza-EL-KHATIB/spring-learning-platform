@@ -35,12 +35,16 @@ import GitPage from './pages/topics/devops/GitPage';
 // Agile imports
 import ScrumPage from './pages/topics/agile/ScrumPage';
 
+import VocabularyPage from './pages/VocabularyPage';
+
 const App = () => {
     return (
         <Router>
             <Layout>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
+
+                    <Route path="/vocabulary" element={<VocabularyPage />} />
 
                     {/* Java Routes */}
                     <Route path="/java/collections" element={<CollectionsPage />} />
