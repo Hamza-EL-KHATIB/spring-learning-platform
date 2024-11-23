@@ -1,0 +1,20 @@
+/* VocabularyPage.css */
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #2a2a2a; /* Dark gray track to blend with the background */
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(128, 90, 213, 0.6); /* Purple with transparency */
+    border-radius: 10px;
+    border: 2px solid #2a2a2a; /* Adds space around the thumb for a softer look */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 90, 213, 0.9); /* Darker on hover */
+}

@@ -1,147 +1,171 @@
 import React, { useState } from 'react';
-import { Search, ChevronDown, ChevronRight } from 'lucide-react';
+import { Search, ChevronRight, Eye, EyeOff, X } from 'lucide-react';
 import vocabularyData from '../data/german/a1.json';
+import './VocabularyPage.css';
 
 const VocabularyPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [expandedCategory, setExpandedCategory] = useState(null);
-    const [expandedExamples, setExpandedExamples] = useState({});
+    const [activeCategory, setActiveCategory] = useState(0);
+    const [showEnglish, setShowEnglish] = useState(true);
+    const [selectedWord, setSelectedWord] = useState(null);
 
-    // Toggle examples for a specific word
-    const toggleExamples = (categoryIndex, wordIndex) => {
-        const key = `${categoryIndex}-${wordIndex}`;
-        setExpandedExamples(prev => ({
-            ...prev,
-            [key]: !prev[key]
-        }));
-    };
-
-    // Filter vocabulary based on search term
-    const getFilteredCategories = () => {
-        if (!searchTerm) return vocabularyData;
-
-        return vocabularyData.map(category => ({
+    const filteredData = !searchTerm
+        ? vocabularyData
+        : vocabularyData.map(category => ({
             ...category,
             words: category.words.filter(word =>
                 word.german.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 word.english.toLowerCase().includes(searchTerm.toLowerCase())
             )
         })).filter(category => category.words.length > 0);
-    };
 
-    const filteredCategories = getFilteredCategories();
-    const totalWords = vocabularyData.reduce((sum, category) => sum + category.words.length, 0);
-    const filteredWords = filteredCategories.reduce((sum, category) => sum + category.words.length, 0);
+    const closeModal = () => setSelectedWord(null);
 
     return (
-        <div className="min-h-screen bg-gray-900 py-8">
-            <div className="container mx-auto px-4">
-                {/* Header with Stats */}
-                <div className="mb-6 text-center">
-                    <h1 className="text-2xl font-bold text-white mb-2">German A1 Vocabulary</h1>
-                    <p className="text-gray-400">
-                        {totalWords} words in {vocabularyData.length} categories
-                    </p>
-                </div>
+        <div className="h-screen bg-gray-900">
+            <div className="container mx-auto px-4 py-8 h-full">
+                {/* Header */}
+                <div className="max-w-4xl mx-auto mb-8">
+                    <div className="flex items-center justify-between mb-6">
+                        <h1 className="text-3xl font-bold text-white">German A1 Vocabulary</h1>
+                        <button
+                            onClick={() => setShowEnglish(!showEnglish)}
+                            className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
+                        >
+                            {showEnglish ? (
+                                <><Eye className="w-5 h-5" /><span>Hide English</span></>
+                            ) : (
+                                <><EyeOff className="w-5 h-5" /><span>Show English</span></>
+                            )}
+                        </button>
+                    </div>
 
-                {/* Search Bar */}
-                <div className="max-w-3xl mx-auto mb-6">
+                    {/* Search Bar */}
                     <div className="relative">
                         <input
                             type="text"
-                            placeholder="Search words in German or English..."
+                            placeholder="Type to search words..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-300 focus:outline-none focus:border-purple-500 pl-10"
+                            className="w-full px-5 py-3 bg-gray-800 border-2 border-gray-700 rounded-lg text-gray-300 focus:outline-none focus:border-purple-500 pl-12"
                         />
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" />
-                        {searchTerm && (
-                            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-400">
-                                {filteredWords} results
-                            </div>
-                        )}
+                        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
                     </div>
                 </div>
 
-                {/* Vocabulary List */}
-                <div className="max-w-3xl mx-auto space-y-4">
-                    {filteredCategories.map((category, categoryIndex) => (
-                        <div key={categoryIndex} className="bg-gray-800 rounded-lg border border-gray-700">
-                            {/* Category Header */}
-                            <button
-                                onClick={() => setExpandedCategory(expandedCategory === categoryIndex ? null : categoryIndex)}
-                                className="w-full px-4 py-3 flex items-center justify-between text-left hover:bg-gray-700/50 rounded-lg"
-                            >
-                                <div className="flex items-center justify-between w-full">
-                                    <div>
-                                        <h2 className="text-lg font-semibold text-purple-400">{category.title}</h2>
-                                    </div>
-                                    <div className="flex items-center space-x-3">
-                    <span className="text-sm bg-purple-500/20 text-purple-300 px-2 py-1 rounded">
-                      {category.words.length} words
-                    </span>
-                                        <ChevronDown
-                                            className={`w-5 h-5 text-purple-400 transform transition-transform ${
-                                                expandedCategory === categoryIndex ? 'rotate-180' : ''
-                                            }`}
-                                        />
-                                    </div>
-                                </div>
-                            </button>
+                {/* Main Content */}
+                <div className="max-w-4xl mx-auto flex h-[calc(100%-5rem)]">
+                    {/* Categories Sidebar */}
+                    {!searchTerm && (
+                        <div className="w-64 pr-8 mr-6 overflow-y-auto h-full custom-scrollbar"> {/* Adjusted pr and added mr */}
+                            <div className="space-y-2">
+                                {vocabularyData.map((category, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setActiveCategory(index)}
+                                        className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                                            activeCategory === index
+                                                ? 'bg-purple-500/20 text-purple-400'
+                                                : 'text-gray-400 hover:bg-gray-800'
+                                        }`}
+                                    >
+                                        <div className="flex justify-between items-center">
+                                            <span>{category.title}</span>
+                                            <span className="text-sm opacity-75">{category.words.length}</span>
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
-                            {/* Words List */}
-                            <div className={`px-4 pb-4 ${expandedCategory === categoryIndex ? 'block' : 'hidden'}`}>
-                                <div className="space-y-2">
-                                    {category.words.map((word, wordIndex) => {
-                                        const exampleKey = `${categoryIndex}-${wordIndex}`;
-                                        const isExamplesExpanded = expandedExamples[exampleKey];
-
-                                        return (
-                                            <div key={wordIndex} className="bg-gray-700/30 rounded-lg">
-                                                {/* Word Row */}
-                                                <button
-                                                    onClick={() => toggleExamples(categoryIndex, wordIndex)}
-                                                    className="w-full p-3 flex items-center justify-between text-left hover:bg-gray-700/50 rounded-lg"
-                                                >
-                                                    <div className="flex-1">
-                                                        <p className="text-white">
-                                                            {word.article && (
-                                                                <span className="text-purple-400 mr-1">{word.article}</span>
-                                                            )}
-                                                            {word.german}
-                                                        </p>
-                                                        <p className="text-gray-400 text-sm">{word.english}</p>
+                    {/* Words List */}
+                    <div className={`flex-1 overflow-y-auto h-full custom-scrollbar ${searchTerm ? 'w-full' : ''}`}>
+                        {(searchTerm ? filteredData : [vocabularyData[activeCategory]]).map((category, catIndex) => (
+                            <div key={catIndex} className="mb-8">
+                                <h2 className="text-xl font-semibold text-white mb-4">{category.title}</h2>
+                                <div className="space-y-3">
+                                    {category.words.map((word, wordIndex) => (
+                                        <button
+                                            key={wordIndex}
+                                            onClick={() => setSelectedWord(word)}
+                                            className="group bg-gradient-to-r from-blue-500/10 to-cyan-500/10 hover:from-blue-500/20 hover:to-cyan-500/20 rounded-lg p-4 transition-colors w-full text-left border border-blue-500/20"
+                                        >
+                                            <div className="flex items-start justify-between">
+                                                <div>
+                                                    <div className="flex items-center space-x-2">
+                                                        {word.article && (
+                                                            <span className="text-purple-400 text-sm">{word.article}</span>
+                                                        )}
+                                                        <span className="text-lg text-white">{word.german}</span>
                                                     </div>
-                                                    {word.examples && (
-                                                        <ChevronRight
-                                                            className={`w-4 h-4 text-gray-400 transform transition-transform ${
-                                                                isExamplesExpanded ? 'rotate-90' : ''
-                                                            }`}
-                                                        />
+                                                    {showEnglish && (
+                                                        <p className="text-gray-400 mt-1">{word.english}</p>
                                                     )}
-                                                </button>
-
-                                                {/* Examples Section */}
-                                                {isExamplesExpanded && word.examples && (
-                                                    <div className="px-3 pb-3 border-t border-gray-600/50">
-                                                        <div className="pt-2 space-y-1">
-                                                            {word.examples.map((example, exampleIndex) => (
-                                                                <p key={exampleIndex} className="text-sm text-gray-400">
-                                                                    • {example}
-                                                                </p>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                )}
+                                                </div>
+                                                <ChevronRight className="w-4 h-4 text-gray-600" />
                                             </div>
-                                        );
-                                    })}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Modal for Word Examples */}
+            {selectedWord && (
+                <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+                    <div className="bg-gray-900 rounded-2xl border border-gray-800 max-w-lg w-full">
+                        {/* Modal Header */}
+                        <div className="flex items-center justify-between p-6 border-b border-gray-800">
+                            <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-2">
+                                    {selectedWord.article && (
+                                        <span className="text-lg text-purple-400">{selectedWord.article}</span>
+                                    )}
+                                    <h2 className="text-xl font-bold text-white">{selectedWord.german}</h2>
+                                </div>
+                                <p className="text-gray-400">{selectedWord.english}</p>
+                            </div>
+                            <button
+                                onClick={closeModal}
+                                className="text-gray-500 hover:text-gray-400 transition-colors"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                        </div>
+
+                        {/* Modal Content */}
+                        <div className="p-6">
+                            <div className="space-y-4">
+                                <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider">Examples</h3>
+                                <div className="space-y-3">
+                                    {selectedWord.examples && selectedWord.examples.map((example, index) => (
+                                        <div
+                                            key={index}
+                                            className="group flex items-center justify-between bg-gray-800/50 rounded-lg p-4"
+                                        >
+                                            <span className="text-gray-300">{example}</span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
-                    ))}
+
+                        {/* Modal Footer */}
+                        <div className="flex justify-end px-6 py-4 border-t border-gray-800">
+                            <button
+                                onClick={closeModal}
+                                className="px-4 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 };
