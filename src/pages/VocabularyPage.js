@@ -8,6 +8,7 @@ const VocabularyPage = () => {
     const [activeCategory, setActiveCategory] = useState(0);
     const [showEnglish, setShowEnglish] = useState(true);
     const [selectedWord, setSelectedWord] = useState(null);
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
     const filteredData = !searchTerm
         ? vocabularyData
@@ -54,10 +55,20 @@ const VocabularyPage = () => {
                 </div>
 
                 {/* Main Content */}
-                <div className="max-w-4xl mx-auto flex h-[calc(100%-5rem)]">
+                <div className="max-w-4xl mx-auto flex flex-col md:flex-row h-[calc(100%-5rem)]">
                     {/* Categories Sidebar */}
                     {!searchTerm && (
-                        <div className="w-64 pr-8 mr-6 overflow-y-auto h-full custom-scrollbar"> {/* Adjusted pr and added mr */}
+                        <div className={`w-full md:w-64 pr-8 md:mr-6 overflow-y-auto h-full custom-scrollbar mb-6 md:mb-0 ${isSidebarCollapsed ? 'hidden' : ''}`}>
+                            <button
+                                onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+                                className="flex items-center text-gray-400 hover:text-white mb-4 md:hidden"
+                            >
+                                {isSidebarCollapsed ? (
+                                    <ChevronRight className="w-5 h-5" />
+                                ) : (
+                                    <ChevronRight className="w-5 h-5 rotate-180" />
+                                )}
+                            </button>
                             <div className="space-y-2">
                                 {vocabularyData.map((category, index) => (
                                     <button
@@ -79,17 +90,37 @@ const VocabularyPage = () => {
                         </div>
                     )}
 
+                    {/* Show Categories Button */}
+                    {isSidebarCollapsed && (
+                        <button
+                            onClick={() => setIsSidebarCollapsed(false)}
+                            className="text-gray-400 hover:text-white mb-4 md:hidden"
+                        >
+                            <ChevronRight className="w-5 h-5 rotate-180" />
+                        </button>
+                    )}
+
                     {/* Words List */}
                     <div className={`flex-1 overflow-y-auto h-full custom-scrollbar ${searchTerm ? 'w-full' : ''}`}>
                         {(searchTerm ? filteredData : [vocabularyData[activeCategory]]).map((category, catIndex) => (
                             <div key={catIndex} className="mb-8">
-                                <h2 className="text-xl font-semibold text-white mb-4">{category.title}</h2>
+                                <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
+                                    {!isSidebarCollapsed && (
+                                        <button
+                                            onClick={() => setIsSidebarCollapsed(true)}
+                                            className="text-gray-400 hover:text-white mr-2 md:hidden"
+                                        >
+                                            <ChevronRight className="w-5 h-5 rotate-180" />
+                                        </button>
+                                    )}
+                                    {category.title}
+                                </h2>
                                 <div className="space-y-3">
                                     {category.words.map((word, wordIndex) => (
                                         <button
                                             key={wordIndex}
                                             onClick={() => setSelectedWord(word)}
-                                            className="group bg-gradient-to-r from-blue-500/10 to-cyan-500/10 hover:from-blue-500/20 hover:to-cyan-500/20 rounded-lg p-4 transition-colors w-full text-left border border-blue-500/20"
+                                            className="group bg-gradient-to-r from-pink-500/10 to-rose-500/10 hover:from-pink-500/20 hover:to-rose-500/20 rounded-lg p-4 transition-colors w-full text-left border border-pink-500/20"
                                         >
                                             <div className="flex items-start justify-between">
                                                 <div>
