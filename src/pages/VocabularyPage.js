@@ -53,7 +53,14 @@ const CategorySidebar = ({
                                 >
                                     <BookOpen className="w-4 h-4 flex-shrink-0" />
                                     <div className="flex flex-1 items-center justify-between">
-                                        <span className="text-sm font-medium">{category.title}</span>
+                                        <div className="flex flex-col text-left">
+                    <span className="text-sm font-medium">
+                      {category.title.split('(')[0].trim()}
+                    </span>
+                                            <span className="text-xs text-gray-500">
+                      {category.title.includes('(') ? `(${category.title.split('(')[1]}` : ''}
+                    </span>
+                                        </div>
                                         <span className="text-xs px-2 py-1 rounded-full bg-gray-700/50">
                       {category.words.length}
                     </span>
@@ -162,9 +169,16 @@ const VocabularyPage = () => {
                         <div className="bg-gray-800/30 rounded-lg border border-gray-700/50 p-6">
                             {(searchTerm ? filteredData : [vocabularyData[activeCategory]]).map((category, catIndex) => (
                                 <div key={catIndex} className="mb-8 last:mb-0">
-                                    <h2 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 mb-4">
-                                        {category.title}
-                                    </h2>
+                                    <div className="flex flex-col gap-1 mb-4">
+                                        <h2 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                                            {category.title.split('(')[0].trim()}
+                                        </h2>
+                                        {category.title.includes('(') && (
+                                            <p className="text-sm text-gray-400 font-medium">
+                                                {`(${category.title.split('(')[1]}`}
+                                            </p>
+                                        )}
+                                    </div>
                                     <div className="grid gap-3">
                                         {category.words.map((word, wordIndex) => (
                                             <button
