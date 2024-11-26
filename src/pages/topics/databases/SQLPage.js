@@ -69,7 +69,6 @@ const DataTypeCard = ({ category }) => {
     );
 };
 
-
 const OperationCard = ({ operation }) => (
     <div className="bg-gray-800/40 rounded-lg border border-gray-700/50 p-6">
         <h3 className="text-xl font-semibold text-white mb-2">{operation.name}</h3>
@@ -181,28 +180,33 @@ const TransactionCard = ({ concept }) => (
         <h3 className="text-xl font-semibold text-white mb-4">{concept.name}</h3>
 
         {concept.properties && (
-            <ul className="space-y-2">
-                {concept.properties.map((property, propIdx) => (
-                    <li key={propIdx} className="flex items-start gap-2 text-gray-300">
-                        <span className="w-4 h-4 text-green-400 mt-1 flex-shrink-0">•</span>
-                        {property}
-                    </li>
-                ))}
-            </ul>
+            <div className="mb-4">
+                <h4 className="text-gray-200 font-medium mb-2">Properties:</h4>
+                <ul className="space-y-2">
+                    {concept.properties.map((property, propIdx) => (
+                        <li key={propIdx} className="flex items-start gap-2 text-gray-300">
+                            <span className="w-4 h-4 text-green-400 mt-1 flex-shrink-0">•</span>
+                            {property}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         )}
 
         {concept.commands && (
-            <ul className="space-y-2">
-                {concept.commands.map((command, cmdIdx) => (
-                    <li key={cmdIdx} className="text-gray-300">
-                        <strong>{command.name}:</strong> {command.description}
-                    </li>
-                ))}
-            </ul>
+            <div>
+                <h4 className="text-gray-200 font-medium mb-2">Commands:</h4>
+                <ul className="space-y-2">
+                    {concept.commands.map((command, cmdIdx) => (
+                        <li key={cmdIdx} className="text-gray-300">
+                            <strong className="text-purple-300">{command.name}:</strong> {command.description}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         )}
     </div>
 );
-
 
 const BestPracticesCard = ({ category }) => {
     // If category is undefined or missing 'practices', use default values.
@@ -260,41 +264,44 @@ const SQLPage = () => {
 
                             <div className="grid grid-cols-1 gap-6">
                                 {/* Basic Concepts */}
-                                {topic.concepts?.map((concept, idx) => (
-                                    <ConceptCard key={idx} concept={concept} />
+                                {topic.id === 'basic-concepts' && topic.concepts?.map((concept, idx) => (
+                                    <ConceptCard key={idx} concept={concept}/>
                                 ))}
 
-                                {Array.isArray(topic?.categories) && topic.categories.map((category, idx) => (
-                                    <DataTypeCard key={idx} category={category} />
+                                {/* Data Types */}
+                                {topic.id === 'data-types' && topic.categories?.map((category, idx) => (
+                                    <DataTypeCard key={idx} category={category}/>
                                 ))}
 
-
-                                {topic.operations?.map((operation, idx) => (
-                                    <OperationCard key={idx} operation={operation} />
+                                {/* Basic Operations */}
+                                {topic.id === 'basic-operations' && topic.operations?.map((operation, idx) => (
+                                    <OperationCard key={idx} operation={operation}/>
                                 ))}
 
-                                {topic.types?.map((join, idx) => (
-                                    <JoinCard key={idx} join={join} />
+                                {/* Joins */}
+                                {topic.id === 'joins' && topic.types?.map((join, idx) => (
+                                    <JoinCard key={idx} join={join}/>
                                 ))}
 
-                                {topic.features?.map((feature, idx) => (
-                                    <FeatureCard key={idx} feature={feature} />
+                                {/* Advanced Features */}
+                                {topic.id === 'advanced-queries' && topic.features?.map((feature, idx) => (
+                                    <FeatureCard key={idx} feature={feature}/>
                                 ))}
 
-                                {topic.techniques?.map((technique, idx) => (
-                                    <OptimizationCard key={idx} technique={technique} />
+                                {/* Optimization */}
+                                {topic.id === 'optimization' && topic.techniques?.map((technique, idx) => (
+                                    <OptimizationCard key={idx} technique={technique}/>
                                 ))}
 
-                                {/* Transaction Concepts */}
-                                {topic.concepts?.map((concept, idx) => (
-                                    <TransactionCard key={idx} concept={concept} />
+                                {/* Transactions */}
+                                {topic.id === 'transactions' && topic.concepts?.map((concept, idx) => (
+                                    <TransactionCard key={idx} concept={concept}/>
                                 ))}
 
-
-                                {topic.practices?.map((category, idx) => (
-                                    <BestPracticesCard key={idx} category={category} />
+                                {/* Best Practices */}
+                                {topic.id === 'best-practices' && topic.categories?.map((category, idx) => (
+                                    <BestPracticesCard key={idx} category={category}/>
                                 ))}
-
                             </div>
                         </div>
                     )
