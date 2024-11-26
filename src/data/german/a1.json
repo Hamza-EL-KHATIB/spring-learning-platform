@@ -4293,6 +4293,407 @@
     ]
   },
   {
+    "title": "Die Wegbeschreibung (Giving Directions)",
+    "words": [
+      {
+        "german": "geradeaus",
+        "english": "straight ahead",
+        "article": null,
+        "examples": [
+          "Gehen Sie geradeaus.",
+          "Fahren Sie geradeaus bis zur Ampel."
+        ]
+      },
+      {
+        "german": "links",
+        "english": "left",
+        "article": null,
+        "examples": [
+          "Biegen Sie links ab.",
+          "Gehen Sie nach links."
+        ]
+      },
+      {
+        "german": "rechts",
+        "english": "right",
+        "article": null,
+        "examples": [
+          "Biegen Sie rechts ab.",
+          "Gehen Sie nach rechts."
+        ]
+      },
+      {
+        "german": "die nächste",
+        "english": "the next",
+        "article": "die",
+        "examples": [
+          "Nehmen Sie die nächste Straße.",
+          "Die nächste Haltestelle ist Hauptbahnhof."
+        ]
+      },
+      {
+        "german": "die erste",
+        "english": "the first",
+        "article": "die",
+        "examples": [
+          "Nehmen Sie die erste Straße rechts.",
+          "Biegen Sie an der ersten Kreuzung links ab."
+        ]
+      },
+      {
+        "german": "die zweite",
+        "english": "the second",
+        "article": "die",
+        "examples": [
+          "Nehmen Sie die zweite Straße links.",
+          "Biegen Sie an der zweiten Ampel rechts ab."
+        ]
+      },
+      {
+        "german": "zurück",
+        "english": "back",
+        "article": null,
+        "examples": [
+          "Gehen Sie zurück.",
+          "Sie müssen zurückfahren."
+        ]
+      },
+      {
+        "german": "um die Ecke",
+        "english": "around the corner",
+        "article": null,
+        "examples": [
+          "Das Restaurant ist um die Ecke.",
+          "Gehen Sie um die Ecke, dann sehen Sie es."
+        ]
+      },
+      {
+        "german": "in der Nähe",
+        "english": "nearby",
+        "article": null,
+        "examples": [
+          "Die Bank ist in der Nähe.",
+          "Gibt es ein Café in der Nähe?"
+        ]
+      },
+      {
+        "german": "weit weg",
+        "english": "far away",
+        "article": null,
+        "examples": [
+          "Das Museum ist weit weg.",
+          "Ist es weit weg?"
+        ]
+      },
+      {
+        "german": "hier entlang",
+        "english": "this way",
+        "article": null,
+        "examples": [
+          "Kommen Sie hier entlang.",
+          "Hier entlang bitte."
+        ]
+      },
+      {
+        "german": "dort entlang",
+        "english": "that way",
+        "article": null,
+        "examples": [
+          "Gehen Sie dort entlang.",
+          "Dort entlang ist der Eingang."
+        ]
+      },
+      {
+        "german": "durch",
+        "english": "through",
+        "article": null,
+        "examples": [
+          "Gehen Sie durch den Park.",
+          "Fahren Sie durch den Tunnel."
+        ]
+      },
+      {
+        "german": "über",
+        "english": "over, across",
+        "article": null,
+        "examples": [
+          "Gehen Sie über die Brücke.",
+          "Überqueren Sie die Straße."
+        ]
+      },
+      {
+        "german": "bis zu",
+        "english": "until, up to",
+        "article": null,
+        "examples": [
+          "Gehen Sie bis zum Supermarkt.",
+          "Fahren Sie bis zur Kreuzung."
+        ]
+      },
+      {
+        "german": "entlang",
+        "english": "along",
+        "article": null,
+        "examples": [
+          "Gehen Sie die Straße entlang.",
+          "Spazieren Sie am Fluss entlang."
+        ]
+      },
+      {
+        "german": "vorbei an",
+        "english": "past",
+        "article": null,
+        "examples": [
+          "Gehen Sie vorbei an der Kirche.",
+          "Fahren Sie vorbei am Park."
+        ]
+      },
+      {
+        "german": "gegenüber von",
+        "english": "opposite of",
+        "article": null,
+        "examples": [
+          "Das Hotel ist gegenüber von der Bank.",
+          "Die Haltestelle ist gegenüber vom Museum."
+        ]
+      },
+      {
+        "german": "auf der linken Seite",
+        "english": "on the left side",
+        "article": null,
+        "examples": [
+          "Die Post ist auf der linken Seite.",
+          "Das Café befindet sich auf der linken Seite."
+        ]
+      },
+      {
+        "german": "auf der rechten Seite",
+        "english": "on the right side",
+        "article": null,
+        "examples": [
+          "Die Apotheke ist auf der rechten Seite.",
+          "Das Hotel ist auf der rechten Seite."
+        ]
+      },
+      {
+        "german": "in Richtung",
+        "english": "towards, in the direction of",
+        "article": null,
+        "examples": [
+          "Gehen Sie in Richtung Zentrum.",
+          "Fahren Sie in Richtung Norden."
+        ]
+      },
+      {
+        "german": "um ... herum",
+        "english": "around",
+        "article": null,
+        "examples": [
+          "Gehen Sie um den Park herum.",
+          "Fahren Sie um das Gebäude herum."
+        ]
+      },
+      {
+        "german": "weiter",
+        "english": "continue",
+        "article": null,
+        "examples": [
+          "Gehen Sie weiter geradeaus.",
+          "Fahren Sie weiter bis zur Ampel."
+        ]
+      },
+      {
+        "german": "an ... vorbei",
+        "english": "past",
+        "article": null,
+        "examples": [
+          "Gehen Sie an der Kirche vorbei.",
+          "Fahren Sie am Supermarkt vorbei."
+        ]
+      },
+      {
+        "german": "abbiegen",
+        "english": "to turn",
+        "article": null,
+        "examples": [
+          "Biegen Sie nach links ab.",
+          "An der Kreuzung müssen Sie abbiegen."
+        ]
+      },
+      {
+        "german": "überqueren",
+        "english": "to cross",
+        "article": null,
+        "examples": [
+          "Überqueren Sie die Straße.",
+          "Wir müssen den Fluss überqueren."
+        ]
+      },
+      {
+        "german": "Ampel",
+        "english": "traffic light",
+        "article": "die",
+        "examples": [
+          "Gehen Sie bis zur Ampel.",
+          "An der Ampel biegen Sie rechts ab."
+        ]
+      },
+      {
+        "german": "Kreuzung",
+        "english": "intersection",
+        "article": "die",
+        "examples": [
+          "An der Kreuzung biegen Sie links ab.",
+          "Die Kreuzung ist sehr belebt."
+        ]
+      },
+      {
+        "german": "Ecke",
+        "english": "corner",
+        "article": "die",
+        "examples": [
+          "Das Café ist an der Ecke.",
+          "Warten Sie an der Ecke."
+        ]
+      },
+      {
+        "german": "Straße",
+        "english": "street",
+        "article": "die",
+        "examples": [
+          "Gehen Sie die Straße entlang.",
+          "Die Straße ist sehr lang."
+        ]
+      },
+      {
+        "german": "Bushaltestelle",
+        "english": "bus stop",
+        "article": "die",
+        "examples": [
+          "Die Bushaltestelle ist gegenüber.",
+          "Wir treffen uns an der Bushaltestelle."
+        ]
+      },
+      {
+        "german": "U-Bahn-Station",
+        "english": "subway station",
+        "article": "die",
+        "examples": [
+          "Wo ist die nächste U-Bahn-Station?",
+          "Steigen Sie an der U-Bahn-Station Hauptbahnhof aus."
+        ]
+      },
+      {
+        "german": "nach vorne",
+        "english": "forward",
+        "article": null,
+        "examples": [
+          "Gehen Sie nach vorne.",
+          "Bitte treten Sie nach vorne."
+        ]
+      },
+      {
+        "german": "rückwärts",
+        "english": "backwards",
+        "article": null,
+        "examples": [
+          "Fahren Sie rückwärts.",
+          "Gehen Sie ein paar Schritte rückwärts."
+        ]
+      },
+      {
+        "german": "vorwärts",
+        "english": "forwards",
+        "article": null,
+        "examples": [
+          "Fahren Sie vorwärts.",
+          "Bewegen Sie sich vorwärts."
+        ]
+      },
+      {
+        "german": "bis",
+        "english": "until",
+        "article": null,
+        "examples": [
+          "Warten Sie hier bis ich zurückkomme.",
+          "Gehen Sie geradeaus bis zur Kreuzung."
+        ]
+      },
+      {
+        "german": "an der Ecke",
+        "english": "at the corner",
+        "article": null,
+        "examples": [
+          "Das Café ist an der Ecke.",
+          "Treffen wir uns an der Ecke."
+        ]
+      },
+      {
+        "german": "zwischen",
+        "english": "between",
+        "article": null,
+        "examples": [
+          "Die Bank ist zwischen der Post und dem Café.",
+          "Er sitzt zwischen seinen Freunden."
+        ]
+      },
+      {
+        "german": "vor",
+        "english": "in front of",
+        "article": null,
+        "examples": [
+          "Der Brunnen ist vor dem Rathaus.",
+          "Warte bitte vor dem Gebäude."
+        ]
+      },
+      {
+        "german": "hinter",
+        "english": "behind",
+        "article": null,
+        "examples": [
+          "Der Parkplatz ist hinter dem Gebäude.",
+          "Das Auto steht hinter dem Haus."
+        ]
+      },
+      {
+        "german": "innerhalb",
+        "english": "inside, within",
+        "article": null,
+        "examples": [
+          "Der Shop ist innerhalb des Einkaufszentrums.",
+          "Innerhalb einer Woche bekommen Sie Antwort."
+        ]
+      },
+      {
+        "german": "außerhalb",
+        "english": "outside of",
+        "article": null,
+        "examples": [
+          "Das Restaurant ist außerhalb der Stadt.",
+          "Sie wohnen außerhalb des Dorfes."
+        ]
+      },
+      {
+        "german": "oben",
+        "english": "upstairs, above",
+        "article": null,
+        "examples": [
+          "Das Büro ist oben.",
+          "Die Wohnung ist ganz oben."
+        ]
+      },
+      {
+        "german": "unten",
+        "english": "downstairs, below",
+        "article": null,
+        "examples": [
+          "Der Supermarkt ist unten.",
+          "Die Toilette ist unten."
+        ]
+      }
+    ]
+  },
+  {
     "title": "Länder und Sprachen (Countries and Languages)",
     "words": [
       {
@@ -6043,6 +6444,137 @@
         "english": "around/at",
         "article": null,
         "examples": ["Wir sitzen um den Tisch.", "Der Film beginnt um 20 Uhr."]
+      }
+    ]
+  },
+  {
+    "title": "Dativpräpositionen (Dative Prepositions)",
+    "words": [
+      {
+        "german": "aus",
+        "english": "out of, from",
+        "article": null,
+        "examples": [
+          "Ich komme aus dem Haus.",
+          "Er trinkt aus der Flasche."
+        ]
+      },
+      {
+        "german": "bei",
+        "english": "at, near, with",
+        "article": null,
+        "examples": [
+          "Ich bin bei meinem Freund.",
+          "Sie arbeitet bei der Firma Siemens."
+        ]
+      },
+      {
+        "german": "mit",
+        "english": "with",
+        "article": null,
+        "examples": [
+          "Ich fahre mit dem Bus.",
+          "Er kommt mit seiner Schwester."
+        ]
+      },
+      {
+        "german": "nach",
+        "english": "to, after",
+        "article": null,
+        "examples": [
+          "Ich fahre nach Berlin.",
+          "Nach dem Essen gehen wir spazieren."
+        ]
+      },
+      {
+        "german": "seit",
+        "english": "since, for",
+        "article": null,
+        "examples": [
+          "Ich wohne seit einem Jahr hier.",
+          "Sie lernt seit 2019 Deutsch."
+        ]
+      },
+      {
+        "german": "von",
+        "english": "from, of",
+        "article": null,
+        "examples": [
+          "Das Geschenk ist von meiner Mutter.",
+          "Er kommt gerade von der Arbeit."
+        ]
+      },
+      {
+        "german": "zu",
+        "english": "to, at",
+        "article": null,
+        "examples": [
+          "Ich gehe zum Arzt.",
+          "Wir fahren zur Schule."
+        ]
+      },
+      {
+        "german": "gegenüber",
+        "english": "across from, opposite",
+        "article": null,
+        "examples": [
+          "Das Café ist der Bank gegenüber.",
+          "Sie wohnt gegenüber vom Park."
+        ]
+      },
+      {
+        "german": "außer",
+        "english": "except for",
+        "article": null,
+        "examples": [
+          "Außer mir war niemand da.",
+          "Außer dem Chef weiß niemand Bescheid."
+        ]
+      },
+      {
+        "german": "dank",
+        "english": "thanks to",
+        "article": null,
+        "examples": [
+          "Dank deiner Hilfe habe ich es geschafft.",
+          "Dank dem guten Wetter machen wir ein Picknick."
+        ]
+      },
+      {
+        "german": "entgegen",
+        "english": "contrary to",
+        "article": null,
+        "examples": [
+          "Entgegen den Erwartungen war er pünktlich.",
+          "Entgegen meiner Meinung entschied er sich anders."
+        ]
+      },
+      {
+        "german": "entsprechend",
+        "english": "according to",
+        "article": null,
+        "examples": [
+          "Entsprechend dem Plan beginnen wir um 9 Uhr.",
+          "Entsprechend der Wettervorhersage wird es regnen."
+        ]
+      },
+      {
+        "german": "gemäß",
+        "english": "in accordance with",
+        "article": null,
+        "examples": [
+          "Gemäß den Regeln darf man hier nicht rauchen.",
+          "Gemäß seinem Wunsch bleiben wir zu Hause."
+        ]
+      },
+      {
+        "german": "zufolge",
+        "english": "according to",
+        "article": null,
+        "examples": [
+          "Dem Bericht zufolge ist alles in Ordnung.",
+          "Den Nachrichten zufolge gibt es Stau."
+        ]
       }
     ]
   },
