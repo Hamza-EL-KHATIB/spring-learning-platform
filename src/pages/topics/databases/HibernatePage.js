@@ -6,15 +6,15 @@ const HibernatePage = () => {
     const [activeTab, setActiveTab] = useState('core-concepts');
 
     const TabNavigation = () => (
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="mb-8 flex flex-wrap gap-4">
             {hibernateJson.topics.map((topic) => (
                 <button
                     key={topic.id}
                     onClick={() => setActiveTab(topic.id)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
                         activeTab === topic.id
-                            ? 'bg-purple-500 text-white'
-                            : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                            ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                            : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
                     }`}
                 >
                     {topic.title}
@@ -152,7 +152,6 @@ const HibernatePage = () => {
             ))}
         </div>
     );
-
     const renderFetchingStrategies = (strategies) => (
         <div className="space-y-8">
             {strategies.map((strategy, idx) => (
@@ -260,16 +259,17 @@ const HibernatePage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-900 p-6">
-            <div className="max-w-7xl mx-auto">
-                <h1 className="text-3xl font-bold text-white mb-8">{hibernateJson.title}</h1>
-
-                <TabNavigation />
-
-                <div className="space-y-6">
-                    {renderContent()}
-                </div>
+        <div className="min-h-screen bg-gray-900">
+            {/* Header */}
+            <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
+                <h1 className="text-3xl font-bold text-white mb-2">{hibernateJson.title}</h1>
             </div>
+
+            {/* Navigation */}
+            <TabNavigation />
+
+            {/* Content */}
+            <div className="space-y-8">{renderContent()}</div>
         </div>
     );
 };
