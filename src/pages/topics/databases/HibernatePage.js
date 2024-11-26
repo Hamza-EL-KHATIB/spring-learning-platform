@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Code, Database, Layers, Zap, Settings, BookOpen } from 'lucide-react';
 import hibernateJson from '../../../data/databases/hibernate.json';
 import CodeBlock from '../../../components/CodeBlock';
 
@@ -154,6 +153,86 @@ const HibernatePage = () => {
         </div>
     );
 
+    const renderFetchingStrategies = (strategies) => (
+        <div className="space-y-8">
+            {strategies.map((strategy, idx) => (
+                <div key={idx} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                    <h3 className="text-xl font-semibold text-purple-400 mb-4">{strategy.type}</h3>
+                    {strategy.options.map((option, optIdx) => (
+                        <div key={optIdx} className="bg-gray-900 rounded p-4 mb-4">
+                            <h4 className="text-lg font-medium text-purple-300">{option.name}</h4>
+                            <p className="text-gray-300">{option.description}</p>
+                            {option.characteristics && (
+                                <ul className="list-disc list-inside text-gray-300 space-y-1 mt-2">
+                                    {option.characteristics.map((char, charIdx) => (
+                                        <li key={charIdx}>{char}</li>
+                                    ))}
+                                </ul>
+                            )}
+                            {option.example && (
+                                <CodeBlock code={option.example.code} />
+                            )}
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </div>
+    );
+
+    const renderQueryMethods = (methods) => (
+        <div className="space-y-6">
+            {methods.map((method, idx) => (
+                <div key={idx} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                    <h3 className="text-xl font-semibold text-purple-400 mb-3">{method.name}</h3>
+                    <p className="text-gray-300 mb-4">{method.description}</p>
+                    {method.example && <CodeBlock code={method.example.code} />}
+                </div>
+            ))}
+        </div>
+    );
+
+    const renderPerformanceOptimization = (techniques) => (
+        <div className="space-y-8">
+            {techniques.map((technique, idx) => (
+                <div key={idx} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                    <h3 className="text-xl font-semibold text-purple-400 mb-4">{technique.category}</h3>
+                    {technique.methods && (
+                        <div className="space-y-4">
+                            {technique.methods.map((method, methodIdx) => (
+                                <div key={methodIdx} className="bg-gray-900 rounded p-4">
+                                    <h4 className="text-lg font-medium text-purple-300 mb-2">{method.name}</h4>
+                                    <CodeBlock code={method.example} />
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    {technique.recommendations && (
+                        <ul className="list-disc list-inside text-gray-300 space-y-1 mt-4">
+                            {technique.recommendations.map((rec, recIdx) => (
+                                <li key={recIdx}>{rec}</li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            ))}
+        </div>
+    );
+
+    const renderBestPractices = (categories) => (
+        <div className="space-y-8">
+            {categories.map((category, idx) => (
+                <div key={idx} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                    <h3 className="text-xl font-semibold text-purple-400 mb-4">{category.name}</h3>
+                    <ul className="list-disc list-inside text-gray-300 space-y-1">
+                        {category.practices.map((practice, pIdx) => (
+                            <li key={pIdx}>{practice}</li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
+        </div>
+    );
+
     const renderContent = () => {
         const topic = hibernateJson.topics.find(t => t.id === activeTab);
         if (!topic) return null;
@@ -167,6 +246,14 @@ const HibernatePage = () => {
                 return renderMappingAnnotations(topic.annotations);
             case 'caching':
                 return renderCachingLevels(topic.levels);
+            case 'fetching-strategies':
+                return renderFetchingStrategies(topic.strategies);
+            case 'query-methods':
+                return renderQueryMethods(topic.methods);
+            case 'performance-optimization':
+                return renderPerformanceOptimization(topic.techniques);
+            case 'best-practices':
+                return renderBestPractices(topic.categories);
             default:
                 return null;
         }
