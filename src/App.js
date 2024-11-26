@@ -37,6 +37,8 @@ import ScrumPage from './pages/topics/agile/ScrumPage';
 
 import VocabularyPage from './pages/VocabularyPage';
 
+import CodeReviewsPage from "./pages/topics/bestPractices/CodeReviewsPage";
+
 const App = () => {
     return (
         <Router>
@@ -76,6 +78,9 @@ const App = () => {
 
                     {/* Agile Routes */}
                     <Route path="/agile/scrum" element={<ScrumPage />} />
+
+                    {/* Best Practices Routes */}
+                    <Route path="/best-practices/code-reviews" element={<CodeReviewsPage />} />
 
                     {/* Fallback Route for any topic that doesn't need special handling */}
                     <Route path="/:section/:topic" element={<TopicPage />} />

@@ -69,6 +69,14 @@ const NavigationStructure = () => {
             subcategories: [
                 { id: 'scrum', title: 'Scrum Framework', path: '/agile/scrum' }
             ]
+        },
+        {
+            id: 'best-practices',
+            title: 'Best Practices',
+            icon: <Code className="w-6 h-6" />,
+            subcategories: [
+                { id: 'code-reviews', title: 'Code Reviews', path: '/best-practices/code-reviews' }
+            ]
         }
     ];
 
