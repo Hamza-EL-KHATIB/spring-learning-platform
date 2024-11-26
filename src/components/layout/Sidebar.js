@@ -75,6 +75,13 @@ const Sidebar = () => {
             items: [
                 { path: '/agile/scrum', title: 'Scrum' }
             ]
+        },
+        "best-practices": {
+            title: "Best Practices",
+            icon: <Code className="w-5 h-5" />,
+            items: [
+                { path: '/best-practices/code-reviews', title: 'Code Reviews' }
+            ]
         }
     };
 

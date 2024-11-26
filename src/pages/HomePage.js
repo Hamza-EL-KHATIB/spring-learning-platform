@@ -15,7 +15,7 @@ import {
     FileCode,
     XSquare,
     BookOpenCheck,
-    LayoutGrid
+    LayoutGrid, FileCheck
 } from 'lucide-react';
 
 const CategorySection = ({ title, items }) => (
@@ -86,6 +86,12 @@ const HomePage = () => {
             title: "Processes & Methodologies",
             items: [
                 { title: "Scrum Framework", path: "/agile/scrum", icon: Users, description: "Agile project management with Scrum" }
+            ]
+        },
+        bestPractices: {
+            title: "Best Practices",
+            items: [
+                { title: "Code Review", path: "/best-practices/code-reviews", icon: FileCheck, description: "Code review guidelines" }
             ]
         }
     };
