@@ -12,7 +12,7 @@ const Header = () => {
                     {/* Logo */}
                     <Link to="/" className="flex items-center">
                         <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
-                            Spring Learning
+                            HELK's Learning
                         </span>
                     </Link>
 
