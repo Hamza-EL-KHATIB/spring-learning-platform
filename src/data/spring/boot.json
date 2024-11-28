@@ -28,6 +28,41 @@
               "name": "@ConditionalOnWebApplication",
               "description": "Configuration for web applications",
               "example": "@ConditionalOnWebApplication(type = Type.SERVLET)"
+            },
+            {
+              "name": "@EnableAutoConfiguration",
+              "description": "Enables Spring Boot’s auto-configuration feature",
+              "example": "@EnableAutoConfiguration"
+            },
+            {
+              "name": "@Conditional",
+              "description": "Conditionally includes or excludes configuration based on conditions",
+              "example": "@Conditional(MyCondition.class)\n@Bean\npublic MyBean myBean() { return new MyBean(); }"
+            }
+          ]
+        },
+        {
+          "name": "Core Configuration Annotations",
+          "annotations": [
+            {
+              "name": "@SpringBootApplication",
+              "description": "Main entry point for Spring Boot applications; combines @Configuration, @EnableAutoConfiguration, and @ComponentScan",
+              "example": "@SpringBootApplication\npublic class Application {\n    public static void main(String[] args) {\n        SpringApplication.run(Application.class, args);\n    }\n}"
+            },
+            {
+              "name": "@SpringBootConfiguration",
+              "description": "Indicates a class provides Spring Boot application configurations",
+              "example": "@SpringBootConfiguration\npublic class AppConfig {}"
+            },
+            {
+              "name": "@ComponentScan",
+              "description": "Scans for components, configurations, and services in specified packages",
+              "example": "@ComponentScan(basePackages = \"com.example.app\")"
+            },
+            {
+              "name": "@Bean",
+              "description": "Declares a method produces a bean to be managed by Spring",
+              "example": "@Bean\npublic DataSource dataSource() {\n    return new DataSource();\n}"
             }
           ]
         },
@@ -82,6 +117,28 @@
               "method": "@Profile annotation",
               "example": "@Profile(\"dev\")\n@Configuration\npublic class DevConfig {}"
             }
+          ],
+          "annotations": [
+            {
+              "name": "@Profile",
+              "description": "Specifies that a component is eligible for registration when a specific profile is active",
+              "example": "@Profile(\"test\")\n@Bean\npublic DataSource testDataSource() { return new DataSource(); }"
+            }
+          ]
+        },
+        {
+          "name": "Property Annotations",
+          "annotations": [
+            {
+              "name": "@Value",
+              "description": "Injects values from property files or environment variables",
+              "example": "@Value(\"${app.name}\")\nprivate String appName;"
+            },
+            {
+              "name": "@PropertySource",
+              "description": "Specifies a properties file to load",
+              "example": "@PropertySource(\"classpath:extra.properties\")\npublic class ExtraConfig {}"
+            }
           ]
         }
       ]
@@ -98,6 +155,33 @@
             "Spring MVC",
             "Tomcat",
             "Jackson"
+          ],
+          "annotations": [
+            {
+              "name": "@Controller",
+              "description": "Defines a Spring MVC controller",
+              "example": "@Controller\npublic class HomeController {}"
+            },
+            {
+              "name": "@RestController",
+              "description": "Defines a RESTful controller; combines @Controller and @ResponseBody",
+              "example": "@RestController\npublic class ApiController {}"
+            },
+            {
+              "name": "@ResponseBody",
+              "description": "Indicates a method return value should be bound to the web response body",
+              "example": "@ResponseBody\n@GetMapping(\"/data\")\npublic String getData() { return \"data\"; }"
+            },
+            {
+              "name": "@PathVariable",
+              "description": "Binds a method parameter to a URI template variable",
+              "example": "@GetMapping(\"/users/{id}\")\npublic User getUser(@PathVariable Long id) { return userService.findById(id); }"
+            },
+            {
+              "name": "@RequestParam",
+              "description": "Binds a method parameter to a web request parameter",
+              "example": "@GetMapping(\"/search\")\npublic List<Item> search(@RequestParam String query) { return searchService.search(query); }"
+            }
           ]
         },
         {
@@ -107,6 +191,28 @@
             "Hibernate",
             "Spring Data JPA",
             "Spring Transaction"
+          ],
+          "annotations": [
+            {
+              "name": "@Repository",
+              "description": "Indicates a DAO component that interacts with the database",
+              "example": "@Repository\npublic interface UserRepository extends JpaRepository<User, Long> {}"
+            },
+            {
+              "name": "@Autowired",
+              "description": "Allows Spring to resolve and inject collaborating beans",
+              "example": "public class UserService {\n    @Autowired\n    private UserRepository userRepository;\n}"
+            },
+            {
+              "name": "@Qualifier",
+              "description": "Specifies which bean should be autowired when multiple candidates are available",
+              "example": "@Autowired\n@Qualifier(\"mainDataSource\")\nprivate DataSource dataSource;"
+            },
+            {
+              "name": "@Primary",
+              "description": "Indicates that a bean should be given preference when multiple beans are candidates",
+              "example": "@Primary\n@Bean\npublic DataSource primaryDataSource() { return new DataSource(); }"
+            }
           ]
         },
         {
@@ -124,6 +230,23 @@
             "JUnit",
             "Mockito",
             "Spring Test"
+          ],
+          "annotations": [
+            {
+              "name": "@SpringBootTest",
+              "description": "Used for integration testing of Spring Boot applications",
+              "example": "@SpringBootTest\npublic class ApplicationTests {}"
+            },
+            {
+              "name": "@DataJpaTest",
+              "description": "Used for testing JPA repositories",
+              "example": "@DataJpaTest\npublic class UserRepositoryTests {}"
+            },
+            {
+              "name": "@WebMvcTest",
+              "description": "Used for testing Spring MVC controllers",
+              "example": "@WebMvcTest\npublic class ControllerTests {}"
+            }
           ]
         }
       ]
@@ -189,6 +312,45 @@
             "dependency": "spring-boot-starter-undertow",
             "exclusions": ["spring-boot-starter-tomcat"]
           }
+        }
+      ]
+    },
+    {
+      "id": "scheduling",
+      "title": "Task Scheduling",
+      "description": "Scheduling tasks for periodic execution",
+      "annotations": [
+        {
+          "name": "@Scheduled",
+          "description": "Marks a method to be scheduled",
+          "example": "@Scheduled(fixedRate = 5000)\npublic void scheduledTask() { /* ... */ }"
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "title": "Spring Components",
+      "description": "Core stereotypes and component scanning",
+      "annotations": [
+        {
+          "name": "@Component",
+          "description": "Generic stereotype for any Spring-managed component",
+          "example": "@Component\npublic class MyComponent {}"
+        },
+        {
+          "name": "@Service",
+          "description": "Specialization of @Component for service layer",
+          "example": "@Service\npublic class MyService {}"
+        },
+        {
+          "name": "@Controller",
+          "description": "Specialization of @Component for presentation layer (MVC)",
+          "example": "@Controller\npublic class MyController {}"
+        },
+        {
+          "name": "@Repository",
+          "description": "Specialization of @Component for data access layer",
+          "example": "@Repository\npublic class MyRepository {}"
         }
       ]
     }

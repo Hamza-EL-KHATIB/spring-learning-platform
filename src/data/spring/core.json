@@ -69,24 +69,57 @@
       "description": "Lifecycle of Spring-managed beans from creation to destruction",
       "phases": [
         {
-          "phase": "Instantiation",
-          "description": "Bean instance is created",
+          "phase": "Bean Definitions Declared",
+          "description": "Bean definitions are declared using XML, annotations, package scanning, or Groovy configuration.",
           "events": [
-            "Constructor called",
-            "Instance created"
+            "Annotations like @Component, @Service, @Controller, etc.",
+            "XML or @Configuration class declarations"
           ]
         },
         {
-          "phase": "Population",
-          "description": "Properties and dependencies are set",
+          "phase": "Bean Definitions Loaded",
+          "description": "BeanDefinitionReader parses the configuration and creates BeanDefinition objects.",
           "events": [
-            "Dependency Injection performed",
-            "Properties populated"
+            "Configuration is read by BeanDefinitionReader",
+            "BeanDefinition objects are created"
+          ]
+        },
+        {
+          "phase": "Bean Definitions Processed",
+          "description": "BeanFactoryPostProcessor tweaks BeanDefinitions before bean creation.",
+          "events": [
+            "Modifications to BeanDefinitions",
+            "Custom BeanFactoryPostProcessor implementations"
+          ]
+        },
+        {
+          "phase": "Instantiation",
+          "description": "Beans are instantiated by BeanFactory.",
+          "events": [
+            "Constructor is invoked",
+            "Custom FactoryBean instances are used if applicable"
+          ]
+        },
+        {
+          "phase": "Dependency Injection",
+          "description": "Dependencies are injected into the bean (constructor or setter).",
+          "events": [
+            "Constructor injection",
+            "Setter injection",
+            "@Autowired or @Qualifier annotations used"
+          ]
+        },
+        {
+          "phase": "Post-Processing (Before Initialization)",
+          "description": "BeanPostProcessor adjusts beans before initialization.",
+          "events": [
+            "BeanPostProcessor is called before @PostConstruct",
+            "Adjustments to the bean proxy or dependencies"
           ]
         },
         {
           "phase": "Initialization",
-          "description": "Bean is initialized",
+          "description": "Bean is initialized using lifecycle callbacks.",
           "events": [
             "BeanNameAware.setBeanName()",
             "BeanFactoryAware.setBeanFactory()",
@@ -97,15 +130,23 @@
           ]
         },
         {
-          "phase": "In-Use",
-          "description": "Bean is ready for use",
+          "phase": "Post-Processing (After Initialization)",
+          "description": "BeanPostProcessor adjusts beans after initialization.",
           "events": [
-            "Bean is active and being used"
+            "Second round of BeanPostProcessor is executed",
+            "Circular dependencies or proxy wrapping handled"
+          ]
+        },
+        {
+          "phase": "Application Context",
+          "description": "Fully created beans are stored in the application context and ready for use.",
+          "events": [
+            "Bean is accessible via ApplicationContext"
           ]
         },
         {
           "phase": "Destruction",
-          "description": "Bean is destroyed",
+          "description": "Bean is destroyed when the application context is closed or bean is disposed.",
           "events": [
             "@PreDestroy methods",
             "DisposableBean.destroy()",
