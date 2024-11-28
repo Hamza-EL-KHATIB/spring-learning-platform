@@ -34,7 +34,7 @@
             "Plugin architectures"
           ],
           "implementation": {
-            "code": "public interface Product {}\n\npublic interface Creator {\n    Product createProduct();\n}\n\npublic class ConcreteCreator implements Creator {\n    @Override\n    public Product createProduct() {\n        return new ConcreteProduct();\n    }\n}"
+            "code": "public interface Product {}\n\npublic interface Creator {\n    Product createProduct();\n}\n\npublic class ConcreteCreator implements Creator {\n    @Override\n    public Product createProduct() {\n        return new ConcreteProduct();\n    }\n}\n\npublic class ConcreteProduct implements Product {\n    // Implementation details\n}"
           }
         },
         {
@@ -47,7 +47,7 @@
             "Multiple rendering engines"
           ],
           "implementation": {
-            "code": "public interface AbstractFactory {\n    ProductA createProductA();\n    ProductB createProductB();\n}"
+            "code": "public interface AbstractFactory {\n    ProductA createProductA();\n    ProductB createProductB();\n}\n\npublic class ConcreteFactory1 implements AbstractFactory {\n    @Override\n    public ProductA createProductA() {\n        return new ProductA1();\n    }\n\n    @Override\n    public ProductB createProductB() {\n        return new ProductB1();\n    }\n}\n\n// Similarly, define ProductA, ProductB, ProductA1, ProductB1 classes."
           }
         },
         {
@@ -58,7 +58,10 @@
             "Complex object construction",
             "Object with many optional parameters",
             "Immutable objects"
-          ]
+          ],
+          "implementation": {
+            "code": "public class Product {\n    private final String partA;\n    private final String partB;\n    private final String partC;\n\n    private Product(Builder builder) {\n        this.partA = builder.partA;\n        this.partB = builder.partB;\n        this.partC = builder.partC;\n    }\n\n    public static class Builder {\n        private String partA;\n        private String partB;\n        private String partC;\n\n        public Builder setPartA(String partA) {\n            this.partA = partA;\n            return this;\n        }\n\n        public Builder setPartB(String partB) {\n            this.partB = partB;\n            return this;\n        }\n\n        public Builder setPartC(String partC) {\n            this.partC = partC;\n            return this;\n        }\n\n        public Product build() {\n            return new Product(this);\n        }\n    }\n}"
+          }
         },
         {
           "name": "Prototype",
@@ -68,7 +71,10 @@
             "Object creation is expensive",
             "Dynamic object configuration",
             "Avoiding subclass explosion"
-          ]
+          ],
+          "implementation": {
+            "code": "public class Prototype implements Cloneable {\n    private String field;\n\n    public Prototype(String field) {\n        this.field = field;\n    }\n\n    @Override\n    protected Prototype clone() throws CloneNotSupportedException {\n        return (Prototype) super.clone();\n    }\n}"
+          }
         }
       ]
     },
@@ -84,7 +90,10 @@
             "Integration with legacy code",
             "Third-party library integration",
             "Multiple interface compatibility"
-          ]
+          ],
+          "implementation": {
+            "code": "public interface Target {\n    void request();\n}\n\npublic class Adaptee {\n    public void specificRequest() {\n        System.out.println(\"Called specificRequest()\");\n    }\n}\n\npublic class Adapter implements Target {\n    private Adaptee adaptee;\n\n    public Adapter(Adaptee adaptee) {\n        this.adaptee = adaptee;\n    }\n\n    @Override\n    public void request() {\n        adaptee.specificRequest();\n    }\n}"
+          }
         },
         {
           "name": "Bridge",
@@ -94,7 +103,10 @@
             "Cross-platform applications",
             "Multiple variant support",
             "Interface and implementation separation"
-          ]
+          ],
+          "implementation": {
+            "code": "public interface Implementor {\n    void operationImpl();\n}\n\npublic class ConcreteImplementorA implements Implementor {\n    @Override\n    public void operationImpl() {\n        System.out.println(\"ConcreteImplementorA operationImpl\");\n    }\n}\n\npublic abstract class Abstraction {\n    protected Implementor implementor;\n\n    protected Abstraction(Implementor implementor) {\n        this.implementor = implementor;\n    }\n\n    public abstract void operation();\n}\n\npublic class RefinedAbstraction extends Abstraction {\n    public RefinedAbstraction(Implementor implementor) {\n        super(implementor);\n    }\n\n    @Override\n    public void operation() {\n        implementor.operationImpl();\n    }\n}"
+          }
         },
         {
           "name": "Composite",
@@ -104,7 +116,10 @@
             "GUI components",
             "File system structures",
             "Organization hierarchies"
-          ]
+          ],
+          "implementation": {
+            "code": "public abstract class Component {\n    public void add(Component component) { throw new UnsupportedOperationException(); }\n    public void remove(Component component) { throw new UnsupportedOperationException(); }\n    public Component getChild(int i) { throw new UnsupportedOperationException(); }\n    public abstract void operation();\n}\n\npublic class Leaf extends Component {\n    @Override\n    public void operation() {\n        System.out.println(\"Leaf operation\");\n    }\n}\n\npublic class Composite extends Component {\n    private List<Component> children = new ArrayList<>();\n\n    @Override\n    public void add(Component component) {\n        children.add(component);\n    }\n\n    @Override\n    public void remove(Component component) {\n        children.remove(component);\n    }\n\n    @Override\n    public Component getChild(int i) {\n        return children.get(i);\n    }\n\n    @Override\n    public void operation() {\n        for (Component component : children) {\n            component.operation();\n        }\n    }\n}"
+          }
         },
         {
           "name": "Decorator",
@@ -114,7 +129,10 @@
             "I/O streams",
             "UI component enhancement",
             "Dynamic feature addition"
-          ]
+          ],
+          "implementation": {
+            "code": "public interface Component {\n    void operation();\n}\n\npublic class ConcreteComponent implements Component {\n    @Override\n    public void operation() {\n        System.out.println(\"ConcreteComponent operation\");\n    }\n}\n\npublic abstract class Decorator implements Component {\n    protected Component component;\n\n    public Decorator(Component component) {\n        this.component = component;\n    }\n\n    @Override\n    public void operation() {\n        component.operation();\n    }\n}\n\npublic class ConcreteDecorator extends Decorator {\n    public ConcreteDecorator(Component component) {\n        super(component);\n    }\n\n    @Override\n    public void operation() {\n        super.operation();\n        addedBehavior();\n    }\n\n    private void addedBehavior() {\n        System.out.println(\"Added Behavior\");\n    }\n}"
+          }
         },
         {
           "name": "Facade",
@@ -124,7 +142,10 @@
             "Complex subsystem simplification",
             "Library wrapping",
             "API unification"
-          ]
+          ],
+          "implementation": {
+            "code": "public class SubsystemA {\n    public void operationA() {\n        System.out.println(\"SubsystemA operation\");\n    }\n}\n\npublic class SubsystemB {\n    public void operationB() {\n        System.out.println(\"SubsystemB operation\");\n    }\n}\n\npublic class Facade {\n    private SubsystemA subsystemA = new SubsystemA();\n    private SubsystemB subsystemB = new SubsystemB();\n\n    public void operation() {\n        subsystemA.operationA();\n        subsystemB.operationB();\n    }\n}"
+          }
         },
         {
           "name": "Flyweight",
@@ -134,7 +155,10 @@
             "Text formatting",
             "Game object management",
             "Character rendering"
-          ]
+          ],
+          "implementation": {
+            "code": "public interface Flyweight {\n    void operation(String extrinsicState);\n}\n\npublic class ConcreteFlyweight implements Flyweight {\n    private String intrinsicState;\n\n    public ConcreteFlyweight(String intrinsicState) {\n        this.intrinsicState = intrinsicState;\n    }\n\n    @Override\n    public void operation(String extrinsicState) {\n        System.out.println(\"Intrinsic State: \" + intrinsicState + \", Extrinsic State: \" + extrinsicState);\n    }\n}\n\npublic class FlyweightFactory {\n    private Map<String, Flyweight> flyweights = new HashMap<>();\n\n    public Flyweight getFlyweight(String key) {\n        if (!flyweights.containsKey(key)) {\n            flyweights.put(key, new ConcreteFlyweight(key));\n        }\n        return flyweights.get(key);\n    }\n}"
+          }
         },
         {
           "name": "Proxy",
@@ -144,7 +168,10 @@
             "Lazy loading",
             "Access control",
             "Remote resource access"
-          ]
+          ],
+          "implementation": {
+            "code": "public interface Subject {\n    void request();\n}\n\npublic class RealSubject implements Subject {\n    @Override\n    public void request() {\n        System.out.println(\"RealSubject request\");\n    }\n}\n\npublic class Proxy implements Subject {\n    private RealSubject realSubject;\n\n    @Override\n    public void request() {\n        if (realSubject == null) {\n            realSubject = new RealSubject();\n        }\n        realSubject.request();\n    }\n}"
+          }
         }
       ]
     },
@@ -160,7 +187,10 @@
             "Event handling",
             "User interface updates",
             "Pub/sub systems"
-          ]
+          ],
+          "implementation": {
+            "code": "public interface Observer {\n    void update(String state);\n}\n\npublic class ConcreteObserver implements Observer {\n    private String observerState;\n\n    @Override\n    public void update(String state) {\n        observerState = state;\n        System.out.println(\"Observer state updated to \" + observerState);\n    }\n}\n\npublic class Subject {\n    private List<Observer> observers = new ArrayList<>();\n    private String state;\n\n    public void attach(Observer observer) {\n        observers.add(observer);\n    }\n\n    public void detach(Observer observer) {\n        observers.remove(observer);\n    }\n\n    public void notifyObservers() {\n        for (Observer observer : observers) {\n            observer.update(state);\n        }\n    }\n\n    public void setState(String state) {\n        this.state = state;\n        notifyObservers();\n    }\n}"
+          }
         },
         {
           "name": "Strategy",
@@ -170,7 +200,10 @@
             "Payment processing",
             "Sorting algorithms",
             "Validation strategies"
-          ]
+          ],
+          "implementation": {
+            "code": "public interface Strategy {\n    void execute();\n}\n\npublic class ConcreteStrategyA implements Strategy {\n    @Override\n    public void execute() {\n        System.out.println(\"Strategy A execution\");\n    }\n}\n\npublic class Context {\n    private Strategy strategy;\n\n    public Context(Strategy strategy) {\n        this.strategy = strategy;\n    }\n\n    public void executeStrategy() {\n        strategy.execute();\n    }\n}"
+          }
         },
         {
           "name": "Template Method",
@@ -180,7 +213,10 @@
             "Framework operations",
             "Data processing pipelines",
             "Document generation"
-          ]
+          ],
+          "implementation": {
+            "code": "public abstract class AbstractClass {\n    public final void templateMethod() {\n        primitiveOperation1();\n        primitiveOperation2();\n    }\n\n    protected abstract void primitiveOperation1();\n    protected abstract void primitiveOperation2();\n}\n\npublic class ConcreteClass extends AbstractClass {\n    @Override\n    protected void primitiveOperation1() {\n        System.out.println(\"Primitive Operation 1\");\n    }\n\n    @Override\n    protected void primitiveOperation2() {\n        System.out.println(\"Primitive Operation 2\");\n    }\n}"
+          }
         },
         {
           "name": "State",
@@ -190,7 +226,10 @@
             "Workflow management",
             "Game states",
             "Order processing"
-          ]
+          ],
+          "implementation": {
+            "code": "public interface State {\n    void handle(Context context);\n}\n\npublic class ConcreteStateA implements State {\n    @Override\n    public void handle(Context context) {\n        System.out.println(\"State A handling\");\n        context.setState(new ConcreteStateB());\n    }\n}\n\npublic class ConcreteStateB implements State {\n    @Override\n    public void handle(Context context) {\n        System.out.println(\"State B handling\");\n        context.setState(new ConcreteStateA());\n    }\n}\n\npublic class Context {\n    private State state;\n\n    public Context(State state) {\n        this.state = state;\n    }\n\n    public void setState(State state) {\n        this.state = state;\n    }\n\n    public void request() {\n        state.handle(this);\n    }\n}"
+          }
         },
         {
           "name": "Visitor",
@@ -200,7 +239,10 @@
             "Document object model",
             "Compiler operations",
             "Object structure traversal"
-          ]
+          ],
+          "implementation": {
+            "code": "public interface Visitor {\n    void visit(ElementA element);\n    void visit(ElementB element);\n}\n\npublic interface Element {\n    void accept(Visitor visitor);\n}\n\npublic class ElementA implements Element {\n    @Override\n    public void accept(Visitor visitor) {\n        visitor.visit(this);\n    }\n}\n\npublic class ElementB implements Element {\n    @Override\n    public void accept(Visitor visitor) {\n        visitor.visit(this);\n    }\n}\n\npublic class ConcreteVisitor implements Visitor {\n    @Override\n    public void visit(ElementA element) {\n        System.out.println(\"Visited ElementA\");\n    }\n\n    @Override\n    public void visit(ElementB element) {\n        System.out.println(\"Visited ElementB\");\n    }\n}"
+          }
         }
       ]
     }
