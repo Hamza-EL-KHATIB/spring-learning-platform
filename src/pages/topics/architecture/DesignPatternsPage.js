@@ -143,76 +143,98 @@ const PatternCard = ({ pattern }) => {
 };
 
 const PatternModal = ({ pattern, isOpen, onClose, image }) => {
+    // Move useEffect outside of the conditional
+    React.useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 overflow-y-auto">
-            <div className="bg-gray-800 rounded-lg max-w-4xl w-full relative">
-                {/* Close Button */}
-                <button
-                    onClick={onClose}
-                    className="absolute top-4 right-4 text-gray-400 hover:text-white"
-                >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+            {/* Backdrop */}
+            <div
+                className="absolute inset-0 bg-black/70"
+                onClick={onClose}
+            />
 
-                <div className="p-6">
-                    {/* Header */}
-                    <h2 className="text-2xl font-bold text-white mb-4">{pattern.name}</h2>
+            {/* Modal Container with max-height and scrolling */}
+            <div className="relative w-full max-w-4xl mx-4 my-6">
+                {/* Content wrapper with scrolling */}
+                <div className="relative bg-gray-800 rounded-lg shadow-xl max-h-[90vh] overflow-y-auto">
+                    {/* Close button - now sticky */}
+                    <div className="sticky top-0 right-0 pt-4 pr-4 z-50 flex justify-end bg-gray-800">
+                        <button
+                            onClick={onClose}
+                            className="text-gray-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-gray-700/50"
+                        >
+                            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Image Section */}
-                        <div className="space-y-4">
-                            <div className="bg-gray-900/50 rounded-lg p-4">
-                                <img
-                                    src={image}
-                                    alt={`${pattern.name} diagram`}
-                                    className="w-full h-auto object-contain"
-                                />
-                            </div>
-                        </div>
+                    <div className="p-6 pt-0">
+                        {/* Header */}
+                        <h2 className="text-2xl font-bold text-white mb-4">{pattern.name}</h2>
 
-                        {/* Content Section */}
-                        <div className="space-y-6">
-                            {/* Description */}
-                            <div>
-                                <h3 className="text-lg font-medium text-gray-300 mb-2">Description</h3>
-                                <p className="text-gray-400">{pattern.description}</p>
-                            </div>
-
-                            {/* Use Cases */}
-                            <div>
-                                <h3 className="text-lg font-medium text-gray-300 mb-2">Use Cases</h3>
-                                <ul className="list-disc list-inside space-y-1">
-                                    {pattern.use_cases.map((useCase, idx) => (
-                                        <li key={idx} className="text-gray-400">{useCase}</li>
-                                    ))}
-                                </ul>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {/* Image Section */}
+                            <div className="space-y-4">
+                                <div className="bg-gray-900/50 rounded-lg p-4">
+                                    <img
+                                        src={image}
+                                        alt={`${pattern.name} diagram`}
+                                        className="w-full h-auto object-contain"
+                                    />
+                                </div>
                             </div>
 
-                            {/* Considerations */}
-                            {pattern.considerations && (
+                            {/* Content Section */}
+                            <div className="space-y-6">
+                                {/* Description */}
                                 <div>
-                                    <h3 className="text-lg font-medium text-gray-300 mb-2">Considerations</h3>
+                                    <h3 className="text-lg font-medium text-gray-300 mb-2">Description</h3>
+                                    <p className="text-gray-400">{pattern.description}</p>
+                                </div>
+
+                                {/* Use Cases */}
+                                <div>
+                                    <h3 className="text-lg font-medium text-gray-300 mb-2">Use Cases</h3>
                                     <ul className="list-disc list-inside space-y-1">
-                                        {pattern.considerations.map((consideration, idx) => (
-                                            <li key={idx} className="text-gray-400">{consideration}</li>
+                                        {pattern.use_cases.map((useCase, idx) => (
+                                            <li key={idx} className="text-gray-400">{useCase}</li>
                                         ))}
                                     </ul>
                                 </div>
-                            )}
-                        </div>
-                    </div>
 
-                    {/* Implementation Section */}
-                    {pattern.implementation && (
-                        <div className="mt-6">
-                            <h3 className="text-lg font-medium text-gray-300 mb-2">Implementation</h3>
-                            <CodeBlock code={pattern.implementation.code} />
+                                {/* Considerations */}
+                                {pattern.considerations && (
+                                    <div>
+                                        <h3 className="text-lg font-medium text-gray-300 mb-2">Considerations</h3>
+                                        <ul className="list-disc list-inside space-y-1">
+                                            {pattern.considerations.map((consideration, idx) => (
+                                                <li key={idx} className="text-gray-400">{consideration}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                    )}
+
+                        {/* Implementation Section */}
+                        {pattern.implementation && (
+                            <div className="mt-6">
+                                <h3 className="text-lg font-medium text-gray-300 mb-2">Implementation</h3>
+                                <CodeBlock code={pattern.implementation.code} />
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
