@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wrench, Settings, Database, Server, Code, Package } from 'lucide-react';
+import { Wrench, Settings, Database, Server, Code, Package, Clock, Layout } from 'lucide-react';
 import bootJson from '../../../data/spring/boot.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -38,6 +38,10 @@ const BootPage = () => {
                 return <Code className="w-4 h-4" />;
             case 'embedded-servers':
                 return <Server className="w-4 h-4" />;
+            case 'scheduling':
+                return <Clock className="w-4 h-4" />;
+            case 'components':
+                return <Layout className="w-4 h-4" />;
             default:
                 return <Database className="w-4 h-4" />;
         }
@@ -175,13 +179,38 @@ const BootPage = () => {
         </div>
     );
 
+    const renderAnnotations = (annotations) => (
+        <div className="grid grid-cols-1 gap-4">
+            {annotations.map((annotation, index) => (
+                <div key={index} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
+                    <h4 className="text-lg font-medium text-purple-300 mb-2">{annotation.name}</h4>
+                    <p className="text-gray-300 mb-3">{annotation.description}</p>
+                    {annotation.example && (
+                        <SyntaxHighlighter
+                            language="java"
+                            style={oneDark}
+                            customStyle={{
+                                borderRadius: '0.5rem',
+                                padding: '1rem',
+                                backgroundColor: '#282c34',
+                            }}
+                        >
+                            {annotation.example}
+                        </SyntaxHighlighter>
+                    )}
+                </div>
+            ))}
+        </div>
+    );
+
     const renderStarters = (starters) => (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {starters.map((starter, idx) => (
                 <div key={idx} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
                     <h3 className="text-xl font-semibold text-purple-400 mb-3">{starter.name}</h3>
                     <p className="text-gray-300 mb-4">{starter.description}</p>
-                    <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
+
+                    <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50 mb-4">
                         <h4 className="text-lg font-medium text-gray-200 mb-2">Includes</h4>
                         <ul className="list-disc list-inside text-gray-300 space-y-1">
                             {starter.includes.map((include, includeIdx) => (
@@ -189,8 +218,31 @@ const BootPage = () => {
                             ))}
                         </ul>
                     </div>
+
+                    {starter.annotations && (
+                        <div className="mt-4">
+                            <h4 className="text-lg font-medium text-gray-200 mb-2">Annotations</h4>
+                            {renderAnnotations(starter.annotations)}
+                        </div>
+                    )}
                 </div>
             ))}
+        </div>
+    );
+
+    const renderScheduling = (topic) => (
+        <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h3 className="text-xl font-semibold text-purple-400 mb-4">{topic.title}</h3>
+            <p className="text-gray-300 mb-6">{topic.description}</p>
+            {topic.annotations && renderAnnotations(topic.annotations)}
+        </div>
+    );
+
+    const renderComponents = (topic) => (
+        <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h3 className="text-xl font-semibold text-purple-400 mb-4">{topic.title}</h3>
+            <p className="text-gray-300 mb-6">{topic.description}</p>
+            {topic.annotations && renderAnnotations(topic.annotations)}
         </div>
     );
 
@@ -308,6 +360,10 @@ const BootPage = () => {
                 return renderActuator(topic.endpoints, topic.configuration);
             case 'embedded-servers':
                 return renderEmbeddedServers(topic.servers);
+            case 'scheduling':
+                return renderScheduling(topic);
+            case 'components':
+                return renderComponents(topic);
             default:
                 return null;
         }
