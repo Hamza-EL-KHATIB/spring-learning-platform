@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Eye, EyeOff, ChevronRight } from 'lucide-react';
+import { Search, Eye, EyeOff, X, ChevronRight } from 'lucide-react';
 import vocabularyData from '../../../data/german/a1.json';
 import VocabularyTabs from './VocabularyTabs';
 import './VocabularyPage.css';
@@ -19,7 +19,7 @@ const VocabularyPage = () => {
 
     const handleCategorySelect = (category) => {
         setSelectedCategory(category);
-        setSearchTerm('');
+        setSearchTerm(''); // Clear search when changing category
     };
 
     // Filter data based on search term and selected category
@@ -81,7 +81,7 @@ const VocabularyPage = () => {
                     />
                 </div>
 
-                {/* Word List */}
+                {/* Word List - Now showing both categories and their words */}
                 <div className="max-w-6xl mx-auto">
                     <div className="space-y-8">
                         {filteredData.map((category, catIndex) => (
@@ -131,7 +131,50 @@ const VocabularyPage = () => {
             {selectedWord && (
                 <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
                     <div className="bg-gray-900 rounded-2xl border border-gray-800 max-w-lg w-full">
-                        {/* Modal content remains the same */}
+                        <div className="flex items-center justify-between p-6 border-b border-gray-800">
+                            <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-2">
+                                    {selectedWord.article && (
+                                        <span className="text-lg text-purple-400">{selectedWord.article}</span>
+                                    )}
+                                    <h2 className="text-xl font-bold text-white">{selectedWord.german}</h2>
+                                </div>
+                                <p className="text-gray-400">{selectedWord.english}</p>
+                            </div>
+                            <button
+                                onClick={() => setSelectedWord(null)}
+                                className="text-gray-500 hover:text-gray-400 transition-colors"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                        </div>
+
+                        <div className="p-6">
+                            <div className="space-y-4">
+                                <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider">
+                                    Examples
+                                </h3>
+                                <div className="space-y-3">
+                                    {selectedWord.examples?.map((example, index) => (
+                                        <div
+                                            key={index}
+                                            className="bg-gray-800/50 rounded-lg p-4"
+                                        >
+                                            <span className="text-gray-300">{example}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex justify-end px-6 py-4 border-t border-gray-800">
+                            <button
+                                onClick={() => setSelectedWord(null)}
+                                className="px-4 py-2 text-sm font-medium bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg transition-colors"
+                            >
+                                Close
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
