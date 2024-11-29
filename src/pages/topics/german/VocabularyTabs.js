@@ -107,61 +107,59 @@ const CategoryCard = ({ category, onClick }) => {
     return (
         <button
             onClick={() => onClick(category)}
-            className="bg-gray-800/50 hover:bg-gray-700/50 rounded-lg p-6 text-left border border-gray-700/50 hover:border-purple-500/50 transition-colors w-full group"
+            className="w-full bg-gray-800/50 hover:bg-gray-700/50 rounded-lg p-6 text-left border border-gray-700/50 hover:border-purple-500/50 transition-all group"
         >
-            <div className="space-y-2">
-                <h3 className="text-lg font-medium text-gray-200 group-hover:text-purple-300 transition-colors">
-                    {german}
-                </h3>
-                <p className="text-sm text-gray-500">
-                    ({english}
-                </p>
-            </div>
+            <h3 className="text-xl font-semibold text-white mb-1 group-hover:text-purple-300 transition-colors">{german}</h3>
+            <p className="text-sm text-gray-400 mb-2">({english}</p>
         </button>
     );
 };
 
-const VocabularyTabs = ({ activeTab, setActiveTab, onSelectCategory, selectedWords = [] }) => {
+const VocabularyTabs = ({ activeTab, setActiveTab, onSelectCategory, totalWords = 0 }) => {
     return (
-        <div className="space-y-6">
-            {/* Word Count */}
-            <div className="flex justify-end">
+        <div>
+            {/* Total Words Counter */}
+            <div className="flex justify-end mb-6">
                 <span className="px-4 py-2 bg-gray-800/50 rounded-lg text-gray-400 text-sm">
-                    Total Words: <span className="text-purple-400 font-medium">{selectedWords.length}</span>
+                    Total Words: <span className="text-purple-400 font-medium">{totalWords}</span>
                 </span>
             </div>
 
-            {/* Tab Navigation */}
-            <div className="flex flex-wrap gap-4">
-                {Object.entries(tabGroups).map(([key, group]) => {
-                    const Icon = group.icon;
-                    return (
-                        <button
-                            key={key}
-                            onClick={() => setActiveTab(key)}
-                            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-                                activeTab === key
-                                    ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
-                                    : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
-                            }`}
-                        >
-                            <Icon className="w-4 h-4" />
-                            {group.title}
-                        </button>
-                    );
-                })}
+            {/* Navigation Section */}
+            <div className="bg-gray-800/30 rounded-lg border border-gray-700/50 p-6 mb-6">
+                <div className="flex flex-wrap gap-4">
+                    {Object.entries(tabGroups).map(([key, group]) => {
+                        const Icon = group.icon;
+                        return (
+                            <button
+                                key={key}
+                                onClick={() => setActiveTab(key)}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+                                    activeTab === key
+                                        ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                                        : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
+                                }`}
+                            >
+                                <Icon className="w-4 h-4" />
+                                {group.title}
+                            </button>
+                        );
+                    })}
+                </div>
             </div>
 
-            {/* Category Cards Grid */}
+            {/* Categories Section */}
             {activeTab && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {tabGroups[activeTab].categories.map((category) => (
-                        <CategoryCard
-                            key={category}
-                            category={category}
-                            onClick={onSelectCategory}
-                        />
-                    ))}
+                <div className="bg-gray-800/30 rounded-lg border border-gray-700/50 p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {tabGroups[activeTab].categories.map((category) => (
+                            <CategoryCard
+                                key={category}
+                                category={category}
+                                onClick={onSelectCategory}
+                            />
+                        ))}
+                    </div>
                 </div>
             )}
         </div>
