@@ -35,7 +35,7 @@ import GitPage from './pages/topics/devops/GitPage';
 // Agile imports
 import ScrumPage from './pages/topics/agile/ScrumPage';
 
-import VocabularyPage from './pages/VocabularyPage';
+import VocabularyPage from './pages/topics/german/VocabularyPage';
 
 import CodeReviewsPage from "./pages/topics/bestPractices/CodeReviewsPage";
 
