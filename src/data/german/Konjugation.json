@@ -5110,5 +5110,185 @@
         "perfekt": "haben verdient"
       }
     }
+  },
+  {
+    "verb": "vergessen",
+    "meaning": "to forget",
+    "conjugations": {
+      "ich": {
+        "präsens": "vergesse",
+        "präteritum": "vergaß",
+        "perfekt": "habe vergessen"
+      },
+      "du": {
+        "präsens": "vergisst",
+        "präteritum": "vergaßest",
+        "perfekt": "hast vergessen"
+      },
+      "er/sie/es": {
+        "präsens": "vergisst",
+        "präteritum": "vergaß",
+        "perfekt": "hat vergessen"
+      },
+      "wir": {
+        "präsens": "vergessen",
+        "präteritum": "vergaßen",
+        "perfekt": "haben vergessen"
+      },
+      "ihr": {
+        "präsens": "vergesst",
+        "präteritum": "vergaßt",
+        "perfekt": "habt vergessen"
+      },
+      "sie/Sie": {
+        "präsens": "vergessen",
+        "präteritum": "vergaßen",
+        "perfekt": "haben vergessen"
+      }
+    }
+  },
+  {
+    "verb": "versuchen",
+    "meaning": "to try",
+    "conjugations": {
+      "ich": {
+        "präsens": "versuche",
+        "präteritum": "versuchte",
+        "perfekt": "habe versucht"
+      },
+      "du": {
+        "präsens": "versuchst",
+        "präteritum": "versuchtest",
+        "perfekt": "hast versucht"
+      },
+      "er/sie/es": {
+        "präsens": "versucht",
+        "präteritum": "versuchte",
+        "perfekt": "hat versucht"
+      },
+      "wir": {
+        "präsens": "versuchen",
+        "präteritum": "versuchten",
+        "perfekt": "haben versucht"
+      },
+      "ihr": {
+        "präsens": "versucht",
+        "präteritum": "versuchtet",
+        "perfekt": "habt versucht"
+      },
+      "sie/Sie": {
+        "präsens": "versuchen",
+        "präteritum": "versuchten",
+        "perfekt": "haben versucht"
+      }
+    }
+  },
+  {
+    "verb": "warten",
+    "meaning": "to wait",
+    "conjugations": {
+      "ich": {
+        "präsens": "warte",
+        "präteritum": "wartete",
+        "perfekt": "habe gewartet"
+      },
+      "du": {
+        "präsens": "wartest",
+        "präteritum": "wartetest",
+        "perfekt": "hast gewartet"
+      },
+      "er/sie/es": {
+        "präsens": "wartet",
+        "präteritum": "wartete",
+        "perfekt": "hat gewartet"
+      },
+      "wir": {
+        "präsens": "warten",
+        "präteritum": "warteten",
+        "perfekt": "haben gewartet"
+      },
+      "ihr": {
+        "präsens": "wartet",
+        "präteritum": "wartetet",
+        "perfekt": "habt gewartet"
+      },
+      "sie/Sie": {
+        "präsens": "warten",
+        "präteritum": "warteten",
+        "perfekt": "haben gewartet"
+      }
+    }
+  },
+  {
+    "verb": "wiederholen",
+    "meaning": "to repeat",
+    "conjugations": {
+      "ich": {
+        "präsens": "wiederhole",
+        "präteritum": "wiederholte",
+        "perfekt": "habe wiederholt"
+      },
+      "du": {
+        "präsens": "wiederholst",
+        "präteritum": "wiederholtest",
+        "perfekt": "hast wiederholt"
+      },
+      "er/sie/es": {
+        "präsens": "wiederholt",
+        "präteritum": "wiederholte",
+        "perfekt": "hat wiederholt"
+      },
+      "wir": {
+        "präsens": "wiederholen",
+        "präteritum": "wiederholten",
+        "perfekt": "haben wiederholt"
+      },
+      "ihr": {
+        "präsens": "wiederholt",
+        "präteritum": "wiederholtet",
+        "perfekt": "habt wiederholt"
+      },
+      "sie/Sie": {
+        "präsens": "wiederholen",
+        "präteritum": "wiederholten",
+        "perfekt": "haben wiederholt"
+      }
+    }
+  },
+  {
+    "verb": "zeigen",
+    "meaning": "to show",
+    "conjugations": {
+      "ich": {
+        "präsens": "zeige",
+        "präteritum": "zeigte",
+        "perfekt": "habe gezeigt"
+      },
+      "du": {
+        "präsens": "zeigst",
+        "präteritum": "zeigtest",
+        "perfekt": "hast gezeigt"
+      },
+      "er/sie/es": {
+        "präsens": "zeigt",
+        "präteritum": "zeigte",
+        "perfekt": "hat gezeigt"
+      },
+      "wir": {
+        "präsens": "zeigen",
+        "präteritum": "zeigten",
+        "perfekt": "haben gezeigt"
+      },
+      "ihr": {
+        "präsens": "zeigt",
+        "präteritum": "zeigtet",
+        "perfekt": "habt gezeigt"
+      },
+      "sie/Sie": {
+        "präsens": "zeigen",
+        "präteritum": "zeigten",
+        "perfekt": "haben gezeigt"
+      }
+    }
   }
 ]
