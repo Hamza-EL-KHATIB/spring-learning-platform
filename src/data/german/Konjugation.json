@@ -4210,5 +4210,185 @@
         "perfekt": "haben geändert"
       }
     }
+  },
+  {
+    "verb": "fehlen",
+    "meaning": "to be missing",
+    "conjugations": {
+      "ich": {
+        "präsens": "fehle",
+        "präteritum": "fehlte",
+        "perfekt": "habe gefehlt"
+      },
+      "du": {
+        "präsens": "fehlst",
+        "präteritum": "fehltest",
+        "perfekt": "hast gefehlt"
+      },
+      "er/sie/es": {
+        "präsens": "fehlt",
+        "präteritum": "fehlte",
+        "perfekt": "hat gefehlt"
+      },
+      "wir": {
+        "präsens": "fehlen",
+        "präteritum": "fehlten",
+        "perfekt": "haben gefehlt"
+      },
+      "ihr": {
+        "präsens": "fehlt",
+        "präteritum": "fehltet",
+        "perfekt": "habt gefehlt"
+      },
+      "sie/Sie": {
+        "präsens": "fehlen",
+        "präteritum": "fehlten",
+        "perfekt": "haben gefehlt"
+      }
+    }
+  },
+  {
+    "verb": "probieren",
+    "meaning": "to try",
+    "conjugations": {
+      "ich": {
+        "präsens": "probiere",
+        "präteritum": "probierte",
+        "perfekt": "habe probiert"
+      },
+      "du": {
+        "präsens": "probierst",
+        "präteritum": "probiertest",
+        "perfekt": "hast probiert"
+      },
+      "er/sie/es": {
+        "präsens": "probiert",
+        "präteritum": "probierte",
+        "perfekt": "hat probiert"
+      },
+      "wir": {
+        "präsens": "probieren",
+        "präteritum": "probierten",
+        "perfekt": "haben probiert"
+      },
+      "ihr": {
+        "präsens": "probiert",
+        "präteritum": "probiertet",
+        "perfekt": "habt probiert"
+      },
+      "sie/Sie": {
+        "präsens": "probieren",
+        "präteritum": "probierten",
+        "perfekt": "haben probiert"
+      }
+    }
+  },
+  {
+    "verb": "reden",
+    "meaning": "to talk",
+    "conjugations": {
+      "ich": {
+        "präsens": "rede",
+        "präteritum": "redete",
+        "perfekt": "habe geredet"
+      },
+      "du": {
+        "präsens": "redest",
+        "präteritum": "redetest",
+        "perfekt": "hast geredet"
+      },
+      "er/sie/es": {
+        "präsens": "redet",
+        "präteritum": "redete",
+        "perfekt": "hat geredet"
+      },
+      "wir": {
+        "präsens": "reden",
+        "präteritum": "redeten",
+        "perfekt": "haben geredet"
+      },
+      "ihr": {
+        "präsens": "redet",
+        "präteritum": "redetet",
+        "perfekt": "habt geredet"
+      },
+      "sie/Sie": {
+        "präsens": "reden",
+        "präteritum": "redeten",
+        "perfekt": "haben geredet"
+      }
+    }
+  },
+  {
+    "verb": "reisen",
+    "meaning": "to travel",
+    "conjugations": {
+      "ich": {
+        "präsens": "reise",
+        "präteritum": "reiste",
+        "perfekt": "bin gereist"
+      },
+      "du": {
+        "präsens": "reist",
+        "präteritum": "reistest",
+        "perfekt": "bist gereist"
+      },
+      "er/sie/es": {
+        "präsens": "reist",
+        "präteritum": "reiste",
+        "perfekt": "ist gereist"
+      },
+      "wir": {
+        "präsens": "reisen",
+        "präteritum": "reisten",
+        "perfekt": "sind gereist"
+      },
+      "ihr": {
+        "präsens": "reist",
+        "präteritum": "reistet",
+        "perfekt": "seid gereist"
+      },
+      "sie/Sie": {
+        "präsens": "reisen",
+        "präteritum": "reisten",
+        "perfekt": "sind gereist"
+      }
+    }
+  },
+  {
+    "verb": "suchen",
+    "meaning": "to search",
+    "conjugations": {
+      "ich": {
+        "präsens": "suche",
+        "präteritum": "suchte",
+        "perfekt": "habe gesucht"
+      },
+      "du": {
+        "präsens": "suchst",
+        "präteritum": "suchtest",
+        "perfekt": "hast gesucht"
+      },
+      "er/sie/es": {
+        "präsens": "sucht",
+        "präteritum": "suchte",
+        "perfekt": "hat gesucht"
+      },
+      "wir": {
+        "präsens": "suchen",
+        "präteritum": "suchten",
+        "perfekt": "haben gesucht"
+      },
+      "ihr": {
+        "präsens": "sucht",
+        "präteritum": "suchtet",
+        "perfekt": "habt gesucht"
+      },
+      "sie/Sie": {
+        "präsens": "suchen",
+        "präteritum": "suchten",
+        "perfekt": "haben gesucht"
+      }
+    }
   }
 ]
