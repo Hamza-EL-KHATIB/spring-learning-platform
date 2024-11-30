@@ -4390,5 +4390,185 @@
         "perfekt": "haben gesucht"
       }
     }
+  },
+  {
+    "verb": "steigen",
+    "meaning": "to climb, rise",
+    "conjugations": {
+      "ich": {
+        "präsens": "steige",
+        "präteritum": "stieg",
+        "perfekt": "bin gestiegen"
+      },
+      "du": {
+        "präsens": "steigst",
+        "präteritum": "stiegst",
+        "perfekt": "bist gestiegen"
+      },
+      "er/sie/es": {
+        "präsens": "steigt",
+        "präteritum": "stieg",
+        "perfekt": "ist gestiegen"
+      },
+      "wir": {
+        "präsens": "steigen",
+        "präteritum": "stiegen",
+        "perfekt": "sind gestiegen"
+      },
+      "ihr": {
+        "präsens": "steigt",
+        "präteritum": "stiegt",
+        "perfekt": "seid gestiegen"
+      },
+      "sie/Sie": {
+        "präsens": "steigen",
+        "präteritum": "stiegen",
+        "perfekt": "sind gestiegen"
+      }
+    }
+  },
+  {
+    "verb": "kosten",
+    "meaning": "to cost",
+    "conjugations": {
+      "ich": {
+        "präsens": "koste",
+        "präteritum": "kostete",
+        "perfekt": "habe gekostet"
+      },
+      "du": {
+        "präsens": "kostest",
+        "präteritum": "kostetest",
+        "perfekt": "hast gekostet"
+      },
+      "er/sie/es": {
+        "präsens": "kostet",
+        "präteritum": "kostete",
+        "perfekt": "hat gekostet"
+      },
+      "wir": {
+        "präsens": "kosten",
+        "präteritum": "kosteten",
+        "perfekt": "haben gekostet"
+      },
+      "ihr": {
+        "präsens": "kostet",
+        "präteritum": "kostetet",
+        "perfekt": "habt gekostet"
+      },
+      "sie/Sie": {
+        "präsens": "kosten",
+        "präteritum": "kosteten",
+        "perfekt": "haben gekostet"
+      }
+    }
+  },
+  {
+    "verb": "feiern",
+    "meaning": "to celebrate",
+    "conjugations": {
+      "ich": {
+        "präsens": "feiere",
+        "präteritum": "feierte",
+        "perfekt": "habe gefeiert"
+      },
+      "du": {
+        "präsens": "feierst",
+        "präteritum": "feiertest",
+        "perfekt": "hast gefeiert"
+      },
+      "er/sie/es": {
+        "präsens": "feiert",
+        "präteritum": "feierte",
+        "perfekt": "hat gefeiert"
+      },
+      "wir": {
+        "präsens": "feiern",
+        "präteritum": "feierten",
+        "perfekt": "haben gefeiert"
+      },
+      "ihr": {
+        "präsens": "feiert",
+        "präteritum": "feiertet",
+        "perfekt": "habt gefeiert"
+      },
+      "sie/Sie": {
+        "präsens": "feiern",
+        "präteritum": "feierten",
+        "perfekt": "haben gefeiert"
+      }
+    }
+  },
+  {
+    "verb": "grüßen",
+    "meaning": "to greet",
+    "conjugations": {
+      "ich": {
+        "präsens": "grüße",
+        "präteritum": "grüßte",
+        "perfekt": "habe gegrüßt"
+      },
+      "du": {
+        "präsens": "grüßt",
+        "präteritum": "grüßtest",
+        "perfekt": "hast gegrüßt"
+      },
+      "er/sie/es": {
+        "präsens": "grüßt",
+        "präteritum": "grüßte",
+        "perfekt": "hat gegrüßt"
+      },
+      "wir": {
+        "präsens": "grüßen",
+        "präteritum": "grüßten",
+        "perfekt": "haben gegrüßt"
+      },
+      "ihr": {
+        "präsens": "grüßt",
+        "präteritum": "grüßtet",
+        "perfekt": "habt gegrüßt"
+      },
+      "sie/Sie": {
+        "präsens": "grüßen",
+        "präteritum": "grüßten",
+        "perfekt": "haben gegrüßt"
+      }
+    }
+  },
+  {
+    "verb": "hoffen",
+    "meaning": "to hope",
+    "conjugations": {
+      "ich": {
+        "präsens": "hoffe",
+        "präteritum": "hoffte",
+        "perfekt": "habe gehofft"
+      },
+      "du": {
+        "präsens": "hoffst",
+        "präteritum": "hofftest",
+        "perfekt": "hast gehofft"
+      },
+      "er/sie/es": {
+        "präsens": "hofft",
+        "präteritum": "hoffte",
+        "perfekt": "hat gehofft"
+      },
+      "wir": {
+        "präsens": "hoffen",
+        "präteritum": "hofften",
+        "perfekt": "haben gehofft"
+      },
+      "ihr": {
+        "präsens": "hofft",
+        "präteritum": "hofftet",
+        "perfekt": "habt gehofft"
+      },
+      "sie/Sie": {
+        "präsens": "hoffen",
+        "präteritum": "hofften",
+        "perfekt": "haben gehofft"
+      }
+    }
   }
 ]
