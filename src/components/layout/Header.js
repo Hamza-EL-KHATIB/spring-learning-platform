@@ -1,9 +1,66 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Github, Menu, X, BookOpen } from "lucide-react";
+import { Github, Menu, X, BookOpen, ChevronDown, Book } from "lucide-react";
+
+const GermanDropdown = ({ onSelect }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const handleSelect = (path) => {
+        setIsOpen(false);
+        if (onSelect) onSelect();
+    };
+
+    return (
+        <div className="relative" ref={dropdownRef}>
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                title="German Learning"
+            >
+                <BookOpen className="w-6 h-6" />
+                <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {isOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg border border-gray-700 overflow-hidden">
+                    <div className="py-1">
+                        <Link
+                            to="/vocabulary"
+                            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 transition-colors"
+                            onClick={() => handleSelect('/vocabulary')}
+                        >
+                            <BookOpen className="w-4 h-4" />
+                            <span>Vocabulary</span>
+                        </Link>
+                        <Link
+                            to="/konjugation"
+                            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 transition-colors"
+                            onClick={() => handleSelect('/konjugation')}
+                        >
+                            <Book className="w-4 h-4" />
+                            <span>Conjugation</span>
+                        </Link>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
 
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
         <header className="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
@@ -34,14 +91,8 @@ const Header = () => {
 
                         {/* Utility Links */}
                         <div className="flex items-center space-x-4 pl-2 border-l border-gray-700">
-                            {/* German Vocabulary Link */}
-                            <Link
-                                to="/vocabulary"
-                                className="text-gray-400 hover:text-white transition-colors"
-                                title="German A1 Vocabulary"
-                            >
-                                <BookOpen className="w-6 h-6" />
-                            </Link>
+                            {/* German Learning Dropdown */}
+                            <GermanDropdown />
 
                             {/* Github Link */}
                             <a
@@ -101,16 +152,30 @@ const Header = () => {
 
                         {/* Utility Links for Mobile */}
                         <div className="pt-2 mt-2 border-t border-gray-700">
-                            <Link
-                                to="/vocabulary"
-                                className="block py-2 text-gray-400 hover:text-white transition-colors"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                <div className="flex items-center space-x-2">
-                                    <BookOpen className="w-5 h-5" />
-                                    <span>German Vocabulary</span>
-                                </div>
-                            </Link>
+                            {/* German Learning Links */}
+                            <div className="space-y-2">
+                                <Link
+                                    to="/vocabulary"
+                                    className="block py-2 text-gray-400 hover:text-white transition-colors"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    <div className="flex items-center space-x-2">
+                                        <BookOpen className="w-5 h-5" />
+                                        <span>German Vocabulary</span>
+                                    </div>
+                                </Link>
+                                <Link
+                                    to="/konjugation"
+                                    className="block py-2 text-gray-400 hover:text-white transition-colors"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    <div className="flex items-center space-x-2">
+                                        <Book className="w-5 h-5" />
+                                        <span>German Conjugation</span>
+                                    </div>
+                                </Link>
+                            </div>
+
                             <a
                                 href="https://github.com/Hamza-EL-KHATIB/spring-learning-platform"
                                 target="_blank"
