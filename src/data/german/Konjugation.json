@@ -3562,5 +3562,113 @@
         "perfekt": "haben gebastelt"
       }
     }
+  },
+  {
+    "verb": "telefonieren",
+    "meaning": "to telephone",
+    "conjugations": {
+      "ich": {
+        "präsens": "telefoniere",
+        "präteritum": "telefonierte",
+        "perfekt": "habe telefoniert"
+      },
+      "du": {
+        "präsens": "telefonierst",
+        "präteritum": "telefoniertest",
+        "perfekt": "hast telefoniert"
+      },
+      "er/sie/es": {
+        "präsens": "telefoniert",
+        "präteritum": "telefonierte",
+        "perfekt": "hat telefoniert"
+      },
+      "wir": {
+        "präsens": "telefonieren",
+        "präteritum": "telefonierten",
+        "perfekt": "haben telefoniert"
+      },
+      "ihr": {
+        "präsens": "telefoniert",
+        "präteritum": "telefoniertet",
+        "perfekt": "habt telefoniert"
+      },
+      "sie/Sie": {
+        "präsens": "telefonieren",
+        "präteritum": "telefonierten",
+        "perfekt": "haben telefoniert"
+      }
+    }
+  },
+  {
+    "verb": "warten",
+    "meaning": "to wait",
+    "conjugations": {
+      "ich": {
+        "präsens": "warte",
+        "präteritum": "wartete",
+        "perfekt": "habe gewartet"
+      },
+      "du": {
+        "präsens": "wartest",
+        "präteritum": "wartetest",
+        "perfekt": "hast gewartet"
+      },
+      "er/sie/es": {
+        "präsens": "wartet",
+        "präteritum": "wartete",
+        "perfekt": "hat gewartet"
+      },
+      "wir": {
+        "präsens": "warten",
+        "präteritum": "warteten",
+        "perfekt": "haben gewartet"
+      },
+      "ihr": {
+        "präsens": "wartet",
+        "präteritum": "wartetet",
+        "perfekt": "habt gewartet"
+      },
+      "sie/Sie": {
+        "präsens": "warten",
+        "präteritum": "warteten",
+        "perfekt": "haben gewartet"
+      }
+    }
+  },
+  {
+    "verb": "gewinnen",
+    "meaning": "to win",
+    "conjugations": {
+      "ich": {
+        "präsens": "gewinne",
+        "präteritum": "gewann",
+        "perfekt": "habe gewonnen"
+      },
+      "du": {
+        "präsens": "gewinnst",
+        "präteritum": "gewannst",
+        "perfekt": "hast gewonnen"
+      },
+      "er/sie/es": {
+        "präsens": "gewinnt",
+        "präteritum": "gewann",
+        "perfekt": "hat gewonnen"
+      },
+      "wir": {
+        "präsens": "gewinnen",
+        "präteritum": "gewannen",
+        "perfekt": "haben gewonnen"
+      },
+      "ihr": {
+        "präsens": "gewinnt",
+        "präteritum": "gewannet",
+        "perfekt": "habt gewonnen"
+      },
+      "sie/Sie": {
+        "präsens": "gewinnen",
+        "präteritum": "gewannen",
+        "perfekt": "haben gewonnen"
+      }
+    }
   }
 ]
