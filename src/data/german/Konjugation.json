@@ -4570,5 +4570,185 @@
         "perfekt": "haben gehofft"
       }
     }
+  },
+  {
+    "verb": "kontrollieren",
+    "meaning": "to control",
+    "conjugations": {
+      "ich": {
+        "präsens": "kontrolliere",
+        "präteritum": "kontrollierte",
+        "perfekt": "habe kontrolliert"
+      },
+      "du": {
+        "präsens": "kontrollierst",
+        "präteritum": "kontrolliertest",
+        "perfekt": "hast kontrolliert"
+      },
+      "er/sie/es": {
+        "präsens": "kontrolliert",
+        "präteritum": "kontrollierte",
+        "perfekt": "hat kontrolliert"
+      },
+      "wir": {
+        "präsens": "kontrollieren",
+        "präteritum": "kontrollierten",
+        "perfekt": "haben kontrolliert"
+      },
+      "ihr": {
+        "präsens": "kontrolliert",
+        "präteritum": "kontrolliertet",
+        "perfekt": "habt kontrolliert"
+      },
+      "sie/Sie": {
+        "präsens": "kontrollieren",
+        "präteritum": "kontrollierten",
+        "perfekt": "haben kontrolliert"
+      }
+    }
+  },
+  {
+    "verb": "lachen",
+    "meaning": "to laugh",
+    "conjugations": {
+      "ich": {
+        "präsens": "lache",
+        "präteritum": "lachte",
+        "perfekt": "habe gelacht"
+      },
+      "du": {
+        "präsens": "lachst",
+        "präteritum": "lachtest",
+        "perfekt": "hast gelacht"
+      },
+      "er/sie/es": {
+        "präsens": "lacht",
+        "präteritum": "lachte",
+        "perfekt": "hat gelacht"
+      },
+      "wir": {
+        "präsens": "lachen",
+        "präteritum": "lachten",
+        "perfekt": "haben gelacht"
+      },
+      "ihr": {
+        "präsens": "lacht",
+        "präteritum": "lachtet",
+        "perfekt": "habt gelacht"
+      },
+      "sie/Sie": {
+        "präsens": "lachen",
+        "präteritum": "lachten",
+        "perfekt": "haben gelacht"
+      }
+    }
+  },
+  {
+    "verb": "machen",
+    "meaning": "to make, do",
+    "conjugations": {
+      "ich": {
+        "präsens": "mache",
+        "präteritum": "machte",
+        "perfekt": "habe gemacht"
+      },
+      "du": {
+        "präsens": "machst",
+        "präteritum": "machtest",
+        "perfekt": "hast gemacht"
+      },
+      "er/sie/es": {
+        "präsens": "macht",
+        "präteritum": "machte",
+        "perfekt": "hat gemacht"
+      },
+      "wir": {
+        "präsens": "machen",
+        "präteritum": "machten",
+        "perfekt": "haben gemacht"
+      },
+      "ihr": {
+        "präsens": "macht",
+        "präteritum": "machtet",
+        "perfekt": "habt gemacht"
+      },
+      "sie/Sie": {
+        "präsens": "machen",
+        "präteritum": "machten",
+        "perfekt": "haben gemacht"
+      }
+    }
+  },
+  {
+    "verb": "regnen",
+    "meaning": "to rain",
+    "conjugations": {
+      "ich": {
+        "präsens": "regne",
+        "präteritum": "regnete",
+        "perfekt": "habe geregnet"
+      },
+      "du": {
+        "präsens": "regnest",
+        "präteritum": "regnetest",
+        "perfekt": "hast geregnet"
+      },
+      "er/sie/es": {
+        "präsens": "regnet",
+        "präteritum": "regnete",
+        "perfekt": "hat geregnet"
+      },
+      "wir": {
+        "präsens": "regnen",
+        "präteritum": "regneten",
+        "perfekt": "haben geregnet"
+      },
+      "ihr": {
+        "präsens": "regnet",
+        "präteritum": "regnetet",
+        "perfekt": "habt geregnet"
+      },
+      "sie/Sie": {
+        "präsens": "regnen",
+        "präteritum": "regneten",
+        "perfekt": "haben geregnet"
+      }
+    }
+  },
+  {
+    "verb": "scheinen",
+    "meaning": "to shine, seem",
+    "conjugations": {
+      "ich": {
+        "präsens": "scheine",
+        "präteritum": "schien",
+        "perfekt": "habe geschienen"
+      },
+      "du": {
+        "präsens": "scheinst",
+        "präteritum": "schienst",
+        "perfekt": "hast geschienen"
+      },
+      "er/sie/es": {
+        "präsens": "scheint",
+        "präteritum": "schien",
+        "perfekt": "hat geschienen"
+      },
+      "wir": {
+        "präsens": "scheinen",
+        "präteritum": "schienen",
+        "perfekt": "haben geschienen"
+      },
+      "ihr": {
+        "präsens": "scheint",
+        "präteritum": "schient",
+        "perfekt": "habt geschienen"
+      },
+      "sie/Sie": {
+        "präsens": "scheinen",
+        "präteritum": "schienen",
+        "perfekt": "haben geschienen"
+      }
+    }
   }
 ]
