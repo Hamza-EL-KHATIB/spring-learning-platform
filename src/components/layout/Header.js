@@ -26,10 +26,15 @@ const GermanDropdown = ({ onSelect }) => {
         <div className="relative" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
                 title="German Learning"
             >
-                <BookOpen className="w-6 h-6" />
+                <div className="relative">
+                    <BookOpen className="w-6 h-6" />
+                    <span className="absolute -top-2 -right-2 bg-purple-500/80 text-white text-[10px] font-medium px-1 rounded">
+                    DE
+                </span>
+                </div>
                 <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
             </button>
 
