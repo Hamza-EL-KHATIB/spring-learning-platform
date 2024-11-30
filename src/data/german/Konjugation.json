@@ -4030,5 +4030,185 @@
         "perfekt": "haben gekauft"
       }
     }
+  },
+  {
+    "verb": "bedeuten",
+    "meaning": "to mean",
+    "conjugations": {
+      "ich": {
+        "präsens": "bedeute",
+        "präteritum": "bedeutete",
+        "perfekt": "habe bedeutet"
+      },
+      "du": {
+        "präsens": "bedeutest",
+        "präteritum": "bedeutetest",
+        "perfekt": "hast bedeutet"
+      },
+      "er/sie/es": {
+        "präsens": "bedeutet",
+        "präteritum": "bedeutete",
+        "perfekt": "hat bedeutet"
+      },
+      "wir": {
+        "präsens": "bedeuten",
+        "präteritum": "bedeuteten",
+        "perfekt": "haben bedeutet"
+      },
+      "ihr": {
+        "präsens": "bedeutet",
+        "präteritum": "bedeutetet",
+        "perfekt": "habt bedeutet"
+      },
+      "sie/Sie": {
+        "präsens": "bedeuten",
+        "präteritum": "bedeuteten",
+        "perfekt": "haben bedeutet"
+      }
+    }
+  },
+  {
+    "verb": "besuchen",
+    "meaning": "to visit",
+    "conjugations": {
+      "ich": {
+        "präsens": "besuche",
+        "präteritum": "besuchte",
+        "perfekt": "habe besucht"
+      },
+      "du": {
+        "präsens": "besuchst",
+        "präteritum": "besuchtest",
+        "perfekt": "hast besucht"
+      },
+      "er/sie/es": {
+        "präsens": "besucht",
+        "präteritum": "besuchte",
+        "perfekt": "hat besucht"
+      },
+      "wir": {
+        "präsens": "besuchen",
+        "präteritum": "besuchten",
+        "perfekt": "haben besucht"
+      },
+      "ihr": {
+        "präsens": "besucht",
+        "präteritum": "besuchtet",
+        "perfekt": "habt besucht"
+      },
+      "sie/Sie": {
+        "präsens": "besuchen",
+        "präteritum": "besuchten",
+        "perfekt": "haben besucht"
+      }
+    }
+  },
+  {
+    "verb": "bestellen",
+    "meaning": "to order",
+    "conjugations": {
+      "ich": {
+        "präsens": "bestelle",
+        "präteritum": "bestellte",
+        "perfekt": "habe bestellt"
+      },
+      "du": {
+        "präsens": "bestellst",
+        "präteritum": "bestelltest",
+        "perfekt": "hast bestellt"
+      },
+      "er/sie/es": {
+        "präsens": "bestellt",
+        "präteritum": "bestellte",
+        "perfekt": "hat bestellt"
+      },
+      "wir": {
+        "präsens": "bestellen",
+        "präteritum": "bestellten",
+        "perfekt": "haben bestellt"
+      },
+      "ihr": {
+        "präsens": "bestellt",
+        "präteritum": "bestelltet",
+        "perfekt": "habt bestellt"
+      },
+      "sie/Sie": {
+        "präsens": "bestellen",
+        "präteritum": "bestellten",
+        "perfekt": "haben bestellt"
+      }
+    }
+  },
+  {
+    "verb": "erkennen",
+    "meaning": "to recognize",
+    "conjugations": {
+      "ich": {
+        "präsens": "erkenne",
+        "präteritum": "erkannte",
+        "perfekt": "habe erkannt"
+      },
+      "du": {
+        "präsens": "erkennst",
+        "präteritum": "erkanntest",
+        "perfekt": "hast erkannt"
+      },
+      "er/sie/es": {
+        "präsens": "erkennt",
+        "präteritum": "erkannte",
+        "perfekt": "hat erkannt"
+      },
+      "wir": {
+        "präsens": "erkennen",
+        "präteritum": "erkannten",
+        "perfekt": "haben erkannt"
+      },
+      "ihr": {
+        "präsens": "erkennt",
+        "präteritum": "erkanntet",
+        "perfekt": "habt erkannt"
+      },
+      "sie/Sie": {
+        "präsens": "erkennen",
+        "präteritum": "erkannten",
+        "perfekt": "haben erkannt"
+      }
+    }
+  },
+  {
+    "verb": "ändern",
+    "meaning": "to change",
+    "conjugations": {
+      "ich": {
+        "präsens": "ändere",
+        "präteritum": "änderte",
+        "perfekt": "habe geändert"
+      },
+      "du": {
+        "präsens": "änderst",
+        "präteritum": "ändertest",
+        "perfekt": "hast geändert"
+      },
+      "er/sie/es": {
+        "präsens": "ändert",
+        "präteritum": "änderte",
+        "perfekt": "hat geändert"
+      },
+      "wir": {
+        "präsens": "ändern",
+        "präteritum": "änderten",
+        "perfekt": "haben geändert"
+      },
+      "ihr": {
+        "präsens": "ändert",
+        "präteritum": "ändertet",
+        "perfekt": "habt geändert"
+      },
+      "sie/Sie": {
+        "präsens": "ändern",
+        "präteritum": "änderten",
+        "perfekt": "haben geändert"
+      }
+    }
   }
 ]
