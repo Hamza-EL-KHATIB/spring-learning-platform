@@ -4750,5 +4750,185 @@
         "perfekt": "haben geschienen"
       }
     }
+  },
+  {
+    "verb": "schicken",
+    "meaning": "to send",
+    "conjugations": {
+      "ich": {
+        "präsens": "schicke",
+        "präteritum": "schickte",
+        "perfekt": "habe geschickt"
+      },
+      "du": {
+        "präsens": "schickst",
+        "präteritum": "schicktest",
+        "perfekt": "hast geschickt"
+      },
+      "er/sie/es": {
+        "präsens": "schickt",
+        "präteritum": "schickte",
+        "perfekt": "hat geschickt"
+      },
+      "wir": {
+        "präsens": "schicken",
+        "präteritum": "schickten",
+        "perfekt": "haben geschickt"
+      },
+      "ihr": {
+        "präsens": "schickt",
+        "präteritum": "schicktet",
+        "perfekt": "habt geschickt"
+      },
+      "sie/Sie": {
+        "präsens": "schicken",
+        "präteritum": "schickten",
+        "perfekt": "haben geschickt"
+      }
+    }
+  },
+  {
+    "verb": "schwimmen",
+    "meaning": "to swim",
+    "conjugations": {
+      "ich": {
+        "präsens": "schwimme",
+        "präteritum": "schwamm",
+        "perfekt": "bin geschwommen"
+      },
+      "du": {
+        "präsens": "schwimmst",
+        "präteritum": "schwammst",
+        "perfekt": "bist geschwommen"
+      },
+      "er/sie/es": {
+        "präsens": "schwimmt",
+        "präteritum": "schwamm",
+        "perfekt": "ist geschwommen"
+      },
+      "wir": {
+        "präsens": "schwimmen",
+        "präteritum": "schwammen",
+        "perfekt": "sind geschwommen"
+      },
+      "ihr": {
+        "präsens": "schwimmt",
+        "präteritum": "schwammt",
+        "perfekt": "seid geschwommen"
+      },
+      "sie/Sie": {
+        "präsens": "schwimmen",
+        "präteritum": "schwammen",
+        "perfekt": "sind geschwommen"
+      }
+    }
+  },
+  {
+    "verb": "singen",
+    "meaning": "to sing",
+    "conjugations": {
+      "ich": {
+        "präsens": "singe",
+        "präteritum": "sang",
+        "perfekt": "habe gesungen"
+      },
+      "du": {
+        "präsens": "singst",
+        "präteritum": "sangst",
+        "perfekt": "hast gesungen"
+      },
+      "er/sie/es": {
+        "präsens": "singt",
+        "präteritum": "sang",
+        "perfekt": "hat gesungen"
+      },
+      "wir": {
+        "präsens": "singen",
+        "präteritum": "sangen",
+        "perfekt": "haben gesungen"
+      },
+      "ihr": {
+        "präsens": "singt",
+        "präteritum": "sangt",
+        "perfekt": "habt gesungen"
+      },
+      "sie/Sie": {
+        "präsens": "singen",
+        "präteritum": "sangen",
+        "perfekt": "haben gesungen"
+      }
+    }
+  },
+  {
+    "verb": "sitzen",
+    "meaning": "to sit",
+    "conjugations": {
+      "ich": {
+        "präsens": "sitze",
+        "präteritum": "saß",
+        "perfekt": "habe gesessen"
+      },
+      "du": {
+        "präsens": "sitzt",
+        "präteritum": "saßest",
+        "perfekt": "hast gesessen"
+      },
+      "er/sie/es": {
+        "präsens": "sitzt",
+        "präteritum": "saß",
+        "perfekt": "hat gesessen"
+      },
+      "wir": {
+        "präsens": "sitzen",
+        "präteritum": "saßen",
+        "perfekt": "haben gesessen"
+      },
+      "ihr": {
+        "präsens": "sitzt",
+        "präteritum": "saßt",
+        "perfekt": "habt gesessen"
+      },
+      "sie/Sie": {
+        "präsens": "sitzen",
+        "präteritum": "saßen",
+        "perfekt": "haben gesessen"
+      }
+    }
+  },
+  {
+    "verb": "sparen",
+    "meaning": "to save",
+    "conjugations": {
+      "ich": {
+        "präsens": "spare",
+        "präteritum": "sparte",
+        "perfekt": "habe gespart"
+      },
+      "du": {
+        "präsens": "sparst",
+        "präteritum": "spartest",
+        "perfekt": "hast gespart"
+      },
+      "er/sie/es": {
+        "präsens": "spart",
+        "präteritum": "sparte",
+        "perfekt": "hat gespart"
+      },
+      "wir": {
+        "präsens": "sparen",
+        "präteritum": "sparten",
+        "perfekt": "haben gespart"
+      },
+      "ihr": {
+        "präsens": "spart",
+        "präteritum": "spartet",
+        "perfekt": "habt gespart"
+      },
+      "sie/Sie": {
+        "präsens": "sparen",
+        "präteritum": "sparten",
+        "perfekt": "haben gespart"
+      }
+    }
   }
 ]
