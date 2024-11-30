@@ -3670,5 +3670,185 @@
         "perfekt": "haben gewonnen"
       }
     }
+  },
+  {
+    "verb": "verlieren",
+    "meaning": "to lose",
+    "conjugations": {
+      "ich": {
+        "präsens": "verliere",
+        "präteritum": "verlor",
+        "perfekt": "habe verloren"
+      },
+      "du": {
+        "präsens": "verlierst",
+        "präteritum": "verlorst",
+        "perfekt": "hast verloren"
+      },
+      "er/sie/es": {
+        "präsens": "verliert",
+        "präteritum": "verlor",
+        "perfekt": "hat verloren"
+      },
+      "wir": {
+        "präsens": "verlieren",
+        "präteritum": "verloren",
+        "perfekt": "haben verloren"
+      },
+      "ihr": {
+        "präsens": "verliert",
+        "präteritum": "verloren",
+        "perfekt": "habt verloren"
+      },
+      "sie/Sie": {
+        "präsens": "verlieren",
+        "präteritum": "verloren",
+        "perfekt": "haben verloren"
+      }
+    }
+  },
+  {
+    "verb": "legen",
+    "meaning": "to lay, put",
+    "conjugations": {
+      "ich": {
+        "präsens": "lege",
+        "präteritum": "legte",
+        "perfekt": "habe gelegt"
+      },
+      "du": {
+        "präsens": "legst",
+        "präteritum": "legtest",
+        "perfekt": "hast gelegt"
+      },
+      "er/sie/es": {
+        "präsens": "legt",
+        "präteritum": "legte",
+        "perfekt": "hat gelegt"
+      },
+      "wir": {
+        "präsens": "legen",
+        "präteritum": "legten",
+        "perfekt": "haben gelegt"
+      },
+      "ihr": {
+        "präsens": "legt",
+        "präteritum": "legtet",
+        "perfekt": "habt gelegt"
+      },
+      "sie/Sie": {
+        "präsens": "legen",
+        "präteritum": "legten",
+        "perfekt": "haben gelegt"
+      }
+    }
+  },
+  {
+    "verb": "stellen",
+    "meaning": "to place, put",
+    "conjugations": {
+      "ich": {
+        "präsens": "stelle",
+        "präteritum": "stellte",
+        "perfekt": "habe gestellt"
+      },
+      "du": {
+        "präsens": "stellst",
+        "präteritum": "stelltest",
+        "perfekt": "hast gestellt"
+      },
+      "er/sie/es": {
+        "präsens": "stellt",
+        "präteritum": "stellte",
+        "perfekt": "hat gestellt"
+      },
+      "wir": {
+        "präsens": "stellen",
+        "präteritum": "stellten",
+        "perfekt": "haben gestellt"
+      },
+      "ihr": {
+        "präsens": "stellt",
+        "präteritum": "stelltet",
+        "perfekt": "habt gestellt"
+      },
+      "sie/Sie": {
+        "präsens": "stellen",
+        "präteritum": "stellten",
+        "perfekt": "haben gestellt"
+      }
+    }
+  },
+  {
+    "verb": "setzen",
+    "meaning": "to set, put, sit down",
+    "conjugations": {
+      "ich": {
+        "präsens": "setze",
+        "präteritum": "setzte",
+        "perfekt": "habe gesetzt"
+      },
+      "du": {
+        "präsens": "setzt",
+        "präteritum": "setztest",
+        "perfekt": "hast gesetzt"
+      },
+      "er/sie/es": {
+        "präsens": "setzt",
+        "präteritum": "setzte",
+        "perfekt": "hat gesetzt"
+      },
+      "wir": {
+        "präsens": "setzen",
+        "präteritum": "setzten",
+        "perfekt": "haben gesetzt"
+      },
+      "ihr": {
+        "präsens": "setzt",
+        "präteritum": "setztet",
+        "perfekt": "habt gesetzt"
+      },
+      "sie/Sie": {
+        "präsens": "setzen",
+        "präteritum": "setzten",
+        "perfekt": "haben gesetzt"
+      }
+    }
+  },
+  {
+    "verb": "erreichen",
+    "meaning": "to reach, achieve",
+    "conjugations": {
+      "ich": {
+        "präsens": "erreiche",
+        "präteritum": "erreichte",
+        "perfekt": "habe erreicht"
+      },
+      "du": {
+        "präsens": "erreichst",
+        "präteritum": "erreichtest",
+        "perfekt": "hast erreicht"
+      },
+      "er/sie/es": {
+        "präsens": "erreicht",
+        "präteritum": "erreichte",
+        "perfekt": "hat erreicht"
+      },
+      "wir": {
+        "präsens": "erreichen",
+        "präteritum": "erreichten",
+        "perfekt": "haben erreicht"
+      },
+      "ihr": {
+        "präsens": "erreicht",
+        "präteritum": "erreichtet",
+        "perfekt": "habt erreicht"
+      },
+      "sie/Sie": {
+        "präsens": "erreichen",
+        "präteritum": "erreichten",
+        "perfekt": "haben erreicht"
+      }
+    }
   }
 ]
