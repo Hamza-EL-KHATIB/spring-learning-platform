@@ -37,6 +37,8 @@ import ScrumPage from './pages/topics/agile/ScrumPage';
 
 import VocabularyPage from './pages/topics/german/VocabularyPage';
 
+import KonjugationPage from "./pages/topics/german/KonjugationPage";
+
 import CodeReviewsPage from "./pages/topics/bestPractices/CodeReviewsPage";
 
 const App = () => {
@@ -47,6 +49,7 @@ const App = () => {
                     <Route path="/" element={<HomePage />} />
 
                     <Route path="/vocabulary" element={<VocabularyPage />} />
+                    <Route path="/konjugation" element={<KonjugationPage />} />
 
                     {/* Java Routes */}
                     <Route path="/java/collections" element={<CollectionsPage />} />
