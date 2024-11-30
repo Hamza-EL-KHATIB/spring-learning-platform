@@ -1,145 +1,187 @@
 import React, { useState } from 'react';
-import { BookOpen, ChevronLeft, ChevronRight, ChevronRight as ExpandIcon, ChevronLeft as CollapseIcon } from 'lucide-react';
+import {
+    Search,
+    ChevronRight,
+    ChevronLeft,
+    BookOpen,
+    Eye,
+    EyeOff
+} from 'lucide-react';
 import konjugationData from '../../../data/german/Konjugation.json';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+// Custom scrollbar styles
+const scrollbarStyles = `
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #2a2a2a;
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(128, 90, 213, 0.6);
+    border-radius: 10px;
+    border: 2px solid #2a2a2a;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 90, 213, 0.9);
+  }
+`;
 
 const KonjugationPage = () => {
+    // Add scrollbar styles to head
+    React.useEffect(() => {
+        const style = document.createElement('style');
+        style.textContent = scrollbarStyles;
+        document.head.appendChild(style);
+        return () => document.head.removeChild(style);
+    }, []);
+
+    const [searchTerm, setSearchTerm] = useState('');
     const [activeVerbIndex, setActiveVerbIndex] = useState(0);
+    const [showEnglish, setShowEnglish] = useState(true);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-    const activeVerb = konjugationData[activeVerbIndex].verb;
 
-    const SidebarNavigation = () => (
-        <div
-            className={`fixed top-0 left-0 h-full bg-gray-800/50 backdrop-blur-sm border-r border-gray-700/50 transition-all duration-300 ease-in-out overflow-hidden ${
-                isSidebarCollapsed ? 'w-16' : 'w-72'
-            }`}
-        >
-            {/* Collapse Button */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-700/50">
-                <h2 className={`${isSidebarCollapsed ? 'hidden' : 'text-sm font-semibold text-gray-300 uppercase tracking-wider'}`}>Verbs</h2>
-                <button
-                    onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-                    className="p-2 hover:bg-gray-700/50 rounded-lg transition-colors"
-                >
-                    {isSidebarCollapsed ? (
-                        <ExpandIcon className="w-5 h-5 text-gray-400" />
-                    ) : (
-                        <CollapseIcon className="w-5 h-5 text-gray-400" />
-                    )}
-                </button>
-            </div>
-
-            {/* Categories List */}
-            <div className="flex-1 overflow-y-auto custom-scrollbar">
-                {!isSidebarCollapsed && (
-                    <div className="p-4">
-                        <div className="space-y-1">
-                            {konjugationData.map((item, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setActiveVerbIndex(index)}
-                                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                                        activeVerbIndex === index
-                                            ? 'bg-purple-500/20 text-purple-300'
-                                            : 'text-gray-400 hover:bg-gray-700/50 hover:text-gray-300'
-                                    }`}
-                                >
-                                    <BookOpen className="w-4 h-4 flex-shrink-0" />
-                                    <span className="text-sm font-medium">{item.verb}</span>
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {/* Collapsed View */}
-                {isSidebarCollapsed && (
-                    <div className="py-4 space-y-2">
-                        {konjugationData.map((item, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setActiveVerbIndex(index)}
-                                className={`w-full flex items-center justify-center p-3 transition-colors ${
-                                    activeVerbIndex === index
-                                        ? 'text-purple-400'
-                                        : 'text-gray-500 hover:text-gray-300'
-                                }`}
-                            >
-                                <BookOpen className="w-5 h-5" />
-                            </button>
-                        ))}
-                    </div>
-                )}
-            </div>
-        </div>
+    // Filter verbs based on search
+    const filteredVerbs = konjugationData.filter(verb =>
+        verb.verb.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        verb.meaning.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const renderConjugations = (conjugations) => (
-        <div className="overflow-x-auto">
-            <div className="min-w-full bg-gray-800 rounded-lg p-6 border border-gray-700">
-                <div className="grid grid-cols-4 gap-6">
-                    <div className="font-bold text-purple-400 text-lg">Pronoun</div>
-                    {Object.keys(conjugations.ich).map((tense, idx) => (
-                        <div key={idx} className="font-bold text-purple-400 text-lg uppercase">
-                            {tense}
+    const activeVerb = filteredVerbs[activeVerbIndex];
+
+    const renderTenseTable = (tense, conjugations) => {
+        const pronouns = ['ich', 'du', 'er/sie/es', 'wir', 'ihr', 'sie/Sie'];
+        return (
+            <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700/50">
+                <h3 className="text-lg font-medium text-purple-300 mb-4 capitalize">{tense}</h3>
+                <div className="space-y-2">
+                    {pronouns.map((pronoun) => (
+                        <div key={pronoun} className="grid grid-cols-2 gap-4 py-2 border-b border-gray-700/50 last:border-0">
+                            <div className="text-gray-400">{pronoun}</div>
+                            <div className="text-white font-medium">{conjugations[pronoun][tense]}</div>
                         </div>
                     ))}
                 </div>
-                {Object.entries(conjugations).map(([pronoun, tenses], idx) => (
-                    <div key={idx} className="grid grid-cols-4 gap-6 mt-4 border-t border-gray-700 pt-4">
-                        <div className="text-purple-300 font-medium text-md">{pronoun}</div>
-                        {Object.keys(tenses).map((tense, tenseIdx) => (
-                            <div key={tenseIdx} className="bg-gray-900 rounded p-4 border border-gray-700 shadow-md">
-                                <p className="text-gray-200 text-lg font-semibold">{tenses[tense]}</p>
-                            </div>
-                        ))}
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-
-    const renderContent = () => {
-        const verbData = konjugationData[activeVerbIndex];
-        if (!verbData) return null;
-
-        return (
-            <div className={`space-y-8 ${isSidebarCollapsed ? 'ml-20' : 'ml-80'}`}>
-                {/* Verb Header with Navigation */}
-                <div className="bg-gray-800 rounded-lg p-8 border border-purple-600 shadow-lg flex items-center justify-between">
-                    <button
-                        onClick={() => setActiveVerbIndex((prevIndex) => Math.max(prevIndex - 1, 0))}
-                        className="p-2 bg-purple-500 text-white rounded-full hover:bg-purple-700"
-                        disabled={activeVerbIndex === 0}
-                    >
-                        <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <div className="text-center">
-                        <h1 className="text-4xl font-bold text-white mb-2">{verbData.verb}</h1>
-                        <p className="text-gray-400 text-xl">{verbData.meaning}</p>
-                    </div>
-                    <button
-                        onClick={() => setActiveVerbIndex((prevIndex) => Math.min(prevIndex + 1, konjugationData.length - 1))}
-                        className="p-2 bg-purple-500 text-white rounded-full hover:bg-purple-700"
-                        disabled={activeVerbIndex === konjugationData.length - 1}
-                    >
-                        <ChevronRight className="w-5 h-5" />
-                    </button>
-                </div>
-
-                {/* Conjugations Section */}
-                {renderConjugations(verbData.conjugations)}
             </div>
         );
     };
 
     return (
-        <div className="min-h-screen bg-gray-900 pb-16">
-            <SidebarNavigation />
-            <div className="pt-8">
-                {/* Content */}
-                {renderContent()}
+        <div className="min-h-screen bg-gray-900">
+            <div className="container mx-auto px-4 py-8">
+                {/* Header */}
+                <div className="max-w-6xl mx-auto mb-8">
+                    <div className="flex items-center justify-between mb-6">
+                        <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                            German Verb Conjugation
+                        </h1>
+                        <button
+                            onClick={() => setShowEnglish(!showEnglish)}
+                            className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 rounded-lg text-gray-400 hover:text-white transition-colors border border-gray-700/50"
+                        >
+                            {showEnglish ? (
+                                <><Eye className="w-5 h-5" /><span>Hide English</span></>
+                            ) : (
+                                <><EyeOff className="w-5 h-5" /><span>Show English</span></>
+                            )}
+                        </button>
+                    </div>
+
+                    {/* Search Bar */}
+                    <div className="relative">
+                        <input
+                            type="text"
+                            placeholder="Search verbs..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full px-5 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-gray-300 focus:outline-none focus:border-purple-500 pl-12"
+                        />
+                        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
+                    </div>
+                </div>
+
+                {/* Main Content */}
+                <div className="max-w-6xl mx-auto">
+                    <div className="flex flex-col lg:flex-row gap-8">
+                        {/* Verb List Sidebar */}
+                        <div className={`lg:w-1/4 transition-all duration-300 ${isSidebarCollapsed ? 'lg:w-16' : 'lg:w-1/4'}`}>
+                            <div className="bg-gray-800/30 rounded-lg border border-gray-700/50">
+                                {/* Collapse Toggle */}
+                                <div className="p-4 border-b border-gray-700/50 flex items-center justify-between">
+                                    {!isSidebarCollapsed && <h3 className="text-sm font-medium text-gray-400 uppercase">Verbs</h3>}
+                                    <button
+                                        onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+                                        className="p-2 text-gray-400 hover:text-white transition-colors"
+                                    >
+                                        {isSidebarCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+                                    </button>
+                                </div>
+
+                                {/* Scrollable Verb List */}
+                                <div className="max-h-[calc(100vh-300px)] overflow-y-auto custom-scrollbar">
+                                    <div className="p-4 space-y-2">
+                                        {filteredVerbs.map((verb, index) => (
+                                            <button
+                                                key={index}
+                                                onClick={() => setActiveVerbIndex(index)}
+                                                className={`w-full flex items-center gap-2 px-4 py-3 rounded-lg transition-all ${
+                                                    index === activeVerbIndex
+                                                        ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                                                        : 'text-gray-400 hover:bg-gray-700/50 hover:text-white border border-transparent'
+                                                }`}
+                                            >
+                                                <BookOpen className="w-4 h-4 flex-shrink-0" />
+                                                {!isSidebarCollapsed && <span className="text-left">{verb.verb}</span>}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Conjugation Display */}
+                        {activeVerb && (
+                            <div className="lg:flex-1">
+                                {/* Verb Header */}
+                                <div className="bg-gray-800/30 rounded-lg border border-purple-500/30 p-6 mb-6">
+                                    <div className="flex items-center justify-between mb-4">
+                                        <button
+                                            onClick={() => setActiveVerbIndex(Math.max(0, activeVerbIndex - 1))}
+                                            disabled={activeVerbIndex === 0}
+                                            className="p-2 text-gray-400 hover:text-white disabled:opacity-50"
+                                        >
+                                            <ChevronLeft className="w-5 h-5" />
+                                        </button>
+                                        <div className="text-center">
+                                            <h2 className="text-3xl font-bold text-white mb-2">{activeVerb.verb}</h2>
+                                            {showEnglish && (
+                                                <p className="text-gray-400 text-lg">{activeVerb.meaning}</p>
+                                            )}
+                                        </div>
+                                        <button
+                                            onClick={() => setActiveVerbIndex(Math.min(filteredVerbs.length - 1, activeVerbIndex + 1))}
+                                            disabled={activeVerbIndex === filteredVerbs.length - 1}
+                                            className="p-2 text-gray-400 hover:text-white disabled:opacity-50"
+                                        >
+                                            <ChevronRight className="w-5 h-5" />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Conjugation Tables */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    {Object.keys(activeVerb.conjugations.ich).map((tense) =>
+                                        renderTenseTable(tense, activeVerb.conjugations)
+                                    )}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );
