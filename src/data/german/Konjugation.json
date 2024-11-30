@@ -1,1193 +1,5 @@
 [
   {
-    "verb": "kommen",
-    "meaning": "to come",
-    "conjugations": {
-      "ich": {
-        "präsens": "komme",
-        "präteritum": "kam",
-        "perfekt": "bin gekommen"
-      },
-      "du": {
-        "präsens": "kommst",
-        "präteritum": "kamst",
-        "perfekt": "bist gekommen"
-      },
-      "er/sie/es": {
-        "präsens": "kommt",
-        "präteritum": "kam",
-        "perfekt": "ist gekommen"
-      },
-      "wir": {
-        "präsens": "kommen",
-        "präteritum": "kamen",
-        "perfekt": "sind gekommen"
-      },
-      "ihr": {
-        "präsens": "kommt",
-        "präteritum": "kamt",
-        "perfekt": "seid gekommen"
-      },
-      "sie/Sie": {
-        "präsens": "kommen",
-        "präteritum": "kamen",
-        "perfekt": "sind gekommen"
-      }
-    }
-  },
-  {
-    "verb": "studieren",
-    "meaning": "to study",
-    "conjugations": {
-      "ich": {
-        "präsens": "studiere",
-        "präteritum": "studierte",
-        "perfekt": "habe studiert"
-      },
-      "du": {
-        "präsens": "studierst",
-        "präteritum": "studiertest",
-        "perfekt": "hast studiert"
-      },
-      "er/sie/es": {
-        "präsens": "studiert",
-        "präteritum": "studierte",
-        "perfekt": "hat studiert"
-      },
-      "wir": {
-        "präsens": "studieren",
-        "präteritum": "studierten",
-        "perfekt": "haben studiert"
-      },
-      "ihr": {
-        "präsens": "studiert",
-        "präteritum": "studiertet",
-        "perfekt": "habt studiert"
-      },
-      "sie/Sie": {
-        "präsens": "studieren",
-        "präteritum": "studierten",
-        "perfekt": "haben studiert"
-      }
-    }
-  },
-  {
-    "verb": "fahren",
-    "meaning": "to drive, ride, go",
-    "conjugations": {
-      "ich": {
-        "präsens": "fahre",
-        "präteritum": "fuhr",
-        "perfekt": "bin gefahren"
-      },
-      "du": {
-        "präsens": "fährst",
-        "präteritum": "fuhrst",
-        "perfekt": "bist gefahren"
-      },
-      "er/sie/es": {
-        "präsens": "fährt",
-        "präteritum": "fuhr",
-        "perfekt": "ist gefahren"
-      },
-      "wir": {
-        "präsens": "fahren",
-        "präteritum": "fuhren",
-        "perfekt": "sind gefahren"
-      },
-      "ihr": {
-        "präsens": "fahrt",
-        "präteritum": "fuhrt",
-        "perfekt": "seid gefahren"
-      },
-      "sie/Sie": {
-        "präsens": "fahren",
-        "präteritum": "fuhren",
-        "perfekt": "sind gefahren"
-      }
-    }
-  },
-  {
-    "verb": "sein",
-    "meaning": "to be",
-    "conjugations": {
-      "ich": {
-        "präsens": "bin",
-        "präteritum": "war",
-        "perfekt": "bin gewesen"
-      },
-      "du": {
-        "präsens": "bist",
-        "präteritum": "warst",
-        "perfekt": "bist gewesen"
-      },
-      "er/sie/es": {
-        "präsens": "ist",
-        "präteritum": "war",
-        "perfekt": "ist gewesen"
-      },
-      "wir": {
-        "präsens": "sind",
-        "präteritum": "waren",
-        "perfekt": "sind gewesen"
-      },
-      "ihr": {
-        "präsens": "seid",
-        "präteritum": "wart",
-        "perfekt": "seid gewesen"
-      },
-      "sie/Sie": {
-        "präsens": "sind",
-        "präteritum": "waren",
-        "perfekt": "sind gewesen"
-      }
-    }
-  },
-  {
-    "verb": "treffen",
-    "meaning": "to meet",
-    "conjugations": {
-      "ich": {
-        "präsens": "treffe",
-        "präteritum": "traf",
-        "perfekt": "habe getroffen"
-      },
-      "du": {
-        "präsens": "triffst",
-        "präteritum": "trafst",
-        "perfekt": "hast getroffen"
-      },
-      "er/sie/es": {
-        "präsens": "trifft",
-        "präteritum": "traf",
-        "perfekt": "hat getroffen"
-      },
-      "wir": {
-        "präsens": "treffen",
-        "präteritum": "trafen",
-        "perfekt": "haben getroffen"
-      },
-      "ihr": {
-        "präsens": "trefft",
-        "präteritum": "traft",
-        "perfekt": "habt getroffen"
-      },
-      "sie/Sie": {
-        "präsens": "treffen",
-        "präteritum": "trafen",
-        "perfekt": "haben getroffen"
-      }
-    }
-  },
-  {
-    "verb": "gehen",
-    "meaning": "to go",
-    "conjugations": {
-      "ich": {
-        "präsens": "gehe",
-        "präteritum": "ging",
-        "perfekt": "bin gegangen"
-      },
-      "du": {
-        "präsens": "gehst",
-        "präteritum": "gingst",
-        "perfekt": "bist gegangen"
-      },
-      "er/sie/es": {
-        "präsens": "geht",
-        "präteritum": "ging",
-        "perfekt": "ist gegangen"
-      },
-      "wir": {
-        "präsens": "gehen",
-        "präteritum": "gingen",
-        "perfekt": "sind gegangen"
-      },
-      "ihr": {
-        "präsens": "geht",
-        "präteritum": "gingt",
-        "perfekt": "seid gegangen"
-      },
-      "sie/Sie": {
-        "präsens": "gehen",
-        "präteritum": "gingen",
-        "perfekt": "sind gegangen"
-      }
-    }
-  },
-  {
-    "verb": "essen",
-    "meaning": "to eat",
-    "conjugations": {
-      "ich": {
-        "präsens": "esse",
-        "präteritum": "aß",
-        "perfekt": "habe gegessen"
-      },
-      "du": {
-        "präsens": "isst",
-        "präteritum": "aßest",
-        "perfekt": "hast gegessen"
-      },
-      "er/sie/es": {
-        "präsens": "isst",
-        "präteritum": "aß",
-        "perfekt": "hat gegessen"
-      },
-      "wir": {
-        "präsens": "essen",
-        "präteritum": "aßen",
-        "perfekt": "haben gegessen"
-      },
-      "ihr": {
-        "präsens": "esst",
-        "präteritum": "aßt",
-        "perfekt": "habt gegessen"
-      },
-      "sie/Sie": {
-        "präsens": "essen",
-        "präteritum": "aßen",
-        "perfekt": "haben gegessen"
-      }
-    }
-  },
-  {
-    "verb": "haben",
-    "meaning": "to have",
-    "conjugations": {
-      "ich": {
-        "präsens": "habe",
-        "präteritum": "hatte",
-        "perfekt": "habe gehabt"
-      },
-      "du": {
-        "präsens": "hast",
-        "präteritum": "hattest",
-        "perfekt": "hast gehabt"
-      },
-      "er/sie/es": {
-        "präsens": "hat",
-        "präteritum": "hatte",
-        "perfekt": "hat gehabt"
-      },
-      "wir": {
-        "präsens": "haben",
-        "präteritum": "hatten",
-        "perfekt": "haben gehabt"
-      },
-      "ihr": {
-        "präsens": "habt",
-        "präteritum": "hattet",
-        "perfekt": "habt gehabt"
-      },
-      "sie/Sie": {
-        "präsens": "haben",
-        "präteritum": "hatten",
-        "perfekt": "haben gehabt"
-      }
-    }
-  },
-  {
-    "verb": "machen",
-    "meaning": "to make, do",
-    "conjugations": {
-      "ich": {
-        "präsens": "mache",
-        "präteritum": "machte",
-        "perfekt": "habe gemacht"
-      },
-      "du": {
-        "präsens": "machst",
-        "präteritum": "machtest",
-        "perfekt": "hast gemacht"
-      },
-      "er/sie/es": {
-        "präsens": "macht",
-        "präteritum": "machte",
-        "perfekt": "hat gemacht"
-      },
-      "wir": {
-        "präsens": "machen",
-        "präteritum": "machten",
-        "perfekt": "haben gemacht"
-      },
-      "ihr": {
-        "präsens": "macht",
-        "präteritum": "machtet",
-        "perfekt": "habt gemacht"
-      },
-      "sie/Sie": {
-        "präsens": "machen",
-        "präteritum": "machten",
-        "perfekt": "haben gemacht"
-      }
-    }
-  },
-  {
-    "verb": "kochen",
-    "meaning": "to cook",
-    "conjugations": {
-      "ich": {
-        "präsens": "koche",
-        "präteritum": "kochte",
-        "perfekt": "habe gekocht"
-      },
-      "du": {
-        "präsens": "kochst",
-        "präteritum": "kochtest",
-        "perfekt": "hast gekocht"
-      },
-      "er/sie/es": {
-        "präsens": "kocht",
-        "präteritum": "kochte",
-        "perfekt": "hat gekocht"
-      },
-      "wir": {
-        "präsens": "kochen",
-        "präteritum": "kochten",
-        "perfekt": "haben gekocht"
-      },
-      "ihr": {
-        "präsens": "kocht",
-        "präteritum": "kochtet",
-        "perfekt": "habt gekocht"
-      },
-      "sie/Sie": {
-        "präsens": "kochen",
-        "präteritum": "kochten",
-        "perfekt": "haben gekocht"
-      }
-    }
-  },
-  {
-    "verb": "sehen",
-    "meaning": "to see",
-    "conjugations": {
-      "ich": {
-        "präsens": "sehe",
-        "präteritum": "sah",
-        "perfekt": "habe gesehen"
-      },
-      "du": {
-        "präsens": "siehst",
-        "präteritum": "sahst",
-        "perfekt": "hast gesehen"
-      },
-      "er/sie/es": {
-        "präsens": "sieht",
-        "präteritum": "sah",
-        "perfekt": "hat gesehen"
-      },
-      "wir": {
-        "präsens": "sehen",
-        "präteritum": "sahen",
-        "perfekt": "haben gesehen"
-      },
-      "ihr": {
-        "präsens": "seht",
-        "präteritum": "saht",
-        "perfekt": "habt gesehen"
-      },
-      "sie/Sie": {
-        "präsens": "sehen",
-        "präteritum": "sahen",
-        "perfekt": "haben gesehen"
-      }
-    }
-  },
-  {
-    "verb": "arbeiten",
-    "meaning": "to work",
-    "conjugations": {
-      "ich": {
-        "präsens": "arbeite",
-        "präteritum": "arbeitete",
-        "perfekt": "habe gearbeitet"
-      },
-      "du": {
-        "präsens": "arbeitest",
-        "präteritum": "arbeitetest",
-        "perfekt": "hast gearbeitet"
-      },
-      "er/sie/es": {
-        "präsens": "arbeitet",
-        "präteritum": "arbeitete",
-        "perfekt": "hat gearbeitet"
-      },
-      "wir": {
-        "präsens": "arbeiten",
-        "präteritum": "arbeiteten",
-        "perfekt": "haben gearbeitet"
-      },
-      "ihr": {
-        "präsens": "arbeitet",
-        "präteritum": "arbeitetet",
-        "perfekt": "habt gearbeitet"
-      },
-      "sie/Sie": {
-        "präsens": "arbeiten",
-        "präteritum": "arbeiteten",
-        "perfekt": "haben gearbeitet"
-      }
-    }
-  },
-  {
-    "verb": "sprechen",
-    "meaning": "to speak",
-    "conjugations": {
-      "ich": {
-        "präsens": "spreche",
-        "präteritum": "sprach",
-        "perfekt": "habe gesprochen"
-      },
-      "du": {
-        "präsens": "sprichst",
-        "präteritum": "sprachst",
-        "perfekt": "hast gesprochen"
-      },
-      "er/sie/es": {
-        "präsens": "spricht",
-        "präteritum": "sprach",
-        "perfekt": "hat gesprochen"
-      },
-      "wir": {
-        "präsens": "sprechen",
-        "präteritum": "sprachen",
-        "perfekt": "haben gesprochen"
-      },
-      "ihr": {
-        "präsens": "sprecht",
-        "präteritum": "spracht",
-        "perfekt": "habt gesprochen"
-      },
-      "sie/Sie": {
-        "präsens": "sprechen",
-        "präteritum": "sprachen",
-        "perfekt": "haben gesprochen"
-      }
-    }
-  },
-  {
-    "verb": "schreiben",
-    "meaning": "to write",
-    "conjugations": {
-      "ich": {
-        "präsens": "schreibe",
-        "präteritum": "schrieb",
-        "perfekt": "habe geschrieben"
-      },
-      "du": {
-        "präsens": "schreibst",
-        "präteritum": "schriebst",
-        "perfekt": "hast geschrieben"
-      },
-      "er/sie/es": {
-        "präsens": "schreibt",
-        "präteritum": "schrieb",
-        "perfekt": "hat geschrieben"
-      },
-      "wir": {
-        "präsens": "schreiben",
-        "präteritum": "schrieben",
-        "perfekt": "haben geschrieben"
-      },
-      "ihr": {
-        "präsens": "schreibt",
-        "präteritum": "schriebt",
-        "perfekt": "habt geschrieben"
-      },
-      "sie/Sie": {
-        "präsens": "schreiben",
-        "präteritum": "schrieben",
-        "perfekt": "haben geschrieben"
-      }
-    }
-  },
-  {
-    "verb": "lesen",
-    "meaning": "to read",
-    "conjugations": {
-      "ich": {
-        "präsens": "lese",
-        "präteritum": "las",
-        "perfekt": "habe gelesen"
-      },
-      "du": {
-        "präsens": "liest",
-        "präteritum": "last",
-        "perfekt": "hast gelesen"
-      },
-      "er/sie/es": {
-        "präsens": "liest",
-        "präteritum": "las",
-        "perfekt": "hat gelesen"
-      },
-      "wir": {
-        "präsens": "lesen",
-        "präteritum": "lasen",
-        "perfekt": "haben gelesen"
-      },
-      "ihr": {
-        "präsens": "lest",
-        "präteritum": "last",
-        "perfekt": "habt gelesen"
-      },
-      "sie/Sie": {
-        "präsens": "lesen",
-        "präteritum": "lasen",
-        "perfekt": "haben gelesen"
-      }
-    }
-  },
-  {
-    "verb": "trinken",
-    "meaning": "to drink",
-    "conjugations": {
-      "ich": {
-        "präsens": "trinke",
-        "präteritum": "trank",
-        "perfekt": "habe getrunken"
-      },
-      "du": {
-        "präsens": "trinkst",
-        "präteritum": "trankst",
-        "perfekt": "hast getrunken"
-      },
-      "er/sie/es": {
-        "präsens": "trinkt",
-        "präteritum": "trank",
-        "perfekt": "hat getrunken"
-      },
-      "wir": {
-        "präsens": "trinken",
-        "präteritum": "tranken",
-        "perfekt": "haben getrunken"
-      },
-      "ihr": {
-        "präsens": "trinkt",
-        "präteritum": "trankt",
-        "perfekt": "habt getrunken"
-      },
-      "sie/Sie": {
-        "präsens": "trinken",
-        "präteritum": "tranken",
-        "perfekt": "haben getrunken"
-      }
-    }
-  },
-  {
-    "verb": "schlafen",
-    "meaning": "to sleep",
-    "conjugations": {
-      "ich": {
-        "präsens": "schlafe",
-        "präteritum": "schlief",
-        "perfekt": "habe geschlafen"
-      },
-      "du": {
-        "präsens": "schläfst",
-        "präteritum": "schliefst",
-        "perfekt": "hast geschlafen"
-      },
-      "er/sie/es": {
-        "präsens": "schläft",
-        "präteritum": "schlief",
-        "perfekt": "hat geschlafen"
-      },
-      "wir": {
-        "präsens": "schlafen",
-        "präteritum": "schliefen",
-        "perfekt": "haben geschlafen"
-      },
-      "ihr": {
-        "präsens": "schlaft",
-        "präteritum": "schlieft",
-        "perfekt": "habt geschlafen"
-      },
-      "sie/Sie": {
-        "präsens": "schlafen",
-        "präteritum": "schliefen",
-        "perfekt": "haben geschlafen"
-      }
-    }
-  },
-  {
-    "verb": "nehmen",
-    "meaning": "to take",
-    "conjugations": {
-      "ich": {
-        "präsens": "nehme",
-        "präteritum": "nahm",
-        "perfekt": "habe genommen"
-      },
-      "du": {
-        "präsens": "nimmst",
-        "präteritum": "nahmst",
-        "perfekt": "hast genommen"
-      },
-      "er/sie/es": {
-        "präsens": "nimmt",
-        "präteritum": "nahm",
-        "perfekt": "hat genommen"
-      },
-      "wir": {
-        "präsens": "nehmen",
-        "präteritum": "nahmen",
-        "perfekt": "haben genommen"
-      },
-      "ihr": {
-        "präsens": "nehmt",
-        "präteritum": "nahmt",
-        "perfekt": "habt genommen"
-      },
-      "sie/Sie": {
-        "präsens": "nehmen",
-        "präteritum": "nahmen",
-        "perfekt": "haben genommen"
-      }
-    }
-  },
-  {
-    "verb": "geben",
-    "meaning": "to give",
-    "conjugations": {
-      "ich": {
-        "präsens": "gebe",
-        "präteritum": "gab",
-        "perfekt": "habe gegeben"
-      },
-      "du": {
-        "präsens": "gibst",
-        "präteritum": "gabst",
-        "perfekt": "hast gegeben"
-      },
-      "er/sie/es": {
-        "präsens": "gibt",
-        "präteritum": "gab",
-        "perfekt": "hat gegeben"
-      },
-      "wir": {
-        "präsens": "geben",
-        "präteritum": "gaben",
-        "perfekt": "haben gegeben"
-      },
-      "ihr": {
-        "präsens": "gebt",
-        "präteritum": "gabt",
-        "perfekt": "habt gegeben"
-      },
-      "sie/Sie": {
-        "präsens": "geben",
-        "präteritum": "gaben",
-        "perfekt": "haben gegeben"
-      }
-    }
-  },
-  {
-    "verb": "helfen",
-    "meaning": "to help",
-    "conjugations": {
-      "ich": {
-        "präsens": "helfe",
-        "präteritum": "half",
-        "perfekt": "habe geholfen"
-      },
-      "du": {
-        "präsens": "hilfst",
-        "präteritum": "halfst",
-        "perfekt": "hast geholfen"
-      },
-      "er/sie/es": {
-        "präsens": "hilft",
-        "präteritum": "half",
-        "perfekt": "hat geholfen"
-      },
-      "wir": {
-        "präsens": "helfen",
-        "präteritum": "halfen",
-        "perfekt": "haben geholfen"
-      },
-      "ihr": {
-        "präsens": "helft",
-        "präteritum": "halft",
-        "perfekt": "habt geholfen"
-      },
-      "sie/Sie": {
-        "präsens": "helfen",
-        "präteritum": "halfen",
-        "perfekt": "haben geholfen"
-      }
-    }
-  },
-  {
-    "verb": "laufen",
-    "meaning": "to run",
-    "conjugations": {
-      "ich": {
-        "präsens": "laufe",
-        "präteritum": "lief",
-        "perfekt": "bin gelaufen"
-      },
-      "du": {
-        "präsens": "läufst",
-        "präteritum": "liefst",
-        "perfekt": "bist gelaufen"
-      },
-      "er/sie/es": {
-        "präsens": "läuft",
-        "präteritum": "lief",
-        "perfekt": "ist gelaufen"
-      },
-      "wir": {
-        "präsens": "laufen",
-        "präteritum": "liefen",
-        "perfekt": "sind gelaufen"
-      },
-      "ihr": {
-        "präsens": "lauft",
-        "präteritum": "lieft",
-        "perfekt": "seid gelaufen"
-      },
-      "sie/Sie": {
-        "präsens": "laufen",
-        "präteritum": "liefen",
-        "perfekt": "sind gelaufen"
-      }
-    }
-  },
-  {
-    "verb": "bleiben",
-    "meaning": "to stay",
-    "conjugations": {
-      "ich": {
-        "präsens": "bleibe",
-        "präteritum": "blieb",
-        "perfekt": "bin geblieben"
-      },
-      "du": {
-        "präsens": "bleibst",
-        "präteritum": "bliebst",
-        "perfekt": "bist geblieben"
-      },
-      "er/sie/es": {
-        "präsens": "bleibt",
-        "präteritum": "blieb",
-        "perfekt": "ist geblieben"
-      },
-      "wir": {
-        "präsens": "bleiben",
-        "präteritum": "blieben",
-        "perfekt": "sind geblieben"
-      },
-      "ihr": {
-        "präsens": "bleibt",
-        "präteritum": "bliebt",
-        "perfekt": "seid geblieben"
-      },
-      "sie/Sie": {
-        "präsens": "bleiben",
-        "präteritum": "blieben",
-        "perfekt": "sind geblieben"
-      }
-    }
-  },
-  {
-    "verb": "finden",
-    "meaning": "to find",
-    "conjugations": {
-      "ich": {
-        "präsens": "finde",
-        "präteritum": "fand",
-        "perfekt": "habe gefunden"
-      },
-      "du": {
-        "präsens": "findest",
-        "präteritum": "fandest",
-        "perfekt": "hast gefunden"
-      },
-      "er/sie/es": {
-        "präsens": "findet",
-        "präteritum": "fand",
-        "perfekt": "hat gefunden"
-      },
-      "wir": {
-        "präsens": "finden",
-        "präteritum": "fanden",
-        "perfekt": "haben gefunden"
-      },
-      "ihr": {
-        "präsens": "findet",
-        "präteritum": "fandet",
-        "perfekt": "habt gefunden"
-      },
-      "sie/Sie": {
-        "präsens": "finden",
-        "präteritum": "fanden",
-        "perfekt": "haben gefunden"
-      }
-    }
-  },
-  {
-    "verb": "denken",
-    "meaning": "to think",
-    "conjugations": {
-      "ich": {
-        "präsens": "denke",
-        "präteritum": "dachte",
-        "perfekt": "habe gedacht"
-      },
-      "du": {
-        "präsens": "denkst",
-        "präteritum": "dachtest",
-        "perfekt": "hast gedacht"
-      },
-      "er/sie/es": {
-        "präsens": "denkt",
-        "präteritum": "dachte",
-        "perfekt": "hat gedacht"
-      },
-      "wir": {
-        "präsens": "denken",
-        "präteritum": "dachten",
-        "perfekt": "haben gedacht"
-      },
-      "ihr": {
-        "präsens": "denkt",
-        "präteritum": "dachtet",
-        "perfekt": "habt gedacht"
-      },
-      "sie/Sie": {
-        "präsens": "denken",
-        "präteritum": "dachten",
-        "perfekt": "haben gedacht"
-      }
-    }
-  },
-  {
-    "verb": "beginnen",
-    "meaning": "to begin",
-    "conjugations": {
-      "ich": {
-        "präsens": "beginne",
-        "präteritum": "begann",
-        "perfekt": "habe begonnen"
-      },
-      "du": {
-        "präsens": "beginnst",
-        "präteritum": "begannst",
-        "perfekt": "hast begonnen"
-      },
-      "er/sie/es": {
-        "präsens": "beginnt",
-        "präteritum": "begann",
-        "perfekt": "hat begonnen"
-      },
-      "wir": {
-        "präsens": "beginnen",
-        "präteritum": "begannen",
-        "perfekt": "haben begonnen"
-      },
-      "ihr": {
-        "präsens": "beginnt",
-        "präteritum": "begannt",
-        "perfekt": "habt begonnen"
-      },
-      "sie/Sie": {
-        "präsens": "beginnen",
-        "präteritum": "begannen",
-        "perfekt": "haben begonnen"
-      }
-    }
-  },
-  {
-    "verb": "bringen",
-    "meaning": "to bring",
-    "conjugations": {
-      "ich": {
-        "präsens": "bringe",
-        "präteritum": "brachte",
-        "perfekt": "habe gebracht"
-      },
-      "du": {
-        "präsens": "bringst",
-        "präteritum": "brachtest",
-        "perfekt": "hast gebracht"
-      },
-      "er/sie/es": {
-        "präsens": "bringt",
-        "präteritum": "brachte",
-        "perfekt": "hat gebracht"
-      },
-      "wir": {
-        "präsens": "bringen",
-        "präteritum": "brachten",
-        "perfekt": "haben gebracht"
-      },
-      "ihr": {
-        "präsens": "bringt",
-        "präteritum": "brachtet",
-        "perfekt": "habt gebracht"
-      },
-      "sie/Sie": {
-        "präsens": "bringen",
-        "präteritum": "brachten",
-        "perfekt": "haben gebracht"
-      }
-    }
-  },
-  {
-    "verb": "wissen",
-    "meaning": "to know",
-    "conjugations": {
-      "ich": {
-        "präsens": "weiß",
-        "präteritum": "wusste",
-        "perfekt": "habe gewusst"
-      },
-      "du": {
-        "präsens": "weißt",
-        "präteritum": "wusstest",
-        "perfekt": "hast gewusst"
-      },
-      "er/sie/es": {
-        "präsens": "weiß",
-        "präteritum": "wusste",
-        "perfekt": "hat gewusst"
-      },
-      "wir": {
-        "präsens": "wissen",
-        "präteritum": "wussten",
-        "perfekt": "haben gewusst"
-      },
-      "ihr": {
-        "präsens": "wisst",
-        "präteritum": "wusstet",
-        "perfekt": "habt gewusst"
-      },
-      "sie/Sie": {
-        "präsens": "wissen",
-        "präteritum": "wussten",
-        "perfekt": "haben gewusst"
-      }
-    }
-  },
-  {
-    "verb": "sagen",
-    "meaning": "to say",
-    "conjugations": {
-      "ich": {
-        "präsens": "sage",
-        "präteritum": "sagte",
-        "perfekt": "habe gesagt"
-      },
-      "du": {
-        "präsens": "sagst",
-        "präteritum": "sagtest",
-        "perfekt": "hast gesagt"
-      },
-      "er/sie/es": {
-        "präsens": "sagt",
-        "präteritum": "sagte",
-        "perfekt": "hat gesagt"
-      },
-      "wir": {
-        "präsens": "sagen",
-        "präteritum": "sagten",
-        "perfekt": "haben gesagt"
-      },
-      "ihr": {
-        "präsens": "sagt",
-        "präteritum": "sagtet",
-        "perfekt": "habt gesagt"
-      },
-      "sie/Sie": {
-        "präsens": "sagen",
-        "präteritum": "sagten",
-        "perfekt": "haben gesagt"
-      }
-    }
-  },
-  {
-    "verb": "kaufen",
-    "meaning": "to buy",
-    "conjugations": {
-      "ich": {
-        "präsens": "kaufe",
-        "präteritum": "kaufte",
-        "perfekt": "habe gekauft"
-      },
-      "du": {
-        "präsens": "kaufst",
-        "präteritum": "kauftest",
-        "perfekt": "hast gekauft"
-      },
-      "er/sie/es": {
-        "präsens": "kauft",
-        "präteritum": "kaufte",
-        "perfekt": "hat gekauft"
-      },
-      "wir": {
-        "präsens": "kaufen",
-        "präteritum": "kauften",
-        "perfekt": "haben gekauft"
-      },
-      "ihr": {
-        "präsens": "kauft",
-        "präteritum": "kauftet",
-        "perfekt": "habt gekauft"
-      },
-      "sie/Sie": {
-        "präsens": "kaufen",
-        "präteritum": "kauften",
-        "perfekt": "haben gekauft"
-      }
-    }
-  },
-  {
-    "verb": "spielen",
-    "meaning": "to play",
-    "conjugations": {
-      "ich": {
-        "präsens": "spiele",
-        "präteritum": "spielte",
-        "perfekt": "habe gespielt"
-      },
-      "du": {
-        "präsens": "spielst",
-        "präteritum": "spieltest",
-        "perfekt": "hast gespielt"
-      },
-      "er/sie/es": {
-        "präsens": "spielt",
-        "präteritum": "spielte",
-        "perfekt": "hat gespielt"
-      },
-      "wir": {
-        "präsens": "spielen",
-        "präteritum": "spielten",
-        "perfekt": "haben gespielt"
-      },
-      "ihr": {
-        "präsens": "spielt",
-        "präteritum": "spieltet",
-        "perfekt": "habt gespielt"
-      },
-      "sie/Sie": {
-        "präsens": "spielen",
-        "präteritum": "spielten",
-        "perfekt": "haben gespielt"
-      }
-    }
-  },
-  {
-    "verb": "hören",
-    "meaning": "to hear, listen",
-    "conjugations": {
-      "ich": {
-        "präsens": "höre",
-        "präteritum": "hörte",
-        "perfekt": "habe gehört"
-      },
-      "du": {
-        "präsens": "hörst",
-        "präteritum": "hörtest",
-        "perfekt": "hast gehört"
-      },
-      "er/sie/es": {
-        "präsens": "hört",
-        "präteritum": "hörte",
-        "perfekt": "hat gehört"
-      },
-      "wir": {
-        "präsens": "hören",
-        "präteritum": "hörten",
-        "perfekt": "haben gehört"
-      },
-      "ihr": {
-        "präsens": "hört",
-        "präteritum": "hörtet",
-        "perfekt": "habt gehört"
-      },
-      "sie/Sie": {
-        "präsens": "hören",
-        "präteritum": "hörten",
-        "perfekt": "haben gehört"
-      }
-    }
-  },
-  {
-    "verb": "warten",
-    "meaning": "to wait",
-    "conjugations": {
-      "ich": {
-        "präsens": "warte",
-        "präteritum": "wartete",
-        "perfekt": "habe gewartet"
-      },
-      "du": {
-        "präsens": "wartest",
-        "präteritum": "wartetest",
-        "perfekt": "hast gewartet"
-      },
-      "er/sie/es": {
-        "präsens": "wartet",
-        "präteritum": "wartete",
-        "perfekt": "hat gewartet"
-      },
-      "wir": {
-        "präsens": "warten",
-        "präteritum": "warteten",
-        "perfekt": "haben gewartet"
-      },
-      "ihr": {
-        "präsens": "wartet",
-        "präteritum": "wartetet",
-        "perfekt": "habt gewartet"
-      },
-      "sie/Sie": {
-        "präsens": "warten",
-        "präteritum": "warteten",
-        "perfekt": "haben gewartet"
-      }
-    }
-  },
-  {
-    "verb": "fragen",
-    "meaning": "to ask",
-    "conjugations": {
-      "ich": {
-        "präsens": "frage",
-        "präteritum": "fragte",
-        "perfekt": "habe gefragt"
-      },
-      "du": {
-        "präsens": "fragst",
-        "präteritum": "fragtest",
-        "perfekt": "hast gefragt"
-      },
-      "er/sie/es": {
-        "präsens": "fragt",
-        "präteritum": "fragte",
-        "perfekt": "hat gefragt"
-      },
-      "wir": {
-        "präsens": "fragen",
-        "präteritum": "fragten",
-        "perfekt": "haben gefragt"
-      },
-      "ihr": {
-        "präsens": "fragt",
-        "präteritum": "fragtet",
-        "perfekt": "habt gefragt"
-      },
-      "sie/Sie": {
-        "präsens": "fragen",
-        "präteritum": "fragten",
-        "perfekt": "haben gefragt"
-      }
-    }
-  },
-  {
     "verb": "antworten",
     "meaning": "to answer",
     "conjugations": {
@@ -1224,866 +36,38 @@
     }
   },
   {
-    "verb": "lieben",
-    "meaning": "to love",
+    "verb": "arbeiten",
+    "meaning": "to work",
     "conjugations": {
       "ich": {
-        "präsens": "liebe",
-        "präteritum": "liebte",
-        "perfekt": "habe geliebt"
+        "präsens": "arbeite",
+        "präteritum": "arbeitete",
+        "perfekt": "habe gearbeitet"
       },
       "du": {
-        "präsens": "liebst",
-        "präteritum": "liebtest",
-        "perfekt": "hast geliebt"
+        "präsens": "arbeitest",
+        "präteritum": "arbeitetest",
+        "perfekt": "hast gearbeitet"
       },
       "er/sie/es": {
-        "präsens": "liebt",
-        "präteritum": "liebte",
-        "perfekt": "hat geliebt"
+        "präsens": "arbeitet",
+        "präteritum": "arbeitete",
+        "perfekt": "hat gearbeitet"
       },
       "wir": {
-        "präsens": "lieben",
-        "präteritum": "liebten",
-        "perfekt": "haben geliebt"
+        "präsens": "arbeiten",
+        "präteritum": "arbeiteten",
+        "perfekt": "haben gearbeitet"
       },
       "ihr": {
-        "präsens": "liebt",
-        "präteritum": "liebtet",
-        "perfekt": "habt geliebt"
+        "präsens": "arbeitet",
+        "präteritum": "arbeitetet",
+        "perfekt": "habt gearbeitet"
       },
       "sie/Sie": {
-        "präsens": "lieben",
-        "präteritum": "liebten",
-        "perfekt": "haben geliebt"
-      }
-    }
-  },
-  {
-    "verb": "lachen",
-    "meaning": "to laugh",
-    "conjugations": {
-      "ich": {
-        "präsens": "lache",
-        "präteritum": "lachte",
-        "perfekt": "habe gelacht"
-      },
-      "du": {
-        "präsens": "lachst",
-        "präteritum": "lachtest",
-        "perfekt": "hast gelacht"
-      },
-      "er/sie/es": {
-        "präsens": "lacht",
-        "präteritum": "lachte",
-        "perfekt": "hat gelacht"
-      },
-      "wir": {
-        "präsens": "lachen",
-        "präteritum": "lachten",
-        "perfekt": "haben gelacht"
-      },
-      "ihr": {
-        "präsens": "lacht",
-        "präteritum": "lachtet",
-        "perfekt": "habt gelacht"
-      },
-      "sie/Sie": {
-        "präsens": "lachen",
-        "präteritum": "lachten",
-        "perfekt": "haben gelacht"
-      }
-    }
-  },
-  {
-    "verb": "weinen",
-    "meaning": "to cry",
-    "conjugations": {
-      "ich": {
-        "präsens": "weine",
-        "präteritum": "weinte",
-        "perfekt": "habe geweint"
-      },
-      "du": {
-        "präsens": "weinst",
-        "präteritum": "weintest",
-        "perfekt": "hast geweint"
-      },
-      "er/sie/es": {
-        "präsens": "weint",
-        "präteritum": "weinte",
-        "perfekt": "hat geweint"
-      },
-      "wir": {
-        "präsens": "weinen",
-        "präteritum": "weinten",
-        "perfekt": "haben geweint"
-      },
-      "ihr": {
-        "präsens": "weint",
-        "präteritum": "weintet",
-        "perfekt": "habt geweint"
-      },
-      "sie/Sie": {
-        "präsens": "weinen",
-        "präteritum": "weinten",
-        "perfekt": "haben geweint"
-      }
-    }
-  },
-  {
-    "verb": "brauchen",
-    "meaning": "to need",
-    "conjugations": {
-      "ich": {
-        "präsens": "brauche",
-        "präteritum": "brauchte",
-        "perfekt": "habe gebraucht"
-      },
-      "du": {
-        "präsens": "brauchst",
-        "präteritum": "brauchtest",
-        "perfekt": "hast gebraucht"
-      },
-      "er/sie/es": {
-        "präsens": "braucht",
-        "präteritum": "brauchte",
-        "perfekt": "hat gebraucht"
-      },
-      "wir": {
-        "präsens": "brauchen",
-        "präteritum": "brauchten",
-        "perfekt": "haben gebraucht"
-      },
-      "ihr": {
-        "präsens": "braucht",
-        "präteritum": "brauchtet",
-        "perfekt": "habt gebraucht"
-      },
-      "sie/Sie": {
-        "präsens": "brauchen",
-        "präteritum": "brauchten",
-        "perfekt": "haben gebraucht"
-      }
-    }
-  },
-  {
-    "verb": "leben",
-    "meaning": "to live",
-    "conjugations": {
-      "ich": {
-        "präsens": "lebe",
-        "präteritum": "lebte",
-        "perfekt": "habe gelebt"
-      },
-      "du": {
-        "präsens": "lebst",
-        "präteritum": "lebtest",
-        "perfekt": "hast gelebt"
-      },
-      "er/sie/es": {
-        "präsens": "lebt",
-        "präteritum": "lebte",
-        "perfekt": "hat gelebt"
-      },
-      "wir": {
-        "präsens": "leben",
-        "präteritum": "lebten",
-        "perfekt": "haben gelebt"
-      },
-      "ihr": {
-        "präsens": "lebt",
-        "präteritum": "lebtet",
-        "perfekt": "habt gelebt"
-      },
-      "sie/Sie": {
-        "präsens": "leben",
-        "präteritum": "lebten",
-        "perfekt": "haben gelebt"
-      }
-    }
-  },
-  {
-    "verb": "reisen",
-    "meaning": "to travel",
-    "conjugations": {
-      "ich": {
-        "präsens": "reise",
-        "präteritum": "reiste",
-        "perfekt": "bin gereist"
-      },
-      "du": {
-        "präsens": "reist",
-        "präteritum": "reistest",
-        "perfekt": "bist gereist"
-      },
-      "er/sie/es": {
-        "präsens": "reist",
-        "präteritum": "reiste",
-        "perfekt": "ist gereist"
-      },
-      "wir": {
-        "präsens": "reisen",
-        "präteritum": "reisten",
-        "perfekt": "sind gereist"
-      },
-      "ihr": {
-        "präsens": "reist",
-        "präteritum": "reistet",
-        "perfekt": "seid gereist"
-      },
-      "sie/Sie": {
-        "präsens": "reisen",
-        "präteritum": "reisten",
-        "perfekt": "sind gereist"
-      }
-    }
-  },
-  {
-    "verb": "fliegen",
-    "meaning": "to fly",
-    "conjugations": {
-      "ich": {
-        "präsens": "fliege",
-        "präteritum": "flog",
-        "perfekt": "bin geflogen"
-      },
-      "du": {
-        "präsens": "fliegst",
-        "präteritum": "flogst",
-        "perfekt": "bist geflogen"
-      },
-      "er/sie/es": {
-        "präsens": "fliegt",
-        "präteritum": "flog",
-        "perfekt": "ist geflogen"
-      },
-      "wir": {
-        "präsens": "fliegen",
-        "präteritum": "flogen",
-        "perfekt": "sind geflogen"
-      },
-      "ihr": {
-        "präsens": "fliegt",
-        "präteritum": "flogt",
-        "perfekt": "seid geflogen"
-      },
-      "sie/Sie": {
-        "präsens": "fliegen",
-        "präteritum": "flogen",
-        "perfekt": "sind geflogen"
-      }
-    }
-  },
-  {
-    "verb": "stehen",
-    "meaning": "to stand",
-    "conjugations": {
-      "ich": {
-        "präsens": "stehe",
-        "präteritum": "stand",
-        "perfekt": "habe gestanden"
-      },
-      "du": {
-        "präsens": "stehst",
-        "präteritum": "standest",
-        "perfekt": "hast gestanden"
-      },
-      "er/sie/es": {
-        "präsens": "steht",
-        "präteritum": "stand",
-        "perfekt": "hat gestanden"
-      },
-      "wir": {
-        "präsens": "stehen",
-        "präteritum": "standen",
-        "perfekt": "haben gestanden"
-      },
-      "ihr": {
-        "präsens": "steht",
-        "präteritum": "standet",
-        "perfekt": "habt gestanden"
-      },
-      "sie/Sie": {
-        "präsens": "stehen",
-        "präteritum": "standen",
-        "perfekt": "haben gestanden"
-      }
-    }
-  },
-  {
-    "verb": "sitzen",
-    "meaning": "to sit",
-    "conjugations": {
-      "ich": {
-        "präsens": "sitze",
-        "präteritum": "saß",
-        "perfekt": "habe gesessen"
-      },
-      "du": {
-        "präsens": "sitzt",
-        "präteritum": "saßest",
-        "perfekt": "hast gesessen"
-      },
-      "er/sie/es": {
-        "präsens": "sitzt",
-        "präteritum": "saß",
-        "perfekt": "hat gesessen"
-      },
-      "wir": {
-        "präsens": "sitzen",
-        "präteritum": "saßen",
-        "perfekt": "haben gesessen"
-      },
-      "ihr": {
-        "präsens": "sitzt",
-        "präteritum": "saßt",
-        "perfekt": "habt gesessen"
-      },
-      "sie/Sie": {
-        "präsens": "sitzen",
-        "präteritum": "saßen",
-        "perfekt": "haben gesessen"
-      }
-    }
-  },
-  {
-    "verb": "lernen",
-    "meaning": "to learn",
-    "conjugations": {
-      "ich": {
-        "präsens": "lerne",
-        "präteritum": "lernte",
-        "perfekt": "habe gelernt"
-      },
-      "du": {
-        "präsens": "lernst",
-        "präteritum": "lerntest",
-        "perfekt": "hast gelernt"
-      },
-      "er/sie/es": {
-        "präsens": "lernt",
-        "präteritum": "lernte",
-        "perfekt": "hat gelernt"
-      },
-      "wir": {
-        "präsens": "lernen",
-        "präteritum": "lernten",
-        "perfekt": "haben gelernt"
-      },
-      "ihr": {
-        "präsens": "lernt",
-        "präteritum": "lerntet",
-        "perfekt": "habt gelernt"
-      },
-      "sie/Sie": {
-        "präsens": "lernen",
-        "präteritum": "lernten",
-        "perfekt": "haben gelernt"
-      }
-    }
-  },
-  {
-    "verb": "verstehen",
-    "meaning": "to understand",
-    "conjugations": {
-      "ich": {
-        "präsens": "verstehe",
-        "präteritum": "verstand",
-        "perfekt": "habe verstanden"
-      },
-      "du": {
-        "präsens": "verstehst",
-        "präteritum": "verstandest",
-        "perfekt": "hast verstanden"
-      },
-      "er/sie/es": {
-        "präsens": "versteht",
-        "präteritum": "verstand",
-        "perfekt": "hat verstanden"
-      },
-      "wir": {
-        "präsens": "verstehen",
-        "präteritum": "verstanden",
-        "perfekt": "haben verstanden"
-      },
-      "ihr": {
-        "präsens": "versteht",
-        "präteritum": "verstandet",
-        "perfekt": "habt verstanden"
-      },
-      "sie/Sie": {
-        "präsens": "verstehen",
-        "präteritum": "verstanden",
-        "perfekt": "haben verstanden"
-      }
-    }
-  },
-  {
-    "verb": "erklären",
-    "meaning": "to explain",
-    "conjugations": {
-      "ich": {
-        "präsens": "erkläre",
-        "präteritum": "erklärte",
-        "perfekt": "habe erklärt"
-      },
-      "du": {
-        "präsens": "erklärst",
-        "präteritum": "erklärtest",
-        "perfekt": "hast erklärt"
-      },
-      "er/sie/es": {
-        "präsens": "erklärt",
-        "präteritum": "erklärte",
-        "perfekt": "hat erklärt"
-      },
-      "wir": {
-        "präsens": "erklären",
-        "präteritum": "erklärten",
-        "perfekt": "haben erklärt"
-      },
-      "ihr": {
-        "präsens": "erklärt",
-        "präteritum": "erklärtet",
-        "perfekt": "habt erklärt"
-      },
-      "sie/Sie": {
-        "präsens": "erklären",
-        "präteritum": "erklärten",
-        "perfekt": "haben erklärt"
-      }
-    }
-  },
-  {
-    "verb": "schicken",
-    "meaning": "to send",
-    "conjugations": {
-      "ich": {
-        "präsens": "schicke",
-        "präteritum": "schickte",
-        "perfekt": "habe geschickt"
-      },
-      "du": {
-        "präsens": "schickst",
-        "präteritum": "schicktest",
-        "perfekt": "hast geschickt"
-      },
-      "er/sie/es": {
-        "präsens": "schickt",
-        "präteritum": "schickte",
-        "perfekt": "hat geschickt"
-      },
-      "wir": {
-        "präsens": "schicken",
-        "präteritum": "schickten",
-        "perfekt": "haben geschickt"
-      },
-      "ihr": {
-        "präsens": "schickt",
-        "präteritum": "schicktet",
-        "perfekt": "habt geschickt"
-      },
-      "sie/Sie": {
-        "präsens": "schicken",
-        "präteritum": "schickten",
-        "perfekt": "haben geschickt"
-      }
-    }
-  },
-  {
-    "verb": "schließen",
-    "meaning": "to close",
-    "conjugations": {
-      "ich": {
-        "präsens": "schließe",
-        "präteritum": "schloss",
-        "perfekt": "habe geschlossen"
-      },
-      "du": {
-        "präsens": "schließt",
-        "präteritum": "schlossest",
-        "perfekt": "hast geschlossen"
-      },
-      "er/sie/es": {
-        "präsens": "schließt",
-        "präteritum": "schloss",
-        "perfekt": "hat geschlossen"
-      },
-      "wir": {
-        "präsens": "schließen",
-        "präteritum": "schlossen",
-        "perfekt": "haben geschlossen"
-      },
-      "ihr": {
-        "präsens": "schließt",
-        "präteritum": "schlosst",
-        "perfekt": "habt geschlossen"
-      },
-      "sie/Sie": {
-        "präsens": "schließen",
-        "präteritum": "schlossen",
-        "perfekt": "haben geschlossen"
-      }
-    }
-  },
-  {
-    "verb": "öffnen",
-    "meaning": "to open",
-    "conjugations": {
-      "ich": {
-        "präsens": "öffne",
-        "präteritum": "öffnete",
-        "perfekt": "habe geöffnet"
-      },
-      "du": {
-        "präsens": "öffnest",
-        "präteritum": "öffnetest",
-        "perfekt": "hast geöffnet"
-      },
-      "er/sie/es": {
-        "präsens": "öffnet",
-        "präteritum": "öffnete",
-        "perfekt": "hat geöffnet"
-      },
-      "wir": {
-        "präsens": "öffnen",
-        "präteritum": "öffneten",
-        "perfekt": "haben geöffnet"
-      },
-      "ihr": {
-        "präsens": "öffnet",
-        "präteritum": "öffnetet",
-        "perfekt": "habt geöffnet"
-      },
-      "sie/Sie": {
-        "präsens": "öffnen",
-        "präteritum": "öffneten",
-        "perfekt": "haben geöffnet"
-      }
-    }
-  },
-  {
-    "verb": "gewinnen",
-    "meaning": "to win",
-    "conjugations": {
-      "ich": {
-        "präsens": "gewinne",
-        "präteritum": "gewann",
-        "perfekt": "habe gewonnen"
-      },
-      "du": {
-        "präsens": "gewinnst",
-        "präteritum": "gewannst",
-        "perfekt": "hast gewonnen"
-      },
-      "er/sie/es": {
-        "präsens": "gewinnt",
-        "präteritum": "gewann",
-        "perfekt": "hat gewonnen"
-      },
-      "wir": {
-        "präsens": "gewinnen",
-        "präteritum": "gewannen",
-        "perfekt": "haben gewonnen"
-      },
-      "ihr": {
-        "präsens": "gewinnt",
-        "präteritum": "gewannt",
-        "perfekt": "habt gewonnen"
-      },
-      "sie/Sie": {
-        "präsens": "gewinnen",
-        "präteritum": "gewannen",
-        "perfekt": "haben gewonnen"
-      }
-    }
-  },
-  {
-    "verb": "verlieren",
-    "meaning": "to lose",
-    "conjugations": {
-      "ich": {
-        "präsens": "verliere",
-        "präteritum": "verlor",
-        "perfekt": "habe verloren"
-      },
-      "du": {
-        "präsens": "verlierst",
-        "präteritum": "verlorst",
-        "perfekt": "hast verloren"
-      },
-      "er/sie/es": {
-        "präsens": "verliert",
-        "präteritum": "verlor",
-        "perfekt": "hat verloren"
-      },
-      "wir": {
-        "präsens": "verlieren",
-        "präteritum": "verloren",
-        "perfekt": "haben verloren"
-      },
-      "ihr": {
-        "präsens": "verliert",
-        "präteritum": "verlort",
-        "perfekt": "habt verloren"
-      },
-      "sie/Sie": {
-        "präsens": "verlieren",
-        "präteritum": "verloren",
-        "perfekt": "haben verloren"
-      }
-    }
-  },
-  {
-    "verb": "kennen",
-    "meaning": "to know, be acquainted with",
-    "conjugations": {
-      "ich": {
-        "präsens": "kenne",
-        "präteritum": "kannte",
-        "perfekt": "habe gekannt"
-      },
-      "du": {
-        "präsens": "kennst",
-        "präteritum": "kanntest",
-        "perfekt": "hast gekannt"
-      },
-      "er/sie/es": {
-        "präsens": "kennt",
-        "präteritum": "kannte",
-        "perfekt": "hat gekannt"
-      },
-      "wir": {
-        "präsens": "kennen",
-        "präteritum": "kannten",
-        "perfekt": "haben gekannt"
-      },
-      "ihr": {
-        "präsens": "kennt",
-        "präteritum": "kanntet",
-        "perfekt": "habt gekannt"
-      },
-      "sie/Sie": {
-        "präsens": "kennen",
-        "präteritum": "kannten",
-        "perfekt": "haben gekannt"
-      }
-    }
-  },
-  {
-    "verb": "rufen",
-    "meaning": "to call",
-    "conjugations": {
-      "ich": {
-        "präsens": "rufe",
-        "präteritum": "rief",
-        "perfekt": "habe gerufen"
-      },
-      "du": {
-        "präsens": "rufst",
-        "präteritum": "riefst",
-        "perfekt": "hast gerufen"
-      },
-      "er/sie/es": {
-        "präsens": "ruft",
-        "präteritum": "rief",
-        "perfekt": "hat gerufen"
-      },
-      "wir": {
-        "präsens": "rufen",
-        "präteritum": "riefen",
-        "perfekt": "haben gerufen"
-      },
-      "ihr": {
-        "präsens": "ruft",
-        "präteritum": "rieft",
-        "perfekt": "habt gerufen"
-      },
-      "sie/Sie": {
-        "präsens": "rufen",
-        "präteritum": "riefen",
-        "perfekt": "haben gerufen"
-      }
-    }
-  },
-  {
-    "verb": "schlafen",
-    "meaning": "to sleep",
-    "conjugations": {
-      "ich": {
-        "präsens": "schlafe",
-        "präteritum": "schlief",
-        "perfekt": "habe geschlafen"
-      },
-      "du": {
-        "präsens": "schläfst",
-        "präteritum": "schliefst",
-        "perfekt": "hast geschlafen"
-      },
-      "er/sie/es": {
-        "präsens": "schläft",
-        "präteritum": "schlief",
-        "perfekt": "hat geschlafen"
-      },
-      "wir": {
-        "präsens": "schlafen",
-        "präteritum": "schliefen",
-        "perfekt": "haben geschlafen"
-      },
-      "ihr": {
-        "präsens": "schlaft",
-        "präteritum": "schlieft",
-        "perfekt": "habt geschlafen"
-      },
-      "sie/Sie": {
-        "präsens": "schlafen",
-        "präteritum": "schliefen",
-        "perfekt": "haben geschlafen"
-      }
-    }
-  },
-  {
-    "verb": "essen",
-    "meaning": "to eat",
-    "conjugations": {
-      "ich": {
-        "präsens": "esse",
-        "präteritum": "aß",
-        "perfekt": "habe gegessen"
-      },
-      "du": {
-        "präsens": "isst",
-        "präteritum": "aßest",
-        "perfekt": "hast gegessen"
-      },
-      "er/sie/es": {
-        "präsens": "isst",
-        "präteritum": "aß",
-        "perfekt": "hat gegessen"
-      },
-      "wir": {
-        "präsens": "essen",
-        "präteritum": "aßen",
-        "perfekt": "haben gegessen"
-      },
-      "ihr": {
-        "präsens": "esst",
-        "präteritum": "aßt",
-        "perfekt": "habt gegessen"
-      },
-      "sie/Sie": {
-        "präsens": "essen",
-        "präteritum": "aßen",
-        "perfekt": "haben gegessen"
-      }
-    }
-  },
-  {
-    "verb": "trinken",
-    "meaning": "to drink",
-    "conjugations": {
-      "ich": {
-        "präsens": "trinke",
-        "präteritum": "trank",
-        "perfekt": "habe getrunken"
-      },
-      "du": {
-        "präsens": "trinkst",
-        "präteritum": "trankst",
-        "perfekt": "hast getrunken"
-      },
-      "er/sie/es": {
-        "präsens": "trinkt",
-        "präteritum": "trank",
-        "perfekt": "hat getrunken"
-      },
-      "wir": {
-        "präsens": "trinken",
-        "präteritum": "tranken",
-        "perfekt": "haben getrunken"
-      },
-      "ihr": {
-        "präsens": "trinkt",
-        "präteritum": "trankt",
-        "perfekt": "habt getrunken"
-      },
-      "sie/Sie": {
-        "präsens": "trinken",
-        "präteritum": "tranken",
-        "perfekt": "haben getrunken"
-      }
-    }
-  },
-  {
-    "verb": "kommen",
-    "meaning": "to come",
-    "conjugations": {
-      "ich": {
-        "präsens": "komme",
-        "präteritum": "kam",
-        "perfekt": "bin gekommen"
-      },
-      "du": {
-        "präsens": "kommst",
-        "präteritum": "kamst",
-        "perfekt": "bist gekommen"
-      },
-      "er/sie/es": {
-        "präsens": "kommt",
-        "präteritum": "kam",
-        "perfekt": "ist gekommen"
-      },
-      "wir": {
-        "präsens": "kommen",
-        "präteritum": "kamen",
-        "perfekt": "sind gekommen"
-      },
-      "ihr": {
-        "präsens": "kommt",
-        "präteritum": "kamt",
-        "perfekt": "seid gekommen"
-      },
-      "sie/Sie": {
-        "präsens": "kommen",
-        "präteritum": "kamen",
-        "perfekt": "sind gekommen"
-      }
-    }
-  },
-  {
-    "verb": "schwimmen",
-    "meaning": "to swim",
-    "conjugations": {
-      "ich": {
-        "präsens": "schwimme",
-        "präteritum": "schwamm",
-        "perfekt": "bin geschwommen"
-      },
-      "du": {
-        "präsens": "schwimmst",
-        "präteritum": "schwammst",
-        "perfekt": "bist geschwommen"
-      },
-      "er/sie/es": {
-        "präsens": "schwimmt",
-        "präteritum": "schwamm",
-        "perfekt": "ist geschwommen"
-      },
-      "wir": {
-        "präsens": "schwimmen",
-        "präteritum": "schwammen",
-        "perfekt": "sind geschwommen"
-      },
-      "ihr": {
-        "präsens": "schwimmt",
-        "präteritum": "schwammt",
-        "perfekt": "seid geschwommen"
-      },
-      "sie/Sie": {
-        "präsens": "schwimmen",
-        "präteritum": "schwammen",
-        "perfekt": "sind geschwommen"
+        "präsens": "arbeiten",
+        "präteritum": "arbeiteten",
+        "perfekt": "haben gearbeitet"
       }
     }
   },
@@ -2124,1410 +108,6 @@
     }
   },
   {
-    "verb": "rennen",
-    "meaning": "to run",
-    "conjugations": {
-      "ich": {
-        "präsens": "renne",
-        "präteritum": "rannte",
-        "perfekt": "bin gerannt"
-      },
-      "du": {
-        "präsens": "rennst",
-        "präteritum": "ranntest",
-        "perfekt": "bist gerannt"
-      },
-      "er/sie/es": {
-        "präsens": "rennt",
-        "präteritum": "rannte",
-        "perfekt": "ist gerannt"
-      },
-      "wir": {
-        "präsens": "rennen",
-        "präteritum": "rannten",
-        "perfekt": "sind gerannt"
-      },
-      "ihr": {
-        "präsens": "rennt",
-        "präteritum": "ranntet",
-        "perfekt": "seid gerannt"
-      },
-      "sie/Sie": {
-        "präsens": "rennen",
-        "präteritum": "rannten",
-        "perfekt": "sind gerannt"
-      }
-    }
-  },
-  {
-    "verb": "sterben",
-    "meaning": "to die",
-    "conjugations": {
-      "ich": {
-        "präsens": "sterbe",
-        "präteritum": "starb",
-        "perfekt": "bin gestorben"
-      },
-      "du": {
-        "präsens": "stirbst",
-        "präteritum": "starbst",
-        "perfekt": "bist gestorben"
-      },
-      "er/sie/es": {
-        "präsens": "stirbt",
-        "präteritum": "starb",
-        "perfekt": "ist gestorben"
-      },
-      "wir": {
-        "präsens": "sterben",
-        "präteritum": "starben",
-        "perfekt": "sind gestorben"
-      },
-      "ihr": {
-        "präsens": "sterbt",
-        "präteritum": "starbt",
-        "perfekt": "seid gestorben"
-      },
-      "sie/Sie": {
-        "präsens": "sterben",
-        "präteritum": "starben",
-        "perfekt": "sind gestorben"
-      }
-    }
-  },
-  {
-    "verb": "fallen",
-    "meaning": "to fall",
-    "conjugations": {
-      "ich": {
-        "präsens": "falle",
-        "präteritum": "fiel",
-        "perfekt": "bin gefallen"
-      },
-      "du": {
-        "präsens": "fällst",
-        "präteritum": "fielst",
-        "perfekt": "bist gefallen"
-      },
-      "er/sie/es": {
-        "präsens": "fällt",
-        "präteritum": "fiel",
-        "perfekt": "ist gefallen"
-      },
-      "wir": {
-        "präsens": "fallen",
-        "präteritum": "fielen",
-        "perfekt": "sind gefallen"
-      },
-      "ihr": {
-        "präsens": "fallt",
-        "präteritum": "fielt",
-        "perfekt": "seid gefallen"
-      },
-      "sie/Sie": {
-        "präsens": "fallen",
-        "präteritum": "fielen",
-        "perfekt": "sind gefallen"
-      }
-    }
-  },
-  {
-    "verb": "schlagen",
-    "meaning": "to hit, beat",
-    "conjugations": {
-      "ich": {
-        "präsens": "schlage",
-        "präteritum": "schlug",
-        "perfekt": "habe geschlagen"
-      },
-      "du": {
-        "präsens": "schlägst",
-        "präteritum": "schlugst",
-        "perfekt": "hast geschlagen"
-      },
-      "er/sie/es": {
-        "präsens": "schlägt",
-        "präteritum": "schlug",
-        "perfekt": "hat geschlagen"
-      },
-      "wir": {
-        "präsens": "schlagen",
-        "präteritum": "schlugen",
-        "perfekt": "haben geschlagen"
-      },
-      "ihr": {
-        "präsens": "schlagt",
-        "präteritum": "schlugt",
-        "perfekt": "habt geschlagen"
-      },
-      "sie/Sie": {
-        "präsens": "schlagen",
-        "präteritum": "schlugen",
-        "perfekt": "haben geschlagen"
-      }
-    }
-  },
-  {
-    "verb": "ziehen",
-    "meaning": "to pull, move",
-    "conjugations": {
-      "ich": {
-        "präsens": "ziehe",
-        "präteritum": "zog",
-        "perfekt": "habe gezogen"
-      },
-      "du": {
-        "präsens": "ziehst",
-        "präteritum": "zogst",
-        "perfekt": "hast gezogen"
-      },
-      "er/sie/es": {
-        "präsens": "zieht",
-        "präteritum": "zog",
-        "perfekt": "hat gezogen"
-      },
-      "wir": {
-        "präsens": "ziehen",
-        "präteritum": "zogen",
-        "perfekt": "haben gezogen"
-      },
-      "ihr": {
-        "präsens": "zieht",
-        "präteritum": "zogt",
-        "perfekt": "habt gezogen"
-      },
-      "sie/Sie": {
-        "präsens": "ziehen",
-        "präteritum": "zogen",
-        "perfekt": "haben gezogen"
-      }
-    }
-  },
-  {
-    "verb": "lassen",
-    "meaning": "to let, allow",
-    "conjugations": {
-      "ich": {
-        "präsens": "lasse",
-        "präteritum": "ließ",
-        "perfekt": "habe gelassen"
-      },
-      "du": {
-        "präsens": "lässt",
-        "präteritum": "ließest",
-        "perfekt": "hast gelassen"
-      },
-      "er/sie/es": {
-        "präsens": "lässt",
-        "präteritum": "ließ",
-        "perfekt": "hat gelassen"
-      },
-      "wir": {
-        "präsens": "lassen",
-        "präteritum": "ließen",
-        "perfekt": "haben gelassen"
-      },
-      "ihr": {
-        "präsens": "lasst",
-        "präteritum": "ließt",
-        "perfekt": "habt gelassen"
-      },
-      "sie/Sie": {
-        "präsens": "lassen",
-        "präteritum": "ließen",
-        "perfekt": "haben gelassen"
-      }
-    }
-  },
-  {
-    "verb": "heißen",
-    "meaning": "to be called",
-    "conjugations": {
-      "ich": {
-        "präsens": "heiße",
-        "präteritum": "hieß",
-        "perfekt": "habe geheißen"
-      },
-      "du": {
-        "präsens": "heißt",
-        "präteritum": "hießest",
-        "perfekt": "hast geheißen"
-      },
-      "er/sie/es": {
-        "präsens": "heißt",
-        "präteritum": "hieß",
-        "perfekt": "hat geheißen"
-      },
-      "wir": {
-        "präsens": "heißen",
-        "präteritum": "hießen",
-        "perfekt": "haben geheißen"
-      },
-      "ihr": {
-        "präsens": "heißt",
-        "präteritum": "hießt",
-        "perfekt": "habt geheißen"
-      },
-      "sie/Sie": {
-        "präsens": "heißen",
-        "präteritum": "hießen",
-        "perfekt": "haben geheißen"
-      }
-    }
-  },
-  {
-    "verb": "scheinen",
-    "meaning": "to shine, seem",
-    "conjugations": {
-      "ich": {
-        "präsens": "scheine",
-        "präteritum": "schien",
-        "perfekt": "habe geschienen"
-      },
-      "du": {
-        "präsens": "scheinst",
-        "präteritum": "schienst",
-        "perfekt": "hast geschienen"
-      },
-      "er/sie/es": {
-        "präsens": "scheint",
-        "präteritum": "schien",
-        "perfekt": "hat geschienen"
-      },
-      "wir": {
-        "präsens": "scheinen",
-        "präteritum": "schienen",
-        "perfekt": "haben geschienen"
-      },
-      "ihr": {
-        "präsens": "scheint",
-        "präteritum": "schient",
-        "perfekt": "habt geschienen"
-      },
-      "sie/Sie": {
-        "präsens": "scheinen",
-        "präteritum": "schienen",
-        "perfekt": "haben geschienen"
-      }
-    }
-  },
-  {
-    "verb": "bieten",
-    "meaning": "to offer",
-    "conjugations": {
-      "ich": {
-        "präsens": "biete",
-        "präteritum": "bot",
-        "perfekt": "habe geboten"
-      },
-      "du": {
-        "präsens": "bietest",
-        "präteritum": "botest",
-        "perfekt": "hast geboten"
-      },
-      "er/sie/es": {
-        "präsens": "bietet",
-        "präteritum": "bot",
-        "perfekt": "hat geboten"
-      },
-      "wir": {
-        "präsens": "bieten",
-        "präteritum": "boten",
-        "perfekt": "haben geboten"
-      },
-      "ihr": {
-        "präsens": "bietet",
-        "präteritum": "botet",
-        "perfekt": "habt geboten"
-      },
-      "sie/Sie": {
-        "präsens": "bieten",
-        "präteritum": "boten",
-        "perfekt": "haben geboten"
-      }
-    }
-  },
-  {
-    "verb": "tun",
-    "meaning": "to do",
-    "conjugations": {
-      "ich": {
-        "präsens": "tue",
-        "präteritum": "tat",
-        "perfekt": "habe getan"
-      },
-      "du": {
-        "präsens": "tust",
-        "präteritum": "tatest",
-        "perfekt": "hast getan"
-      },
-      "er/sie/es": {
-        "präsens": "tut",
-        "präteritum": "tat",
-        "perfekt": "hat getan"
-      },
-      "wir": {
-        "präsens": "tun",
-        "präteritum": "taten",
-        "perfekt": "haben getan"
-      },
-      "ihr": {
-        "präsens": "tut",
-        "präteritum": "tatet",
-        "perfekt": "habt getan"
-      },
-      "sie/Sie": {
-        "präsens": "tun",
-        "präteritum": "taten",
-        "perfekt": "haben getan"
-      }
-    }
-  },
-  {
-    "verb": "nennen",
-    "meaning": "to name, call",
-    "conjugations": {
-      "ich": {
-        "präsens": "nenne",
-        "präteritum": "nannte",
-        "perfekt": "habe genannt"
-      },
-      "du": {
-        "präsens": "nennst",
-        "präteritum": "nanntest",
-        "perfekt": "hast genannt"
-      },
-      "er/sie/es": {
-        "präsens": "nennt",
-        "präteritum": "nannte",
-        "perfekt": "hat genannt"
-      },
-      "wir": {
-        "präsens": "nennen",
-        "präteritum": "nannten",
-        "perfekt": "haben genannt"
-      },
-      "ihr": {
-        "präsens": "nennt",
-        "präteritum": "nanntet",
-        "perfekt": "habt genannt"
-      },
-      "sie/Sie": {
-        "präsens": "nennen",
-        "präteritum": "nannten",
-        "perfekt": "haben genannt"
-      }
-    }
-  },
-  {
-    "verb": "fühlen",
-    "meaning": "to feel",
-    "conjugations": {
-      "ich": {
-        "präsens": "fühle",
-        "präteritum": "fühlte",
-        "perfekt": "habe gefühlt"
-      },
-      "du": {
-        "präsens": "fühlst",
-        "präteritum": "fühltest",
-        "perfekt": "hast gefühlt"
-      },
-      "er/sie/es": {
-        "präsens": "fühlt",
-        "präteritum": "fühlte",
-        "perfekt": "hat gefühlt"
-      },
-      "wir": {
-        "präsens": "fühlen",
-        "präteritum": "fühlten",
-        "perfekt": "haben gefühlt"
-      },
-      "ihr": {
-        "präsens": "fühlt",
-        "präteritum": "fühltet",
-        "perfekt": "habt gefühlt"
-      },
-      "sie/Sie": {
-        "präsens": "fühlen",
-        "präteritum": "fühlten",
-        "perfekt": "haben gefühlt"
-      }
-    }
-  },
-  {
-    "verb": "arbeiten",
-    "meaning": "to work",
-    "conjugations": {
-      "ich": {
-        "präsens": "arbeite",
-        "präteritum": "arbeitete",
-        "perfekt": "habe gearbeitet"
-      },
-      "du": {
-        "präsens": "arbeitest",
-        "präteritum": "arbeitetest",
-        "perfekt": "hast gearbeitet"
-      },
-      "er/sie/es": {
-        "präsens": "arbeitet",
-        "präteritum": "arbeitete",
-        "perfekt": "hat gearbeitet"
-      },
-      "wir": {
-        "präsens": "arbeiten",
-        "präteritum": "arbeiteten",
-        "perfekt": "haben gearbeitet"
-      },
-      "ihr": {
-        "präsens": "arbeitet",
-        "präteritum": "arbeitetet",
-        "perfekt": "habt gearbeitet"
-      },
-      "sie/Sie": {
-        "präsens": "arbeiten",
-        "präteritum": "arbeiteten",
-        "perfekt": "haben gearbeitet"
-      }
-    }
-  },
-  {
-    "verb": "erinnern",
-    "meaning": "to remember",
-    "conjugations": {
-      "ich": {
-        "präsens": "erinnere",
-        "präteritum": "erinnerte",
-        "perfekt": "habe erinnert"
-      },
-      "du": {
-        "präsens": "erinnerst",
-        "präteritum": "erinnertest",
-        "perfekt": "hast erinnert"
-      },
-      "er/sie/es": {
-        "präsens": "erinnert",
-        "präteritum": "erinnerte",
-        "perfekt": "hat erinnert"
-      },
-      "wir": {
-        "präsens": "erinnern",
-        "präteritum": "erinnerten",
-        "perfekt": "haben erinnert"
-      },
-      "ihr": {
-        "präsens": "erinnert",
-        "präteritum": "erinnertet",
-        "perfekt": "habt erinnert"
-      },
-      "sie/Sie": {
-        "präsens": "erinnern",
-        "präteritum": "erinnerten",
-        "perfekt": "haben erinnert"
-      }
-    }
-  },
-  {
-    "verb": "hoffen",
-    "meaning": "to hope",
-    "conjugations": {
-      "ich": {
-        "präsens": "hoffe",
-        "präteritum": "hoffte",
-        "perfekt": "habe gehofft"
-      },
-      "du": {
-        "präsens": "hoffst",
-        "präteritum": "hofftest",
-        "perfekt": "hast gehofft"
-      },
-      "er/sie/es": {
-        "präsens": "hofft",
-        "präteritum": "hoffte",
-        "perfekt": "hat gehofft"
-      },
-      "wir": {
-        "präsens": "hoffen",
-        "präteritum": "hofften",
-        "perfekt": "haben gehofft"
-      },
-      "ihr": {
-        "präsens": "hofft",
-        "präteritum": "hofftet",
-        "perfekt": "habt gehofft"
-      },
-      "sie/Sie": {
-        "präsens": "hoffen",
-        "präteritum": "hofften",
-        "perfekt": "haben gehofft"
-      }
-    }
-  },
-  {
-    "verb": "tanzen",
-    "meaning": "to dance",
-    "conjugations": {
-      "ich": {
-        "präsens": "tanze",
-        "präteritum": "tanzte",
-        "perfekt": "habe getanzt"
-      },
-      "du": {
-        "präsens": "tanzt",
-        "präteritum": "tanztest",
-        "perfekt": "hast getanzt"
-      },
-      "er/sie/es": {
-        "präsens": "tanzt",
-        "präteritum": "tanzte",
-        "perfekt": "hat getanzt"
-      },
-      "wir": {
-        "präsens": "tanzen",
-        "präteritum": "tanzten",
-        "perfekt": "haben getanzt"
-      },
-      "ihr": {
-        "präsens": "tanzt",
-        "präteritum": "tanztet",
-        "perfekt": "habt getanzt"
-      },
-      "sie/Sie": {
-        "präsens": "tanzen",
-        "präteritum": "tanzten",
-        "perfekt": "haben getanzt"
-      }
-    }
-  },
-  {
-    "verb": "tragen",
-    "meaning": "to carry, wear",
-    "conjugations": {
-      "ich": {
-        "präsens": "trage",
-        "präteritum": "trug",
-        "perfekt": "habe getragen"
-      },
-      "du": {
-        "präsens": "trägst",
-        "präteritum": "trugst",
-        "perfekt": "hast getragen"
-      },
-      "er/sie/es": {
-        "präsens": "trägt",
-        "präteritum": "trug",
-        "perfekt": "hat getragen"
-      },
-      "wir": {
-        "präsens": "tragen",
-        "präteritum": "trugen",
-        "perfekt": "haben getragen"
-      },
-      "ihr": {
-        "präsens": "tragt",
-        "präteritum": "trugt",
-        "perfekt": "habt getragen"
-      },
-      "sie/Sie": {
-        "präsens": "tragen",
-        "präteritum": "trugen",
-        "perfekt": "haben getragen"
-      }
-    }
-  },
-  {
-    "verb": "fallen",
-    "meaning": "to fall",
-    "conjugations": {
-      "ich": {
-        "präsens": "falle",
-        "präteritum": "fiel",
-        "perfekt": "bin gefallen"
-      },
-      "du": {
-        "präsens": "fällst",
-        "präteritum": "fielst",
-        "perfekt": "bist gefallen"
-      },
-      "er/sie/es": {
-        "präsens": "fällt",
-        "präteritum": "fiel",
-        "perfekt": "ist gefallen"
-      },
-      "wir": {
-        "präsens": "fallen",
-        "präteritum": "fielen",
-        "perfekt": "sind gefallen"
-      },
-      "ihr": {
-        "präsens": "fallt",
-        "präteritum": "fielt",
-        "perfekt": "seid gefallen"
-      },
-      "sie/Sie": {
-        "präsens": "fallen",
-        "präteritum": "fielen",
-        "perfekt": "sind gefallen"
-      }
-    }
-  },
-  {
-    "verb": "bezahlen",
-    "meaning": "to pay",
-    "conjugations": {
-      "ich": {
-        "präsens": "bezahle",
-        "präteritum": "bezahlte",
-        "perfekt": "habe bezahlt"
-      },
-      "du": {
-        "präsens": "bezahlst",
-        "präteritum": "bezahltest",
-        "perfekt": "hast bezahlt"
-      },
-      "er/sie/es": {
-        "präsens": "bezahlt",
-        "präteritum": "bezahlte",
-        "perfekt": "hat bezahlt"
-      },
-      "wir": {
-        "präsens": "bezahlen",
-        "präteritum": "bezahlten",
-        "perfekt": "haben bezahlt"
-      },
-      "ihr": {
-        "präsens": "bezahlt",
-        "präteritum": "bezahltet",
-        "perfekt": "habt bezahlt"
-      },
-      "sie/Sie": {
-        "präsens": "bezahlen",
-        "präteritum": "bezahlten",
-        "perfekt": "haben bezahlt"
-      }
-    }
-  },
-  {
-    "verb": "suchen",
-    "meaning": "to search, look for",
-    "conjugations": {
-      "ich": {
-        "präsens": "suche",
-        "präteritum": "suchte",
-        "perfekt": "habe gesucht"
-      },
-      "du": {
-        "präsens": "suchst",
-        "präteritum": "suchtest",
-        "perfekt": "hast gesucht"
-      },
-      "er/sie/es": {
-        "präsens": "sucht",
-        "präteritum": "suchte",
-        "perfekt": "hat gesucht"
-      },
-      "wir": {
-        "präsens": "suchen",
-        "präteritum": "suchten",
-        "perfekt": "haben gesucht"
-      },
-      "ihr": {
-        "präsens": "sucht",
-        "präteritum": "suchtet",
-        "perfekt": "habt gesucht"
-      },
-      "sie/Sie": {
-        "präsens": "suchen",
-        "präteritum": "suchten",
-        "perfekt": "haben gesucht"
-      }
-    }
-  },
-  {
-    "verb": "fühlen",
-    "meaning": "to feel",
-    "conjugations": {
-      "ich": {
-        "präsens": "fühle",
-        "präteritum": "fühlte",
-        "perfekt": "habe gefühlt"
-      },
-      "du": {
-        "präsens": "fühlst",
-        "präteritum": "fühltest",
-        "perfekt": "hast gefühlt"
-      },
-      "er/sie/es": {
-        "präsens": "fühlt",
-        "präteritum": "fühlte",
-        "perfekt": "hat gefühlt"
-      },
-      "wir": {
-        "präsens": "fühlen",
-        "präteritum": "fühlten",
-        "perfekt": "haben gefühlt"
-      },
-      "ihr": {
-        "präsens": "fühlt",
-        "präteritum": "fühltet",
-        "perfekt": "habt gefühlt"
-      },
-      "sie/Sie": {
-        "präsens": "fühlen",
-        "präteritum": "fühlten",
-        "perfekt": "haben gefühlt"
-      }
-    }
-  },
-  {
-    "verb": "folgen",
-    "meaning": "to follow",
-    "conjugations": {
-      "ich": {
-        "präsens": "folge",
-        "präteritum": "folgte",
-        "perfekt": "bin gefolgt"
-      },
-      "du": {
-        "präsens": "folgst",
-        "präteritum": "folgtest",
-        "perfekt": "bist gefolgt"
-      },
-      "er/sie/es": {
-        "präsens": "folgt",
-        "präteritum": "folgte",
-        "perfekt": "ist gefolgt"
-      },
-      "wir": {
-        "präsens": "folgen",
-        "präteritum": "folgten",
-        "perfekt": "sind gefolgt"
-      },
-      "ihr": {
-        "präsens": "folgt",
-        "präteritum": "folgtet",
-        "perfekt": "seid gefolgt"
-      },
-      "sie/Sie": {
-        "präsens": "folgen",
-        "präteritum": "folgten",
-        "perfekt": "sind gefolgt"
-      }
-    }
-  },
-  {
-    "verb": "lernen",
-    "meaning": "to learn",
-    "conjugations": {
-      "ich": {
-        "präsens": "lerne",
-        "präteritum": "lernte",
-        "perfekt": "habe gelernt"
-      },
-      "du": {
-        "präsens": "lernst",
-        "präteritum": "lerntest",
-        "perfekt": "hast gelernt"
-      },
-      "er/sie/es": {
-        "präsens": "lernt",
-        "präteritum": "lernte",
-        "perfekt": "hat gelernt"
-      },
-      "wir": {
-        "präsens": "lernen",
-        "präteritum": "lernten",
-        "perfekt": "haben gelernt"
-      },
-      "ihr": {
-        "präsens": "lernt",
-        "präteritum": "lerntet",
-        "perfekt": "habt gelernt"
-      },
-      "sie/Sie": {
-        "präsens": "lernen",
-        "präteritum": "lernten",
-        "perfekt": "haben gelernt"
-      }
-    }
-  },
-  {
-    "verb": "öffnen",
-    "meaning": "to open",
-    "conjugations": {
-      "ich": {
-        "präsens": "öffne",
-        "präteritum": "öffnete",
-        "perfekt": "habe geöffnet"
-      },
-      "du": {
-        "präsens": "öffnest",
-        "präteritum": "öffnetest",
-        "perfekt": "hast geöffnet"
-      },
-      "er/sie/es": {
-        "präsens": "öffnet",
-        "präteritum": "öffnete",
-        "perfekt": "hat geöffnet"
-      },
-      "wir": {
-        "präsens": "öffnen",
-        "präteritum": "öffneten",
-        "perfekt": "haben geöffnet"
-      },
-      "ihr": {
-        "präsens": "öffnet",
-        "präteritum": "öffnetet",
-        "perfekt": "habt geöffnet"
-      },
-      "sie/Sie": {
-        "präsens": "öffnen",
-        "präteritum": "öffneten",
-        "perfekt": "haben geöffnet"
-      }
-    }
-  },
-  {
-    "verb": "schließen",
-    "meaning": "to close",
-    "conjugations": {
-      "ich": {
-        "präsens": "schließe",
-        "präteritum": "schloss",
-        "perfekt": "habe geschlossen"
-      },
-      "du": {
-        "präsens": "schließt",
-        "präteritum": "schlossest",
-        "perfekt": "hast geschlossen"
-      },
-      "er/sie/es": {
-        "präsens": "schließt",
-        "präteritum": "schloss",
-        "perfekt": "hat geschlossen"
-      },
-      "wir": {
-        "präsens": "schließen",
-        "präteritum": "schlossen",
-        "perfekt": "haben geschlossen"
-      },
-      "ihr": {
-        "präsens": "schließt",
-        "präteritum": "schlosst",
-        "perfekt": "habt geschlossen"
-      },
-      "sie/Sie": {
-        "präsens": "schließen",
-        "präteritum": "schlossen",
-        "perfekt": "haben geschlossen"
-      }
-    }
-  },
-  {
-    "verb": "wachsen",
-    "meaning": "to grow",
-    "conjugations": {
-      "ich": {
-        "präsens": "wachse",
-        "präteritum": "wuchs",
-        "perfekt": "bin gewachsen"
-      },
-      "du": {
-        "präsens": "wächst",
-        "präteritum": "wuchsest",
-        "perfekt": "bist gewachsen"
-      },
-      "er/sie/es": {
-        "präsens": "wächst",
-        "präteritum": "wuchs",
-        "perfekt": "ist gewachsen"
-      },
-      "wir": {
-        "präsens": "wachsen",
-        "präteritum": "wuchsen",
-        "perfekt": "sind gewachsen"
-      },
-      "ihr": {
-        "präsens": "wachst",
-        "präteritum": "wuchst",
-        "perfekt": "seid gewachsen"
-      },
-      "sie/Sie": {
-        "präsens": "wachsen",
-        "präteritum": "wuchsen",
-        "perfekt": "sind gewachsen"
-      }
-    }
-  },
-  {
-    "verb": "beginnen",
-    "meaning": "to begin",
-    "conjugations": {
-      "ich": {
-        "präsens": "beginne",
-        "präteritum": "begann",
-        "perfekt": "habe begonnen"
-      },
-      "du": {
-        "präsens": "beginnst",
-        "präteritum": "begannst",
-        "perfekt": "hast begonnen"
-      },
-      "er/sie/es": {
-        "präsens": "beginnt",
-        "präteritum": "begann",
-        "perfekt": "hat begonnen"
-      },
-      "wir": {
-        "präsens": "beginnen",
-        "präteritum": "begannen",
-        "perfekt": "haben begonnen"
-      },
-      "ihr": {
-        "präsens": "beginnt",
-        "präteritum": "begannt",
-        "perfekt": "habt begonnen"
-      },
-      "sie/Sie": {
-        "präsens": "beginnen",
-        "präteritum": "begannen",
-        "perfekt": "haben begonnen"
-      }
-    }
-  },
-  {
-    "verb": "sprechen",
-    "meaning": "to speak",
-    "conjugations": {
-      "ich": {
-        "präsens": "spreche",
-        "präteritum": "sprach",
-        "perfekt": "habe gesprochen"
-      },
-      "du": {
-        "präsens": "sprichst",
-        "präteritum": "sprachst",
-        "perfekt": "hast gesprochen"
-      },
-      "er/sie/es": {
-        "präsens": "spricht",
-        "präteritum": "sprach",
-        "perfekt": "hat gesprochen"
-      },
-      "wir": {
-        "präsens": "sprechen",
-        "präteritum": "sprachen",
-        "perfekt": "haben gesprochen"
-      },
-      "ihr": {
-        "präsens": "sprecht",
-        "präteritum": "spracht",
-        "perfekt": "habt gesprochen"
-      },
-      "sie/Sie": {
-        "präsens": "sprechen",
-        "präteritum": "sprachen",
-        "perfekt": "haben gesprochen"
-      }
-    }
-  },
-  {
-    "verb": "laufen",
-    "meaning": "to run",
-    "conjugations": {
-      "ich": {
-        "präsens": "laufe",
-        "präteritum": "lief",
-        "perfekt": "bin gelaufen"
-      },
-      "du": {
-        "präsens": "läufst",
-        "präteritum": "liefst",
-        "perfekt": "bist gelaufen"
-      },
-      "er/sie/es": {
-        "präsens": "läuft",
-        "präteritum": "lief",
-        "perfekt": "ist gelaufen"
-      },
-      "wir": {
-        "präsens": "laufen",
-        "präteritum": "liefen",
-        "perfekt": "sind gelaufen"
-      },
-      "ihr": {
-        "präsens": "lauft",
-        "präteritum": "lieft",
-        "perfekt": "seid gelaufen"
-      },
-      "sie/Sie": {
-        "präsens": "laufen",
-        "präteritum": "liefen",
-        "perfekt": "sind gelaufen"
-      }
-    }
-  },
-  {
-    "verb": "schlafen",
-    "meaning": "to sleep",
-    "conjugations": {
-      "ich": {
-        "präsens": "schlafe",
-        "präteritum": "schlief",
-        "perfekt": "habe geschlafen"
-      },
-      "du": {
-        "präsens": "schläfst",
-        "präteritum": "schliefst",
-        "perfekt": "hast geschlafen"
-      },
-      "er/sie/es": {
-        "präsens": "schläft",
-        "präteritum": "schlief",
-        "perfekt": "hat geschlafen"
-      },
-      "wir": {
-        "präsens": "schlafen",
-        "präteritum": "schliefen",
-        "perfekt": "haben geschlafen"
-      },
-      "ihr": {
-        "präsens": "schlaft",
-        "präteritum": "schlieft",
-        "perfekt": "habt geschlafen"
-      },
-      "sie/Sie": {
-        "präsens": "schlafen",
-        "präteritum": "schliefen",
-        "perfekt": "haben geschlafen"
-      }
-    }
-  },
-  {
-    "verb": "fühlen",
-    "meaning": "to feel",
-    "conjugations": {
-      "ich": {
-        "präsens": "fühle",
-        "präteritum": "fühlte",
-        "perfekt": "habe gefühlt"
-      },
-      "du": {
-        "präsens": "fühlst",
-        "präteritum": "fühltest",
-        "perfekt": "hast gefühlt"
-      },
-      "er/sie/es": {
-        "präsens": "fühlt",
-        "präteritum": "fühlte",
-        "perfekt": "hat gefühlt"
-      },
-      "wir": {
-        "präsens": "fühlen",
-        "präteritum": "fühlten",
-        "perfekt": "haben gefühlt"
-      },
-      "ihr": {
-        "präsens": "fühlt",
-        "präteritum": "fühltet",
-        "perfekt": "habt gefühlt"
-      },
-      "sie/Sie": {
-        "präsens": "fühlen",
-        "präteritum": "fühlten",
-        "perfekt": "haben gefühlt"
-      }
-    }
-  },
-  {
-    "verb": "bieten",
-    "meaning": "to offer",
-    "conjugations": {
-      "ich": {
-        "präsens": "biete",
-        "präteritum": "bot",
-        "perfekt": "habe geboten"
-      },
-      "du": {
-        "präsens": "bietest",
-        "präteritum": "botest",
-        "perfekt": "hast geboten"
-      },
-      "er/sie/es": {
-        "präsens": "bietet",
-        "präteritum": "bot",
-        "perfekt": "hat geboten"
-      },
-      "wir": {
-        "präsens": "bieten",
-        "präteritum": "boten",
-        "perfekt": "haben geboten"
-      },
-      "ihr": {
-        "präsens": "bietet",
-        "präteritum": "botet",
-        "perfekt": "habt geboten"
-      },
-      "sie/Sie": {
-        "präsens": "bieten",
-        "präteritum": "boten",
-        "perfekt": "haben geboten"
-      }
-    }
-  },
-  {
-    "verb": "ziehen",
-    "meaning": "to pull, move",
-    "conjugations": {
-      "ich": {
-        "präsens": "ziehe",
-        "präteritum": "zog",
-        "perfekt": "habe gezogen"
-      },
-      "du": {
-        "präsens": "ziehst",
-        "präteritum": "zogst",
-        "perfekt": "hast gezogen"
-      },
-      "er/sie/es": {
-        "präsens": "zieht",
-        "präteritum": "zog",
-        "perfekt": "hat gezogen"
-      },
-      "wir": {
-        "präsens": "ziehen",
-        "präteritum": "zogen",
-        "perfekt": "haben gezogen"
-      },
-      "ihr": {
-        "präsens": "zieht",
-        "präteritum": "zogt",
-        "perfekt": "habt gezogen"
-      },
-      "sie/Sie": {
-        "präsens": "ziehen",
-        "präteritum": "zogen",
-        "perfekt": "haben gezogen"
-      }
-    }
-  },
-  {
-    "verb": "reisen",
-    "meaning": "to travel",
-    "conjugations": {
-      "ich": {
-        "präsens": "reise",
-        "präteritum": "reiste",
-        "perfekt": "bin gereist"
-      },
-      "du": {
-        "präsens": "reist",
-        "präteritum": "reistest",
-        "perfekt": "bist gereist"
-      },
-      "er/sie/es": {
-        "präsens": "reist",
-        "präteritum": "reiste",
-        "perfekt": "ist gereist"
-      },
-      "wir": {
-        "präsens": "reisen",
-        "präteritum": "reisten",
-        "perfekt": "sind gereist"
-      },
-      "ihr": {
-        "präsens": "reist",
-        "präteritum": "reistet",
-        "perfekt": "seid gereist"
-      },
-      "sie/Sie": {
-        "präsens": "reisen",
-        "präteritum": "reisten",
-        "perfekt": "sind gereist"
-      }
-    }
-  },
-  {
-    "verb": "schwimmen",
-    "meaning": "to swim",
-    "conjugations": {
-      "ich": {
-        "präsens": "schwimme",
-        "präteritum": "schwamm",
-        "perfekt": "bin geschwommen"
-      },
-      "du": {
-        "präsens": "schwimmst",
-        "präteritum": "schwammst",
-        "perfekt": "bist geschwommen"
-      },
-      "er/sie/es": {
-        "präsens": "schwimmt",
-        "präteritum": "schwamm",
-        "perfekt": "ist geschwommen"
-      },
-      "wir": {
-        "präsens": "schwimmen",
-        "präteritum": "schwammen",
-        "perfekt": "sind geschwommen"
-      },
-      "ihr": {
-        "präsens": "schwimmt",
-        "präteritum": "schwammt",
-        "perfekt": "seid geschwommen"
-      },
-      "sie/Sie": {
-        "präsens": "schwimmen",
-        "präteritum": "schwammen",
-        "perfekt": "sind geschwommen"
-      }
-    }
-  },
-  {
-    "verb": "treffen",
-    "meaning": "to meet",
-    "conjugations": {
-      "ich": {
-        "präsens": "treffe",
-        "präteritum": "traf",
-        "perfekt": "habe getroffen"
-      },
-      "du": {
-        "präsens": "triffst",
-        "präteritum": "trafst",
-        "perfekt": "hast getroffen"
-      },
-      "er/sie/es": {
-        "präsens": "trifft",
-        "präteritum": "traf",
-        "perfekt": "hat getroffen"
-      },
-      "wir": {
-        "präsens": "treffen",
-        "präteritum": "trafen",
-        "perfekt": "haben getroffen"
-      },
-      "ihr": {
-        "präsens": "trefft",
-        "präteritum": "traft",
-        "perfekt": "habt getroffen"
-      },
-      "sie/Sie": {
-        "präsens": "treffen",
-        "präteritum": "trafen",
-        "perfekt": "haben getroffen"
-      }
-    }
-  },
-  {
-    "verb": "singen",
-    "meaning": "to sing",
-    "conjugations": {
-      "ich": {
-        "präsens": "singe",
-        "präteritum": "sang",
-        "perfekt": "habe gesungen"
-      },
-      "du": {
-        "präsens": "singst",
-        "präteritum": "sangst",
-        "perfekt": "hast gesungen"
-      },
-      "er/sie/es": {
-        "präsens": "singt",
-        "präteritum": "sang",
-        "perfekt": "hat gesungen"
-      },
-      "wir": {
-        "präsens": "singen",
-        "präteritum": "sangen",
-        "perfekt": "haben gesungen"
-      },
-      "ihr": {
-        "präsens": "singt",
-        "präteritum": "sangt",
-        "perfekt": "habt gesungen"
-      },
-      "sie/Sie": {
-        "präsens": "singen",
-        "präteritum": "sangen",
-        "perfekt": "haben gesungen"
-      }
-    }
-  },
-  {
-    "verb": "schreiben",
-    "meaning": "to write",
-    "conjugations": {
-      "ich": {
-        "präsens": "schreibe",
-        "präteritum": "schrieb",
-        "perfekt": "habe geschrieben"
-      },
-      "du": {
-        "präsens": "schreibst",
-        "präteritum": "schriebst",
-        "perfekt": "hast geschrieben"
-      },
-      "er/sie/es": {
-        "präsens": "schreibt",
-        "präteritum": "schrieb",
-        "perfekt": "hat geschrieben"
-      },
-      "wir": {
-        "präsens": "schreiben",
-        "präteritum": "schrieben",
-        "perfekt": "haben geschrieben"
-      },
-      "ihr": {
-        "präsens": "schreibt",
-        "präteritum": "schriebt",
-        "perfekt": "habt geschrieben"
-      },
-      "sie/Sie": {
-        "präsens": "schreiben",
-        "präteritum": "schrieben",
-        "perfekt": "haben geschrieben"
-      }
-    }
-  },
-  {
-    "verb": "malen",
-    "meaning": "to paint",
-    "conjugations": {
-      "ich": {
-        "präsens": "male",
-        "präteritum": "malte",
-        "perfekt": "habe gemalt"
-      },
-      "du": {
-        "präsens": "malst",
-        "präteritum": "maltest",
-        "perfekt": "hast gemalt"
-      },
-      "er/sie/es": {
-        "präsens": "malt",
-        "präteritum": "malte",
-        "perfekt": "hat gemalt"
-      },
-      "wir": {
-        "präsens": "malen",
-        "präteritum": "malten",
-        "perfekt": "haben gemalt"
-      },
-      "ihr": {
-        "präsens": "malt",
-        "präteritum": "maltet",
-        "perfekt": "habt gemalt"
-      },
-      "sie/Sie": {
-        "präsens": "malen",
-        "präteritum": "malten",
-        "perfekt": "haben gemalt"
-      }
-    }
-  },
-  {
     "verb": "basteln",
     "meaning": "to craft, do handicrafts",
     "conjugations": {
@@ -3560,474 +140,6 @@
         "präsens": "basteln",
         "präteritum": "bastelten",
         "perfekt": "haben gebastelt"
-      }
-    }
-  },
-  {
-    "verb": "telefonieren",
-    "meaning": "to telephone",
-    "conjugations": {
-      "ich": {
-        "präsens": "telefoniere",
-        "präteritum": "telefonierte",
-        "perfekt": "habe telefoniert"
-      },
-      "du": {
-        "präsens": "telefonierst",
-        "präteritum": "telefoniertest",
-        "perfekt": "hast telefoniert"
-      },
-      "er/sie/es": {
-        "präsens": "telefoniert",
-        "präteritum": "telefonierte",
-        "perfekt": "hat telefoniert"
-      },
-      "wir": {
-        "präsens": "telefonieren",
-        "präteritum": "telefonierten",
-        "perfekt": "haben telefoniert"
-      },
-      "ihr": {
-        "präsens": "telefoniert",
-        "präteritum": "telefoniertet",
-        "perfekt": "habt telefoniert"
-      },
-      "sie/Sie": {
-        "präsens": "telefonieren",
-        "präteritum": "telefonierten",
-        "perfekt": "haben telefoniert"
-      }
-    }
-  },
-  {
-    "verb": "warten",
-    "meaning": "to wait",
-    "conjugations": {
-      "ich": {
-        "präsens": "warte",
-        "präteritum": "wartete",
-        "perfekt": "habe gewartet"
-      },
-      "du": {
-        "präsens": "wartest",
-        "präteritum": "wartetest",
-        "perfekt": "hast gewartet"
-      },
-      "er/sie/es": {
-        "präsens": "wartet",
-        "präteritum": "wartete",
-        "perfekt": "hat gewartet"
-      },
-      "wir": {
-        "präsens": "warten",
-        "präteritum": "warteten",
-        "perfekt": "haben gewartet"
-      },
-      "ihr": {
-        "präsens": "wartet",
-        "präteritum": "wartetet",
-        "perfekt": "habt gewartet"
-      },
-      "sie/Sie": {
-        "präsens": "warten",
-        "präteritum": "warteten",
-        "perfekt": "haben gewartet"
-      }
-    }
-  },
-  {
-    "verb": "gewinnen",
-    "meaning": "to win",
-    "conjugations": {
-      "ich": {
-        "präsens": "gewinne",
-        "präteritum": "gewann",
-        "perfekt": "habe gewonnen"
-      },
-      "du": {
-        "präsens": "gewinnst",
-        "präteritum": "gewannst",
-        "perfekt": "hast gewonnen"
-      },
-      "er/sie/es": {
-        "präsens": "gewinnt",
-        "präteritum": "gewann",
-        "perfekt": "hat gewonnen"
-      },
-      "wir": {
-        "präsens": "gewinnen",
-        "präteritum": "gewannen",
-        "perfekt": "haben gewonnen"
-      },
-      "ihr": {
-        "präsens": "gewinnt",
-        "präteritum": "gewannet",
-        "perfekt": "habt gewonnen"
-      },
-      "sie/Sie": {
-        "präsens": "gewinnen",
-        "präteritum": "gewannen",
-        "perfekt": "haben gewonnen"
-      }
-    }
-  },
-  {
-    "verb": "verlieren",
-    "meaning": "to lose",
-    "conjugations": {
-      "ich": {
-        "präsens": "verliere",
-        "präteritum": "verlor",
-        "perfekt": "habe verloren"
-      },
-      "du": {
-        "präsens": "verlierst",
-        "präteritum": "verlorst",
-        "perfekt": "hast verloren"
-      },
-      "er/sie/es": {
-        "präsens": "verliert",
-        "präteritum": "verlor",
-        "perfekt": "hat verloren"
-      },
-      "wir": {
-        "präsens": "verlieren",
-        "präteritum": "verloren",
-        "perfekt": "haben verloren"
-      },
-      "ihr": {
-        "präsens": "verliert",
-        "präteritum": "verloren",
-        "perfekt": "habt verloren"
-      },
-      "sie/Sie": {
-        "präsens": "verlieren",
-        "präteritum": "verloren",
-        "perfekt": "haben verloren"
-      }
-    }
-  },
-  {
-    "verb": "legen",
-    "meaning": "to lay, put",
-    "conjugations": {
-      "ich": {
-        "präsens": "lege",
-        "präteritum": "legte",
-        "perfekt": "habe gelegt"
-      },
-      "du": {
-        "präsens": "legst",
-        "präteritum": "legtest",
-        "perfekt": "hast gelegt"
-      },
-      "er/sie/es": {
-        "präsens": "legt",
-        "präteritum": "legte",
-        "perfekt": "hat gelegt"
-      },
-      "wir": {
-        "präsens": "legen",
-        "präteritum": "legten",
-        "perfekt": "haben gelegt"
-      },
-      "ihr": {
-        "präsens": "legt",
-        "präteritum": "legtet",
-        "perfekt": "habt gelegt"
-      },
-      "sie/Sie": {
-        "präsens": "legen",
-        "präteritum": "legten",
-        "perfekt": "haben gelegt"
-      }
-    }
-  },
-  {
-    "verb": "stellen",
-    "meaning": "to place, put",
-    "conjugations": {
-      "ich": {
-        "präsens": "stelle",
-        "präteritum": "stellte",
-        "perfekt": "habe gestellt"
-      },
-      "du": {
-        "präsens": "stellst",
-        "präteritum": "stelltest",
-        "perfekt": "hast gestellt"
-      },
-      "er/sie/es": {
-        "präsens": "stellt",
-        "präteritum": "stellte",
-        "perfekt": "hat gestellt"
-      },
-      "wir": {
-        "präsens": "stellen",
-        "präteritum": "stellten",
-        "perfekt": "haben gestellt"
-      },
-      "ihr": {
-        "präsens": "stellt",
-        "präteritum": "stelltet",
-        "perfekt": "habt gestellt"
-      },
-      "sie/Sie": {
-        "präsens": "stellen",
-        "präteritum": "stellten",
-        "perfekt": "haben gestellt"
-      }
-    }
-  },
-  {
-    "verb": "setzen",
-    "meaning": "to set, put, sit down",
-    "conjugations": {
-      "ich": {
-        "präsens": "setze",
-        "präteritum": "setzte",
-        "perfekt": "habe gesetzt"
-      },
-      "du": {
-        "präsens": "setzt",
-        "präteritum": "setztest",
-        "perfekt": "hast gesetzt"
-      },
-      "er/sie/es": {
-        "präsens": "setzt",
-        "präteritum": "setzte",
-        "perfekt": "hat gesetzt"
-      },
-      "wir": {
-        "präsens": "setzen",
-        "präteritum": "setzten",
-        "perfekt": "haben gesetzt"
-      },
-      "ihr": {
-        "präsens": "setzt",
-        "präteritum": "setztet",
-        "perfekt": "habt gesetzt"
-      },
-      "sie/Sie": {
-        "präsens": "setzen",
-        "präteritum": "setzten",
-        "perfekt": "haben gesetzt"
-      }
-    }
-  },
-  {
-    "verb": "erreichen",
-    "meaning": "to reach, achieve",
-    "conjugations": {
-      "ich": {
-        "präsens": "erreiche",
-        "präteritum": "erreichte",
-        "perfekt": "habe erreicht"
-      },
-      "du": {
-        "präsens": "erreichst",
-        "präteritum": "erreichtest",
-        "perfekt": "hast erreicht"
-      },
-      "er/sie/es": {
-        "präsens": "erreicht",
-        "präteritum": "erreichte",
-        "perfekt": "hat erreicht"
-      },
-      "wir": {
-        "präsens": "erreichen",
-        "präteritum": "erreichten",
-        "perfekt": "haben erreicht"
-      },
-      "ihr": {
-        "präsens": "erreicht",
-        "präteritum": "erreichtet",
-        "perfekt": "habt erreicht"
-      },
-      "sie/Sie": {
-        "präsens": "erreichen",
-        "präteritum": "erreichten",
-        "perfekt": "haben erreicht"
-      }
-    }
-  },
-  {
-    "verb": "gehören",
-    "meaning": "to belong",
-    "conjugations": {
-      "ich": {
-        "präsens": "gehöre",
-        "präteritum": "gehörte",
-        "perfekt": "habe gehört"
-      },
-      "du": {
-        "präsens": "gehörst",
-        "präteritum": "gehörtest",
-        "perfekt": "hast gehört"
-      },
-      "er/sie/es": {
-        "präsens": "gehört",
-        "präteritum": "gehörte",
-        "perfekt": "hat gehört"
-      },
-      "wir": {
-        "präsens": "gehören",
-        "präteritum": "gehörten",
-        "perfekt": "haben gehört"
-      },
-      "ihr": {
-        "präsens": "gehört",
-        "präteritum": "gehörtet",
-        "perfekt": "habt gehört"
-      },
-      "sie/Sie": {
-        "präsens": "gehören",
-        "präteritum": "gehörten",
-        "perfekt": "haben gehört"
-      }
-    }
-  },
-  {
-    "verb": "entscheiden",
-    "meaning": "to decide",
-    "conjugations": {
-      "ich": {
-        "präsens": "entscheide",
-        "präteritum": "entschied",
-        "perfekt": "habe entschieden"
-      },
-      "du": {
-        "präsens": "entscheidest",
-        "präteritum": "entschiedest",
-        "perfekt": "hast entschieden"
-      },
-      "er/sie/es": {
-        "präsens": "entscheidet",
-        "präteritum": "entschied",
-        "perfekt": "hat entschieden"
-      },
-      "wir": {
-        "präsens": "entscheiden",
-        "präteritum": "entschieden",
-        "perfekt": "haben entschieden"
-      },
-      "ihr": {
-        "präsens": "entscheidet",
-        "präteritum": "entschiedet",
-        "perfekt": "habt entschieden"
-      },
-      "sie/Sie": {
-        "präsens": "entscheiden",
-        "präteritum": "entschieden",
-        "perfekt": "haben entschieden"
-      }
-    }
-  },
-  {
-    "verb": "erzählen",
-    "meaning": "to tell, narrate",
-    "conjugations": {
-      "ich": {
-        "präsens": "erzähle",
-        "präteritum": "erzählte",
-        "perfekt": "habe erzählt"
-      },
-      "du": {
-        "präsens": "erzählst",
-        "präteritum": "erzähltest",
-        "perfekt": "hast erzählt"
-      },
-      "er/sie/es": {
-        "präsens": "erzählt",
-        "präteritum": "erzählte",
-        "perfekt": "hat erzählt"
-      },
-      "wir": {
-        "präsens": "erzählen",
-        "präteritum": "erzählten",
-        "perfekt": "haben erzählt"
-      },
-      "ihr": {
-        "präsens": "erzählt",
-        "präteritum": "erzähltet",
-        "perfekt": "habt erzählt"
-      },
-      "sie/Sie": {
-        "präsens": "erzählen",
-        "präteritum": "erzählten",
-        "perfekt": "haben erzählt"
-      }
-    }
-  },
-  {
-    "verb": "verkaufen",
-    "meaning": "to sell",
-    "conjugations": {
-      "ich": {
-        "präsens": "verkaufe",
-        "präteritum": "verkaufte",
-        "perfekt": "habe verkauft"
-      },
-      "du": {
-        "präsens": "verkaufst",
-        "präteritum": "verkauftest",
-        "perfekt": "hast verkauft"
-      },
-      "er/sie/es": {
-        "präsens": "verkauft",
-        "präteritum": "verkaufte",
-        "perfekt": "hat verkauft"
-      },
-      "wir": {
-        "präsens": "verkaufen",
-        "präteritum": "verkauften",
-        "perfekt": "haben verkauft"
-      },
-      "ihr": {
-        "präsens": "verkauft",
-        "präteritum": "verkauftet",
-        "perfekt": "habt verkauft"
-      },
-      "sie/Sie": {
-        "präsens": "verkaufen",
-        "präteritum": "verkauften",
-        "perfekt": "haben verkauft"
-      }
-    }
-  },
-  {
-    "verb": "kaufen",
-    "meaning": "to buy",
-    "conjugations": {
-      "ich": {
-        "präsens": "kaufe",
-        "präteritum": "kaufte",
-        "perfekt": "habe gekauft"
-      },
-      "du": {
-        "präsens": "kaufst",
-        "präteritum": "kauftest",
-        "perfekt": "hast gekauft"
-      },
-      "er/sie/es": {
-        "präsens": "kauft",
-        "präteritum": "kaufte",
-        "perfekt": "hat gekauft"
-      },
-      "wir": {
-        "präsens": "kaufen",
-        "präteritum": "kauften",
-        "perfekt": "haben gekauft"
-      },
-      "ihr": {
-        "präsens": "kauft",
-        "präteritum": "kauftet",
-        "perfekt": "habt gekauft"
-      },
-      "sie/Sie": {
-        "präsens": "kaufen",
-        "präteritum": "kauften",
-        "perfekt": "haben gekauft"
       }
     }
   },
@@ -4068,38 +180,38 @@
     }
   },
   {
-    "verb": "besuchen",
-    "meaning": "to visit",
+    "verb": "beginnen",
+    "meaning": "to begin",
     "conjugations": {
       "ich": {
-        "präsens": "besuche",
-        "präteritum": "besuchte",
-        "perfekt": "habe besucht"
+        "präsens": "beginne",
+        "präteritum": "begann",
+        "perfekt": "habe begonnen"
       },
       "du": {
-        "präsens": "besuchst",
-        "präteritum": "besuchtest",
-        "perfekt": "hast besucht"
+        "präsens": "beginnst",
+        "präteritum": "begannst",
+        "perfekt": "hast begonnen"
       },
       "er/sie/es": {
-        "präsens": "besucht",
-        "präteritum": "besuchte",
-        "perfekt": "hat besucht"
+        "präsens": "beginnt",
+        "präteritum": "begann",
+        "perfekt": "hat begonnen"
       },
       "wir": {
-        "präsens": "besuchen",
-        "präteritum": "besuchten",
-        "perfekt": "haben besucht"
+        "präsens": "beginnen",
+        "präteritum": "begannen",
+        "perfekt": "haben begonnen"
       },
       "ihr": {
-        "präsens": "besucht",
-        "präteritum": "besuchtet",
-        "perfekt": "habt besucht"
+        "präsens": "beginnt",
+        "präteritum": "begannt",
+        "perfekt": "habt begonnen"
       },
       "sie/Sie": {
-        "präsens": "besuchen",
-        "präteritum": "besuchten",
-        "perfekt": "haben besucht"
+        "präsens": "beginnen",
+        "präteritum": "begannen",
+        "perfekt": "haben begonnen"
       }
     }
   },
@@ -4140,6 +252,366 @@
     }
   },
   {
+    "verb": "besuchen",
+    "meaning": "to visit",
+    "conjugations": {
+      "ich": {
+        "präsens": "besuche",
+        "präteritum": "besuchte",
+        "perfekt": "habe besucht"
+      },
+      "du": {
+        "präsens": "besuchst",
+        "präteritum": "besuchtest",
+        "perfekt": "hast besucht"
+      },
+      "er/sie/es": {
+        "präsens": "besucht",
+        "präteritum": "besuchte",
+        "perfekt": "hat besucht"
+      },
+      "wir": {
+        "präsens": "besuchen",
+        "präteritum": "besuchten",
+        "perfekt": "haben besucht"
+      },
+      "ihr": {
+        "präsens": "besucht",
+        "präteritum": "besuchtet",
+        "perfekt": "habt besucht"
+      },
+      "sie/Sie": {
+        "präsens": "besuchen",
+        "präteritum": "besuchten",
+        "perfekt": "haben besucht"
+      }
+    }
+  },
+  {
+    "verb": "bezahlen",
+    "meaning": "to pay",
+    "conjugations": {
+      "ich": {
+        "präsens": "bezahle",
+        "präteritum": "bezahlte",
+        "perfekt": "habe bezahlt"
+      },
+      "du": {
+        "präsens": "bezahlst",
+        "präteritum": "bezahltest",
+        "perfekt": "hast bezahlt"
+      },
+      "er/sie/es": {
+        "präsens": "bezahlt",
+        "präteritum": "bezahlte",
+        "perfekt": "hat bezahlt"
+      },
+      "wir": {
+        "präsens": "bezahlen",
+        "präteritum": "bezahlten",
+        "perfekt": "haben bezahlt"
+      },
+      "ihr": {
+        "präsens": "bezahlt",
+        "präteritum": "bezahltet",
+        "perfekt": "habt bezahlt"
+      },
+      "sie/Sie": {
+        "präsens": "bezahlen",
+        "präteritum": "bezahlten",
+        "perfekt": "haben bezahlt"
+      }
+    }
+  },
+  {
+    "verb": "bieten",
+    "meaning": "to offer",
+    "conjugations": {
+      "ich": {
+        "präsens": "biete",
+        "präteritum": "bot",
+        "perfekt": "habe geboten"
+      },
+      "du": {
+        "präsens": "bietest",
+        "präteritum": "botest",
+        "perfekt": "hast geboten"
+      },
+      "er/sie/es": {
+        "präsens": "bietet",
+        "präteritum": "bot",
+        "perfekt": "hat geboten"
+      },
+      "wir": {
+        "präsens": "bieten",
+        "präteritum": "boten",
+        "perfekt": "haben geboten"
+      },
+      "ihr": {
+        "präsens": "bietet",
+        "präteritum": "botet",
+        "perfekt": "habt geboten"
+      },
+      "sie/Sie": {
+        "präsens": "bieten",
+        "präteritum": "boten",
+        "perfekt": "haben geboten"
+      }
+    }
+  },
+  {
+    "verb": "bleiben",
+    "meaning": "to stay",
+    "conjugations": {
+      "ich": {
+        "präsens": "bleibe",
+        "präteritum": "blieb",
+        "perfekt": "bin geblieben"
+      },
+      "du": {
+        "präsens": "bleibst",
+        "präteritum": "bliebst",
+        "perfekt": "bist geblieben"
+      },
+      "er/sie/es": {
+        "präsens": "bleibt",
+        "präteritum": "blieb",
+        "perfekt": "ist geblieben"
+      },
+      "wir": {
+        "präsens": "bleiben",
+        "präteritum": "blieben",
+        "perfekt": "sind geblieben"
+      },
+      "ihr": {
+        "präsens": "bleibt",
+        "präteritum": "bliebt",
+        "perfekt": "seid geblieben"
+      },
+      "sie/Sie": {
+        "präsens": "bleiben",
+        "präteritum": "blieben",
+        "perfekt": "sind geblieben"
+      }
+    }
+  },
+  {
+    "verb": "brauchen",
+    "meaning": "to need",
+    "conjugations": {
+      "ich": {
+        "präsens": "brauche",
+        "präteritum": "brauchte",
+        "perfekt": "habe gebraucht"
+      },
+      "du": {
+        "präsens": "brauchst",
+        "präteritum": "brauchtest",
+        "perfekt": "hast gebraucht"
+      },
+      "er/sie/es": {
+        "präsens": "braucht",
+        "präteritum": "brauchte",
+        "perfekt": "hat gebraucht"
+      },
+      "wir": {
+        "präsens": "brauchen",
+        "präteritum": "brauchten",
+        "perfekt": "haben gebraucht"
+      },
+      "ihr": {
+        "präsens": "braucht",
+        "präteritum": "brauchtet",
+        "perfekt": "habt gebraucht"
+      },
+      "sie/Sie": {
+        "präsens": "brauchen",
+        "präteritum": "brauchten",
+        "perfekt": "haben gebraucht"
+      }
+    }
+  },
+  {
+    "verb": "bringen",
+    "meaning": "to bring",
+    "conjugations": {
+      "ich": {
+        "präsens": "bringe",
+        "präteritum": "brachte",
+        "perfekt": "habe gebracht"
+      },
+      "du": {
+        "präsens": "bringst",
+        "präteritum": "brachtest",
+        "perfekt": "hast gebracht"
+      },
+      "er/sie/es": {
+        "präsens": "bringt",
+        "präteritum": "brachte",
+        "perfekt": "hat gebracht"
+      },
+      "wir": {
+        "präsens": "bringen",
+        "präteritum": "brachten",
+        "perfekt": "haben gebracht"
+      },
+      "ihr": {
+        "präsens": "bringt",
+        "präteritum": "brachtet",
+        "perfekt": "habt gebracht"
+      },
+      "sie/Sie": {
+        "präsens": "bringen",
+        "präteritum": "brachten",
+        "perfekt": "haben gebracht"
+      }
+    }
+  },
+  {
+    "verb": "denken",
+    "meaning": "to think",
+    "conjugations": {
+      "ich": {
+        "präsens": "denke",
+        "präteritum": "dachte",
+        "perfekt": "habe gedacht"
+      },
+      "du": {
+        "präsens": "denkst",
+        "präteritum": "dachtest",
+        "perfekt": "hast gedacht"
+      },
+      "er/sie/es": {
+        "präsens": "denkt",
+        "präteritum": "dachte",
+        "perfekt": "hat gedacht"
+      },
+      "wir": {
+        "präsens": "denken",
+        "präteritum": "dachten",
+        "perfekt": "haben gedacht"
+      },
+      "ihr": {
+        "präsens": "denkt",
+        "präteritum": "dachtet",
+        "perfekt": "habt gedacht"
+      },
+      "sie/Sie": {
+        "präsens": "denken",
+        "präteritum": "dachten",
+        "perfekt": "haben gedacht"
+      }
+    }
+  },
+  {
+    "verb": "einladen",
+    "meaning": "to invite",
+    "conjugations": {
+      "ich": {
+        "präsens": "lade ein",
+        "präteritum": "lud ein",
+        "perfekt": "habe eingeladen"
+      },
+      "du": {
+        "präsens": "lädst ein",
+        "präteritum": "ludst ein",
+        "perfekt": "hast eingeladen"
+      },
+      "er/sie/es": {
+        "präsens": "lädt ein",
+        "präteritum": "lud ein",
+        "perfekt": "hat eingeladen"
+      },
+      "wir": {
+        "präsens": "laden ein",
+        "präteritum": "luden ein",
+        "perfekt": "haben eingeladen"
+      },
+      "ihr": {
+        "präsens": "ladet ein",
+        "präteritum": "ludet ein",
+        "perfekt": "habt eingeladen"
+      },
+      "sie/Sie": {
+        "präsens": "laden ein",
+        "präteritum": "luden ein",
+        "perfekt": "haben eingeladen"
+      }
+    }
+  },
+  {
+    "verb": "entscheiden",
+    "meaning": "to decide",
+    "conjugations": {
+      "ich": {
+        "präsens": "entscheide",
+        "präteritum": "entschied",
+        "perfekt": "habe entschieden"
+      },
+      "du": {
+        "präsens": "entscheidest",
+        "präteritum": "entschiedest",
+        "perfekt": "hast entschieden"
+      },
+      "er/sie/es": {
+        "präsens": "entscheidet",
+        "präteritum": "entschied",
+        "perfekt": "hat entschieden"
+      },
+      "wir": {
+        "präsens": "entscheiden",
+        "präteritum": "entschieden",
+        "perfekt": "haben entschieden"
+      },
+      "ihr": {
+        "präsens": "entscheidet",
+        "präteritum": "entschiedet",
+        "perfekt": "habt entschieden"
+      },
+      "sie/Sie": {
+        "präsens": "entscheiden",
+        "präteritum": "entschieden",
+        "perfekt": "haben entschieden"
+      }
+    }
+  },
+  {
+    "verb": "erinnern",
+    "meaning": "to remember",
+    "conjugations": {
+      "ich": {
+        "präsens": "erinnere",
+        "präteritum": "erinnerte",
+        "perfekt": "habe erinnert"
+      },
+      "du": {
+        "präsens": "erinnerst",
+        "präteritum": "erinnertest",
+        "perfekt": "hast erinnert"
+      },
+      "er/sie/es": {
+        "präsens": "erinnert",
+        "präteritum": "erinnerte",
+        "perfekt": "hat erinnert"
+      },
+      "wir": {
+        "präsens": "erinnern",
+        "präteritum": "erinnerten",
+        "perfekt": "haben erinnert"
+      },
+      "ihr": {
+        "präsens": "erinnert",
+        "präteritum": "erinnertet",
+        "perfekt": "habt erinnert"
+      },
+      "sie/Sie": {
+        "präsens": "erinnern",
+        "präteritum": "erinnerten",
+        "perfekt": "haben erinnert"
+      }
+    }
+  },
+  {
     "verb": "erkennen",
     "meaning": "to recognize",
     "conjugations": {
@@ -4176,38 +648,218 @@
     }
   },
   {
-    "verb": "ändern",
-    "meaning": "to change",
+    "verb": "erklären",
+    "meaning": "to explain",
     "conjugations": {
       "ich": {
-        "präsens": "ändere",
-        "präteritum": "änderte",
-        "perfekt": "habe geändert"
+        "präsens": "erkläre",
+        "präteritum": "erklärte",
+        "perfekt": "habe erklärt"
       },
       "du": {
-        "präsens": "änderst",
-        "präteritum": "ändertest",
-        "perfekt": "hast geändert"
+        "präsens": "erklärst",
+        "präteritum": "erklärtest",
+        "perfekt": "hast erklärt"
       },
       "er/sie/es": {
-        "präsens": "ändert",
-        "präteritum": "änderte",
-        "perfekt": "hat geändert"
+        "präsens": "erklärt",
+        "präteritum": "erklärte",
+        "perfekt": "hat erklärt"
       },
       "wir": {
-        "präsens": "ändern",
-        "präteritum": "änderten",
-        "perfekt": "haben geändert"
+        "präsens": "erklären",
+        "präteritum": "erklärten",
+        "perfekt": "haben erklärt"
       },
       "ihr": {
-        "präsens": "ändert",
-        "präteritum": "ändertet",
-        "perfekt": "habt geändert"
+        "präsens": "erklärt",
+        "präteritum": "erklärtet",
+        "perfekt": "habt erklärt"
       },
       "sie/Sie": {
-        "präsens": "ändern",
-        "präteritum": "änderten",
-        "perfekt": "haben geändert"
+        "präsens": "erklären",
+        "präteritum": "erklärten",
+        "perfekt": "haben erklärt"
+      }
+    }
+  },
+  {
+    "verb": "erreichen",
+    "meaning": "to reach, achieve",
+    "conjugations": {
+      "ich": {
+        "präsens": "erreiche",
+        "präteritum": "erreichte",
+        "perfekt": "habe erreicht"
+      },
+      "du": {
+        "präsens": "erreichst",
+        "präteritum": "erreichtest",
+        "perfekt": "hast erreicht"
+      },
+      "er/sie/es": {
+        "präsens": "erreicht",
+        "präteritum": "erreichte",
+        "perfekt": "hat erreicht"
+      },
+      "wir": {
+        "präsens": "erreichen",
+        "präteritum": "erreichten",
+        "perfekt": "haben erreicht"
+      },
+      "ihr": {
+        "präsens": "erreicht",
+        "präteritum": "erreichtet",
+        "perfekt": "habt erreicht"
+      },
+      "sie/Sie": {
+        "präsens": "erreichen",
+        "präteritum": "erreichten",
+        "perfekt": "haben erreicht"
+      }
+    }
+  },
+  {
+    "verb": "erzählen",
+    "meaning": "to tell, narrate",
+    "conjugations": {
+      "ich": {
+        "präsens": "erzähle",
+        "präteritum": "erzählte",
+        "perfekt": "habe erzählt"
+      },
+      "du": {
+        "präsens": "erzählst",
+        "präteritum": "erzähltest",
+        "perfekt": "hast erzählt"
+      },
+      "er/sie/es": {
+        "präsens": "erzählt",
+        "präteritum": "erzählte",
+        "perfekt": "hat erzählt"
+      },
+      "wir": {
+        "präsens": "erzählen",
+        "präteritum": "erzählten",
+        "perfekt": "haben erzählt"
+      },
+      "ihr": {
+        "präsens": "erzählt",
+        "präteritum": "erzähltet",
+        "perfekt": "habt erzählt"
+      },
+      "sie/Sie": {
+        "präsens": "erzählen",
+        "präteritum": "erzählten",
+        "perfekt": "haben erzählt"
+      }
+    }
+  },
+  {
+    "verb": "essen",
+    "meaning": "to eat",
+    "conjugations": {
+      "ich": {
+        "präsens": "esse",
+        "präteritum": "aß",
+        "perfekt": "habe gegessen"
+      },
+      "du": {
+        "präsens": "isst",
+        "präteritum": "aßest",
+        "perfekt": "hast gegessen"
+      },
+      "er/sie/es": {
+        "präsens": "isst",
+        "präteritum": "aß",
+        "perfekt": "hat gegessen"
+      },
+      "wir": {
+        "präsens": "essen",
+        "präteritum": "aßen",
+        "perfekt": "haben gegessen"
+      },
+      "ihr": {
+        "präsens": "esst",
+        "präteritum": "aßt",
+        "perfekt": "habt gegessen"
+      },
+      "sie/Sie": {
+        "präsens": "essen",
+        "präteritum": "aßen",
+        "perfekt": "haben gegessen"
+      }
+    }
+  },
+  {
+    "verb": "fahren",
+    "meaning": "to drive, ride, go",
+    "conjugations": {
+      "ich": {
+        "präsens": "fahre",
+        "präteritum": "fuhr",
+        "perfekt": "bin gefahren"
+      },
+      "du": {
+        "präsens": "fährst",
+        "präteritum": "fuhrst",
+        "perfekt": "bist gefahren"
+      },
+      "er/sie/es": {
+        "präsens": "fährt",
+        "präteritum": "fuhr",
+        "perfekt": "ist gefahren"
+      },
+      "wir": {
+        "präsens": "fahren",
+        "präteritum": "fuhren",
+        "perfekt": "sind gefahren"
+      },
+      "ihr": {
+        "präsens": "fahrt",
+        "präteritum": "fuhrt",
+        "perfekt": "seid gefahren"
+      },
+      "sie/Sie": {
+        "präsens": "fahren",
+        "präteritum": "fuhren",
+        "perfekt": "sind gefahren"
+      }
+    }
+  },
+  {
+    "verb": "fallen",
+    "meaning": "to fall",
+    "conjugations": {
+      "ich": {
+        "präsens": "falle",
+        "präteritum": "fiel",
+        "perfekt": "bin gefallen"
+      },
+      "du": {
+        "präsens": "fällst",
+        "präteritum": "fielst",
+        "perfekt": "bist gefallen"
+      },
+      "er/sie/es": {
+        "präsens": "fällt",
+        "präteritum": "fiel",
+        "perfekt": "ist gefallen"
+      },
+      "wir": {
+        "präsens": "fallen",
+        "präteritum": "fielen",
+        "perfekt": "sind gefallen"
+      },
+      "ihr": {
+        "präsens": "fallt",
+        "präteritum": "fielt",
+        "perfekt": "seid gefallen"
+      },
+      "sie/Sie": {
+        "präsens": "fallen",
+        "präteritum": "fielen",
+        "perfekt": "sind gefallen"
       }
     }
   },
@@ -4244,6 +896,1230 @@
         "präsens": "fehlen",
         "präteritum": "fehlten",
         "perfekt": "haben gefehlt"
+      }
+    }
+  },
+  {
+    "verb": "feiern",
+    "meaning": "to celebrate",
+    "conjugations": {
+      "ich": {
+        "präsens": "feiere",
+        "präteritum": "feierte",
+        "perfekt": "habe gefeiert"
+      },
+      "du": {
+        "präsens": "feierst",
+        "präteritum": "feiertest",
+        "perfekt": "hast gefeiert"
+      },
+      "er/sie/es": {
+        "präsens": "feiert",
+        "präteritum": "feierte",
+        "perfekt": "hat gefeiert"
+      },
+      "wir": {
+        "präsens": "feiern",
+        "präteritum": "feierten",
+        "perfekt": "haben gefeiert"
+      },
+      "ihr": {
+        "präsens": "feiert",
+        "präteritum": "feiertet",
+        "perfekt": "habt gefeiert"
+      },
+      "sie/Sie": {
+        "präsens": "feiern",
+        "präteritum": "feierten",
+        "perfekt": "haben gefeiert"
+      }
+    }
+  },
+  {
+    "verb": "finden",
+    "meaning": "to find",
+    "conjugations": {
+      "ich": {
+        "präsens": "finde",
+        "präteritum": "fand",
+        "perfekt": "habe gefunden"
+      },
+      "du": {
+        "präsens": "findest",
+        "präteritum": "fandest",
+        "perfekt": "hast gefunden"
+      },
+      "er/sie/es": {
+        "präsens": "findet",
+        "präteritum": "fand",
+        "perfekt": "hat gefunden"
+      },
+      "wir": {
+        "präsens": "finden",
+        "präteritum": "fanden",
+        "perfekt": "haben gefunden"
+      },
+      "ihr": {
+        "präsens": "findet",
+        "präteritum": "fandet",
+        "perfekt": "habt gefunden"
+      },
+      "sie/Sie": {
+        "präsens": "finden",
+        "präteritum": "fanden",
+        "perfekt": "haben gefunden"
+      }
+    }
+  },
+  {
+    "verb": "fliegen",
+    "meaning": "to fly",
+    "conjugations": {
+      "ich": {
+        "präsens": "fliege",
+        "präteritum": "flog",
+        "perfekt": "bin geflogen"
+      },
+      "du": {
+        "präsens": "fliegst",
+        "präteritum": "flogst",
+        "perfekt": "bist geflogen"
+      },
+      "er/sie/es": {
+        "präsens": "fliegt",
+        "präteritum": "flog",
+        "perfekt": "ist geflogen"
+      },
+      "wir": {
+        "präsens": "fliegen",
+        "präteritum": "flogen",
+        "perfekt": "sind geflogen"
+      },
+      "ihr": {
+        "präsens": "fliegt",
+        "präteritum": "flogt",
+        "perfekt": "seid geflogen"
+      },
+      "sie/Sie": {
+        "präsens": "fliegen",
+        "präteritum": "flogen",
+        "perfekt": "sind geflogen"
+      }
+    }
+  },
+  {
+    "verb": "folgen",
+    "meaning": "to follow",
+    "conjugations": {
+      "ich": {
+        "präsens": "folge",
+        "präteritum": "folgte",
+        "perfekt": "bin gefolgt"
+      },
+      "du": {
+        "präsens": "folgst",
+        "präteritum": "folgtest",
+        "perfekt": "bist gefolgt"
+      },
+      "er/sie/es": {
+        "präsens": "folgt",
+        "präteritum": "folgte",
+        "perfekt": "ist gefolgt"
+      },
+      "wir": {
+        "präsens": "folgen",
+        "präteritum": "folgten",
+        "perfekt": "sind gefolgt"
+      },
+      "ihr": {
+        "präsens": "folgt",
+        "präteritum": "folgtet",
+        "perfekt": "seid gefolgt"
+      },
+      "sie/Sie": {
+        "präsens": "folgen",
+        "präteritum": "folgten",
+        "perfekt": "sind gefolgt"
+      }
+    }
+  },
+  {
+    "verb": "fragen",
+    "meaning": "to ask",
+    "conjugations": {
+      "ich": {
+        "präsens": "frage",
+        "präteritum": "fragte",
+        "perfekt": "habe gefragt"
+      },
+      "du": {
+        "präsens": "fragst",
+        "präteritum": "fragtest",
+        "perfekt": "hast gefragt"
+      },
+      "er/sie/es": {
+        "präsens": "fragt",
+        "präteritum": "fragte",
+        "perfekt": "hat gefragt"
+      },
+      "wir": {
+        "präsens": "fragen",
+        "präteritum": "fragten",
+        "perfekt": "haben gefragt"
+      },
+      "ihr": {
+        "präsens": "fragt",
+        "präteritum": "fragtet",
+        "perfekt": "habt gefragt"
+      },
+      "sie/Sie": {
+        "präsens": "fragen",
+        "präteritum": "fragten",
+        "perfekt": "haben gefragt"
+      }
+    }
+  },
+  {
+    "verb": "fühlen",
+    "meaning": "to feel",
+    "conjugations": {
+      "ich": {
+        "präsens": "fühle",
+        "präteritum": "fühlte",
+        "perfekt": "habe gefühlt"
+      },
+      "du": {
+        "präsens": "fühlst",
+        "präteritum": "fühltest",
+        "perfekt": "hast gefühlt"
+      },
+      "er/sie/es": {
+        "präsens": "fühlt",
+        "präteritum": "fühlte",
+        "perfekt": "hat gefühlt"
+      },
+      "wir": {
+        "präsens": "fühlen",
+        "präteritum": "fühlten",
+        "perfekt": "haben gefühlt"
+      },
+      "ihr": {
+        "präsens": "fühlt",
+        "präteritum": "fühltet",
+        "perfekt": "habt gefühlt"
+      },
+      "sie/Sie": {
+        "präsens": "fühlen",
+        "präteritum": "fühlten",
+        "perfekt": "haben gefühlt"
+      }
+    }
+  },
+  {
+    "verb": "geben",
+    "meaning": "to give",
+    "conjugations": {
+      "ich": {
+        "präsens": "gebe",
+        "präteritum": "gab",
+        "perfekt": "habe gegeben"
+      },
+      "du": {
+        "präsens": "gibst",
+        "präteritum": "gabst",
+        "perfekt": "hast gegeben"
+      },
+      "er/sie/es": {
+        "präsens": "gibt",
+        "präteritum": "gab",
+        "perfekt": "hat gegeben"
+      },
+      "wir": {
+        "präsens": "geben",
+        "präteritum": "gaben",
+        "perfekt": "haben gegeben"
+      },
+      "ihr": {
+        "präsens": "gebt",
+        "präteritum": "gabt",
+        "perfekt": "habt gegeben"
+      },
+      "sie/Sie": {
+        "präsens": "geben",
+        "präteritum": "gaben",
+        "perfekt": "haben gegeben"
+      }
+    }
+  },
+  {
+    "verb": "gehen",
+    "meaning": "to go",
+    "conjugations": {
+      "ich": {
+        "präsens": "gehe",
+        "präteritum": "ging",
+        "perfekt": "bin gegangen"
+      },
+      "du": {
+        "präsens": "gehst",
+        "präteritum": "gingst",
+        "perfekt": "bist gegangen"
+      },
+      "er/sie/es": {
+        "präsens": "geht",
+        "präteritum": "ging",
+        "perfekt": "ist gegangen"
+      },
+      "wir": {
+        "präsens": "gehen",
+        "präteritum": "gingen",
+        "perfekt": "sind gegangen"
+      },
+      "ihr": {
+        "präsens": "geht",
+        "präteritum": "gingt",
+        "perfekt": "seid gegangen"
+      },
+      "sie/Sie": {
+        "präsens": "gehen",
+        "präteritum": "gingen",
+        "perfekt": "sind gegangen"
+      }
+    }
+  },
+  {
+    "verb": "gehören",
+    "meaning": "to belong",
+    "conjugations": {
+      "ich": {
+        "präsens": "gehöre",
+        "präteritum": "gehörte",
+        "perfekt": "habe gehört"
+      },
+      "du": {
+        "präsens": "gehörst",
+        "präteritum": "gehörtest",
+        "perfekt": "hast gehört"
+      },
+      "er/sie/es": {
+        "präsens": "gehört",
+        "präteritum": "gehörte",
+        "perfekt": "hat gehört"
+      },
+      "wir": {
+        "präsens": "gehören",
+        "präteritum": "gehörten",
+        "perfekt": "haben gehört"
+      },
+      "ihr": {
+        "präsens": "gehört",
+        "präteritum": "gehörtet",
+        "perfekt": "habt gehört"
+      },
+      "sie/Sie": {
+        "präsens": "gehören",
+        "präteritum": "gehörten",
+        "perfekt": "haben gehört"
+      }
+    }
+  },
+  {
+    "verb": "gewinnen",
+    "meaning": "to win",
+    "conjugations": {
+      "ich": {
+        "präsens": "gewinne",
+        "präteritum": "gewann",
+        "perfekt": "habe gewonnen"
+      },
+      "du": {
+        "präsens": "gewinnst",
+        "präteritum": "gewannst",
+        "perfekt": "hast gewonnen"
+      },
+      "er/sie/es": {
+        "präsens": "gewinnt",
+        "präteritum": "gewann",
+        "perfekt": "hat gewonnen"
+      },
+      "wir": {
+        "präsens": "gewinnen",
+        "präteritum": "gewannen",
+        "perfekt": "haben gewonnen"
+      },
+      "ihr": {
+        "präsens": "gewinnt",
+        "präteritum": "gewannt",
+        "perfekt": "habt gewonnen"
+      },
+      "sie/Sie": {
+        "präsens": "gewinnen",
+        "präteritum": "gewannen",
+        "perfekt": "haben gewonnen"
+      }
+    }
+  },
+  {
+    "verb": "grüßen",
+    "meaning": "to greet",
+    "conjugations": {
+      "ich": {
+        "präsens": "grüße",
+        "präteritum": "grüßte",
+        "perfekt": "habe gegrüßt"
+      },
+      "du": {
+        "präsens": "grüßt",
+        "präteritum": "grüßtest",
+        "perfekt": "hast gegrüßt"
+      },
+      "er/sie/es": {
+        "präsens": "grüßt",
+        "präteritum": "grüßte",
+        "perfekt": "hat gegrüßt"
+      },
+      "wir": {
+        "präsens": "grüßen",
+        "präteritum": "grüßten",
+        "perfekt": "haben gegrüßt"
+      },
+      "ihr": {
+        "präsens": "grüßt",
+        "präteritum": "grüßtet",
+        "perfekt": "habt gegrüßt"
+      },
+      "sie/Sie": {
+        "präsens": "grüßen",
+        "präteritum": "grüßten",
+        "perfekt": "haben gegrüßt"
+      }
+    }
+  },
+  {
+    "verb": "haben",
+    "meaning": "to have",
+    "conjugations": {
+      "ich": {
+        "präsens": "habe",
+        "präteritum": "hatte",
+        "perfekt": "habe gehabt"
+      },
+      "du": {
+        "präsens": "hast",
+        "präteritum": "hattest",
+        "perfekt": "hast gehabt"
+      },
+      "er/sie/es": {
+        "präsens": "hat",
+        "präteritum": "hatte",
+        "perfekt": "hat gehabt"
+      },
+      "wir": {
+        "präsens": "haben",
+        "präteritum": "hatten",
+        "perfekt": "haben gehabt"
+      },
+      "ihr": {
+        "präsens": "habt",
+        "präteritum": "hattet",
+        "perfekt": "habt gehabt"
+      },
+      "sie/Sie": {
+        "präsens": "haben",
+        "präteritum": "hatten",
+        "perfekt": "haben gehabt"
+      }
+    }
+  },
+  {
+    "verb": "heißen",
+    "meaning": "to be called",
+    "conjugations": {
+      "ich": {
+        "präsens": "heiße",
+        "präteritum": "hieß",
+        "perfekt": "habe geheißen"
+      },
+      "du": {
+        "präsens": "heißt",
+        "präteritum": "hießest",
+        "perfekt": "hast geheißen"
+      },
+      "er/sie/es": {
+        "präsens": "heißt",
+        "präteritum": "hieß",
+        "perfekt": "hat geheißen"
+      },
+      "wir": {
+        "präsens": "heißen",
+        "präteritum": "hießen",
+        "perfekt": "haben geheißen"
+      },
+      "ihr": {
+        "präsens": "heißt",
+        "präteritum": "hießt",
+        "perfekt": "habt geheißen"
+      },
+      "sie/Sie": {
+        "präsens": "heißen",
+        "präteritum": "hießen",
+        "perfekt": "haben geheißen"
+      }
+    }
+  },
+  {
+    "verb": "helfen",
+    "meaning": "to help",
+    "conjugations": {
+      "ich": {
+        "präsens": "helfe",
+        "präteritum": "half",
+        "perfekt": "habe geholfen"
+      },
+      "du": {
+        "präsens": "hilfst",
+        "präteritum": "halfst",
+        "perfekt": "hast geholfen"
+      },
+      "er/sie/es": {
+        "präsens": "hilft",
+        "präteritum": "half",
+        "perfekt": "hat geholfen"
+      },
+      "wir": {
+        "präsens": "helfen",
+        "präteritum": "halfen",
+        "perfekt": "haben geholfen"
+      },
+      "ihr": {
+        "präsens": "helft",
+        "präteritum": "halft",
+        "perfekt": "habt geholfen"
+      },
+      "sie/Sie": {
+        "präsens": "helfen",
+        "präteritum": "halfen",
+        "perfekt": "haben geholfen"
+      }
+    }
+  },
+  {
+    "verb": "hoffen",
+    "meaning": "to hope",
+    "conjugations": {
+      "ich": {
+        "präsens": "hoffe",
+        "präteritum": "hoffte",
+        "perfekt": "habe gehofft"
+      },
+      "du": {
+        "präsens": "hoffst",
+        "präteritum": "hofftest",
+        "perfekt": "hast gehofft"
+      },
+      "er/sie/es": {
+        "präsens": "hofft",
+        "präteritum": "hoffte",
+        "perfekt": "hat gehofft"
+      },
+      "wir": {
+        "präsens": "hoffen",
+        "präteritum": "hofften",
+        "perfekt": "haben gehofft"
+      },
+      "ihr": {
+        "präsens": "hofft",
+        "präteritum": "hofftet",
+        "perfekt": "habt gehofft"
+      },
+      "sie/Sie": {
+        "präsens": "hoffen",
+        "präteritum": "hofften",
+        "perfekt": "haben gehofft"
+      }
+    }
+  },
+  {
+    "verb": "hören",
+    "meaning": "to hear, listen",
+    "conjugations": {
+      "ich": {
+        "präsens": "höre",
+        "präteritum": "hörte",
+        "perfekt": "habe gehört"
+      },
+      "du": {
+        "präsens": "hörst",
+        "präteritum": "hörtest",
+        "perfekt": "hast gehört"
+      },
+      "er/sie/es": {
+        "präsens": "hört",
+        "präteritum": "hörte",
+        "perfekt": "hat gehört"
+      },
+      "wir": {
+        "präsens": "hören",
+        "präteritum": "hörten",
+        "perfekt": "haben gehört"
+      },
+      "ihr": {
+        "präsens": "hört",
+        "präteritum": "hörtet",
+        "perfekt": "habt gehört"
+      },
+      "sie/Sie": {
+        "präsens": "hören",
+        "präteritum": "hörten",
+        "perfekt": "haben gehört"
+      }
+    }
+  },
+  {
+    "verb": "kaufen",
+    "meaning": "to buy",
+    "conjugations": {
+      "ich": {
+        "präsens": "kaufe",
+        "präteritum": "kaufte",
+        "perfekt": "habe gekauft"
+      },
+      "du": {
+        "präsens": "kaufst",
+        "präteritum": "kauftest",
+        "perfekt": "hast gekauft"
+      },
+      "er/sie/es": {
+        "präsens": "kauft",
+        "präteritum": "kaufte",
+        "perfekt": "hat gekauft"
+      },
+      "wir": {
+        "präsens": "kaufen",
+        "präteritum": "kauften",
+        "perfekt": "haben gekauft"
+      },
+      "ihr": {
+        "präsens": "kauft",
+        "präteritum": "kauftet",
+        "perfekt": "habt gekauft"
+      },
+      "sie/Sie": {
+        "präsens": "kaufen",
+        "präteritum": "kauften",
+        "perfekt": "haben gekauft"
+      }
+    }
+  },
+  {
+    "verb": "kennen",
+    "meaning": "to know, be acquainted with",
+    "conjugations": {
+      "ich": {
+        "präsens": "kenne",
+        "präteritum": "kannte",
+        "perfekt": "habe gekannt"
+      },
+      "du": {
+        "präsens": "kennst",
+        "präteritum": "kanntest",
+        "perfekt": "hast gekannt"
+      },
+      "er/sie/es": {
+        "präsens": "kennt",
+        "präteritum": "kannte",
+        "perfekt": "hat gekannt"
+      },
+      "wir": {
+        "präsens": "kennen",
+        "präteritum": "kannten",
+        "perfekt": "haben gekannt"
+      },
+      "ihr": {
+        "präsens": "kennt",
+        "präteritum": "kanntet",
+        "perfekt": "habt gekannt"
+      },
+      "sie/Sie": {
+        "präsens": "kennen",
+        "präteritum": "kannten",
+        "perfekt": "haben gekannt"
+      }
+    }
+  },
+  {
+    "verb": "kochen",
+    "meaning": "to cook",
+    "conjugations": {
+      "ich": {
+        "präsens": "koche",
+        "präteritum": "kochte",
+        "perfekt": "habe gekocht"
+      },
+      "du": {
+        "präsens": "kochst",
+        "präteritum": "kochtest",
+        "perfekt": "hast gekocht"
+      },
+      "er/sie/es": {
+        "präsens": "kocht",
+        "präteritum": "kochte",
+        "perfekt": "hat gekocht"
+      },
+      "wir": {
+        "präsens": "kochen",
+        "präteritum": "kochten",
+        "perfekt": "haben gekocht"
+      },
+      "ihr": {
+        "präsens": "kocht",
+        "präteritum": "kochtet",
+        "perfekt": "habt gekocht"
+      },
+      "sie/Sie": {
+        "präsens": "kochen",
+        "präteritum": "kochten",
+        "perfekt": "haben gekocht"
+      }
+    }
+  },
+  {
+    "verb": "kommen",
+    "meaning": "to come",
+    "conjugations": {
+      "ich": {
+        "präsens": "komme",
+        "präteritum": "kam",
+        "perfekt": "bin gekommen"
+      },
+      "du": {
+        "präsens": "kommst",
+        "präteritum": "kamst",
+        "perfekt": "bist gekommen"
+      },
+      "er/sie/es": {
+        "präsens": "kommt",
+        "präteritum": "kam",
+        "perfekt": "ist gekommen"
+      },
+      "wir": {
+        "präsens": "kommen",
+        "präteritum": "kamen",
+        "perfekt": "sind gekommen"
+      },
+      "ihr": {
+        "präsens": "kommt",
+        "präteritum": "kamt",
+        "perfekt": "seid gekommen"
+      },
+      "sie/Sie": {
+        "präsens": "kommen",
+        "präteritum": "kamen",
+        "perfekt": "sind gekommen"
+      }
+    }
+  },
+  {
+    "verb": "kontrollieren",
+    "meaning": "to control",
+    "conjugations": {
+      "ich": {
+        "präsens": "kontrolliere",
+        "präteritum": "kontrollierte",
+        "perfekt": "habe kontrolliert"
+      },
+      "du": {
+        "präsens": "kontrollierst",
+        "präteritum": "kontrolliertest",
+        "perfekt": "hast kontrolliert"
+      },
+      "er/sie/es": {
+        "präsens": "kontrolliert",
+        "präteritum": "kontrollierte",
+        "perfekt": "hat kontrolliert"
+      },
+      "wir": {
+        "präsens": "kontrollieren",
+        "präteritum": "kontrollierten",
+        "perfekt": "haben kontrolliert"
+      },
+      "ihr": {
+        "präsens": "kontrolliert",
+        "präteritum": "kontrolliertet",
+        "perfekt": "habt kontrolliert"
+      },
+      "sie/Sie": {
+        "präsens": "kontrollieren",
+        "präteritum": "kontrollierten",
+        "perfekt": "haben kontrolliert"
+      }
+    }
+  },
+  {
+    "verb": "kosten",
+    "meaning": "to cost",
+    "conjugations": {
+      "ich": {
+        "präsens": "koste",
+        "präteritum": "kostete",
+        "perfekt": "habe gekostet"
+      },
+      "du": {
+        "präsens": "kostest",
+        "präteritum": "kostetest",
+        "perfekt": "hast gekostet"
+      },
+      "er/sie/es": {
+        "präsens": "kostet",
+        "präteritum": "kostete",
+        "perfekt": "hat gekostet"
+      },
+      "wir": {
+        "präsens": "kosten",
+        "präteritum": "kosteten",
+        "perfekt": "haben gekostet"
+      },
+      "ihr": {
+        "präsens": "kostet",
+        "präteritum": "kostetet",
+        "perfekt": "habt gekostet"
+      },
+      "sie/Sie": {
+        "präsens": "kosten",
+        "präteritum": "kosteten",
+        "perfekt": "haben gekostet"
+      }
+    }
+  },
+  {
+    "verb": "lachen",
+    "meaning": "to laugh",
+    "conjugations": {
+      "ich": {
+        "präsens": "lache",
+        "präteritum": "lachte",
+        "perfekt": "habe gelacht"
+      },
+      "du": {
+        "präsens": "lachst",
+        "präteritum": "lachtest",
+        "perfekt": "hast gelacht"
+      },
+      "er/sie/es": {
+        "präsens": "lacht",
+        "präteritum": "lachte",
+        "perfekt": "hat gelacht"
+      },
+      "wir": {
+        "präsens": "lachen",
+        "präteritum": "lachten",
+        "perfekt": "haben gelacht"
+      },
+      "ihr": {
+        "präsens": "lacht",
+        "präteritum": "lachtet",
+        "perfekt": "habt gelacht"
+      },
+      "sie/Sie": {
+        "präsens": "lachen",
+        "präteritum": "lachten",
+        "perfekt": "haben gelacht"
+      }
+    }
+  },
+  {
+    "verb": "lassen",
+    "meaning": "to let, allow",
+    "conjugations": {
+      "ich": {
+        "präsens": "lasse",
+        "präteritum": "ließ",
+        "perfekt": "habe gelassen"
+      },
+      "du": {
+        "präsens": "lässt",
+        "präteritum": "ließest",
+        "perfekt": "hast gelassen"
+      },
+      "er/sie/es": {
+        "präsens": "lässt",
+        "präteritum": "ließ",
+        "perfekt": "hat gelassen"
+      },
+      "wir": {
+        "präsens": "lassen",
+        "präteritum": "ließen",
+        "perfekt": "haben gelassen"
+      },
+      "ihr": {
+        "präsens": "lasst",
+        "präteritum": "ließt",
+        "perfekt": "habt gelassen"
+      },
+      "sie/Sie": {
+        "präsens": "lassen",
+        "präteritum": "ließen",
+        "perfekt": "haben gelassen"
+      }
+    }
+  },
+  {
+    "verb": "laufen",
+    "meaning": "to run",
+    "conjugations": {
+      "ich": {
+        "präsens": "laufe",
+        "präteritum": "lief",
+        "perfekt": "bin gelaufen"
+      },
+      "du": {
+        "präsens": "läufst",
+        "präteritum": "liefst",
+        "perfekt": "bist gelaufen"
+      },
+      "er/sie/es": {
+        "präsens": "läuft",
+        "präteritum": "lief",
+        "perfekt": "ist gelaufen"
+      },
+      "wir": {
+        "präsens": "laufen",
+        "präteritum": "liefen",
+        "perfekt": "sind gelaufen"
+      },
+      "ihr": {
+        "präsens": "lauft",
+        "präteritum": "lieft",
+        "perfekt": "seid gelaufen"
+      },
+      "sie/Sie": {
+        "präsens": "laufen",
+        "präteritum": "liefen",
+        "perfekt": "sind gelaufen"
+      }
+    }
+  },
+  {
+    "verb": "leben",
+    "meaning": "to live",
+    "conjugations": {
+      "ich": {
+        "präsens": "lebe",
+        "präteritum": "lebte",
+        "perfekt": "habe gelebt"
+      },
+      "du": {
+        "präsens": "lebst",
+        "präteritum": "lebtest",
+        "perfekt": "hast gelebt"
+      },
+      "er/sie/es": {
+        "präsens": "lebt",
+        "präteritum": "lebte",
+        "perfekt": "hat gelebt"
+      },
+      "wir": {
+        "präsens": "leben",
+        "präteritum": "lebten",
+        "perfekt": "haben gelebt"
+      },
+      "ihr": {
+        "präsens": "lebt",
+        "präteritum": "lebtet",
+        "perfekt": "habt gelebt"
+      },
+      "sie/Sie": {
+        "präsens": "leben",
+        "präteritum": "lebten",
+        "perfekt": "haben gelebt"
+      }
+    }
+  },
+  {
+    "verb": "legen",
+    "meaning": "to lay, put",
+    "conjugations": {
+      "ich": {
+        "präsens": "lege",
+        "präteritum": "legte",
+        "perfekt": "habe gelegt"
+      },
+      "du": {
+        "präsens": "legst",
+        "präteritum": "legtest",
+        "perfekt": "hast gelegt"
+      },
+      "er/sie/es": {
+        "präsens": "legt",
+        "präteritum": "legte",
+        "perfekt": "hat gelegt"
+      },
+      "wir": {
+        "präsens": "legen",
+        "präteritum": "legten",
+        "perfekt": "haben gelegt"
+      },
+      "ihr": {
+        "präsens": "legt",
+        "präteritum": "legtet",
+        "perfekt": "habt gelegt"
+      },
+      "sie/Sie": {
+        "präsens": "legen",
+        "präteritum": "legten",
+        "perfekt": "haben gelegt"
+      }
+    }
+  },
+  {
+    "verb": "lernen",
+    "meaning": "to learn",
+    "conjugations": {
+      "ich": {
+        "präsens": "lerne",
+        "präteritum": "lernte",
+        "perfekt": "habe gelernt"
+      },
+      "du": {
+        "präsens": "lernst",
+        "präteritum": "lerntest",
+        "perfekt": "hast gelernt"
+      },
+      "er/sie/es": {
+        "präsens": "lernt",
+        "präteritum": "lernte",
+        "perfekt": "hat gelernt"
+      },
+      "wir": {
+        "präsens": "lernen",
+        "präteritum": "lernten",
+        "perfekt": "haben gelernt"
+      },
+      "ihr": {
+        "präsens": "lernt",
+        "präteritum": "lerntet",
+        "perfekt": "habt gelernt"
+      },
+      "sie/Sie": {
+        "präsens": "lernen",
+        "präteritum": "lernten",
+        "perfekt": "haben gelernt"
+      }
+    }
+  },
+  {
+    "verb": "lesen",
+    "meaning": "to read",
+    "conjugations": {
+      "ich": {
+        "präsens": "lese",
+        "präteritum": "las",
+        "perfekt": "habe gelesen"
+      },
+      "du": {
+        "präsens": "liest",
+        "präteritum": "last",
+        "perfekt": "hast gelesen"
+      },
+      "er/sie/es": {
+        "präsens": "liest",
+        "präteritum": "las",
+        "perfekt": "hat gelesen"
+      },
+      "wir": {
+        "präsens": "lesen",
+        "präteritum": "lasen",
+        "perfekt": "haben gelesen"
+      },
+      "ihr": {
+        "präsens": "lest",
+        "präteritum": "last",
+        "perfekt": "habt gelesen"
+      },
+      "sie/Sie": {
+        "präsens": "lesen",
+        "präteritum": "lasen",
+        "perfekt": "haben gelesen"
+      }
+    }
+  },
+  {
+    "verb": "lieben",
+    "meaning": "to love",
+    "conjugations": {
+      "ich": {
+        "präsens": "liebe",
+        "präteritum": "liebte",
+        "perfekt": "habe geliebt"
+      },
+      "du": {
+        "präsens": "liebst",
+        "präteritum": "liebtest",
+        "perfekt": "hast geliebt"
+      },
+      "er/sie/es": {
+        "präsens": "liebt",
+        "präteritum": "liebte",
+        "perfekt": "hat geliebt"
+      },
+      "wir": {
+        "präsens": "lieben",
+        "präteritum": "liebten",
+        "perfekt": "haben geliebt"
+      },
+      "ihr": {
+        "präsens": "liebt",
+        "präteritum": "liebtet",
+        "perfekt": "habt geliebt"
+      },
+      "sie/Sie": {
+        "präsens": "lieben",
+        "präteritum": "liebten",
+        "perfekt": "haben geliebt"
+      }
+    }
+  },
+  {
+    "verb": "machen",
+    "meaning": "to make, do",
+    "conjugations": {
+      "ich": {
+        "präsens": "mache",
+        "präteritum": "machte",
+        "perfekt": "habe gemacht"
+      },
+      "du": {
+        "präsens": "machst",
+        "präteritum": "machtest",
+        "perfekt": "hast gemacht"
+      },
+      "er/sie/es": {
+        "präsens": "macht",
+        "präteritum": "machte",
+        "perfekt": "hat gemacht"
+      },
+      "wir": {
+        "präsens": "machen",
+        "präteritum": "machten",
+        "perfekt": "haben gemacht"
+      },
+      "ihr": {
+        "präsens": "macht",
+        "präteritum": "machtet",
+        "perfekt": "habt gemacht"
+      },
+      "sie/Sie": {
+        "präsens": "machen",
+        "präteritum": "machten",
+        "perfekt": "haben gemacht"
+      }
+    }
+  },
+  {
+    "verb": "malen",
+    "meaning": "to paint",
+    "conjugations": {
+      "ich": {
+        "präsens": "male",
+        "präteritum": "malte",
+        "perfekt": "habe gemalt"
+      },
+      "du": {
+        "präsens": "malst",
+        "präteritum": "maltest",
+        "perfekt": "hast gemalt"
+      },
+      "er/sie/es": {
+        "präsens": "malt",
+        "präteritum": "malte",
+        "perfekt": "hat gemalt"
+      },
+      "wir": {
+        "präsens": "malen",
+        "präteritum": "malten",
+        "perfekt": "haben gemalt"
+      },
+      "ihr": {
+        "präsens": "malt",
+        "präteritum": "maltet",
+        "perfekt": "habt gemalt"
+      },
+      "sie/Sie": {
+        "präsens": "malen",
+        "präteritum": "malten",
+        "perfekt": "haben gemalt"
+      }
+    }
+  },
+  {
+    "verb": "nehmen",
+    "meaning": "to take",
+    "conjugations": {
+      "ich": {
+        "präsens": "nehme",
+        "präteritum": "nahm",
+        "perfekt": "habe genommen"
+      },
+      "du": {
+        "präsens": "nimmst",
+        "präteritum": "nahmst",
+        "perfekt": "hast genommen"
+      },
+      "er/sie/es": {
+        "präsens": "nimmt",
+        "präteritum": "nahm",
+        "perfekt": "hat genommen"
+      },
+      "wir": {
+        "präsens": "nehmen",
+        "präteritum": "nahmen",
+        "perfekt": "haben genommen"
+      },
+      "ihr": {
+        "präsens": "nehmt",
+        "präteritum": "nahmt",
+        "perfekt": "habt genommen"
+      },
+      "sie/Sie": {
+        "präsens": "nehmen",
+        "präteritum": "nahmen",
+        "perfekt": "haben genommen"
+      }
+    }
+  },
+  {
+    "verb": "nennen",
+    "meaning": "to name, call",
+    "conjugations": {
+      "ich": {
+        "präsens": "nenne",
+        "präteritum": "nannte",
+        "perfekt": "habe genannt"
+      },
+      "du": {
+        "präsens": "nennst",
+        "präteritum": "nanntest",
+        "perfekt": "hast genannt"
+      },
+      "er/sie/es": {
+        "präsens": "nennt",
+        "präteritum": "nannte",
+        "perfekt": "hat genannt"
+      },
+      "wir": {
+        "präsens": "nennen",
+        "präteritum": "nannten",
+        "perfekt": "haben genannt"
+      },
+      "ihr": {
+        "präsens": "nennt",
+        "präteritum": "nanntet",
+        "perfekt": "habt genannt"
+      },
+      "sie/Sie": {
+        "präsens": "nennen",
+        "präteritum": "nannten",
+        "perfekt": "haben genannt"
       }
     }
   },
@@ -4320,6 +2196,42 @@
     }
   },
   {
+    "verb": "regnen",
+    "meaning": "to rain",
+    "conjugations": {
+      "ich": {
+        "präsens": "regne",
+        "präteritum": "regnete",
+        "perfekt": "habe geregnet"
+      },
+      "du": {
+        "präsens": "regnest",
+        "präteritum": "regnetest",
+        "perfekt": "hast geregnet"
+      },
+      "er/sie/es": {
+        "präsens": "regnet",
+        "präteritum": "regnete",
+        "perfekt": "hat geregnet"
+      },
+      "wir": {
+        "präsens": "regnen",
+        "präteritum": "regneten",
+        "perfekt": "haben geregnet"
+      },
+      "ihr": {
+        "präsens": "regnet",
+        "präteritum": "regnetet",
+        "perfekt": "habt geregnet"
+      },
+      "sie/Sie": {
+        "präsens": "regnen",
+        "präteritum": "regneten",
+        "perfekt": "haben geregnet"
+      }
+    }
+  },
+  {
     "verb": "reisen",
     "meaning": "to travel",
     "conjugations": {
@@ -4356,362 +2268,110 @@
     }
   },
   {
-    "verb": "suchen",
-    "meaning": "to search",
+    "verb": "rennen",
+    "meaning": "to run",
     "conjugations": {
       "ich": {
-        "präsens": "suche",
-        "präteritum": "suchte",
-        "perfekt": "habe gesucht"
+        "präsens": "renne",
+        "präteritum": "rannte",
+        "perfekt": "bin gerannt"
       },
       "du": {
-        "präsens": "suchst",
-        "präteritum": "suchtest",
-        "perfekt": "hast gesucht"
+        "präsens": "rennst",
+        "präteritum": "ranntest",
+        "perfekt": "bist gerannt"
       },
       "er/sie/es": {
-        "präsens": "sucht",
-        "präteritum": "suchte",
-        "perfekt": "hat gesucht"
+        "präsens": "rennt",
+        "präteritum": "rannte",
+        "perfekt": "ist gerannt"
       },
       "wir": {
-        "präsens": "suchen",
-        "präteritum": "suchten",
-        "perfekt": "haben gesucht"
+        "präsens": "rennen",
+        "präteritum": "rannten",
+        "perfekt": "sind gerannt"
       },
       "ihr": {
-        "präsens": "sucht",
-        "präteritum": "suchtet",
-        "perfekt": "habt gesucht"
+        "präsens": "rennt",
+        "präteritum": "ranntet",
+        "perfekt": "seid gerannt"
       },
       "sie/Sie": {
-        "präsens": "suchen",
-        "präteritum": "suchten",
-        "perfekt": "haben gesucht"
+        "präsens": "rennen",
+        "präteritum": "rannten",
+        "perfekt": "sind gerannt"
       }
     }
   },
   {
-    "verb": "steigen",
-    "meaning": "to climb, rise",
+    "verb": "rufen",
+    "meaning": "to call",
     "conjugations": {
       "ich": {
-        "präsens": "steige",
-        "präteritum": "stieg",
-        "perfekt": "bin gestiegen"
+        "präsens": "rufe",
+        "präteritum": "rief",
+        "perfekt": "habe gerufen"
       },
       "du": {
-        "präsens": "steigst",
-        "präteritum": "stiegst",
-        "perfekt": "bist gestiegen"
+        "präsens": "rufst",
+        "präteritum": "riefst",
+        "perfekt": "hast gerufen"
       },
       "er/sie/es": {
-        "präsens": "steigt",
-        "präteritum": "stieg",
-        "perfekt": "ist gestiegen"
+        "präsens": "ruft",
+        "präteritum": "rief",
+        "perfekt": "hat gerufen"
       },
       "wir": {
-        "präsens": "steigen",
-        "präteritum": "stiegen",
-        "perfekt": "sind gestiegen"
+        "präsens": "rufen",
+        "präteritum": "riefen",
+        "perfekt": "haben gerufen"
       },
       "ihr": {
-        "präsens": "steigt",
-        "präteritum": "stiegt",
-        "perfekt": "seid gestiegen"
+        "präsens": "ruft",
+        "präteritum": "rieft",
+        "perfekt": "habt gerufen"
       },
       "sie/Sie": {
-        "präsens": "steigen",
-        "präteritum": "stiegen",
-        "perfekt": "sind gestiegen"
+        "präsens": "rufen",
+        "präteritum": "riefen",
+        "perfekt": "haben gerufen"
       }
     }
   },
   {
-    "verb": "kosten",
-    "meaning": "to cost",
+    "verb": "sagen",
+    "meaning": "to say",
     "conjugations": {
       "ich": {
-        "präsens": "koste",
-        "präteritum": "kostete",
-        "perfekt": "habe gekostet"
+        "präsens": "sage",
+        "präteritum": "sagte",
+        "perfekt": "habe gesagt"
       },
       "du": {
-        "präsens": "kostest",
-        "präteritum": "kostetest",
-        "perfekt": "hast gekostet"
+        "präsens": "sagst",
+        "präteritum": "sagtest",
+        "perfekt": "hast gesagt"
       },
       "er/sie/es": {
-        "präsens": "kostet",
-        "präteritum": "kostete",
-        "perfekt": "hat gekostet"
+        "präsens": "sagt",
+        "präteritum": "sagte",
+        "perfekt": "hat gesagt"
       },
       "wir": {
-        "präsens": "kosten",
-        "präteritum": "kosteten",
-        "perfekt": "haben gekostet"
+        "präsens": "sagen",
+        "präteritum": "sagten",
+        "perfekt": "haben gesagt"
       },
       "ihr": {
-        "präsens": "kostet",
-        "präteritum": "kostetet",
-        "perfekt": "habt gekostet"
+        "präsens": "sagt",
+        "präteritum": "sagtet",
+        "perfekt": "habt gesagt"
       },
       "sie/Sie": {
-        "präsens": "kosten",
-        "präteritum": "kosteten",
-        "perfekt": "haben gekostet"
-      }
-    }
-  },
-  {
-    "verb": "feiern",
-    "meaning": "to celebrate",
-    "conjugations": {
-      "ich": {
-        "präsens": "feiere",
-        "präteritum": "feierte",
-        "perfekt": "habe gefeiert"
-      },
-      "du": {
-        "präsens": "feierst",
-        "präteritum": "feiertest",
-        "perfekt": "hast gefeiert"
-      },
-      "er/sie/es": {
-        "präsens": "feiert",
-        "präteritum": "feierte",
-        "perfekt": "hat gefeiert"
-      },
-      "wir": {
-        "präsens": "feiern",
-        "präteritum": "feierten",
-        "perfekt": "haben gefeiert"
-      },
-      "ihr": {
-        "präsens": "feiert",
-        "präteritum": "feiertet",
-        "perfekt": "habt gefeiert"
-      },
-      "sie/Sie": {
-        "präsens": "feiern",
-        "präteritum": "feierten",
-        "perfekt": "haben gefeiert"
-      }
-    }
-  },
-  {
-    "verb": "grüßen",
-    "meaning": "to greet",
-    "conjugations": {
-      "ich": {
-        "präsens": "grüße",
-        "präteritum": "grüßte",
-        "perfekt": "habe gegrüßt"
-      },
-      "du": {
-        "präsens": "grüßt",
-        "präteritum": "grüßtest",
-        "perfekt": "hast gegrüßt"
-      },
-      "er/sie/es": {
-        "präsens": "grüßt",
-        "präteritum": "grüßte",
-        "perfekt": "hat gegrüßt"
-      },
-      "wir": {
-        "präsens": "grüßen",
-        "präteritum": "grüßten",
-        "perfekt": "haben gegrüßt"
-      },
-      "ihr": {
-        "präsens": "grüßt",
-        "präteritum": "grüßtet",
-        "perfekt": "habt gegrüßt"
-      },
-      "sie/Sie": {
-        "präsens": "grüßen",
-        "präteritum": "grüßten",
-        "perfekt": "haben gegrüßt"
-      }
-    }
-  },
-  {
-    "verb": "hoffen",
-    "meaning": "to hope",
-    "conjugations": {
-      "ich": {
-        "präsens": "hoffe",
-        "präteritum": "hoffte",
-        "perfekt": "habe gehofft"
-      },
-      "du": {
-        "präsens": "hoffst",
-        "präteritum": "hofftest",
-        "perfekt": "hast gehofft"
-      },
-      "er/sie/es": {
-        "präsens": "hofft",
-        "präteritum": "hoffte",
-        "perfekt": "hat gehofft"
-      },
-      "wir": {
-        "präsens": "hoffen",
-        "präteritum": "hofften",
-        "perfekt": "haben gehofft"
-      },
-      "ihr": {
-        "präsens": "hofft",
-        "präteritum": "hofftet",
-        "perfekt": "habt gehofft"
-      },
-      "sie/Sie": {
-        "präsens": "hoffen",
-        "präteritum": "hofften",
-        "perfekt": "haben gehofft"
-      }
-    }
-  },
-  {
-    "verb": "kontrollieren",
-    "meaning": "to control",
-    "conjugations": {
-      "ich": {
-        "präsens": "kontrolliere",
-        "präteritum": "kontrollierte",
-        "perfekt": "habe kontrolliert"
-      },
-      "du": {
-        "präsens": "kontrollierst",
-        "präteritum": "kontrolliertest",
-        "perfekt": "hast kontrolliert"
-      },
-      "er/sie/es": {
-        "präsens": "kontrolliert",
-        "präteritum": "kontrollierte",
-        "perfekt": "hat kontrolliert"
-      },
-      "wir": {
-        "präsens": "kontrollieren",
-        "präteritum": "kontrollierten",
-        "perfekt": "haben kontrolliert"
-      },
-      "ihr": {
-        "präsens": "kontrolliert",
-        "präteritum": "kontrolliertet",
-        "perfekt": "habt kontrolliert"
-      },
-      "sie/Sie": {
-        "präsens": "kontrollieren",
-        "präteritum": "kontrollierten",
-        "perfekt": "haben kontrolliert"
-      }
-    }
-  },
-  {
-    "verb": "lachen",
-    "meaning": "to laugh",
-    "conjugations": {
-      "ich": {
-        "präsens": "lache",
-        "präteritum": "lachte",
-        "perfekt": "habe gelacht"
-      },
-      "du": {
-        "präsens": "lachst",
-        "präteritum": "lachtest",
-        "perfekt": "hast gelacht"
-      },
-      "er/sie/es": {
-        "präsens": "lacht",
-        "präteritum": "lachte",
-        "perfekt": "hat gelacht"
-      },
-      "wir": {
-        "präsens": "lachen",
-        "präteritum": "lachten",
-        "perfekt": "haben gelacht"
-      },
-      "ihr": {
-        "präsens": "lacht",
-        "präteritum": "lachtet",
-        "perfekt": "habt gelacht"
-      },
-      "sie/Sie": {
-        "präsens": "lachen",
-        "präteritum": "lachten",
-        "perfekt": "haben gelacht"
-      }
-    }
-  },
-  {
-    "verb": "machen",
-    "meaning": "to make, do",
-    "conjugations": {
-      "ich": {
-        "präsens": "mache",
-        "präteritum": "machte",
-        "perfekt": "habe gemacht"
-      },
-      "du": {
-        "präsens": "machst",
-        "präteritum": "machtest",
-        "perfekt": "hast gemacht"
-      },
-      "er/sie/es": {
-        "präsens": "macht",
-        "präteritum": "machte",
-        "perfekt": "hat gemacht"
-      },
-      "wir": {
-        "präsens": "machen",
-        "präteritum": "machten",
-        "perfekt": "haben gemacht"
-      },
-      "ihr": {
-        "präsens": "macht",
-        "präteritum": "machtet",
-        "perfekt": "habt gemacht"
-      },
-      "sie/Sie": {
-        "präsens": "machen",
-        "präteritum": "machten",
-        "perfekt": "haben gemacht"
-      }
-    }
-  },
-  {
-    "verb": "regnen",
-    "meaning": "to rain",
-    "conjugations": {
-      "ich": {
-        "präsens": "regne",
-        "präteritum": "regnete",
-        "perfekt": "habe geregnet"
-      },
-      "du": {
-        "präsens": "regnest",
-        "präteritum": "regnetest",
-        "perfekt": "hast geregnet"
-      },
-      "er/sie/es": {
-        "präsens": "regnet",
-        "präteritum": "regnete",
-        "perfekt": "hat geregnet"
-      },
-      "wir": {
-        "präsens": "regnen",
-        "präteritum": "regneten",
-        "perfekt": "haben geregnet"
-      },
-      "ihr": {
-        "präsens": "regnet",
-        "präteritum": "regnetet",
-        "perfekt": "habt geregnet"
-      },
-      "sie/Sie": {
-        "präsens": "regnen",
-        "präteritum": "regneten",
-        "perfekt": "haben geregnet"
+        "präsens": "sagen",
+        "präteritum": "sagten",
+        "perfekt": "haben gesagt"
       }
     }
   },
@@ -4788,6 +2448,150 @@
     }
   },
   {
+    "verb": "schlafen",
+    "meaning": "to sleep",
+    "conjugations": {
+      "ich": {
+        "präsens": "schlafe",
+        "präteritum": "schlief",
+        "perfekt": "habe geschlafen"
+      },
+      "du": {
+        "präsens": "schläfst",
+        "präteritum": "schliefst",
+        "perfekt": "hast geschlafen"
+      },
+      "er/sie/es": {
+        "präsens": "schläft",
+        "präteritum": "schlief",
+        "perfekt": "hat geschlafen"
+      },
+      "wir": {
+        "präsens": "schlafen",
+        "präteritum": "schliefen",
+        "perfekt": "haben geschlafen"
+      },
+      "ihr": {
+        "präsens": "schlaft",
+        "präteritum": "schlieft",
+        "perfekt": "habt geschlafen"
+      },
+      "sie/Sie": {
+        "präsens": "schlafen",
+        "präteritum": "schliefen",
+        "perfekt": "haben geschlafen"
+      }
+    }
+  },
+  {
+    "verb": "schlagen",
+    "meaning": "to hit, beat",
+    "conjugations": {
+      "ich": {
+        "präsens": "schlage",
+        "präteritum": "schlug",
+        "perfekt": "habe geschlagen"
+      },
+      "du": {
+        "präsens": "schlägst",
+        "präteritum": "schlugst",
+        "perfekt": "hast geschlagen"
+      },
+      "er/sie/es": {
+        "präsens": "schlägt",
+        "präteritum": "schlug",
+        "perfekt": "hat geschlagen"
+      },
+      "wir": {
+        "präsens": "schlagen",
+        "präteritum": "schlugen",
+        "perfekt": "haben geschlagen"
+      },
+      "ihr": {
+        "präsens": "schlagt",
+        "präteritum": "schlugt",
+        "perfekt": "habt geschlagen"
+      },
+      "sie/Sie": {
+        "präsens": "schlagen",
+        "präteritum": "schlugen",
+        "perfekt": "haben geschlagen"
+      }
+    }
+  },
+  {
+    "verb": "schließen",
+    "meaning": "to close",
+    "conjugations": {
+      "ich": {
+        "präsens": "schließe",
+        "präteritum": "schloss",
+        "perfekt": "habe geschlossen"
+      },
+      "du": {
+        "präsens": "schließt",
+        "präteritum": "schlossest",
+        "perfekt": "hast geschlossen"
+      },
+      "er/sie/es": {
+        "präsens": "schließt",
+        "präteritum": "schloss",
+        "perfekt": "hat geschlossen"
+      },
+      "wir": {
+        "präsens": "schließen",
+        "präteritum": "schlossen",
+        "perfekt": "haben geschlossen"
+      },
+      "ihr": {
+        "präsens": "schließt",
+        "präteritum": "schlosst",
+        "perfekt": "habt geschlossen"
+      },
+      "sie/Sie": {
+        "präsens": "schließen",
+        "präteritum": "schlossen",
+        "perfekt": "haben geschlossen"
+      }
+    }
+  },
+  {
+    "verb": "schreiben",
+    "meaning": "to write",
+    "conjugations": {
+      "ich": {
+        "präsens": "schreibe",
+        "präteritum": "schrieb",
+        "perfekt": "habe geschrieben"
+      },
+      "du": {
+        "präsens": "schreibst",
+        "präteritum": "schriebst",
+        "perfekt": "hast geschrieben"
+      },
+      "er/sie/es": {
+        "präsens": "schreibt",
+        "präteritum": "schrieb",
+        "perfekt": "hat geschrieben"
+      },
+      "wir": {
+        "präsens": "schreiben",
+        "präteritum": "schrieben",
+        "perfekt": "haben geschrieben"
+      },
+      "ihr": {
+        "präsens": "schreibt",
+        "präteritum": "schriebt",
+        "perfekt": "habt geschrieben"
+      },
+      "sie/Sie": {
+        "präsens": "schreiben",
+        "präteritum": "schrieben",
+        "perfekt": "haben geschrieben"
+      }
+    }
+  },
+  {
     "verb": "schwimmen",
     "meaning": "to swim",
     "conjugations": {
@@ -4820,6 +2624,114 @@
         "präsens": "schwimmen",
         "präteritum": "schwammen",
         "perfekt": "sind geschwommen"
+      }
+    }
+  },
+  {
+    "verb": "sehen",
+    "meaning": "to see",
+    "conjugations": {
+      "ich": {
+        "präsens": "sehe",
+        "präteritum": "sah",
+        "perfekt": "habe gesehen"
+      },
+      "du": {
+        "präsens": "siehst",
+        "präteritum": "sahst",
+        "perfekt": "hast gesehen"
+      },
+      "er/sie/es": {
+        "präsens": "sieht",
+        "präteritum": "sah",
+        "perfekt": "hat gesehen"
+      },
+      "wir": {
+        "präsens": "sehen",
+        "präteritum": "sahen",
+        "perfekt": "haben gesehen"
+      },
+      "ihr": {
+        "präsens": "seht",
+        "präteritum": "saht",
+        "perfekt": "habt gesehen"
+      },
+      "sie/Sie": {
+        "präsens": "sehen",
+        "präteritum": "sahen",
+        "perfekt": "haben gesehen"
+      }
+    }
+  },
+  {
+    "verb": "sein",
+    "meaning": "to be",
+    "conjugations": {
+      "ich": {
+        "präsens": "bin",
+        "präteritum": "war",
+        "perfekt": "bin gewesen"
+      },
+      "du": {
+        "präsens": "bist",
+        "präteritum": "warst",
+        "perfekt": "bist gewesen"
+      },
+      "er/sie/es": {
+        "präsens": "ist",
+        "präteritum": "war",
+        "perfekt": "ist gewesen"
+      },
+      "wir": {
+        "präsens": "sind",
+        "präteritum": "waren",
+        "perfekt": "sind gewesen"
+      },
+      "ihr": {
+        "präsens": "seid",
+        "präteritum": "wart",
+        "perfekt": "seid gewesen"
+      },
+      "sie/Sie": {
+        "präsens": "sind",
+        "präteritum": "waren",
+        "perfekt": "sind gewesen"
+      }
+    }
+  },
+  {
+    "verb": "setzen",
+    "meaning": "to set, put, sit down",
+    "conjugations": {
+      "ich": {
+        "präsens": "setze",
+        "präteritum": "setzte",
+        "perfekt": "habe gesetzt"
+      },
+      "du": {
+        "präsens": "setzt",
+        "präteritum": "setztest",
+        "perfekt": "hast gesetzt"
+      },
+      "er/sie/es": {
+        "präsens": "setzt",
+        "präteritum": "setzte",
+        "perfekt": "hat gesetzt"
+      },
+      "wir": {
+        "präsens": "setzen",
+        "präteritum": "setzten",
+        "perfekt": "haben gesetzt"
+      },
+      "ihr": {
+        "präsens": "setzt",
+        "präteritum": "setztet",
+        "perfekt": "habt gesetzt"
+      },
+      "sie/Sie": {
+        "präsens": "setzen",
+        "präteritum": "setzten",
+        "perfekt": "haben gesetzt"
       }
     }
   },
@@ -4968,6 +2880,42 @@
     }
   },
   {
+    "verb": "sprechen",
+    "meaning": "to speak",
+    "conjugations": {
+      "ich": {
+        "präsens": "spreche",
+        "präteritum": "sprach",
+        "perfekt": "habe gesprochen"
+      },
+      "du": {
+        "präsens": "sprichst",
+        "präteritum": "sprachst",
+        "perfekt": "hast gesprochen"
+      },
+      "er/sie/es": {
+        "präsens": "spricht",
+        "präteritum": "sprach",
+        "perfekt": "hat gesprochen"
+      },
+      "wir": {
+        "präsens": "sprechen",
+        "präteritum": "sprachen",
+        "perfekt": "haben gesprochen"
+      },
+      "ihr": {
+        "präsens": "sprecht",
+        "präteritum": "spracht",
+        "perfekt": "habt gesprochen"
+      },
+      "sie/Sie": {
+        "präsens": "sprechen",
+        "präteritum": "sprachen",
+        "perfekt": "haben gesprochen"
+      }
+    }
+  },
+  {
     "verb": "stehen",
     "meaning": "to stand",
     "conjugations": {
@@ -4978,7 +2926,7 @@
       },
       "du": {
         "präsens": "stehst",
-        "präteritum": "standst",
+        "präteritum": "standest",
         "perfekt": "hast gestanden"
       },
       "er/sie/es": {
@@ -5000,6 +2948,186 @@
         "präsens": "stehen",
         "präteritum": "standen",
         "perfekt": "haben gestanden"
+      }
+    }
+  },
+  {
+    "verb": "steigen",
+    "meaning": "to climb, rise",
+    "conjugations": {
+      "ich": {
+        "präsens": "steige",
+        "präteritum": "stieg",
+        "perfekt": "bin gestiegen"
+      },
+      "du": {
+        "präsens": "steigst",
+        "präteritum": "stiegst",
+        "perfekt": "bist gestiegen"
+      },
+      "er/sie/es": {
+        "präsens": "steigt",
+        "präteritum": "stieg",
+        "perfekt": "ist gestiegen"
+      },
+      "wir": {
+        "präsens": "steigen",
+        "präteritum": "stiegen",
+        "perfekt": "sind gestiegen"
+      },
+      "ihr": {
+        "präsens": "steigt",
+        "präteritum": "stiegt",
+        "perfekt": "seid gestiegen"
+      },
+      "sie/Sie": {
+        "präsens": "steigen",
+        "präteritum": "stiegen",
+        "perfekt": "sind gestiegen"
+      }
+    }
+  },
+  {
+    "verb": "stellen",
+    "meaning": "to place, put",
+    "conjugations": {
+      "ich": {
+        "präsens": "stelle",
+        "präteritum": "stellte",
+        "perfekt": "habe gestellt"
+      },
+      "du": {
+        "präsens": "stellst",
+        "präteritum": "stelltest",
+        "perfekt": "hast gestellt"
+      },
+      "er/sie/es": {
+        "präsens": "stellt",
+        "präteritum": "stellte",
+        "perfekt": "hat gestellt"
+      },
+      "wir": {
+        "präsens": "stellen",
+        "präteritum": "stellten",
+        "perfekt": "haben gestellt"
+      },
+      "ihr": {
+        "präsens": "stellt",
+        "präteritum": "stelltet",
+        "perfekt": "habt gestellt"
+      },
+      "sie/Sie": {
+        "präsens": "stellen",
+        "präteritum": "stellten",
+        "perfekt": "haben gestellt"
+      }
+    }
+  },
+  {
+    "verb": "sterben",
+    "meaning": "to die",
+    "conjugations": {
+      "ich": {
+        "präsens": "sterbe",
+        "präteritum": "starb",
+        "perfekt": "bin gestorben"
+      },
+      "du": {
+        "präsens": "stirbst",
+        "präteritum": "starbst",
+        "perfekt": "bist gestorben"
+      },
+      "er/sie/es": {
+        "präsens": "stirbt",
+        "präteritum": "starb",
+        "perfekt": "ist gestorben"
+      },
+      "wir": {
+        "präsens": "sterben",
+        "präteritum": "starben",
+        "perfekt": "sind gestorben"
+      },
+      "ihr": {
+        "präsens": "sterbt",
+        "präteritum": "starbt",
+        "perfekt": "seid gestorben"
+      },
+      "sie/Sie": {
+        "präsens": "sterben",
+        "präteritum": "starben",
+        "perfekt": "sind gestorben"
+      }
+    }
+  },
+  {
+    "verb": "studieren",
+    "meaning": "to study",
+    "conjugations": {
+      "ich": {
+        "präsens": "studiere",
+        "präteritum": "studierte",
+        "perfekt": "habe studiert"
+      },
+      "du": {
+        "präsens": "studierst",
+        "präteritum": "studiertest",
+        "perfekt": "hast studiert"
+      },
+      "er/sie/es": {
+        "präsens": "studiert",
+        "präteritum": "studierte",
+        "perfekt": "hat studiert"
+      },
+      "wir": {
+        "präsens": "studieren",
+        "präteritum": "studierten",
+        "perfekt": "haben studiert"
+      },
+      "ihr": {
+        "präsens": "studiert",
+        "präteritum": "studiertet",
+        "perfekt": "habt studiert"
+      },
+      "sie/Sie": {
+        "präsens": "studieren",
+        "präteritum": "studierten",
+        "perfekt": "haben studiert"
+      }
+    }
+  },
+  {
+    "verb": "suchen",
+    "meaning": "to search, look for",
+    "conjugations": {
+      "ich": {
+        "präsens": "suche",
+        "präteritum": "suchte",
+        "perfekt": "habe gesucht"
+      },
+      "du": {
+        "präsens": "suchst",
+        "präteritum": "suchtest",
+        "perfekt": "hast gesucht"
+      },
+      "er/sie/es": {
+        "präsens": "sucht",
+        "präteritum": "suchte",
+        "perfekt": "hat gesucht"
+      },
+      "wir": {
+        "präsens": "suchen",
+        "präteritum": "suchten",
+        "perfekt": "haben gesucht"
+      },
+      "ihr": {
+        "präsens": "sucht",
+        "präteritum": "suchtet",
+        "perfekt": "habt gesucht"
+      },
+      "sie/Sie": {
+        "präsens": "suchen",
+        "präteritum": "suchten",
+        "perfekt": "haben gesucht"
       }
     }
   },
@@ -5040,6 +3168,150 @@
     }
   },
   {
+    "verb": "telefonieren",
+    "meaning": "to telephone",
+    "conjugations": {
+      "ich": {
+        "präsens": "telefoniere",
+        "präteritum": "telefonierte",
+        "perfekt": "habe telefoniert"
+      },
+      "du": {
+        "präsens": "telefonierst",
+        "präteritum": "telefoniertest",
+        "perfekt": "hast telefoniert"
+      },
+      "er/sie/es": {
+        "präsens": "telefoniert",
+        "präteritum": "telefonierte",
+        "perfekt": "hat telefoniert"
+      },
+      "wir": {
+        "präsens": "telefonieren",
+        "präteritum": "telefonierten",
+        "perfekt": "haben telefoniert"
+      },
+      "ihr": {
+        "präsens": "telefoniert",
+        "präteritum": "telefoniertet",
+        "perfekt": "habt telefoniert"
+      },
+      "sie/Sie": {
+        "präsens": "telefonieren",
+        "präteritum": "telefonierten",
+        "perfekt": "haben telefoniert"
+      }
+    }
+  },
+  {
+    "verb": "tragen",
+    "meaning": "to carry, wear",
+    "conjugations": {
+      "ich": {
+        "präsens": "trage",
+        "präteritum": "trug",
+        "perfekt": "habe getragen"
+      },
+      "du": {
+        "präsens": "trägst",
+        "präteritum": "trugst",
+        "perfekt": "hast getragen"
+      },
+      "er/sie/es": {
+        "präsens": "trägt",
+        "präteritum": "trug",
+        "perfekt": "hat getragen"
+      },
+      "wir": {
+        "präsens": "tragen",
+        "präteritum": "trugen",
+        "perfekt": "haben getragen"
+      },
+      "ihr": {
+        "präsens": "tragt",
+        "präteritum": "trugt",
+        "perfekt": "habt getragen"
+      },
+      "sie/Sie": {
+        "präsens": "tragen",
+        "präteritum": "trugen",
+        "perfekt": "haben getragen"
+      }
+    }
+  },
+  {
+    "verb": "treffen",
+    "meaning": "to meet",
+    "conjugations": {
+      "ich": {
+        "präsens": "treffe",
+        "präteritum": "traf",
+        "perfekt": "habe getroffen"
+      },
+      "du": {
+        "präsens": "triffst",
+        "präteritum": "trafst",
+        "perfekt": "hast getroffen"
+      },
+      "er/sie/es": {
+        "präsens": "trifft",
+        "präteritum": "traf",
+        "perfekt": "hat getroffen"
+      },
+      "wir": {
+        "präsens": "treffen",
+        "präteritum": "trafen",
+        "perfekt": "haben getroffen"
+      },
+      "ihr": {
+        "präsens": "trefft",
+        "präteritum": "traft",
+        "perfekt": "habt getroffen"
+      },
+      "sie/Sie": {
+        "präsens": "treffen",
+        "präteritum": "trafen",
+        "perfekt": "haben getroffen"
+      }
+    }
+  },
+  {
+    "verb": "trinken",
+    "meaning": "to drink",
+    "conjugations": {
+      "ich": {
+        "präsens": "trinke",
+        "präteritum": "trank",
+        "perfekt": "habe getrunken"
+      },
+      "du": {
+        "präsens": "trinkst",
+        "präteritum": "trankst",
+        "perfekt": "hast getrunken"
+      },
+      "er/sie/es": {
+        "präsens": "trinkt",
+        "präteritum": "trank",
+        "perfekt": "hat getrunken"
+      },
+      "wir": {
+        "präsens": "trinken",
+        "präteritum": "tranken",
+        "perfekt": "haben getrunken"
+      },
+      "ihr": {
+        "präsens": "trinkt",
+        "präteritum": "trankt",
+        "perfekt": "habt getrunken"
+      },
+      "sie/Sie": {
+        "präsens": "trinken",
+        "präteritum": "tranken",
+        "perfekt": "haben getrunken"
+      }
+    }
+  },
+  {
     "verb": "träumen",
     "meaning": "to dream",
     "conjugations": {
@@ -5072,6 +3344,42 @@
         "präsens": "träumen",
         "präteritum": "träumten",
         "perfekt": "haben geträumt"
+      }
+    }
+  },
+  {
+    "verb": "tun",
+    "meaning": "to do",
+    "conjugations": {
+      "ich": {
+        "präsens": "tue",
+        "präteritum": "tat",
+        "perfekt": "habe getan"
+      },
+      "du": {
+        "präsens": "tust",
+        "präteritum": "tatest",
+        "perfekt": "hast getan"
+      },
+      "er/sie/es": {
+        "präsens": "tut",
+        "präteritum": "tat",
+        "perfekt": "hat getan"
+      },
+      "wir": {
+        "präsens": "tun",
+        "präteritum": "taten",
+        "perfekt": "haben getan"
+      },
+      "ihr": {
+        "präsens": "tut",
+        "präteritum": "tatet",
+        "perfekt": "habt getan"
+      },
+      "sie/Sie": {
+        "präsens": "tun",
+        "präteritum": "taten",
+        "perfekt": "haben getan"
       }
     }
   },
@@ -5148,6 +3456,114 @@
     }
   },
   {
+    "verb": "verkaufen",
+    "meaning": "to sell",
+    "conjugations": {
+      "ich": {
+        "präsens": "verkaufe",
+        "präteritum": "verkaufte",
+        "perfekt": "habe verkauft"
+      },
+      "du": {
+        "präsens": "verkaufst",
+        "präteritum": "verkauftest",
+        "perfekt": "hast verkauft"
+      },
+      "er/sie/es": {
+        "präsens": "verkauft",
+        "präteritum": "verkaufte",
+        "perfekt": "hat verkauft"
+      },
+      "wir": {
+        "präsens": "verkaufen",
+        "präteritum": "verkauften",
+        "perfekt": "haben verkauft"
+      },
+      "ihr": {
+        "präsens": "verkauft",
+        "präteritum": "verkauftet",
+        "perfekt": "habt verkauft"
+      },
+      "sie/Sie": {
+        "präsens": "verkaufen",
+        "präteritum": "verkauften",
+        "perfekt": "haben verkauft"
+      }
+    }
+  },
+  {
+    "verb": "verlieren",
+    "meaning": "to lose",
+    "conjugations": {
+      "ich": {
+        "präsens": "verliere",
+        "präteritum": "verlor",
+        "perfekt": "habe verloren"
+      },
+      "du": {
+        "präsens": "verlierst",
+        "präteritum": "verlorst",
+        "perfekt": "hast verloren"
+      },
+      "er/sie/es": {
+        "präsens": "verliert",
+        "präteritum": "verlor",
+        "perfekt": "hat verloren"
+      },
+      "wir": {
+        "präsens": "verlieren",
+        "präteritum": "verloren",
+        "perfekt": "haben verloren"
+      },
+      "ihr": {
+        "präsens": "verliert",
+        "präteritum": "verlort",
+        "perfekt": "habt verloren"
+      },
+      "sie/Sie": {
+        "präsens": "verlieren",
+        "präteritum": "verloren",
+        "perfekt": "haben verloren"
+      }
+    }
+  },
+  {
+    "verb": "verstehen",
+    "meaning": "to understand",
+    "conjugations": {
+      "ich": {
+        "präsens": "verstehe",
+        "präteritum": "verstand",
+        "perfekt": "habe verstanden"
+      },
+      "du": {
+        "präsens": "verstehst",
+        "präteritum": "verstandest",
+        "perfekt": "hast verstanden"
+      },
+      "er/sie/es": {
+        "präsens": "versteht",
+        "präteritum": "verstand",
+        "perfekt": "hat verstanden"
+      },
+      "wir": {
+        "präsens": "verstehen",
+        "präteritum": "verstanden",
+        "perfekt": "haben verstanden"
+      },
+      "ihr": {
+        "präsens": "versteht",
+        "präteritum": "verstandet",
+        "perfekt": "habt verstanden"
+      },
+      "sie/Sie": {
+        "präsens": "verstehen",
+        "präteritum": "verstanden",
+        "perfekt": "haben verstanden"
+      }
+    }
+  },
+  {
     "verb": "versuchen",
     "meaning": "to try",
     "conjugations": {
@@ -5180,6 +3596,42 @@
         "präsens": "versuchen",
         "präteritum": "versuchten",
         "perfekt": "haben versucht"
+      }
+    }
+  },
+  {
+    "verb": "wachsen",
+    "meaning": "to grow",
+    "conjugations": {
+      "ich": {
+        "präsens": "wachse",
+        "präteritum": "wuchs",
+        "perfekt": "bin gewachsen"
+      },
+      "du": {
+        "präsens": "wächst",
+        "präteritum": "wuchsest",
+        "perfekt": "bist gewachsen"
+      },
+      "er/sie/es": {
+        "präsens": "wächst",
+        "präteritum": "wuchs",
+        "perfekt": "ist gewachsen"
+      },
+      "wir": {
+        "präsens": "wachsen",
+        "präteritum": "wuchsen",
+        "perfekt": "sind gewachsen"
+      },
+      "ihr": {
+        "präsens": "wachst",
+        "präteritum": "wuchst",
+        "perfekt": "seid gewachsen"
+      },
+      "sie/Sie": {
+        "präsens": "wachsen",
+        "präteritum": "wuchsen",
+        "perfekt": "sind gewachsen"
       }
     }
   },
@@ -5220,6 +3672,42 @@
     }
   },
   {
+    "verb": "weinen",
+    "meaning": "to cry",
+    "conjugations": {
+      "ich": {
+        "präsens": "weine",
+        "präteritum": "weinte",
+        "perfekt": "habe geweint"
+      },
+      "du": {
+        "präsens": "weinst",
+        "präteritum": "weintest",
+        "perfekt": "hast geweint"
+      },
+      "er/sie/es": {
+        "präsens": "weint",
+        "präteritum": "weinte",
+        "perfekt": "hat geweint"
+      },
+      "wir": {
+        "präsens": "weinen",
+        "präteritum": "weinten",
+        "perfekt": "haben geweint"
+      },
+      "ihr": {
+        "präsens": "weint",
+        "präteritum": "weintet",
+        "perfekt": "habt geweint"
+      },
+      "sie/Sie": {
+        "präsens": "weinen",
+        "präteritum": "weinten",
+        "perfekt": "haben geweint"
+      }
+    }
+  },
+  {
     "verb": "wiederholen",
     "meaning": "to repeat",
     "conjugations": {
@@ -5252,6 +3740,78 @@
         "präsens": "wiederholen",
         "präteritum": "wiederholten",
         "perfekt": "haben wiederholt"
+      }
+    }
+  },
+  {
+    "verb": "wissen",
+    "meaning": "to know",
+    "conjugations": {
+      "ich": {
+        "präsens": "weiß",
+        "präteritum": "wusste",
+        "perfekt": "habe gewusst"
+      },
+      "du": {
+        "präsens": "weißt",
+        "präteritum": "wusstest",
+        "perfekt": "hast gewusst"
+      },
+      "er/sie/es": {
+        "präsens": "weiß",
+        "präteritum": "wusste",
+        "perfekt": "hat gewusst"
+      },
+      "wir": {
+        "präsens": "wissen",
+        "präteritum": "wussten",
+        "perfekt": "haben gewusst"
+      },
+      "ihr": {
+        "präsens": "wisst",
+        "präteritum": "wusstet",
+        "perfekt": "habt gewusst"
+      },
+      "sie/Sie": {
+        "präsens": "wissen",
+        "präteritum": "wussten",
+        "perfekt": "haben gewusst"
+      }
+    }
+  },
+  {
+    "verb": "wünschen",
+    "meaning": "to wish",
+    "conjugations": {
+      "ich": {
+        "präsens": "wünsche",
+        "präteritum": "wünschte",
+        "perfekt": "habe gewünscht"
+      },
+      "du": {
+        "präsens": "wünschst",
+        "präteritum": "wünschtest",
+        "perfekt": "hast gewünscht"
+      },
+      "er/sie/es": {
+        "präsens": "wünscht",
+        "präteritum": "wünschte",
+        "perfekt": "hat gewünscht"
+      },
+      "wir": {
+        "präsens": "wünschen",
+        "präteritum": "wünschten",
+        "perfekt": "haben gewünscht"
+      },
+      "ihr": {
+        "präsens": "wünscht",
+        "präteritum": "wünschtet",
+        "perfekt": "habt gewünscht"
+      },
+      "sie/Sie": {
+        "präsens": "wünschen",
+        "präteritum": "wünschten",
+        "perfekt": "haben gewünscht"
       }
     }
   },
@@ -5293,7 +3853,7 @@
   },
   {
     "verb": "ziehen",
-    "meaning": "to pull",
+    "meaning": "to pull, move",
     "conjugations": {
       "ich": {
         "präsens": "ziehe",
@@ -5324,42 +3884,6 @@
         "präsens": "ziehen",
         "präteritum": "zogen",
         "perfekt": "haben gezogen"
-      }
-    }
-  },
-  {
-    "verb": "wünschen",
-    "meaning": "to wish",
-    "conjugations": {
-      "ich": {
-        "präsens": "wünsche",
-        "präteritum": "wünschte",
-        "perfekt": "habe gewünscht"
-      },
-      "du": {
-        "präsens": "wünschst",
-        "präteritum": "wünschtest",
-        "perfekt": "hast gewünscht"
-      },
-      "er/sie/es": {
-        "präsens": "wünscht",
-        "präteritum": "wünschte",
-        "perfekt": "hat gewünscht"
-      },
-      "wir": {
-        "präsens": "wünschen",
-        "präteritum": "wünschten",
-        "perfekt": "haben gewünscht"
-      },
-      "ihr": {
-        "präsens": "wünscht",
-        "präteritum": "wünschtet",
-        "perfekt": "habt gewünscht"
-      },
-      "sie/Sie": {
-        "präsens": "wünschen",
-        "präteritum": "wünschten",
-        "perfekt": "haben gewünscht"
       }
     }
   },
@@ -5472,74 +3996,74 @@
     }
   },
   {
-    "verb": "einladen",
-    "meaning": "to invite",
+    "verb": "ändern",
+    "meaning": "to change",
     "conjugations": {
       "ich": {
-        "präsens": "lade ein",
-        "präteritum": "lud ein",
-        "perfekt": "habe eingeladen"
+        "präsens": "ändere",
+        "präteritum": "änderte",
+        "perfekt": "habe geändert"
       },
       "du": {
-        "präsens": "lädst ein",
-        "präteritum": "ludst ein",
-        "perfekt": "hast eingeladen"
+        "präsens": "änderst",
+        "präteritum": "ändertest",
+        "perfekt": "hast geändert"
       },
       "er/sie/es": {
-        "präsens": "lädt ein",
-        "präteritum": "lud ein",
-        "perfekt": "hat eingeladen"
+        "präsens": "ändert",
+        "präteritum": "änderte",
+        "perfekt": "hat geändert"
       },
       "wir": {
-        "präsens": "laden ein",
-        "präteritum": "luden ein",
-        "perfekt": "haben eingeladen"
+        "präsens": "ändern",
+        "präteritum": "änderten",
+        "perfekt": "haben geändert"
       },
       "ihr": {
-        "präsens": "ladet ein",
-        "präteritum": "ludet ein",
-        "perfekt": "habt eingeladen"
+        "präsens": "ändert",
+        "präteritum": "ändertet",
+        "perfekt": "habt geändert"
       },
       "sie/Sie": {
-        "präsens": "laden ein",
-        "präteritum": "luden ein",
-        "perfekt": "haben eingeladen"
+        "präsens": "ändern",
+        "präteritum": "änderten",
+        "perfekt": "haben geändert"
       }
     }
   },
   {
-    "verb": "verstehen",
-    "meaning": "to understand",
+    "verb": "öffnen",
+    "meaning": "to open",
     "conjugations": {
       "ich": {
-        "präsens": "verstehe",
-        "präteritum": "verstand",
-        "perfekt": "habe verstanden"
+        "präsens": "öffne",
+        "präteritum": "öffnete",
+        "perfekt": "habe geöffnet"
       },
       "du": {
-        "präsens": "verstehst",
-        "präteritum": "verstandst",
-        "perfekt": "hast verstanden"
+        "präsens": "öffnest",
+        "präteritum": "öffnetest",
+        "perfekt": "hast geöffnet"
       },
       "er/sie/es": {
-        "präsens": "versteht",
-        "präteritum": "verstand",
-        "perfekt": "hat verstanden"
+        "präsens": "öffnet",
+        "präteritum": "öffnete",
+        "perfekt": "hat geöffnet"
       },
       "wir": {
-        "präsens": "verstehen",
-        "präteritum": "verstanden",
-        "perfekt": "haben verstanden"
+        "präsens": "öffnen",
+        "präteritum": "öffneten",
+        "perfekt": "haben geöffnet"
       },
       "ihr": {
-        "präsens": "versteht",
-        "präteritum": "verstandet",
-        "perfekt": "habt verstanden"
+        "präsens": "öffnet",
+        "präteritum": "öffnetet",
+        "perfekt": "habt geöffnet"
       },
       "sie/Sie": {
-        "präsens": "verstehen",
-        "präteritum": "verstanden",
-        "perfekt": "haben verstanden"
+        "präsens": "öffnen",
+        "präteritum": "öffneten",
+        "perfekt": "haben geöffnet"
       }
     }
   }
