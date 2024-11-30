@@ -4930,5 +4930,185 @@
         "perfekt": "haben gespart"
       }
     }
+  },
+  {
+    "verb": "spielen",
+    "meaning": "to play",
+    "conjugations": {
+      "ich": {
+        "präsens": "spiele",
+        "präteritum": "spielte",
+        "perfekt": "habe gespielt"
+      },
+      "du": {
+        "präsens": "spielst",
+        "präteritum": "spieltest",
+        "perfekt": "hast gespielt"
+      },
+      "er/sie/es": {
+        "präsens": "spielt",
+        "präteritum": "spielte",
+        "perfekt": "hat gespielt"
+      },
+      "wir": {
+        "präsens": "spielen",
+        "präteritum": "spielten",
+        "perfekt": "haben gespielt"
+      },
+      "ihr": {
+        "präsens": "spielt",
+        "präteritum": "spieltet",
+        "perfekt": "habt gespielt"
+      },
+      "sie/Sie": {
+        "präsens": "spielen",
+        "präteritum": "spielten",
+        "perfekt": "haben gespielt"
+      }
+    }
+  },
+  {
+    "verb": "stehen",
+    "meaning": "to stand",
+    "conjugations": {
+      "ich": {
+        "präsens": "stehe",
+        "präteritum": "stand",
+        "perfekt": "habe gestanden"
+      },
+      "du": {
+        "präsens": "stehst",
+        "präteritum": "standst",
+        "perfekt": "hast gestanden"
+      },
+      "er/sie/es": {
+        "präsens": "steht",
+        "präteritum": "stand",
+        "perfekt": "hat gestanden"
+      },
+      "wir": {
+        "präsens": "stehen",
+        "präteritum": "standen",
+        "perfekt": "haben gestanden"
+      },
+      "ihr": {
+        "präsens": "steht",
+        "präteritum": "standet",
+        "perfekt": "habt gestanden"
+      },
+      "sie/Sie": {
+        "präsens": "stehen",
+        "präteritum": "standen",
+        "perfekt": "haben gestanden"
+      }
+    }
+  },
+  {
+    "verb": "tanzen",
+    "meaning": "to dance",
+    "conjugations": {
+      "ich": {
+        "präsens": "tanze",
+        "präteritum": "tanzte",
+        "perfekt": "habe getanzt"
+      },
+      "du": {
+        "präsens": "tanzt",
+        "präteritum": "tanztest",
+        "perfekt": "hast getanzt"
+      },
+      "er/sie/es": {
+        "präsens": "tanzt",
+        "präteritum": "tanzte",
+        "perfekt": "hat getanzt"
+      },
+      "wir": {
+        "präsens": "tanzen",
+        "präteritum": "tanzten",
+        "perfekt": "haben getanzt"
+      },
+      "ihr": {
+        "präsens": "tanzt",
+        "präteritum": "tanztet",
+        "perfekt": "habt getanzt"
+      },
+      "sie/Sie": {
+        "präsens": "tanzen",
+        "präteritum": "tanzten",
+        "perfekt": "haben getanzt"
+      }
+    }
+  },
+  {
+    "verb": "träumen",
+    "meaning": "to dream",
+    "conjugations": {
+      "ich": {
+        "präsens": "träume",
+        "präteritum": "träumte",
+        "perfekt": "habe geträumt"
+      },
+      "du": {
+        "präsens": "träumst",
+        "präteritum": "träumtest",
+        "perfekt": "hast geträumt"
+      },
+      "er/sie/es": {
+        "präsens": "träumt",
+        "präteritum": "träumte",
+        "perfekt": "hat geträumt"
+      },
+      "wir": {
+        "präsens": "träumen",
+        "präteritum": "träumten",
+        "perfekt": "haben geträumt"
+      },
+      "ihr": {
+        "präsens": "träumt",
+        "präteritum": "träumtet",
+        "perfekt": "habt geträumt"
+      },
+      "sie/Sie": {
+        "präsens": "träumen",
+        "präteritum": "träumten",
+        "perfekt": "haben geträumt"
+      }
+    }
+  },
+  {
+    "verb": "verdienen",
+    "meaning": "to earn",
+    "conjugations": {
+      "ich": {
+        "präsens": "verdiene",
+        "präteritum": "verdiente",
+        "perfekt": "habe verdient"
+      },
+      "du": {
+        "präsens": "verdienst",
+        "präteritum": "verdientest",
+        "perfekt": "hast verdient"
+      },
+      "er/sie/es": {
+        "präsens": "verdient",
+        "präteritum": "verdiente",
+        "perfekt": "hat verdient"
+      },
+      "wir": {
+        "präsens": "verdienen",
+        "präteritum": "verdienten",
+        "perfekt": "haben verdient"
+      },
+      "ihr": {
+        "präsens": "verdient",
+        "präteritum": "verdientet",
+        "perfekt": "habt verdient"
+      },
+      "sie/Sie": {
+        "präsens": "verdienen",
+        "präteritum": "verdienten",
+        "perfekt": "haben verdient"
+      }
+    }
   }
 ]
