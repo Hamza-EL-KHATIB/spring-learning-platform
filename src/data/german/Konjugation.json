@@ -5290,5 +5290,257 @@
         "perfekt": "haben gezeigt"
       }
     }
+  },
+  {
+    "verb": "ziehen",
+    "meaning": "to pull",
+    "conjugations": {
+      "ich": {
+        "präsens": "ziehe",
+        "präteritum": "zog",
+        "perfekt": "habe gezogen"
+      },
+      "du": {
+        "präsens": "ziehst",
+        "präteritum": "zogst",
+        "perfekt": "hast gezogen"
+      },
+      "er/sie/es": {
+        "präsens": "zieht",
+        "präteritum": "zog",
+        "perfekt": "hat gezogen"
+      },
+      "wir": {
+        "präsens": "ziehen",
+        "präteritum": "zogen",
+        "perfekt": "haben gezogen"
+      },
+      "ihr": {
+        "präsens": "zieht",
+        "präteritum": "zogt",
+        "perfekt": "habt gezogen"
+      },
+      "sie/Sie": {
+        "präsens": "ziehen",
+        "präteritum": "zogen",
+        "perfekt": "haben gezogen"
+      }
+    }
+  },
+  {
+    "verb": "wünschen",
+    "meaning": "to wish",
+    "conjugations": {
+      "ich": {
+        "präsens": "wünsche",
+        "präteritum": "wünschte",
+        "perfekt": "habe gewünscht"
+      },
+      "du": {
+        "präsens": "wünschst",
+        "präteritum": "wünschtest",
+        "perfekt": "hast gewünscht"
+      },
+      "er/sie/es": {
+        "präsens": "wünscht",
+        "präteritum": "wünschte",
+        "perfekt": "hat gewünscht"
+      },
+      "wir": {
+        "präsens": "wünschen",
+        "präteritum": "wünschten",
+        "perfekt": "haben gewünscht"
+      },
+      "ihr": {
+        "präsens": "wünscht",
+        "präteritum": "wünschtet",
+        "perfekt": "habt gewünscht"
+      },
+      "sie/Sie": {
+        "präsens": "wünschen",
+        "präteritum": "wünschten",
+        "perfekt": "haben gewünscht"
+      }
+    }
+  },
+  {
+    "verb": "zuhören",
+    "meaning": "to listen to",
+    "conjugations": {
+      "ich": {
+        "präsens": "höre zu",
+        "präteritum": "hörte zu",
+        "perfekt": "habe zugehört"
+      },
+      "du": {
+        "präsens": "hörst zu",
+        "präteritum": "hörtest zu",
+        "perfekt": "hast zugehört"
+      },
+      "er/sie/es": {
+        "präsens": "hört zu",
+        "präteritum": "hörte zu",
+        "perfekt": "hat zugehört"
+      },
+      "wir": {
+        "präsens": "hören zu",
+        "präteritum": "hörten zu",
+        "perfekt": "haben zugehört"
+      },
+      "ihr": {
+        "präsens": "hört zu",
+        "präteritum": "hörtet zu",
+        "perfekt": "habt zugehört"
+      },
+      "sie/Sie": {
+        "präsens": "hören zu",
+        "präteritum": "hörten zu",
+        "perfekt": "haben zugehört"
+      }
+    }
+  },
+  {
+    "verb": "zurückkommen",
+    "meaning": "to come back",
+    "conjugations": {
+      "ich": {
+        "präsens": "komme zurück",
+        "präteritum": "kam zurück",
+        "perfekt": "bin zurückgekommen"
+      },
+      "du": {
+        "präsens": "kommst zurück",
+        "präteritum": "kamst zurück",
+        "perfekt": "bist zurückgekommen"
+      },
+      "er/sie/es": {
+        "präsens": "kommt zurück",
+        "präteritum": "kam zurück",
+        "perfekt": "ist zurückgekommen"
+      },
+      "wir": {
+        "präsens": "kommen zurück",
+        "präteritum": "kamen zurück",
+        "perfekt": "sind zurückgekommen"
+      },
+      "ihr": {
+        "präsens": "kommt zurück",
+        "präteritum": "kamt zurück",
+        "perfekt": "seid zurückgekommen"
+      },
+      "sie/Sie": {
+        "präsens": "kommen zurück",
+        "präteritum": "kamen zurück",
+        "perfekt": "sind zurückgekommen"
+      }
+    }
+  },
+  {
+    "verb": "zusammenarbeiten",
+    "meaning": "to collaborate",
+    "conjugations": {
+      "ich": {
+        "präsens": "arbeite zusammen",
+        "präteritum": "arbeitete zusammen",
+        "perfekt": "habe zusammengearbeitet"
+      },
+      "du": {
+        "präsens": "arbeitest zusammen",
+        "präteritum": "arbeitetest zusammen",
+        "perfekt": "hast zusammengearbeitet"
+      },
+      "er/sie/es": {
+        "präsens": "arbeitet zusammen",
+        "präteritum": "arbeitete zusammen",
+        "perfekt": "hat zusammengearbeitet"
+      },
+      "wir": {
+        "präsens": "arbeiten zusammen",
+        "präteritum": "arbeiteten zusammen",
+        "perfekt": "haben zusammengearbeitet"
+      },
+      "ihr": {
+        "präsens": "arbeitet zusammen",
+        "präteritum": "arbeitetet zusammen",
+        "perfekt": "habt zusammengearbeitet"
+      },
+      "sie/Sie": {
+        "präsens": "arbeiten zusammen",
+        "präteritum": "arbeiteten zusammen",
+        "perfekt": "haben zusammengearbeitet"
+      }
+    }
+  },
+  {
+    "verb": "einladen",
+    "meaning": "to invite",
+    "conjugations": {
+      "ich": {
+        "präsens": "lade ein",
+        "präteritum": "lud ein",
+        "perfekt": "habe eingeladen"
+      },
+      "du": {
+        "präsens": "lädst ein",
+        "präteritum": "ludst ein",
+        "perfekt": "hast eingeladen"
+      },
+      "er/sie/es": {
+        "präsens": "lädt ein",
+        "präteritum": "lud ein",
+        "perfekt": "hat eingeladen"
+      },
+      "wir": {
+        "präsens": "laden ein",
+        "präteritum": "luden ein",
+        "perfekt": "haben eingeladen"
+      },
+      "ihr": {
+        "präsens": "ladet ein",
+        "präteritum": "ludet ein",
+        "perfekt": "habt eingeladen"
+      },
+      "sie/Sie": {
+        "präsens": "laden ein",
+        "präteritum": "luden ein",
+        "perfekt": "haben eingeladen"
+      }
+    }
+  },
+  {
+    "verb": "verstehen",
+    "meaning": "to understand",
+    "conjugations": {
+      "ich": {
+        "präsens": "verstehe",
+        "präteritum": "verstand",
+        "perfekt": "habe verstanden"
+      },
+      "du": {
+        "präsens": "verstehst",
+        "präteritum": "verstandst",
+        "perfekt": "hast verstanden"
+      },
+      "er/sie/es": {
+        "präsens": "versteht",
+        "präteritum": "verstand",
+        "perfekt": "hat verstanden"
+      },
+      "wir": {
+        "präsens": "verstehen",
+        "präteritum": "verstanden",
+        "perfekt": "haben verstanden"
+      },
+      "ihr": {
+        "präsens": "versteht",
+        "präteritum": "verstandet",
+        "perfekt": "habt verstanden"
+      },
+      "sie/Sie": {
+        "präsens": "verstehen",
+        "präteritum": "verstanden",
+        "perfekt": "haben verstanden"
+      }
+    }
   }
 ]
