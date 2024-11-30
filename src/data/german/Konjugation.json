@@ -3850,5 +3850,185 @@
         "perfekt": "haben erreicht"
       }
     }
+  },
+  {
+    "verb": "gehören",
+    "meaning": "to belong",
+    "conjugations": {
+      "ich": {
+        "präsens": "gehöre",
+        "präteritum": "gehörte",
+        "perfekt": "habe gehört"
+      },
+      "du": {
+        "präsens": "gehörst",
+        "präteritum": "gehörtest",
+        "perfekt": "hast gehört"
+      },
+      "er/sie/es": {
+        "präsens": "gehört",
+        "präteritum": "gehörte",
+        "perfekt": "hat gehört"
+      },
+      "wir": {
+        "präsens": "gehören",
+        "präteritum": "gehörten",
+        "perfekt": "haben gehört"
+      },
+      "ihr": {
+        "präsens": "gehört",
+        "präteritum": "gehörtet",
+        "perfekt": "habt gehört"
+      },
+      "sie/Sie": {
+        "präsens": "gehören",
+        "präteritum": "gehörten",
+        "perfekt": "haben gehört"
+      }
+    }
+  },
+  {
+    "verb": "entscheiden",
+    "meaning": "to decide",
+    "conjugations": {
+      "ich": {
+        "präsens": "entscheide",
+        "präteritum": "entschied",
+        "perfekt": "habe entschieden"
+      },
+      "du": {
+        "präsens": "entscheidest",
+        "präteritum": "entschiedest",
+        "perfekt": "hast entschieden"
+      },
+      "er/sie/es": {
+        "präsens": "entscheidet",
+        "präteritum": "entschied",
+        "perfekt": "hat entschieden"
+      },
+      "wir": {
+        "präsens": "entscheiden",
+        "präteritum": "entschieden",
+        "perfekt": "haben entschieden"
+      },
+      "ihr": {
+        "präsens": "entscheidet",
+        "präteritum": "entschiedet",
+        "perfekt": "habt entschieden"
+      },
+      "sie/Sie": {
+        "präsens": "entscheiden",
+        "präteritum": "entschieden",
+        "perfekt": "haben entschieden"
+      }
+    }
+  },
+  {
+    "verb": "erzählen",
+    "meaning": "to tell, narrate",
+    "conjugations": {
+      "ich": {
+        "präsens": "erzähle",
+        "präteritum": "erzählte",
+        "perfekt": "habe erzählt"
+      },
+      "du": {
+        "präsens": "erzählst",
+        "präteritum": "erzähltest",
+        "perfekt": "hast erzählt"
+      },
+      "er/sie/es": {
+        "präsens": "erzählt",
+        "präteritum": "erzählte",
+        "perfekt": "hat erzählt"
+      },
+      "wir": {
+        "präsens": "erzählen",
+        "präteritum": "erzählten",
+        "perfekt": "haben erzählt"
+      },
+      "ihr": {
+        "präsens": "erzählt",
+        "präteritum": "erzähltet",
+        "perfekt": "habt erzählt"
+      },
+      "sie/Sie": {
+        "präsens": "erzählen",
+        "präteritum": "erzählten",
+        "perfekt": "haben erzählt"
+      }
+    }
+  },
+  {
+    "verb": "verkaufen",
+    "meaning": "to sell",
+    "conjugations": {
+      "ich": {
+        "präsens": "verkaufe",
+        "präteritum": "verkaufte",
+        "perfekt": "habe verkauft"
+      },
+      "du": {
+        "präsens": "verkaufst",
+        "präteritum": "verkauftest",
+        "perfekt": "hast verkauft"
+      },
+      "er/sie/es": {
+        "präsens": "verkauft",
+        "präteritum": "verkaufte",
+        "perfekt": "hat verkauft"
+      },
+      "wir": {
+        "präsens": "verkaufen",
+        "präteritum": "verkauften",
+        "perfekt": "haben verkauft"
+      },
+      "ihr": {
+        "präsens": "verkauft",
+        "präteritum": "verkauftet",
+        "perfekt": "habt verkauft"
+      },
+      "sie/Sie": {
+        "präsens": "verkaufen",
+        "präteritum": "verkauften",
+        "perfekt": "haben verkauft"
+      }
+    }
+  },
+  {
+    "verb": "kaufen",
+    "meaning": "to buy",
+    "conjugations": {
+      "ich": {
+        "präsens": "kaufe",
+        "präteritum": "kaufte",
+        "perfekt": "habe gekauft"
+      },
+      "du": {
+        "präsens": "kaufst",
+        "präteritum": "kauftest",
+        "perfekt": "hast gekauft"
+      },
+      "er/sie/es": {
+        "präsens": "kauft",
+        "präteritum": "kaufte",
+        "perfekt": "hat gekauft"
+      },
+      "wir": {
+        "präsens": "kaufen",
+        "präteritum": "kauften",
+        "perfekt": "haben gekauft"
+      },
+      "ihr": {
+        "präsens": "kauft",
+        "präteritum": "kauftet",
+        "perfekt": "habt gekauft"
+      },
+      "sie/Sie": {
+        "präsens": "kaufen",
+        "präteritum": "kauften",
+        "perfekt": "haben gekauft"
+      }
+    }
   }
 ]
