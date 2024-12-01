@@ -108,6 +108,42 @@
     }
   },
   {
+    "verb": "baden",
+    "meaning": "to bathe",
+    "conjugations": {
+      "ich": {
+        "präsens": "bade",
+        "präteritum": "badete",
+        "perfekt": "habe gebadet"
+      },
+      "du": {
+        "präsens": "badest",
+        "präteritum": "badetest",
+        "perfekt": "hast gebadet"
+      },
+      "er/sie/es": {
+        "präsens": "badet",
+        "präteritum": "badete",
+        "perfekt": "hat gebadet"
+      },
+      "wir": {
+        "präsens": "baden",
+        "präteritum": "badeten",
+        "perfekt": "haben gebadet"
+      },
+      "ihr": {
+        "präsens": "badet",
+        "präteritum": "badetet",
+        "perfekt": "habt gebadet"
+      },
+      "sie/Sie": {
+        "präsens": "baden",
+        "präteritum": "badeten",
+        "perfekt": "haben gebadet"
+      }
+    }
+  },
+  {
     "verb": "basteln",
     "meaning": "to craft, do handicrafts",
     "conjugations": {
@@ -144,6 +180,42 @@
     }
   },
   {
+    "verb": "bauen",
+    "meaning": "to build",
+    "conjugations": {
+      "ich": {
+        "präsens": "baue",
+        "präteritum": "baute",
+        "perfekt": "habe gebaut"
+      },
+      "du": {
+        "präsens": "baust",
+        "präteritum": "bautest",
+        "perfekt": "hast gebaut"
+      },
+      "er/sie/es": {
+        "präsens": "baut",
+        "präteritum": "baute",
+        "perfekt": "hat gebaut"
+      },
+      "wir": {
+        "präsens": "bauen",
+        "präteritum": "bauten",
+        "perfekt": "haben gebaut"
+      },
+      "ihr": {
+        "präsens": "baut",
+        "präteritum": "bautet",
+        "perfekt": "habt gebaut"
+      },
+      "sie/Sie": {
+        "präsens": "bauen",
+        "präteritum": "bauten",
+        "perfekt": "haben gebaut"
+      }
+    }
+  },
+  {
     "verb": "bedeuten",
     "meaning": "to mean",
     "conjugations": {
@@ -176,6 +248,78 @@
         "präsens": "bedeuten",
         "präteritum": "bedeuteten",
         "perfekt": "haben bedeutet"
+      }
+    }
+  },
+  {
+    "verb": "beeilen (sich)",
+    "meaning": "to hurry",
+    "conjugations": {
+      "ich": {
+        "präsens": "beeile mich",
+        "präteritum": "beeilte mich",
+        "perfekt": "habe mich beeilt"
+      },
+      "du": {
+        "präsens": "beeilst dich",
+        "präteritum": "beeiltest dich",
+        "perfekt": "hast dich beeilt"
+      },
+      "er/sie/es": {
+        "präsens": "beeilt sich",
+        "präteritum": "beeilte sich",
+        "perfekt": "hat sich beeilt"
+      },
+      "wir": {
+        "präsens": "beeilen uns",
+        "präteritum": "beeilten uns",
+        "perfekt": "haben uns beeilt"
+      },
+      "ihr": {
+        "präsens": "beeilt euch",
+        "präteritum": "beeiltet euch",
+        "perfekt": "habt euch beeilt"
+      },
+      "sie/Sie": {
+        "präsens": "beeilen sich",
+        "präteritum": "beeilten sich",
+        "perfekt": "haben sich beeilt"
+      }
+    }
+  },
+  {
+    "verb": "befreien",
+    "meaning": "to free",
+    "conjugations": {
+      "ich": {
+        "präsens": "befreie",
+        "präteritum": "befreite",
+        "perfekt": "habe befreit"
+      },
+      "du": {
+        "präsens": "befreist",
+        "präteritum": "befreitest",
+        "perfekt": "hast befreit"
+      },
+      "er/sie/es": {
+        "präsens": "befreit",
+        "präteritum": "befreite",
+        "perfekt": "hat befreit"
+      },
+      "wir": {
+        "präsens": "befreien",
+        "präteritum": "befreiten",
+        "perfekt": "haben befreit"
+      },
+      "ihr": {
+        "präsens": "befreit",
+        "präteritum": "befreitet",
+        "perfekt": "habt befreit"
+      },
+      "sie/Sie": {
+        "präsens": "befreien",
+        "präteritum": "befreiten",
+        "perfekt": "haben befreit"
       }
     }
   },
@@ -324,6 +468,42 @@
     }
   },
   {
+    "verb": "biegen",
+    "meaning": "to bend",
+    "conjugations": {
+      "ich": {
+        "präsens": "biege",
+        "präteritum": "bog",
+        "perfekt": "habe gebogen"
+      },
+      "du": {
+        "präsens": "biegst",
+        "präteritum": "bogst",
+        "perfekt": "hast gebogen"
+      },
+      "er/sie/es": {
+        "präsens": "biegt",
+        "präteritum": "bog",
+        "perfekt": "hat gebogen"
+      },
+      "wir": {
+        "präsens": "biegen",
+        "präteritum": "bogen",
+        "perfekt": "haben gebogen"
+      },
+      "ihr": {
+        "präsens": "biegt",
+        "präteritum": "bogt",
+        "perfekt": "habt gebogen"
+      },
+      "sie/Sie": {
+        "präsens": "biegen",
+        "präteritum": "bogen",
+        "perfekt": "haben gebogen"
+      }
+    }
+  },
+  {
     "verb": "bieten",
     "meaning": "to offer",
     "conjugations": {
@@ -360,6 +540,42 @@
     }
   },
   {
+    "verb": "binden",
+    "meaning": "to bind",
+    "conjugations": {
+      "ich": {
+        "präsens": "binde",
+        "präteritum": "band",
+        "perfekt": "habe gebunden"
+      },
+      "du": {
+        "präsens": "bindest",
+        "präteritum": "bandest",
+        "perfekt": "hast gebunden"
+      },
+      "er/sie/es": {
+        "präsens": "bindet",
+        "präteritum": "band",
+        "perfekt": "hat gebunden"
+      },
+      "wir": {
+        "präsens": "binden",
+        "präteritum": "banden",
+        "perfekt": "haben gebunden"
+      },
+      "ihr": {
+        "präsens": "bindet",
+        "präteritum": "bandet",
+        "perfekt": "habt gebunden"
+      },
+      "sie/Sie": {
+        "präsens": "binden",
+        "präteritum": "banden",
+        "perfekt": "haben gebunden"
+      }
+    }
+  },
+  {
     "verb": "bleiben",
     "meaning": "to stay",
     "conjugations": {
@@ -392,6 +608,42 @@
         "präsens": "bleiben",
         "präteritum": "blieben",
         "perfekt": "sind geblieben"
+      }
+    }
+  },
+  {
+    "verb": "bluten",
+    "meaning": "to bleed",
+    "conjugations": {
+      "ich": {
+        "präsens": "blute",
+        "präteritum": "blutete",
+        "perfekt": "habe geblutet"
+      },
+      "du": {
+        "präsens": "blutest",
+        "präteritum": "blutetest",
+        "perfekt": "hast geblutet"
+      },
+      "er/sie/es": {
+        "präsens": "blutet",
+        "präteritum": "blutete",
+        "perfekt": "hat geblutet"
+      },
+      "wir": {
+        "präsens": "bluten",
+        "präteritum": "bluteten",
+        "perfekt": "haben geblutet"
+      },
+      "ihr": {
+        "präsens": "blutet",
+        "präteritum": "blutetet",
+        "perfekt": "habt geblutet"
+      },
+      "sie/Sie": {
+        "präsens": "bluten",
+        "präteritum": "bluteten",
+        "perfekt": "haben geblutet"
       }
     }
   },
@@ -504,6 +756,114 @@
     }
   },
   {
+    "verb": "drucken",
+    "meaning": "to print",
+    "conjugations": {
+      "ich": {
+        "präsens": "drucke",
+        "präteritum": "druckte",
+        "perfekt": "habe gedruckt"
+      },
+      "du": {
+        "präsens": "druckst",
+        "präteritum": "drucktest",
+        "perfekt": "hast gedruckt"
+      },
+      "er/sie/es": {
+        "präsens": "druckt",
+        "präteritum": "druckte",
+        "perfekt": "hat gedruckt"
+      },
+      "wir": {
+        "präsens": "drucken",
+        "präteritum": "druckten",
+        "perfekt": "haben gedruckt"
+      },
+      "ihr": {
+        "präsens": "druckt",
+        "präteritum": "drucktet",
+        "perfekt": "habt gedruckt"
+      },
+      "sie/Sie": {
+        "präsens": "drucken",
+        "präteritum": "druckten",
+        "perfekt": "haben gedruckt"
+      }
+    }
+  },
+  {
+    "verb": "duschen (sich)",
+    "meaning": "to shower",
+    "conjugations": {
+      "ich": {
+        "präsens": "dusche mich",
+        "präteritum": "duschte mich",
+        "perfekt": "habe mich geduscht"
+      },
+      "du": {
+        "präsens": "duschst dich",
+        "präteritum": "duschtest dich",
+        "perfekt": "hast dich geduscht"
+      },
+      "er/sie/es": {
+        "präsens": "duscht sich",
+        "präteritum": "duschte sich",
+        "perfekt": "hat sich geduscht"
+      },
+      "wir": {
+        "präsens": "duschen uns",
+        "präteritum": "duschten uns",
+        "perfekt": "haben uns geduscht"
+      },
+      "ihr": {
+        "präsens": "duscht euch",
+        "präteritum": "duschtet euch",
+        "perfekt": "habt euch geduscht"
+      },
+      "sie/Sie": {
+        "präsens": "duschen sich",
+        "präteritum": "duschten sich",
+        "perfekt": "haben sich geduscht"
+      }
+    }
+  },
+  {
+    "verb": "einkaufen",
+    "meaning": "to shop",
+    "conjugations": {
+      "ich": {
+        "präsens": "kaufe ein",
+        "präteritum": "kaufte ein",
+        "perfekt": "habe eingekauft"
+      },
+      "du": {
+        "präsens": "kaufst ein",
+        "präteritum": "kauftest ein",
+        "perfekt": "hast eingekauft"
+      },
+      "er/sie/es": {
+        "präsens": "kauft ein",
+        "präteritum": "kaufte ein",
+        "perfekt": "hat eingekauft"
+      },
+      "wir": {
+        "präsens": "kaufen ein",
+        "präteritum": "kauften ein",
+        "perfekt": "haben eingekauft"
+      },
+      "ihr": {
+        "präsens": "kauft ein",
+        "präteritum": "kauftet ein",
+        "perfekt": "habt eingekauft"
+      },
+      "sie/Sie": {
+        "präsens": "kaufen ein",
+        "präteritum": "kauften ein",
+        "perfekt": "haben eingekauft"
+      }
+    }
+  },
+  {
     "verb": "einladen",
     "meaning": "to invite",
     "conjugations": {
@@ -536,6 +896,78 @@
         "präsens": "laden ein",
         "präteritum": "luden ein",
         "perfekt": "haben eingeladen"
+      }
+    }
+  },
+  {
+    "verb": "empfehlen",
+    "meaning": "to recommend",
+    "conjugations": {
+      "ich": {
+        "präsens": "empfehle",
+        "präteritum": "empfahl",
+        "perfekt": "habe empfohlen"
+      },
+      "du": {
+        "präsens": "empfiehlst",
+        "präteritum": "empfahlst",
+        "perfekt": "hast empfohlen"
+      },
+      "er/sie/es": {
+        "präsens": "empfiehlt",
+        "präteritum": "empfahl",
+        "perfekt": "hat empfohlen"
+      },
+      "wir": {
+        "präsens": "empfehlen",
+        "präteritum": "empfahlen",
+        "perfekt": "haben empfohlen"
+      },
+      "ihr": {
+        "präsens": "empfehlt",
+        "präteritum": "empfahlt",
+        "perfekt": "habt empfohlen"
+      },
+      "sie/Sie": {
+        "präsens": "empfehlen",
+        "präteritum": "empfahlen",
+        "perfekt": "haben empfohlen"
+      }
+    }
+  },
+  {
+    "verb": "enden",
+    "meaning": "to end",
+    "conjugations": {
+      "ich": {
+        "präsens": "ende",
+        "präteritum": "endete",
+        "perfekt": "habe geendet"
+      },
+      "du": {
+        "präsens": "endest",
+        "präteritum": "endetest",
+        "perfekt": "hast geendet"
+      },
+      "er/sie/es": {
+        "präsens": "endet",
+        "präteritum": "endete",
+        "perfekt": "hat geendet"
+      },
+      "wir": {
+        "präsens": "enden",
+        "präteritum": "endeten",
+        "perfekt": "haben geendet"
+      },
+      "ihr": {
+        "präsens": "endet",
+        "präteritum": "endetet",
+        "perfekt": "habt geendet"
+      },
+      "sie/Sie": {
+        "präsens": "enden",
+        "präteritum": "endeten",
+        "perfekt": "haben geendet"
       }
     }
   },
@@ -680,6 +1112,42 @@
         "präsens": "erklären",
         "präteritum": "erklärten",
         "perfekt": "haben erklärt"
+      }
+    }
+  },
+  {
+    "verb": "erlauben",
+    "meaning": "to allow",
+    "conjugations": {
+      "ich": {
+        "präsens": "erlaube",
+        "präteritum": "erlaubte",
+        "perfekt": "habe erlaubt"
+      },
+      "du": {
+        "präsens": "erlaubst",
+        "präteritum": "erlaubtest",
+        "perfekt": "hast erlaubt"
+      },
+      "er/sie/es": {
+        "präsens": "erlaubt",
+        "präteritum": "erlaubte",
+        "perfekt": "hat erlaubt"
+      },
+      "wir": {
+        "präsens": "erlauben",
+        "präteritum": "erlaubten",
+        "perfekt": "haben erlaubt"
+      },
+      "ihr": {
+        "präsens": "erlaubt",
+        "präteritum": "erlaubtet",
+        "perfekt": "habt erlaubt"
+      },
+      "sie/Sie": {
+        "präsens": "erlauben",
+        "präteritum": "erlaubten",
+        "perfekt": "haben erlaubt"
       }
     }
   },
@@ -860,6 +1328,42 @@
         "präsens": "fallen",
         "präteritum": "fielen",
         "perfekt": "sind gefallen"
+      }
+    }
+  },
+  {
+    "verb": "fangen",
+    "meaning": "to catch",
+    "conjugations": {
+      "ich": {
+        "präsens": "fange",
+        "präteritum": "fing",
+        "perfekt": "habe gefangen"
+      },
+      "du": {
+        "präsens": "fängst",
+        "präteritum": "fingst",
+        "perfekt": "hast gefangen"
+      },
+      "er/sie/es": {
+        "präsens": "fängt",
+        "präteritum": "fing",
+        "perfekt": "hat gefangen"
+      },
+      "wir": {
+        "präsens": "fangen",
+        "präteritum": "fingen",
+        "perfekt": "haben gefangen"
+      },
+      "ihr": {
+        "präsens": "fangt",
+        "präteritum": "fingt",
+        "perfekt": "habt gefangen"
+      },
+      "sie/Sie": {
+        "präsens": "fangen",
+        "präteritum": "fingen",
+        "perfekt": "haben gefangen"
       }
     }
   },
@@ -1080,6 +1584,42 @@
     }
   },
   {
+    "verb": "frühstücken",
+    "meaning": "to have breakfast",
+    "conjugations": {
+      "ich": {
+        "präsens": "frühstücke",
+        "präteritum": "frühstückte",
+        "perfekt": "habe gefrühstückt"
+      },
+      "du": {
+        "präsens": "frühstückst",
+        "präteritum": "frühstücktest",
+        "perfekt": "hast gefrühstückt"
+      },
+      "er/sie/es": {
+        "präsens": "frühstückt",
+        "präteritum": "frühstückte",
+        "perfekt": "hat gefrühstückt"
+      },
+      "wir": {
+        "präsens": "frühstücken",
+        "präteritum": "frühstückten",
+        "perfekt": "haben gefrühstückt"
+      },
+      "ihr": {
+        "präsens": "frühstückt",
+        "präteritum": "frühstücktet",
+        "perfekt": "habt gefrühstückt"
+      },
+      "sie/Sie": {
+        "präsens": "frühstücken",
+        "präteritum": "frühstückten",
+        "perfekt": "haben gefrühstückt"
+      }
+    }
+  },
+  {
     "verb": "fühlen",
     "meaning": "to feel",
     "conjugations": {
@@ -1260,6 +1800,42 @@
     }
   },
   {
+    "verb": "glauben",
+    "meaning": "to believe",
+    "conjugations": {
+      "ich": {
+        "präsens": "glaube",
+        "präteritum": "glaubte",
+        "perfekt": "habe geglaubt"
+      },
+      "du": {
+        "präsens": "glaubst",
+        "präteritum": "glaubtest",
+        "perfekt": "hast geglaubt"
+      },
+      "er/sie/es": {
+        "präsens": "glaubt",
+        "präteritum": "glaubte",
+        "perfekt": "hat geglaubt"
+      },
+      "wir": {
+        "präsens": "glauben",
+        "präteritum": "glaubten",
+        "perfekt": "haben geglaubt"
+      },
+      "ihr": {
+        "präsens": "glaubt",
+        "präteritum": "glaubtet",
+        "perfekt": "habt geglaubt"
+      },
+      "sie/Sie": {
+        "präsens": "glauben",
+        "präteritum": "glaubten",
+        "perfekt": "haben geglaubt"
+      }
+    }
+  },
+  {
     "verb": "grüßen",
     "meaning": "to greet",
     "conjugations": {
@@ -1328,6 +1904,114 @@
         "präsens": "haben",
         "präteritum": "hatten",
         "perfekt": "haben gehabt"
+      }
+    }
+  },
+  {
+    "verb": "hassen",
+    "meaning": "to hate",
+    "conjugations": {
+      "ich": {
+        "präsens": "hasse",
+        "präteritum": "hasste",
+        "perfekt": "habe gehasst"
+      },
+      "du": {
+        "präsens": "hasst",
+        "präteritum": "hasstest",
+        "perfekt": "hast gehasst"
+      },
+      "er/sie/es": {
+        "präsens": "hasst",
+        "präteritum": "hasste",
+        "perfekt": "hat gehasst"
+      },
+      "wir": {
+        "präsens": "hassen",
+        "präteritum": "hassten",
+        "perfekt": "haben gehasst"
+      },
+      "ihr": {
+        "präsens": "hasst",
+        "präteritum": "hasstet",
+        "perfekt": "habt gehasst"
+      },
+      "sie/Sie": {
+        "präsens": "hassen",
+        "präteritum": "hassten",
+        "perfekt": "haben gehasst"
+      }
+    }
+  },
+  {
+    "verb": "heilen",
+    "meaning": "to heal",
+    "conjugations": {
+      "ich": {
+        "präsens": "heile",
+        "präteritum": "heilte",
+        "perfekt": "habe geheilt"
+      },
+      "du": {
+        "präsens": "heilst",
+        "präteritum": "heiltest",
+        "perfekt": "hast geheilt"
+      },
+      "er/sie/es": {
+        "präsens": "heilt",
+        "präteritum": "heilte",
+        "perfekt": "hat geheilt"
+      },
+      "wir": {
+        "präsens": "heilen",
+        "präteritum": "heilten",
+        "perfekt": "haben geheilt"
+      },
+      "ihr": {
+        "präsens": "heilt",
+        "präteritum": "heiltet",
+        "perfekt": "habt geheilt"
+      },
+      "sie/Sie": {
+        "präsens": "heilen",
+        "präteritum": "heilten",
+        "perfekt": "haben geheilt"
+      }
+    }
+  },
+  {
+    "verb": "heiraten",
+    "meaning": "to marry",
+    "conjugations": {
+      "ich": {
+        "präsens": "heirate",
+        "präteritum": "heiratete",
+        "perfekt": "habe geheiratet"
+      },
+      "du": {
+        "präsens": "heiratest",
+        "präteritum": "heiratetest",
+        "perfekt": "hast geheiratet"
+      },
+      "er/sie/es": {
+        "präsens": "heiratet",
+        "präteritum": "heiratete",
+        "perfekt": "hat geheiratet"
+      },
+      "wir": {
+        "präsens": "heiraten",
+        "präteritum": "heirateten",
+        "perfekt": "haben geheiratet"
+      },
+      "ihr": {
+        "präsens": "heiratet",
+        "präteritum": "heiratetet",
+        "perfekt": "habt geheiratet"
+      },
+      "sie/Sie": {
+        "präsens": "heiraten",
+        "präteritum": "heirateten",
+        "perfekt": "haben geheiratet"
       }
     }
   },
@@ -1548,6 +2232,42 @@
     }
   },
   {
+    "verb": "klopfen",
+    "meaning": "to knock",
+    "conjugations": {
+      "ich": {
+        "präsens": "klopfe",
+        "präteritum": "klopfte",
+        "perfekt": "habe geklopft"
+      },
+      "du": {
+        "präsens": "klopfst",
+        "präteritum": "klopftest",
+        "perfekt": "hast geklopft"
+      },
+      "er/sie/es": {
+        "präsens": "klopft",
+        "präteritum": "klopfte",
+        "perfekt": "hat geklopft"
+      },
+      "wir": {
+        "präsens": "klopfen",
+        "präteritum": "klopften",
+        "perfekt": "haben geklopft"
+      },
+      "ihr": {
+        "präsens": "klopft",
+        "präteritum": "klopftet",
+        "perfekt": "habt geklopft"
+      },
+      "sie/Sie": {
+        "präsens": "klopfen",
+        "präteritum": "klopften",
+        "perfekt": "haben geklopft"
+      }
+    }
+  },
+  {
     "verb": "kochen",
     "meaning": "to cook",
     "conjugations": {
@@ -1688,6 +2408,42 @@
         "präsens": "kosten",
         "präteritum": "kosteten",
         "perfekt": "haben gekostet"
+      }
+    }
+  },
+  {
+    "verb": "kriegen",
+    "meaning": "to get",
+    "conjugations": {
+      "ich": {
+        "präsens": "kriege",
+        "präteritum": "kriegte",
+        "perfekt": "habe gekriegt"
+      },
+      "du": {
+        "präsens": "kriegst",
+        "präteritum": "kriegtest",
+        "perfekt": "hast gekriegt"
+      },
+      "er/sie/es": {
+        "präsens": "kriegt",
+        "präteritum": "kriegte",
+        "perfekt": "hat gekriegt"
+      },
+      "wir": {
+        "präsens": "kriegen",
+        "präteritum": "kriegten",
+        "perfekt": "haben gekriegt"
+      },
+      "ihr": {
+        "präsens": "kriegt",
+        "präteritum": "kriegtet",
+        "perfekt": "habt gekriegt"
+      },
+      "sie/Sie": {
+        "präsens": "kriegen",
+        "präteritum": "kriegten",
+        "perfekt": "haben gekriegt"
       }
     }
   },
@@ -1872,6 +2628,42 @@
     }
   },
   {
+    "verb": "leihen",
+    "meaning": "to lend",
+    "conjugations": {
+      "ich": {
+        "präsens": "leihe",
+        "präteritum": "lieh",
+        "perfekt": "habe geliehen"
+      },
+      "du": {
+        "präsens": "leihst",
+        "präteritum": "liehst",
+        "perfekt": "hast geliehen"
+      },
+      "er/sie/es": {
+        "präsens": "leiht",
+        "präteritum": "lieh",
+        "perfekt": "hat geliehen"
+      },
+      "wir": {
+        "präsens": "leihen",
+        "präteritum": "liehen",
+        "perfekt": "haben geliehen"
+      },
+      "ihr": {
+        "präsens": "leiht",
+        "präteritum": "lieht",
+        "perfekt": "habt geliehen"
+      },
+      "sie/Sie": {
+        "präsens": "leihen",
+        "präteritum": "liehen",
+        "perfekt": "haben geliehen"
+      }
+    }
+  },
+  {
     "verb": "lernen",
     "meaning": "to learn",
     "conjugations": {
@@ -2052,6 +2844,78 @@
     }
   },
   {
+    "verb": "meinen",
+    "meaning": "to mean, to think",
+    "conjugations": {
+      "ich": {
+        "präsens": "meine",
+        "präteritum": "meinte",
+        "perfekt": "habe gemeint"
+      },
+      "du": {
+        "präsens": "meinst",
+        "präteritum": "meintest",
+        "perfekt": "hast gemeint"
+      },
+      "er/sie/es": {
+        "präsens": "meint",
+        "präteritum": "meinte",
+        "perfekt": "hat gemeint"
+      },
+      "wir": {
+        "präsens": "meinen",
+        "präteritum": "meinten",
+        "perfekt": "haben gemeint"
+      },
+      "ihr": {
+        "präsens": "meint",
+        "präteritum": "meintet",
+        "perfekt": "habt gemeint"
+      },
+      "sie/Sie": {
+        "präsens": "meinen",
+        "präteritum": "meinten",
+        "perfekt": "haben gemeint"
+      }
+    }
+  },
+  {
+    "verb": "mieten",
+    "meaning": "to rent",
+    "conjugations": {
+      "ich": {
+        "präsens": "miete",
+        "präteritum": "mietete",
+        "perfekt": "habe gemietet"
+      },
+      "du": {
+        "präsens": "mietest",
+        "präteritum": "mietetest",
+        "perfekt": "hast gemietet"
+      },
+      "er/sie/es": {
+        "präsens": "mietet",
+        "präteritum": "mietete",
+        "perfekt": "hat gemietet"
+      },
+      "wir": {
+        "präsens": "mieten",
+        "präteritum": "mieteten",
+        "perfekt": "haben gemietet"
+      },
+      "ihr": {
+        "präsens": "mietet",
+        "präteritum": "mietetet",
+        "perfekt": "habt gemietet"
+      },
+      "sie/Sie": {
+        "präsens": "mieten",
+        "präteritum": "mieteten",
+        "perfekt": "haben gemietet"
+      }
+    }
+  },
+  {
     "verb": "nehmen",
     "meaning": "to take",
     "conjugations": {
@@ -2124,6 +2988,42 @@
     }
   },
   {
+    "verb": "planen",
+    "meaning": "to plan",
+    "conjugations": {
+      "ich": {
+        "präsens": "plane",
+        "präteritum": "plante",
+        "perfekt": "habe geplant"
+      },
+      "du": {
+        "präsens": "planst",
+        "präteritum": "plantest",
+        "perfekt": "hast geplant"
+      },
+      "er/sie/es": {
+        "präsens": "plant",
+        "präteritum": "plante",
+        "perfekt": "hat geplant"
+      },
+      "wir": {
+        "präsens": "planen",
+        "präteritum": "planten",
+        "perfekt": "haben geplant"
+      },
+      "ihr": {
+        "präsens": "plant",
+        "präteritum": "plantet",
+        "perfekt": "habt geplant"
+      },
+      "sie/Sie": {
+        "präsens": "planen",
+        "präteritum": "planten",
+        "perfekt": "haben geplant"
+      }
+    }
+  },
+  {
     "verb": "probieren",
     "meaning": "to try",
     "conjugations": {
@@ -2156,6 +3056,114 @@
         "präsens": "probieren",
         "präteritum": "probierten",
         "perfekt": "haben probiert"
+      }
+    }
+  },
+  {
+    "verb": "putzen",
+    "meaning": "to clean",
+    "conjugations": {
+      "ich": {
+        "präsens": "putze",
+        "präteritum": "putzte",
+        "perfekt": "habe geputzt"
+      },
+      "du": {
+        "präsens": "putzt",
+        "präteritum": "putztest",
+        "perfekt": "hast geputzt"
+      },
+      "er/sie/es": {
+        "präsens": "putzt",
+        "präteritum": "putzte",
+        "perfekt": "hat geputzt"
+      },
+      "wir": {
+        "präsens": "putzen",
+        "präteritum": "putzten",
+        "perfekt": "haben geputzt"
+      },
+      "ihr": {
+        "präsens": "putzt",
+        "präteritum": "putztet",
+        "perfekt": "habt geputzt"
+      },
+      "sie/Sie": {
+        "präsens": "putzen",
+        "präteritum": "putzten",
+        "perfekt": "haben geputzt"
+      }
+    }
+  },
+  {
+    "verb": "raten",
+    "meaning": "to guess",
+    "conjugations": {
+      "ich": {
+        "präsens": "rate",
+        "präteritum": "riet",
+        "perfekt": "habe geraten"
+      },
+      "du": {
+        "präsens": "rätst",
+        "präteritum": "rietest",
+        "perfekt": "hast geraten"
+      },
+      "er/sie/es": {
+        "präsens": "rät",
+        "präteritum": "riet",
+        "perfekt": "hat geraten"
+      },
+      "wir": {
+        "präsens": "raten",
+        "präteritum": "rieten",
+        "perfekt": "haben geraten"
+      },
+      "ihr": {
+        "präsens": "ratet",
+        "präteritum": "rietet",
+        "perfekt": "habt geraten"
+      },
+      "sie/Sie": {
+        "präsens": "raten",
+        "präteritum": "rieten",
+        "perfekt": "haben geraten"
+      }
+    }
+  },
+  {
+    "verb": "rauchen",
+    "meaning": "to smoke",
+    "conjugations": {
+      "ich": {
+        "präsens": "rauche",
+        "präteritum": "rauchte",
+        "perfekt": "habe geraucht"
+      },
+      "du": {
+        "präsens": "rauchst",
+        "präteritum": "rauchtest",
+        "perfekt": "hast geraucht"
+      },
+      "er/sie/es": {
+        "präsens": "raucht",
+        "präteritum": "rauchte",
+        "perfekt": "hat geraucht"
+      },
+      "wir": {
+        "präsens": "rauchen",
+        "präteritum": "rauchten",
+        "perfekt": "haben geraucht"
+      },
+      "ihr": {
+        "präsens": "raucht",
+        "präteritum": "rauchtet",
+        "perfekt": "habt geraucht"
+      },
+      "sie/Sie": {
+        "präsens": "rauchen",
+        "präteritum": "rauchten",
+        "perfekt": "haben geraucht"
       }
     }
   },
@@ -2304,6 +3312,150 @@
     }
   },
   {
+    "verb": "reparieren",
+    "meaning": "to repair",
+    "conjugations": {
+      "ich": {
+        "präsens": "repariere",
+        "präteritum": "reparierte",
+        "perfekt": "habe repariert"
+      },
+      "du": {
+        "präsens": "reparierst",
+        "präteritum": "repariertest",
+        "perfekt": "hast repariert"
+      },
+      "er/sie/es": {
+        "präsens": "repariert",
+        "präteritum": "reparierte",
+        "perfekt": "hat repariert"
+      },
+      "wir": {
+        "präsens": "reparieren",
+        "präteritum": "reparierten",
+        "perfekt": "haben repariert"
+      },
+      "ihr": {
+        "präsens": "repariert",
+        "präteritum": "repariertet",
+        "perfekt": "habt repariert"
+      },
+      "sie/Sie": {
+        "präsens": "reparieren",
+        "präteritum": "reparierten",
+        "perfekt": "haben repariert"
+      }
+    }
+  },
+  {
+    "verb": "reservieren",
+    "meaning": "to reserve",
+    "conjugations": {
+      "ich": {
+        "präsens": "reserviere",
+        "präteritum": "reservierte",
+        "perfekt": "habe reserviert"
+      },
+      "du": {
+        "präsens": "reservierst",
+        "präteritum": "reserviertest",
+        "perfekt": "hast reserviert"
+      },
+      "er/sie/es": {
+        "präsens": "reserviert",
+        "präteritum": "reservierte",
+        "perfekt": "hat reserviert"
+      },
+      "wir": {
+        "präsens": "reservieren",
+        "präteritum": "reservierten",
+        "perfekt": "haben reserviert"
+      },
+      "ihr": {
+        "präsens": "reserviert",
+        "präteritum": "reserviertet",
+        "perfekt": "habt reserviert"
+      },
+      "sie/Sie": {
+        "präsens": "reservieren",
+        "präteritum": "reservierten",
+        "perfekt": "haben reserviert"
+      }
+    }
+  },
+  {
+    "verb": "retten",
+    "meaning": "to save",
+    "conjugations": {
+      "ich": {
+        "präsens": "rette",
+        "präteritum": "rettete",
+        "perfekt": "habe gerettet"
+      },
+      "du": {
+        "präsens": "rettest",
+        "präteritum": "rettetest",
+        "perfekt": "hast gerettet"
+      },
+      "er/sie/es": {
+        "präsens": "rettet",
+        "präteritum": "rettete",
+        "perfekt": "hat gerettet"
+      },
+      "wir": {
+        "präsens": "retten",
+        "präteritum": "retteten",
+        "perfekt": "haben gerettet"
+      },
+      "ihr": {
+        "präsens": "rettet",
+        "präteritum": "rettetet",
+        "perfekt": "habt gerettet"
+      },
+      "sie/Sie": {
+        "präsens": "retten",
+        "präteritum": "retteten",
+        "perfekt": "haben gerettet"
+      }
+    }
+  },
+  {
+    "verb": "riechen",
+    "meaning": "to smell",
+    "conjugations": {
+      "ich": {
+        "präsens": "rieche",
+        "präteritum": "roch",
+        "perfekt": "habe gerochen"
+      },
+      "du": {
+        "präsens": "riechst",
+        "präteritum": "rochst",
+        "perfekt": "hast gerochen"
+      },
+      "er/sie/es": {
+        "präsens": "riecht",
+        "präteritum": "roch",
+        "perfekt": "hat gerochen"
+      },
+      "wir": {
+        "präsens": "riechen",
+        "präteritum": "rochen",
+        "perfekt": "haben gerochen"
+      },
+      "ihr": {
+        "präsens": "riecht",
+        "präteritum": "rocht",
+        "perfekt": "habt gerochen"
+      },
+      "sie/Sie": {
+        "präsens": "riechen",
+        "präteritum": "rochen",
+        "perfekt": "haben gerochen"
+      }
+    }
+  },
+  {
     "verb": "rufen",
     "meaning": "to call",
     "conjugations": {
@@ -2376,6 +3528,42 @@
     }
   },
   {
+    "verb": "sammeln",
+    "meaning": "to collect",
+    "conjugations": {
+      "ich": {
+        "präsens": "sammle",
+        "präteritum": "sammelte",
+        "perfekt": "habe gesammelt"
+      },
+      "du": {
+        "präsens": "sammelst",
+        "präteritum": "sammeltest",
+        "perfekt": "hast gesammelt"
+      },
+      "er/sie/es": {
+        "präsens": "sammelt",
+        "präteritum": "sammelte",
+        "perfekt": "hat gesammelt"
+      },
+      "wir": {
+        "präsens": "sammeln",
+        "präteritum": "sammelten",
+        "perfekt": "haben gesammelt"
+      },
+      "ihr": {
+        "präsens": "sammelt",
+        "präteritum": "sammeltet",
+        "perfekt": "habt gesammelt"
+      },
+      "sie/Sie": {
+        "präsens": "sammeln",
+        "präteritum": "sammelten",
+        "perfekt": "haben gesammelt"
+      }
+    }
+  },
+  {
     "verb": "scheinen",
     "meaning": "to shine, seem",
     "conjugations": {
@@ -2444,6 +3632,42 @@
         "präsens": "schicken",
         "präteritum": "schickten",
         "perfekt": "haben geschickt"
+      }
+    }
+  },
+  {
+    "verb": "schimpfen",
+    "meaning": "to scold",
+    "conjugations": {
+      "ich": {
+        "präsens": "schimpfe",
+        "präteritum": "schimpfte",
+        "perfekt": "habe geschimpft"
+      },
+      "du": {
+        "präsens": "schimpfst",
+        "präteritum": "schimpftest",
+        "perfekt": "hast geschimpft"
+      },
+      "er/sie/es": {
+        "präsens": "schimpft",
+        "präteritum": "schimpfte",
+        "perfekt": "hat geschimpft"
+      },
+      "wir": {
+        "präsens": "schimpfen",
+        "präteritum": "schimpften",
+        "perfekt": "haben geschimpft"
+      },
+      "ihr": {
+        "präsens": "schimpft",
+        "präteritum": "schimpftet",
+        "perfekt": "habt geschimpft"
+      },
+      "sie/Sie": {
+        "präsens": "schimpfen",
+        "präteritum": "schimpften",
+        "perfekt": "haben geschimpft"
       }
     }
   },
@@ -2556,6 +3780,89 @@
     }
   },
   {
+    "verb": "schmecken",
+    "meaning": "to taste",
+    "conjugations": {
+      "ich": {
+        "präsens": "schmecke",
+        "präteritum": "schmeckte",
+        "perfekt": "habe geschmeckt"
+      },
+      "du": {
+        "präsens": "schmeckst",
+        "präteritum": "schmecktest",
+        "perfekt": "hast geschmeckt"
+      },
+      "er/sie/es": {
+        "präsens": "schmeckt",
+        "präteritum": "schmeckte",
+        "perfekt": "hat geschmeckt"
+      },
+      "wir": {
+        "präsens": "schmecken",
+        "präteritum": "schmeckten",
+        "perfekt": "haben geschmeckt"
+      },
+      "ihr": {
+        "präsens": "schmeckt",
+        "präteritum": "schmecktet",
+        "perfekt": "habt geschmeckt"
+      },
+      "sie/Sie": {
+        "präsens": "schmecken",
+        "präteritum": "schmeckten",
+        "perfekt": "haben geschmeckt"
+      }
+    }
+  },
+  {
+    "verb": "schneiden",
+    "meaning": "to cut",
+    "conjugations": {
+      "ich": {
+        "präsens": "schneide",
+        "präteritum": "schnitt",
+        "perfekt": "habe geschnitten"
+      },
+      "du": {
+        "präsens": "schneidest",
+        "präteritum": "schnittst",
+        "perfekt": "hast geschnitten"
+      },
+      "er/sie/es": {
+        "präsens": "schneidet",
+        "präteritum": "schnitt",
+        "perfekt": "hat geschnitten"
+      },
+      "wir": {
+        "präsens": "schneiden",
+        "präteritum": "schnitten",
+        "perfekt": "haben geschnitten"
+      },
+      "ihr": {
+        "präsens": "schneidet",
+        "präteritum": "schnitzt",
+        "perfekt": "habt geschnitten"
+      },
+      "sie/Sie": {
+        "präsens": "schneiden",
+        "präteritum": "schnitten",
+        "perfekt": "haben geschnitten"
+      }
+    }
+  },
+  {
+    "verb": "schneien",
+    "meaning": "to snow",
+    "conjugations": {
+      "es": {
+        "präsens": "schneit",
+        "präteritum": "schneite",
+        "perfekt": "hat geschneit"
+      }
+    }
+  },
+  {
     "verb": "schreiben",
     "meaning": "to write",
     "conjugations": {
@@ -2624,6 +3931,42 @@
         "präsens": "schwimmen",
         "präteritum": "schwammen",
         "perfekt": "sind geschwommen"
+      }
+    }
+  },
+  {
+    "verb": "schwitzen",
+    "meaning": "to sweat",
+    "conjugations": {
+      "ich": {
+        "präsens": "schwitze",
+        "präteritum": "schwitzte",
+        "perfekt": "habe geschwitzt"
+      },
+      "du": {
+        "präsens": "schwitzt",
+        "präteritum": "schwitztest",
+        "perfekt": "hast geschwitzt"
+      },
+      "er/sie/es": {
+        "präsens": "schwitzt",
+        "präteritum": "schwitzte",
+        "perfekt": "hat geschwitzt"
+      },
+      "wir": {
+        "präsens": "schwitzen",
+        "präteritum": "schwitzten",
+        "perfekt": "haben geschwitzt"
+      },
+      "ihr": {
+        "präsens": "schwitzt",
+        "präteritum": "schwitztet",
+        "perfekt": "habt geschwitzt"
+      },
+      "sie/Sie": {
+        "präsens": "schwitzen",
+        "präteritum": "schwitzten",
+        "perfekt": "haben geschwitzt"
       }
     }
   },
@@ -2916,6 +4259,42 @@
     }
   },
   {
+    "verb": "springen",
+    "meaning": "to jump",
+    "conjugations": {
+      "ich": {
+        "präsens": "springe",
+        "präteritum": "sprang",
+        "perfekt": "bin gesprungen"
+      },
+      "du": {
+        "präsens": "springst",
+        "präteritum": "sprangst",
+        "perfekt": "bist gesprungen"
+      },
+      "er/sie/es": {
+        "präsens": "springt",
+        "präteritum": "sprang",
+        "perfekt": "ist gesprungen"
+      },
+      "wir": {
+        "präsens": "springen",
+        "präteritum": "sprangen",
+        "perfekt": "sind gesprungen"
+      },
+      "ihr": {
+        "präsens": "springt",
+        "präteritum": "sprangt",
+        "perfekt": "seid gesprungen"
+      },
+      "sie/Sie": {
+        "präsens": "springen",
+        "präteritum": "sprangen",
+        "perfekt": "sind gesprungen"
+      }
+    }
+  },
+  {
     "verb": "stehen",
     "meaning": "to stand",
     "conjugations": {
@@ -3164,6 +4543,42 @@
         "präsens": "tanzen",
         "präteritum": "tanzten",
         "perfekt": "haben getanzt"
+      }
+    }
+  },
+  {
+    "verb": "teilen",
+    "meaning": "to share",
+    "conjugations": {
+      "ich": {
+        "präsens": "teile",
+        "präteritum": "teilte",
+        "perfekt": "habe geteilt"
+      },
+      "du": {
+        "präsens": "teilst",
+        "präteritum": "teiltest",
+        "perfekt": "hast geteilt"
+      },
+      "er/sie/es": {
+        "präsens": "teilt",
+        "präteritum": "teilte",
+        "perfekt": "hat geteilt"
+      },
+      "wir": {
+        "präsens": "teilen",
+        "präteritum": "teilten",
+        "perfekt": "haben geteilt"
+      },
+      "ihr": {
+        "präsens": "teilt",
+        "präteritum": "teiltet",
+        "perfekt": "habt geteilt"
+      },
+      "sie/Sie": {
+        "präsens": "teilen",
+        "präteritum": "teilten",
+        "perfekt": "haben geteilt"
       }
     }
   },
@@ -3672,6 +5087,42 @@
     }
   },
   {
+    "verb": "wechseln",
+    "meaning": "to exchange",
+    "conjugations": {
+      "ich": {
+        "präsens": "wechsle",
+        "präteritum": "wechselte",
+        "perfekt": "habe gewechselt"
+      },
+      "du": {
+        "präsens": "wechselst",
+        "präteritum": "wechseltest",
+        "perfekt": "hast gewechselt"
+      },
+      "er/sie/es": {
+        "präsens": "wechselt",
+        "präteritum": "wechselte",
+        "perfekt": "hat gewechselt"
+      },
+      "wir": {
+        "präsens": "wechseln",
+        "präteritum": "wechselten",
+        "perfekt": "haben gewechselt"
+      },
+      "ihr": {
+        "präsens": "wechselt",
+        "präteritum": "wechseltet",
+        "perfekt": "habt gewechselt"
+      },
+      "sie/Sie": {
+        "präsens": "wechseln",
+        "präteritum": "wechselten",
+        "perfekt": "haben gewechselt"
+      }
+    }
+  },
+  {
     "verb": "weinen",
     "meaning": "to cry",
     "conjugations": {
@@ -3812,6 +5263,42 @@
         "präsens": "wünschen",
         "präteritum": "wünschten",
         "perfekt": "haben gewünscht"
+      }
+    }
+  },
+  {
+    "verb": "zeichnen",
+    "meaning": "to draw",
+    "conjugations": {
+      "ich": {
+        "präsens": "zeichne",
+        "präteritum": "zeichnete",
+        "perfekt": "habe gezeichnet"
+      },
+      "du": {
+        "präsens": "zeichnest",
+        "präteritum": "zeichnetest",
+        "perfekt": "hast gezeichnet"
+      },
+      "er/sie/es": {
+        "präsens": "zeichnet",
+        "präteritum": "zeichnete",
+        "perfekt": "hat gezeichnet"
+      },
+      "wir": {
+        "präsens": "zeichnen",
+        "präteritum": "zeichneten",
+        "perfekt": "haben gezeichnet"
+      },
+      "ihr": {
+        "präsens": "zeichnet",
+        "präteritum": "zeichnetet",
+        "perfekt": "habt gezeichnet"
+      },
+      "sie/Sie": {
+        "präsens": "zeichnen",
+        "präteritum": "zeichneten",
+        "perfekt": "haben gezeichnet"
       }
     }
   },
@@ -4064,6 +5551,42 @@
         "präsens": "öffnen",
         "präteritum": "öffneten",
         "perfekt": "haben geöffnet"
+      }
+    }
+  },
+  {
+    "verb": "üben",
+    "meaning": "to practice",
+    "conjugations": {
+      "ich": {
+        "präsens": "übe",
+        "präteritum": "übte",
+        "perfekt": "habe geübt"
+      },
+      "du": {
+        "präsens": "übst",
+        "präteritum": "übtest",
+        "perfekt": "hast geübt"
+      },
+      "er/sie/es": {
+        "präsens": "übt",
+        "präteritum": "übte",
+        "perfekt": "hat geübt"
+      },
+      "wir": {
+        "präsens": "üben",
+        "präteritum": "übten",
+        "perfekt": "haben geübt"
+      },
+      "ihr": {
+        "präsens": "übt",
+        "präteritum": "übtet",
+        "perfekt": "habt geübt"
+      },
+      "sie/Sie": {
+        "präsens": "üben",
+        "präteritum": "übten",
+        "perfekt": "haben geübt"
       }
     }
   }
