@@ -147,31 +147,47 @@ const KonjugationPage = () => {
                         {activeVerb && (
                             <div className="lg:flex-1">
                                 {/* Verb Header */}
-                                <div className="bg-gray-800/30 rounded-lg border border-purple-500/30 p-6 mb-6">
-                                    <div className="flex items-center justify-between mb-4">
+                                <div className="bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-cyan-500/10 backdrop-blur rounded-lg border border-purple-500/20 p-8 mb-8 shadow-lg relative overflow-hidden">
+                                    {/* Navigation Buttons - Modified for better interaction */}
+                                    <div className="absolute inset-0 flex items-center justify-between px-4 z-20">
                                         <button
-                                            onClick={() => setActiveVerbIndex(Math.max(0, activeVerbIndex - 1))}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setActiveVerbIndex(Math.max(0, activeVerbIndex - 1));
+                                            }}
                                             disabled={activeVerbIndex === 0}
-                                            className="p-2 text-gray-400 hover:text-white disabled:opacity-50"
+                                            className="p-3 bg-gray-800/80 rounded-full text-gray-400 hover:text-white transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-800 cursor-pointer"
                                         >
-                                            <ChevronLeft className="w-5 h-5" />
+                                            <ChevronLeft className="w-6 h-6" />
                                         </button>
-                                        <div className="text-center">
-                                            <h2 className="text-3xl font-bold text-white mb-2">{activeVerb.verb}</h2>
-                                            {showEnglish && (
-                                                <p className="text-gray-400 text-lg">{activeVerb.meaning}</p>
-                                            )}
-                                        </div>
                                         <button
-                                            onClick={() => setActiveVerbIndex(Math.min(filteredVerbs.length - 1, activeVerbIndex + 1))}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setActiveVerbIndex(Math.min(filteredVerbs.length - 1, activeVerbIndex + 1));
+                                            }}
                                             disabled={activeVerbIndex === filteredVerbs.length - 1}
-                                            className="p-2 text-gray-400 hover:text-white disabled:opacity-50"
+                                            className="p-3 bg-gray-800/80 rounded-full text-gray-400 hover:text-white transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-800 cursor-pointer"
                                         >
-                                            <ChevronRight className="w-5 h-5" />
+                                            <ChevronRight className="w-6 h-6" />
                                         </button>
                                     </div>
-                                </div>
 
+                                    {/* Main Content */}
+                                    <div className="text-center relative z-10">
+                                        <div className="inline-block">
+                                            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-3">
+                                                {activeVerb.verb}
+                                            </h2>
+                                            {showEnglish && (
+                                                <p className="text-xl text-gray-300/80">{activeVerb.meaning}</p>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* Decorative Elements */}
+                                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-purple-500/5 rounded-full blur-3xl"></div>
+                                    <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-pink-500/5 rounded-full blur-3xl"></div>
+                                </div>
                                 {/* Conjugation Tables */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {Object.keys(activeVerb.conjugations.ich).map((tense) =>
