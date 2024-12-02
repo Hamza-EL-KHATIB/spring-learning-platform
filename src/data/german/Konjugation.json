@@ -13257,5 +13257,365 @@
         "Perfekt": "haben gerechnet"
       }
     }
+  },
+  {
+    "verb": "reden",
+    "meaning": "talk",
+    "conjugations": {
+      "ich": {
+        "Präsens": "rede",
+        "Präteritum": "redete",
+        "Perfekt": "habe geredet"
+      },
+      "du": {
+        "Präsens": "redest",
+        "Präteritum": "redetest",
+        "Perfekt": "hast geredet"
+      },
+      "er/sie/es": {
+        "Präsens": "redet",
+        "Präteritum": "redete",
+        "Perfekt": "hat geredet"
+      },
+      "wir": {
+        "Präsens": "reden",
+        "Präteritum": "redeten",
+        "Perfekt": "haben geredet"
+      },
+      "ihr": {
+        "Präsens": "redet",
+        "Präteritum": "redetet",
+        "Perfekt": "habt geredet"
+      },
+      "sie/Sie": {
+        "Präsens": "reden",
+        "Präteritum": "redeten",
+        "Perfekt": "haben geredet"
+      }
+    }
+  },
+  {
+    "verb": "reisen",
+    "meaning": "travel",
+    "conjugations": {
+      "ich": {
+        "Präsens": "reise",
+        "Präteritum": "reiste",
+        "Perfekt": "bin gereist"
+      },
+      "du": {
+        "Präsens": "reist",
+        "Präteritum": "reistest",
+        "Perfekt": "bist gereist"
+      },
+      "er/sie/es": {
+        "Präsens": "reist",
+        "Präteritum": "reiste",
+        "Perfekt": "ist gereist"
+      },
+      "wir": {
+        "Präsens": "reisen",
+        "Präteritum": "reisten",
+        "Perfekt": "sind gereist"
+      },
+      "ihr": {
+        "Präsens": "reist",
+        "Präteritum": "reistet",
+        "Perfekt": "seid gereist"
+      },
+      "sie/Sie": {
+        "Präsens": "reisen",
+        "Präteritum": "reisten",
+        "Perfekt": "sind gereist"
+      }
+    }
+  },
+  {
+    "verb": "rennen",
+    "meaning": "run",
+    "conjugations": {
+      "ich": {
+        "Präsens": "renne",
+        "Präteritum": "rannte",
+        "Perfekt": "bin gerannt"
+      },
+      "du": {
+        "Präsens": "rennst",
+        "Präteritum": "ranntest",
+        "Perfekt": "bist gerannt"
+      },
+      "er/sie/es": {
+        "Präsens": "rennt",
+        "Präteritum": "rannte",
+        "Perfekt": "ist gerannt"
+      },
+      "wir": {
+        "Präsens": "rennen",
+        "Präteritum": "rannten",
+        "Perfekt": "sind gerannt"
+      },
+      "ihr": {
+        "Präsens": "rennt",
+        "Präteritum": "ranntet",
+        "Perfekt": "seid gerannt"
+      },
+      "sie/Sie": {
+        "Präsens": "rennen",
+        "Präteritum": "rannten",
+        "Perfekt": "sind gerannt"
+      }
+    }
+  },
+  {
+    "verb": "rufen",
+    "meaning": "call",
+    "conjugations": {
+      "ich": {
+        "Präsens": "rufe",
+        "Präteritum": "rief",
+        "Perfekt": "habe gerufen"
+      },
+      "du": {
+        "Präsens": "rufst",
+        "Präteritum": "riefst",
+        "Perfekt": "hast gerufen"
+      },
+      "er/sie/es": {
+        "Präsens": "ruft",
+        "Präteritum": "rief",
+        "Perfekt": "hat gerufen"
+      },
+      "wir": {
+        "Präsens": "rufen",
+        "Präteritum": "riefen",
+        "Perfekt": "haben gerufen"
+      },
+      "ihr": {
+        "Präsens": "ruft",
+        "Präteritum": "rieft",
+        "Perfekt": "habt gerufen"
+      },
+      "sie/Sie": {
+        "Präsens": "rufen",
+        "Präteritum": "riefen",
+        "Perfekt": "haben gerufen"
+      }
+    }
+  },
+  {
+    "verb": "sagen",
+    "meaning": "say",
+    "conjugations": {
+      "ich": {
+        "Präsens": "sage",
+        "Präteritum": "sagte",
+        "Perfekt": "habe gesagt"
+      },
+      "du": {
+        "Präsens": "sagst",
+        "Präteritum": "sagtest",
+        "Perfekt": "hast gesagt"
+      },
+      "er/sie/es": {
+        "Präsens": "sagt",
+        "Präteritum": "sagte",
+        "Perfekt": "hat gesagt"
+      },
+      "wir": {
+        "Präsens": "sagen",
+        "Präteritum": "sagten",
+        "Perfekt": "haben gesagt"
+      },
+      "ihr": {
+        "Präsens": "sagt",
+        "Präteritum": "sagtet",
+        "Perfekt": "habt gesagt"
+      },
+      "sie/Sie": {
+        "Präsens": "sagen",
+        "Präteritum": "sagten",
+        "Perfekt": "haben gesagt"
+      }
+    }
+  },
+  {
+    "verb": "scheinen",
+    "meaning": "seem, shine",
+    "conjugations": {
+      "ich": {
+        "Präsens": "scheine",
+        "Präteritum": "schien",
+        "Perfekt": "habe geschienen"
+      },
+      "du": {
+        "Präsens": "scheinst",
+        "Präteritum": "schienst",
+        "Perfekt": "hast geschienen"
+      },
+      "er/sie/es": {
+        "Präsens": "scheint",
+        "Präteritum": "schien",
+        "Perfekt": "hat geschienen"
+      },
+      "wir": {
+        "Präsens": "scheinen",
+        "Präteritum": "schienen",
+        "Perfekt": "haben geschienen"
+      },
+      "ihr": {
+        "Präsens": "scheint",
+        "Präteritum": "schient",
+        "Perfekt": "habt geschienen"
+      },
+      "sie/Sie": {
+        "Präsens": "scheinen",
+        "Präteritum": "schienen",
+        "Perfekt": "haben geschienen"
+      }
+    }
+  },
+  {
+    "verb": "schieben",
+    "meaning": "push",
+    "conjugations": {
+      "ich": {
+        "Präsens": "schiebe",
+        "Präteritum": "schob",
+        "Perfekt": "habe geschoben"
+      },
+      "du": {
+        "Präsens": "schiebst",
+        "Präteritum": "schobst",
+        "Perfekt": "hast geschoben"
+      },
+      "er/sie/es": {
+        "Präsens": "schiebt",
+        "Präteritum": "schob",
+        "Perfekt": "hat geschoben"
+      },
+      "wir": {
+        "Präsens": "schieben",
+        "Präteritum": "schoben",
+        "Perfekt": "haben geschoben"
+      },
+      "ihr": {
+        "Präsens": "schiebt",
+        "Präteritum": "schobt",
+        "Perfekt": "habt geschoben"
+      },
+      "sie/Sie": {
+        "Präsens": "schieben",
+        "Präteritum": "schoben",
+        "Perfekt": "haben geschoben"
+      }
+    }
+  },
+  {
+    "verb": "schlafen",
+    "meaning": "sleep",
+    "conjugations": {
+      "ich": {
+        "Präsens": "schlafe",
+        "Präteritum": "schlief",
+        "Perfekt": "habe geschlafen"
+      },
+      "du": {
+        "Präsens": "schläfst",
+        "Präteritum": "schliefst",
+        "Perfekt": "hast geschlafen"
+      },
+      "er/sie/es": {
+        "Präsens": "schläft",
+        "Präteritum": "schlief",
+        "Perfekt": "hat geschlafen"
+      },
+      "wir": {
+        "Präsens": "schlafen",
+        "Präteritum": "schliefen",
+        "Perfekt": "haben geschlafen"
+      },
+      "ihr": {
+        "Präsens": "schlaft",
+        "Präteritum": "schlieft",
+        "Perfekt": "habt geschlafen"
+      },
+      "sie/Sie": {
+        "Präsens": "schlafen",
+        "Präteritum": "schliefen",
+        "Perfekt": "haben geschlafen"
+      }
+    }
+  },
+  {
+    "verb": "schlagen",
+    "meaning": "hit, beat",
+    "conjugations": {
+      "ich": {
+        "Präsens": "schlage",
+        "Präteritum": "schlug",
+        "Perfekt": "habe geschlagen"
+      },
+      "du": {
+        "Präsens": "schlägst",
+        "Präteritum": "schlugst",
+        "Perfekt": "hast geschlagen"
+      },
+      "er/sie/es": {
+        "Präsens": "schlägt",
+        "Präteritum": "schlug",
+        "Perfekt": "hat geschlagen"
+      },
+      "wir": {
+        "Präsens": "schlagen",
+        "Präteritum": "schlugen",
+        "Perfekt": "haben geschlagen"
+      },
+      "ihr": {
+        "Präsens": "schlagt",
+        "Präteritum": "schlugt",
+        "Perfekt": "habt geschlagen"
+      },
+      "sie/Sie": {
+        "Präsens": "schlagen",
+        "Präteritum": "schlugen",
+        "Perfekt": "haben geschlagen"
+      }
+    }
+  },
+  {
+    "verb": "schließen",
+    "meaning": "close",
+    "conjugations": {
+      "ich": {
+        "Präsens": "schließe",
+        "Präteritum": "schloss",
+        "Perfekt": "habe geschlossen"
+      },
+      "du": {
+        "Präsens": "schließt",
+        "Präteritum": "schlossest",
+        "Perfekt": "hast geschlossen"
+      },
+      "er/sie/es": {
+        "Präsens": "schließt",
+        "Präteritum": "schloss",
+        "Perfekt": "hat geschlossen"
+      },
+      "wir": {
+        "Präsens": "schließen",
+        "Präteritum": "schlossen",
+        "Perfekt": "haben geschlossen"
+      },
+      "ihr": {
+        "Präsens": "schließt",
+        "Präteritum": "schlosst",
+        "Perfekt": "habt geschlossen"
+      },
+      "sie/Sie": {
+        "Präsens": "schließen",
+        "Präteritum": "schlossen",
+        "Perfekt": "haben geschlossen"
+      }
+    }
   }
 ]
