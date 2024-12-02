@@ -7929,5 +7929,437 @@
         "Perfekt": "haben gebürstet"
       }
     }
+  },
+  {
+    "verb": "dämmen",
+    "meaning": "dam, check, curb",
+    "conjugations": {
+      "ich": {
+        "Präsens": "dämme",
+        "Präteritum": "dämmte",
+        "Perfekt": "habe gedämmt"
+      },
+      "du": {
+        "Präsens": "dämmst",
+        "Präteritum": "dämmtest",
+        "Perfekt": "hast gedämmt"
+      },
+      "er/sie/es": {
+        "Präsens": "dämmt",
+        "Präteritum": "dämmte",
+        "Perfekt": "hat gedämmt"
+      },
+      "wir": {
+        "Präsens": "dämmen",
+        "Präteritum": "dämmten",
+        "Perfekt": "haben gedämmt"
+      },
+      "ihr": {
+        "Präsens": "dämmt",
+        "Präteritum": "dämmtet",
+        "Perfekt": "habt gedämmt"
+      },
+      "sie/Sie": {
+        "Präsens": "dämmen",
+        "Präteritum": "dämmten",
+        "Perfekt": "haben gedämmt"
+      }
+    }
+  },
+  {
+    "verb": "dämmern",
+    "meaning": "dawn, fall (dusk); doze",
+    "conjugations": {
+      "ich": {
+        "Präsens": "dämmere",
+        "Präteritum": "dämmerte",
+        "Perfekt": "habe gedämmert"
+      },
+      "du": {
+        "Präsens": "dämmert",
+        "Präteritum": "dämmertest",
+        "Perfekt": "hast gedämmert"
+      },
+      "er/sie/es": {
+        "Präsens": "dämmert",
+        "Präteritum": "dämmerte",
+        "Perfekt": "hat gedämmert"
+      },
+      "wir": {
+        "Präsens": "dämmern",
+        "Präteritum": "dämmerten",
+        "Perfekt": "haben gedämmert"
+      },
+      "ihr": {
+        "Präsens": "dämmert",
+        "Präteritum": "dämmertet",
+        "Perfekt": "habt gedämmert"
+      },
+      "sie/Sie": {
+        "Präsens": "dämmern",
+        "Präteritum": "dämmerten",
+        "Perfekt": "haben gedämmert"
+      }
+    }
+  },
+  {
+    "verb": "dampfen",
+    "meaning": "steam",
+    "conjugations": {
+      "ich": {
+        "Präsens": "dampfe",
+        "Präteritum": "dampfte",
+        "Perfekt": "habe gedampft"
+      },
+      "du": {
+        "Präsens": "dampfst",
+        "Präteritum": "dampftest",
+        "Perfekt": "hast gedampft"
+      },
+      "er/sie/es": {
+        "Präsens": "dampft",
+        "Präteritum": "dampfte",
+        "Perfekt": "hat gedampft"
+      },
+      "wir": {
+        "Präsens": "dampfen",
+        "Präteritum": "dampften",
+        "Perfekt": "haben gedampft"
+      },
+      "ihr": {
+        "Präsens": "dampft",
+        "Präteritum": "dampftet",
+        "Perfekt": "habt gedampft"
+      },
+      "sie/Sie": {
+        "Präsens": "dampfen",
+        "Präteritum": "dampften",
+        "Perfekt": "haben gedampft"
+      }
+    }
+  },
+  {
+    "verb": "dämpfen",
+    "meaning": "muffle, damp",
+    "conjugations": {
+      "ich": {
+        "Präsens": "dämpfe",
+        "Präteritum": "dämpfte",
+        "Perfekt": "habe gedämpft"
+      },
+      "du": {
+        "Präsens": "dämpfst",
+        "Präteritum": "dämpftest",
+        "Perfekt": "hast gedämpft"
+      },
+      "er/sie/es": {
+        "Präsens": "dämpft",
+        "Präteritum": "dämpfte",
+        "Perfekt": "hat gedämpft"
+      },
+      "wir": {
+        "Präsens": "dämpfen",
+        "Präteritum": "dämpften",
+        "Perfekt": "haben gedämpft"
+      },
+      "ihr": {
+        "Präsens": "dämpft",
+        "Präteritum": "dämpftet",
+        "Perfekt": "habt gedämpft"
+      },
+      "sie/Sie": {
+        "Präsens": "dämpfen",
+        "Präteritum": "dämpften",
+        "Perfekt": "haben gedämpft"
+      }
+    }
+  },
+  {
+    "verb": "danken",
+    "meaning": "thank",
+    "conjugations": {
+      "ich": {
+        "Präsens": "danke",
+        "Präteritum": "dankte",
+        "Perfekt": "habe gedankt"
+      },
+      "du": {
+        "Präsens": "dankst",
+        "Präteritum": "danktest",
+        "Perfekt": "hast gedankt"
+      },
+      "er/sie/es": {
+        "Präsens": "dankt",
+        "Präteritum": "dankte",
+        "Perfekt": "hat gedankt"
+      },
+      "wir": {
+        "Präsens": "danken",
+        "Präteritum": "dankten",
+        "Perfekt": "haben gedankt"
+      },
+      "ihr": {
+        "Präsens": "dankt",
+        "Präteritum": "danktet",
+        "Perfekt": "habt gedankt"
+      },
+      "sie/Sie": {
+        "Präsens": "danken",
+        "Präteritum": "dankten",
+        "Perfekt": "haben gedankt"
+      }
+    }
+  },
+  {
+    "verb": "darstellen",
+    "meaning": "show, portray",
+    "conjugations": {
+      "ich": {
+        "Präsens": "stelle dar",
+        "Präteritum": "stellte dar",
+        "Perfekt": "habe dargestellt"
+      },
+      "du": {
+        "Präsens": "stellst dar",
+        "Präteritum": "stelltest dar",
+        "Perfekt": "hast dargestellt"
+      },
+      "er/sie/es": {
+        "Präsens": "stellt dar",
+        "Präteritum": "stellte dar",
+        "Perfekt": "hat dargestellt"
+      },
+      "wir": {
+        "Präsens": "stellen dar",
+        "Präteritum": "stellten dar",
+        "Perfekt": "haben dargestellt"
+      },
+      "ihr": {
+        "Präsens": "stellt dar",
+        "Präteritum": "stelltet dar",
+        "Perfekt": "habt dargestellt"
+      },
+      "sie/Sie": {
+        "Präsens": "stellen dar",
+        "Präteritum": "stellten dar",
+        "Perfekt": "haben dargestellt"
+      }
+    }
+  },
+  {
+    "verb": "dauern",
+    "meaning": "last, endure",
+    "conjugations": {
+      "ich": {
+        "Präsens": "dauere",
+        "Präteritum": "dauerte",
+        "Perfekt": "habe gedauert"
+      },
+      "du": {
+        "Präsens": "dauerst",
+        "Präteritum": "dauertest",
+        "Perfekt": "hast gedauert"
+      },
+      "er/sie/es": {
+        "Präsens": "dauert",
+        "Präteritum": "dauerte",
+        "Perfekt": "hat gedauert"
+      },
+      "wir": {
+        "Präsens": "dauern",
+        "Präteritum": "dauerten",
+        "Perfekt": "haben gedauert"
+      },
+      "ihr": {
+        "Präsens": "dauert",
+        "Präteritum": "dauertet",
+        "Perfekt": "habt gedauert"
+      },
+      "sie/Sie": {
+        "Präsens": "dauern",
+        "Präteritum": "dauerten",
+        "Perfekt": "haben gedauert"
+      }
+    }
+  },
+  {
+    "verb": "decken",
+    "meaning": "cover, set (table)",
+    "conjugations": {
+      "ich": {
+        "Präsens": "decke",
+        "Präteritum": "deckte",
+        "Perfekt": "habe gedeckt"
+      },
+      "du": {
+        "Präsens": "deckst",
+        "Präteritum": "decktest",
+        "Perfekt": "hast gedeckt"
+      },
+      "er/sie/es": {
+        "Präsens": "deckt",
+        "Präteritum": "deckte",
+        "Perfekt": "hat gedeckt"
+      },
+      "wir": {
+        "Präsens": "decken",
+        "Präteritum": "deckten",
+        "Perfekt": "haben gedeckt"
+      },
+      "ihr": {
+        "Präsens": "deckt",
+        "Präteritum": "decktet",
+        "Perfekt": "habt gedeckt"
+      },
+      "sie/Sie": {
+        "Präsens": "decken",
+        "Präteritum": "deckten",
+        "Perfekt": "haben gedeckt"
+      }
+    }
+  },
+  {
+    "verb": "dehnen",
+    "meaning": "stretch",
+    "conjugations": {
+      "ich": {
+        "Präsens": "dehne",
+        "Präteritum": "dehnte",
+        "Perfekt": "habe gedehnt"
+      },
+      "du": {
+        "Präsens": "dehnst",
+        "Präteritum": "dehntest",
+        "Perfekt": "hast gedehnt"
+      },
+      "er/sie/es": {
+        "Präsens": "dehnt",
+        "Präteritum": "dehnte",
+        "Perfekt": "hat gedehnt"
+      },
+      "wir": {
+        "Präsens": "dehnen",
+        "Präteritum": "dehnten",
+        "Perfekt": "haben gedehnt"
+      },
+      "ihr": {
+        "Präsens": "dehnt",
+        "Präteritum": "dehntet",
+        "Perfekt": "habt gedehnt"
+      },
+      "sie/Sie": {
+        "Präsens": "dehnen",
+        "Präteritum": "dehnten",
+        "Perfekt": "haben gedehnt"
+      }
+    }
+  },
+  {
+    "verb": "demonstrieren",
+    "meaning": "demonstrate",
+    "conjugations": {
+      "ich": {
+        "Präsens": "demonstriere",
+        "Präteritum": "demonstrierte",
+        "Perfekt": "habe demonstriert"
+      },
+      "du": {
+        "Präsens": "demonstrierst",
+        "Präteritum": "demonstriertest",
+        "Perfekt": "hast demonstriert"
+      },
+      "er/sie/es": {
+        "Präsens": "demonstriert",
+        "Präteritum": "demonstrierte",
+        "Perfekt": "hat demonstriert"
+      },
+      "wir": {
+        "Präsens": "demonstrieren",
+        "Präteritum": "demonstrierten",
+        "Perfekt": "haben demonstriert"
+      },
+      "ihr": {
+        "Präsens": "demonstriert",
+        "Präteritum": "demonstriertet",
+        "Perfekt": "habt demonstriert"
+      },
+      "sie/Sie": {
+        "Präsens": "demonstrieren",
+        "Präteritum": "demonstrierten",
+        "Perfekt": "haben demonstriert"
+      }
+    }
+  },
+  {
+    "verb": "denken",
+    "meaning": "think",
+    "conjugations": {
+      "ich": {
+        "Präsens": "denke",
+        "Präteritum": "dachte",
+        "Perfekt": "habe gedacht"
+      },
+      "du": {
+        "Präsens": "denkst",
+        "Präteritum": "dachtest",
+        "Perfekt": "hast gedacht"
+      },
+      "er/sie/es": {
+        "Präsens": "denkt",
+        "Präteritum": "dachte",
+        "Perfekt": "hat gedacht"
+      },
+      "wir": {
+        "Präsens": "denken",
+        "Präteritum": "dachten",
+        "Perfekt": "haben gedacht"
+      },
+      "ihr": {
+        "Präsens": "denkt",
+        "Präteritum": "dachtet",
+        "Perfekt": "habt gedacht"
+      },
+      "sie/Sie": {
+        "Präsens": "denken",
+        "Präteritum": "dachten",
+        "Perfekt": "haben gedacht"
+      }
+    }
+  },
+  {
+    "verb": "deuten",
+    "meaning": "point, indicate",
+    "conjugations": {
+      "ich": {
+        "Präsens": "deute",
+        "Präteritum": "deutete",
+        "Perfekt": "habe gedeutet"
+      },
+      "du": {
+        "Präsens": "deutest",
+        "Präteritum": "deutetest",
+        "Perfekt": "hast gedeutet"
+      },
+      "er/sie/es": {
+        "Präsens": "deutet",
+        "Präteritum": "deutete",
+        "Perfekt": "hat gedeutet"
+      },
+      "wir": {
+        "Präsens": "deuten",
+        "Präteritum": "deuteten",
+        "Perfekt": "haben gedeutet"
+      },
+      "ihr": {
+        "Präsens": "deutet",
+        "Präteritum": "deutetet",
+        "Perfekt": "habt gedeutet"
+      },
+      "sie/Sie": {
+        "Präsens": "deuten",
+        "Präteritum": "deuteten",
+        "Perfekt": "haben gedeutet"
+      }
+    }
   }
 ]
