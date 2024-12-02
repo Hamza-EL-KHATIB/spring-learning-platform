@@ -5589,5 +5589,797 @@
         "perfekt": "haben geübt"
       }
     }
+  },
+  {
+    "verb": "achten",
+    "meaning": "pay attention to, respect",
+    "conjugations": {
+      "ich": {
+        "Präsens": "achte",
+        "Präteritum": "achtete",
+        "Perfekt": "habe geachtet"
+      },
+      "du": {
+        "Präsens": "achtest",
+        "Präteritum": "achtetest",
+        "Perfekt": "hast geachtet"
+      },
+      "er/sie/es": {
+        "Präsens": "achtet",
+        "Präteritum": "achtete",
+        "Perfekt": "hat geachtet"
+      },
+      "wir": {
+        "Präsens": "achten",
+        "Präteritum": "achteten",
+        "Perfekt": "haben geachtet"
+      },
+      "ihr": {
+        "Präsens": "achtet",
+        "Präteritum": "achtetet",
+        "Perfekt": "habt geachtet"
+      },
+      "sie/Sie": {
+        "Präsens": "achten",
+        "Präteritum": "achteten",
+        "Perfekt": "haben geachtet"
+      }
+    }
+  },
+  {
+    "verb": "anerkennen",
+    "meaning": "recognize, acknowledge",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erkenne an",
+        "Präteritum": "erkannte an",
+        "Perfekt": "habe anerkannt"
+      },
+      "du": {
+        "Präsens": "erkennst an",
+        "Präteritum": "erkanntest an",
+        "Perfekt": "hast anerkannt"
+      },
+      "er/sie/es": {
+        "Präsens": "erkennt an",
+        "Präteritum": "erkannte an",
+        "Perfekt": "hat anerkannt"
+      },
+      "wir": {
+        "Präsens": "erkennen an",
+        "Präteritum": "erkannten an",
+        "Perfekt": "haben anerkannt"
+      },
+      "ihr": {
+        "Präsens": "erkennt an",
+        "Präteritum": "erkanntet an",
+        "Perfekt": "habt anerkannt"
+      },
+      "sie/Sie": {
+        "Präsens": "erkennen an",
+        "Präteritum": "erkannten an",
+        "Perfekt": "haben anerkannt"
+      }
+    }
+  },
+  {
+    "verb": "anfangen",
+    "meaning": "begin",
+    "conjugations": {
+      "ich": {
+        "Präsens": "fange an",
+        "Präteritum": "fing an",
+        "Perfekt": "habe angefangen"
+      },
+      "du": {
+        "Präsens": "fängst an",
+        "Präteritum": "fingst an",
+        "Perfekt": "hast angefangen"
+      },
+      "er/sie/es": {
+        "Präsens": "fängt an",
+        "Präteritum": "fing an",
+        "Perfekt": "hat angefangen"
+      },
+      "wir": {
+        "Präsens": "fangen an",
+        "Präteritum": "fingen an",
+        "Perfekt": "haben angefangen"
+      },
+      "ihr": {
+        "Präsens": "fangt an",
+        "Präteritum": "fingt an",
+        "Perfekt": "habt angefangen"
+      },
+      "sie/Sie": {
+        "Präsens": "fangen an",
+        "Präteritum": "fingen an",
+        "Perfekt": "haben angefangen"
+      }
+    }
+  },
+  {
+    "verb": "angeln",
+    "meaning": "fish, angle",
+    "conjugations": {
+      "ich": {
+        "Präsens": "angele",
+        "Präteritum": "angelte",
+        "Perfekt": "habe geangelt"
+      },
+      "du": {
+        "Präsens": "angelst",
+        "Präteritum": "angeltest",
+        "Perfekt": "hast geangelt"
+      },
+      "er/sie/es": {
+        "Präsens": "angelt",
+        "Präteritum": "angelte",
+        "Perfekt": "hat geangelt"
+      },
+      "wir": {
+        "Präsens": "angeln",
+        "Präteritum": "angelten",
+        "Perfekt": "haben geangelt"
+      },
+      "ihr": {
+        "Präsens": "angelt",
+        "Präteritum": "angeltet",
+        "Perfekt": "habt geangelt"
+      },
+      "sie/Sie": {
+        "Präsens": "angeln",
+        "Präteritum": "angelten",
+        "Perfekt": "haben geangelt"
+      }
+    }
+  },
+  {
+    "verb": "ankommen",
+    "meaning": "arrive",
+    "conjugations": {
+      "ich": {
+        "Präsens": "komme an",
+        "Präteritum": "kam an",
+        "Perfekt": "bin angekommen"
+      },
+      "du": {
+        "Präsens": "kommst an",
+        "Präteritum": "kamst an",
+        "Perfekt": "bist angekommen"
+      },
+      "er/sie/es": {
+        "Präsens": "kommt an",
+        "Präteritum": "kam an",
+        "Perfekt": "ist angekommen"
+      },
+      "wir": {
+        "Präsens": "kommen an",
+        "Präteritum": "kamen an",
+        "Perfekt": "sind angekommen"
+      },
+      "ihr": {
+        "Präsens": "kommt an",
+        "Präteritum": "kamt an",
+        "Perfekt": "seid angekommen"
+      },
+      "sie/Sie": {
+        "Präsens": "kommen an",
+        "Präteritum": "kamen an",
+        "Perfekt": "sind angekommen"
+      }
+    }
+  },
+  {
+    "verb": "ändern",
+    "meaning": "change, alter",
+    "conjugations": {
+      "ich": {
+        "Präsens": "ändere",
+        "Präteritum": "änderte",
+        "Perfekt": "habe geändert"
+      },
+      "du": {
+        "Präsens": "änderst",
+        "Präteritum": "ändertest",
+        "Perfekt": "hast geändert"
+      },
+      "er/sie/es": {
+        "Präsens": "ändert",
+        "Präteritum": "änderte",
+        "Perfekt": "hat geändert"
+      },
+      "wir": {
+        "Präsens": "ändern",
+        "Präteritum": "änderten",
+        "Perfekt": "haben geändert"
+      },
+      "ihr": {
+        "Präsens": "ändert",
+        "Präteritum": "ändertet",
+        "Perfekt": "habt geändert"
+      },
+      "sie/Sie": {
+        "Präsens": "ändern",
+        "Präteritum": "änderten",
+        "Perfekt": "haben geändert"
+      }
+    }
+  },
+  {
+    "verb": "angreifen",
+    "meaning": "attack",
+    "conjugations": {
+      "ich": {
+        "Präsens": "greife an",
+        "Präteritum": "griff an",
+        "Perfekt": "habe angegriffen"
+      },
+      "du": {
+        "Präsens": "greifst an",
+        "Präteritum": "griffst an",
+        "Perfekt": "hast angegriffen"
+      },
+      "er/sie/es": {
+        "Präsens": "greift an",
+        "Präteritum": "griff an",
+        "Perfekt": "hat angegriffen"
+      },
+      "wir": {
+        "Präsens": "greifen an",
+        "Präteritum": "griffen an",
+        "Perfekt": "haben angegriffen"
+      },
+      "ihr": {
+        "Präsens": "greift an",
+        "Präteritum": "grifft an",
+        "Perfekt": "habt angegriffen"
+      },
+      "sie/Sie": {
+        "Präsens": "greifen an",
+        "Präteritum": "griffen an",
+        "Perfekt": "haben angegriffen"
+      }
+    }
+  },
+  {
+    "verb": "anhaben",
+    "meaning": "have on, wear",
+    "conjugations": {
+      "ich": {
+        "Präsens": "habe an",
+        "Präteritum": "hatte an",
+        "Perfekt": "habe angehabt"
+      },
+      "du": {
+        "Präsens": "hast an",
+        "Präteritum": "hattest an",
+        "Perfekt": "hast angehabt"
+      },
+      "er/sie/es": {
+        "Präsens": "hat an",
+        "Präteritum": "hatte an",
+        "Perfekt": "hat angehabt"
+      },
+      "wir": {
+        "Präsens": "haben an",
+        "Präteritum": "hatten an",
+        "Perfekt": "haben angehabt"
+      },
+      "ihr": {
+        "Präsens": "habt an",
+        "Präteritum": "hattet an",
+        "Perfekt": "habt angehabt"
+      },
+      "sie/Sie": {
+        "Präsens": "haben an",
+        "Präteritum": "hatten an",
+        "Perfekt": "haben angehabt"
+      }
+    }
+  },
+  {
+    "verb": "annehmen",
+    "meaning": "accept; assume",
+    "conjugations": {
+      "ich": {
+        "Präsens": "nehme an",
+        "Präteritum": "nahm an",
+        "Perfekt": "habe angenommen"
+      },
+      "du": {
+        "Präsens": "nimmst an",
+        "Präteritum": "nahmst an",
+        "Perfekt": "hast angenommen"
+      },
+      "er/sie/es": {
+        "Präsens": "nimmt an",
+        "Präteritum": "nahm an",
+        "Perfekt": "hat angenommen"
+      },
+      "wir": {
+        "Präsens": "nehmen an",
+        "Präteritum": "nahmen an",
+        "Perfekt": "haben angenommen"
+      },
+      "ihr": {
+        "Präsens": "nehmt an",
+        "Präteritum": "nahmt an",
+        "Perfekt": "habt angenommen"
+      },
+      "sie/Sie": {
+        "Präsens": "nehmen an",
+        "Präteritum": "nahmen an",
+        "Perfekt": "haben angenommen"
+      }
+    }
+  },
+  {
+    "verb": "anrufen",
+    "meaning": "call up (telephone)",
+    "conjugations": {
+      "ich": {
+        "Präsens": "rufe an",
+        "Präteritum": "rief an",
+        "Perfekt": "habe angerufen"
+      },
+      "du": {
+        "Präsens": "rufst an",
+        "Präteritum": "riefst an",
+        "Perfekt": "hast angerufen"
+      },
+      "er/sie/es": {
+        "Präsens": "ruft an",
+        "Präteritum": "rief an",
+        "Perfekt": "hat angerufen"
+      },
+      "wir": {
+        "Präsens": "rufen an",
+        "Präteritum": "riefen an",
+        "Perfekt": "haben angerufen"
+      },
+      "ihr": {
+        "Präsens": "ruft an",
+        "Präteritum": "rieft an",
+        "Perfekt": "habt angerufen"
+      },
+      "sie/Sie": {
+        "Präsens": "rufen an",
+        "Präteritum": "riefen an",
+        "Perfekt": "haben angerufen"
+      }
+    }
+  },
+  {
+    "verb": "antworten",
+    "meaning": "answer",
+    "conjugations": {
+      "ich": {
+        "Präsens": "antworte",
+        "Präteritum": "antwortete",
+        "Perfekt": "habe geantwortet"
+      },
+      "du": {
+        "Präsens": "antwortest",
+        "Präteritum": "antwortetest",
+        "Perfekt": "hast geantwortet"
+      },
+      "er/sie/es": {
+        "Präsens": "antwortet",
+        "Präteritum": "antwortete",
+        "Perfekt": "hat geantwortet"
+      },
+      "wir": {
+        "Präsens": "antworten",
+        "Präteritum": "antworteten",
+        "Perfekt": "haben geantwortet"
+      },
+      "ihr": {
+        "Präsens": "antwortet",
+        "Präteritum": "antwortetet",
+        "Perfekt": "habt geantwortet"
+      },
+      "sie/Sie": {
+        "Präsens": "antworten",
+        "Präteritum": "antworteten",
+        "Perfekt": "haben geantwortet"
+      }
+    }
+  },
+  {
+    "verb": "anziehen",
+    "meaning": "get dressed",
+    "conjugations": {
+      "ich": {
+        "Präsens": "ziehe an",
+        "Präteritum": "zog an",
+        "Perfekt": "habe angezogen"
+      },
+      "du": {
+        "Präsens": "ziehst an",
+        "Präteritum": "zogst an",
+        "Perfekt": "hast angezogen"
+      },
+      "er/sie/es": {
+        "Präsens": "zieht an",
+        "Präteritum": "zog an",
+        "Perfekt": "hat angezogen"
+      },
+      "wir": {
+        "Präsens": "ziehen an",
+        "Präteritum": "zogen an",
+        "Perfekt": "haben angezogen"
+      },
+      "ihr": {
+        "Präsens": "zieht an",
+        "Präteritum": "zogt an",
+        "Perfekt": "habt angezogen"
+      },
+      "sie/Sie": {
+        "Präsens": "ziehen an",
+        "Präteritum": "zogen an",
+        "Perfekt": "haben angezogen"
+      }
+    }
+  },
+  {
+    "verb": "arbeiten",
+    "meaning": "work",
+    "conjugations": {
+      "ich": {
+        "Präsens": "arbeite",
+        "Präteritum": "arbeitete",
+        "Perfekt": "habe gearbeitet"
+      },
+      "du": {
+        "Präsens": "arbeitest",
+        "Präteritum": "arbeitetest",
+        "Perfekt": "hast gearbeitet"
+      },
+      "er/sie/es": {
+        "Präsens": "arbeitet",
+        "Präteritum": "arbeitete",
+        "Perfekt": "hat gearbeitet"
+      },
+      "wir": {
+        "Präsens": "arbeiten",
+        "Präteritum": "arbeiteten",
+        "Perfekt": "haben gearbeitet"
+      },
+      "ihr": {
+        "Präsens": "arbeitet",
+        "Präteritum": "arbeitetet",
+        "Perfekt": "habt gearbeitet"
+      },
+      "sie/Sie": {
+        "Präsens": "arbeiten",
+        "Präteritum": "arbeiteten",
+        "Perfekt": "haben gearbeitet"
+      }
+    }
+  },
+  {
+    "verb": "ärgern",
+    "meaning": "annoy, irritate",
+    "conjugations": {
+      "ich": {
+        "Präsens": "ärgere",
+        "Präteritum": "ärgerte",
+        "Perfekt": "habe geärgert"
+      },
+      "du": {
+        "Präsens": "ärgerst",
+        "Präteritum": "ärgertest",
+        "Perfekt": "hast geärgert"
+      },
+      "er/sie/es": {
+        "Präsens": "ärgert",
+        "Präteritum": "ärgerte",
+        "Perfekt": "hat geärgert"
+      },
+      "wir": {
+        "Präsens": "ärgern",
+        "Präteritum": "ärgerten",
+        "Perfekt": "haben geärgert"
+      },
+      "ihr": {
+        "Präsens": "ärgert",
+        "Präteritum": "ärgertet",
+        "Perfekt": "habt geärgert"
+      },
+      "sie/Sie": {
+        "Präsens": "ärgern",
+        "Präteritum": "ärgerten",
+        "Perfekt": "haben geärgert"
+      }
+    }
+  },
+  {
+    "verb": "atmen",
+    "meaning": "breathe",
+    "conjugations": {
+      "ich": {
+        "Präsens": "atme",
+        "Präteritum": "atmete",
+        "Perfekt": "habe geatmet"
+      },
+      "du": {
+        "Präsens": "atmest",
+        "Präteritum": "atmetest",
+        "Perfekt": "hast geatmet"
+      },
+      "er/sie/es": {
+        "Präsens": "atmet",
+        "Präteritum": "atmete",
+        "Perfekt": "hat geatmet"
+      },
+      "wir": {
+        "Präsens": "atmen",
+        "Präteritum": "atmeten",
+        "Perfekt": "haben geatmet"
+      },
+      "ihr": {
+        "Präsens": "atmet",
+        "Präteritum": "atmetet",
+        "Perfekt": "habt geatmet"
+      },
+      "sie/Sie": {
+        "Präsens": "atmen",
+        "Präteritum": "atmeten",
+        "Perfekt": "haben geatmet"
+      }
+    }
+  },
+  {
+    "verb": "auffallen",
+    "meaning": "stand out, attract attention",
+    "conjugations": {
+      "ich": {
+        "Präsens": "falle auf",
+        "Präteritum": "fiel auf",
+        "Perfekt": "bin aufgefallen"
+      },
+      "du": {
+        "Präsens": "fällst auf",
+        "Präteritum": "fielst auf",
+        "Perfekt": "bist aufgefallen"
+      },
+      "er/sie/es": {
+        "Präsens": "fällt auf",
+        "Präteritum": "fiel auf",
+        "Perfekt": "ist aufgefallen"
+      },
+      "wir": {
+        "Präsens": "fallen auf",
+        "Präteritum": "fielen auf",
+        "Perfekt": "sind aufgefallen"
+      },
+      "ihr": {
+        "Präsens": "fallt auf",
+        "Präteritum": "fielt auf",
+        "Perfekt": "seid aufgefallen"
+      },
+      "sie/Sie": {
+        "Präsens": "fallen auf",
+        "Präteritum": "fielen auf",
+        "Perfekt": "sind aufgefallen"
+      }
+    }
+  },
+  {
+    "verb": "auskommen",
+    "meaning": "come out, have enough of, make do, get along with",
+    "conjugations": {
+      "ich": {
+        "Präsens": "komme aus",
+        "Präteritum": "kam aus",
+        "Perfekt": "bin ausgekommen"
+      },
+      "du": {
+        "Präsens": "kommst aus",
+        "Präteritum": "kamst aus",
+        "Perfekt": "bist ausgekommen"
+      },
+      "er/sie/es": {
+        "Präsens": "kommt aus",
+        "Präteritum": "kam aus",
+        "Perfekt": "ist ausgekommen"
+      },
+      "wir": {
+        "Präsens": "kommen aus",
+        "Präteritum": "kamen aus",
+        "Perfekt": "sind ausgekommen"
+      },
+      "ihr": {
+        "Präsens": "kommt aus",
+        "Präteritum": "kamt aus",
+        "Perfekt": "seid ausgekommen"
+      },
+      "sie/Sie": {
+        "Präsens": "kommen aus",
+        "Präteritum": "kamen aus",
+        "Perfekt": "sind ausgekommen"
+      }
+    }
+  },
+  {
+    "verb": "ausmachen",
+    "meaning": "turn off; extinguish; make out; agree upon",
+    "conjugations": {
+      "ich": {
+        "Präsens": "mache aus",
+        "Präteritum": "machte aus",
+        "Perfekt": "habe ausgemacht"
+      },
+      "du": {
+        "Präsens": "machst aus",
+        "Präteritum": "machtest aus",
+        "Perfekt": "hast ausgemacht"
+      },
+      "er/sie/es": {
+        "Präsens": "macht aus",
+        "Präteritum": "machte aus",
+        "Perfekt": "hat ausgemacht"
+      },
+      "wir": {
+        "Präsens": "machen aus",
+        "Präteritum": "machten aus",
+        "Perfekt": "haben ausgemacht"
+      },
+      "ihr": {
+        "Präsens": "macht aus",
+        "Präteritum": "machtet aus",
+        "Perfekt": "habt ausgemacht"
+      },
+      "sie/Sie": {
+        "Präsens": "machen aus",
+        "Präteritum": "machten aus",
+        "Perfekt": "haben ausgemacht"
+      }
+    }
+  },
+  {
+    "verb": "ausstellen",
+    "meaning": "exhibit",
+    "conjugations": {
+      "ich": {
+        "Präsens": "stelle aus",
+        "Präteritum": "stellte aus",
+        "Perfekt": "habe ausgestellt"
+      },
+      "du": {
+        "Präsens": "stellst aus",
+        "Präteritum": "stelltest aus",
+        "Perfekt": "hast ausgestellt"
+      },
+      "er/sie/es": {
+        "Präsens": "stellt aus",
+        "Präteritum": "stellte aus",
+        "Perfekt": "hat ausgestellt"
+      },
+      "wir": {
+        "Präsens": "stellen aus",
+        "Präteritum": "stellten aus",
+        "Perfekt": "haben ausgestellt"
+      },
+      "ihr": {
+        "Präsens": "stellt aus",
+        "Präteritum": "stelltet aus",
+        "Perfekt": "habt ausgestellt"
+      },
+      "sie/Sie": {
+        "Präsens": "stellen aus",
+        "Präteritum": "stellten aus",
+        "Perfekt": "haben ausgestellt"
+      }
+    }
+  },
+  {
+    "verb": "ausziehen",
+    "meaning": "undress",
+    "conjugations": {
+      "ich": {
+        "Präsens": "ziehe aus",
+        "Präteritum": "zog aus",
+        "Perfekt": "habe ausgezogen"
+      },
+      "du": {
+        "Präsens": "ziehst aus",
+        "Präteritum": "zogst aus",
+        "Perfekt": "hast ausgezogen"
+      },
+      "er/sie/es": {
+        "Präsens": "zieht aus",
+        "Präteritum": "zog aus",
+        "Perfekt": "hat ausgezogen"
+      },
+      "wir": {
+        "Präsens": "ziehen aus",
+        "Präteritum": "zogen aus",
+        "Perfekt": "haben ausgezogen"
+      },
+      "ihr": {
+        "Präsens": "zieht aus",
+        "Präteritum": "zogt aus",
+        "Perfekt": "habt ausgezogen"
+      },
+      "sie/Sie": {
+        "Präsens": "ziehen aus",
+        "Präteritum": "zogen aus",
+        "Perfekt": "haben ausgezogen"
+      }
+    }
+  },
+  {
+    "verb": "backen",
+    "meaning": "bake",
+    "conjugations": {
+      "ich": {
+        "Präsens": "backe",
+        "Präteritum": "backte",
+        "Perfekt": "habe gebacken"
+      },
+      "du": {
+        "Präsens": "bäckst",
+        "Präteritum": "backtest",
+        "Perfekt": "hast gebacken"
+      },
+      "er/sie/es": {
+        "Präsens": "bäckt",
+        "Präteritum": "backte",
+        "Perfekt": "hat gebacken"
+      },
+      "wir": {
+        "Präsens": "backen",
+        "Präteritum": "backten",
+        "Perfekt": "haben gebacken"
+      },
+      "ihr": {
+        "Präsens": "backt",
+        "Präteritum": "backtet",
+        "Perfekt": "habt gebacken"
+      },
+      "sie/Sie": {
+        "Präsens": "backen",
+        "Präteritum": "backten",
+        "Perfekt": "haben gebacken"
+      }
+    }
+  },
+  {
+    "verb": "beben",
+    "meaning": "quake, tremble",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bebe",
+        "Präteritum": "bebte",
+        "Perfekt": "habe gebebt"
+      },
+      "du": {
+        "Präsens": "bebst",
+        "Präteritum": "bebtest",
+        "Perfekt": "hast gebebt"
+      },
+      "er/sie/es": {
+        "Präsens": "bebt",
+        "Präteritum": "bebte",
+        "Perfekt": "hat gebebt"
+      },
+      "wir": {
+        "Präsens": "beben",
+        "Präteritum": "bebten",
+        "Perfekt": "haben gebebt"
+      },
+      "ihr": {
+        "Präsens": "bebt",
+        "Präteritum": "bebtet",
+        "Perfekt": "habt gebebt"
+      },
+      "sie/Sie": {
+        "Präsens": "beben",
+        "Präteritum": "bebten",
+        "Perfekt": "haben gebebt"
+      }
+    }
   }
 ]
