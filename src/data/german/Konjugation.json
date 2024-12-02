@@ -10629,5 +10629,365 @@
         "Perfekt": "haben gefressen"
       }
     }
+  },
+  {
+    "verb": "frieren",
+    "meaning": "freeze",
+    "conjugations": {
+      "ich": {
+        "Präsens": "friere",
+        "Präteritum": "fror",
+        "Perfekt": "habe gefroren"
+      },
+      "du": {
+        "Präsens": "frierst",
+        "Präteritum": "frorst",
+        "Perfekt": "hast gefroren"
+      },
+      "er/sie/es": {
+        "Präsens": "friert",
+        "Präteritum": "fror",
+        "Perfekt": "hat gefroren"
+      },
+      "wir": {
+        "Präsens": "frieren",
+        "Präteritum": "froren",
+        "Perfekt": "haben gefroren"
+      },
+      "ihr": {
+        "Präsens": "friert",
+        "Präteritum": "frort",
+        "Perfekt": "habt gefroren"
+      },
+      "sie/Sie": {
+        "Präsens": "frieren",
+        "Präteritum": "froren",
+        "Perfekt": "haben gefroren"
+      }
+    }
+  },
+  {
+    "verb": "fühlen",
+    "meaning": "feel",
+    "conjugations": {
+      "ich": {
+        "Präsens": "fühle",
+        "Präteritum": "fühlte",
+        "Perfekt": "habe gefühlt"
+      },
+      "du": {
+        "Präsens": "fühlst",
+        "Präteritum": "fühltest",
+        "Perfekt": "hast gefühlt"
+      },
+      "er/sie/es": {
+        "Präsens": "fühlt",
+        "Präteritum": "fühlte",
+        "Perfekt": "hat gefühlt"
+      },
+      "wir": {
+        "Präsens": "fühlen",
+        "Präteritum": "fühlten",
+        "Perfekt": "haben gefühlt"
+      },
+      "ihr": {
+        "Präsens": "fühlt",
+        "Präteritum": "fühltet",
+        "Perfekt": "habt gefühlt"
+      },
+      "sie/Sie": {
+        "Präsens": "fühlen",
+        "Präteritum": "fühlten",
+        "Perfekt": "haben gefühlt"
+      }
+    }
+  },
+  {
+    "verb": "führen",
+    "meaning": "lead",
+    "conjugations": {
+      "ich": {
+        "Präsens": "führe",
+        "Präteritum": "führte",
+        "Perfekt": "habe geführt"
+      },
+      "du": {
+        "Präsens": "führst",
+        "Präteritum": "führtest",
+        "Perfekt": "hast geführt"
+      },
+      "er/sie/es": {
+        "Präsens": "führt",
+        "Präteritum": "führte",
+        "Perfekt": "hat geführt"
+      },
+      "wir": {
+        "Präsens": "führen",
+        "Präteritum": "führten",
+        "Perfekt": "haben geführt"
+      },
+      "ihr": {
+        "Präsens": "führt",
+        "Präteritum": "führtet",
+        "Perfekt": "habt geführt"
+      },
+      "sie/Sie": {
+        "Präsens": "führen",
+        "Präteritum": "führten",
+        "Perfekt": "haben geführt"
+      }
+    }
+  },
+  {
+    "verb": "funktionieren",
+    "meaning": "function, work",
+    "conjugations": {
+      "ich": {
+        "Präsens": "funktioniere",
+        "Präteritum": "funktionierte",
+        "Perfekt": "habe funktioniert"
+      },
+      "du": {
+        "Präsens": "funktionierst",
+        "Präteritum": "funktioniertest",
+        "Perfekt": "hast funktioniert"
+      },
+      "er/sie/es": {
+        "Präsens": "funktioniert",
+        "Präteritum": "funktionierte",
+        "Perfekt": "hat funktioniert"
+      },
+      "wir": {
+        "Präsens": "funktionieren",
+        "Präteritum": "funktionierten",
+        "Perfekt": "haben funktioniert"
+      },
+      "ihr": {
+        "Präsens": "funktioniert",
+        "Präteritum": "funktioniertet",
+        "Perfekt": "habt funktioniert"
+      },
+      "sie/Sie": {
+        "Präsens": "funktionieren",
+        "Präteritum": "funktionierten",
+        "Perfekt": "haben funktioniert"
+      }
+    }
+  },
+  {
+    "verb": "geben",
+    "meaning": "give",
+    "conjugations": {
+      "ich": {
+        "Präsens": "gebe",
+        "Präteritum": "gab",
+        "Perfekt": "habe gegeben"
+      },
+      "du": {
+        "Präsens": "gibst",
+        "Präteritum": "gabst",
+        "Perfekt": "hast gegeben"
+      },
+      "er/sie/es": {
+        "Präsens": "gibt",
+        "Präteritum": "gab",
+        "Perfekt": "hat gegeben"
+      },
+      "wir": {
+        "Präsens": "geben",
+        "Präteritum": "gaben",
+        "Perfekt": "haben gegeben"
+      },
+      "ihr": {
+        "Präsens": "gebt",
+        "Präteritum": "gabt",
+        "Perfekt": "habt gegeben"
+      },
+      "sie/Sie": {
+        "Präsens": "geben",
+        "Präteritum": "gaben",
+        "Perfekt": "haben gegeben"
+      }
+    }
+  },
+  {
+    "verb": "gefallen",
+    "meaning": "please, be pleasing",
+    "conjugations": {
+      "ich": {
+        "Präsens": "gefalle",
+        "Präteritum": "gefiel",
+        "Perfekt": "habe gefallen"
+      },
+      "du": {
+        "Präsens": "gefällst",
+        "Präteritum": "gefielst",
+        "Perfekt": "hast gefallen"
+      },
+      "er/sie/es": {
+        "Präsens": "gefällt",
+        "Präteritum": "gefiel",
+        "Perfekt": "hat gefallen"
+      },
+      "wir": {
+        "Präsens": "gefallen",
+        "Präteritum": "gefielen",
+        "Perfekt": "haben gefallen"
+      },
+      "ihr": {
+        "Präsens": "gefallt",
+        "Präteritum": "gefielt",
+        "Perfekt": "habt gefallen"
+      },
+      "sie/Sie": {
+        "Präsens": "gefallen",
+        "Präteritum": "gefielen",
+        "Perfekt": "haben gefallen"
+      }
+    }
+  },
+  {
+    "verb": "gehen",
+    "meaning": "go",
+    "conjugations": {
+      "ich": {
+        "Präsens": "gehe",
+        "Präteritum": "ging",
+        "Perfekt": "bin gegangen"
+      },
+      "du": {
+        "Präsens": "gehst",
+        "Präteritum": "gingst",
+        "Perfekt": "bist gegangen"
+      },
+      "er/sie/es": {
+        "Präsens": "geht",
+        "Präteritum": "ging",
+        "Perfekt": "ist gegangen"
+      },
+      "wir": {
+        "Präsens": "gehen",
+        "Präteritum": "gingen",
+        "Perfekt": "sind gegangen"
+      },
+      "ihr": {
+        "Präsens": "geht",
+        "Präteritum": "gingt",
+        "Perfekt": "seid gegangen"
+      },
+      "sie/Sie": {
+        "Präsens": "gehen",
+        "Präteritum": "gingen",
+        "Perfekt": "sind gegangen"
+      }
+    }
+  },
+  {
+    "verb": "gehören",
+    "meaning": "belong",
+    "conjugations": {
+      "ich": {
+        "Präsens": "gehöre",
+        "Präteritum": "gehörte",
+        "Perfekt": "habe gehört"
+      },
+      "du": {
+        "Präsens": "gehörst",
+        "Präteritum": "gehörtest",
+        "Perfekt": "hast gehört"
+      },
+      "er/sie/es": {
+        "Präsens": "gehört",
+        "Präteritum": "gehörte",
+        "Perfekt": "hat gehört"
+      },
+      "wir": {
+        "Präsens": "gehören",
+        "Präteritum": "gehörten",
+        "Perfekt": "haben gehört"
+      },
+      "ihr": {
+        "Präsens": "gehört",
+        "Präteritum": "gehörtet",
+        "Perfekt": "habt gehört"
+      },
+      "sie/Sie": {
+        "Präsens": "gehören",
+        "Präteritum": "gehörten",
+        "Perfekt": "haben gehört"
+      }
+    }
+  },
+  {
+    "verb": "gelingen",
+    "meaning": "succeed",
+    "conjugations": {
+      "ich": {
+        "Präsens": "gelinge",
+        "Präteritum": "gelang",
+        "Perfekt": "bin gelungen"
+      },
+      "du": {
+        "Präsens": "gelingst",
+        "Präteritum": "gelangst",
+        "Perfekt": "bist gelungen"
+      },
+      "er/sie/es": {
+        "Präsens": "gelingt",
+        "Präteritum": "gelang",
+        "Perfekt": "ist gelungen"
+      },
+      "wir": {
+        "Präsens": "gelingen",
+        "Präteritum": "gelangen",
+        "Perfekt": "sind gelungen"
+      },
+      "ihr": {
+        "Präsens": "gelingt",
+        "Präteritum": "gelangt",
+        "Perfekt": "seid gelungen"
+      },
+      "sie/Sie": {
+        "Präsens": "gelingen",
+        "Präteritum": "gelangen",
+        "Perfekt": "sind gelungen"
+      }
+    }
+  },
+  {
+    "verb": "gelten",
+    "meaning": "be valid, count",
+    "conjugations": {
+      "ich": {
+        "Präsens": "gelte",
+        "Präteritum": "galt",
+        "Perfekt": "habe gegolten"
+      },
+      "du": {
+        "Präsens": "giltst",
+        "Präteritum": "galtest",
+        "Perfekt": "hast gegolten"
+      },
+      "er/sie/es": {
+        "Präsens": "gilt",
+        "Präteritum": "galt",
+        "Perfekt": "hat gegolten"
+      },
+      "wir": {
+        "Präsens": "gelten",
+        "Präteritum": "galten",
+        "Perfekt": "haben gegolten"
+      },
+      "ihr": {
+        "Präsens": "geltet",
+        "Präteritum": "galtet",
+        "Perfekt": "habt gegolten"
+      },
+      "sie/Sie": {
+        "Präsens": "gelten",
+        "Präteritum": "galten",
+        "Perfekt": "haben gegolten"
+      }
+    }
   }
 ]
