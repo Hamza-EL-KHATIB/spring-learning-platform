@@ -14337,5 +14337,365 @@
         "Perfekt": "haben gesucht"
       }
     }
+  },
+  {
+    "verb": "tanzen",
+    "meaning": "dance",
+    "conjugations": {
+      "ich": {
+        "Präsens": "tanze",
+        "Präteritum": "tanzte",
+        "Perfekt": "habe getanzt"
+      },
+      "du": {
+        "Präsens": "tanzt",
+        "Präteritum": "tanztest",
+        "Perfekt": "hast getanzt"
+      },
+      "er/sie/es": {
+        "Präsens": "tanzt",
+        "Präteritum": "tanzte",
+        "Perfekt": "hat getanzt"
+      },
+      "wir": {
+        "Präsens": "tanzen",
+        "Präteritum": "tanzten",
+        "Perfekt": "haben getanzt"
+      },
+      "ihr": {
+        "Präsens": "tanzt",
+        "Präteritum": "tanztet",
+        "Perfekt": "habt getanzt"
+      },
+      "sie/Sie": {
+        "Präsens": "tanzen",
+        "Präteritum": "tanzten",
+        "Perfekt": "haben getanzt"
+      }
+    }
+  },
+  {
+    "verb": "tragen",
+    "meaning": "carry, wear",
+    "conjugations": {
+      "ich": {
+        "Präsens": "trage",
+        "Präteritum": "trug",
+        "Perfekt": "habe getragen"
+      },
+      "du": {
+        "Präsens": "trägst",
+        "Präteritum": "trugst",
+        "Perfekt": "hast getragen"
+      },
+      "er/sie/es": {
+        "Präsens": "trägt",
+        "Präteritum": "trug",
+        "Perfekt": "hat getragen"
+      },
+      "wir": {
+        "Präsens": "tragen",
+        "Präteritum": "trugen",
+        "Perfekt": "haben getragen"
+      },
+      "ihr": {
+        "Präsens": "tragt",
+        "Präteritum": "trugt",
+        "Perfekt": "habt getragen"
+      },
+      "sie/Sie": {
+        "Präsens": "tragen",
+        "Präteritum": "trugen",
+        "Perfekt": "haben getragen"
+      }
+    }
+  },
+  {
+    "verb": "träumen",
+    "meaning": "dream",
+    "conjugations": {
+      "ich": {
+        "Präsens": "träume",
+        "Präteritum": "träumte",
+        "Perfekt": "habe geträumt"
+      },
+      "du": {
+        "Präsens": "träumst",
+        "Präteritum": "träumtest",
+        "Perfekt": "hast geträumt"
+      },
+      "er/sie/es": {
+        "Präsens": "träumt",
+        "Präteritum": "träumte",
+        "Perfekt": "hat geträumt"
+      },
+      "wir": {
+        "Präsens": "träumen",
+        "Präteritum": "träumten",
+        "Perfekt": "haben geträumt"
+      },
+      "ihr": {
+        "Präsens": "träumt",
+        "Präteritum": "träumtet",
+        "Perfekt": "habt geträumt"
+      },
+      "sie/Sie": {
+        "Präsens": "träumen",
+        "Präteritum": "träumten",
+        "Perfekt": "haben geträumt"
+      }
+    }
+  },
+  {
+    "verb": "treffen",
+    "meaning": "meet",
+    "conjugations": {
+      "ich": {
+        "Präsens": "treffe",
+        "Präteritum": "traf",
+        "Perfekt": "habe getroffen"
+      },
+      "du": {
+        "Präsens": "triffst",
+        "Präteritum": "trafst",
+        "Perfekt": "hast getroffen"
+      },
+      "er/sie/es": {
+        "Präsens": "trifft",
+        "Präteritum": "traf",
+        "Perfekt": "hat getroffen"
+      },
+      "wir": {
+        "Präsens": "treffen",
+        "Präteritum": "trafen",
+        "Perfekt": "haben getroffen"
+      },
+      "ihr": {
+        "Präsens": "trefft",
+        "Präteritum": "traft",
+        "Perfekt": "habt getroffen"
+      },
+      "sie/Sie": {
+        "Präsens": "treffen",
+        "Präteritum": "trafen",
+        "Perfekt": "haben getroffen"
+      }
+    }
+  },
+  {
+    "verb": "treiben",
+    "meaning": "drive, float, engage (in activities)",
+    "conjugations": {
+      "ich": {
+        "Präsens": "treibe",
+        "Präteritum": "trieb",
+        "Perfekt": "habe getrieben"
+      },
+      "du": {
+        "Präsens": "treibst",
+        "Präteritum": "triebst",
+        "Perfekt": "hast getrieben"
+      },
+      "er/sie/es": {
+        "Präsens": "treibt",
+        "Präteritum": "trieb",
+        "Perfekt": "hat getrieben"
+      },
+      "wir": {
+        "Präsens": "treiben",
+        "Präteritum": "trieben",
+        "Perfekt": "haben getrieben"
+      },
+      "ihr": {
+        "Präsens": "treibt",
+        "Präteritum": "triebt",
+        "Perfekt": "habt getrieben"
+      },
+      "sie/Sie": {
+        "Präsens": "treiben",
+        "Präteritum": "trieben",
+        "Perfekt": "haben getrieben"
+      }
+    }
+  },
+  {
+    "verb": "treten",
+    "meaning": "step, kick",
+    "conjugations": {
+      "ich": {
+        "Präsens": "trete",
+        "Präteritum": "trat",
+        "Perfekt": "bin getreten"
+      },
+      "du": {
+        "Präsens": "trittst",
+        "Präteritum": "tratst",
+        "Perfekt": "bist getreten"
+      },
+      "er/sie/es": {
+        "Präsens": "tritt",
+        "Präteritum": "trat",
+        "Perfekt": "ist getreten"
+      },
+      "wir": {
+        "Präsens": "treten",
+        "Präteritum": "traten",
+        "Perfekt": "sind getreten"
+      },
+      "ihr": {
+        "Präsens": "tretet",
+        "Präteritum": "tratet",
+        "Perfekt": "seid getreten"
+      },
+      "sie/Sie": {
+        "Präsens": "treten",
+        "Präteritum": "traten",
+        "Perfekt": "sind getreten"
+      }
+    }
+  },
+  {
+    "verb": "trinken",
+    "meaning": "drink",
+    "conjugations": {
+      "ich": {
+        "Präsens": "trinke",
+        "Präteritum": "trank",
+        "Perfekt": "habe getrunken"
+      },
+      "du": {
+        "Präsens": "trinkst",
+        "Präteritum": "trankst",
+        "Perfekt": "hast getrunken"
+      },
+      "er/sie/es": {
+        "Präsens": "trinkt",
+        "Präteritum": "trank",
+        "Perfekt": "hat getrunken"
+      },
+      "wir": {
+        "Präsens": "trinken",
+        "Präteritum": "tranken",
+        "Perfekt": "haben getrunken"
+      },
+      "ihr": {
+        "Präsens": "trinkt",
+        "Präteritum": "trankt",
+        "Perfekt": "habt getrunken"
+      },
+      "sie/Sie": {
+        "Präsens": "trinken",
+        "Präteritum": "tranken",
+        "Perfekt": "haben getrunken"
+      }
+    }
+  },
+  {
+    "verb": "tun",
+    "meaning": "do",
+    "conjugations": {
+      "ich": {
+        "Präsens": "tue",
+        "Präteritum": "tat",
+        "Perfekt": "habe getan"
+      },
+      "du": {
+        "Präsens": "tust",
+        "Präteritum": "tatest",
+        "Perfekt": "hast getan"
+      },
+      "er/sie/es": {
+        "Präsens": "tut",
+        "Präteritum": "tat",
+        "Perfekt": "hat getan"
+      },
+      "wir": {
+        "Präsens": "tun",
+        "Präteritum": "taten",
+        "Perfekt": "haben getan"
+      },
+      "ihr": {
+        "Präsens": "tut",
+        "Präteritum": "tatet",
+        "Perfekt": "habt getan"
+      },
+      "sie/Sie": {
+        "Präsens": "tun",
+        "Präteritum": "taten",
+        "Perfekt": "haben getan"
+      }
+    }
+  },
+  {
+    "verb": "vergessen",
+    "meaning": "forget",
+    "conjugations": {
+      "ich": {
+        "Präsens": "vergesse",
+        "Präteritum": "vergaß",
+        "Perfekt": "habe vergessen"
+      },
+      "du": {
+        "Präsens": "vergisst",
+        "Präteritum": "vergaßest",
+        "Perfekt": "hast vergessen"
+      },
+      "er/sie/es": {
+        "Präsens": "vergisst",
+        "Präteritum": "vergaß",
+        "Perfekt": "hat vergessen"
+      },
+      "wir": {
+        "Präsens": "vergessen",
+        "Präteritum": "vergaßen",
+        "Perfekt": "haben vergessen"
+      },
+      "ihr": {
+        "Präsens": "vergesst",
+        "Präteritum": "vergaßt",
+        "Perfekt": "habt vergessen"
+      },
+      "sie/Sie": {
+        "Präsens": "vergessen",
+        "Präteritum": "vergaßen",
+        "Perfekt": "haben vergessen"
+      }
+    }
+  },
+  {
+    "verb": "verlieren",
+    "meaning": "lose",
+    "conjugations": {
+      "ich": {
+        "Präsens": "verliere",
+        "Präteritum": "verlor",
+        "Perfekt": "habe verloren"
+      },
+      "du": {
+        "Präsens": "verlierst",
+        "Präteritum": "verlorst",
+        "Perfekt": "hast verloren"
+      },
+      "er/sie/es": {
+        "Präsens": "verliert",
+        "Präteritum": "verlor",
+        "Perfekt": "hat verloren"
+      },
+      "wir": {
+        "Präsens": "verlieren",
+        "Präteritum": "verloren",
+        "Perfekt": "haben verloren"
+      },
+      "ihr": {
+        "Präsens": "verliert",
+        "Präteritum": "verlort",
+        "Perfekt": "habt verloren"
+      },
+      "sie/Sie": {
+        "Präsens": "verlieren",
+        "Präteritum": "verloren",
+        "Perfekt": "haben verloren"
+      }
+    }
   }
 ]
