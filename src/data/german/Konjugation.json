@@ -13617,5 +13617,365 @@
         "Perfekt": "haben geschlossen"
       }
     }
+  },
+  {
+    "verb": "schneiden",
+    "meaning": "cut",
+    "conjugations": {
+      "ich": {
+        "Präsens": "schneide",
+        "Präteritum": "schnitt",
+        "Perfekt": "habe geschnitten"
+      },
+      "du": {
+        "Präsens": "schneidest",
+        "Präteritum": "schnittest",
+        "Perfekt": "hast geschnitten"
+      },
+      "er/sie/es": {
+        "Präsens": "schneidet",
+        "Präteritum": "schnitt",
+        "Perfekt": "hat geschnitten"
+      },
+      "wir": {
+        "Präsens": "schneiden",
+        "Präteritum": "schnitten",
+        "Perfekt": "haben geschnitten"
+      },
+      "ihr": {
+        "Präsens": "schneidet",
+        "Präteritum": "schnittet",
+        "Perfekt": "habt geschnitten"
+      },
+      "sie/Sie": {
+        "Präsens": "schneiden",
+        "Präteritum": "schnitten",
+        "Perfekt": "haben geschnitten"
+      }
+    }
+  },
+  {
+    "verb": "schreiben",
+    "meaning": "write",
+    "conjugations": {
+      "ich": {
+        "Präsens": "schreibe",
+        "Präteritum": "schrieb",
+        "Perfekt": "habe geschrieben"
+      },
+      "du": {
+        "Präsens": "schreibst",
+        "Präteritum": "schriebst",
+        "Perfekt": "hast geschrieben"
+      },
+      "er/sie/es": {
+        "Präsens": "schreibt",
+        "Präteritum": "schrieb",
+        "Perfekt": "hat geschrieben"
+      },
+      "wir": {
+        "Präsens": "schreiben",
+        "Präteritum": "schrieben",
+        "Perfekt": "haben geschrieben"
+      },
+      "ihr": {
+        "Präsens": "schreibt",
+        "Präteritum": "schriebt",
+        "Perfekt": "habt geschrieben"
+      },
+      "sie/Sie": {
+        "Präsens": "schreiben",
+        "Präteritum": "schrieben",
+        "Perfekt": "haben geschrieben"
+      }
+    }
+  },
+  {
+    "verb": "schreien",
+    "meaning": "scream",
+    "conjugations": {
+      "ich": {
+        "Präsens": "schreie",
+        "Präteritum": "schrie",
+        "Perfekt": "habe geschrien"
+      },
+      "du": {
+        "Präsens": "schreist",
+        "Präteritum": "schriest",
+        "Perfekt": "hast geschrien"
+      },
+      "er/sie/es": {
+        "Präsens": "schreit",
+        "Präteritum": "schrie",
+        "Perfekt": "hat geschrien"
+      },
+      "wir": {
+        "Präsens": "schreien",
+        "Präteritum": "schrien",
+        "Perfekt": "haben geschrien"
+      },
+      "ihr": {
+        "Präsens": "schreit",
+        "Präteritum": "schriet",
+        "Perfekt": "habt geschrien"
+      },
+      "sie/Sie": {
+        "Präsens": "schreien",
+        "Präteritum": "schrien",
+        "Perfekt": "haben geschrien"
+      }
+    }
+  },
+  {
+    "verb": "schweigen",
+    "meaning": "be silent",
+    "conjugations": {
+      "ich": {
+        "Präsens": "schweige",
+        "Präteritum": "schwieg",
+        "Perfekt": "habe geschwiegen"
+      },
+      "du": {
+        "Präsens": "schweigst",
+        "Präteritum": "schwiegst",
+        "Perfekt": "hast geschwiegen"
+      },
+      "er/sie/es": {
+        "Präsens": "schweigt",
+        "Präteritum": "schwieg",
+        "Perfekt": "hat geschwiegen"
+      },
+      "wir": {
+        "Präsens": "schweigen",
+        "Präteritum": "schwiegen",
+        "Perfekt": "haben geschwiegen"
+      },
+      "ihr": {
+        "Präsens": "schweigt",
+        "Präteritum": "schwiegt",
+        "Perfekt": "habt geschwiegen"
+      },
+      "sie/Sie": {
+        "Präsens": "schweigen",
+        "Präteritum": "schwiegen",
+        "Perfekt": "haben geschwiegen"
+      }
+    }
+  },
+  {
+    "verb": "schwimmen",
+    "meaning": "swim",
+    "conjugations": {
+      "ich": {
+        "Präsens": "schwimme",
+        "Präteritum": "schwamm",
+        "Perfekt": "bin geschwommen"
+      },
+      "du": {
+        "Präsens": "schwimmst",
+        "Präteritum": "schwammst",
+        "Perfekt": "bist geschwommen"
+      },
+      "er/sie/es": {
+        "Präsens": "schwimmt",
+        "Präteritum": "schwamm",
+        "Perfekt": "ist geschwommen"
+      },
+      "wir": {
+        "Präsens": "schwimmen",
+        "Präteritum": "schwammen",
+        "Perfekt": "sind geschwommen"
+      },
+      "ihr": {
+        "Präsens": "schwimmt",
+        "Präteritum": "schwammt",
+        "Perfekt": "seid geschwommen"
+      },
+      "sie/Sie": {
+        "Präsens": "schwimmen",
+        "Präteritum": "schwammen",
+        "Perfekt": "sind geschwommen"
+      }
+    }
+  },
+  {
+    "verb": "sehen",
+    "meaning": "see",
+    "conjugations": {
+      "ich": {
+        "Präsens": "sehe",
+        "Präteritum": "sah",
+        "Perfekt": "habe gesehen"
+      },
+      "du": {
+        "Präsens": "siehst",
+        "Präteritum": "sahst",
+        "Perfekt": "hast gesehen"
+      },
+      "er/sie/es": {
+        "Präsens": "sieht",
+        "Präteritum": "sah",
+        "Perfekt": "hat gesehen"
+      },
+      "wir": {
+        "Präsens": "sehen",
+        "Präteritum": "sahen",
+        "Perfekt": "haben gesehen"
+      },
+      "ihr": {
+        "Präsens": "seht",
+        "Präteritum": "saht",
+        "Perfekt": "habt gesehen"
+      },
+      "sie/Sie": {
+        "Präsens": "sehen",
+        "Präteritum": "sahen",
+        "Perfekt": "haben gesehen"
+      }
+    }
+  },
+  {
+    "verb": "sein",
+    "meaning": "be",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bin",
+        "Präteritum": "war",
+        "Perfekt": "bin gewesen"
+      },
+      "du": {
+        "Präsens": "bist",
+        "Präteritum": "warst",
+        "Perfekt": "bist gewesen"
+      },
+      "er/sie/es": {
+        "Präsens": "ist",
+        "Präteritum": "war",
+        "Perfekt": "ist gewesen"
+      },
+      "wir": {
+        "Präsens": "sind",
+        "Präteritum": "waren",
+        "Perfekt": "sind gewesen"
+      },
+      "ihr": {
+        "Präsens": "seid",
+        "Präteritum": "wart",
+        "Perfekt": "seid gewesen"
+      },
+      "sie/Sie": {
+        "Präsens": "sind",
+        "Präteritum": "waren",
+        "Perfekt": "sind gewesen"
+      }
+    }
+  },
+  {
+    "verb": "senden",
+    "meaning": "send",
+    "conjugations": {
+      "ich": {
+        "Präsens": "sende",
+        "Präteritum": "sandte",
+        "Perfekt": "habe gesandt"
+      },
+      "du": {
+        "Präsens": "sendest",
+        "Präteritum": "sandtest",
+        "Perfekt": "hast gesandt"
+      },
+      "er/sie/es": {
+        "Präsens": "sendet",
+        "Präteritum": "sandte",
+        "Perfekt": "hat gesandt"
+      },
+      "wir": {
+        "Präsens": "senden",
+        "Präteritum": "sandten",
+        "Perfekt": "haben gesandt"
+      },
+      "ihr": {
+        "Präsens": "sendet",
+        "Präteritum": "sandtet",
+        "Perfekt": "habt gesandt"
+      },
+      "sie/Sie": {
+        "Präsens": "senden",
+        "Präteritum": "sandten",
+        "Perfekt": "haben gesandt"
+      }
+    }
+  },
+  {
+    "verb": "singen",
+    "meaning": "sing",
+    "conjugations": {
+      "ich": {
+        "Präsens": "singe",
+        "Präteritum": "sang",
+        "Perfekt": "habe gesungen"
+      },
+      "du": {
+        "Präsens": "singst",
+        "Präteritum": "sangst",
+        "Perfekt": "hast gesungen"
+      },
+      "er/sie/es": {
+        "Präsens": "singt",
+        "Präteritum": "sang",
+        "Perfekt": "hat gesungen"
+      },
+      "wir": {
+        "Präsens": "singen",
+        "Präteritum": "sangen",
+        "Perfekt": "haben gesungen"
+      },
+      "ihr": {
+        "Präsens": "singt",
+        "Präteritum": "sangt",
+        "Perfekt": "habt gesungen"
+      },
+      "sie/Sie": {
+        "Präsens": "singen",
+        "Präteritum": "sangen",
+        "Perfekt": "haben gesungen"
+      }
+    }
+  },
+  {
+    "verb": "sitzen",
+    "meaning": "sit",
+    "conjugations": {
+      "ich": {
+        "Präsens": "sitze",
+        "Präteritum": "saß",
+        "Perfekt": "habe gesessen"
+      },
+      "du": {
+        "Präsens": "sitzt",
+        "Präteritum": "saßest",
+        "Perfekt": "hast gesessen"
+      },
+      "er/sie/es": {
+        "Präsens": "sitzt",
+        "Präteritum": "saß",
+        "Perfekt": "hat gesessen"
+      },
+      "wir": {
+        "Präsens": "sitzen",
+        "Präteritum": "saßen",
+        "Perfekt": "haben gesessen"
+      },
+      "ihr": {
+        "Präsens": "sitzt",
+        "Präteritum": "saßt",
+        "Perfekt": "habt gesessen"
+      },
+      "sie/Sie": {
+        "Präsens": "sitzen",
+        "Präteritum": "saßen",
+        "Perfekt": "haben gesessen"
+      }
+    }
   }
 ]
