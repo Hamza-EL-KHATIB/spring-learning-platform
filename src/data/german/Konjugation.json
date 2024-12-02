@@ -9081,5 +9081,401 @@
         "Perfekt": "haben entgegnet"
       }
     }
+  },
+  {
+    "verb": "enthalten",
+    "meaning": "contain, include",
+    "conjugations": {
+      "ich": {
+        "Präsens": "enthalte",
+        "Präteritum": "enthielt",
+        "Perfekt": "habe enthalten"
+      },
+      "du": {
+        "Präsens": "enthältst",
+        "Präteritum": "enthieltest",
+        "Perfekt": "hast enthalten"
+      },
+      "er/sie/es": {
+        "Präsens": "enthält",
+        "Präteritum": "enthielt",
+        "Perfekt": "hat enthalten"
+      },
+      "wir": {
+        "Präsens": "enthalten",
+        "Präteritum": "enthielten",
+        "Perfekt": "haben enthalten"
+      },
+      "ihr": {
+        "Präsens": "enthaltet",
+        "Präteritum": "enthieltet",
+        "Perfekt": "habt enthalten"
+      },
+      "sie/Sie": {
+        "Präsens": "enthalten",
+        "Präteritum": "enthielten",
+        "Perfekt": "haben enthalten"
+      }
+    }
+  },
+  {
+    "verb": "entkommen",
+    "meaning": "escape",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entkomme",
+        "Präteritum": "entkam",
+        "Perfekt": "bin entkommen"
+      },
+      "du": {
+        "Präsens": "entkommst",
+        "Präteritum": "entkamst",
+        "Perfekt": "bist entkommen"
+      },
+      "er/sie/es": {
+        "Präsens": "entkommt",
+        "Präteritum": "entkam",
+        "Perfekt": "ist entkommen"
+      },
+      "wir": {
+        "Präsens": "entkommen",
+        "Präteritum": "entkamen",
+        "Perfekt": "sind entkommen"
+      },
+      "ihr": {
+        "Präsens": "entkommt",
+        "Präteritum": "entkamt",
+        "Perfekt": "seid entkommen"
+      },
+      "sie/Sie": {
+        "Präsens": "entkommen",
+        "Präteritum": "entkamen",
+        "Perfekt": "sind entkommen"
+      }
+    }
+  },
+  {
+    "verb": "entlassen",
+    "meaning": "dismiss, release",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entlasse",
+        "Präteritum": "entließ",
+        "Perfekt": "habe entlassen"
+      },
+      "du": {
+        "Präsens": "entlässt",
+        "Präteritum": "entließest",
+        "Perfekt": "hast entlassen"
+      },
+      "er/sie/es": {
+        "Präsens": "entlässt",
+        "Präteritum": "entließ",
+        "Perfekt": "hat entlassen"
+      },
+      "wir": {
+        "Präsens": "entlassen",
+        "Präteritum": "entließen",
+        "Perfekt": "haben entlassen"
+      },
+      "ihr": {
+        "Präsens": "entlasst",
+        "Präteritum": "entließt",
+        "Perfekt": "habt entlassen"
+      },
+      "sie/Sie": {
+        "Präsens": "entlassen",
+        "Präteritum": "entließen",
+        "Perfekt": "haben entlassen"
+      }
+    }
+  },
+  {
+    "verb": "entscheiden",
+    "meaning": "decide",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entscheide",
+        "Präteritum": "entschied",
+        "Perfekt": "habe entschieden"
+      },
+      "du": {
+        "Präsens": "entscheidest",
+        "Präteritum": "entschiedest",
+        "Perfekt": "hast entschieden"
+      },
+      "er/sie/es": {
+        "Präsens": "entscheidet",
+        "Präteritum": "entschied",
+        "Perfekt": "hat entschieden"
+      },
+      "wir": {
+        "Präsens": "entscheiden",
+        "Präteritum": "entschieden",
+        "Perfekt": "haben entschieden"
+      },
+      "ihr": {
+        "Präsens": "entscheidet",
+        "Präteritum": "entschiedet",
+        "Perfekt": "habt entschieden"
+      },
+      "sie/Sie": {
+        "Präsens": "entscheiden",
+        "Präteritum": "entschieden",
+        "Perfekt": "haben entschieden"
+      }
+    }
+  },
+  {
+    "verb": "entschuldigen",
+    "meaning": "apologize, excuse",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entschuldige",
+        "Präteritum": "entschuldigte",
+        "Perfekt": "habe entschuldigt"
+      },
+      "du": {
+        "Präsens": "entschuldigst",
+        "Präteritum": "entschuldigtest",
+        "Perfekt": "hast entschuldigt"
+      },
+      "er/sie/es": {
+        "Präsens": "entschuldigt",
+        "Präteritum": "entschuldigte",
+        "Perfekt": "hat entschuldigt"
+      },
+      "wir": {
+        "Präsens": "entschuldigen",
+        "Präteritum": "entschuldigten",
+        "Perfekt": "haben entschuldigt"
+      },
+      "ihr": {
+        "Präsens": "entschuldigt",
+        "Präteritum": "entschuldigtet",
+        "Perfekt": "habt entschuldigt"
+      },
+      "sie/Sie": {
+        "Präsens": "entschuldigen",
+        "Präteritum": "entschuldigten",
+        "Perfekt": "haben entschuldigt"
+      }
+    }
+  },
+  {
+    "verb": "entsprechen",
+    "meaning": "correspond, comply",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entspreche",
+        "Präteritum": "entsprach",
+        "Perfekt": "habe entsprochen"
+      },
+      "du": {
+        "Präsens": "entsprichst",
+        "Präteritum": "entsprachst",
+        "Perfekt": "hast entsprochen"
+      },
+      "er/sie/es": {
+        "Präsens": "entspricht",
+        "Präteritum": "entsprach",
+        "Perfekt": "hat entsprochen"
+      },
+      "wir": {
+        "Präsens": "entsprechen",
+        "Präteritum": "entsprachen",
+        "Perfekt": "haben entsprochen"
+      },
+      "ihr": {
+        "Präsens": "entsprecht",
+        "Präteritum": "entspracht",
+        "Perfekt": "habt entsprochen"
+      },
+      "sie/Sie": {
+        "Präsens": "entsprechen",
+        "Präteritum": "entsprachen",
+        "Perfekt": "haben entsprochen"
+      }
+    }
+  },
+  {
+    "verb": "entstehen",
+    "meaning": "originate, arise",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entstehe",
+        "Präteritum": "entstand",
+        "Perfekt": "bin entstanden"
+      },
+      "du": {
+        "Präsens": "entstehst",
+        "Präteritum": "entstandst",
+        "Perfekt": "bist entstanden"
+      },
+      "er/sie/es": {
+        "Präsens": "entsteht",
+        "Präteritum": "entstand",
+        "Perfekt": "ist entstanden"
+      },
+      "wir": {
+        "Präsens": "entstehen",
+        "Präteritum": "entstanden",
+        "Perfekt": "sind entstanden"
+      },
+      "ihr": {
+        "Präsens": "entsteht",
+        "Präteritum": "entstandet",
+        "Perfekt": "seid entstanden"
+      },
+      "sie/Sie": {
+        "Präsens": "entstehen",
+        "Präteritum": "entstanden",
+        "Perfekt": "sind entstanden"
+      }
+    }
+  },
+  {
+    "verb": "entwickeln",
+    "meaning": "develop",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entwickle",
+        "Präteritum": "entwickelte",
+        "Perfekt": "habe entwickelt"
+      },
+      "du": {
+        "Präsens": "entwickelst",
+        "Präteritum": "entwickeltest",
+        "Perfekt": "hast entwickelt"
+      },
+      "er/sie/es": {
+        "Präsens": "entwickelt",
+        "Präteritum": "entwickelte",
+        "Perfekt": "hat entwickelt"
+      },
+      "wir": {
+        "Präsens": "entwickeln",
+        "Präteritum": "entwickelten",
+        "Perfekt": "haben entwickelt"
+      },
+      "ihr": {
+        "Präsens": "entwickelt",
+        "Präteritum": "entwickeltet",
+        "Perfekt": "habt entwickelt"
+      },
+      "sie/Sie": {
+        "Präsens": "entwickeln",
+        "Präteritum": "entwickelten",
+        "Perfekt": "haben entwickelt"
+      }
+    }
+  },
+  {
+    "verb": "erfinden",
+    "meaning": "invent, discover",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erfinde",
+        "Präteritum": "erfand",
+        "Perfekt": "habe erfunden"
+      },
+      "du": {
+        "Präsens": "erfindest",
+        "Präteritum": "erfandest",
+        "Perfekt": "hast erfunden"
+      },
+      "er/sie/es": {
+        "Präsens": "erfindet",
+        "Präteritum": "erfand",
+        "Perfekt": "hat erfunden"
+      },
+      "wir": {
+        "Präsens": "erfinden",
+        "Präteritum": "erfanden",
+        "Perfekt": "haben erfunden"
+      },
+      "ihr": {
+        "Präsens": "erfindet",
+        "Präteritum": "erfandet",
+        "Perfekt": "habt erfunden"
+      },
+      "sie/Sie": {
+        "Präsens": "erfinden",
+        "Präteritum": "erfanden",
+        "Perfekt": "haben erfunden"
+      }
+    }
+  },
+  {
+    "verb": "ergeben",
+    "meaning": "result in",
+    "conjugations": {
+      "ich": {
+        "Präsens": "ergebe",
+        "Präteritum": "ergab",
+        "Perfekt": "habe ergeben"
+      },
+      "du": {
+        "Präsens": "ergibst",
+        "Präteritum": "ergabst",
+        "Perfekt": "hast ergeben"
+      },
+      "er/sie/es": {
+        "Präsens": "ergibt",
+        "Präteritum": "ergab",
+        "Perfekt": "hat ergeben"
+      },
+      "wir": {
+        "Präsens": "ergeben",
+        "Präteritum": "ergaben",
+        "Perfekt": "haben ergeben"
+      },
+      "ihr": {
+        "Präsens": "ergebt",
+        "Präteritum": "ergabt",
+        "Perfekt": "habt ergeben"
+      },
+      "sie/Sie": {
+        "Präsens": "ergeben",
+        "Präteritum": "ergaben",
+        "Perfekt": "haben ergeben"
+      }
+    }
+  },
+  {
+    "verb": "erhalten",
+    "meaning": "receive, obtain",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erhalte",
+        "Präteritum": "erhielt",
+        "Perfekt": "habe erhalten"
+      },
+      "du": {
+        "Präsens": "erhältst",
+        "Präteritum": "erhieltest",
+        "Perfekt": "hast erhalten"
+      },
+      "er/sie/es": {
+        "Präsens": "erhält",
+        "Präteritum": "erhielt",
+        "Perfekt": "hat erhalten"
+      },
+      "wir": {
+        "Präsens": "erhalten",
+        "Präteritum": "erhielten",
+        "Perfekt": "haben erhalten"
+      },
+      "ihr": {
+        "Präsens": "erhaltet",
+        "Präteritum": "erhieltet",
+        "Perfekt": "habt erhalten"
+      },
+      "sie/Sie": {
+        "Präsens": "erhalten",
+        "Präteritum": "erhielten",
+        "Perfekt": "haben erhalten"
+      }
+    }
   }
 ]
