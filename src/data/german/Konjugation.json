@@ -13977,5 +13977,365 @@
         "Perfekt": "haben gesessen"
       }
     }
+  },
+  {
+    "verb": "sollen",
+    "meaning": "should",
+    "conjugations": {
+      "ich": {
+        "Präsens": "soll",
+        "Präteritum": "sollte",
+        "Perfekt": "habe gesollt"
+      },
+      "du": {
+        "Präsens": "sollst",
+        "Präteritum": "solltest",
+        "Perfekt": "hast gesollt"
+      },
+      "er/sie/es": {
+        "Präsens": "soll",
+        "Präteritum": "sollte",
+        "Perfekt": "hat gesollt"
+      },
+      "wir": {
+        "Präsens": "sollen",
+        "Präteritum": "sollten",
+        "Perfekt": "haben gesollt"
+      },
+      "ihr": {
+        "Präsens": "sollt",
+        "Präteritum": "solltet",
+        "Perfekt": "habt gesollt"
+      },
+      "sie/Sie": {
+        "Präsens": "sollen",
+        "Präteritum": "sollten",
+        "Perfekt": "haben gesollt"
+      }
+    }
+  },
+  {
+    "verb": "sprechen",
+    "meaning": "speak",
+    "conjugations": {
+      "ich": {
+        "Präsens": "spreche",
+        "Präteritum": "sprach",
+        "Perfekt": "habe gesprochen"
+      },
+      "du": {
+        "Präsens": "sprichst",
+        "Präteritum": "sprachst",
+        "Perfekt": "hast gesprochen"
+      },
+      "er/sie/es": {
+        "Präsens": "spricht",
+        "Präteritum": "sprach",
+        "Perfekt": "hat gesprochen"
+      },
+      "wir": {
+        "Präsens": "sprechen",
+        "Präteritum": "sprachen",
+        "Perfekt": "haben gesprochen"
+      },
+      "ihr": {
+        "Präsens": "sprecht",
+        "Präteritum": "spracht",
+        "Perfekt": "habt gesprochen"
+      },
+      "sie/Sie": {
+        "Präsens": "sprechen",
+        "Präteritum": "sprachen",
+        "Perfekt": "haben gesprochen"
+      }
+    }
+  },
+  {
+    "verb": "springen",
+    "meaning": "jump",
+    "conjugations": {
+      "ich": {
+        "Präsens": "springe",
+        "Präteritum": "sprang",
+        "Perfekt": "bin gesprungen"
+      },
+      "du": {
+        "Präsens": "springst",
+        "Präteritum": "sprangst",
+        "Perfekt": "bist gesprungen"
+      },
+      "er/sie/es": {
+        "Präsens": "springt",
+        "Präteritum": "sprang",
+        "Perfekt": "ist gesprungen"
+      },
+      "wir": {
+        "Präsens": "springen",
+        "Präteritum": "sprangen",
+        "Perfekt": "sind gesprungen"
+      },
+      "ihr": {
+        "Präsens": "springt",
+        "Präteritum": "sprangt",
+        "Perfekt": "seid gesprungen"
+      },
+      "sie/Sie": {
+        "Präsens": "springen",
+        "Präteritum": "sprangen",
+        "Perfekt": "sind gesprungen"
+      }
+    }
+  },
+  {
+    "verb": "stehen",
+    "meaning": "stand",
+    "conjugations": {
+      "ich": {
+        "Präsens": "stehe",
+        "Präteritum": "stand",
+        "Perfekt": "habe gestanden"
+      },
+      "du": {
+        "Präsens": "stehst",
+        "Präteritum": "standst",
+        "Perfekt": "hast gestanden"
+      },
+      "er/sie/es": {
+        "Präsens": "steht",
+        "Präteritum": "stand",
+        "Perfekt": "hat gestanden"
+      },
+      "wir": {
+        "Präsens": "stehen",
+        "Präteritum": "standen",
+        "Perfekt": "haben gestanden"
+      },
+      "ihr": {
+        "Präsens": "steht",
+        "Präteritum": "standet",
+        "Perfekt": "habt gestanden"
+      },
+      "sie/Sie": {
+        "Präsens": "stehen",
+        "Präteritum": "standen",
+        "Perfekt": "haben gestanden"
+      }
+    }
+  },
+  {
+    "verb": "stehlen",
+    "meaning": "steal",
+    "conjugations": {
+      "ich": {
+        "Präsens": "stehle",
+        "Präteritum": "stahl",
+        "Perfekt": "habe gestohlen"
+      },
+      "du": {
+        "Präsens": "stiehlst",
+        "Präteritum": "stiehlst",
+        "Perfekt": "hast gestohlen"
+      },
+      "er/sie/es": {
+        "Präsens": "stiehlt",
+        "Präteritum": "stahl",
+        "Perfekt": "hat gestohlen"
+      },
+      "wir": {
+        "Präsens": "stehlen",
+        "Präteritum": "stahlen",
+        "Perfekt": "haben gestohlen"
+      },
+      "ihr": {
+        "Präsens": "stehlt",
+        "Präteritum": "stahlt",
+        "Perfekt": "habt gestohlen"
+      },
+      "sie/Sie": {
+        "Präsens": "stehlen",
+        "Präteritum": "stahlen",
+        "Perfekt": "haben gestohlen"
+      }
+    }
+  },
+  {
+    "verb": "steigen",
+    "meaning": "climb",
+    "conjugations": {
+      "ich": {
+        "Präsens": "steige",
+        "Präteritum": "stieg",
+        "Perfekt": "bin gestiegen"
+      },
+      "du": {
+        "Präsens": "steigst",
+        "Präteritum": "stiegst",
+        "Perfekt": "bist gestiegen"
+      },
+      "er/sie/es": {
+        "Präsens": "steigt",
+        "Präteritum": "stieg",
+        "Perfekt": "ist gestiegen"
+      },
+      "wir": {
+        "Präsens": "steigen",
+        "Präteritum": "stiegen",
+        "Perfekt": "sind gestiegen"
+      },
+      "ihr": {
+        "Präsens": "steigt",
+        "Präteritum": "stiegt",
+        "Perfekt": "seid gestiegen"
+      },
+      "sie/Sie": {
+        "Präsens": "steigen",
+        "Präteritum": "stiegen",
+        "Perfekt": "sind gestiegen"
+      }
+    }
+  },
+  {
+    "verb": "sterben",
+    "meaning": "die",
+    "conjugations": {
+      "ich": {
+        "Präsens": "sterbe",
+        "Präteritum": "starb",
+        "Perfekt": "bin gestorben"
+      },
+      "du": {
+        "Präsens": "stirbst",
+        "Präteritum": "starbst",
+        "Perfekt": "bist gestorben"
+      },
+      "er/sie/es": {
+        "Präsens": "stirbt",
+        "Präteritum": "starb",
+        "Perfekt": "ist gestorben"
+      },
+      "wir": {
+        "Präsens": "sterben",
+        "Präteritum": "starben",
+        "Perfekt": "sind gestorben"
+      },
+      "ihr": {
+        "Präsens": "sterbt",
+        "Präteritum": "starbt",
+        "Perfekt": "seid gestorben"
+      },
+      "sie/Sie": {
+        "Präsens": "sterben",
+        "Präteritum": "starben",
+        "Perfekt": "sind gestorben"
+      }
+    }
+  },
+  {
+    "verb": "stinken",
+    "meaning": "stink",
+    "conjugations": {
+      "ich": {
+        "Präsens": "stinke",
+        "Präteritum": "stank",
+        "Perfekt": "habe gestunken"
+      },
+      "du": {
+        "Präsens": "stinkst",
+        "Präteritum": "stankst",
+        "Perfekt": "hast gestunken"
+      },
+      "er/sie/es": {
+        "Präsens": "stinkt",
+        "Präteritum": "stank",
+        "Perfekt": "hat gestunken"
+      },
+      "wir": {
+        "Präsens": "stinken",
+        "Präteritum": "stanken",
+        "Perfekt": "haben gestunken"
+      },
+      "ihr": {
+        "Präsens": "stinkt",
+        "Präteritum": "stankt",
+        "Perfekt": "habt gestunken"
+      },
+      "sie/Sie": {
+        "Präsens": "stinken",
+        "Präteritum": "stanken",
+        "Perfekt": "haben gestunken"
+      }
+    }
+  },
+  {
+    "verb": "streiten",
+    "meaning": "argue",
+    "conjugations": {
+      "ich": {
+        "Präsens": "streite",
+        "Präteritum": "stritt",
+        "Perfekt": "habe gestritten"
+      },
+      "du": {
+        "Präsens": "streitest",
+        "Präteritum": "strittest",
+        "Perfekt": "hast gestritten"
+      },
+      "er/sie/es": {
+        "Präsens": "streitet",
+        "Präteritum": "stritt",
+        "Perfekt": "hat gestritten"
+      },
+      "wir": {
+        "Präsens": "streiten",
+        "Präteritum": "stritten",
+        "Perfekt": "haben gestritten"
+      },
+      "ihr": {
+        "Präsens": "streitet",
+        "Präteritum": "strittet",
+        "Perfekt": "habt gestritten"
+      },
+      "sie/Sie": {
+        "Präsens": "streiten",
+        "Präteritum": "stritten",
+        "Perfekt": "haben gestritten"
+      }
+    }
+  },
+  {
+    "verb": "suchen",
+    "meaning": "search",
+    "conjugations": {
+      "ich": {
+        "Präsens": "suche",
+        "Präteritum": "suchte",
+        "Perfekt": "habe gesucht"
+      },
+      "du": {
+        "Präsens": "suchst",
+        "Präteritum": "suchtest",
+        "Perfekt": "hast gesucht"
+      },
+      "er/sie/es": {
+        "Präsens": "sucht",
+        "Präteritum": "suchte",
+        "Perfekt": "hat gesucht"
+      },
+      "wir": {
+        "Präsens": "suchen",
+        "Präteritum": "suchten",
+        "Perfekt": "haben gesucht"
+      },
+      "ihr": {
+        "Präsens": "sucht",
+        "Präteritum": "suchtet",
+        "Perfekt": "habt gesucht"
+      },
+      "sie/Sie": {
+        "Präsens": "suchen",
+        "Präteritum": "suchten",
+        "Perfekt": "haben gesucht"
+      }
+    }
   }
 ]
