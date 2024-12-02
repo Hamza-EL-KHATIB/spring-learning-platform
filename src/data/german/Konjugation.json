@@ -12141,5 +12141,365 @@
         "Perfekt": "sind gekrochen"
       }
     }
+  },
+  {
+    "verb": "laden",
+    "meaning": "load, invite",
+    "conjugations": {
+      "ich": {
+        "Präsens": "lade",
+        "Präteritum": "lud",
+        "Perfekt": "habe geladen"
+      },
+      "du": {
+        "Präsens": "lädst",
+        "Präteritum": "ludst",
+        "Perfekt": "hast geladen"
+      },
+      "er/sie/es": {
+        "Präsens": "lädt",
+        "Präteritum": "lud",
+        "Perfekt": "hat geladen"
+      },
+      "wir": {
+        "Präsens": "laden",
+        "Präteritum": "luden",
+        "Perfekt": "haben geladen"
+      },
+      "ihr": {
+        "Präsens": "ladet",
+        "Präteritum": "ludet",
+        "Perfekt": "habt geladen"
+      },
+      "sie/Sie": {
+        "Präsens": "laden",
+        "Präteritum": "luden",
+        "Perfekt": "haben geladen"
+      }
+    }
+  },
+  {
+    "verb": "lassen",
+    "meaning": "let, allow",
+    "conjugations": {
+      "ich": {
+        "Präsens": "lasse",
+        "Präteritum": "ließ",
+        "Perfekt": "habe gelassen"
+      },
+      "du": {
+        "Präsens": "lässt",
+        "Präteritum": "ließest",
+        "Perfekt": "hast gelassen"
+      },
+      "er/sie/es": {
+        "Präsens": "lässt",
+        "Präteritum": "ließ",
+        "Perfekt": "hat gelassen"
+      },
+      "wir": {
+        "Präsens": "lassen",
+        "Präteritum": "ließen",
+        "Perfekt": "haben gelassen"
+      },
+      "ihr": {
+        "Präsens": "lasst",
+        "Präteritum": "ließt",
+        "Perfekt": "habt gelassen"
+      },
+      "sie/Sie": {
+        "Präsens": "lassen",
+        "Präteritum": "ließen",
+        "Perfekt": "haben gelassen"
+      }
+    }
+  },
+  {
+    "verb": "laufen",
+    "meaning": "run, walk",
+    "conjugations": {
+      "ich": {
+        "Präsens": "laufe",
+        "Präteritum": "lief",
+        "Perfekt": "bin gelaufen"
+      },
+      "du": {
+        "Präsens": "läufst",
+        "Präteritum": "liefst",
+        "Perfekt": "bist gelaufen"
+      },
+      "er/sie/es": {
+        "Präsens": "läuft",
+        "Präteritum": "lief",
+        "Perfekt": "ist gelaufen"
+      },
+      "wir": {
+        "Präsens": "laufen",
+        "Präteritum": "liefen",
+        "Perfekt": "sind gelaufen"
+      },
+      "ihr": {
+        "Präsens": "lauft",
+        "Präteritum": "lieft",
+        "Perfekt": "seid gelaufen"
+      },
+      "sie/Sie": {
+        "Präsens": "laufen",
+        "Präteritum": "liefen",
+        "Perfekt": "sind gelaufen"
+      }
+    }
+  },
+  {
+    "verb": "leben",
+    "meaning": "live",
+    "conjugations": {
+      "ich": {
+        "Präsens": "lebe",
+        "Präteritum": "lebte",
+        "Perfekt": "habe gelebt"
+      },
+      "du": {
+        "Präsens": "lebst",
+        "Präteritum": "lebtest",
+        "Perfekt": "hast gelebt"
+      },
+      "er/sie/es": {
+        "Präsens": "lebt",
+        "Präteritum": "lebte",
+        "Perfekt": "hat gelebt"
+      },
+      "wir": {
+        "Präsens": "leben",
+        "Präteritum": "lebten",
+        "Perfekt": "haben gelebt"
+      },
+      "ihr": {
+        "Präsens": "lebt",
+        "Präteritum": "lebtet",
+        "Perfekt": "habt gelebt"
+      },
+      "sie/Sie": {
+        "Präsens": "leben",
+        "Präteritum": "lebten",
+        "Perfekt": "haben gelebt"
+      }
+    }
+  },
+  {
+    "verb": "legen",
+    "meaning": "lay, put",
+    "conjugations": {
+      "ich": {
+        "Präsens": "lege",
+        "Präteritum": "legte",
+        "Perfekt": "habe gelegt"
+      },
+      "du": {
+        "Präsens": "legst",
+        "Präteritum": "legtest",
+        "Perfekt": "hast gelegt"
+      },
+      "er/sie/es": {
+        "Präsens": "legt",
+        "Präteritum": "legte",
+        "Perfekt": "hat gelegt"
+      },
+      "wir": {
+        "Präsens": "legen",
+        "Präteritum": "legten",
+        "Perfekt": "haben gelegt"
+      },
+      "ihr": {
+        "Präsens": "legt",
+        "Präteritum": "legtet",
+        "Perfekt": "habt gelegt"
+      },
+      "sie/Sie": {
+        "Präsens": "legen",
+        "Präteritum": "legten",
+        "Perfekt": "haben gelegt"
+      }
+    }
+  },
+  {
+    "verb": "lehren",
+    "meaning": "teach",
+    "conjugations": {
+      "ich": {
+        "Präsens": "lehre",
+        "Präteritum": "lehrte",
+        "Perfekt": "habe gelehrt"
+      },
+      "du": {
+        "Präsens": "lehrst",
+        "Präteritum": "lehrtest",
+        "Perfekt": "hast gelehrt"
+      },
+      "er/sie/es": {
+        "Präsens": "lehrt",
+        "Präteritum": "lehrte",
+        "Perfekt": "hat gelehrt"
+      },
+      "wir": {
+        "Präsens": "lehren",
+        "Präteritum": "lehrten",
+        "Perfekt": "haben gelehrt"
+      },
+      "ihr": {
+        "Präsens": "lehrt",
+        "Präteritum": "lehrtet",
+        "Perfekt": "habt gelehrt"
+      },
+      "sie/Sie": {
+        "Präsens": "lehren",
+        "Präteritum": "lehrten",
+        "Perfekt": "haben gelehrt"
+      }
+    }
+  },
+  {
+    "verb": "leihen",
+    "meaning": "lend",
+    "conjugations": {
+      "ich": {
+        "Präsens": "leihe",
+        "Präteritum": "lieh",
+        "Perfekt": "habe geliehen"
+      },
+      "du": {
+        "Präsens": "leihst",
+        "Präteritum": "liehst",
+        "Perfekt": "hast geliehen"
+      },
+      "er/sie/es": {
+        "Präsens": "leiht",
+        "Präteritum": "lieh",
+        "Perfekt": "hat geliehen"
+      },
+      "wir": {
+        "Präsens": "leihen",
+        "Präteritum": "liehen",
+        "Perfekt": "haben geliehen"
+      },
+      "ihr": {
+        "Präsens": "leiht",
+        "Präteritum": "lieht",
+        "Perfekt": "habt geliehen"
+      },
+      "sie/Sie": {
+        "Präsens": "leihen",
+        "Präteritum": "liehen",
+        "Perfekt": "haben geliehen"
+      }
+    }
+  },
+  {
+    "verb": "lesen",
+    "meaning": "read",
+    "conjugations": {
+      "ich": {
+        "Präsens": "lese",
+        "Präteritum": "las",
+        "Perfekt": "habe gelesen"
+      },
+      "du": {
+        "Präsens": "liest",
+        "Präteritum": "lasest",
+        "Perfekt": "hast gelesen"
+      },
+      "er/sie/es": {
+        "Präsens": "liest",
+        "Präteritum": "las",
+        "Perfekt": "hat gelesen"
+      },
+      "wir": {
+        "Präsens": "lesen",
+        "Präteritum": "lasen",
+        "Perfekt": "haben gelesen"
+      },
+      "ihr": {
+        "Präsens": "lest",
+        "Präteritum": "last",
+        "Perfekt": "habt gelesen"
+      },
+      "sie/Sie": {
+        "Präsens": "lesen",
+        "Präteritum": "lasen",
+        "Perfekt": "haben gelesen"
+      }
+    }
+  },
+  {
+    "verb": "liegen",
+    "meaning": "lie, be situated",
+    "conjugations": {
+      "ich": {
+        "Präsens": "liege",
+        "Präteritum": "lag",
+        "Perfekt": "habe gelegen"
+      },
+      "du": {
+        "Präsens": "liegst",
+        "Präteritum": "lagst",
+        "Perfekt": "hast gelegen"
+      },
+      "er/sie/es": {
+        "Präsens": "liegt",
+        "Präteritum": "lag",
+        "Perfekt": "hat gelegen"
+      },
+      "wir": {
+        "Präsens": "liegen",
+        "Präteritum": "lagen",
+        "Perfekt": "haben gelegen"
+      },
+      "ihr": {
+        "Präsens": "liegt",
+        "Präteritum": "lagt",
+        "Perfekt": "habt gelegen"
+      },
+      "sie/Sie": {
+        "Präsens": "liegen",
+        "Präteritum": "lagen",
+        "Perfekt": "haben gelegen"
+      }
+    }
+  },
+  {
+    "verb": "löschen",
+    "meaning": "delete, extinguish",
+    "conjugations": {
+      "ich": {
+        "Präsens": "lösche",
+        "Präteritum": "löschte",
+        "Perfekt": "habe gelöscht"
+      },
+      "du": {
+        "Präsens": "löschst",
+        "Präteritum": "löschtest",
+        "Perfekt": "hast gelöscht"
+      },
+      "er/sie/es": {
+        "Präsens": "löscht",
+        "Präteritum": "löschte",
+        "Perfekt": "hat gelöscht"
+      },
+      "wir": {
+        "Präsens": "löschen",
+        "Präteritum": "löschten",
+        "Perfekt": "haben gelöscht"
+      },
+      "ihr": {
+        "Präsens": "löscht",
+        "Präteritum": "löschtet",
+        "Perfekt": "habt gelöscht"
+      },
+      "sie/Sie": {
+        "Präsens": "löschen",
+        "Präteritum": "löschten",
+        "Perfekt": "haben gelöscht"
+      }
+    }
   }
 ]
