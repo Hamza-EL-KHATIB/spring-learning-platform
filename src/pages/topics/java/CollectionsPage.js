@@ -1,10 +1,39 @@
-import React from 'react';
-import { Info, Clock } from 'lucide-react';
+import React, { useState } from 'react';
+import { List, Clock, Layers, Database, GitBranch } from 'lucide-react';
 import collectionsJson from '../../../data/java/collections.json';
 
 const CollectionsPage = () => {
+    const [activeTab, setActiveTab] = useState('list');
+
+    const tabs = [
+        { id: 'list', title: 'List', icon: <List className="w-4 h-4" /> },
+        { id: 'set', title: 'Set', icon: <Layers className="w-4 h-4" /> },
+        { id: 'queue', title: 'Queue', icon: <GitBranch className="w-4 h-4" /> },
+        { id: 'map', title: 'Map', icon: <Database className="w-4 h-4" /> },
+        { id: 'performance', title: 'Performance', icon: <Clock className="w-4 h-4" /> }
+    ];
+
+    const TabNavigation = () => (
+        <div className="mb-8 flex flex-wrap gap-4">
+            {tabs.map((tab) => (
+                <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+                        activeTab === tab.id
+                            ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                            : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
+                    }`}
+                >
+                    {tab.icon}
+                    {tab.title}
+                </button>
+            ))}
+        </div>
+    );
+
     const renderImplementation = (impl) => (
-        <div key={impl.name} className="bg-gray-800/50 rounded-lg p-4 mb-4">
+        <div key={impl.name} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
             <h4 className="text-lg font-medium text-purple-300 mb-2">{impl.name}</h4>
             <ul className="list-disc list-inside space-y-1">
                 {impl.characteristics.map((char, idx) => (
@@ -15,8 +44,8 @@ const CollectionsPage = () => {
     );
 
     const renderCollectionType = (type) => (
-        <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
-            <h3 className="text-xl font-semibold text-white mb-3">{type.type}</h3>
+        <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h3 className="text-xl font-semibold text-purple-400 mb-3">{type.type}</h3>
             <p className="text-gray-300 mb-4">{type.description}</p>
             <div className="space-y-4">
                 {type.implementations.map((impl) => renderImplementation(impl))}
@@ -24,57 +53,72 @@ const CollectionsPage = () => {
         </div>
     );
 
-    const renderPerformanceRow = (data) => (
-        <div key={data.type} className="grid grid-cols-5 gap-4 py-3 border-b border-gray-700">
-            <div className="text-purple-300 font-medium">{data.type}</div>
-            <div className="text-gray-300">{data.accessTime}</div>
-            <div className="text-gray-300">{data.insertTime}</div>
-            <div className="text-gray-300">{data.deleteTime}</div>
-            <div className="text-gray-300">{data.memoryOverhead}</div>
+    const renderPerformanceTable = (performanceData) => (
+        <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <div className="overflow-x-auto">
+                <table className="w-full">
+                    <thead>
+                    <tr className="border-b border-gray-700">
+                        <th className="text-left p-3 text-gray-400">Collection Type</th>
+                        <th className="text-left p-3 text-gray-400">Access Time</th>
+                        <th className="text-left p-3 text-gray-400">Insert Time</th>
+                        <th className="text-left p-3 text-gray-400">Delete Time</th>
+                        <th className="text-left p-3 text-gray-400">Memory Overhead</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {performanceData.map((data) => (
+                        <tr key={data.type} className="border-b border-gray-700/50">
+                            <td className="p-3 text-purple-300 font-medium">{data.type}</td>
+                            <td className="p-3 text-gray-300">{data.accessTime}</td>
+                            <td className="p-3 text-gray-300">{data.insertTime}</td>
+                            <td className="p-3 text-gray-300">{data.deleteTime}</td>
+                            <td className="p-3 text-gray-300">{data.memoryOverhead}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 
-    const renderPerformanceTable = (performanceData) => (
-        <div className="bg-gray-800 rounded-lg p-6 border border-purple-500/20">
-            <div className="grid grid-cols-5 gap-4 mb-4 text-sm font-medium text-gray-400">
-                <div>Collection Type</div>
-                <div>Access Time</div>
-                <div>Insert Time</div>
-                <div>Delete Time</div>
-                <div>Memory Overhead</div>
-            </div>
-            {performanceData.map(renderPerformanceRow)}
-        </div>
-    );
+    const renderContent = () => {
+        const types = collectionsJson.topics[0].types;
+
+        switch (activeTab) {
+            case 'list':
+                return renderCollectionType(types.find(t => t.type === 'List'));
+            case 'set':
+                return renderCollectionType(types.find(t => t.type === 'Set'));
+            case 'queue':
+                return renderCollectionType(types.find(t => t.type === 'Queue'));
+            case 'map':
+                return renderCollectionType(types.find(t => t.type === 'Map'));
+            case 'performance':
+                return (
+                    <div>
+                        <p className="text-gray-300 mb-6">{collectionsJson.topics[1].description}</p>
+                        {renderPerformanceTable(collectionsJson.topics[1].performance)}
+                    </div>
+                );
+            default:
+                return null;
+        }
+    };
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Title Section */}
+            {/* Header */}
             <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
                 <h1 className="text-3xl font-bold text-white mb-2">{collectionsJson.title}</h1>
+                <p className="text-gray-300">{collectionsJson.topics[0].description}</p>
             </div>
 
-            {/* Collection Types Section */}
-            <div className="mb-12">
-                <div className="flex items-center mb-6">
-                    <Info className="w-6 h-6 mr-2 text-purple-400" />
-                    <h2 className="text-2xl font-bold text-white">{collectionsJson.topics[0].title}</h2>
-                </div>
-                <p className="text-gray-300 mb-6">{collectionsJson.topics[0].description}</p>
-                <div className="grid grid-cols-1 gap-6">
-                    {collectionsJson.topics[0].types.map((type) => renderCollectionType(type))}
-                </div>
-            </div>
+            {/* Navigation */}
+            <TabNavigation />
 
-            {/* Performance Section */}
-            <div className="mb-12">
-                <div className="flex items-center mb-6">
-                    <Clock className="w-6 h-6 mr-2 text-purple-400" />
-                    <h2 className="text-2xl font-bold text-white">{collectionsJson.topics[1].title}</h2>
-                </div>
-                <p className="text-gray-300 mb-6">{collectionsJson.topics[1].description}</p>
-                {renderPerformanceTable(collectionsJson.topics[1].performance)}
-            </div>
+            {/* Content */}
+            <div className="space-y-8">{renderContent()}</div>
         </div>
     );
 };
