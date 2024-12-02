@@ -12501,5 +12501,365 @@
         "Perfekt": "haben gelöscht"
       }
     }
+  },
+  {
+    "verb": "machen",
+    "meaning": "make, do",
+    "conjugations": {
+      "ich": {
+        "Präsens": "mache",
+        "Präteritum": "machte",
+        "Perfekt": "habe gemacht"
+      },
+      "du": {
+        "Präsens": "machst",
+        "Präteritum": "machtest",
+        "Perfekt": "hast gemacht"
+      },
+      "er/sie/es": {
+        "Präsens": "macht",
+        "Präteritum": "machte",
+        "Perfekt": "hat gemacht"
+      },
+      "wir": {
+        "Präsens": "machen",
+        "Präteritum": "machten",
+        "Perfekt": "haben gemacht"
+      },
+      "ihr": {
+        "Präsens": "macht",
+        "Präteritum": "machtet",
+        "Perfekt": "habt gemacht"
+      },
+      "sie/Sie": {
+        "Präsens": "machen",
+        "Präteritum": "machten",
+        "Perfekt": "haben gemacht"
+      }
+    }
+  },
+  {
+    "verb": "meiden",
+    "meaning": "avoid",
+    "conjugations": {
+      "ich": {
+        "Präsens": "meide",
+        "Präteritum": "mied",
+        "Perfekt": "habe gemieden"
+      },
+      "du": {
+        "Präsens": "meidest",
+        "Präteritum": "miedest",
+        "Perfekt": "hast gemieden"
+      },
+      "er/sie/es": {
+        "Präsens": "meidet",
+        "Präteritum": "mied",
+        "Perfekt": "hat gemieden"
+      },
+      "wir": {
+        "Präsens": "meiden",
+        "Präteritum": "mieden",
+        "Perfekt": "haben gemieden"
+      },
+      "ihr": {
+        "Präsens": "meidet",
+        "Präteritum": "miedet",
+        "Perfekt": "habt gemieden"
+      },
+      "sie/Sie": {
+        "Präsens": "meiden",
+        "Präteritum": "mieden",
+        "Perfekt": "haben gemieden"
+      }
+    }
+  },
+  {
+    "verb": "meinen",
+    "meaning": "mean, think",
+    "conjugations": {
+      "ich": {
+        "Präsens": "meine",
+        "Präteritum": "meinte",
+        "Perfekt": "habe gemeint"
+      },
+      "du": {
+        "Präsens": "meinst",
+        "Präteritum": "meintest",
+        "Perfekt": "hast gemeint"
+      },
+      "er/sie/es": {
+        "Präsens": "meint",
+        "Präteritum": "meinte",
+        "Perfekt": "hat gemeint"
+      },
+      "wir": {
+        "Präsens": "meinen",
+        "Präteritum": "meinten",
+        "Perfekt": "haben gemeint"
+      },
+      "ihr": {
+        "Präsens": "meint",
+        "Präteritum": "meintet",
+        "Perfekt": "habt gemeint"
+      },
+      "sie/Sie": {
+        "Präsens": "meinen",
+        "Präteritum": "meinten",
+        "Perfekt": "haben gemeint"
+      }
+    }
+  },
+  {
+    "verb": "melden",
+    "meaning": "report, announce",
+    "conjugations": {
+      "ich": {
+        "Präsens": "melde",
+        "Präteritum": "meldete",
+        "Perfekt": "habe gemeldet"
+      },
+      "du": {
+        "Präsens": "meldest",
+        "Präteritum": "meldetest",
+        "Perfekt": "hast gemeldet"
+      },
+      "er/sie/es": {
+        "Präsens": "meldet",
+        "Präteritum": "meldete",
+        "Perfekt": "hat gemeldet"
+      },
+      "wir": {
+        "Präsens": "melden",
+        "Präteritum": "meldeten",
+        "Perfekt": "haben gemeldet"
+      },
+      "ihr": {
+        "Präsens": "meldet",
+        "Präteritum": "meldetet",
+        "Perfekt": "habt gemeldet"
+      },
+      "sie/Sie": {
+        "Präsens": "melden",
+        "Präteritum": "meldeten",
+        "Perfekt": "haben gemeldet"
+      }
+    }
+  },
+  {
+    "verb": "messen",
+    "meaning": "measure",
+    "conjugations": {
+      "ich": {
+        "Präsens": "messe",
+        "Präteritum": "maß",
+        "Perfekt": "habe gemessen"
+      },
+      "du": {
+        "Präsens": "misst",
+        "Präteritum": "maßest",
+        "Perfekt": "hast gemessen"
+      },
+      "er/sie/es": {
+        "Präsens": "misst",
+        "Präteritum": "maß",
+        "Perfekt": "hat gemessen"
+      },
+      "wir": {
+        "Präsens": "messen",
+        "Präteritum": "maßen",
+        "Perfekt": "haben gemessen"
+      },
+      "ihr": {
+        "Präsens": "messt",
+        "Präteritum": "maßt",
+        "Perfekt": "habt gemessen"
+      },
+      "sie/Sie": {
+        "Präsens": "messen",
+        "Präteritum": "maßen",
+        "Perfekt": "haben gemessen"
+      }
+    }
+  },
+  {
+    "verb": "mögen",
+    "meaning": "like",
+    "conjugations": {
+      "ich": {
+        "Präsens": "mag",
+        "Präteritum": "mochte",
+        "Perfekt": "habe gemocht"
+      },
+      "du": {
+        "Präsens": "magst",
+        "Präteritum": "mochtest",
+        "Perfekt": "hast gemocht"
+      },
+      "er/sie/es": {
+        "Präsens": "mag",
+        "Präteritum": "mochte",
+        "Perfekt": "hat gemocht"
+      },
+      "wir": {
+        "Präsens": "mögen",
+        "Präteritum": "mochten",
+        "Perfekt": "haben gemocht"
+      },
+      "ihr": {
+        "Präsens": "mögt",
+        "Präteritum": "mochtet",
+        "Perfekt": "habt gemocht"
+      },
+      "sie/Sie": {
+        "Präsens": "mögen",
+        "Präteritum": "mochten",
+        "Perfekt": "haben gemocht"
+      }
+    }
+  },
+  {
+    "verb": "müssen",
+    "meaning": "must, have to",
+    "conjugations": {
+      "ich": {
+        "Präsens": "muss",
+        "Präteritum": "musste",
+        "Perfekt": "habe gemusst"
+      },
+      "du": {
+        "Präsens": "musst",
+        "Präteritum": "musstest",
+        "Perfekt": "hast gemusst"
+      },
+      "er/sie/es": {
+        "Präsens": "muss",
+        "Präteritum": "musste",
+        "Perfekt": "hat gemusst"
+      },
+      "wir": {
+        "Präsens": "müssen",
+        "Präteritum": "mussten",
+        "Perfekt": "haben gemusst"
+      },
+      "ihr": {
+        "Präsens": "müsst",
+        "Präteritum": "musstet",
+        "Perfekt": "habt gemusst"
+      },
+      "sie/Sie": {
+        "Präsens": "müssen",
+        "Präteritum": "mussten",
+        "Perfekt": "haben gemusst"
+      }
+    }
+  },
+  {
+    "verb": "nehmen",
+    "meaning": "take",
+    "conjugations": {
+      "ich": {
+        "Präsens": "nehme",
+        "Präteritum": "nahm",
+        "Perfekt": "habe genommen"
+      },
+      "du": {
+        "Präsens": "nimmst",
+        "Präteritum": "nahmst",
+        "Perfekt": "hast genommen"
+      },
+      "er/sie/es": {
+        "Präsens": "nimmt",
+        "Präteritum": "nahm",
+        "Perfekt": "hat genommen"
+      },
+      "wir": {
+        "Präsens": "nehmen",
+        "Präteritum": "nahmen",
+        "Perfekt": "haben genommen"
+      },
+      "ihr": {
+        "Präsens": "nehmt",
+        "Präteritum": "nahmt",
+        "Perfekt": "habt genommen"
+      },
+      "sie/Sie": {
+        "Präsens": "nehmen",
+        "Präteritum": "nahmen",
+        "Perfekt": "haben genommen"
+      }
+    }
+  },
+  {
+    "verb": "nennen",
+    "meaning": "name, call",
+    "conjugations": {
+      "ich": {
+        "Präsens": "nenne",
+        "Präteritum": "nannte",
+        "Perfekt": "habe genannt"
+      },
+      "du": {
+        "Präsens": "nennst",
+        "Präteritum": "nanntest",
+        "Perfekt": "hast genannt"
+      },
+      "er/sie/es": {
+        "Präsens": "nennt",
+        "Präteritum": "nannte",
+        "Perfekt": "hat genannt"
+      },
+      "wir": {
+        "Präsens": "nennen",
+        "Präteritum": "nannten",
+        "Perfekt": "haben genannt"
+      },
+      "ihr": {
+        "Präsens": "nennt",
+        "Präteritum": "nanntet",
+        "Perfekt": "habt genannt"
+      },
+      "sie/Sie": {
+        "Präsens": "nennen",
+        "Präteritum": "nannten",
+        "Perfekt": "haben genannt"
+      }
+    }
+  },
+  {
+    "verb": "öffnen",
+    "meaning": "open",
+    "conjugations": {
+      "ich": {
+        "Präsens": "öffne",
+        "Präteritum": "öffnete",
+        "Perfekt": "habe geöffnet"
+      },
+      "du": {
+        "Präsens": "öffnest",
+        "Präteritum": "öffnetest",
+        "Perfekt": "hast geöffnet"
+      },
+      "er/sie/es": {
+        "Präsens": "öffnet",
+        "Präteritum": "öffnete",
+        "Perfekt": "hat geöffnet"
+      },
+      "wir": {
+        "Präsens": "öffnen",
+        "Präteritum": "öffneten",
+        "Perfekt": "haben geöffnet"
+      },
+      "ihr": {
+        "Präsens": "öffnet",
+        "Präteritum": "öffnetet",
+        "Perfekt": "habt geöffnet"
+      },
+      "sie/Sie": {
+        "Präsens": "öffnen",
+        "Präteritum": "öffneten",
+        "Perfekt": "haben geöffnet"
+      }
+    }
   }
 ]
