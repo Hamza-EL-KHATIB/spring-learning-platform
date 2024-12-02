@@ -14697,5 +14697,365 @@
         "Perfekt": "haben verloren"
       }
     }
+  },
+  {
+    "verb": "verstehen",
+    "meaning": "understand",
+    "conjugations": {
+      "ich": {
+        "Präsens": "verstehe",
+        "Präteritum": "verstand",
+        "Perfekt": "habe verstanden"
+      },
+      "du": {
+        "Präsens": "verstehst",
+        "Präteritum": "verstandst",
+        "Perfekt": "hast verstanden"
+      },
+      "er/sie/es": {
+        "Präsens": "versteht",
+        "Präteritum": "verstand",
+        "Perfekt": "hat verstanden"
+      },
+      "wir": {
+        "Präsens": "verstehen",
+        "Präteritum": "verstanden",
+        "Perfekt": "haben verstanden"
+      },
+      "ihr": {
+        "Präsens": "versteht",
+        "Präteritum": "verstandet",
+        "Perfekt": "habt verstanden"
+      },
+      "sie/Sie": {
+        "Präsens": "verstehen",
+        "Präteritum": "verstanden",
+        "Perfekt": "haben verstanden"
+      }
+    }
+  },
+  {
+    "verb": "verschwinden",
+    "meaning": "disappear",
+    "conjugations": {
+      "ich": {
+        "Präsens": "verschwinde",
+        "Präteritum": "verschwand",
+        "Perfekt": "bin verschwunden"
+      },
+      "du": {
+        "Präsens": "verschwindest",
+        "Präteritum": "verschwandst",
+        "Perfekt": "bist verschwunden"
+      },
+      "er/sie/es": {
+        "Präsens": "verschwindet",
+        "Präteritum": "verschwand",
+        "Perfekt": "ist verschwunden"
+      },
+      "wir": {
+        "Präsens": "verschwinden",
+        "Präteritum": "verschwanden",
+        "Perfekt": "sind verschwunden"
+      },
+      "ihr": {
+        "Präsens": "verschwindet",
+        "Präteritum": "verschwandet",
+        "Perfekt": "seid verschwunden"
+      },
+      "sie/Sie": {
+        "Präsens": "verschwinden",
+        "Präteritum": "verschwanden",
+        "Perfekt": "sind verschwunden"
+      }
+    }
+  },
+  {
+    "verb": "wachsen",
+    "meaning": "grow",
+    "conjugations": {
+      "ich": {
+        "Präsens": "wachse",
+        "Präteritum": "wuchs",
+        "Perfekt": "bin gewachsen"
+      },
+      "du": {
+        "Präsens": "wächst",
+        "Präteritum": "wuchsest",
+        "Perfekt": "bist gewachsen"
+      },
+      "er/sie/es": {
+        "Präsens": "wächst",
+        "Präteritum": "wuchs",
+        "Perfekt": "ist gewachsen"
+      },
+      "wir": {
+        "Präsens": "wachsen",
+        "Präteritum": "wuchsen",
+        "Perfekt": "sind gewachsen"
+      },
+      "ihr": {
+        "Präsens": "wachst",
+        "Präteritum": "wuchst",
+        "Perfekt": "seid gewachsen"
+      },
+      "sie/Sie": {
+        "Präsens": "wachsen",
+        "Präteritum": "wuchsen",
+        "Perfekt": "sind gewachsen"
+      }
+    }
+  },
+  {
+    "verb": "waschen",
+    "meaning": "wash",
+    "conjugations": {
+      "ich": {
+        "Präsens": "wasche",
+        "Präteritum": "wusch",
+        "Perfekt": "habe gewaschen"
+      },
+      "du": {
+        "Präsens": "wäschst",
+        "Präteritum": "wuschst",
+        "Perfekt": "hast gewaschen"
+      },
+      "er/sie/es": {
+        "Präsens": "wäscht",
+        "Präteritum": "wusch",
+        "Perfekt": "hat gewaschen"
+      },
+      "wir": {
+        "Präsens": "waschen",
+        "Präteritum": "wuschen",
+        "Perfekt": "haben gewaschen"
+      },
+      "ihr": {
+        "Präsens": "wascht",
+        "Präteritum": "wuscht",
+        "Perfekt": "habt gewaschen"
+      },
+      "sie/Sie": {
+        "Präsens": "waschen",
+        "Präteritum": "wuschen",
+        "Perfekt": "haben gewaschen"
+      }
+    }
+  },
+  {
+    "verb": "werden",
+    "meaning": "become",
+    "conjugations": {
+      "ich": {
+        "Präsens": "werde",
+        "Präteritum": "wurde",
+        "Perfekt": "bin geworden"
+      },
+      "du": {
+        "Präsens": "wirst",
+        "Präteritum": "wurdest",
+        "Perfekt": "bist geworden"
+      },
+      "er/sie/es": {
+        "Präsens": "wird",
+        "Präteritum": "wurde",
+        "Perfekt": "ist geworden"
+      },
+      "wir": {
+        "Präsens": "werden",
+        "Präteritum": "wurden",
+        "Perfekt": "sind geworden"
+      },
+      "ihr": {
+        "Präsens": "werdet",
+        "Präteritum": "wurdet",
+        "Perfekt": "seid geworden"
+      },
+      "sie/Sie": {
+        "Präsens": "werden",
+        "Präteritum": "wurden",
+        "Perfekt": "sind geworden"
+      }
+    }
+  },
+  {
+    "verb": "werfen",
+    "meaning": "throw",
+    "conjugations": {
+      "ich": {
+        "Präsens": "werfe",
+        "Präteritum": "warf",
+        "Perfekt": "habe geworfen"
+      },
+      "du": {
+        "Präsens": "wirfst",
+        "Präteritum": "warfst",
+        "Perfekt": "hast geworfen"
+      },
+      "er/sie/es": {
+        "Präsens": "wirft",
+        "Präteritum": "warf",
+        "Perfekt": "hat geworfen"
+      },
+      "wir": {
+        "Präsens": "werfen",
+        "Präteritum": "warfen",
+        "Perfekt": "haben geworfen"
+      },
+      "ihr": {
+        "Präsens": "werft",
+        "Präteritum": "warft",
+        "Perfekt": "habt geworfen"
+      },
+      "sie/Sie": {
+        "Präsens": "werfen",
+        "Präteritum": "warfen",
+        "Perfekt": "haben geworfen"
+      }
+    }
+  },
+  {
+    "verb": "wissen",
+    "meaning": "know",
+    "conjugations": {
+      "ich": {
+        "Präsens": "weiß",
+        "Präteritum": "wusste",
+        "Perfekt": "habe gewusst"
+      },
+      "du": {
+        "Präsens": "weißt",
+        "Präteritum": "wusstest",
+        "Perfekt": "hast gewusst"
+      },
+      "er/sie/es": {
+        "Präsens": "weiß",
+        "Präteritum": "wusste",
+        "Perfekt": "hat gewusst"
+      },
+      "wir": {
+        "Präsens": "wissen",
+        "Präteritum": "wussten",
+        "Perfekt": "haben gewusst"
+      },
+      "ihr": {
+        "Präsens": "wisst",
+        "Präteritum": "wusstet",
+        "Perfekt": "habt gewusst"
+      },
+      "sie/Sie": {
+        "Präsens": "wissen",
+        "Präteritum": "wussten",
+        "Perfekt": "haben gewusst"
+      }
+    }
+  },
+  {
+    "verb": "wollen",
+    "meaning": "want",
+    "conjugations": {
+      "ich": {
+        "Präsens": "will",
+        "Präteritum": "wollte",
+        "Perfekt": "habe gewollt"
+      },
+      "du": {
+        "Präsens": "willst",
+        "Präteritum": "wolltest",
+        "Perfekt": "hast gewollt"
+      },
+      "er/sie/es": {
+        "Präsens": "will",
+        "Präteritum": "wollte",
+        "Perfekt": "hat gewollt"
+      },
+      "wir": {
+        "Präsens": "wollen",
+        "Präteritum": "wollten",
+        "Perfekt": "haben gewollt"
+      },
+      "ihr": {
+        "Präsens": "wollt",
+        "Präteritum": "wolltet",
+        "Perfekt": "habt gewollt"
+      },
+      "sie/Sie": {
+        "Präsens": "wollen",
+        "Präteritum": "wollten",
+        "Perfekt": "haben gewollt"
+      }
+    }
+  },
+  {
+    "verb": "ziehen",
+    "meaning": "pull, move",
+    "conjugations": {
+      "ich": {
+        "Präsens": "ziehe",
+        "Präteritum": "zog",
+        "Perfekt": "habe gezogen"
+      },
+      "du": {
+        "Präsens": "ziehst",
+        "Präteritum": "zogst",
+        "Perfekt": "hast gezogen"
+      },
+      "er/sie/es": {
+        "Präsens": "zieht",
+        "Präteritum": "zog",
+        "Perfekt": "hat gezogen"
+      },
+      "wir": {
+        "Präsens": "ziehen",
+        "Präteritum": "zogen",
+        "Perfekt": "haben gezogen"
+      },
+      "ihr": {
+        "Präsens": "zieht",
+        "Präteritum": "zogt",
+        "Perfekt": "habt gezogen"
+      },
+      "sie/Sie": {
+        "Präsens": "ziehen",
+        "Präteritum": "zogen",
+        "Perfekt": "haben gezogen"
+      }
+    }
+  },
+  {
+    "verb": "zwingen",
+    "meaning": "force",
+    "conjugations": {
+      "ich": {
+        "Präsens": "zwinge",
+        "Präteritum": "zwang",
+        "Perfekt": "habe gezwungen"
+      },
+      "du": {
+        "Präsens": "zwingst",
+        "Präteritum": "zwangst",
+        "Perfekt": "hast gezwungen"
+      },
+      "er/sie/es": {
+        "Präsens": "zwingt",
+        "Präteritum": "zwang",
+        "Perfekt": "hat gezwungen"
+      },
+      "wir": {
+        "Präsens": "zwingen",
+        "Präteritum": "zwangen",
+        "Perfekt": "haben gezwungen"
+      },
+      "ihr": {
+        "Präsens": "zwingt",
+        "Präteritum": "zwangt",
+        "Perfekt": "habt gezwungen"
+      },
+      "sie/Sie": {
+        "Präsens": "zwingen",
+        "Präteritum": "zwangen",
+        "Perfekt": "haben gezwungen"
+      }
+    }
   }
 ]
