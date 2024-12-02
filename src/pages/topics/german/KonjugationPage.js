@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     Search,
     ChevronRight,
@@ -7,51 +7,24 @@ import {
     Eye,
     EyeOff,
     Loader2,
-    AlertCircle
+    AlertCircle,
+    BookOpenCheck
 } from 'lucide-react';
 import konjugationData from '../../../data/german/Konjugation.json';
-
-// Custom scrollbar styles
-const scrollbarStyles = `
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: #2a2a2a;
-    border-radius: 10px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(128, 90, 213, 0.6);
-    border-radius: 10px;
-    border: 2px solid #2a2a2a;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(128, 90, 213, 0.9);
-  }
-`;
-
-// German character validation
-const germanChars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ä', 'ö', 'ü', 'ß'];
 
 const KonjugationPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [activeVerbIndex, setActiveVerbIndex] = useState(0);
     const [showEnglish, setShowEnglish] = useState(true);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-    const [dynamicVerbs, setDynamicVerbs] = useState([]);
+    const [showMobileSidebar, setShowMobileSidebar] = useState(false);
+    const [dynamicVerbs] = useState([]);
     const [filteredVerbs, setFilteredVerbs] = useState(konjugationData);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const style = document.createElement('style');
-        style.textContent = scrollbarStyles;
-        document.head.appendChild(style);
-        return () => document.head.removeChild(style);
-    }, []);
+    // German character validation
+    const germanChars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ä', 'ö', 'ü', 'ß'];
 
     const validateAndSanitizeInput = (input) => {
         const sanitized = input.toLowerCase().trim();
@@ -59,89 +32,6 @@ const KonjugationPage = () => {
             sanitized,
             isValid: sanitized.split('').every(char => germanChars.includes(char))
         };
-    };
-
-    const fetchVerbFromWebsite = async (verb) => {
-        setIsLoading(true);
-        setError(null);
-
-        try {
-            const url = `https://www.verbformen.com/conjugation/${verb}_ist.htm`;
-            const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
-
-            const response = await fetch(proxyUrl);
-            if (!response.ok) throw new Error('Verb not found');
-
-            const html = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-
-            const conjugations = extractConjugations(doc);
-            const meaning = extractMeaning(doc);
-
-            // Verify we got valid conjugations
-            if (!hasValidConjugations(conjugations)) {
-                throw new Error('Invalid conjugations');
-            }
-
-            const verbData = { verb, meaning, conjugations };
-            setDynamicVerbs(prev => {
-                if (!prev.some(v => v.verb === verb)) {
-                    return [...prev, verbData];
-                }
-                return prev;
-            });
-
-            return verbData;
-        } catch (err) {
-            setError('Word not found or not a valid verb. Please check your spelling.');
-            return null;
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    const extractConjugations = (doc) => {
-        const conjugations = {};
-        const pronouns = ['ich', 'du', 'er/sie/es', 'wir', 'ihr', 'sie/Sie'];
-
-        pronouns.forEach(pronoun => {
-            conjugations[pronoun] = {
-                präsens: extractTenseConjugation(doc, 'Present', pronoun),
-                präteritum: extractTenseConjugation(doc, 'Imperfect', pronoun),
-                perfekt: extractTenseConjugation(doc, 'Perfect', pronoun)
-            };
-        });
-
-        return conjugations;
-    };
-
-    const extractTenseConjugation = (doc, tense, pronoun) => {
-        const tables = doc.querySelectorAll('.vTbl');
-        for (const table of tables) {
-            const header = table.querySelector('h3, h2');
-            if (header?.textContent?.trim() === tense) {
-                const rows = table.querySelectorAll('tr');
-                for (const row of rows) {
-                    const cells = row.querySelectorAll('td');
-                    if (cells[0]?.textContent?.trim() === pronoun) {
-                        return cells[1]?.textContent?.trim() || '';
-                    }
-                }
-            }
-        }
-        return '';
-    };
-
-    const extractMeaning = (doc) => {
-        const meaningElement = doc.querySelector('.meaning, .translation');
-        return meaningElement?.textContent?.trim() || 'Meaning not found';
-    };
-
-    const hasValidConjugations = (conjugations) => {
-        return Object.values(conjugations).some(pronoun =>
-            Object.values(pronoun).some(conj => conj && conj.length > 0)
-        );
     };
 
     const handleSearchChange = (e) => {
@@ -181,10 +71,16 @@ const KonjugationPage = () => {
         }
 
         // If not found locally, try fetching from website
-        const newVerb = await fetchVerbFromWebsite(sanitized);
-        if (newVerb) {
-            setFilteredVerbs([newVerb]);
-            setActiveVerbIndex(0);
+        setIsLoading(true);
+        setError(null);
+        try {
+            // Fetch implementation would go here
+            // For now, just show not found error
+            setError('Word not found. Please check your spelling.');
+        } catch (err) {
+            setError('An error occurred while searching. Please try again.');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -212,7 +108,7 @@ const KonjugationPage = () => {
             <div className="container mx-auto px-4 py-8">
                 {/* Header */}
                 <div className="max-w-6xl mx-auto mb-8">
-                    <div className="flex items-center justify-between mb-6">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                         <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
                             German Verb Conjugation
                         </h1>
@@ -226,6 +122,20 @@ const KonjugationPage = () => {
                                 <><EyeOff className="w-5 h-5" /><span>Show English</span></>
                             )}
                         </button>
+                    </div>
+
+                    {/* Stats Display */}
+                    <div className="flex gap-4 mb-6">
+                        <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 rounded-lg border border-purple-500/20">
+                            <BookOpenCheck className="w-4 h-4 text-purple-400" />
+                            <span className="text-purple-300">Total Verbs: {konjugationData.length + dynamicVerbs.length}</span>
+                        </div>
+                        {filteredVerbs.length !== konjugationData.length && (
+                            <div className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 rounded-lg border border-gray-700/50">
+                                <BookOpen className="w-4 h-4 text-gray-400" />
+                                <span className="text-gray-300">Showing: {filteredVerbs.length}</span>
+                            </div>
+                        )}
                     </div>
 
                     {/* Search Bar */}
@@ -285,9 +195,11 @@ const KonjugationPage = () => {
 
                 {/* Main Content */}
                 <div className="max-w-6xl mx-auto">
-                    <div className="flex flex-col lg:flex-row gap-8">
-                        {/* Verb List Sidebar */}
-                        <div className={`lg:w-1/4 transition-all duration-300 ${isSidebarCollapsed ? 'lg:w-16' : 'lg:w-1/4'}`}>
+                    <div className="lg:flex gap-8">
+                        {/* Desktop Sidebar */}
+                        <div className={`hidden lg:block transition-all duration-300 ${
+                            isSidebarCollapsed ? 'w-16' : 'w-1/4'
+                        }`}>
                             <div className="bg-gray-800/30 rounded-lg border border-gray-700/50">
                                 <div className="p-4 border-b border-gray-700/50 flex items-center justify-between">
                                     {!isSidebarCollapsed && <h3 className="text-sm font-medium text-gray-400 uppercase">Verbs</h3>}
@@ -295,11 +207,15 @@ const KonjugationPage = () => {
                                         onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
                                         className="p-2 text-gray-400 hover:text-white transition-colors"
                                     >
-                                        {isSidebarCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+                                        {isSidebarCollapsed ? (
+                                            <ChevronRight className="w-4 h-4" />
+                                        ) : (
+                                            <ChevronLeft className="w-4 h-4" />
+                                        )}
                                     </button>
                                 </div>
 
-                                <div className="max-h-[calc(100vh-300px)] overflow-y-auto custom-scrollbar">
+                                <div className="max-h-[calc(100vh-300px)] overflow-y-auto">
                                     <div className="p-4 space-y-2">
                                         {filteredVerbs.map((verb, index) => (
                                             <button
@@ -318,6 +234,58 @@ const KonjugationPage = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        {/* Mobile Sidebar */}
+                        <div className={`
+                            lg:hidden fixed inset-0 z-40 transition-transform duration-300
+                            ${showMobileSidebar ? 'translate-y-0' : 'translate-y-full'}
+                        `}>
+                            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+                                 onClick={() => setShowMobileSidebar(false)} />
+                            <div className="absolute bottom-0 left-0 right-0 bg-gray-900 rounded-t-xl max-h-[70vh] overflow-hidden">
+                                <div className="p-4 border-b border-gray-800">
+                                    <div className="flex items-center justify-between">
+                                        <h3 className="text-lg font-medium text-white">Verbs List</h3>
+                                        <button onClick={() => setShowMobileSidebar(false)}>
+                                            <ChevronRight className="w-6 h-6 text-gray-400" />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="overflow-y-auto p-4">
+                                    {filteredVerbs.map((verb, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => {
+                                                setActiveVerbIndex(index);
+                                                setShowMobileSidebar(false);
+                                            }}
+                                            className={`w-full flex items-center gap-2 px-4 py-3 rounded-lg transition-all mb-2 ${
+                                                index === activeVerbIndex
+                                                    ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                                                    : 'text-gray-400 hover:bg-gray-700/50 hover:text-white border border-transparent'
+                                            }`}
+                                        >
+                                            <BookOpen className="w-4 h-4 flex-shrink-0" />
+                                            <span className="text-left">{verb.verb}</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Mobile Toggle Button */}
+                        <div className="lg:hidden fixed bottom-6 right-6 z-50">
+                            <button
+                                onClick={() => setShowMobileSidebar(!showMobileSidebar)}
+                                className="p-4 bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition-colors"
+                            >
+                                {showMobileSidebar ? (
+                                    <ChevronRight className="w-6 h-6" />
+                                ) : (
+                                    <BookOpen className="w-6 h-6" />
+                                )}
+                            </button>
                         </div>
 
                         {/* Conjugation Display */}
