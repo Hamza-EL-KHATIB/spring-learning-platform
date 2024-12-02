@@ -7101,5 +7101,833 @@
         "Perfekt": "haben besucht"
       }
     }
+  },
+  {
+    "verb": "beten",
+    "meaning": "pray",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bete",
+        "Präteritum": "betete",
+        "Perfekt": "habe gebetet"
+      },
+      "du": {
+        "Präsens": "betest",
+        "Präteritum": "betetest",
+        "Perfekt": "hast gebetet"
+      },
+      "er/sie/es": {
+        "Präsens": "betet",
+        "Präteritum": "betete",
+        "Perfekt": "hat gebetet"
+      },
+      "wir": {
+        "Präsens": "beten",
+        "Präteritum": "beteten",
+        "Perfekt": "haben gebetet"
+      },
+      "ihr": {
+        "Präsens": "betet",
+        "Präteritum": "betetet",
+        "Perfekt": "habt gebetet"
+      },
+      "sie/Sie": {
+        "Präsens": "beten",
+        "Präteritum": "beteten",
+        "Perfekt": "haben gebetet"
+      }
+    }
+  },
+  {
+    "verb": "betrügen",
+    "meaning": "deceive, cheat",
+    "conjugations": {
+      "ich": {
+        "Präsens": "betrüge",
+        "Präteritum": "betrog",
+        "Perfekt": "habe betrogen"
+      },
+      "du": {
+        "Präsens": "betrügst",
+        "Präteritum": "betrogst",
+        "Perfekt": "hast betrogen"
+      },
+      "er/sie/es": {
+        "Präsens": "betrügt",
+        "Präteritum": "betrog",
+        "Perfekt": "hat betrogen"
+      },
+      "wir": {
+        "Präsens": "betrügen",
+        "Präteritum": "betrogen",
+        "Perfekt": "haben betrogen"
+      },
+      "ihr": {
+        "Präsens": "betrügt",
+        "Präteritum": "betrogt",
+        "Perfekt": "habt betrogen"
+      },
+      "sie/Sie": {
+        "Präsens": "betrügen",
+        "Präteritum": "betrogen",
+        "Perfekt": "haben betrogen"
+      }
+    }
+  },
+  {
+    "verb": "bewegen",
+    "meaning": "move",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bewege",
+        "Präteritum": "bewegte",
+        "Perfekt": "habe bewegt"
+      },
+      "du": {
+        "Präsens": "bewegst",
+        "Präteritum": "bewegtest",
+        "Perfekt": "hast bewegt"
+      },
+      "er/sie/es": {
+        "Präsens": "bewegt",
+        "Präteritum": "bewegte",
+        "Perfekt": "hat bewegt"
+      },
+      "wir": {
+        "Präsens": "bewegen",
+        "Präteritum": "bewegten",
+        "Perfekt": "haben bewegt"
+      },
+      "ihr": {
+        "Präsens": "bewegt",
+        "Präteritum": "bewegtet",
+        "Perfekt": "habt bewegt"
+      },
+      "sie/Sie": {
+        "Präsens": "bewegen",
+        "Präteritum": "bewegten",
+        "Perfekt": "haben bewegt"
+      }
+    }
+  },
+  {
+    "verb": "bezahlen",
+    "meaning": "pay",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bezahle",
+        "Präteritum": "bezahlte",
+        "Perfekt": "habe bezahlt"
+      },
+      "du": {
+        "Präsens": "bezahlst",
+        "Präteritum": "bezahltest",
+        "Perfekt": "hast bezahlt"
+      },
+      "er/sie/es": {
+        "Präsens": "bezahlt",
+        "Präteritum": "bezahlte",
+        "Perfekt": "hat bezahlt"
+      },
+      "wir": {
+        "Präsens": "bezahlen",
+        "Präteritum": "bezahlten",
+        "Perfekt": "haben bezahlt"
+      },
+      "ihr": {
+        "Präsens": "bezahlt",
+        "Präteritum": "bezahltet",
+        "Perfekt": "habt bezahlt"
+      },
+      "sie/Sie": {
+        "Präsens": "bezahlen",
+        "Präteritum": "bezahlten",
+        "Perfekt": "haben bezahlt"
+      }
+    }
+  },
+  {
+    "verb": "biegen",
+    "meaning": "bend",
+    "conjugations": {
+      "ich": {
+        "Präsens": "biege",
+        "Präteritum": "bog",
+        "Perfekt": "habe gebogen"
+      },
+      "du": {
+        "Präsens": "biegst",
+        "Präteritum": "bogst",
+        "Perfekt": "hast gebogen"
+      },
+      "er/sie/es": {
+        "Präsens": "biegt",
+        "Präteritum": "bog",
+        "Perfekt": "hat gebogen"
+      },
+      "wir": {
+        "Präsens": "biegen",
+        "Präteritum": "bogen",
+        "Perfekt": "haben gebogen"
+      },
+      "ihr": {
+        "Präsens": "biegt",
+        "Präteritum": "bogt",
+        "Perfekt": "habt gebogen"
+      },
+      "sie/Sie": {
+        "Präsens": "biegen",
+        "Präteritum": "bogen",
+        "Perfekt": "haben gebogen"
+      }
+    }
+  },
+  {
+    "verb": "bieten",
+    "meaning": "offer, bid",
+    "conjugations": {
+      "ich": {
+        "Präsens": "biete",
+        "Präteritum": "bot",
+        "Perfekt": "habe geboten"
+      },
+      "du": {
+        "Präsens": "bietest",
+        "Präteritum": "botst",
+        "Perfekt": "hast geboten"
+      },
+      "er/sie/es": {
+        "Präsens": "bietet",
+        "Präteritum": "bot",
+        "Perfekt": "hat geboten"
+      },
+      "wir": {
+        "Präsens": "bieten",
+        "Präteritum": "boten",
+        "Perfekt": "haben geboten"
+      },
+      "ihr": {
+        "Präsens": "bietet",
+        "Präteritum": "botet",
+        "Perfekt": "habt geboten"
+      },
+      "sie/Sie": {
+        "Präsens": "bieten",
+        "Präteritum": "boten",
+        "Perfekt": "haben geboten"
+      }
+    }
+  },
+  {
+    "verb": "binden",
+    "meaning": "tie",
+    "conjugations": {
+      "ich": {
+        "Präsens": "binde",
+        "Präteritum": "band",
+        "Perfekt": "habe gebunden"
+      },
+      "du": {
+        "Präsens": "bindest",
+        "Präteritum": "bandst",
+        "Perfekt": "hast gebunden"
+      },
+      "er/sie/es": {
+        "Präsens": "bindet",
+        "Präteritum": "band",
+        "Perfekt": "hat gebunden"
+      },
+      "wir": {
+        "Präsens": "binden",
+        "Präteritum": "banden",
+        "Perfekt": "haben gebunden"
+      },
+      "ihr": {
+        "Präsens": "bindet",
+        "Präteritum": "bandet",
+        "Perfekt": "habt gebunden"
+      },
+      "sie/Sie": {
+        "Präsens": "binden",
+        "Präteritum": "banden",
+        "Perfekt": "haben gebunden"
+      }
+    }
+  },
+  {
+    "verb": "bitten",
+    "meaning": "request, ask for",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bitte",
+        "Präteritum": "bat",
+        "Perfekt": "habe gebeten"
+      },
+      "du": {
+        "Präsens": "bittest",
+        "Präteritum": "batst",
+        "Perfekt": "hast gebeten"
+      },
+      "er/sie/es": {
+        "Präsens": "bittet",
+        "Präteritum": "bat",
+        "Perfekt": "hat gebeten"
+      },
+      "wir": {
+        "Präsens": "bitten",
+        "Präteritum": "baten",
+        "Perfekt": "haben gebeten"
+      },
+      "ihr": {
+        "Präsens": "bittet",
+        "Präteritum": "batet",
+        "Perfekt": "habt gebeten"
+      },
+      "sie/Sie": {
+        "Präsens": "bitten",
+        "Präteritum": "baten",
+        "Perfekt": "haben gebeten"
+      }
+    }
+  },
+  {
+    "verb": "blasen",
+    "meaning": "blow",
+    "conjugations": {
+      "ich": {
+        "Präsens": "blase",
+        "Präteritum": "blies",
+        "Perfekt": "habe geblasen"
+      },
+      "du": {
+        "Präsens": "bläst",
+        "Präteritum": "bliest",
+        "Perfekt": "hast geblasen"
+      },
+      "er/sie/es": {
+        "Präsens": "bläst",
+        "Präteritum": "blies",
+        "Perfekt": "hat geblasen"
+      },
+      "wir": {
+        "Präsens": "blasen",
+        "Präteritum": "bliesen",
+        "Perfekt": "haben geblasen"
+      },
+      "ihr": {
+        "Präsens": "blast",
+        "Präteritum": "bliest",
+        "Perfekt": "habt geblasen"
+      },
+      "sie/Sie": {
+        "Präsens": "blasen",
+        "Präteritum": "bliesen",
+        "Perfekt": "haben geblasen"
+      }
+    }
+  },
+  {
+    "verb": "bleiben",
+    "meaning": "stay",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bleibe",
+        "Präteritum": "blieb",
+        "Perfekt": "bin geblieben"
+      },
+      "du": {
+        "Präsens": "bleibst",
+        "Präteritum": "bliebst",
+        "Perfekt": "bist geblieben"
+      },
+      "er/sie/es": {
+        "Präsens": "bleibt",
+        "Präteritum": "blieb",
+        "Perfekt": "ist geblieben"
+      },
+      "wir": {
+        "Präsens": "bleiben",
+        "Präteritum": "blieben",
+        "Perfekt": "sind geblieben"
+      },
+      "ihr": {
+        "Präsens": "bleibt",
+        "Präteritum": "bliebt",
+        "Perfekt": "seid geblieben"
+      },
+      "sie/Sie": {
+        "Präsens": "bleiben",
+        "Präteritum": "blieben",
+        "Perfekt": "sind geblieben"
+      }
+    }
+  },
+  {
+    "verb": "blicken",
+    "meaning": "look, glance",
+    "conjugations": {
+      "ich": {
+        "Präsens": "blicke",
+        "Präteritum": "blickte",
+        "Perfekt": "habe geblickt"
+      },
+      "du": {
+        "Präsens": "blickst",
+        "Präteritum": "blicktest",
+        "Perfekt": "hast geblickt"
+      },
+      "er/sie/es": {
+        "Präsens": "blickt",
+        "Präteritum": "blickte",
+        "Perfekt": "hat geblickt"
+      },
+      "wir": {
+        "Präsens": "blicken",
+        "Präteritum": "blickten",
+        "Perfekt": "haben geblickt"
+      },
+      "ihr": {
+        "Präsens": "blickt",
+        "Präteritum": "blicktet",
+        "Perfekt": "habt geblickt"
+      },
+      "sie/Sie": {
+        "Präsens": "blicken",
+        "Präteritum": "blickten",
+        "Perfekt": "haben geblickt"
+      }
+    }
+  },
+  {
+    "verb": "blitzen",
+    "meaning": "flash",
+    "conjugations": {
+      "ich": {
+        "Präsens": "blitze",
+        "Präteritum": "blitzte",
+        "Perfekt": "habe geblitzt"
+      },
+      "du": {
+        "Präsens": "blitzt",
+        "Präteritum": "blitztest",
+        "Perfekt": "hast geblitzt"
+      },
+      "er/sie/es": {
+        "Präsens": "blitzt",
+        "Präteritum": "blitzte",
+        "Perfekt": "hat geblitzt"
+      },
+      "wir": {
+        "Präsens": "blitzen",
+        "Präteritum": "blitzten",
+        "Perfekt": "haben geblitzt"
+      },
+      "ihr": {
+        "Präsens": "blitzt",
+        "Präteritum": "blitztet",
+        "Perfekt": "habt geblitzt"
+      },
+      "sie/Sie": {
+        "Präsens": "blitzen",
+        "Präteritum": "blitzten",
+        "Perfekt": "haben geblitzt"
+      }
+    }
+  },
+  {
+    "verb": "blühen",
+    "meaning": "bloom",
+    "conjugations": {
+      "ich": {
+        "Präsens": "blühe",
+        "Präteritum": "blühte",
+        "Perfekt": "habe geblüht"
+      },
+      "du": {
+        "Präsens": "blühst",
+        "Präteritum": "blühtest",
+        "Perfekt": "hast geblüht"
+      },
+      "er/sie/es": {
+        "Präsens": "blüht",
+        "Präteritum": "blühte",
+        "Perfekt": "hat geblüht"
+      },
+      "wir": {
+        "Präsens": "blühen",
+        "Präteritum": "blühten",
+        "Perfekt": "haben geblüht"
+      },
+      "ihr": {
+        "Präsens": "blüht",
+        "Präteritum": "blühtet",
+        "Perfekt": "habt geblüht"
+      },
+      "sie/Sie": {
+        "Präsens": "blühen",
+        "Präteritum": "blühten",
+        "Perfekt": "haben geblüht"
+      }
+    }
+  },
+  {
+    "verb": "bluten",
+    "meaning": "bleed",
+    "conjugations": {
+      "ich": {
+        "Präsens": "blute",
+        "Präteritum": "blutete",
+        "Perfekt": "habe geblutet"
+      },
+      "du": {
+        "Präsens": "blutest",
+        "Präteritum": "blutetest",
+        "Perfekt": "hast geblutet"
+      },
+      "er/sie/es": {
+        "Präsens": "blutet",
+        "Präteritum": "blutete",
+        "Perfekt": "hat geblutet"
+      },
+      "wir": {
+        "Präsens": "bluten",
+        "Präteritum": "bluteten",
+        "Perfekt": "haben geblutet"
+      },
+      "ihr": {
+        "Präsens": "blutet",
+        "Präteritum": "blutetet",
+        "Perfekt": "habt geblutet"
+      },
+      "sie/Sie": {
+        "Präsens": "bluten",
+        "Präteritum": "bluteten",
+        "Perfekt": "haben geblutet"
+      }
+    }
+  },
+  {
+    "verb": "braten",
+    "meaning": "fry, roast",
+    "conjugations": {
+      "ich": {
+        "Präsens": "brate",
+        "Präteritum": "briet",
+        "Perfekt": "habe gebraten"
+      },
+      "du": {
+        "Präsens": "brätst",
+        "Präteritum": "brietst",
+        "Perfekt": "hast gebraten"
+      },
+      "er/sie/es": {
+        "Präsens": "brät",
+        "Präteritum": "briet",
+        "Perfekt": "hat gebraten"
+      },
+      "wir": {
+        "Präsens": "braten",
+        "Präteritum": "brieten",
+        "Perfekt": "haben gebraten"
+      },
+      "ihr": {
+        "Präsens": "bratet",
+        "Präteritum": "brietet",
+        "Perfekt": "habt gebraten"
+      },
+      "sie/Sie": {
+        "Präsens": "braten",
+        "Präteritum": "brieten",
+        "Perfekt": "haben gebraten"
+      }
+    }
+  },
+  {
+    "verb": "brauchen",
+    "meaning": "need",
+    "conjugations": {
+      "ich": {
+        "Präsens": "brauche",
+        "Präteritum": "brauchte",
+        "Perfekt": "habe gebraucht"
+      },
+      "du": {
+        "Präsens": "brauchst",
+        "Präteritum": "brauchtest",
+        "Perfekt": "hast gebraucht"
+      },
+      "er/sie/es": {
+        "Präsens": "braucht",
+        "Präteritum": "brauchte",
+        "Perfekt": "hat gebraucht"
+      },
+      "wir": {
+        "Präsens": "brauchen",
+        "Präteritum": "brauchten",
+        "Perfekt": "haben gebraucht"
+      },
+      "ihr": {
+        "Präsens": "braucht",
+        "Präteritum": "brauchtet",
+        "Perfekt": "habt gebraucht"
+      },
+      "sie/Sie": {
+        "Präsens": "brauchen",
+        "Präteritum": "brauchten",
+        "Perfekt": "haben gebraucht"
+      }
+    }
+  },
+  {
+    "verb": "brauen",
+    "meaning": "brew",
+    "conjugations": {
+      "ich": {
+        "Präsens": "braue",
+        "Präteritum": "braute",
+        "Perfekt": "habe gebraut"
+      },
+      "du": {
+        "Präsens": "braust",
+        "Präteritum": "brautest",
+        "Perfekt": "hast gebraut"
+      },
+      "er/sie/es": {
+        "Präsens": "braut",
+        "Präteritum": "braute",
+        "Perfekt": "hat gebraut"
+      },
+      "wir": {
+        "Präsens": "brauen",
+        "Präteritum": "brauten",
+        "Perfekt": "haben gebraut"
+      },
+      "ihr": {
+        "Präsens": "braut",
+        "Präteritum": "brautet",
+        "Perfekt": "habt gebraut"
+      },
+      "sie/Sie": {
+        "Präsens": "brauen",
+        "Präteritum": "brauten",
+        "Perfekt": "haben gebraut"
+      }
+    }
+  },
+  {
+    "verb": "brausen",
+    "meaning": "shower; roar",
+    "conjugations": {
+      "ich": {
+        "Präsens": "brause",
+        "Präteritum": "brauste",
+        "Perfekt": "habe gebraust"
+      },
+      "du": {
+        "Präsens": "braust",
+        "Präteritum": "braustest",
+        "Perfekt": "hast gebraust"
+      },
+      "er/sie/es": {
+        "Präsens": "braust",
+        "Präteritum": "brauste",
+        "Perfekt": "hat gebraust"
+      },
+      "wir": {
+        "Präsens": "brausen",
+        "Präteritum": "brausten",
+        "Perfekt": "haben gebraust"
+      },
+      "ihr": {
+        "Präsens": "braust",
+        "Präteritum": "braustet",
+        "Perfekt": "habt gebraust"
+      },
+      "sie/Sie": {
+        "Präsens": "brausen",
+        "Präteritum": "brausten",
+        "Perfekt": "haben gebraust"
+      }
+    }
+  },
+  {
+    "verb": "brechen",
+    "meaning": "break",
+    "conjugations": {
+      "ich": {
+        "Präsens": "breche",
+        "Präteritum": "brach",
+        "Perfekt": "habe gebrochen"
+      },
+      "du": {
+        "Präsens": "brichst",
+        "Präteritum": "brachst",
+        "Perfekt": "hast gebrochen"
+      },
+      "er/sie/es": {
+        "Präsens": "bricht",
+        "Präteritum": "brach",
+        "Perfekt": "hat gebrochen"
+      },
+      "wir": {
+        "Präsens": "brechen",
+        "Präteritum": "brachen",
+        "Perfekt": "haben gebrochen"
+      },
+      "ihr": {
+        "Präsens": "brecht",
+        "Präteritum": "bracht",
+        "Perfekt": "habt gebrochen"
+      },
+      "sie/Sie": {
+        "Präsens": "brechen",
+        "Präteritum": "brachen",
+        "Perfekt": "haben gebrochen"
+      }
+    }
+  },
+  {
+    "verb": "brennen",
+    "meaning": "burn",
+    "conjugations": {
+      "ich": {
+        "Präsens": "brenne",
+        "Präteritum": "brannte",
+        "Perfekt": "habe gebrannt"
+      },
+      "du": {
+        "Präsens": "brennst",
+        "Präteritum": "branntest",
+        "Perfekt": "hast gebrannt"
+      },
+      "er/sie/es": {
+        "Präsens": "brennt",
+        "Präteritum": "brannte",
+        "Perfekt": "hat gebrannt"
+      },
+      "wir": {
+        "Präsens": "brennen",
+        "Präteritum": "brannten",
+        "Perfekt": "haben gebrannt"
+      },
+      "ihr": {
+        "Präsens": "brennt",
+        "Präteritum": "branntet",
+        "Perfekt": "habt gebrannt"
+      },
+      "sie/Sie": {
+        "Präsens": "brennen",
+        "Präteritum": "brannten",
+        "Perfekt": "haben gebrannt"
+      }
+    }
+  },
+  {
+    "verb": "bringen",
+    "meaning": "bring",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bringe",
+        "Präteritum": "brachte",
+        "Perfekt": "habe gebracht"
+      },
+      "du": {
+        "Präsens": "bringst",
+        "Präteritum": "brachtest",
+        "Perfekt": "hast gebracht"
+      },
+      "er/sie/es": {
+        "Präsens": "bringt",
+        "Präteritum": "brachte",
+        "Perfekt": "hat gebracht"
+      },
+      "wir": {
+        "Präsens": "bringen",
+        "Präteritum": "brachten",
+        "Perfekt": "haben gebracht"
+      },
+      "ihr": {
+        "Präsens": "bringt",
+        "Präteritum": "brachtet",
+        "Perfekt": "habt gebracht"
+      },
+      "sie/Sie": {
+        "Präsens": "bringen",
+        "Präteritum": "brachten",
+        "Perfekt": "haben gebracht"
+      }
+    }
+  },
+  {
+    "verb": "brüllen",
+    "meaning": "roar, shout",
+    "conjugations": {
+      "ich": {
+        "Präsens": "brülle",
+        "Präteritum": "brüllte",
+        "Perfekt": "habe gebrüllt"
+      },
+      "du": {
+        "Präsens": "brüllst",
+        "Präteritum": "brülltest",
+        "Perfekt": "hast gebrüllt"
+      },
+      "er/sie/es": {
+        "Präsens": "brüllt",
+        "Präteritum": "brüllte",
+        "Perfekt": "hat gebrüllt"
+      },
+      "wir": {
+        "Präsens": "brüllen",
+        "Präteritum": "brüllten",
+        "Perfekt": "haben gebrüllt"
+      },
+      "ihr": {
+        "Präsens": "brüllt",
+        "Präteritum": "brülltet",
+        "Perfekt": "habt gebrüllt"
+      },
+      "sie/Sie": {
+        "Präsens": "brüllen",
+        "Präteritum": "brüllten",
+        "Perfekt": "haben gebrüllt"
+      }
+    }
+  },
+  {
+    "verb": "bürsten",
+    "meaning": "brush",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bürste",
+        "Präteritum": "bürstete",
+        "Perfekt": "habe gebürstet"
+      },
+      "du": {
+        "Präsens": "bürstest",
+        "Präteritum": "bürstetest",
+        "Perfekt": "hast gebürstet"
+      },
+      "er/sie/es": {
+        "Präsens": "bürstet",
+        "Präteritum": "bürstete",
+        "Perfekt": "hat gebürstet"
+      },
+      "wir": {
+        "Präsens": "bürsten",
+        "Präteritum": "bürsteten",
+        "Perfekt": "haben gebürstet"
+      },
+      "ihr": {
+        "Präsens": "bürstet",
+        "Präteritum": "bürstetet",
+        "Perfekt": "habt gebürstet"
+      },
+      "sie/Sie": {
+        "Präsens": "bürsten",
+        "Präteritum": "bürsteten",
+        "Perfekt": "haben gebürstet"
+      }
+    }
   }
 ]
