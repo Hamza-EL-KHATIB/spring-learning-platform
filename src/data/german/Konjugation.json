@@ -6381,5 +6381,365 @@
         "Perfekt": "haben gebebt"
       }
     }
+  },
+  {
+    "verb": "bedienen",
+    "meaning": "serve oneself",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bediene",
+        "Präteritum": "bediente",
+        "Perfekt": "habe bedient"
+      },
+      "du": {
+        "Präsens": "bedienst",
+        "Präteritum": "bedientest",
+        "Perfekt": "hast bedient"
+      },
+      "er/sie/es": {
+        "Präsens": "bedient",
+        "Präteritum": "bediente",
+        "Perfekt": "hat bedient"
+      },
+      "wir": {
+        "Präsens": "bedienen",
+        "Präteritum": "bedienten",
+        "Perfekt": "haben bedient"
+      },
+      "ihr": {
+        "Präsens": "bedient",
+        "Präteritum": "bedientet",
+        "Perfekt": "habt bedient"
+      },
+      "sie/Sie": {
+        "Präsens": "bedienen",
+        "Präteritum": "bedienten",
+        "Perfekt": "haben bedient"
+      }
+    }
+  },
+  {
+    "verb": "befehlen",
+    "meaning": "command",
+    "conjugations": {
+      "ich": {
+        "Präsens": "befehle",
+        "Präteritum": "befahl",
+        "Perfekt": "habe befohlen"
+      },
+      "du": {
+        "Präsens": "befiehlst",
+        "Präteritum": "befahlst",
+        "Perfekt": "hast befohlen"
+      },
+      "er/sie/es": {
+        "Präsens": "befiehlt",
+        "Präteritum": "befahl",
+        "Perfekt": "hat befohlen"
+      },
+      "wir": {
+        "Präsens": "befehlen",
+        "Präteritum": "befahlen",
+        "Perfekt": "haben befohlen"
+      },
+      "ihr": {
+        "Präsens": "befehlt",
+        "Präteritum": "befahlt",
+        "Perfekt": "habt befohlen"
+      },
+      "sie/Sie": {
+        "Präsens": "befehlen",
+        "Präteritum": "befahlen",
+        "Perfekt": "haben befohlen"
+      }
+    }
+  },
+  {
+    "verb": "befinden",
+    "meaning": "be, find oneself",
+    "conjugations": {
+      "ich": {
+        "Präsens": "befinde",
+        "Präteritum": "befand",
+        "Perfekt": "habe befunden"
+      },
+      "du": {
+        "Präsens": "befindest",
+        "Präteritum": "befandest",
+        "Perfekt": "hast befunden"
+      },
+      "er/sie/es": {
+        "Präsens": "befindet",
+        "Präteritum": "befand",
+        "Perfekt": "hat befunden"
+      },
+      "wir": {
+        "Präsens": "befinden",
+        "Präteritum": "befanden",
+        "Perfekt": "haben befunden"
+      },
+      "ihr": {
+        "Präsens": "befindet",
+        "Präteritum": "befandet",
+        "Perfekt": "habt befunden"
+      },
+      "sie/Sie": {
+        "Präsens": "befinden",
+        "Präteritum": "befanden",
+        "Perfekt": "haben befunden"
+      }
+    }
+  },
+  {
+    "verb": "befreien",
+    "meaning": "set free",
+    "conjugations": {
+      "ich": {
+        "Präsens": "befreie",
+        "Präteritum": "befreite",
+        "Perfekt": "habe befreit"
+      },
+      "du": {
+        "Präsens": "befreist",
+        "Präteritum": "befreitest",
+        "Perfekt": "hast befreit"
+      },
+      "er/sie/es": {
+        "Präsens": "befreit",
+        "Präteritum": "befreite",
+        "Perfekt": "hat befreit"
+      },
+      "wir": {
+        "Präsens": "befreien",
+        "Präteritum": "befreiten",
+        "Perfekt": "haben befreit"
+      },
+      "ihr": {
+        "Präsens": "befreit",
+        "Präteritum": "befreitet",
+        "Perfekt": "habt befreit"
+      },
+      "sie/Sie": {
+        "Präsens": "befreien",
+        "Präteritum": "befreiten",
+        "Perfekt": "haben befreit"
+      }
+    }
+  },
+  {
+    "verb": "begegnen",
+    "meaning": "meet",
+    "conjugations": {
+      "ich": {
+        "Präsens": "begegne",
+        "Präteritum": "begegnete",
+        "Perfekt": "bin begegnet"
+      },
+      "du": {
+        "Präsens": "begegnest",
+        "Präteritum": "begegnetest",
+        "Perfekt": "bist begegnet"
+      },
+      "er/sie/es": {
+        "Präsens": "begegnet",
+        "Präteritum": "begegnete",
+        "Perfekt": "ist begegnet"
+      },
+      "wir": {
+        "Präsens": "begegnen",
+        "Präteritum": "begegneten",
+        "Perfekt": "sind begegnet"
+      },
+      "ihr": {
+        "Präsens": "begegnet",
+        "Präteritum": "begegnetet",
+        "Perfekt": "seid begegnet"
+      },
+      "sie/Sie": {
+        "Präsens": "begegnen",
+        "Präteritum": "begegneten",
+        "Perfekt": "sind begegnet"
+      }
+    }
+  },
+  {
+    "verb": "beginnen",
+    "meaning": "begin",
+    "conjugations": {
+      "ich": {
+        "Präsens": "beginne",
+        "Präteritum": "begann",
+        "Perfekt": "habe begonnen"
+      },
+      "du": {
+        "Präsens": "beginnst",
+        "Präteritum": "begannst",
+        "Perfekt": "hast begonnen"
+      },
+      "er/sie/es": {
+        "Präsens": "beginnt",
+        "Präteritum": "begann",
+        "Perfekt": "hat begonnen"
+      },
+      "wir": {
+        "Präsens": "beginnen",
+        "Präteritum": "begannen",
+        "Perfekt": "haben begonnen"
+      },
+      "ihr": {
+        "Präsens": "beginnt",
+        "Präteritum": "begannt",
+        "Perfekt": "habt begonnen"
+      },
+      "sie/Sie": {
+        "Präsens": "beginnen",
+        "Präteritum": "begannen",
+        "Perfekt": "haben begonnen"
+      }
+    }
+  },
+  {
+    "verb": "begleiten",
+    "meaning": "accompany",
+    "conjugations": {
+      "ich": {
+        "Präsens": "begleite",
+        "Präteritum": "begleitete",
+        "Perfekt": "habe begleitet"
+      },
+      "du": {
+        "Präsens": "begleitest",
+        "Präteritum": "begleitetest",
+        "Perfekt": "hast begleitet"
+      },
+      "er/sie/es": {
+        "Präsens": "begleitet",
+        "Präteritum": "begleitete",
+        "Perfekt": "hat begleitet"
+      },
+      "wir": {
+        "Präsens": "begleiten",
+        "Präteritum": "begleiteten",
+        "Perfekt": "haben begleitet"
+      },
+      "ihr": {
+        "Präsens": "begleitet",
+        "Präteritum": "begleitetet",
+        "Perfekt": "habt begleitet"
+      },
+      "sie/Sie": {
+        "Präsens": "begleiten",
+        "Präteritum": "begleiteten",
+        "Perfekt": "haben begleitet"
+      }
+    }
+  },
+  {
+    "verb": "behalten",
+    "meaning": "keep",
+    "conjugations": {
+      "ich": {
+        "Präsens": "behalte",
+        "Präteritum": "behielt",
+        "Perfekt": "habe behalten"
+      },
+      "du": {
+        "Präsens": "behältst",
+        "Präteritum": "behieltest",
+        "Perfekt": "hast behalten"
+      },
+      "er/sie/es": {
+        "Präsens": "behält",
+        "Präteritum": "behielt",
+        "Perfekt": "hat behalten"
+      },
+      "wir": {
+        "Präsens": "behalten",
+        "Präteritum": "behielten",
+        "Perfekt": "haben behalten"
+      },
+      "ihr": {
+        "Präsens": "behaltet",
+        "Präteritum": "behieltet",
+        "Perfekt": "habt behalten"
+      },
+      "sie/Sie": {
+        "Präsens": "behalten",
+        "Präteritum": "behielten",
+        "Perfekt": "haben behalten"
+      }
+    }
+  },
+  {
+    "verb": "beißen",
+    "meaning": "bite",
+    "conjugations": {
+      "ich": {
+        "Präsens": "beiße",
+        "Präteritum": "biss",
+        "Perfekt": "habe gebissen"
+      },
+      "du": {
+        "Präsens": "beißt",
+        "Präteritum": "bissest",
+        "Perfekt": "hast gebissen"
+      },
+      "er/sie/es": {
+        "Präsens": "beißt",
+        "Präteritum": "biss",
+        "Perfekt": "hat gebissen"
+      },
+      "wir": {
+        "Präsens": "beißen",
+        "Präteritum": "bissen",
+        "Perfekt": "haben gebissen"
+      },
+      "ihr": {
+        "Präsens": "beißt",
+        "Präteritum": "bisst",
+        "Perfekt": "habt gebissen"
+      },
+      "sie/Sie": {
+        "Präsens": "beißen",
+        "Präteritum": "bissen",
+        "Perfekt": "haben gebissen"
+      }
+    }
+  },
+  {
+    "verb": "bekommen",
+    "meaning": "get, receive",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bekomme",
+        "Präteritum": "bekam",
+        "Perfekt": "habe bekommen"
+      },
+      "du": {
+        "Präsens": "bekommst",
+        "Präteritum": "bekamst",
+        "Perfekt": "hast bekommen"
+      },
+      "er/sie/es": {
+        "Präsens": "bekommt",
+        "Präteritum": "bekam",
+        "Perfekt": "hat bekommen"
+      },
+      "wir": {
+        "Präsens": "bekommen",
+        "Präteritum": "bekamen",
+        "Perfekt": "haben bekommen"
+      },
+      "ihr": {
+        "Präsens": "bekommt",
+        "Präteritum": "bekamt",
+        "Perfekt": "habt bekommen"
+      },
+      "sie/Sie": {
+        "Präsens": "bekommen",
+        "Präteritum": "bekamen",
+        "Perfekt": "haben bekommen"
+      }
+    }
   }
 ]
