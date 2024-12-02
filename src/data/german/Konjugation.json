@@ -11349,5 +11349,401 @@
         "Perfekt": "haben gegriffen"
       }
     }
+  },
+  {
+    "verb": "haben",
+    "meaning": "have",
+    "conjugations": {
+      "ich": {
+        "Präsens": "habe",
+        "Präteritum": "hatte",
+        "Perfekt": "habe gehabt"
+      },
+      "du": {
+        "Präsens": "hast",
+        "Präteritum": "hattest",
+        "Perfekt": "hast gehabt"
+      },
+      "er/sie/es": {
+        "Präsens": "hat",
+        "Präteritum": "hatte",
+        "Perfekt": "hat gehabt"
+      },
+      "wir": {
+        "Präsens": "haben",
+        "Präteritum": "hatten",
+        "Perfekt": "haben gehabt"
+      },
+      "ihr": {
+        "Präsens": "habt",
+        "Präteritum": "hattet",
+        "Perfekt": "habt gehabt"
+      },
+      "sie/Sie": {
+        "Präsens": "haben",
+        "Präteritum": "hatten",
+        "Perfekt": "haben gehabt"
+      }
+    }
+  },
+  {
+    "verb": "halten",
+    "meaning": "hold, stop",
+    "conjugations": {
+      "ich": {
+        "Präsens": "halte",
+        "Präteritum": "hielt",
+        "Perfekt": "habe gehalten"
+      },
+      "du": {
+        "Präsens": "hältst",
+        "Präteritum": "hieltest",
+        "Perfekt": "hast gehalten"
+      },
+      "er/sie/es": {
+        "Präsens": "hält",
+        "Präteritum": "hielt",
+        "Perfekt": "hat gehalten"
+      },
+      "wir": {
+        "Präsens": "halten",
+        "Präteritum": "hielten",
+        "Perfekt": "haben gehalten"
+      },
+      "ihr": {
+        "Präsens": "haltet",
+        "Präteritum": "hieltet",
+        "Perfekt": "habt gehalten"
+      },
+      "sie/Sie": {
+        "Präsens": "halten",
+        "Präteritum": "hielten",
+        "Perfekt": "haben gehalten"
+      }
+    }
+  },
+  {
+    "verb": "handeln",
+    "meaning": "act, trade",
+    "conjugations": {
+      "ich": {
+        "Präsens": "handle",
+        "Präteritum": "handelte",
+        "Perfekt": "habe gehandelt"
+      },
+      "du": {
+        "Präsens": "handelst",
+        "Präteritum": "handeltest",
+        "Perfekt": "hast gehandelt"
+      },
+      "er/sie/es": {
+        "Präsens": "handelt",
+        "Präteritum": "handelte",
+        "Perfekt": "hat gehandelt"
+      },
+      "wir": {
+        "Präsens": "handeln",
+        "Präteritum": "handelten",
+        "Perfekt": "haben gehandelt"
+      },
+      "ihr": {
+        "Präsens": "handelt",
+        "Präteritum": "handeltet",
+        "Perfekt": "habt gehandelt"
+      },
+      "sie/Sie": {
+        "Präsens": "handeln",
+        "Präteritum": "handelten",
+        "Perfekt": "haben gehandelt"
+      }
+    }
+  },
+  {
+    "verb": "hängen",
+    "meaning": "hang",
+    "conjugations": {
+      "ich": {
+        "Präsens": "hänge",
+        "Präteritum": "hing",
+        "Perfekt": "habe gehangen"
+      },
+      "du": {
+        "Präsens": "hängst",
+        "Präteritum": "hingst",
+        "Perfekt": "hast gehangen"
+      },
+      "er/sie/es": {
+        "Präsens": "hängt",
+        "Präteritum": "hing",
+        "Perfekt": "hat gehangen"
+      },
+      "wir": {
+        "Präsens": "hängen",
+        "Präteritum": "hingen",
+        "Perfekt": "haben gehangen"
+      },
+      "ihr": {
+        "Präsens": "hängt",
+        "Präteritum": "hingt",
+        "Perfekt": "habt gehangen"
+      },
+      "sie/Sie": {
+        "Präsens": "hängen",
+        "Präteritum": "hingen",
+        "Perfekt": "haben gehangen"
+      }
+    }
+  },
+  {
+    "verb": "hauen",
+    "meaning": "hit, hew",
+    "conjugations": {
+      "ich": {
+        "Präsens": "haue",
+        "Präteritum": "haute / hieb",
+        "Perfekt": "habe gehauen"
+      },
+      "du": {
+        "Präsens": "haust",
+        "Präteritum": "hautest / hiebst",
+        "Perfekt": "hast gehauen"
+      },
+      "er/sie/es": {
+        "Präsens": "haut",
+        "Präteritum": "haute / hieb",
+        "Perfekt": "hat gehauen"
+      },
+      "wir": {
+        "Präsens": "hauen",
+        "Präteritum": "hauten / hieben",
+        "Perfekt": "haben gehauen"
+      },
+      "ihr": {
+        "Präsens": "haut",
+        "Präteritum": "hautet / hiebt",
+        "Perfekt": "habt gehauen"
+      },
+      "sie/Sie": {
+        "Präsens": "hauen",
+        "Präteritum": "hauten / hieben",
+        "Perfekt": "haben gehauen"
+      }
+    }
+  },
+  {
+    "verb": "heben",
+    "meaning": "lift",
+    "conjugations": {
+      "ich": {
+        "Präsens": "hebe",
+        "Präteritum": "hob",
+        "Perfekt": "habe gehoben"
+      },
+      "du": {
+        "Präsens": "hebst",
+        "Präteritum": "hobst",
+        "Perfekt": "hast gehoben"
+      },
+      "er/sie/es": {
+        "Präsens": "hebt",
+        "Präteritum": "hob",
+        "Perfekt": "hat gehoben"
+      },
+      "wir": {
+        "Präsens": "heben",
+        "Präteritum": "hoben",
+        "Perfekt": "haben gehoben"
+      },
+      "ihr": {
+        "Präsens": "hebt",
+        "Präteritum": "hobt",
+        "Perfekt": "habt gehoben"
+      },
+      "sie/Sie": {
+        "Präsens": "heben",
+        "Präteritum": "hoben",
+        "Perfekt": "haben gehoben"
+      }
+    }
+  },
+  {
+    "verb": "heißen",
+    "meaning": "be called",
+    "conjugations": {
+      "ich": {
+        "Präsens": "heiße",
+        "Präteritum": "hieß",
+        "Perfekt": "habe geheißen"
+      },
+      "du": {
+        "Präsens": "heißt",
+        "Präteritum": "hießt",
+        "Perfekt": "hast geheißen"
+      },
+      "er/sie/es": {
+        "Präsens": "heißt",
+        "Präteritum": "hieß",
+        "Perfekt": "hat geheißen"
+      },
+      "wir": {
+        "Präsens": "heißen",
+        "Präteritum": "hießen",
+        "Perfekt": "haben geheißen"
+      },
+      "ihr": {
+        "Präsens": "heißt",
+        "Präteritum": "hießt",
+        "Perfekt": "habt geheißen"
+      },
+      "sie/Sie": {
+        "Präsens": "heißen",
+        "Präteritum": "hießen",
+        "Perfekt": "haben geheißen"
+      }
+    }
+  },
+  {
+    "verb": "helfen",
+    "meaning": "help",
+    "conjugations": {
+      "ich": {
+        "Präsens": "helfe",
+        "Präteritum": "half",
+        "Perfekt": "habe geholfen"
+      },
+      "du": {
+        "Präsens": "hilfst",
+        "Präteritum": "halfst",
+        "Perfekt": "hast geholfen"
+      },
+      "er/sie/es": {
+        "Präsens": "hilft",
+        "Präteritum": "half",
+        "Perfekt": "hat geholfen"
+      },
+      "wir": {
+        "Präsens": "helfen",
+        "Präteritum": "halfen",
+        "Perfekt": "haben geholfen"
+      },
+      "ihr": {
+        "Präsens": "helft",
+        "Präteritum": "halft",
+        "Perfekt": "habt geholfen"
+      },
+      "sie/Sie": {
+        "Präsens": "helfen",
+        "Präteritum": "halfen",
+        "Perfekt": "haben geholfen"
+      }
+    }
+  },
+  {
+    "verb": "hoffen",
+    "meaning": "hope",
+    "conjugations": {
+      "ich": {
+        "Präsens": "hoffe",
+        "Präteritum": "hoffte",
+        "Perfekt": "habe gehofft"
+      },
+      "du": {
+        "Präsens": "hoffst",
+        "Präteritum": "hofftest",
+        "Perfekt": "hast gehofft"
+      },
+      "er/sie/es": {
+        "Präsens": "hofft",
+        "Präteritum": "hoffte",
+        "Perfekt": "hat gehofft"
+      },
+      "wir": {
+        "Präsens": "hoffen",
+        "Präteritum": "hofften",
+        "Perfekt": "haben gehofft"
+      },
+      "ihr": {
+        "Präsens": "hofft",
+        "Präteritum": "hofftet",
+        "Perfekt": "habt gehofft"
+      },
+      "sie/Sie": {
+        "Präsens": "hoffen",
+        "Präteritum": "hofften",
+        "Perfekt": "haben gehofft"
+      }
+    }
+  },
+  {
+    "verb": "holen",
+    "meaning": "fetch, get",
+    "conjugations": {
+      "ich": {
+        "Präsens": "hole",
+        "Präteritum": "holte",
+        "Perfekt": "habe geholt"
+      },
+      "du": {
+        "Präsens": "holst",
+        "Präteritum": "holtest",
+        "Perfekt": "hast geholt"
+      },
+      "er/sie/es": {
+        "Präsens": "holt",
+        "Präteritum": "holte",
+        "Perfekt": "hat geholt"
+      },
+      "wir": {
+        "Präsens": "holen",
+        "Präteritum": "holten",
+        "Perfekt": "haben geholt"
+      },
+      "ihr": {
+        "Präsens": "holt",
+        "Präteritum": "holtet",
+        "Perfekt": "habt geholt"
+      },
+      "sie/Sie": {
+        "Präsens": "holen",
+        "Präteritum": "holten",
+        "Perfekt": "haben geholt"
+      }
+    }
+  },
+  {
+    "verb": "hören",
+    "meaning": "hear",
+    "conjugations": {
+      "ich": {
+        "Präsens": "höre",
+        "Präteritum": "hörte",
+        "Perfekt": "habe gehört"
+      },
+      "du": {
+        "Präsens": "hörst",
+        "Präteritum": "hörtest",
+        "Perfekt": "hast gehört"
+      },
+      "er/sie/es": {
+        "Präsens": "hört",
+        "Präteritum": "hörte",
+        "Perfekt": "hat gehört"
+      },
+      "wir": {
+        "Präsens": "hören",
+        "Präteritum": "hörten",
+        "Perfekt": "haben gehört"
+      },
+      "ihr": {
+        "Präsens": "hört",
+        "Präteritum": "hörtet",
+        "Perfekt": "habt gehört"
+      },
+      "sie/Sie": {
+        "Präsens": "hören",
+        "Präteritum": "hörten",
+        "Perfekt": "haben gehört"
+      }
+    }
   }
 ]
