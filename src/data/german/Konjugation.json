@@ -10989,5 +10989,365 @@
         "Perfekt": "haben gegolten"
       }
     }
+  },
+  {
+    "verb": "genießen",
+    "meaning": "enjoy",
+    "conjugations": {
+      "ich": {
+        "Präsens": "genieße",
+        "Präteritum": "genoss",
+        "Perfekt": "habe genossen"
+      },
+      "du": {
+        "Präsens": "genießt",
+        "Präteritum": "genossest",
+        "Perfekt": "hast genossen"
+      },
+      "er/sie/es": {
+        "Präsens": "genießt",
+        "Präteritum": "genoss",
+        "Perfekt": "hat genossen"
+      },
+      "wir": {
+        "Präsens": "genießen",
+        "Präteritum": "genossen",
+        "Perfekt": "haben genossen"
+      },
+      "ihr": {
+        "Präsens": "genießt",
+        "Präteritum": "genosst",
+        "Perfekt": "habt genossen"
+      },
+      "sie/Sie": {
+        "Präsens": "genießen",
+        "Präteritum": "genossen",
+        "Perfekt": "haben genossen"
+      }
+    }
+  },
+  {
+    "verb": "geschehen",
+    "meaning": "happen",
+    "conjugations": {
+      "ich": {
+        "Präsens": "geschehe",
+        "Präteritum": "geschah",
+        "Perfekt": "bin geschehen"
+      },
+      "du": {
+        "Präsens": "geschiehst",
+        "Präteritum": "geschahst",
+        "Perfekt": "bist geschehen"
+      },
+      "er/sie/es": {
+        "Präsens": "geschieht",
+        "Präteritum": "geschah",
+        "Perfekt": "ist geschehen"
+      },
+      "wir": {
+        "Präsens": "geschehen",
+        "Präteritum": "geschahen",
+        "Perfekt": "sind geschehen"
+      },
+      "ihr": {
+        "Präsens": "gescheht",
+        "Präteritum": "geschaht",
+        "Perfekt": "seid geschehen"
+      },
+      "sie/Sie": {
+        "Präsens": "geschehen",
+        "Präteritum": "geschahen",
+        "Perfekt": "sind geschehen"
+      }
+    }
+  },
+  {
+    "verb": "gewinnen",
+    "meaning": "win",
+    "conjugations": {
+      "ich": {
+        "Präsens": "gewinne",
+        "Präteritum": "gewann",
+        "Perfekt": "habe gewonnen"
+      },
+      "du": {
+        "Präsens": "gewinnst",
+        "Präteritum": "gewannst",
+        "Perfekt": "hast gewonnen"
+      },
+      "er/sie/es": {
+        "Präsens": "gewinnt",
+        "Präteritum": "gewann",
+        "Perfekt": "hat gewonnen"
+      },
+      "wir": {
+        "Präsens": "gewinnen",
+        "Präteritum": "gewannen",
+        "Perfekt": "haben gewonnen"
+      },
+      "ihr": {
+        "Präsens": "gewinnt",
+        "Präteritum": "gewannet",
+        "Perfekt": "habt gewonnen"
+      },
+      "sie/Sie": {
+        "Präsens": "gewinnen",
+        "Präteritum": "gewannen",
+        "Perfekt": "haben gewonnen"
+      }
+    }
+  },
+  {
+    "verb": "gießen",
+    "meaning": "pour, water",
+    "conjugations": {
+      "ich": {
+        "Präsens": "gieße",
+        "Präteritum": "goss",
+        "Perfekt": "habe gegossen"
+      },
+      "du": {
+        "Präsens": "gießt",
+        "Präteritum": "gossest",
+        "Perfekt": "hast gegossen"
+      },
+      "er/sie/es": {
+        "Präsens": "gießt",
+        "Präteritum": "goss",
+        "Perfekt": "hat gegossen"
+      },
+      "wir": {
+        "Präsens": "gießen",
+        "Präteritum": "gossen",
+        "Perfekt": "haben gegossen"
+      },
+      "ihr": {
+        "Präsens": "gießt",
+        "Präteritum": "gosst",
+        "Perfekt": "habt gegossen"
+      },
+      "sie/Sie": {
+        "Präsens": "gießen",
+        "Präteritum": "gossen",
+        "Perfekt": "haben gegossen"
+      }
+    }
+  },
+  {
+    "verb": "glauben",
+    "meaning": "believe",
+    "conjugations": {
+      "ich": {
+        "Präsens": "glaube",
+        "Präteritum": "glaubte",
+        "Perfekt": "habe geglaubt"
+      },
+      "du": {
+        "Präsens": "glaubst",
+        "Präteritum": "glaubtest",
+        "Perfekt": "hast geglaubt"
+      },
+      "er/sie/es": {
+        "Präsens": "glaubt",
+        "Präteritum": "glaubte",
+        "Perfekt": "hat geglaubt"
+      },
+      "wir": {
+        "Präsens": "glauben",
+        "Präteritum": "glaubten",
+        "Perfekt": "haben geglaubt"
+      },
+      "ihr": {
+        "Präsens": "glaubt",
+        "Präteritum": "glaubtet",
+        "Perfekt": "habt geglaubt"
+      },
+      "sie/Sie": {
+        "Präsens": "glauben",
+        "Präteritum": "glaubten",
+        "Perfekt": "haben geglaubt"
+      }
+    }
+  },
+  {
+    "verb": "gleichen",
+    "meaning": "resemble",
+    "conjugations": {
+      "ich": {
+        "Präsens": "gleiche",
+        "Präteritum": "glich",
+        "Perfekt": "habe geglichen"
+      },
+      "du": {
+        "Präsens": "gleichst",
+        "Präteritum": "glichst",
+        "Perfekt": "hast geglichen"
+      },
+      "er/sie/es": {
+        "Präsens": "gleicht",
+        "Präteritum": "glich",
+        "Perfekt": "hat geglichen"
+      },
+      "wir": {
+        "Präsens": "gleichen",
+        "Präteritum": "glichen",
+        "Perfekt": "haben geglichen"
+      },
+      "ihr": {
+        "Präsens": "gleicht",
+        "Präteritum": "glicht",
+        "Perfekt": "habt geglichen"
+      },
+      "sie/Sie": {
+        "Präsens": "gleichen",
+        "Präteritum": "glichen",
+        "Perfekt": "haben geglichen"
+      }
+    }
+  },
+  {
+    "verb": "gleiten",
+    "meaning": "glide",
+    "conjugations": {
+      "ich": {
+        "Präsens": "gleite",
+        "Präteritum": "glitt",
+        "Perfekt": "bin geglitten"
+      },
+      "du": {
+        "Präsens": "gleitest",
+        "Präteritum": "glittest",
+        "Perfekt": "bist geglitten"
+      },
+      "er/sie/es": {
+        "Präsens": "gleitet",
+        "Präteritum": "glitt",
+        "Perfekt": "ist geglitten"
+      },
+      "wir": {
+        "Präsens": "gleiten",
+        "Präteritum": "glitten",
+        "Perfekt": "sind geglitten"
+      },
+      "ihr": {
+        "Präsens": "gleitet",
+        "Präteritum": "glittet",
+        "Perfekt": "seid geglitten"
+      },
+      "sie/Sie": {
+        "Präsens": "gleiten",
+        "Präteritum": "glitten",
+        "Perfekt": "sind geglitten"
+      }
+    }
+  },
+  {
+    "verb": "glimmen",
+    "meaning": "smoulder",
+    "conjugations": {
+      "ich": {
+        "Präsens": "glimme",
+        "Präteritum": "glomm / glimmte",
+        "Perfekt": "habe geglommen / geglimmt"
+      },
+      "du": {
+        "Präsens": "glimmst",
+        "Präteritum": "glommst / glimmtest",
+        "Perfekt": "hast geglommen / geglimmt"
+      },
+      "er/sie/es": {
+        "Präsens": "glimmt",
+        "Präteritum": "glomm / glimmte",
+        "Perfekt": "hat geglommen / geglimmt"
+      },
+      "wir": {
+        "Präsens": "glimmen",
+        "Präteritum": "glommen / glimmten",
+        "Perfekt": "haben geglommen / geglimmt"
+      },
+      "ihr": {
+        "Präsens": "glimmt",
+        "Präteritum": "glommt / glimmtet",
+        "Perfekt": "habt geglommen / geglimmt"
+      },
+      "sie/Sie": {
+        "Präsens": "glimmen",
+        "Präteritum": "glommen / glimmten",
+        "Perfekt": "haben geglommen / geglimmt"
+      }
+    }
+  },
+  {
+    "verb": "graben",
+    "meaning": "dig",
+    "conjugations": {
+      "ich": {
+        "Präsens": "grabe",
+        "Präteritum": "grub",
+        "Perfekt": "habe gegraben"
+      },
+      "du": {
+        "Präsens": "gräbst",
+        "Präteritum": "grubst",
+        "Perfekt": "hast gegraben"
+      },
+      "er/sie/es": {
+        "Präsens": "gräbt",
+        "Präteritum": "grub",
+        "Perfekt": "hat gegraben"
+      },
+      "wir": {
+        "Präsens": "graben",
+        "Präteritum": "gruben",
+        "Perfekt": "haben gegraben"
+      },
+      "ihr": {
+        "Präsens": "grabt",
+        "Präteritum": "grubt",
+        "Perfekt": "habt gegraben"
+      },
+      "sie/Sie": {
+        "Präsens": "graben",
+        "Präteritum": "gruben",
+        "Perfekt": "haben gegraben"
+      }
+    }
+  },
+  {
+    "verb": "greifen",
+    "meaning": "grasp",
+    "conjugations": {
+      "ich": {
+        "Präsens": "greife",
+        "Präteritum": "griff",
+        "Perfekt": "habe gegriffen"
+      },
+      "du": {
+        "Präsens": "greifst",
+        "Präteritum": "griffst",
+        "Perfekt": "hast gegriffen"
+      },
+      "er/sie/es": {
+        "Präsens": "greift",
+        "Präteritum": "griff",
+        "Perfekt": "hat gegriffen"
+      },
+      "wir": {
+        "Präsens": "greifen",
+        "Präteritum": "griffen",
+        "Perfekt": "haben gegriffen"
+      },
+      "ihr": {
+        "Präsens": "greift",
+        "Präteritum": "grifft",
+        "Perfekt": "habt gegriffen"
+      },
+      "sie/Sie": {
+        "Präsens": "greifen",
+        "Präteritum": "griffen",
+        "Perfekt": "haben gegriffen"
+      }
+    }
   }
 ]
