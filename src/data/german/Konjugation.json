@@ -11745,5 +11745,401 @@
         "Perfekt": "haben gehört"
       }
     }
+  },
+  {
+    "verb": "jagen",
+    "meaning": "hunt",
+    "conjugations": {
+      "ich": {
+        "Präsens": "jage",
+        "Präteritum": "jagte",
+        "Perfekt": "habe gejagt"
+      },
+      "du": {
+        "Präsens": "jagst",
+        "Präteritum": "jagtest",
+        "Perfekt": "hast gejagt"
+      },
+      "er/sie/es": {
+        "Präsens": "jagt",
+        "Präteritum": "jagte",
+        "Perfekt": "hat gejagt"
+      },
+      "wir": {
+        "Präsens": "jagen",
+        "Präteritum": "jagten",
+        "Perfekt": "haben gejagt"
+      },
+      "ihr": {
+        "Präsens": "jagt",
+        "Präteritum": "jagtet",
+        "Perfekt": "habt gejagt"
+      },
+      "sie/Sie": {
+        "Präsens": "jagen",
+        "Präteritum": "jagten",
+        "Perfekt": "haben gejagt"
+      }
+    }
+  },
+  {
+    "verb": "jammern",
+    "meaning": "complain, moan",
+    "conjugations": {
+      "ich": {
+        "Präsens": "jammere",
+        "Präteritum": "jammerte",
+        "Perfekt": "habe gejammert"
+      },
+      "du": {
+        "Präsens": "jammerst",
+        "Präteritum": "jammertest",
+        "Perfekt": "hast gejammert"
+      },
+      "er/sie/es": {
+        "Präsens": "jammert",
+        "Präteritum": "jammerte",
+        "Perfekt": "hat gejammert"
+      },
+      "wir": {
+        "Präsens": "jammern",
+        "Präteritum": "jammerten",
+        "Perfekt": "haben gejammert"
+      },
+      "ihr": {
+        "Präsens": "jammert",
+        "Präteritum": "jammertet",
+        "Perfekt": "habt gejammert"
+      },
+      "sie/Sie": {
+        "Präsens": "jammern",
+        "Präteritum": "jammerten",
+        "Perfekt": "haben gejammert"
+      }
+    }
+  },
+  {
+    "verb": "kaufen",
+    "meaning": "buy",
+    "conjugations": {
+      "ich": {
+        "Präsens": "kaufe",
+        "Präteritum": "kaufte",
+        "Perfekt": "habe gekauft"
+      },
+      "du": {
+        "Präsens": "kaufst",
+        "Präteritum": "kauftest",
+        "Perfekt": "hast gekauft"
+      },
+      "er/sie/es": {
+        "Präsens": "kauft",
+        "Präteritum": "kaufte",
+        "Perfekt": "hat gekauft"
+      },
+      "wir": {
+        "Präsens": "kaufen",
+        "Präteritum": "kauften",
+        "Perfekt": "haben gekauft"
+      },
+      "ihr": {
+        "Präsens": "kauft",
+        "Präteritum": "kauftet",
+        "Perfekt": "habt gekauft"
+      },
+      "sie/Sie": {
+        "Präsens": "kaufen",
+        "Präteritum": "kauften",
+        "Perfekt": "haben gekauft"
+      }
+    }
+  },
+  {
+    "verb": "kennen",
+    "meaning": "know",
+    "conjugations": {
+      "ich": {
+        "Präsens": "kenne",
+        "Präteritum": "kannte",
+        "Perfekt": "habe gekannt"
+      },
+      "du": {
+        "Präsens": "kennst",
+        "Präteritum": "kanntest",
+        "Perfekt": "hast gekannt"
+      },
+      "er/sie/es": {
+        "Präsens": "kennt",
+        "Präteritum": "kannte",
+        "Perfekt": "hat gekannt"
+      },
+      "wir": {
+        "Präsens": "kennen",
+        "Präteritum": "kannten",
+        "Perfekt": "haben gekannt"
+      },
+      "ihr": {
+        "Präsens": "kennt",
+        "Präteritum": "kanntet",
+        "Perfekt": "habt gekannt"
+      },
+      "sie/Sie": {
+        "Präsens": "kennen",
+        "Präteritum": "kannten",
+        "Perfekt": "haben gekannt"
+      }
+    }
+  },
+  {
+    "verb": "klettern",
+    "meaning": "climb",
+    "conjugations": {
+      "ich": {
+        "Präsens": "klettere",
+        "Präteritum": "kletterte",
+        "Perfekt": "bin geklettert"
+      },
+      "du": {
+        "Präsens": "kletterst",
+        "Präteritum": "klettertest",
+        "Perfekt": "bist geklettert"
+      },
+      "er/sie/es": {
+        "Präsens": "klettert",
+        "Präteritum": "kletterte",
+        "Perfekt": "ist geklettert"
+      },
+      "wir": {
+        "Präsens": "klettern",
+        "Präteritum": "kletterten",
+        "Perfekt": "sind geklettert"
+      },
+      "ihr": {
+        "Präsens": "klettert",
+        "Präteritum": "klettertet",
+        "Perfekt": "seid geklettert"
+      },
+      "sie/Sie": {
+        "Präsens": "klettern",
+        "Präteritum": "kletterten",
+        "Perfekt": "sind geklettert"
+      }
+    }
+  },
+  {
+    "verb": "klingen",
+    "meaning": "sound, ring",
+    "conjugations": {
+      "ich": {
+        "Präsens": "klinge",
+        "Präteritum": "klang",
+        "Perfekt": "habe geklungen"
+      },
+      "du": {
+        "Präsens": "klingst",
+        "Präteritum": "klangst",
+        "Perfekt": "hast geklungen"
+      },
+      "er/sie/es": {
+        "Präsens": "klingt",
+        "Präteritum": "klang",
+        "Perfekt": "hat geklungen"
+      },
+      "wir": {
+        "Präsens": "klingen",
+        "Präteritum": "klangen",
+        "Perfekt": "haben geklungen"
+      },
+      "ihr": {
+        "Präsens": "klingt",
+        "Präteritum": "klangt",
+        "Perfekt": "habt geklungen"
+      },
+      "sie/Sie": {
+        "Präsens": "klingen",
+        "Präteritum": "klangen",
+        "Perfekt": "haben geklungen"
+      }
+    }
+  },
+  {
+    "verb": "kochen",
+    "meaning": "cook",
+    "conjugations": {
+      "ich": {
+        "Präsens": "koche",
+        "Präteritum": "kochte",
+        "Perfekt": "habe gekocht"
+      },
+      "du": {
+        "Präsens": "kochst",
+        "Präteritum": "kochtest",
+        "Perfekt": "hast gekocht"
+      },
+      "er/sie/es": {
+        "Präsens": "kocht",
+        "Präteritum": "kochte",
+        "Perfekt": "hat gekocht"
+      },
+      "wir": {
+        "Präsens": "kochen",
+        "Präteritum": "kochten",
+        "Perfekt": "haben gekocht"
+      },
+      "ihr": {
+        "Präsens": "kocht",
+        "Präteritum": "kochtet",
+        "Perfekt": "habt gekocht"
+      },
+      "sie/Sie": {
+        "Präsens": "kochen",
+        "Präteritum": "kochten",
+        "Perfekt": "haben gekocht"
+      }
+    }
+  },
+  {
+    "verb": "kommen",
+    "meaning": "come",
+    "conjugations": {
+      "ich": {
+        "Präsens": "komme",
+        "Präteritum": "kam",
+        "Perfekt": "bin gekommen"
+      },
+      "du": {
+        "Präsens": "kommst",
+        "Präteritum": "kamst",
+        "Perfekt": "bist gekommen"
+      },
+      "er/sie/es": {
+        "Präsens": "kommt",
+        "Präteritum": "kam",
+        "Perfekt": "ist gekommen"
+      },
+      "wir": {
+        "Präsens": "kommen",
+        "Präteritum": "kamen",
+        "Perfekt": "sind gekommen"
+      },
+      "ihr": {
+        "Präsens": "kommt",
+        "Präteritum": "kamt",
+        "Perfekt": "seid gekommen"
+      },
+      "sie/Sie": {
+        "Präsens": "kommen",
+        "Präteritum": "kamen",
+        "Perfekt": "sind gekommen"
+      }
+    }
+  },
+  {
+    "verb": "können",
+    "meaning": "can, be able",
+    "conjugations": {
+      "ich": {
+        "Präsens": "kann",
+        "Präteritum": "konnte",
+        "Perfekt": "habe gekonnt"
+      },
+      "du": {
+        "Präsens": "kannst",
+        "Präteritum": "konntest",
+        "Perfekt": "hast gekonnt"
+      },
+      "er/sie/es": {
+        "Präsens": "kann",
+        "Präteritum": "konnte",
+        "Perfekt": "hat gekonnt"
+      },
+      "wir": {
+        "Präsens": "können",
+        "Präteritum": "konnten",
+        "Perfekt": "haben gekonnt"
+      },
+      "ihr": {
+        "Präsens": "könnt",
+        "Präteritum": "konntet",
+        "Perfekt": "habt gekonnt"
+      },
+      "sie/Sie": {
+        "Präsens": "können",
+        "Präteritum": "konnten",
+        "Perfekt": "haben gekonnt"
+      }
+    }
+  },
+  {
+    "verb": "kosten",
+    "meaning": "cost",
+    "conjugations": {
+      "ich": {
+        "Präsens": "koste",
+        "Präteritum": "kostete",
+        "Perfekt": "habe gekostet"
+      },
+      "du": {
+        "Präsens": "kostest",
+        "Präteritum": "kostetest",
+        "Perfekt": "hast gekostet"
+      },
+      "er/sie/es": {
+        "Präsens": "kostet",
+        "Präteritum": "kostete",
+        "Perfekt": "hat gekostet"
+      },
+      "wir": {
+        "Präsens": "kosten",
+        "Präteritum": "kosteten",
+        "Perfekt": "haben gekostet"
+      },
+      "ihr": {
+        "Präsens": "kostet",
+        "Präteritum": "kostetet",
+        "Perfekt": "habt gekostet"
+      },
+      "sie/Sie": {
+        "Präsens": "kosten",
+        "Präteritum": "kosteten",
+        "Perfekt": "haben gekostet"
+      }
+    }
+  },
+  {
+    "verb": "kriechen",
+    "meaning": "crawl",
+    "conjugations": {
+      "ich": {
+        "Präsens": "krieche",
+        "Präteritum": "kroch",
+        "Perfekt": "bin gekrochen"
+      },
+      "du": {
+        "Präsens": "kriechst",
+        "Präteritum": "krochst",
+        "Perfekt": "bist gekrochen"
+      },
+      "er/sie/es": {
+        "Präsens": "kriecht",
+        "Präteritum": "kroch",
+        "Perfekt": "ist gekrochen"
+      },
+      "wir": {
+        "Präsens": "kriechen",
+        "Präteritum": "krochen",
+        "Perfekt": "sind gekrochen"
+      },
+      "ihr": {
+        "Präsens": "kriecht",
+        "Präteritum": "krocht",
+        "Perfekt": "seid gekrochen"
+      },
+      "sie/Sie": {
+        "Präsens": "kriechen",
+        "Präteritum": "krochen",
+        "Perfekt": "sind gekrochen"
+      }
+    }
   }
 ]
