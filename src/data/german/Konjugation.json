@@ -8361,5 +8361,365 @@
         "Perfekt": "haben gedeutet"
       }
     }
+  },
+  {
+    "verb": "dichten",
+    "meaning": "caulk; write poetry",
+    "conjugations": {
+      "ich": {
+        "Präsens": "dichte",
+        "Präteritum": "dichtete",
+        "Perfekt": "habe gedichtet"
+      },
+      "du": {
+        "Präsens": "dichtest",
+        "Präteritum": "dichtetest",
+        "Perfekt": "hast gedichtet"
+      },
+      "er/sie/es": {
+        "Präsens": "dichtet",
+        "Präteritum": "dichtete",
+        "Perfekt": "hat gedichtet"
+      },
+      "wir": {
+        "Präsens": "dichten",
+        "Präteritum": "dichteten",
+        "Perfekt": "haben gedichtet"
+      },
+      "ihr": {
+        "Präsens": "dichtet",
+        "Präteritum": "dichtetet",
+        "Perfekt": "habt gedichtet"
+      },
+      "sie/Sie": {
+        "Präsens": "dichten",
+        "Präteritum": "dichteten",
+        "Perfekt": "haben gedichtet"
+      }
+    }
+  },
+  {
+    "verb": "dienen",
+    "meaning": "serve",
+    "conjugations": {
+      "ich": {
+        "Präsens": "diene",
+        "Präteritum": "diente",
+        "Perfekt": "habe gedient"
+      },
+      "du": {
+        "Präsens": "dienst",
+        "Präteritum": "dientest",
+        "Perfekt": "hast gedient"
+      },
+      "er/sie/es": {
+        "Präsens": "dient",
+        "Präteritum": "diente",
+        "Perfekt": "hat gedient"
+      },
+      "wir": {
+        "Präsens": "dienen",
+        "Präteritum": "dienten",
+        "Perfekt": "haben gedient"
+      },
+      "ihr": {
+        "Präsens": "dient",
+        "Präteritum": "dientet",
+        "Perfekt": "habt gedient"
+      },
+      "sie/Sie": {
+        "Präsens": "dienen",
+        "Präteritum": "dienten",
+        "Perfekt": "haben gedient"
+      }
+    }
+  },
+  {
+    "verb": "dringen",
+    "meaning": "urge, pierce",
+    "conjugations": {
+      "ich": {
+        "Präsens": "dringe",
+        "Präteritum": "drang",
+        "Perfekt": "bin gedrungen"
+      },
+      "du": {
+        "Präsens": "dringst",
+        "Präteritum": "drangst",
+        "Perfekt": "bist gedrungen"
+      },
+      "er/sie/es": {
+        "Präsens": "dringt",
+        "Präteritum": "drang",
+        "Perfekt": "ist gedrungen"
+      },
+      "wir": {
+        "Präsens": "dringen",
+        "Präteritum": "drangen",
+        "Perfekt": "sind gedrungen"
+      },
+      "ihr": {
+        "Präsens": "dringt",
+        "Präteritum": "drangt",
+        "Perfekt": "seid gedrungen"
+      },
+      "sie/Sie": {
+        "Präsens": "dringen",
+        "Präteritum": "drangen",
+        "Perfekt": "sind gedrungen"
+      }
+    }
+  },
+  {
+    "verb": "drucken",
+    "meaning": "print",
+    "conjugations": {
+      "ich": {
+        "Präsens": "drucke",
+        "Präteritum": "druckte",
+        "Perfekt": "habe gedruckt"
+      },
+      "du": {
+        "Präsens": "druckst",
+        "Präteritum": "drucktest",
+        "Perfekt": "hast gedruckt"
+      },
+      "er/sie/es": {
+        "Präsens": "druckt",
+        "Präteritum": "druckte",
+        "Perfekt": "hat gedruckt"
+      },
+      "wir": {
+        "Präsens": "drucken",
+        "Präteritum": "druckten",
+        "Perfekt": "haben gedruckt"
+      },
+      "ihr": {
+        "Präsens": "druckt",
+        "Präteritum": "drucktet",
+        "Perfekt": "habt gedruckt"
+      },
+      "sie/Sie": {
+        "Präsens": "drucken",
+        "Präteritum": "druckten",
+        "Perfekt": "haben gedruckt"
+      }
+    }
+  },
+  {
+    "verb": "drücken",
+    "meaning": "push, press; oppress",
+    "conjugations": {
+      "ich": {
+        "Präsens": "drücke",
+        "Präteritum": "drückte",
+        "Perfekt": "habe gedrückt"
+      },
+      "du": {
+        "Präsens": "drückst",
+        "Präteritum": "drücktest",
+        "Perfekt": "hast gedrückt"
+      },
+      "er/sie/es": {
+        "Präsens": "drückt",
+        "Präteritum": "drückte",
+        "Perfekt": "hat gedrückt"
+      },
+      "wir": {
+        "Präsens": "drücken",
+        "Präteritum": "drückten",
+        "Perfekt": "haben gedrückt"
+      },
+      "ihr": {
+        "Präsens": "drückt",
+        "Präteritum": "drücktet",
+        "Perfekt": "habt gedrückt"
+      },
+      "sie/Sie": {
+        "Präsens": "drücken",
+        "Präteritum": "drückten",
+        "Perfekt": "haben gedrückt"
+      }
+    }
+  },
+  {
+    "verb": "ducken",
+    "meaning": "stoop, duck; humble",
+    "conjugations": {
+      "ich": {
+        "Präsens": "ducke",
+        "Präteritum": "duckte",
+        "Perfekt": "habe geduckt"
+      },
+      "du": {
+        "Präsens": "duckst",
+        "Präteritum": "ducktest",
+        "Perfekt": "hast geduckt"
+      },
+      "er/sie/es": {
+        "Präsens": "duckt",
+        "Präteritum": "duckte",
+        "Perfekt": "hat geduckt"
+      },
+      "wir": {
+        "Präsens": "ducken",
+        "Präteritum": "duckten",
+        "Perfekt": "haben geduckt"
+      },
+      "ihr": {
+        "Präsens": "duckt",
+        "Präteritum": "ducktet",
+        "Perfekt": "habt geduckt"
+      },
+      "sie/Sie": {
+        "Präsens": "ducken",
+        "Präteritum": "duckten",
+        "Perfekt": "haben geduckt"
+      }
+    }
+  },
+  {
+    "verb": "dürfen",
+    "meaning": "be permitted, allow",
+    "conjugations": {
+      "ich": {
+        "Präsens": "darf",
+        "Präteritum": "durfte",
+        "Perfekt": "habe gedurft"
+      },
+      "du": {
+        "Präsens": "darfst",
+        "Präteritum": "durftest",
+        "Perfekt": "hast gedurft"
+      },
+      "er/sie/es": {
+        "Präsens": "darf",
+        "Präteritum": "durfte",
+        "Perfekt": "hat gedurft"
+      },
+      "wir": {
+        "Präsens": "dürfen",
+        "Präteritum": "durften",
+        "Perfekt": "haben gedurft"
+      },
+      "ihr": {
+        "Präsens": "dürft",
+        "Präteritum": "durftet",
+        "Perfekt": "habt gedurft"
+      },
+      "sie/Sie": {
+        "Präsens": "dürfen",
+        "Präteritum": "durften",
+        "Perfekt": "haben gedurft"
+      }
+    }
+  },
+  {
+    "verb": "dürsten",
+    "meaning": "thirst, be thirsty",
+    "conjugations": {
+      "ich": {
+        "Präsens": "dürste",
+        "Präteritum": "dürstete",
+        "Perfekt": "habe gedürstet"
+      },
+      "du": {
+        "Präsens": "dürstest",
+        "Präteritum": "dürstetest",
+        "Perfekt": "hast gedürstet"
+      },
+      "er/sie/es": {
+        "Präsens": "dürstet",
+        "Präteritum": "dürstete",
+        "Perfekt": "hat gedürstet"
+      },
+      "wir": {
+        "Präsens": "dürsten",
+        "Präteritum": "dürsteten",
+        "Perfekt": "haben gedürstet"
+      },
+      "ihr": {
+        "Präsens": "dürstet",
+        "Präteritum": "dürstetet",
+        "Perfekt": "habt gedürstet"
+      },
+      "sie/Sie": {
+        "Präsens": "dürsten",
+        "Präteritum": "dürsteten",
+        "Perfekt": "haben gedürstet"
+      }
+    }
+  },
+  {
+    "verb": "ehren",
+    "meaning": "honor",
+    "conjugations": {
+      "ich": {
+        "Präsens": "ehre",
+        "Präteritum": "ehrte",
+        "Perfekt": "habe geehrt"
+      },
+      "du": {
+        "Präsens": "ehrst",
+        "Präteritum": "ehrtest",
+        "Perfekt": "hast geehrt"
+      },
+      "er/sie/es": {
+        "Präsens": "ehrt",
+        "Präteritum": "ehrte",
+        "Perfekt": "hat geehrt"
+      },
+      "wir": {
+        "Präsens": "ehren",
+        "Präteritum": "ehrten",
+        "Perfekt": "haben geehrt"
+      },
+      "ihr": {
+        "Präsens": "ehrt",
+        "Präteritum": "ehrtet",
+        "Perfekt": "habt geehrt"
+      },
+      "sie/Sie": {
+        "Präsens": "ehren",
+        "Präteritum": "ehrten",
+        "Perfekt": "haben geehrt"
+      }
+    }
+  },
+  {
+    "verb": "einatmen",
+    "meaning": "breathe in",
+    "conjugations": {
+      "ich": {
+        "Präsens": "atme ein",
+        "Präteritum": "atmete ein",
+        "Perfekt": "habe eingeatmet"
+      },
+      "du": {
+        "Präsens": "atmest ein",
+        "Präteritum": "atmetest ein",
+        "Perfekt": "hast eingeatmet"
+      },
+      "er/sie/es": {
+        "Präsens": "atmet ein",
+        "Präteritum": "atmete ein",
+        "Perfekt": "hat eingeatmet"
+      },
+      "wir": {
+        "Präsens": "atmen ein",
+        "Präteritum": "atmeten ein",
+        "Perfekt": "haben eingeatmet"
+      },
+      "ihr": {
+        "Präsens": "atmet ein",
+        "Präteritum": "atmetet ein",
+        "Perfekt": "habt eingeatmet"
+      },
+      "sie/Sie": {
+        "Präsens": "atmen ein",
+        "Präteritum": "atmeten ein",
+        "Perfekt": "haben eingeatmet"
+      }
+    }
   }
 ]
