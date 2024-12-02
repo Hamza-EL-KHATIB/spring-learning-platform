@@ -12861,5 +12861,401 @@
         "Perfekt": "haben geöffnet"
       }
     }
+  },
+  {
+    "verb": "packen",
+    "meaning": "pack",
+    "conjugations": {
+      "ich": {
+        "Präsens": "packe",
+        "Präteritum": "packte",
+        "Perfekt": "habe gepackt"
+      },
+      "du": {
+        "Präsens": "packst",
+        "Präteritum": "packtest",
+        "Perfekt": "hast gepackt"
+      },
+      "er/sie/es": {
+        "Präsens": "packt",
+        "Präteritum": "packte",
+        "Perfekt": "hat gepackt"
+      },
+      "wir": {
+        "Präsens": "packen",
+        "Präteritum": "packten",
+        "Perfekt": "haben gepackt"
+      },
+      "ihr": {
+        "Präsens": "packt",
+        "Präteritum": "packtet",
+        "Perfekt": "habt gepackt"
+      },
+      "sie/Sie": {
+        "Präsens": "packen",
+        "Präteritum": "packten",
+        "Perfekt": "haben gepackt"
+      }
+    }
+  },
+  {
+    "verb": "passen",
+    "meaning": "fit, suit",
+    "conjugations": {
+      "ich": {
+        "Präsens": "passe",
+        "Präteritum": "passte",
+        "Perfekt": "habe gepasst"
+      },
+      "du": {
+        "Präsens": "passt",
+        "Präteritum": "passtest",
+        "Perfekt": "hast gepasst"
+      },
+      "er/sie/es": {
+        "Präsens": "passt",
+        "Präteritum": "passte",
+        "Perfekt": "hat gepasst"
+      },
+      "wir": {
+        "Präsens": "passen",
+        "Präteritum": "passten",
+        "Perfekt": "haben gepasst"
+      },
+      "ihr": {
+        "Präsens": "passt",
+        "Präteritum": "pastet",
+        "Perfekt": "habt gepasst"
+      },
+      "sie/Sie": {
+        "Präsens": "passen",
+        "Präteritum": "passten",
+        "Perfekt": "haben gepasst"
+      }
+    }
+  },
+  {
+    "verb": "passieren",
+    "meaning": "happen; pass",
+    "conjugations": {
+      "ich": {
+        "Präsens": "passiere",
+        "Präteritum": "passierte",
+        "Perfekt": "bin passiert"
+      },
+      "du": {
+        "Präsens": "passierst",
+        "Präteritum": "passiertest",
+        "Perfekt": "bist passiert"
+      },
+      "er/sie/es": {
+        "Präsens": "passiert",
+        "Präteritum": "passierte",
+        "Perfekt": "ist passiert"
+      },
+      "wir": {
+        "Präsens": "passieren",
+        "Präteritum": "passierten",
+        "Perfekt": "sind passiert"
+      },
+      "ihr": {
+        "Präsens": "passiert",
+        "Präteritum": "passiertet",
+        "Perfekt": "seid passiert"
+      },
+      "sie/Sie": {
+        "Präsens": "passieren",
+        "Präteritum": "passierten",
+        "Perfekt": "sind passiert"
+      }
+    }
+  },
+  {
+    "verb": "pflegen",
+    "meaning": "care for, maintain",
+    "conjugations": {
+      "ich": {
+        "Präsens": "pflege",
+        "Präteritum": "pflegte",
+        "Perfekt": "habe gepflegt"
+      },
+      "du": {
+        "Präsens": "pflegst",
+        "Präteritum": "pflegtest",
+        "Perfekt": "hast gepflegt"
+      },
+      "er/sie/es": {
+        "Präsens": "pflegt",
+        "Präteritum": "pflegte",
+        "Perfekt": "hat gepflegt"
+      },
+      "wir": {
+        "Präsens": "pflegen",
+        "Präteritum": "pflegten",
+        "Perfekt": "haben gepflegt"
+      },
+      "ihr": {
+        "Präsens": "pflegt",
+        "Präteritum": "pflegtet",
+        "Perfekt": "habt gepflegt"
+      },
+      "sie/Sie": {
+        "Präsens": "pflegen",
+        "Präteritum": "pflegten",
+        "Perfekt": "haben gepflegt"
+      }
+    }
+  },
+  {
+    "verb": "planen",
+    "meaning": "plan",
+    "conjugations": {
+      "ich": {
+        "Präsens": "plane",
+        "Präteritum": "plante",
+        "Perfekt": "habe geplant"
+      },
+      "du": {
+        "Präsens": "planst",
+        "Präteritum": "plantest",
+        "Perfekt": "hast geplant"
+      },
+      "er/sie/es": {
+        "Präsens": "plant",
+        "Präteritum": "plante",
+        "Perfekt": "hat geplant"
+      },
+      "wir": {
+        "Präsens": "planen",
+        "Präteritum": "planten",
+        "Perfekt": "haben geplant"
+      },
+      "ihr": {
+        "Präsens": "plant",
+        "Präteritum": "plantet",
+        "Perfekt": "habt geplant"
+      },
+      "sie/Sie": {
+        "Präsens": "planen",
+        "Präteritum": "planten",
+        "Perfekt": "haben geplant"
+      }
+    }
+  },
+  {
+    "verb": "probieren",
+    "meaning": "try, taste",
+    "conjugations": {
+      "ich": {
+        "Präsens": "probiere",
+        "Präteritum": "probierte",
+        "Perfekt": "habe probiert"
+      },
+      "du": {
+        "Präsens": "probierst",
+        "Präteritum": "probiertest",
+        "Perfekt": "hast probiert"
+      },
+      "er/sie/es": {
+        "Präsens": "probiert",
+        "Präteritum": "probierte",
+        "Perfekt": "hat probiert"
+      },
+      "wir": {
+        "Präsens": "probieren",
+        "Präteritum": "probierten",
+        "Perfekt": "haben probiert"
+      },
+      "ihr": {
+        "Präsens": "probiert",
+        "Präteritum": "probiertet",
+        "Perfekt": "habt probiert"
+      },
+      "sie/Sie": {
+        "Präsens": "probieren",
+        "Präteritum": "probierten",
+        "Perfekt": "haben probiert"
+      }
+    }
+  },
+  {
+    "verb": "putzen",
+    "meaning": "clean",
+    "conjugations": {
+      "ich": {
+        "Präsens": "putze",
+        "Präteritum": "putzte",
+        "Perfekt": "habe geputzt"
+      },
+      "du": {
+        "Präsens": "putzt",
+        "Präteritum": "putztest",
+        "Perfekt": "hast geputzt"
+      },
+      "er/sie/es": {
+        "Präsens": "putzt",
+        "Präteritum": "putzte",
+        "Perfekt": "hat geputzt"
+      },
+      "wir": {
+        "Präsens": "putzen",
+        "Präteritum": "putzten",
+        "Perfekt": "haben geputzt"
+      },
+      "ihr": {
+        "Präsens": "putzt",
+        "Präteritum": "putztet",
+        "Perfekt": "habt geputzt"
+      },
+      "sie/Sie": {
+        "Präsens": "putzen",
+        "Präteritum": "putzten",
+        "Perfekt": "haben geputzt"
+      }
+    }
+  },
+  {
+    "verb": "quellen",
+    "meaning": "gush, swell",
+    "conjugations": {
+      "ich": {
+        "Präsens": "quelle",
+        "Präteritum": "quoll",
+        "Perfekt": "bin gequollen"
+      },
+      "du": {
+        "Präsens": "quillst",
+        "Präteritum": "quollst",
+        "Perfekt": "bist gequollen"
+      },
+      "er/sie/es": {
+        "Präsens": "quillt",
+        "Präteritum": "quoll",
+        "Perfekt": "ist gequollen"
+      },
+      "wir": {
+        "Präsens": "quellen",
+        "Präteritum": "quollen",
+        "Perfekt": "sind gequollen"
+      },
+      "ihr": {
+        "Präsens": "quellt",
+        "Präteritum": "quollt",
+        "Perfekt": "seid gequollen"
+      },
+      "sie/Sie": {
+        "Präsens": "quellen",
+        "Präteritum": "quollen",
+        "Perfekt": "sind gequollen"
+      }
+    }
+  },
+  {
+    "verb": "raten",
+    "meaning": "advise; guess",
+    "conjugations": {
+      "ich": {
+        "Präsens": "rate",
+        "Präteritum": "riet",
+        "Perfekt": "habe geraten"
+      },
+      "du": {
+        "Präsens": "rätst",
+        "Präteritum": "rietest",
+        "Perfekt": "hast geraten"
+      },
+      "er/sie/es": {
+        "Präsens": "rät",
+        "Präteritum": "riet",
+        "Perfekt": "hat geraten"
+      },
+      "wir": {
+        "Präsens": "raten",
+        "Präteritum": "rieten",
+        "Perfekt": "haben geraten"
+      },
+      "ihr": {
+        "Präsens": "ratet",
+        "Präteritum": "rietet",
+        "Perfekt": "habt geraten"
+      },
+      "sie/Sie": {
+        "Präsens": "raten",
+        "Präteritum": "rieten",
+        "Perfekt": "haben geraten"
+      }
+    }
+  },
+  {
+    "verb": "rauchen",
+    "meaning": "smoke",
+    "conjugations": {
+      "ich": {
+        "Präsens": "rauche",
+        "Präteritum": "rauchte",
+        "Perfekt": "habe geraucht"
+      },
+      "du": {
+        "Präsens": "rauchst",
+        "Präteritum": "rauchtest",
+        "Perfekt": "hast geraucht"
+      },
+      "er/sie/es": {
+        "Präsens": "raucht",
+        "Präteritum": "rauchte",
+        "Perfekt": "hat geraucht"
+      },
+      "wir": {
+        "Präsens": "rauchen",
+        "Präteritum": "rauchten",
+        "Perfekt": "haben geraucht"
+      },
+      "ihr": {
+        "Präsens": "raucht",
+        "Präteritum": "rauchtet",
+        "Perfekt": "habt geraucht"
+      },
+      "sie/Sie": {
+        "Präsens": "rauchen",
+        "Präteritum": "rauchten",
+        "Perfekt": "haben geraucht"
+      }
+    }
+  },
+  {
+    "verb": "rechnen",
+    "meaning": "calculate",
+    "conjugations": {
+      "ich": {
+        "Präsens": "rechne",
+        "Präteritum": "rechnete",
+        "Perfekt": "habe gerechnet"
+      },
+      "du": {
+        "Präsens": "rechnest",
+        "Präteritum": "rechnetest",
+        "Perfekt": "hast gerechnet"
+      },
+      "er/sie/es": {
+        "Präsens": "rechnet",
+        "Präteritum": "rechnete",
+        "Perfekt": "hat gerechnet"
+      },
+      "wir": {
+        "Präsens": "rechnen",
+        "Präteritum": "rechneten",
+        "Perfekt": "haben gerechnet"
+      },
+      "ihr": {
+        "Präsens": "rechnet",
+        "Präteritum": "rechnetet",
+        "Perfekt": "habt gerechnet"
+      },
+      "sie/Sie": {
+        "Präsens": "rechnen",
+        "Präteritum": "rechneten",
+        "Perfekt": "haben gerechnet"
+      }
+    }
   }
 ]
