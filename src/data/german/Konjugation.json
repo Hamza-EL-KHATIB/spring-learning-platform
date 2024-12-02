@@ -8721,5 +8721,365 @@
         "Perfekt": "haben eingeatmet"
       }
     }
+  },
+  {
+    "verb": "einbauen",
+    "meaning": "install, put in",
+    "conjugations": {
+      "ich": {
+        "Präsens": "baue ein",
+        "Präteritum": "baute ein",
+        "Perfekt": "habe eingebaut"
+      },
+      "du": {
+        "Präsens": "baust ein",
+        "Präteritum": "bautest ein",
+        "Perfekt": "hast eingebaut"
+      },
+      "er/sie/es": {
+        "Präsens": "baut ein",
+        "Präteritum": "baute ein",
+        "Perfekt": "hat eingebaut"
+      },
+      "wir": {
+        "Präsens": "bauen ein",
+        "Präteritum": "bauten ein",
+        "Perfekt": "haben eingebaut"
+      },
+      "ihr": {
+        "Präsens": "baut ein",
+        "Präteritum": "bautet ein",
+        "Perfekt": "habt eingebaut"
+      },
+      "sie/Sie": {
+        "Präsens": "bauen ein",
+        "Präteritum": "bauten ein",
+        "Perfekt": "haben eingebaut"
+      }
+    }
+  },
+  {
+    "verb": "einbilden",
+    "meaning": "imagine, get the idea",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bilde ein",
+        "Präteritum": "bildete ein",
+        "Perfekt": "habe eingebildet"
+      },
+      "du": {
+        "Präsens": "bildest ein",
+        "Präteritum": "bildetest ein",
+        "Perfekt": "hast eingebildet"
+      },
+      "er/sie/es": {
+        "Präsens": "bildet ein",
+        "Präteritum": "bildete ein",
+        "Perfekt": "hat eingebildet"
+      },
+      "wir": {
+        "Präsens": "bilden ein",
+        "Präteritum": "bildeten ein",
+        "Perfekt": "haben eingebildet"
+      },
+      "ihr": {
+        "Präsens": "bildet ein",
+        "Präteritum": "bildetet ein",
+        "Perfekt": "habt eingebildet"
+      },
+      "sie/Sie": {
+        "Präsens": "bilden ein",
+        "Präteritum": "bildeten ein",
+        "Perfekt": "haben eingebildet"
+      }
+    }
+  },
+  {
+    "verb": "empfangen",
+    "meaning": "receive",
+    "conjugations": {
+      "ich": {
+        "Präsens": "empfange",
+        "Präteritum": "empfing",
+        "Perfekt": "habe empfangen"
+      },
+      "du": {
+        "Präsens": "empfängst",
+        "Präteritum": "empfingst",
+        "Perfekt": "hast empfangen"
+      },
+      "er/sie/es": {
+        "Präsens": "empfängt",
+        "Präteritum": "empfing",
+        "Perfekt": "hat empfangen"
+      },
+      "wir": {
+        "Präsens": "empfangen",
+        "Präteritum": "empfingen",
+        "Perfekt": "haben empfangen"
+      },
+      "ihr": {
+        "Präsens": "empfangt",
+        "Präteritum": "empfingt",
+        "Perfekt": "habt empfangen"
+      },
+      "sie/Sie": {
+        "Präsens": "empfangen",
+        "Präteritum": "empfingen",
+        "Perfekt": "haben empfangen"
+      }
+    }
+  },
+  {
+    "verb": "empfehlen",
+    "meaning": "recommend",
+    "conjugations": {
+      "ich": {
+        "Präsens": "empfehle",
+        "Präteritum": "empfahl",
+        "Perfekt": "habe empfohlen"
+      },
+      "du": {
+        "Präsens": "empfiehlst",
+        "Präteritum": "empfahlst",
+        "Perfekt": "hast empfohlen"
+      },
+      "er/sie/es": {
+        "Präsens": "empfiehlt",
+        "Präteritum": "empfahl",
+        "Perfekt": "hat empfohlen"
+      },
+      "wir": {
+        "Präsens": "empfehlen",
+        "Präteritum": "empfahlen",
+        "Perfekt": "haben empfohlen"
+      },
+      "ihr": {
+        "Präsens": "empfehlt",
+        "Präteritum": "empfahlt",
+        "Perfekt": "habt empfohlen"
+      },
+      "sie/Sie": {
+        "Präsens": "empfehlen",
+        "Präteritum": "empfahlen",
+        "Perfekt": "haben empfohlen"
+      }
+    }
+  },
+  {
+    "verb": "empfinden",
+    "meaning": "feel, sense",
+    "conjugations": {
+      "ich": {
+        "Präsens": "empfinde",
+        "Präteritum": "empfand",
+        "Perfekt": "habe empfunden"
+      },
+      "du": {
+        "Präsens": "empfindest",
+        "Präteritum": "empfandest",
+        "Perfekt": "hast empfunden"
+      },
+      "er/sie/es": {
+        "Präsens": "empfindet",
+        "Präteritum": "empfand",
+        "Perfekt": "hat empfunden"
+      },
+      "wir": {
+        "Präsens": "empfinden",
+        "Präteritum": "empfanden",
+        "Perfekt": "haben empfunden"
+      },
+      "ihr": {
+        "Präsens": "empfindet",
+        "Präteritum": "empfandet",
+        "Perfekt": "habt empfunden"
+      },
+      "sie/Sie": {
+        "Präsens": "empfinden",
+        "Präteritum": "empfanden",
+        "Perfekt": "haben empfunden"
+      }
+    }
+  },
+  {
+    "verb": "entbehren",
+    "meaning": "do without; lack, miss",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entbehre",
+        "Präteritum": "entbehrte",
+        "Perfekt": "habe entbehrt"
+      },
+      "du": {
+        "Präsens": "entbehrst",
+        "Präteritum": "entbehrtest",
+        "Perfekt": "hast entbehrt"
+      },
+      "er/sie/es": {
+        "Präsens": "entbehrt",
+        "Präteritum": "entbehrte",
+        "Perfekt": "hat entbehrt"
+      },
+      "wir": {
+        "Präsens": "entbehren",
+        "Präteritum": "entbehrten",
+        "Perfekt": "haben entbehrt"
+      },
+      "ihr": {
+        "Präsens": "entbehrt",
+        "Präteritum": "entbehrtet",
+        "Perfekt": "habt entbehrt"
+      },
+      "sie/Sie": {
+        "Präsens": "entbehren",
+        "Präteritum": "entbehrten",
+        "Perfekt": "haben entbehrt"
+      }
+    }
+  },
+  {
+    "verb": "entdecken",
+    "meaning": "discover",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entdecke",
+        "Präteritum": "entdeckte",
+        "Perfekt": "habe entdeckt"
+      },
+      "du": {
+        "Präsens": "entdeckst",
+        "Präteritum": "entdecktest",
+        "Perfekt": "hast entdeckt"
+      },
+      "er/sie/es": {
+        "Präsens": "entdeckt",
+        "Präteritum": "entdeckte",
+        "Perfekt": "hat entdeckt"
+      },
+      "wir": {
+        "Präsens": "entdecken",
+        "Präteritum": "entdeckten",
+        "Perfekt": "haben entdeckt"
+      },
+      "ihr": {
+        "Präsens": "entdeckt",
+        "Präteritum": "entdecktet",
+        "Perfekt": "habt entdeckt"
+      },
+      "sie/Sie": {
+        "Präsens": "entdecken",
+        "Präteritum": "entdeckten",
+        "Perfekt": "haben entdeckt"
+      }
+    }
+  },
+  {
+    "verb": "entfernen",
+    "meaning": "remove",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entferne",
+        "Präteritum": "entfernte",
+        "Perfekt": "habe entfernt"
+      },
+      "du": {
+        "Präsens": "entfernst",
+        "Präteritum": "entferntest",
+        "Perfekt": "hast entfernt"
+      },
+      "er/sie/es": {
+        "Präsens": "entfernt",
+        "Präteritum": "entfernte",
+        "Perfekt": "hat entfernt"
+      },
+      "wir": {
+        "Präsens": "entfernen",
+        "Präteritum": "entfernten",
+        "Perfekt": "haben entfernt"
+      },
+      "ihr": {
+        "Präsens": "entfernt",
+        "Präteritum": "entferntet",
+        "Perfekt": "habt entfernt"
+      },
+      "sie/Sie": {
+        "Präsens": "entfernen",
+        "Präteritum": "entfernten",
+        "Perfekt": "haben entfernt"
+      }
+    }
+  },
+  {
+    "verb": "entführen",
+    "meaning": "abduct, kidnap",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entführe",
+        "Präteritum": "entführte",
+        "Perfekt": "habe entführt"
+      },
+      "du": {
+        "Präsens": "entführst",
+        "Präteritum": "entführtest",
+        "Perfekt": "hast entführt"
+      },
+      "er/sie/es": {
+        "Präsens": "entführt",
+        "Präteritum": "entführte",
+        "Perfekt": "hat entführt"
+      },
+      "wir": {
+        "Präsens": "entführen",
+        "Präteritum": "entführten",
+        "Perfekt": "haben entführt"
+      },
+      "ihr": {
+        "Präsens": "entführt",
+        "Präteritum": "entführtet",
+        "Perfekt": "habt entführt"
+      },
+      "sie/Sie": {
+        "Präsens": "entführen",
+        "Präteritum": "entführten",
+        "Perfekt": "haben entführt"
+      }
+    }
+  },
+  {
+    "verb": "entgegnen",
+    "meaning": "reply, retort",
+    "conjugations": {
+      "ich": {
+        "Präsens": "entgegne",
+        "Präteritum": "entgegnete",
+        "Perfekt": "habe entgegnet"
+      },
+      "du": {
+        "Präsens": "entgegnest",
+        "Präteritum": "entgegnetest",
+        "Perfekt": "hast entgegnet"
+      },
+      "er/sie/es": {
+        "Präsens": "entgegnet",
+        "Präteritum": "entgegnete",
+        "Perfekt": "hat entgegnet"
+      },
+      "wir": {
+        "Präsens": "entgegnen",
+        "Präteritum": "entgegneten",
+        "Perfekt": "haben entgegnet"
+      },
+      "ihr": {
+        "Präsens": "entgegnet",
+        "Präteritum": "entgegnetet",
+        "Perfekt": "habt entgegnet"
+      },
+      "sie/Sie": {
+        "Präsens": "entgegnen",
+        "Präteritum": "entgegneten",
+        "Perfekt": "haben entgegnet"
+      }
+    }
   }
 ]
