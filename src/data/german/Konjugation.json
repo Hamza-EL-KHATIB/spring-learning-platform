@@ -9477,5 +9477,365 @@
         "Perfekt": "haben erhalten"
       }
     }
+  },
+  {
+    "verb": "erinnern",
+    "meaning": "remember, remind",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erinnere",
+        "Präteritum": "erinnerte",
+        "Perfekt": "habe erinnert"
+      },
+      "du": {
+        "Präsens": "erinnerst",
+        "Präteritum": "erinnertest",
+        "Perfekt": "hast erinnert"
+      },
+      "er/sie/es": {
+        "Präsens": "erinnert",
+        "Präteritum": "erinnerte",
+        "Perfekt": "hat erinnert"
+      },
+      "wir": {
+        "Präsens": "erinnern",
+        "Präteritum": "erinnerten",
+        "Perfekt": "haben erinnert"
+      },
+      "ihr": {
+        "Präsens": "erinnert",
+        "Präteritum": "erinnertet",
+        "Perfekt": "habt erinnert"
+      },
+      "sie/Sie": {
+        "Präsens": "erinnern",
+        "Präteritum": "erinnerten",
+        "Perfekt": "haben erinnert"
+      }
+    }
+  },
+  {
+    "verb": "erkennen",
+    "meaning": "recognize",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erkenne",
+        "Präteritum": "erkannte",
+        "Perfekt": "habe erkannt"
+      },
+      "du": {
+        "Präsens": "erkennst",
+        "Präteritum": "erkanntest",
+        "Perfekt": "hast erkannt"
+      },
+      "er/sie/es": {
+        "Präsens": "erkennt",
+        "Präteritum": "erkannte",
+        "Perfekt": "hat erkannt"
+      },
+      "wir": {
+        "Präsens": "erkennen",
+        "Präteritum": "erkannten",
+        "Perfekt": "haben erkannt"
+      },
+      "ihr": {
+        "Präsens": "erkennt",
+        "Präteritum": "erkanntet",
+        "Perfekt": "habt erkannt"
+      },
+      "sie/Sie": {
+        "Präsens": "erkennen",
+        "Präteritum": "erkannten",
+        "Perfekt": "haben erkannt"
+      }
+    }
+  },
+  {
+    "verb": "erklären",
+    "meaning": "explain",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erkläre",
+        "Präteritum": "erklärte",
+        "Perfekt": "habe erklärt"
+      },
+      "du": {
+        "Präsens": "erklärst",
+        "Präteritum": "erklärtest",
+        "Perfekt": "hast erklärt"
+      },
+      "er/sie/es": {
+        "Präsens": "erklärt",
+        "Präteritum": "erklärte",
+        "Perfekt": "hat erklärt"
+      },
+      "wir": {
+        "Präsens": "erklären",
+        "Präteritum": "erklärten",
+        "Perfekt": "haben erklärt"
+      },
+      "ihr": {
+        "Präsens": "erklärt",
+        "Präteritum": "erklärtet",
+        "Perfekt": "habt erklärt"
+      },
+      "sie/Sie": {
+        "Präsens": "erklären",
+        "Präteritum": "erklärten",
+        "Perfekt": "haben erklärt"
+      }
+    }
+  },
+  {
+    "verb": "erlauben",
+    "meaning": "allow, permit",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erlaube",
+        "Präteritum": "erlaubte",
+        "Perfekt": "habe erlaubt"
+      },
+      "du": {
+        "Präsens": "erlaubst",
+        "Präteritum": "erlaubtest",
+        "Perfekt": "hast erlaubt"
+      },
+      "er/sie/es": {
+        "Präsens": "erlaubt",
+        "Präteritum": "erlaubte",
+        "Perfekt": "hat erlaubt"
+      },
+      "wir": {
+        "Präsens": "erlauben",
+        "Präteritum": "erlaubten",
+        "Perfekt": "haben erlaubt"
+      },
+      "ihr": {
+        "Präsens": "erlaubt",
+        "Präteritum": "erlaubtet",
+        "Perfekt": "habt erlaubt"
+      },
+      "sie/Sie": {
+        "Präsens": "erlauben",
+        "Präteritum": "erlaubten",
+        "Perfekt": "haben erlaubt"
+      }
+    }
+  },
+  {
+    "verb": "erleben",
+    "meaning": "experience",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erlebe",
+        "Präteritum": "erlebte",
+        "Perfekt": "habe erlebt"
+      },
+      "du": {
+        "Präsens": "erlebst",
+        "Präteritum": "erlebtest",
+        "Perfekt": "hast erlebt"
+      },
+      "er/sie/es": {
+        "Präsens": "erlebt",
+        "Präteritum": "erlebte",
+        "Perfekt": "hat erlebt"
+      },
+      "wir": {
+        "Präsens": "erleben",
+        "Präteritum": "erlebten",
+        "Perfekt": "haben erlebt"
+      },
+      "ihr": {
+        "Präsens": "erlebt",
+        "Präteritum": "erlebtet",
+        "Perfekt": "habt erlebt"
+      },
+      "sie/Sie": {
+        "Präsens": "erleben",
+        "Präteritum": "erlebten",
+        "Perfekt": "haben erlebt"
+      }
+    }
+  },
+  {
+    "verb": "erledigen",
+    "meaning": "take care of, settle",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erledige",
+        "Präteritum": "erledigte",
+        "Perfekt": "habe erledigt"
+      },
+      "du": {
+        "Präsens": "erledigst",
+        "Präteritum": "erledigtest",
+        "Perfekt": "hast erledigt"
+      },
+      "er/sie/es": {
+        "Präsens": "erledigt",
+        "Präteritum": "erledigte",
+        "Perfekt": "hat erledigt"
+      },
+      "wir": {
+        "Präsens": "erledigen",
+        "Präteritum": "erledigten",
+        "Perfekt": "haben erledigt"
+      },
+      "ihr": {
+        "Präsens": "erledigt",
+        "Präteritum": "erledigtet",
+        "Perfekt": "habt erledigt"
+      },
+      "sie/Sie": {
+        "Präsens": "erledigen",
+        "Präteritum": "erledigten",
+        "Perfekt": "haben erledigt"
+      }
+    }
+  },
+  {
+    "verb": "erlöschen",
+    "meaning": "expire, extinguish",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erlösche",
+        "Präteritum": "erlosch",
+        "Perfekt": "bin erloschen"
+      },
+      "du": {
+        "Präsens": "erlischst",
+        "Präteritum": "erloschst",
+        "Perfekt": "bist erloschen"
+      },
+      "er/sie/es": {
+        "Präsens": "erlischt",
+        "Präteritum": "erlosch",
+        "Perfekt": "ist erloschen"
+      },
+      "wir": {
+        "Präsens": "erlöschen",
+        "Präteritum": "erloschen",
+        "Perfekt": "sind erloschen"
+      },
+      "ihr": {
+        "Präsens": "erlöscht",
+        "Präteritum": "erloscht",
+        "Perfekt": "seid erloschen"
+      },
+      "sie/Sie": {
+        "Präsens": "erlöschen",
+        "Präteritum": "erloschen",
+        "Perfekt": "sind erloschen"
+      }
+    }
+  },
+  {
+    "verb": "eröffnen",
+    "meaning": "open",
+    "conjugations": {
+      "ich": {
+        "Präsens": "eröffne",
+        "Präteritum": "eröffnete",
+        "Perfekt": "habe eröffnet"
+      },
+      "du": {
+        "Präsens": "eröffnest",
+        "Präteritum": "eröffnetest",
+        "Perfekt": "hast eröffnet"
+      },
+      "er/sie/es": {
+        "Präsens": "eröffnet",
+        "Präteritum": "eröffnete",
+        "Perfekt": "hat eröffnet"
+      },
+      "wir": {
+        "Präsens": "eröffnen",
+        "Präteritum": "eröffneten",
+        "Perfekt": "haben eröffnet"
+      },
+      "ihr": {
+        "Präsens": "eröffnet",
+        "Präteritum": "eröffnetet",
+        "Perfekt": "habt eröffnet"
+      },
+      "sie/Sie": {
+        "Präsens": "eröffnen",
+        "Präteritum": "eröffneten",
+        "Perfekt": "haben eröffnet"
+      }
+    }
+  },
+  {
+    "verb": "erraten",
+    "meaning": "guess",
+    "conjugations": {
+      "ich": {
+        "Präsens": "errate",
+        "Präteritum": "erriet",
+        "Perfekt": "habe erraten"
+      },
+      "du": {
+        "Präsens": "errätst",
+        "Präteritum": "errietest",
+        "Perfekt": "hast erraten"
+      },
+      "er/sie/es": {
+        "Präsens": "errät",
+        "Präteritum": "erriet",
+        "Perfekt": "hat erraten"
+      },
+      "wir": {
+        "Präsens": "erraten",
+        "Präteritum": "errieten",
+        "Perfekt": "haben erraten"
+      },
+      "ihr": {
+        "Präsens": "erratet",
+        "Präteritum": "errietet",
+        "Perfekt": "habt erraten"
+      },
+      "sie/Sie": {
+        "Präsens": "erraten",
+        "Präteritum": "errieten",
+        "Perfekt": "haben erraten"
+      }
+    }
+  },
+  {
+    "verb": "erschaffen",
+    "meaning": "create",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erschaffe",
+        "Präteritum": "erschuf",
+        "Perfekt": "habe erschaffen"
+      },
+      "du": {
+        "Präsens": "erschaffst",
+        "Präteritum": "erschufst",
+        "Perfekt": "hast erschaffen"
+      },
+      "er/sie/es": {
+        "Präsens": "erschafft",
+        "Präteritum": "erschuf",
+        "Perfekt": "hat erschaffen"
+      },
+      "wir": {
+        "Präsens": "erschaffen",
+        "Präteritum": "erschufen",
+        "Perfekt": "haben erschaffen"
+      },
+      "ihr": {
+        "Präsens": "erschafft",
+        "Präteritum": "erschuft",
+        "Perfekt": "habt erschaffen"
+      },
+      "sie/Sie": {
+        "Präsens": "erschaffen",
+        "Präteritum": "erschufen",
+        "Perfekt": "haben erschaffen"
+      }
+    }
   }
 ]
