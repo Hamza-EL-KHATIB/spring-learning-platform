@@ -243,7 +243,7 @@ const KonjugationPage = () => {
                         `}>
                             <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"
                                  onClick={() => setShowMobileSidebar(false)} />
-                            <div className="absolute bottom-0 left-0 right-0 bg-gray-900 rounded-t-xl max-h-[70vh] overflow-hidden">
+                            <div className="absolute bottom-0 left-0 right-0 bg-gray-900 rounded-t-xl max-h-[70vh] flex flex-col">
                                 <div className="p-4 border-b border-gray-800">
                                     <div className="flex items-center justify-between">
                                         <h3 className="text-lg font-medium text-white">Verbs List</h3>
@@ -252,7 +252,7 @@ const KonjugationPage = () => {
                                         </button>
                                     </div>
                                 </div>
-                                <div className="overflow-y-auto p-4">
+                                <div className="overflow-y-auto overscroll-contain p-4 flex-1 touch-pan-y">
                                     {filteredVerbs.map((verb, index) => (
                                         <button
                                             key={index}
