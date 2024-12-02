@@ -6741,5 +6741,365 @@
         "Perfekt": "haben bekommen"
       }
     }
+  },
+  {
+    "verb": "beleben",
+    "meaning": "enliven, cheer",
+    "conjugations": {
+      "ich": {
+        "Präsens": "belebe",
+        "Präteritum": "belebte",
+        "Perfekt": "habe belebt"
+      },
+      "du": {
+        "Präsens": "belebst",
+        "Präteritum": "belebtest",
+        "Perfekt": "hast belebt"
+      },
+      "er/sie/es": {
+        "Präsens": "belebt",
+        "Präteritum": "belebte",
+        "Perfekt": "hat belebt"
+      },
+      "wir": {
+        "Präsens": "beleben",
+        "Präteritum": "belebten",
+        "Perfekt": "haben belebt"
+      },
+      "ihr": {
+        "Präsens": "belebt",
+        "Präteritum": "belebtet",
+        "Perfekt": "habt belebt"
+      },
+      "sie/Sie": {
+        "Präsens": "beleben",
+        "Präteritum": "belebten",
+        "Perfekt": "haben belebt"
+      }
+    }
+  },
+  {
+    "verb": "beleidigen",
+    "meaning": "insult",
+    "conjugations": {
+      "ich": {
+        "Präsens": "beleidige",
+        "Präteritum": "beleidigte",
+        "Perfekt": "habe beleidigt"
+      },
+      "du": {
+        "Präsens": "beleidigst",
+        "Präteritum": "beleidigtest",
+        "Perfekt": "hast beleidigt"
+      },
+      "er/sie/es": {
+        "Präsens": "beleidigt",
+        "Präteritum": "beleidigte",
+        "Perfekt": "hat beleidigt"
+      },
+      "wir": {
+        "Präsens": "beleidigen",
+        "Präteritum": "beleidigten",
+        "Perfekt": "haben beleidigt"
+      },
+      "ihr": {
+        "Präsens": "beleidigt",
+        "Präteritum": "beleidigtet",
+        "Perfekt": "habt beleidigt"
+      },
+      "sie/Sie": {
+        "Präsens": "beleidigen",
+        "Präteritum": "beleidigten",
+        "Perfekt": "haben beleidigt"
+      }
+    }
+  },
+  {
+    "verb": "bellen",
+    "meaning": "bark",
+    "conjugations": {
+      "ich": {
+        "Präsens": "belle",
+        "Präteritum": "bellte",
+        "Perfekt": "habe gebellt"
+      },
+      "du": {
+        "Präsens": "bellst",
+        "Präteritum": "belltest",
+        "Perfekt": "hast gebellt"
+      },
+      "er/sie/es": {
+        "Präsens": "bellt",
+        "Präteritum": "bellte",
+        "Perfekt": "hat gebellt"
+      },
+      "wir": {
+        "Präsens": "bellen",
+        "Präteritum": "bellten",
+        "Perfekt": "haben gebellt"
+      },
+      "ihr": {
+        "Präsens": "bellt",
+        "Präteritum": "belltet",
+        "Perfekt": "habt gebellt"
+      },
+      "sie/Sie": {
+        "Präsens": "bellen",
+        "Präteritum": "bellten",
+        "Perfekt": "haben gebellt"
+      }
+    }
+  },
+  {
+    "verb": "belohnen",
+    "meaning": "reward",
+    "conjugations": {
+      "ich": {
+        "Präsens": "belohne",
+        "Präteritum": "belohnte",
+        "Perfekt": "habe belohnt"
+      },
+      "du": {
+        "Präsens": "belohnst",
+        "Präteritum": "belohntest",
+        "Perfekt": "hast belohnt"
+      },
+      "er/sie/es": {
+        "Präsens": "belohnt",
+        "Präteritum": "belohnte",
+        "Perfekt": "hat belohnt"
+      },
+      "wir": {
+        "Präsens": "belohnen",
+        "Präteritum": "belohnten",
+        "Perfekt": "haben belohnt"
+      },
+      "ihr": {
+        "Präsens": "belohnt",
+        "Präteritum": "belohntet",
+        "Perfekt": "habt belohnt"
+      },
+      "sie/Sie": {
+        "Präsens": "belohnen",
+        "Präteritum": "belohnten",
+        "Perfekt": "haben belohnt"
+      }
+    }
+  },
+  {
+    "verb": "bergen",
+    "meaning": "recover, salvage",
+    "conjugations": {
+      "ich": {
+        "Präsens": "berge",
+        "Präteritum": "barg",
+        "Perfekt": "habe geborgen"
+      },
+      "du": {
+        "Präsens": "birgst",
+        "Präteritum": "bargst",
+        "Perfekt": "hast geborgen"
+      },
+      "er/sie/es": {
+        "Präsens": "birgt",
+        "Präteritum": "barg",
+        "Perfekt": "hat geborgen"
+      },
+      "wir": {
+        "Präsens": "bergen",
+        "Präteritum": "bargen",
+        "Perfekt": "haben geborgen"
+      },
+      "ihr": {
+        "Präsens": "bergt",
+        "Präteritum": "barget",
+        "Perfekt": "habt geborgen"
+      },
+      "sie/Sie": {
+        "Präsens": "bergen",
+        "Präteritum": "bargen",
+        "Perfekt": "haben geborgen"
+      }
+    }
+  },
+  {
+    "verb": "berichten",
+    "meaning": "report",
+    "conjugations": {
+      "ich": {
+        "Präsens": "berichte",
+        "Präteritum": "berichtete",
+        "Perfekt": "habe berichtet"
+      },
+      "du": {
+        "Präsens": "berichtest",
+        "Präteritum": "berichtetest",
+        "Perfekt": "hast berichtet"
+      },
+      "er/sie/es": {
+        "Präsens": "berichtet",
+        "Präteritum": "berichtete",
+        "Perfekt": "hat berichtet"
+      },
+      "wir": {
+        "Präsens": "berichten",
+        "Präteritum": "berichteten",
+        "Perfekt": "haben berichtet"
+      },
+      "ihr": {
+        "Präsens": "berichtet",
+        "Präteritum": "berichtetet",
+        "Perfekt": "habt berichtet"
+      },
+      "sie/Sie": {
+        "Präsens": "berichten",
+        "Präteritum": "berichteten",
+        "Perfekt": "haben berichtet"
+      }
+    }
+  },
+  {
+    "verb": "bersten",
+    "meaning": "burst",
+    "conjugations": {
+      "ich": {
+        "Präsens": "berste",
+        "Präteritum": "barst",
+        "Perfekt": "bin geborsten"
+      },
+      "du": {
+        "Präsens": "berstet",
+        "Präteritum": "barst",
+        "Perfekt": "bist geborsten"
+      },
+      "er/sie/es": {
+        "Präsens": "berstet",
+        "Präteritum": "barst",
+        "Perfekt": "ist geborsten"
+      },
+      "wir": {
+        "Präsens": "bersten",
+        "Präteritum": "barsten",
+        "Perfekt": "sind geborsten"
+      },
+      "ihr": {
+        "Präsens": "berstet",
+        "Präteritum": "barstet",
+        "Perfekt": "seid geborsten"
+      },
+      "sie/Sie": {
+        "Präsens": "bersten",
+        "Präteritum": "barsten",
+        "Perfekt": "sind geborsten"
+      }
+    }
+  },
+  {
+    "verb": "besitzen",
+    "meaning": "own",
+    "conjugations": {
+      "ich": {
+        "Präsens": "besitze",
+        "Präteritum": "besaß",
+        "Perfekt": "habe besessen"
+      },
+      "du": {
+        "Präsens": "besitzt",
+        "Präteritum": "besaßest",
+        "Perfekt": "hast besessen"
+      },
+      "er/sie/es": {
+        "Präsens": "besitzt",
+        "Präteritum": "besaß",
+        "Perfekt": "hat besessen"
+      },
+      "wir": {
+        "Präsens": "besitzen",
+        "Präteritum": "besaßen",
+        "Perfekt": "haben besessen"
+      },
+      "ihr": {
+        "Präsens": "besitzt",
+        "Präteritum": "besaßt",
+        "Perfekt": "habt besessen"
+      },
+      "sie/Sie": {
+        "Präsens": "besitzen",
+        "Präteritum": "besaßen",
+        "Perfekt": "haben besessen"
+      }
+    }
+  },
+  {
+    "verb": "bestellen",
+    "meaning": "order",
+    "conjugations": {
+      "ich": {
+        "Präsens": "bestelle",
+        "Präteritum": "bestellte",
+        "Perfekt": "habe bestellt"
+      },
+      "du": {
+        "Präsens": "bestellst",
+        "Präteritum": "bestelltest",
+        "Perfekt": "hast bestellt"
+      },
+      "er/sie/es": {
+        "Präsens": "bestellt",
+        "Präteritum": "bestellte",
+        "Perfekt": "hat bestellt"
+      },
+      "wir": {
+        "Präsens": "bestellen",
+        "Präteritum": "bestellten",
+        "Perfekt": "haben bestellt"
+      },
+      "ihr": {
+        "Präsens": "bestellt",
+        "Präteritum": "bestelltet",
+        "Perfekt": "habt bestellt"
+      },
+      "sie/Sie": {
+        "Präsens": "bestellen",
+        "Präteritum": "bestellten",
+        "Perfekt": "haben bestellt"
+      }
+    }
+  },
+  {
+    "verb": "besuchen",
+    "meaning": "visit",
+    "conjugations": {
+      "ich": {
+        "Präsens": "besuche",
+        "Präteritum": "besuchte",
+        "Perfekt": "habe besucht"
+      },
+      "du": {
+        "Präsens": "besuchst",
+        "Präteritum": "besuchtest",
+        "Perfekt": "hast besucht"
+      },
+      "er/sie/es": {
+        "Präsens": "besucht",
+        "Präteritum": "besuchte",
+        "Perfekt": "hat besucht"
+      },
+      "wir": {
+        "Präsens": "besuchen",
+        "Präteritum": "besuchten",
+        "Perfekt": "haben besucht"
+      },
+      "ihr": {
+        "Präsens": "besucht",
+        "Präteritum": "besuchtet",
+        "Perfekt": "habt besucht"
+      },
+      "sie/Sie": {
+        "Präsens": "besuchen",
+        "Präteritum": "besuchten",
+        "Perfekt": "haben besucht"
+      }
+    }
   }
 ]
