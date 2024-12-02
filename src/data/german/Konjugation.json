@@ -10233,5 +10233,401 @@
         "Perfekt": "haben gefangen"
       }
     }
+  },
+  {
+    "verb": "faszinieren",
+    "meaning": "fascinate",
+    "conjugations": {
+      "ich": {
+        "Präsens": "fasziniere",
+        "Präteritum": "faszinierte",
+        "Perfekt": "habe fasziniert"
+      },
+      "du": {
+        "Präsens": "faszinierst",
+        "Präteritum": "fasziniertest",
+        "Perfekt": "hast fasziniert"
+      },
+      "er/sie/es": {
+        "Präsens": "fasziniert",
+        "Präteritum": "faszinierte",
+        "Perfekt": "hat fasziniert"
+      },
+      "wir": {
+        "Präsens": "faszinieren",
+        "Präteritum": "faszinierten",
+        "Perfekt": "haben fasziniert"
+      },
+      "ihr": {
+        "Präsens": "fasziniert",
+        "Präteritum": "fasziniertet",
+        "Perfekt": "habt fasziniert"
+      },
+      "sie/Sie": {
+        "Präsens": "faszinieren",
+        "Präteritum": "faszinierten",
+        "Perfekt": "haben fasziniert"
+      }
+    }
+  },
+  {
+    "verb": "fehlen",
+    "meaning": "be missing, lack",
+    "conjugations": {
+      "ich": {
+        "Präsens": "fehle",
+        "Präteritum": "fehlte",
+        "Perfekt": "habe gefehlt"
+      },
+      "du": {
+        "Präsens": "fehlst",
+        "Präteritum": "fehltest",
+        "Perfekt": "hast gefehlt"
+      },
+      "er/sie/es": {
+        "Präsens": "fehlt",
+        "Präteritum": "fehlte",
+        "Perfekt": "hat gefehlt"
+      },
+      "wir": {
+        "Präsens": "fehlen",
+        "Präteritum": "fehlten",
+        "Perfekt": "haben gefehlt"
+      },
+      "ihr": {
+        "Präsens": "fehlt",
+        "Präteritum": "fehltet",
+        "Perfekt": "habt gefehlt"
+      },
+      "sie/Sie": {
+        "Präsens": "fehlen",
+        "Präteritum": "fehlten",
+        "Perfekt": "haben gefehlt"
+      }
+    }
+  },
+  {
+    "verb": "feiern",
+    "meaning": "celebrate",
+    "conjugations": {
+      "ich": {
+        "Präsens": "feiere",
+        "Präteritum": "feierte",
+        "Perfekt": "habe gefeiert"
+      },
+      "du": {
+        "Präsens": "feierst",
+        "Präteritum": "feiertest",
+        "Perfekt": "hast gefeiert"
+      },
+      "er/sie/es": {
+        "Präsens": "feiert",
+        "Präteritum": "feierte",
+        "Perfekt": "hat gefeiert"
+      },
+      "wir": {
+        "Präsens": "feiern",
+        "Präteritum": "feierten",
+        "Perfekt": "haben gefeiert"
+      },
+      "ihr": {
+        "Präsens": "feiert",
+        "Präteritum": "feiertet",
+        "Perfekt": "habt gefeiert"
+      },
+      "sie/Sie": {
+        "Präsens": "feiern",
+        "Präteritum": "feierten",
+        "Perfekt": "haben gefeiert"
+      }
+    }
+  },
+  {
+    "verb": "finden",
+    "meaning": "find",
+    "conjugations": {
+      "ich": {
+        "Präsens": "finde",
+        "Präteritum": "fand",
+        "Perfekt": "habe gefunden"
+      },
+      "du": {
+        "Präsens": "findest",
+        "Präteritum": "fandest",
+        "Perfekt": "hast gefunden"
+      },
+      "er/sie/es": {
+        "Präsens": "findet",
+        "Präteritum": "fand",
+        "Perfekt": "hat gefunden"
+      },
+      "wir": {
+        "Präsens": "finden",
+        "Präteritum": "fanden",
+        "Perfekt": "haben gefunden"
+      },
+      "ihr": {
+        "Präsens": "findet",
+        "Präteritum": "fandet",
+        "Perfekt": "habt gefunden"
+      },
+      "sie/Sie": {
+        "Präsens": "finden",
+        "Präteritum": "fanden",
+        "Perfekt": "haben gefunden"
+      }
+    }
+  },
+  {
+    "verb": "fliegen",
+    "meaning": "fly",
+    "conjugations": {
+      "ich": {
+        "Präsens": "fliege",
+        "Präteritum": "flog",
+        "Perfekt": "bin geflogen"
+      },
+      "du": {
+        "Präsens": "fliegst",
+        "Präteritum": "flogst",
+        "Perfekt": "bist geflogen"
+      },
+      "er/sie/es": {
+        "Präsens": "fliegt",
+        "Präteritum": "flog",
+        "Perfekt": "ist geflogen"
+      },
+      "wir": {
+        "Präsens": "fliegen",
+        "Präteritum": "flogen",
+        "Perfekt": "sind geflogen"
+      },
+      "ihr": {
+        "Präsens": "fliegt",
+        "Präteritum": "flogt",
+        "Perfekt": "seid geflogen"
+      },
+      "sie/Sie": {
+        "Präsens": "fliegen",
+        "Präteritum": "flogen",
+        "Perfekt": "sind geflogen"
+      }
+    }
+  },
+  {
+    "verb": "fliehen",
+    "meaning": "flee",
+    "conjugations": {
+      "ich": {
+        "Präsens": "fliehe",
+        "Präteritum": "floh",
+        "Perfekt": "bin geflohen"
+      },
+      "du": {
+        "Präsens": "fliehst",
+        "Präteritum": "flohst",
+        "Perfekt": "bist geflohen"
+      },
+      "er/sie/es": {
+        "Präsens": "flieht",
+        "Präteritum": "floh",
+        "Perfekt": "ist geflohen"
+      },
+      "wir": {
+        "Präsens": "fliehen",
+        "Präteritum": "flohen",
+        "Perfekt": "sind geflohen"
+      },
+      "ihr": {
+        "Präsens": "flieht",
+        "Präteritum": "floht",
+        "Perfekt": "seid geflohen"
+      },
+      "sie/Sie": {
+        "Präsens": "fliehen",
+        "Präteritum": "flohen",
+        "Perfekt": "sind geflohen"
+      }
+    }
+  },
+  {
+    "verb": "fließen",
+    "meaning": "flow",
+    "conjugations": {
+      "ich": {
+        "Präsens": "fließe",
+        "Präteritum": "floss",
+        "Perfekt": "bin geflossen"
+      },
+      "du": {
+        "Präsens": "fließt",
+        "Präteritum": "flossest",
+        "Perfekt": "bist geflossen"
+      },
+      "er/sie/es": {
+        "Präsens": "fließt",
+        "Präteritum": "floss",
+        "Perfekt": "ist geflossen"
+      },
+      "wir": {
+        "Präsens": "fließen",
+        "Präteritum": "flossen",
+        "Perfekt": "sind geflossen"
+      },
+      "ihr": {
+        "Präsens": "fließt",
+        "Präteritum": "flosst",
+        "Perfekt": "seid geflossen"
+      },
+      "sie/Sie": {
+        "Präsens": "fließen",
+        "Präteritum": "flossen",
+        "Perfekt": "sind geflossen"
+      }
+    }
+  },
+  {
+    "verb": "folgen",
+    "meaning": "follow",
+    "conjugations": {
+      "ich": {
+        "Präsens": "folge",
+        "Präteritum": "folgte",
+        "Perfekt": "bin gefolgt"
+      },
+      "du": {
+        "Präsens": "folgst",
+        "Präteritum": "folgtest",
+        "Perfekt": "bist gefolgt"
+      },
+      "er/sie/es": {
+        "Präsens": "folgt",
+        "Präteritum": "folgte",
+        "Perfekt": "ist gefolgt"
+      },
+      "wir": {
+        "Präsens": "folgen",
+        "Präteritum": "folgten",
+        "Perfekt": "sind gefolgt"
+      },
+      "ihr": {
+        "Präsens": "folgt",
+        "Präteritum": "folgtet",
+        "Perfekt": "seid gefolgt"
+      },
+      "sie/Sie": {
+        "Präsens": "folgen",
+        "Präteritum": "folgten",
+        "Perfekt": "sind gefolgt"
+      }
+    }
+  },
+  {
+    "verb": "forschen",
+    "meaning": "research",
+    "conjugations": {
+      "ich": {
+        "Präsens": "forsche",
+        "Präteritum": "forschte",
+        "Perfekt": "habe geforscht"
+      },
+      "du": {
+        "Präsens": "forschst",
+        "Präteritum": "forschtest",
+        "Perfekt": "hast geforscht"
+      },
+      "er/sie/es": {
+        "Präsens": "forscht",
+        "Präteritum": "forschte",
+        "Perfekt": "hat geforscht"
+      },
+      "wir": {
+        "Präsens": "forschen",
+        "Präteritum": "forschten",
+        "Perfekt": "haben geforscht"
+      },
+      "ihr": {
+        "Präsens": "forscht",
+        "Präteritum": "forschtet",
+        "Perfekt": "habt geforscht"
+      },
+      "sie/Sie": {
+        "Präsens": "forschen",
+        "Präteritum": "forschten",
+        "Perfekt": "haben geforscht"
+      }
+    }
+  },
+  {
+    "verb": "fragen",
+    "meaning": "ask",
+    "conjugations": {
+      "ich": {
+        "Präsens": "frage",
+        "Präteritum": "fragte",
+        "Perfekt": "habe gefragt"
+      },
+      "du": {
+        "Präsens": "fragst",
+        "Präteritum": "fragtest",
+        "Perfekt": "hast gefragt"
+      },
+      "er/sie/es": {
+        "Präsens": "fragt",
+        "Präteritum": "fragte",
+        "Perfekt": "hat gefragt"
+      },
+      "wir": {
+        "Präsens": "fragen",
+        "Präteritum": "fragten",
+        "Perfekt": "haben gefragt"
+      },
+      "ihr": {
+        "Präsens": "fragt",
+        "Präteritum": "fragtet",
+        "Perfekt": "habt gefragt"
+      },
+      "sie/Sie": {
+        "Präsens": "fragen",
+        "Präteritum": "fragten",
+        "Perfekt": "haben gefragt"
+      }
+    }
+  },
+  {
+    "verb": "fressen",
+    "meaning": "eat (animals)",
+    "conjugations": {
+      "ich": {
+        "Präsens": "fresse",
+        "Präteritum": "fraß",
+        "Perfekt": "habe gefressen"
+      },
+      "du": {
+        "Präsens": "frisst",
+        "Präteritum": "fraßest",
+        "Perfekt": "hast gefressen"
+      },
+      "er/sie/es": {
+        "Präsens": "frisst",
+        "Präteritum": "fraß",
+        "Perfekt": "hat gefressen"
+      },
+      "wir": {
+        "Präsens": "fressen",
+        "Präteritum": "fraßen",
+        "Perfekt": "haben gefressen"
+      },
+      "ihr": {
+        "Präsens": "fresst",
+        "Präteritum": "fraßt",
+        "Perfekt": "habt gefressen"
+      },
+      "sie/Sie": {
+        "Präsens": "fressen",
+        "Präteritum": "fraßen",
+        "Perfekt": "haben gefressen"
+      }
+    }
   }
 ]
