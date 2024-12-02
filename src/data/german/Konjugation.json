@@ -9837,5 +9837,401 @@
         "Perfekt": "haben erschaffen"
       }
     }
+  },
+  {
+    "verb": "erschießen",
+    "meaning": "shoot dead",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erschieße",
+        "Präteritum": "erschoss",
+        "Perfekt": "habe erschossen"
+      },
+      "du": {
+        "Präsens": "erschießt",
+        "Präteritum": "erschossest",
+        "Perfekt": "hast erschossen"
+      },
+      "er/sie/es": {
+        "Präsens": "erschießt",
+        "Präteritum": "erschoss",
+        "Perfekt": "hat erschossen"
+      },
+      "wir": {
+        "Präsens": "erschießen",
+        "Präteritum": "erschossen",
+        "Perfekt": "haben erschossen"
+      },
+      "ihr": {
+        "Präsens": "erschießt",
+        "Präteritum": "erschosst",
+        "Perfekt": "habt erschossen"
+      },
+      "sie/Sie": {
+        "Präsens": "erschießen",
+        "Präteritum": "erschossen",
+        "Perfekt": "haben erschossen"
+      }
+    }
+  },
+  {
+    "verb": "erschrecken",
+    "meaning": "frighten, scare",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erschrecke",
+        "Präteritum": "erschrak",
+        "Perfekt": "bin erschrocken"
+      },
+      "du": {
+        "Präsens": "erschrickst",
+        "Präteritum": "erschrakst",
+        "Perfekt": "bist erschrocken"
+      },
+      "er/sie/es": {
+        "Präsens": "erschrickt",
+        "Präteritum": "erschrak",
+        "Perfekt": "ist erschrocken"
+      },
+      "wir": {
+        "Präsens": "erschrecken",
+        "Präteritum": "erschraken",
+        "Perfekt": "sind erschrocken"
+      },
+      "ihr": {
+        "Präsens": "erschreckt",
+        "Präteritum": "erschrakt",
+        "Perfekt": "seid erschrocken"
+      },
+      "sie/Sie": {
+        "Präsens": "erschrecken",
+        "Präteritum": "erschraken",
+        "Perfekt": "sind erschrocken"
+      }
+    }
+  },
+  {
+    "verb": "erscheinen",
+    "meaning": "appear",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erscheine",
+        "Präteritum": "erschien",
+        "Perfekt": "bin erschienen"
+      },
+      "du": {
+        "Präsens": "erscheinst",
+        "Präteritum": "erschienst",
+        "Perfekt": "bist erschienen"
+      },
+      "er/sie/es": {
+        "Präsens": "erscheint",
+        "Präteritum": "erschien",
+        "Perfekt": "ist erschienen"
+      },
+      "wir": {
+        "Präsens": "erscheinen",
+        "Präteritum": "erschienen",
+        "Perfekt": "sind erschienen"
+      },
+      "ihr": {
+        "Präsens": "erscheint",
+        "Präteritum": "erschient",
+        "Perfekt": "seid erschienen"
+      },
+      "sie/Sie": {
+        "Präsens": "erscheinen",
+        "Präteritum": "erschienen",
+        "Perfekt": "sind erschienen"
+      }
+    }
+  },
+  {
+    "verb": "erschöpfen",
+    "meaning": "exhaust, deplete",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erschöpfe",
+        "Präteritum": "erschöpfte",
+        "Perfekt": "habe erschöpft"
+      },
+      "du": {
+        "Präsens": "erschöpfst",
+        "Präteritum": "erschöpfstest",
+        "Perfekt": "hast erschöpft"
+      },
+      "er/sie/es": {
+        "Präsens": "erschöpft",
+        "Präteritum": "erschöpfte",
+        "Perfekt": "hat erschöpft"
+      },
+      "wir": {
+        "Präsens": "erschöpfen",
+        "Präteritum": "erschöpften",
+        "Perfekt": "haben erschöpft"
+      },
+      "ihr": {
+        "Präsens": "erschöpft",
+        "Präteritum": "erschöpftet",
+        "Perfekt": "habt erschöpft"
+      },
+      "sie/Sie": {
+        "Präsens": "erschöpfen",
+        "Präteritum": "erschöpften",
+        "Perfekt": "haben erschöpft"
+      }
+    }
+  },
+  {
+    "verb": "ersetzen",
+    "meaning": "replace",
+    "conjugations": {
+      "ich": {
+        "Präsens": "ersetze",
+        "Präteritum": "ersetzte",
+        "Perfekt": "habe ersetzt"
+      },
+      "du": {
+        "Präsens": "ersetzt",
+        "Präteritum": "ersetztest",
+        "Perfekt": "hast ersetzt"
+      },
+      "er/sie/es": {
+        "Präsens": "ersetzt",
+        "Präteritum": "ersetzte",
+        "Perfekt": "hat ersetzt"
+      },
+      "wir": {
+        "Präsens": "ersetzen",
+        "Präteritum": "ersetzten",
+        "Perfekt": "haben ersetzt"
+      },
+      "ihr": {
+        "Präsens": "ersetzt",
+        "Präteritum": "ersetztet",
+        "Perfekt": "habt ersetzt"
+      },
+      "sie/Sie": {
+        "Präsens": "ersetzen",
+        "Präteritum": "ersetzten",
+        "Perfekt": "haben ersetzt"
+      }
+    }
+  },
+  {
+    "verb": "erwarten",
+    "meaning": "expect",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erwarte",
+        "Präteritum": "erwartete",
+        "Perfekt": "habe erwartet"
+      },
+      "du": {
+        "Präsens": "erwartest",
+        "Präteritum": "erwartetest",
+        "Perfekt": "hast erwartet"
+      },
+      "er/sie/es": {
+        "Präsens": "erwartet",
+        "Präteritum": "erwartete",
+        "Perfekt": "hat erwartet"
+      },
+      "wir": {
+        "Präsens": "erwarten",
+        "Präteritum": "erwarteten",
+        "Perfekt": "haben erwartet"
+      },
+      "ihr": {
+        "Präsens": "erwartet",
+        "Präteritum": "erwartetet",
+        "Perfekt": "habt erwartet"
+      },
+      "sie/Sie": {
+        "Präsens": "erwarten",
+        "Präteritum": "erwarteten",
+        "Perfekt": "haben erwartet"
+      }
+    }
+  },
+  {
+    "verb": "erzählen",
+    "meaning": "tell, narrate",
+    "conjugations": {
+      "ich": {
+        "Präsens": "erzähle",
+        "Präteritum": "erzählte",
+        "Perfekt": "habe erzählt"
+      },
+      "du": {
+        "Präsens": "erzählst",
+        "Präteritum": "erzähltest",
+        "Perfekt": "hast erzählt"
+      },
+      "er/sie/es": {
+        "Präsens": "erzählt",
+        "Präteritum": "erzählte",
+        "Perfekt": "hat erzählt"
+      },
+      "wir": {
+        "Präsens": "erzählen",
+        "Präteritum": "erzählten",
+        "Perfekt": "haben erzählt"
+      },
+      "ihr": {
+        "Präsens": "erzählt",
+        "Präteritum": "erzähltet",
+        "Perfekt": "habt erzählt"
+      },
+      "sie/Sie": {
+        "Präsens": "erzählen",
+        "Präteritum": "erzählten",
+        "Perfekt": "haben erzählt"
+      }
+    }
+  },
+  {
+    "verb": "essen",
+    "meaning": "eat",
+    "conjugations": {
+      "ich": {
+        "Präsens": "esse",
+        "Präteritum": "aß",
+        "Perfekt": "habe gegessen"
+      },
+      "du": {
+        "Präsens": "isst",
+        "Präteritum": "aßest",
+        "Perfekt": "hast gegessen"
+      },
+      "er/sie/es": {
+        "Präsens": "isst",
+        "Präteritum": "aß",
+        "Perfekt": "hat gegessen"
+      },
+      "wir": {
+        "Präsens": "essen",
+        "Präteritum": "aßen",
+        "Perfekt": "haben gegessen"
+      },
+      "ihr": {
+        "Präsens": "esst",
+        "Präteritum": "aßt",
+        "Perfekt": "habt gegessen"
+      },
+      "sie/Sie": {
+        "Präsens": "essen",
+        "Präteritum": "aßen",
+        "Perfekt": "haben gegessen"
+      }
+    }
+  },
+  {
+    "verb": "fahren",
+    "meaning": "drive, go",
+    "conjugations": {
+      "ich": {
+        "Präsens": "fahre",
+        "Präteritum": "fuhr",
+        "Perfekt": "bin gefahren"
+      },
+      "du": {
+        "Präsens": "fährst",
+        "Präteritum": "fuhrst",
+        "Perfekt": "bist gefahren"
+      },
+      "er/sie/es": {
+        "Präsens": "fährt",
+        "Präteritum": "fuhr",
+        "Perfekt": "ist gefahren"
+      },
+      "wir": {
+        "Präsens": "fahren",
+        "Präteritum": "fuhren",
+        "Perfekt": "sind gefahren"
+      },
+      "ihr": {
+        "Präsens": "fahrt",
+        "Präteritum": "fuhrt",
+        "Perfekt": "seid gefahren"
+      },
+      "sie/Sie": {
+        "Präsens": "fahren",
+        "Präteritum": "fuhren",
+        "Perfekt": "sind gefahren"
+      }
+    }
+  },
+  {
+    "verb": "fallen",
+    "meaning": "fall",
+    "conjugations": {
+      "ich": {
+        "Präsens": "falle",
+        "Präteritum": "fiel",
+        "Perfekt": "bin gefallen"
+      },
+      "du": {
+        "Präsens": "fällst",
+        "Präteritum": "fielst",
+        "Perfekt": "bist gefallen"
+      },
+      "er/sie/es": {
+        "Präsens": "fällt",
+        "Präteritum": "fiel",
+        "Perfekt": "ist gefallen"
+      },
+      "wir": {
+        "Präsens": "fallen",
+        "Präteritum": "fielen",
+        "Perfekt": "sind gefallen"
+      },
+      "ihr": {
+        "Präsens": "fallt",
+        "Präteritum": "fielt",
+        "Perfekt": "seid gefallen"
+      },
+      "sie/Sie": {
+        "Präsens": "fallen",
+        "Präteritum": "fielen",
+        "Perfekt": "sind gefallen"
+      }
+    }
+  },
+  {
+    "verb": "fangen",
+    "meaning": "catch",
+    "conjugations": {
+      "ich": {
+        "Präsens": "fange",
+        "Präteritum": "fing",
+        "Perfekt": "habe gefangen"
+      },
+      "du": {
+        "Präsens": "fängst",
+        "Präteritum": "fingst",
+        "Perfekt": "hast gefangen"
+      },
+      "er/sie/es": {
+        "Präsens": "fängt",
+        "Präteritum": "fing",
+        "Perfekt": "hat gefangen"
+      },
+      "wir": {
+        "Präsens": "fangen",
+        "Präteritum": "fingen",
+        "Perfekt": "haben gefangen"
+      },
+      "ihr": {
+        "Präsens": "fangt",
+        "Präteritum": "fingt",
+        "Perfekt": "habt gefangen"
+      },
+      "sie/Sie": {
+        "Präsens": "fangen",
+        "Präteritum": "fingen",
+        "Perfekt": "haben gefangen"
+      }
+    }
   }
 ]
