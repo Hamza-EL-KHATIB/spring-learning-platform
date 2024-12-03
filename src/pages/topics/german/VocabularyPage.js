@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Eye, EyeOff, X, ChevronRight, ChevronLeft, BookOpenCheck, BookOpen } from 'lucide-react';
+import { Search, Eye, EyeOff, X, ChevronRight, BookOpenCheck, BookOpen } from 'lucide-react';
 import vocabularyData from '../../../data/german/a1.json';
 import VocabularyTabs from './VocabularyTabs';
 import './VocabularyPage.css';
@@ -37,7 +37,7 @@ const VocabularyPage = () => {
         const total = vocabularyData.reduce((total, category) => total + category.words.length, 0);
         const filtered = filteredData.reduce((total, category) => total + category.words.length, 0);
         return { total, filtered };
-    }, [vocabularyData, searchTerm, selectedCategory]);
+    }, [filteredData]);
 
     return (
         <div className="min-h-screen bg-gray-900">
