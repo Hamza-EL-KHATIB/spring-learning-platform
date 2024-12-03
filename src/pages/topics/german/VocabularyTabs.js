@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Home, User, Heart, Book, MapPin, Activity, Cloud, Box, BookOpenCheck, BookOpen } from 'lucide-react';
+import { Clock, Home, User, Heart, Book, MapPin, Activity, Cloud, Box } from 'lucide-react';
 
 const tabGroups = {
     basics: {
@@ -102,35 +102,6 @@ const tabGroups = {
     }
 };
 
-const CategoryCard = ({ category, onClick, isActive, className = "" }) => {
-    const [german, english] = category.split(' (');
-    return (
-        <button
-            onClick={() => onClick(category)}
-            className={`
-                relative group flex flex-col p-6 rounded-xl
-                transition-all duration-300 ease-in-out
-                ${isActive
-                ? 'bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-purple-500/10 border-purple-500/50'
-                : 'bg-gray-800/50 hover:bg-gray-700/50 border-gray-700/50 hover:border-purple-500/50'
-            }
-                border text-left ${className}
-            `}
-        >
-            <div className="space-y-1">
-                <h3 className="text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300 group-hover:from-purple-200 group-hover:to-pink-200">
-                    {german}
-                </h3>
-                <p className="text-sm text-gray-400 group-hover:text-gray-300">({english}</p>
-            </div>
-
-            {/* Decorative corner gradients */}
-            <div className="absolute inset-0.5 -z-10 bg-gradient-to-br from-purple-500/0 via-purple-500/0 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
-            <div className="absolute inset-0.5 -z-10 bg-gradient-to-tl from-pink-500/0 via-pink-500/0 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
-        </button>
-    );
-};
-
 const TabButton = ({ active, icon: Icon, title, onClick }) => (
     <button
         onClick={onClick}
@@ -152,20 +123,6 @@ const TabButton = ({ active, icon: Icon, title, onClick }) => (
 const VocabularyTabs = ({ activeTab, setActiveTab, onSelectCategory, totalWords = 0, currentWords = 0 }) => {
     return (
         <div>
-            {/* Top Stats Bar */}
-            <div className="flex justify-end gap-4 mb-6">
-                <div className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 rounded-lg text-sm">
-                    <BookOpenCheck className="w-4 h-4 text-purple-400" />
-                    <span className="text-gray-300">Words: <span className="text-purple-400 font-medium">{totalWords}</span></span>
-                </div>
-                {currentWords !== totalWords && (
-                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 rounded-lg text-sm">
-                        <BookOpen className="w-4 h-4 text-gray-400" />
-                        <span className="text-gray-300">Showing: <span className="text-purple-400 font-medium">{currentWords}</span></span>
-                    </div>
-                )}
-            </div>
-
             {/* Navigation Section */}
             <div className="bg-gray-800/30 rounded-xl border border-gray-700/50 p-6 mb-6">
                 <div className="flex flex-wrap gap-3">
