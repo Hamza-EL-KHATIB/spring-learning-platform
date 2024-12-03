@@ -5,7 +5,8 @@ import {
     CheckCircle2,
     XCircle,
     Lightbulb,
-    ListChecks
+    ListChecks,
+    Box
 } from 'lucide-react';
 import CodeBlock from '../../../components/CodeBlock';
 
@@ -129,6 +130,27 @@ const MisconceptionCard = ({ misconception }) => (
 );
 
 const SolidPage = () => {
+    const [activePrinciple, setActivePrinciple] = useState(solidJson.principles[0].acronym.toLowerCase());
+
+    const TabNavigation = () => (
+        <div className="mb-8 flex flex-wrap gap-4">
+            {solidJson.principles.map((principle) => (
+                <button
+                    key={principle.acronym}
+                    onClick={() => setActivePrinciple(principle.acronym.toLowerCase())}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+                        activePrinciple === principle.acronym.toLowerCase()
+                            ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                            : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
+                    }`}
+                >
+                    <Box className="w-4 h-4" />
+                    {principle.acronym}
+                </button>
+            ))}
+        </div>
+    );
+
     return (
         <div className="min-h-screen bg-gray-900">
             {/* Header */}
@@ -137,11 +159,16 @@ const SolidPage = () => {
                 <p className="text-gray-300">{solidJson.description}</p>
             </div>
 
-            {/* Principles */}
-            <div className="space-y-8 mb-12">
-                {solidJson.principles.map((principle, idx) => (
-                    <PrincipleCard key={idx} principle={principle} />
-                ))}
+            {/* Navigation */}
+            <TabNavigation />
+
+            {/* Active Principle */}
+            <div className="mb-12">
+                <PrincipleCard
+                    principle={solidJson.principles.find(p =>
+                        p.acronym.toLowerCase() === activePrinciple
+                    )}
+                />
             </div>
 
             {/* Guidelines and Misconceptions */}
