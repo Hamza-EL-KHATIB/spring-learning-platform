@@ -90,8 +90,6 @@ const Sidebar = () => {
 
     const currentGroup = navigationGroups[section];
 
-    if (!currentGroup) return null;
-
     return (
         <>
             {/* Sidebar Toggle Button for Mobile - At Bottom Right */}
@@ -104,78 +102,72 @@ const Sidebar = () => {
                 </button>
             </div>
 
-            {/* Sidebar Content */}
-            <div className={
-                `fixed inset-y-0 left-0 z-40 w-64 p-4 transition-transform duration-300 bg-gray-900 lg:static lg:translate-x-0
-                ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:block`
-            }>
-                <div className="h-full flex flex-col bg-gray-800 rounded-lg p-4 shadow-md">
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
-                            K's Learning
-                        </h2>
+            {/* Sidebar Content - Always Visible on Larger Screens */}
+            <div className={`lg:block ${isSidebarOpen ? 'block' : 'hidden'} lg:static fixed inset-y-0 left-0 z-40 w-80 p-4 transition-transform duration-300 bg-gray-900 lg:translate-x-0 lg:shadow-none shadow-md`}>
+                <div className="h-full flex flex-col bg-gray-800 rounded-lg p-4">
                         <button
                             className="lg:hidden text-white"
                             onClick={() => setIsSidebarOpen(false)}
                         >
                             <X className="w-6 h-6" />
                         </button>
-                    </div>
 
-                    <div className="bg-gray-800 rounded-lg p-4">
-                        {/* Section Title */}
-                        <div className="flex items-center space-x-3 mb-6">
-                            {currentGroup.icon}
-                            <h2 className="text-lg font-semibold text-white">{currentGroup.title}</h2>
-                        </div>
+                    {currentGroup && (
+                        <div className="bg-gray-800 rounded-lg p-4">
+                            {/* Section Title */}
+                            <div className="flex items-center space-x-3 mb-6">
+                                {currentGroup.icon}
+                                <h2 className="text-lg font-semibold text-white">{currentGroup.title}</h2>
+                            </div>
 
-                        {/* Related Topics Section */}
-                        <div className="mb-8">
-                            <h3 className="text-sm font-medium text-gray-400 mb-3">Topics</h3>
-                            <nav className="space-y-1">
-                                {currentGroup.items.map((item) => (
-                                    <Link
-                                        key={item.path}
-                                        to={item.path}
-                                        className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
-                                            currentPath === item.path
-                                                ? 'bg-purple-500/10 text-purple-400'
-                                                : 'text-gray-300 hover:bg-gray-700/50 hover:text-white'
-                                        }`}
-                                    >
-                                        {item.icon ? (
-                                            <span className="mr-3">{item.icon}</span>
-                                        ) : (
-                                            <ChevronRight className={`w-4 h-4 mr-2 ${
-                                                currentPath === item.path ? 'text-purple-400' : 'text-gray-500'
-                                            }`} />
-                                        )}
-                                        {item.title}
-                                    </Link>
-                                ))}
-                            </nav>
-                        </div>
-
-                        {/* Quick Links Section */}
-                        <div>
-                            <h3 className="text-sm font-medium text-gray-400 mb-3">Related Sections</h3>
-                            <nav className="space-y-1">
-                                {Object.entries(navigationGroups)
-                                    .filter(([key]) => key !== section)
-                                    .slice(0, 3)
-                                    .map(([key, group]) => (
+                            {/* Related Topics Section */}
+                            <div className="mb-8">
+                                <h3 className="text-sm font-medium text-gray-400 mb-3">Topics</h3>
+                                <nav className="space-y-1">
+                                    {currentGroup.items.map((item) => (
                                         <Link
-                                            key={key}
-                                            to={group.items[0].path}
-                                            className="flex items-center px-3 py-2 text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg transition-colors"
+                                            key={item.path}
+                                            to={item.path}
+                                            className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
+                                                currentPath === item.path
+                                                    ? 'bg-purple-500/10 text-purple-400'
+                                                    : 'text-gray-300 hover:bg-gray-700/50 hover:text-white'
+                                            }`}
                                         >
-                                            {group.icon}
-                                            <span className="ml-3">{group.title}</span>
+                                            {item.icon ? (
+                                                <span className="mr-3">{item.icon}</span>
+                                            ) : (
+                                                <ChevronRight className={`w-4 h-4 mr-2 ${
+                                                    currentPath === item.path ? 'text-purple-400' : 'text-gray-500'
+                                                }`} />
+                                            )}
+                                            {item.title}
                                         </Link>
                                     ))}
-                            </nav>
+                                </nav>
+                            </div>
+
+                            {/* Quick Links Section */}
+                            <div>
+                                <h3 className="text-sm font-medium text-gray-400 mb-3">Related Sections</h3>
+                                <nav className="space-y-1">
+                                    {Object.entries(navigationGroups)
+                                        .filter(([key]) => key !== section)
+                                        .slice(0, 3)
+                                        .map(([key, group]) => (
+                                            <Link
+                                                key={key}
+                                                to={group.items[0].path}
+                                                className="flex items-center px-3 py-2 text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg transition-colors"
+                                            >
+                                                {group.icon}
+                                                <span className="ml-3">{group.title}</span>
+                                            </Link>
+                                        ))}
+                                </nav>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
 
