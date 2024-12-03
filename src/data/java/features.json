@@ -7,22 +7,77 @@
       "description": "The Stream API introduces a functional approach to processing collections of objects.",
       "operations": [
         {
-          "name": "Basic Operations",
+          "name": "Stream Creation",
+          "methods": [
+            {
+              "name": "stream()",
+              "description": "Creates a sequential stream from a collection.",
+              "example": "collection.stream()"
+            },
+            {
+              "name": "of()",
+              "description": "Creates a stream from specified values.",
+              "example": "Stream.of(1, 2, 3, 4, 5)"
+            },
+            {
+              "name": "generate()",
+              "description": "Creates an infinite stream using a Supplier.",
+              "example": "Stream.generate(Math::random)"
+            },
+            {
+              "name": "iterate()",
+              "description": "Creates an infinite stream by iteratively applying a function.",
+              "example": "Stream.iterate(0, n -> n + 2)"
+            },
+            {
+              "name": "Arrays.stream()",
+              "description": "Creates a stream from an array.",
+              "example": "Arrays.stream(new int[]{1, 2, 3})"
+            }
+          ]
+        },
+        {
+          "name": "Intermediate Operations",
           "methods": [
             {
               "name": "filter()",
-              "description": "Filters elements based on a predicate",
+              "description": "Filters elements based on a predicate.",
               "example": "list.stream().filter(n -> n > 10)"
             },
             {
               "name": "map()",
-              "description": "Transforms elements using the given function",
+              "description": "Transforms elements using the given function.",
               "example": "list.stream().map(String::toUpperCase)"
             },
             {
               "name": "flatMap()",
-              "description": "Transforms and flattens elements",
+              "description": "Transforms each element into a stream and flattens them.",
               "example": "list.stream().flatMap(List::stream)"
+            },
+            {
+              "name": "sorted()",
+              "description": "Sorts elements in natural or specified order.",
+              "example": "stream.sorted()"
+            },
+            {
+              "name": "distinct()",
+              "description": "Removes duplicate elements.",
+              "example": "stream.distinct()"
+            },
+            {
+              "name": "limit()",
+              "description": "Truncates the stream to the given length.",
+              "example": "stream.limit(5)"
+            },
+            {
+              "name": "skip()",
+              "description": "Skips the first n elements.",
+              "example": "stream.skip(3)"
+            },
+            {
+              "name": "peek()",
+              "description": "Performs an action on each element as it is consumed.",
+              "example": "stream.peek(System.out::println)"
             }
           ]
         },
@@ -31,38 +86,268 @@
           "methods": [
             {
               "name": "collect()",
-              "description": "Accumulates elements into a collection",
+              "description": "Accumulates elements into a collection or summary.",
               "example": "stream.collect(Collectors.toList())"
             },
             {
               "name": "reduce()",
-              "description": "Reduces elements to a single value",
+              "description": "Reduces elements to a single value using an accumulator.",
               "example": "stream.reduce(0, Integer::sum)"
             },
             {
               "name": "forEach()",
-              "description": "Performs an action for each element",
+              "description": "Performs an action for each element.",
               "example": "stream.forEach(System.out::println)"
+            },
+            {
+              "name": "forEachOrdered()",
+              "description": "Performs an action for each element in encounter order.",
+              "example": "stream.forEachOrdered(System.out::println)"
+            },
+            {
+              "name": "toArray()",
+              "description": "Returns an array containing the elements of the stream.",
+              "example": "Object[] array = stream.toArray()"
+            },
+            {
+              "name": "count()",
+              "description": "Returns the number of elements in the stream.",
+              "example": "long count = stream.count()"
+            },
+            {
+              "name": "anyMatch()",
+              "description": "Returns true if any elements match the predicate.",
+              "example": "stream.anyMatch(n -> n > 10)"
+            },
+            {
+              "name": "allMatch()",
+              "description": "Returns true if all elements match the predicate.",
+              "example": "stream.allMatch(n -> n > 0)"
+            },
+            {
+              "name": "noneMatch()",
+              "description": "Returns true if no elements match the predicate.",
+              "example": "stream.noneMatch(n -> n < 0)"
+            },
+            {
+              "name": "findFirst()",
+              "description": "Returns the first element of the stream if present.",
+              "example": "Optional<T> first = stream.findFirst()"
+            },
+            {
+              "name": "findAny()",
+              "description": "Returns any element of the stream if present (useful in parallel streams).",
+              "example": "Optional<T> any = stream.findAny()"
+            },
+            {
+              "name": "max()",
+              "description": "Finds the maximum element according to a comparator.",
+              "example": "stream.max(Comparator.naturalOrder())"
+            },
+            {
+              "name": "min()",
+              "description": "Finds the minimum element according to a comparator.",
+              "example": "stream.min(Comparator.naturalOrder())"
+            },
+            {
+              "name": "summaryStatistics()",
+              "description": "Returns summary statistics for numerical streams.",
+              "example": "IntSummaryStatistics stats = intStream.summaryStatistics()"
             }
           ]
         },
         {
-          "name": "Advanced Operations",
+          "name": "Parallel Streams",
           "methods": [
             {
-              "name": "distinct()",
-              "description": "Returns unique elements",
-              "example": "stream.distinct()"
+              "name": "parallel()",
+              "description": "Converts a sequential stream into a parallel stream.",
+              "example": "stream.parallel().forEach(System.out::println)"
             },
             {
-              "name": "sorted()",
-              "description": "Sorts elements",
-              "example": "stream.sorted(Comparator.naturalOrder())"
+              "name": "sequential()",
+              "description": "Converts a parallel stream into a sequential stream.",
+              "example": "stream.parallel().sequential()"
             },
             {
-              "name": "peek()",
-              "description": "Performs an action on elements while preserving them",
-              "example": "stream.peek(System.out::println)"
+              "name": "parallelStream()",
+              "description": "Creates a parallel stream from a collection.",
+              "example": "collection.parallelStream()"
+            }
+          ]
+        },
+        {
+          "name": "Specialized Streams",
+          "methods": [
+            {
+              "name": "IntStream",
+              "description": "Stream for primitive int values.",
+              "example": "IntStream.range(1, 10).sum()"
+            },
+            {
+              "name": "LongStream",
+              "description": "Stream for primitive long values.",
+              "example": "LongStream.of(1L, 2L, 3L)"
+            },
+            {
+              "name": "DoubleStream",
+              "description": "Stream for primitive double values.",
+              "example": "DoubleStream.generate(Math::random).limit(5)"
+            },
+            {
+              "name": "Stream Support Methods",
+              "description": "Methods to convert between object streams and primitive streams.",
+              "example": "stream.mapToInt(String::length)"
+            }
+          ]
+        },
+        {
+          "name": "Collectors",
+          "methods": [
+            {
+              "name": "toList()",
+              "description": "Collects elements into a List.",
+              "example": "stream.collect(Collectors.toList())"
+            },
+            {
+              "name": "toSet()",
+              "description": "Collects elements into a Set.",
+              "example": "stream.collect(Collectors.toSet())"
+            },
+            {
+              "name": "toCollection()",
+              "description": "Collects elements into a specified collection type.",
+              "example": "stream.collect(Collectors.toCollection(LinkedList::new))"
+            },
+            {
+              "name": "toMap()",
+              "description": "Collects elements into a Map.",
+              "example": "stream.collect(Collectors.toMap(keyMapper, valueMapper))"
+            },
+            {
+              "name": "toConcurrentMap()",
+              "description": "Collects elements into a ConcurrentMap.",
+              "example": "stream.collect(Collectors.toConcurrentMap(keyMapper, valueMapper))"
+            },
+            {
+              "name": "joining()",
+              "description": "Concatenates CharSequence elements.",
+              "example": "stream.collect(Collectors.joining(\", \"))"
+            },
+            {
+              "name": "counting()",
+              "description": "Counts the number of elements.",
+              "example": "stream.collect(Collectors.counting())"
+            },
+            {
+              "name": "summingInt()",
+              "description": "Calculates the sum of integer values.",
+              "example": "stream.collect(Collectors.summingInt(Integer::intValue))"
+            },
+            {
+              "name": "summingLong()",
+              "description": "Calculates the sum of long values.",
+              "example": "stream.collect(Collectors.summingLong(Long::longValue))"
+            },
+            {
+              "name": "summingDouble()",
+              "description": "Calculates the sum of double values.",
+              "example": "stream.collect(Collectors.summingDouble(Double::doubleValue))"
+            },
+            {
+              "name": "averagingInt()",
+              "description": "Calculates the average of integer values.",
+              "example": "stream.collect(Collectors.averagingInt(Integer::intValue))"
+            },
+            {
+              "name": "averagingLong()",
+              "description": "Calculates the average of long values.",
+              "example": "stream.collect(Collectors.averagingLong(Long::longValue))"
+            },
+            {
+              "name": "averagingDouble()",
+              "description": "Calculates the average of double values.",
+              "example": "stream.collect(Collectors.averagingDouble(Double::doubleValue))"
+            },
+            {
+              "name": "summarizingInt()",
+              "description": "Generates IntSummaryStatistics.",
+              "example": "stream.collect(Collectors.summarizingInt(Integer::intValue))"
+            },
+            {
+              "name": "summarizingLong()",
+              "description": "Generates LongSummaryStatistics.",
+              "example": "stream.collect(Collectors.summarizingLong(Long::longValue))"
+            },
+            {
+              "name": "summarizingDouble()",
+              "description": "Generates DoubleSummaryStatistics.",
+              "example": "stream.collect(Collectors.summarizingDouble(Double::doubleValue))"
+            },
+            {
+              "name": "maxBy()",
+              "description": "Finds the maximum element using a Comparator.",
+              "example": "stream.collect(Collectors.maxBy(Comparator.naturalOrder()))"
+            },
+            {
+              "name": "minBy()",
+              "description": "Finds the minimum element using a Comparator.",
+              "example": "stream.collect(Collectors.minBy(Comparator.naturalOrder()))"
+            },
+            {
+              "name": "reducing()",
+              "description": "Reduces elements to a single value using a BinaryOperator.",
+              "example": "stream.collect(Collectors.reducing(0, Integer::intValue, Integer::sum))"
+            },
+            {
+              "name": "collectingAndThen()",
+              "description": "Transforms the result of a Collector.",
+              "example": "stream.collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList))"
+            },
+            {
+              "name": "groupingBy()",
+              "description": "Groups elements according to a classifier function.",
+              "example": "stream.collect(Collectors.groupingBy(String::length))"
+            },
+            {
+              "name": "groupingByConcurrent()",
+              "description": "Concurrent version of groupingBy().",
+              "example": "stream.collect(Collectors.groupingByConcurrent(String::length))"
+            },
+            {
+              "name": "partitioningBy()",
+              "description": "Partitions elements according to a predicate.",
+              "example": "stream.collect(Collectors.partitioningBy(n -> n > 10))"
+            },
+            {
+              "name": "mapping()",
+              "description": "Applies a mapping function before collecting.",
+              "example": "stream.collect(Collectors.mapping(String::toUpperCase, Collectors.toList()))"
+            }
+          ]
+        },
+        {
+          "name": "Examples",
+          "methods": [
+            {
+              "name": "Processing a List of Names",
+              "description": "Filter names starting with 'A', convert to uppercase, and collect into a list.",
+              "example": "names.stream().filter(n -> n.startsWith(\"A\")).map(String::toUpperCase).collect(Collectors.toList())"
+            },
+            {
+              "name": "Calculating Total Order Amount",
+              "description": "Sum the total amount from a list of orders.",
+              "example": "orders.stream().mapToDouble(Order::getAmount).sum()"
+            },
+            {
+              "name": "Grouping Employees by Department",
+              "description": "Group employees into departments.",
+              "example": "employees.stream().collect(Collectors.groupingBy(Employee::getDepartment))"
+            },
+            {
+              "name": "Parallel Stream Processing",
+              "description": "Process data in parallel to improve performance.",
+              "example": "largeDataSet.parallelStream().filter(...).collect(...)"
             }
           ]
         }
@@ -204,8 +489,8 @@
         },
         {
           "type": "Instance Method Reference",
-          "syntax": "instance::method",
-          "example": "String::length"
+          "syntax": "ClassName::instanceMethod",
+          "example": "String::toLowerCase"
         },
         {
           "type": "Constructor Reference",
@@ -251,6 +536,158 @@
         {
           "title": "Multiple Default Methods",
           "code": "interface Collection { default Stream<E> stream() { ... } default Stream<E> parallelStream() { ... } }"
+        }
+      ]
+    },
+    {
+      "id": "lambdaExpressions",
+      "title": "Lambda Expressions",
+      "description": "Anonymous functions to simplify code",
+      "syntax": "parameters -> expression",
+      "examples": [
+        {
+          "scenario": "Simple Expression",
+          "code": "(int x, int y) -> x + y"
+        },
+        {
+          "scenario": "Single Parameter",
+          "code": "n -> n * n"
+        },
+        {
+          "scenario": "Block of Code",
+          "code": "(String s) -> { System.out.println(s); }"
+        }
+      ]
+    },
+    {
+      "id": "functionalInterfaces",
+      "title": "Functional Interfaces",
+      "description": "Interfaces with a single abstract method",
+      "examples": [
+        {
+          "name": "Predicate<T>",
+          "description": "Represents a boolean-valued function",
+          "method": "boolean test(T t)"
+        },
+        {
+          "name": "Consumer<T>",
+          "description": "Represents an operation that accepts a single input and returns no result",
+          "method": "void accept(T t)"
+        },
+        {
+          "name": "Function<T,R>",
+          "description": "Represents a function that accepts one argument and produces a result",
+          "method": "R apply(T t)"
+        }
+      ],
+      "note": "Use @FunctionalInterface annotation for clarity"
+    },
+    {
+      "id": "optional",
+      "title": "Optional Class",
+      "description": "A container object which may or may not contain a non-null value",
+      "methods": [
+        {
+          "name": "of()",
+          "description": "Creates an Optional with a non-null value",
+          "example": "Optional.of(value)"
+        },
+        {
+          "name": "empty()",
+          "description": "Creates an empty Optional",
+          "example": "Optional.empty()"
+        },
+        {
+          "name": "ofNullable()",
+          "description": "Creates an Optional with a value or empty if null",
+          "example": "Optional.ofNullable(value)"
+        },
+        {
+          "name": "get()",
+          "description": "Returns the value if present",
+          "example": "optional.get()"
+        },
+        {
+          "name": "isPresent()",
+          "description": "Checks if a value is present",
+          "example": "optional.isPresent()"
+        },
+        {
+          "name": "ifPresent()",
+          "description": "Performs an action if value is present",
+          "example": "optional.ifPresent(value -> System.out.println(value))"
+        }
+      ]
+    },
+    {
+      "id": "annotations",
+      "title": "Annotations Enhancements",
+      "description": "New features in annotations",
+      "features": [
+        {
+          "name": "Type Annotations",
+          "description": "Annotations that can be applied anywhere a type is used",
+          "example": "@Nonnull String text"
+        },
+        {
+          "name": "Repeating Annotations",
+          "description": "Ability to apply the same annotation multiple times",
+          "example": "@Schedule(dayOfMonth=\"last\") @Schedule(dayOfWeek=\"Fri\") void doPeriodic() {}"
+        }
+      ]
+    },
+    {
+      "id": "nashorn",
+      "title": "Nashorn JavaScript Engine",
+      "description": "A new lightweight JavaScript engine for Java",
+      "features": [
+        {
+          "aspect": "Integration",
+          "description": "Allows embedding JavaScript code in Java applications",
+          "example": "ScriptEngine engine = new ScriptEngineManager().getEngineByName(\"nashorn\");"
+        },
+        {
+          "aspect": "Performance",
+          "description": "Improved performance over previous JavaScript engines"
+        }
+      ]
+    },
+    {
+      "id": "base64",
+      "title": "Base64 Encoding and Decoding",
+      "description": "Built-in Base64 encoding and decoding",
+      "methods": [
+        {
+          "name": "getEncoder()",
+          "description": "Returns a Base64 encoder",
+          "example": "Base64.getEncoder().encodeToString(bytes)"
+        },
+        {
+          "name": "getDecoder()",
+          "description": "Returns a Base64 decoder",
+          "example": "Base64.getDecoder().decode(string)"
+        }
+      ]
+    },
+    {
+      "id": "concurrency",
+      "title": "Concurrency Utilities",
+      "description": "New concurrency APIs and improvements",
+      "classes": [
+        {
+          "name": "StampedLock",
+          "description": "A capability-based lock with three modes for controlling read/write access",
+          "example": "StampedLock lock = new StampedLock();"
+        },
+        {
+          "name": "LongAdder",
+          "description": "Optimized for high contention scenarios",
+          "example": "LongAdder adder = new LongAdder();"
+        },
+        {
+          "name": "ConcurrentHashMap Enhancements",
+          "description": "Enhanced methods for bulk operations and mapping functions",
+          "example": "map.forEach(key, value) -> {}"
         }
       ]
     }
