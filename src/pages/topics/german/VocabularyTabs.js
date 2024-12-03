@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Home, User, Heart, Book, MapPin, Activity, Cloud, Box } from 'lucide-react';
+import { Clock, Home, User, Heart, Book, MapPin, Activity, Cloud, Box, BookOpenCheck, BookOpen } from 'lucide-react';
 
 const tabGroups = {
     basics: {
@@ -149,14 +149,21 @@ const TabButton = ({ active, icon: Icon, title, onClick }) => (
     </button>
 );
 
-const VocabularyTabs = ({ activeTab, setActiveTab, onSelectCategory, totalWords = 0 }) => {
+const VocabularyTabs = ({ activeTab, setActiveTab, onSelectCategory, totalWords = 0, currentWords = 0 }) => {
     return (
         <div>
-            {/* Total Words Counter */}
-            <div className="flex justify-end mb-6">
-                <span className="px-4 py-2 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-500/20 text-purple-300 text-sm font-medium">
-                    Total Words: {totalWords}
-                </span>
+            {/* Top Stats Bar */}
+            <div className="flex justify-end gap-4 mb-6">
+                <div className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 rounded-lg text-sm">
+                    <BookOpenCheck className="w-4 h-4 text-purple-400" />
+                    <span className="text-gray-300">Words: <span className="text-purple-400 font-medium">{totalWords}</span></span>
+                </div>
+                {currentWords !== totalWords && (
+                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 rounded-lg text-sm">
+                        <BookOpen className="w-4 h-4 text-gray-400" />
+                        <span className="text-gray-300">Showing: <span className="text-purple-400 font-medium">{currentWords}</span></span>
+                    </div>
+                )}
             </div>
 
             {/* Navigation Section */}
