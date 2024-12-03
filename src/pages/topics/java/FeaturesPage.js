@@ -23,35 +23,30 @@ const FeaturesPage = () => {
         { id: 'concurrency', title: 'Concurrency', icon: <Database /> }
     ];
 
-    const TabNavigation = () => (
-        <div className="relative mb-8">
-            <div className="overflow-x-auto custom-scrollbar py-2">
-                <div className="flex gap-3">
-                    {tabs.map((tab) => (
-                        <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
-                            className={`
-                                flex items-center gap-2 px-4 py-2 rounded-lg font-medium 
-                                transition-all duration-300 whitespace-nowrap
-                                ${activeTab === tab.id
-                                ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border-purple-500/30'
-                                : 'bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-gray-300'
-                            }
-                                border border-gray-700/50 hover:border-purple-500/30
-                            `}
-                        >
-                            {React.cloneElement(tab.icon, { className: "w-4 h-4" })}
-                            {tab.title}
-                        </button>
-                    ))}
-                </div>
+    const TopicNavigation = ({ activeTab, onTabChange, topics }) => (
+        <div className="bg-gray-800/30 rounded-xl border border-gray-700/50 p-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {topics.map((topic) => (
+                    <button
+                        key={topic.id}
+                        onClick={() => onTabChange(topic.id)}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium 
+                        transition-all duration-300 text-left
+                        ${activeTab === topic.id
+                            ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border-purple-500/30'
+                            : 'bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-gray-300'
+                        }
+                        border border-gray-700/50 hover:border-purple-500/30
+                    `}
+                    >
+                        <span>{topic.title}</span>
+                    </button>
+                ))}
             </div>
-            {/* Gradient fades for overflow indication */}
-            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none" />
         </div>
     );
+
+
 
     const renderDefaultMethods = ({ features, examples }) => (
         <div className="space-y-8">
@@ -378,7 +373,12 @@ const FeaturesPage = () => {
             </div>
 
             {/* Navigation */}
-            <TabNavigation />
+            <TopicNavigation
+                activeTab={activeTab}
+                onTabChange={setActiveTab}
+                topics={tabs}
+            />
+
 
             {/* Content */}
             <div className="space-y-8">
