@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
     ChevronRight,
@@ -12,13 +12,16 @@ import {
     FileText,
     Cpu,
     Layers,
-    RefreshCw
+    RefreshCw,
+    Menu,
+    X
 } from 'lucide-react';
 
 const Sidebar = () => {
     const location = useLocation();
     const currentPath = location.pathname;
     const section = currentPath.split('/')[1];
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const navigationGroups = {
         java: {
@@ -90,60 +93,100 @@ const Sidebar = () => {
     if (!currentGroup) return null;
 
     return (
-        <div className="bg-gray-800 rounded-lg p-4">
-            {/* Section Title */}
-            <div className="flex items-center space-x-3 mb-6">
-                {currentGroup.icon}
-                <h2 className="text-lg font-semibold text-white">{currentGroup.title}</h2>
+        <>
+            {/* Sidebar Toggle Button for Mobile - At Bottom Right */}
+            <div className="lg:hidden fixed bottom-6 right-6 z-50">
+                <button
+                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                    className="p-4 bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition-colors"
+                >
+                    {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </button>
             </div>
 
-            {/* Related Topics Section */}
-            <div className="mb-8">
-                <h3 className="text-sm font-medium text-gray-400 mb-3">Topics</h3>
-                <nav className="space-y-1">
-                    {currentGroup.items.map((item) => (
-                        <Link
-                            key={item.path}
-                            to={item.path}
-                            className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
-                                currentPath === item.path
-                                    ? 'bg-purple-500/10 text-purple-400'
-                                    : 'text-gray-300 hover:bg-gray-700/50 hover:text-white'
-                            }`}
+            {/* Sidebar Content */}
+            <div className={
+                `fixed inset-y-0 left-0 z-40 w-64 p-4 transition-transform duration-300 bg-gray-900 lg:static lg:translate-x-0
+                ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:block`
+            }>
+                <div className="h-full flex flex-col bg-gray-800 rounded-lg p-4 shadow-md">
+                    <div className="flex items-center justify-between mb-6">
+                        <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                            K's Learning
+                        </h2>
+                        <button
+                            className="lg:hidden text-white"
+                            onClick={() => setIsSidebarOpen(false)}
                         >
-                            {item.icon ? (
-                                <span className="mr-3">{item.icon}</span>
-                            ) : (
-                                <ChevronRight className={`w-4 h-4 mr-2 ${
-                                    currentPath === item.path ? 'text-purple-400' : 'text-gray-500'
-                                }`} />
-                            )}
-                            {item.title}
-                        </Link>
-                    ))}
-                </nav>
+                            <X className="w-6 h-6" />
+                        </button>
+                    </div>
+
+                    <div className="bg-gray-800 rounded-lg p-4">
+                        {/* Section Title */}
+                        <div className="flex items-center space-x-3 mb-6">
+                            {currentGroup.icon}
+                            <h2 className="text-lg font-semibold text-white">{currentGroup.title}</h2>
+                        </div>
+
+                        {/* Related Topics Section */}
+                        <div className="mb-8">
+                            <h3 className="text-sm font-medium text-gray-400 mb-3">Topics</h3>
+                            <nav className="space-y-1">
+                                {currentGroup.items.map((item) => (
+                                    <Link
+                                        key={item.path}
+                                        to={item.path}
+                                        className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
+                                            currentPath === item.path
+                                                ? 'bg-purple-500/10 text-purple-400'
+                                                : 'text-gray-300 hover:bg-gray-700/50 hover:text-white'
+                                        }`}
+                                    >
+                                        {item.icon ? (
+                                            <span className="mr-3">{item.icon}</span>
+                                        ) : (
+                                            <ChevronRight className={`w-4 h-4 mr-2 ${
+                                                currentPath === item.path ? 'text-purple-400' : 'text-gray-500'
+                                            }`} />
+                                        )}
+                                        {item.title}
+                                    </Link>
+                                ))}
+                            </nav>
+                        </div>
+
+                        {/* Quick Links Section */}
+                        <div>
+                            <h3 className="text-sm font-medium text-gray-400 mb-3">Related Sections</h3>
+                            <nav className="space-y-1">
+                                {Object.entries(navigationGroups)
+                                    .filter(([key]) => key !== section)
+                                    .slice(0, 3)
+                                    .map(([key, group]) => (
+                                        <Link
+                                            key={key}
+                                            to={group.items[0].path}
+                                            className="flex items-center px-3 py-2 text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg transition-colors"
+                                        >
+                                            {group.icon}
+                                            <span className="ml-3">{group.title}</span>
+                                        </Link>
+                                    ))}
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            {/* Quick Links Section */}
-            <div>
-                <h3 className="text-sm font-medium text-gray-400 mb-3">Related Sections</h3>
-                <nav className="space-y-1">
-                    {Object.entries(navigationGroups)
-                        .filter(([key]) => key !== section)
-                        .slice(0, 3)
-                        .map(([key, group]) => (
-                            <Link
-                                key={key}
-                                to={group.items[0].path}
-                                className="flex items-center px-3 py-2 text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg transition-colors"
-                            >
-                                {group.icon}
-                                <span className="ml-3">{group.title}</span>
-                            </Link>
-                        ))}
-                </nav>
-            </div>
-        </div>
+            {/* Overlay for Mobile to Close Sidebar */}
+            {isSidebarOpen && (
+                <div
+                    className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm lg:hidden"
+                    onClick={() => setIsSidebarOpen(false)}
+                />
+            )}
+        </>
     );
 };
 
