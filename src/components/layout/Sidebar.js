@@ -91,44 +91,53 @@ const Sidebar = () => {
 
     return (
         <>
-            {/* Sidebar Toggle Button for Mobile - At Bottom Right */}
-            <div className="lg:hidden fixed bottom-6 left-6 z-50">
-                <button
-                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    className="lg:hidden fixed bottom-6 left-6 z-50 p-3
-               bg-gradient-to-r from-pink-500/20 to-purple-500/20
-               hover:from-pink-500/30 hover:to-purple-500/30
-               text-purple-300 hover:text-purple-200
-               rounded-lg border border-purple-500/20
-               hover:border-purple-500/40
-               transition-all duration-300 shadow-lg backdrop-blur-sm"
-                >
-                    {isSidebarOpen ? <X className="w-5 h-5"/> : <ChevronRight className="w-5 h-5"/>}
-                </button>
-            </div>
+            {/* Mobile Toggle Button */}
+            <button
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                className="lg:hidden fixed bottom-6 left-6 z-50 p-3
+                bg-gradient-to-r from-pink-500/20 to-purple-500/20
+                hover:from-pink-500/30 hover:to-purple-500/30
+                text-purple-300 hover:text-purple-200
+                rounded-lg border border-purple-500/20
+                hover:border-purple-500/40
+                transition-all duration-300 shadow-lg backdrop-blur-sm"
+            >
+                {isSidebarOpen ? <X className="w-5 h-5"/> : <ChevronRight className="w-5 h-5"/>}
+            </button>
 
-            {/* Sidebar Content - Always Visible on Larger Screens */}
-            <div
-                className={`lg:block ${isSidebarOpen ? 'block' : 'hidden'} lg:sticky lg:top-20 fixed inset-y-0 left-0 z-40 w-80 p-4 transition-transform duration-300 bg-gray-900 lg:translate-x-0 lg:shadow-none shadow-md`}>
-                <div className="h-full flex flex-col bg-gray-800 rounded-lg p-4">
+            {/* Main Sidebar */}
+            <div className={`lg:block ${isSidebarOpen ? 'block' : 'hidden'} 
+            lg:static fixed inset-y-0 left-0 
+            z-40 w-80 p-4 
+            transition-transform duration-300 
+            bg-gray-900/95 lg:bg-transparent 
+            lg:translate-x-0 lg:shadow-none shadow-md
+            lg:sticky lg:top-20`}
+            >
+                <div className="h-full flex flex-col bg-gray-800 rounded-lg">
+                    {/* Mobile Close Button */}
                     <button
-                        className="lg:hidden text-white"
+                        className="lg:hidden text-white p-4"
                         onClick={() => setIsSidebarOpen(false)}
                     >
                         <X className="w-6 h-6"/>
                     </button>
 
                     {currentGroup && (
-                        <div className="bg-gray-800 rounded-lg p-4">
+                        <div className="p-4">
                             {/* Section Title */}
                             <div className="flex items-center space-x-3 mb-6">
                                 {currentGroup.icon}
-                                <h2 className="text-lg font-semibold text-white">{currentGroup.title}</h2>
+                                <h2 className="text-lg font-semibold text-white">
+                                    {currentGroup.title}
+                                </h2>
                             </div>
 
-                            {/* Related Topics Section */}
+                            {/* Topics Navigation */}
                             <div className="mb-8">
-                                <h3 className="text-sm font-medium text-gray-400 mb-3">Topics</h3>
+                                <h3 className="text-sm font-medium text-gray-400 mb-3">
+                                    Topics
+                                </h3>
                                 <nav className="space-y-1">
                                     {currentGroup.items.map((item) => (
                                         <Link
@@ -153,9 +162,11 @@ const Sidebar = () => {
                                 </nav>
                             </div>
 
-                            {/* Quick Links Section */}
+                            {/* Related Sections */}
                             <div>
-                                <h3 className="text-sm font-medium text-gray-400 mb-3">Related Sections</h3>
+                                <h3 className="text-sm font-medium text-gray-400 mb-3">
+                                    Related Sections
+                                </h3>
                                 <nav className="space-y-1">
                                     {Object.entries(navigationGroups)
                                         .filter(([key]) => key !== section)
@@ -177,7 +188,7 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            {/* Overlay for Mobile to Close Sidebar */}
+            {/* Mobile Overlay */}
             {isSidebarOpen && (
                 <div
                     className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm lg:hidden"
