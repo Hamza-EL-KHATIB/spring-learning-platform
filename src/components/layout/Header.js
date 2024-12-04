@@ -1,68 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Github, Menu, X, BookOpen, ChevronDown, Book } from "lucide-react";
-
-const GermanDropdown = ({ onSelect }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const dropdownRef = useRef(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setIsOpen(false);
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
-
-    const handleSelect = (path) => {
-        setIsOpen(false);
-        if (onSelect) onSelect();
-    };
-
-    return (
-        <div className="relative" ref={dropdownRef}>
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
-                title="German Learning"
-            >
-                <div className="relative">
-                    <BookOpen className="w-6 h-6" />
-                    <span className="absolute -top-2 -right-2 bg-purple-500/80 text-white text-[10px] font-medium px-1 rounded">
-                    DE
-                </span>
-                </div>
-                <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-            </button>
-
-            {isOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg border border-gray-700 overflow-hidden">
-                    <div className="py-1">
-                        <Link
-                            to="/vocabulary"
-                            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 transition-colors"
-                            onClick={() => handleSelect('/vocabulary')}
-                        >
-                            <BookOpen className="w-4 h-4" />
-                            <span>Vocabulary</span>
-                        </Link>
-                        <Link
-                            to="/konjugation"
-                            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 transition-colors"
-                            onClick={() => handleSelect('/konjugation')}
-                        >
-                            <Book className="w-4 h-4" />
-                            <span>Conjugation</span>
-                        </Link>
-                    </div>
-                </div>
-            )}
-        </div>
-    );
-};
+import { Github, Menu, X, BookOpen, GraduationCap, Book } from "lucide-react";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -96,8 +34,18 @@ const Header = () => {
 
                         {/* Utility Links */}
                         <div className="flex items-center space-x-4 pl-2 border-l border-gray-700">
-                            {/* German Learning Dropdown */}
-                            <GermanDropdown />
+                            <Link
+                                to="/learn/german"
+                                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
+                                title="Learning Portal"
+                            >
+                                <div className="relative">
+                                    <GraduationCap className="w-6 h-6" />
+                                    <span className="absolute -top-2 -right-2 bg-purple-500/80 text-white text-[10px] font-medium px-1 rounded">
+      DE
+    </span>
+                                </div>
+                            </Link>
 
                             {/* Github Link */}
                             <a

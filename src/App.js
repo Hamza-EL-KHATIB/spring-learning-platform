@@ -41,6 +41,9 @@ import KonjugationPage from "./pages/topics/german/KonjugationPage";
 
 import CodeReviewsPage from "./pages/topics/bestPractices/CodeReviewsPage";
 
+import LearningPortal from './pages/LearningPortal';
+
+
 const App = () => {
     return (
         <Router>
@@ -50,6 +53,8 @@ const App = () => {
 
                     <Route path="/vocabulary" element={<VocabularyPage />} />
                     <Route path="/konjugation" element={<KonjugationPage />} />
+                    <Route path="/learn/german" element={<LearningPortal />} />
+
 
                     {/* Java Routes */}
                     <Route path="/java/collections" element={<CollectionsPage />} />
