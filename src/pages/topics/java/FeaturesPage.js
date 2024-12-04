@@ -5,9 +5,11 @@ import {
 } from 'lucide-react';
 import featuresJson from '../../../data/java/features.json';
 import CodeBlock from '../../../components/CodeBlock';
+import FloatingMenu from '../../../components/layout/FloatingMenu';
 
 const FeaturesPage = () => {
     const [activeTab, setActiveTab] = useState('streams');
+    const [selectedStreamCategory, setSelectedStreamCategory] = useState(null);
 
     const tabs = [
         { id: 'streams', title: 'Stream API', icon: <List /> },
@@ -24,29 +26,27 @@ const FeaturesPage = () => {
     ];
 
     const TopicNavigation = ({ activeTab, onTabChange, topics }) => (
-        <div className="bg-gray-800/30 rounded-xl border border-gray-700/50 p-6 mb-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="hidden lg:block bg-gray-800/30 rounded-xl border border-gray-700/50 p-6 mb-8">
+            <div className="grid grid-cols-3 xl:grid-cols-4 gap-3">
                 {topics.map((topic) => (
                     <button
                         key={topic.id}
                         onClick={() => onTabChange(topic.id)}
                         className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium 
-                        transition-all duration-300 text-left
-                        ${activeTab === topic.id
+                    transition-all duration-300 text-left
+                    ${activeTab === topic.id
                             ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border-purple-500/30'
                             : 'bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-gray-300'
                         }
-                        border border-gray-700/50 hover:border-purple-500/30
-                    `}
+                    border border-gray-700/50 hover:border-purple-500/30`}
                     >
+                        {topic.icon && <span>{topic.icon}</span>}
                         <span>{topic.title}</span>
                     </button>
                 ))}
             </div>
         </div>
     );
-
-
 
     const renderDefaultMethods = ({ features, examples }) => (
         <div className="space-y-8">
@@ -162,21 +162,27 @@ const FeaturesPage = () => {
         </ContentCard>
     );
 
-    const renderStreamOperations = (operations) => (
-        <div className="space-y-8">
-            {operations.map((operation, idx) => (
-                <div key={idx}>
-                    <ContentCard title={operation.name}>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                            {operation.methods.map((method, methodIdx) => (
-                                <MethodCard key={methodIdx} method={method} />
-                            ))}
-                        </div>
-                    </ContentCard>
-                </div>
-            ))}
-        </div>
-    );
+    const renderStreamOperations = (operations) => {
+        const operationsToRender = selectedStreamCategory
+            ? [selectedStreamCategory]
+            : operations;
+
+        return (
+            <div className="space-y-8">
+                {operationsToRender.map((operation, idx) => (
+                    <div key={idx}>
+                        <ContentCard title={operation.name}>
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                {operation.methods.map((method, methodIdx) => (
+                                    <MethodCard key={methodIdx} method={method} />
+                                ))}
+                            </div>
+                        </ContentCard>
+                    </div>
+                ))}
+            </div>
+        );
+    };
 
     const renderDateTimeClasses = (classes) => (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -365,9 +371,9 @@ const FeaturesPage = () => {
         <div className="min-h-screen bg-gray-900">
             {/* Header */}
             <div className="mb-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50
-                          rounded-xl p-6 border border-purple-500/20 shadow-lg">
+                      rounded-xl p-6 border border-purple-500/20 shadow-lg">
                 <h1 className="text-3xl font-bold text-transparent bg-clip-text
-                             bg-gradient-to-r from-purple-400 to-pink-500">
+                         bg-gradient-to-r from-purple-400 to-pink-500">
                     {featuresJson.title}
                 </h1>
             </div>
@@ -379,6 +385,14 @@ const FeaturesPage = () => {
                 topics={tabs}
             />
 
+            {/* Floating Menu - Only visible on small screens */}
+            <FloatingMenu
+                tabs={tabs}
+                activeTab={activeTab}
+                onTabChange={setActiveTab}
+                streamOperations={featuresJson.topics.find(t => t.id === 'streams')?.operations}
+                onStreamCategorySelect={setSelectedStreamCategory}
+            />
 
             {/* Content */}
             <div className="space-y-8">

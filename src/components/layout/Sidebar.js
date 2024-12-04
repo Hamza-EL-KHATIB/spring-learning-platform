@@ -13,7 +13,6 @@ import {
     Cpu,
     Layers,
     RefreshCw,
-    Menu,
     X
 } from 'lucide-react';
 
@@ -96,9 +95,15 @@ const Sidebar = () => {
             <div className="lg:hidden fixed bottom-6 left-6 z-50">
                 <button
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    className="p-4 bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition-colors"
+                    className="lg:hidden fixed bottom-6 left-6 z-50 p-3
+               bg-gradient-to-r from-pink-500/20 to-purple-500/20
+               hover:from-pink-500/30 hover:to-purple-500/30
+               text-purple-300 hover:text-purple-200
+               rounded-lg border border-purple-500/20
+               hover:border-purple-500/40
+               transition-all duration-300 shadow-lg backdrop-blur-sm"
                 >
-                    {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                    {isSidebarOpen ? <X className="w-5 h-5"/> : <ChevronRight className="w-5 h-5"/>}
                 </button>
             </div>
 
