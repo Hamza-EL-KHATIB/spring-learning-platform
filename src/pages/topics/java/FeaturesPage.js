@@ -9,7 +9,7 @@ import FloatingMenu from '../../../components/layout/FloatingMenu';
 
 const FeaturesPage = () => {
     const [activeTab, setActiveTab] = useState('streams');
-    const [selectedStreamCategory, setSelectedStreamCategory] = useState(null);
+    const [setSelectedStreamCategory] = useState(null);
 
     const tabs = [
         { id: 'streams', title: 'Stream API', icon: <List /> },
@@ -169,7 +169,26 @@ const FeaturesPage = () => {
             <div className="space-y-6">
                 {/* Category Pills */}
                 <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700/50">
-                    <div className="flex gap-2 overflow-x-auto pb-2">
+                    <div className="flex gap-2 overflow-x-auto pb-2 hide-scrollbar"
+                         style={{
+                             scrollbarWidth: 'thin',
+                             scrollbarColor: 'rgb(147, 51, 234) rgb(31, 41, 55)',
+                         }}>
+                        <style jsx>{`
+                        .hide-scrollbar::-webkit-scrollbar {
+                            height: 6px;
+                            background: rgb(31, 41, 55);
+                            border-radius: 3px;
+                        }
+                        .hide-scrollbar::-webkit-scrollbar-thumb {
+                            background: linear-gradient(to right, rgb(147, 51, 234), rgb(219, 39, 119));
+                            border-radius: 3px;
+                        }
+                        .hide-scrollbar::-webkit-scrollbar-track {
+                            background: rgb(31, 41, 55);
+                            border-radius: 3px;
+                        }
+                    `}</style>
                         {operations.map((operation, idx) => (
                             <button
                                 key={idx}
@@ -406,7 +425,6 @@ const FeaturesPage = () => {
                 tabs={tabs}
                 activeTab={activeTab}
                 onTabChange={setActiveTab}
-                streamOperations={featuresJson.topics.find(t => t.id === 'streams')?.operations}
                 onStreamCategorySelect={setSelectedStreamCategory}
             />
 
