@@ -162,24 +162,38 @@ const FeaturesPage = () => {
         </ContentCard>
     );
 
-    const renderStreamOperations = (operations) => {
-        const operationsToRender = selectedStreamCategory
-            ? [selectedStreamCategory]
-            : operations;
+    const StreamOperations = ({ operations }) => {
+        const [activeCategory, setActiveCategory] = useState(operations[0]);
 
         return (
-            <div className="space-y-8">
-                {operationsToRender.map((operation, idx) => (
-                    <div key={idx}>
-                        <ContentCard title={operation.name}>
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                {operation.methods.map((method, methodIdx) => (
-                                    <MethodCard key={methodIdx} method={method} />
-                                ))}
-                            </div>
-                        </ContentCard>
+            <div className="space-y-6">
+                {/* Category Pills */}
+                <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700/50">
+                    <div className="flex gap-2 overflow-x-auto pb-2">
+                        {operations.map((operation, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => setActiveCategory(operation)}
+                                className={`shrink-0 px-4 py-2 rounded-lg font-medium transition-all duration-300
+                                ${activeCategory.name === operation.name
+                                    ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border-purple-500/30'
+                                    : 'bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-gray-300'
+                                } border border-gray-700/50 hover:border-purple-500/30`}
+                            >
+                                {operation.name}
+                            </button>
+                        ))}
                     </div>
-                ))}
+                </div>
+
+                {/* Active Category Content */}
+                <ContentCard title={activeCategory.name}>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        {activeCategory.methods.map((method, methodIdx) => (
+                            <MethodCard key={methodIdx} method={method} />
+                        ))}
+                    </div>
+                </ContentCard>
             </div>
         );
     };
@@ -351,7 +365,9 @@ const FeaturesPage = () => {
                 </div>
 
                 {/* Map topic data to appropriate renderer */}
-                {topic.id === 'streams' && topic.operations && renderStreamOperations(topic.operations)}
+                {topic.id === 'streams' && topic.operations && (
+                    <StreamOperations operations={topic.operations} />
+                )}
                 {topic.id === 'completableFuture' && topic.features && renderCompletableFutureFeatures(topic.features)}
                 {topic.id === 'dateTime' && topic.classes && renderDateTimeClasses(topic.classes)}
                 {topic.id === 'methodReferences' && topic.types && renderMethodReferences(topic.types, topic.examples)}
