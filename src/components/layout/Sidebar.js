@@ -93,7 +93,7 @@ const Sidebar = () => {
     return (
         <>
             {/* Sidebar Toggle Button for Mobile - At Bottom Right */}
-            <div className="lg:hidden fixed bottom-6 right-6 z-50">
+            <div className="lg:hidden fixed bottom-6 left-6 z-50">
                 <button
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                     className="p-4 bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition-colors"
@@ -103,14 +103,15 @@ const Sidebar = () => {
             </div>
 
             {/* Sidebar Content - Always Visible on Larger Screens */}
-            <div className={`lg:block ${isSidebarOpen ? 'block' : 'hidden'} lg:static fixed inset-y-0 left-0 z-40 w-80 p-4 transition-transform duration-300 bg-gray-900 lg:translate-x-0 lg:shadow-none shadow-md`}>
+            <div
+                className={`lg:block ${isSidebarOpen ? 'block' : 'hidden'} lg:sticky lg:top-20 fixed inset-y-0 left-0 z-40 w-80 p-4 transition-transform duration-300 bg-gray-900 lg:translate-x-0 lg:shadow-none shadow-md`}>
                 <div className="h-full flex flex-col bg-gray-800 rounded-lg p-4">
-                        <button
-                            className="lg:hidden text-white"
-                            onClick={() => setIsSidebarOpen(false)}
-                        >
-                            <X className="w-6 h-6" />
-                        </button>
+                    <button
+                        className="lg:hidden text-white"
+                        onClick={() => setIsSidebarOpen(false)}
+                    >
+                        <X className="w-6 h-6"/>
+                    </button>
 
                     {currentGroup && (
                         <div className="bg-gray-800 rounded-lg p-4">
@@ -139,7 +140,7 @@ const Sidebar = () => {
                                             ) : (
                                                 <ChevronRight className={`w-4 h-4 mr-2 ${
                                                     currentPath === item.path ? 'text-purple-400' : 'text-gray-500'
-                                                }`} />
+                                                }`}/>
                                             )}
                                             {item.title}
                                         </Link>
