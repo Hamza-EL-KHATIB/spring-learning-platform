@@ -51,8 +51,13 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
 
-                    <Route path="/vocabulary" element={<VocabularyPage />} />
-                    <Route path="/konjugation" element={<KonjugationPage />} />
+                    // In App.js, update your routes:
+                    <Route path="/vocabulary/:level" element={<VocabularyPage />} />
+                    <Route path="/konjugation/:level" element={<KonjugationPage />} />
+                    {/*<Route path="/grammar/:level" element={<GrammarPage />} />*/}
+                    {/*<Route path="/conversation/:level" element={<ConversationPage />} />*/}
+                    {/*<Route path="/reading/:level" element={<ReadingPage />} />*/}
+                    {/*<Route path="/writing/:level" element={<WritingPage />} />*/}
                     <Route path="/learn/german" element={<LearningPortal />} />
 
 
