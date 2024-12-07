@@ -93,13 +93,7 @@ const GermanCasesPage = () => {
 
     const ArticlesTable = () => {
         const data = germanData.articles_and_pronouns[selectedArticleType].cases[selectedCase];
-        const examples = germanData.examples[
-            selectedArticleType === 'definite_article'
-                ? 'with_definite_articles'
-                : selectedArticleType === 'indefinite_article'
-                    ? 'with_indefinite_articles'
-                    : null
-            ]?.[selectedCase];
+
 
         return (
             <div className="space-y-4">
@@ -113,19 +107,6 @@ const GermanCasesPage = () => {
                         ))}
                     </div>
                 </div>
-
-                {examples && (
-                    <div className="bg-gray-800/50 rounded-lg p-4 border border-fuchsia-500/20">
-                        <h3 className="text-lg sm:text-xl font-bold text-fuchsia-300 mb-3">Examples</h3>
-                        <div className="space-y-2">
-                            {examples.map((example, idx) => (
-                                <div key={idx} className="bg-gray-900/50 p-3 rounded-lg border border-fuchsia-500/10">
-                                    <span className="text-gray-300 text-sm sm:text-base">{example}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
             </div>
         );
     };
@@ -181,9 +162,6 @@ const GermanCasesPage = () => {
             <div className="space-y-6">
                 {types.map(type => {
                     const data = germanData.adjective_endings[type.id].cases[selectedCase];
-                    const examples = type.id === 'without_article'
-                        ? germanData.examples.without_articles[selectedCase]
-                        : null;
 
                     return (
                         <div key={type.id} className="bg-gray-800/50 rounded-lg p-4 border border-cyan-500/20">
@@ -196,17 +174,6 @@ const GermanCasesPage = () => {
                                     </div>
                                 ))}
                             </div>
-
-                            {examples && (
-                                <div className="mt-4 space-y-2">
-                                    <h4 className="text-sm font-medium text-gray-400">Examples:</h4>
-                                    {examples.map((example, idx) => (
-                                        <div key={idx} className="bg-gray-900/50 p-3 rounded-lg">
-                                            <span className="text-gray-300">{example}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
                         </div>
                     );
                 })}
