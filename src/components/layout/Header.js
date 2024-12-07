@@ -108,29 +108,19 @@ const Header = () => {
                             {/* German Learning Links */}
                             <div className="space-y-2">
                                 <Link
-                                    to="/vocabulary"
+                                    to="/learn/german"
                                     className="block py-2 text-gray-400 hover:text-white transition-colors"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     <div className="flex items-center space-x-2">
-                                        <BookOpen className="w-5 h-5" />
-                                        <span>German Vocabulary</span>
-                                    </div>
-                                </Link>
-                                <Link
-                                    to="/konjugation"
-                                    className="block py-2 text-gray-400 hover:text-white transition-colors"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    <div className="flex items-center space-x-2">
-                                        <Book className="w-5 h-5" />
-                                        <span>German Conjugation</span>
+                                        <GraduationCap className="w-5 h-5" />
+                                        <span>German Learning Portal</span>
                                     </div>
                                 </Link>
                             </div>
 
                             <a
-                                href="https://github.com/Hamza-EL-KHATIB/spring-learning-platform"
+                                href="https://github.com/Hamza-EL-KHATIB"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="block py-2 text-gray-400 hover:text-white transition-colors"
