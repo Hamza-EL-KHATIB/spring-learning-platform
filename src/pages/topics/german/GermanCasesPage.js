@@ -134,42 +134,40 @@ const GermanCasesPage = () => {
         if (selectedPronounType === 'personal_pronouns') {
             const data = germanData.articles_and_pronouns.personal_pronouns.cases[selectedCase];
             return (
-                <div className="bg-gray-800/50 rounded-lg p-3 border border-pink-500/20">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="bg-gray-800/50 rounded-lg p-4 border border-pink-500/20">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
                         {Object.entries(data).map(([gender, pronoun]) => (
-                            <div key={gender} className="flex justify-between items-center bg-gray-900/50 rounded p-2.5 border border-pink-500/10">
-                                <span className="text-gray-400 text-sm">{gender}</span>
-                                <span className="text-xl font-medium text-pink-300">{pronoun}</span>
+                            <div key={gender} className="bg-gray-900/50 p-3 rounded-lg border border-pink-500/10">
+                                <div className="text-gray-400 text-xs sm:text-sm mb-1">{gender}</div>
+                                <div className="text-lg sm:text-2xl font-bold text-pink-300">{pronoun}</div>
                             </div>
                         ))}
                     </div>
                 </div>
             );
-        }
-
-        const possessiveArticles = germanData.articles_and_pronouns.possessive_articles;
-        return (
-            <div className="space-y-3">
-                {Object.entries(possessiveArticles).map(([possessive, data]) => (
-                    <div key={possessive} className="bg-gray-800/50 rounded-lg border border-pink-500/20">
-                        <div className="bg-gray-800/80 px-3 py-2 rounded-t-lg border-b border-pink-500/10 flex justify-between items-center">
-                            <span className="text-pink-300 font-medium">{possessive}</span>
-                            <span className="text-gray-400 text-sm">{data.meaning}</span>
-                        </div>
-                        <div className="p-3">
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        } else {
+            // Show all possessive articles
+            const possessiveArticles = germanData.articles_and_pronouns.possessive_articles;
+            return (
+                <div className="space-y-6">
+                    {Object.entries(possessiveArticles).map(([possessive, data]) => (
+                        <div key={possessive} className="bg-gray-800/50 rounded-lg p-4 border border-pink-500/20">
+                            <h3 className="text-lg font-bold text-pink-300 mb-4">
+                                {possessive} <span className="text-gray-400 text-sm">({data.meaning})</span>
+                            </h3>
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
                                 {Object.entries(data.cases[selectedCase]).map(([gender, form]) => (
-                                    <div key={gender} className="flex justify-between items-center bg-gray-900/50 rounded p-2.5 border border-pink-500/10">
-                                        <span className="text-gray-400 text-sm">{gender}</span>
-                                        <span className="text-xl font-medium text-pink-300">{form}</span>
+                                    <div key={gender} className="bg-gray-900/50 p-3 rounded-lg border border-pink-500/10">
+                                        <div className="text-gray-400 text-xs sm:text-sm mb-1">{gender}</div>
+                                        <div className="text-lg sm:text-2xl font-bold text-pink-300">{form}</div>
                                     </div>
                                 ))}
                             </div>
                         </div>
-                    </div>
-                ))}
-            </div>
-        );
+                    ))}
+                </div>
+            );
+        }
     };
 
     const AdjectiveEndingsTable = () => {
