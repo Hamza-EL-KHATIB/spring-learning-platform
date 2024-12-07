@@ -53,10 +53,10 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
 
-                    <Route path="/vocabulary" element={<VocabularyPage />} />
-                    <Route path="/konjugation" element={<KonjugationPage />} />
+                    <Route path="/learn/vocabulary" element={<VocabularyPage />} />
+                    <Route path="/learn/konjugation" element={<KonjugationPage />} />
                     <Route path="/learn/german" element={<LearningPortal />} />
-                    <Route path="/german-cases" element={<GermanCasesPage />} />
+                    <Route path="/learn/german-cases" element={<GermanCasesPage />} />
 
 
                     {/* Java Routes */}

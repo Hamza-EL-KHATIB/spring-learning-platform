@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Book, Info } from 'lucide-react';
+import { Book } from 'lucide-react';
 import germanData from '../../../data/german/german-cases.json';
 
 const GermanCasesPage = () => {

@@ -5,28 +5,29 @@ import Footer from './Footer';
 import Sidebar from './Sidebar';
 
 const Layout = ({ children }) => {
-    const location = useLocation();
-    const isHomePage = location.pathname === '/';
-    const isVocabulary = location.pathname === '/vocabulary';
-    const isKonjugation = location.pathname === '/konjugation';
-    const isPortal = location.pathname === '/learn/german';
-    const isGermanCases = location.pathname === '/german-cases';
+    const { pathname } = useLocation();
+    const showSidebar = ![
+        '/',
+        '/learn/vocabulary',
+        '/learn/konjugation',
+        '/learn/german',
+        '/learn/german-cases',
+        '/learn/german-case-rules'
+    ].includes(pathname);
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-900">
             <Header />
             <main className="flex-grow container mx-auto px-4 py-8">
-                {isHomePage || isVocabulary || isKonjugation || isPortal || isGermanCases ? (
-                    children
-                ) : (
+                {showSidebar ? (
                     <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
-                        <div>
-                            <Sidebar />
-                        </div>
+                        <Sidebar />
                         <div className="min-w-0">
                             {children}
                         </div>
                     </div>
+                ) : (
+                    children
                 )}
             </main>
             <Footer />
