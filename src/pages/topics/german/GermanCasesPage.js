@@ -6,11 +6,12 @@ const GermanCasesPage = () => {
     const [activeTab, setActiveTab] = useState('articles');
     const [selectedCase, setSelectedCase] = useState('nominativ');
     const [selectedArticleType, setSelectedArticleType] = useState('definite_article');
+    const [selectedPronounType, setPronounType] = useState('personal_pronouns');
 
     const TabButton = ({ id, label, active, onClick }) => (
         <button
             onClick={() => onClick(id)}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`px-3 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base sm:px-4 ${
                 active
                     ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white shadow-lg shadow-fuchsia-500/20'
                     : 'text-gray-400 hover:text-white hover:bg-gray-800'
@@ -20,43 +21,76 @@ const GermanCasesPage = () => {
         </button>
     );
 
+    // Case Selection Card
     const CaseSelector = () => (
-        <div className="flex space-x-4 mb-6">
-            {['nominativ', 'akkusativ', 'dativ'].map(caseType => (
-                <button
-                    key={caseType}
-                    onClick={() => setSelectedCase(caseType)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                        selectedCase === caseType
-                            ? 'bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-lg shadow-cyan-500/20'
-                            : 'text-gray-400 hover:text-white hover:bg-gray-800'
-                    }`}
-                >
-                    {caseType.charAt(0).toUpperCase() + caseType.slice(1)}
-                </button>
-            ))}
+        <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 mb-4">
+            <h2 className="text-sm text-gray-400 mb-3">Select Case:</h2>
+            <div className="flex flex-wrap gap-2">
+                {['nominativ', 'akkusativ', 'dativ'].map(caseType => (
+                    <button
+                        key={caseType}
+                        onClick={() => setSelectedCase(caseType)}
+                        className={`px-3 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
+                            selectedCase === caseType
+                                ? 'bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-lg shadow-cyan-500/20'
+                                : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                        }`}
+                    >
+                        {caseType.charAt(0).toUpperCase() + caseType.slice(1)}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 
+    // Article Type Selection Card
     const ArticleTypeSelector = () => (
-        <div className="flex space-x-4 mb-6">
-            {[
-                { id: 'definite_article', label: 'Definite Articles' },
-                { id: 'indefinite_article', label: 'Indefinite Articles' },
-                { id: 'negative_article', label: 'Negative Articles' }
-            ].map(type => (
-                <button
-                    key={type.id}
-                    onClick={() => setSelectedArticleType(type.id)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                        selectedArticleType === type.id
-                            ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/20'
-                            : 'text-gray-400 hover:text-white hover:bg-gray-800'
-                    }`}
-                >
-                    {type.label}
-                </button>
-            ))}
+        <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 mb-4">
+            <h2 className="text-sm text-gray-400 mb-3">Select Article Type:</h2>
+            <div className="flex flex-wrap gap-2">
+                {[
+                    { id: 'definite_article', label: 'Definite' },
+                    { id: 'indefinite_article', label: 'Indefinite' },
+                    { id: 'negative_article', label: 'Negative' },
+                ].map(type => (
+                    <button
+                        key={type.id}
+                        onClick={() => setSelectedArticleType(type.id)}
+                        className={`px-3 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
+                            selectedArticleType === type.id
+                                ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/20'
+                                : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                        }`}
+                    >
+                        {type.label}
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+
+    // Pronoun Type Selection Card
+    const PronounTypeSelector = () => (
+        <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 mb-4">
+            <h2 className="text-sm text-gray-400 mb-3">Select Pronoun Type:</h2>
+            <div className="flex flex-wrap gap-2">
+                {[
+                    { id: 'personal_pronouns', label: 'Personal' },
+                    { id: 'possessive_articles', label: 'Possessive' }
+                ].map(type => (
+                    <button
+                        key={type.id}
+                        onClick={() => setPronounType(type.id)}
+                        className={`px-3 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
+                            selectedPronounType === type.id
+                                ? 'bg-gradient-to-r from-pink-600 to-rose-600 text-white shadow-lg shadow-pink-500/20'
+                                : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                        }`}
+                    >
+                        {type.label}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 
@@ -71,49 +105,72 @@ const GermanCasesPage = () => {
             ]?.[selectedCase];
 
         return (
-            <div className="space-y-6">
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-violet-500/20">
-                    <div className="grid grid-cols-4 gap-4">
+            <div className="space-y-4">
+                <div className="bg-gray-800/50 rounded-lg p-4 border border-violet-500/20">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
                         {Object.entries(data).map(([gender, article]) => (
-                            <div key={gender} className="bg-gray-900/50 p-4 rounded-lg border border-violet-500/10">
-                                <div className="text-gray-400 text-sm mb-1">{gender}</div>
-                                <div className="text-2xl font-bold text-violet-300">{article}</div>
+                            <div key={gender} className="bg-gray-900/50 p-3 rounded-lg border border-violet-500/10">
+                                <div className="text-gray-400 text-xs sm:text-sm mb-1">{gender}</div>
+                                <div className="text-lg sm:text-2xl font-bold text-violet-300">{article}</div>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {examples && (
-                    <div className="bg-gray-800/50 rounded-lg p-6 border border-fuchsia-500/20">
-                        <h3 className="text-xl font-bold text-fuchsia-300 mb-4">Examples</h3>
-                        <div className="space-y-3">
-                            {examples.map((example, idx) => {
-                                // Split the example to highlight the relevant parts
-                                const parts = example.split(' ');
-                                return (
-                                    <div key={idx} className="bg-gray-900/50 p-3 rounded-lg border border-fuchsia-500/10">
-                                        {parts.map((part, partIdx) => {
-                                            // Check if this part contains the relevant article or ending
-                                            const isArticle = germanData.articles_and_pronouns[selectedArticleType].cases[selectedCase][Object.keys(germanData.articles_and_pronouns[selectedArticleType].cases[selectedCase])[0]] === part;
-                                            const hasRelevantEnding = Object.values(germanData.articles_and_pronouns[selectedArticleType].cases[selectedCase]).some(article => part.startsWith(article));
-
-                                            return (
-                                                <span key={partIdx} className={`${
-                                                    isArticle ? 'text-fuchsia-400 font-bold' :
-                                                        hasRelevantEnding ? 'text-pink-400' : 'text-gray-300'
-                                                } ${partIdx > 0 ? 'ml-1' : ''}`}>
-                                                    {part}
-                                                </span>
-                                            );
-                                        })}
-                                    </div>
-                                );
-                            })}
+                    <div className="bg-gray-800/50 rounded-lg p-4 border border-fuchsia-500/20">
+                        <h3 className="text-lg sm:text-xl font-bold text-fuchsia-300 mb-3">Examples</h3>
+                        <div className="space-y-2">
+                            {examples.map((example, idx) => (
+                                <div key={idx} className="bg-gray-900/50 p-3 rounded-lg border border-fuchsia-500/10">
+                                    <span className="text-gray-300 text-sm sm:text-base">{example}</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 )}
             </div>
         );
+    };
+
+    const PronounsTable = () => {
+        if (selectedPronounType === 'personal_pronouns') {
+            const data = germanData.articles_and_pronouns.personal_pronouns.cases[selectedCase];
+            return (
+                <div className="bg-gray-800/50 rounded-lg p-4 border border-pink-500/20">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
+                        {Object.entries(data).map(([gender, pronoun]) => (
+                            <div key={gender} className="bg-gray-900/50 p-3 rounded-lg border border-pink-500/10">
+                                <div className="text-gray-400 text-xs sm:text-sm mb-1">{gender}</div>
+                                <div className="text-lg sm:text-2xl font-bold text-pink-300">{pronoun}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        } else {
+            // Show all possessive articles
+            const possessiveArticles = germanData.articles_and_pronouns.possessive_articles;
+            return (
+                <div className="space-y-6">
+                    {Object.entries(possessiveArticles).map(([possessive, data]) => (
+                        <div key={possessive} className="bg-gray-800/50 rounded-lg p-4 border border-pink-500/20">
+                            <h3 className="text-lg font-bold text-pink-300 mb-4">
+                                {possessive} <span className="text-gray-400 text-sm">({data.meaning})</span>
+                            </h3>
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
+                                {Object.entries(data.cases[selectedCase]).map(([gender, form]) => (
+                                    <div key={gender} className="bg-gray-900/50 p-3 rounded-lg border border-pink-500/10">
+                                        <div className="text-gray-400 text-xs sm:text-sm mb-1">{gender}</div>
+                                        <div className="text-lg sm:text-2xl font-bold text-pink-300">{form}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            );
+        }
     };
 
     const AdjectiveEndingsTable = () => {
@@ -124,96 +181,95 @@ const GermanCasesPage = () => {
         ];
 
         return (
-            <div className="space-y-8">
+            <div className="space-y-6">
                 {types.map(type => {
                     const data = germanData.adjective_endings[type.id].cases[selectedCase];
+                    const examples = type.id === 'without_article'
+                        ? germanData.examples.without_articles[selectedCase]
+                        : null;
+
                     return (
-                        <div key={type.id} className="bg-gray-800/50 rounded-lg p-6 border border-cyan-500/20">
-                            <h3 className="text-xl font-bold text-cyan-300 mb-4">{type.title}</h3>
-                            <div className="grid grid-cols-4 gap-4">
+                        <div key={type.id} className="bg-gray-800/50 rounded-lg p-4 border border-cyan-500/20">
+                            <h3 className="text-lg font-bold text-cyan-300 mb-4">{type.title}</h3>
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
                                 {Object.entries(data).map(([gender, ending]) => (
-                                    <div key={gender} className="bg-gray-900/50 p-4 rounded-lg border border-cyan-500/10">
-                                        <div className="text-gray-400 text-sm mb-1">{gender}</div>
-                                        <div className="text-2xl font-bold text-cyan-300">{ending}</div>
+                                    <div key={gender} className="bg-gray-900/50 p-3 rounded-lg border border-cyan-500/10">
+                                        <div className="text-gray-400 text-xs sm:text-sm mb-1">{gender}</div>
+                                        <div className="text-lg sm:text-2xl font-bold text-cyan-300">{ending}</div>
                                     </div>
                                 ))}
                             </div>
+
+                            {examples && (
+                                <div className="mt-4 space-y-2">
+                                    <h4 className="text-sm font-medium text-gray-400">Examples:</h4>
+                                    {examples.map((example, idx) => (
+                                        <div key={idx} className="bg-gray-900/50 p-3 rounded-lg">
+                                            <span className="text-gray-300">{example}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     );
                 })}
-
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-teal-500/20">
-                    <h3 className="text-xl font-bold text-teal-300 mb-4">Examples</h3>
-                    <div className="space-y-3">
-                        {germanData.examples.without_articles[selectedCase].map((example, idx) => {
-                            // Split the example to highlight the relevant parts
-                            const parts = example.split(' ');
-                            return (
-                                <div key={idx} className="bg-gray-900/50 p-3 rounded-lg border border-teal-500/10">
-                                    {parts.map((part, partIdx) => {
-                                        // Check if this part contains an adjective ending
-                                        const endings = germanData.adjective_endings.without_article.cases[selectedCase];
-                                        const hasEnding = Object.values(endings).some(ending =>
-                                            part.endsWith(ending) && part.length > ending.length
-                                        );
-
-                                        return (
-                                            <span key={partIdx} className={`${
-                                                hasEnding ? 'text-cyan-400 font-semibold' : 'text-gray-300'
-                                            } ${partIdx > 0 ? 'ml-1' : ''}`}>
-                                                {part}
-                                            </span>
-                                        );
-                                    })}
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
             </div>
         );
     };
 
     return (
-        <div className="min-h-screen bg-gray-900">
+        <div className="min-h-screen bg-gray-900 px-4">
             {/* Title Section */}
-            <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-fuchsia-500/20">
-                <div className="flex items-center gap-3">
-                    <Book className="w-8 h-8 text-fuchsia-400" />
-                    <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-pink-400">
-                        German Cases & Articles
+            <div className="mb-6">
+                <div className="flex items-center gap-3 mb-2">
+                    <Book className="w-6 h-6 sm:w-8 sm:h-8 text-fuchsia-400" />
+                    <h1 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-pink-400">
+                        German Cases
                     </h1>
                 </div>
-                <p className="text-gray-300 mt-4">
-                    Master German grammar cases, articles, and adjective endings with clear examples.
-                </p>
             </div>
 
             {/* Case Selection */}
             <CaseSelector />
 
             {/* Main Navigation */}
-            <div className="flex space-x-4 mb-8">
-                <TabButton
-                    id="articles"
-                    label="Articles"
-                    active={activeTab === 'articles'}
-                    onClick={setActiveTab}
-                />
-                <TabButton
-                    id="adjectives"
-                    label="Adjective Endings"
-                    active={activeTab === 'adjectives'}
-                    onClick={setActiveTab}
-                />
+            <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 mb-4">
+                <h2 className="text-sm text-gray-400 mb-3">Select Content Type:</h2>
+                <div className="flex flex-wrap gap-2">
+                    <TabButton
+                        id="articles"
+                        label="Articles"
+                        active={activeTab === 'articles'}
+                        onClick={setActiveTab}
+                    />
+                    <TabButton
+                        id="pronouns"
+                        label="Pronouns"
+                        active={activeTab === 'pronouns'}
+                        onClick={setActiveTab}
+                    />
+                    <TabButton
+                        id="adjectives"
+                        label="Adjective Endings"
+                        active={activeTab === 'adjectives'}
+                        onClick={setActiveTab}
+                    />
+                </div>
             </div>
 
             {/* Content Section */}
-            <div className="space-y-6">
+            <div className="space-y-4">
                 {activeTab === 'articles' && (
                     <>
                         <ArticleTypeSelector />
                         <ArticlesTable />
+                    </>
+                )}
+
+                {activeTab === 'pronouns' && (
+                    <>
+                        <PronounTypeSelector />
+                        <PronounsTable />
                     </>
                 )}
 
