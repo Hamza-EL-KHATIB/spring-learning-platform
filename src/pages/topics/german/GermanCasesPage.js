@@ -115,40 +115,57 @@ const GermanCasesPage = () => {
         if (selectedPronounType === 'personal_pronouns') {
             const data = germanData.articles_and_pronouns.personal_pronouns.cases[selectedCase];
             return (
-                <div className="bg-gray-800/50 rounded-lg p-4 border border-pink-500/20">
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
+                <div className="bg-gray-800/50 rounded-lg p-3 border border-pink-500/20">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                         {Object.entries(data).map(([gender, pronoun]) => (
-                            <div key={gender} className="bg-gray-900/50 p-3 rounded-lg border border-pink-500/10">
-                                <div className="text-gray-400 text-xs sm:text-sm mb-1">{gender}</div>
-                                <div className="text-lg sm:text-2xl font-bold text-pink-300">{pronoun}</div>
+                            <div key={gender} className="bg-gray-900/50 p-2 rounded-lg border border-pink-500/10">
+                                <div className="text-gray-400 text-xs mb-0.5">{gender}</div>
+                                <div className="text-base sm:text-lg font-bold text-pink-300">{pronoun}</div>
                             </div>
                         ))}
                     </div>
                 </div>
             );
-        } else {
-            // Show all possessive articles
-            const possessiveArticles = germanData.articles_and_pronouns.possessive_articles;
-            return (
-                <div className="space-y-6">
-                    {Object.entries(possessiveArticles).map(([possessive, data]) => (
-                        <div key={possessive} className="bg-gray-800/50 rounded-lg p-4 border border-pink-500/20">
-                            <h3 className="text-lg font-bold text-pink-300 mb-4">
-                                {possessive} <span className="text-gray-400 text-sm">({data.meaning})</span>
-                            </h3>
-                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
-                                {Object.entries(data.cases[selectedCase]).map(([gender, form]) => (
-                                    <div key={gender} className="bg-gray-900/50 p-3 rounded-lg border border-pink-500/10">
-                                        <div className="text-gray-400 text-xs sm:text-sm mb-1">{gender}</div>
-                                        <div className="text-lg sm:text-2xl font-bold text-pink-300">{form}</div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            );
         }
+
+        // For possessive articles
+        const possessiveArticles = germanData.articles_and_pronouns.possessive_articles;
+
+        return (
+            <div className="bg-gray-800/50 rounded-lg p-3 border border-pink-500/20">
+                <div className="overflow-x-auto">
+                    <table className="w-full">
+                        <thead>
+                        <tr className="border-b border-gray-700">
+                            <th className="text-left p-2 text-gray-400">Possessive</th>
+                            <th className="text-left p-2 text-gray-400">Masculine</th>
+                            <th className="text-left p-2 text-gray-400">Neuter</th>
+                            <th className="text-left p-2 text-gray-400">Feminine</th>
+                            <th className="text-left p-2 text-gray-400">Plural</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {Object.entries(possessiveArticles).map(([key, article]) => {
+                            if (!article?.cases?.[selectedCase]) return null;
+
+                            return (
+                                <tr key={key} className="border-b border-gray-700/50">
+                                    <td className="p-2">
+                                        <span className="text-pink-300 font-medium">{key}</span>
+                                        <span className="text-xs text-gray-500 ml-2">({article.meaning})</span>
+                                    </td>
+                                    <td className="p-2 text-pink-300">{article.cases[selectedCase].masculine}</td>
+                                    <td className="p-2 text-pink-300">{article.cases[selectedCase].neuter}</td>
+                                    <td className="p-2 text-pink-300">{article.cases[selectedCase].feminine}</td>
+                                    <td className="p-2 text-pink-300">{article.cases[selectedCase].plural}</td>
+                                </tr>
+                            );
+                        })}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        );
     };
 
     const AdjectiveEndingsTable = () => {
