@@ -87,11 +87,28 @@ const GermanCasesPage = () => {
                     <div className="bg-gray-800/50 rounded-lg p-6 border border-fuchsia-500/20">
                         <h3 className="text-xl font-bold text-fuchsia-300 mb-4">Examples</h3>
                         <div className="space-y-3">
-                            {examples.map((example, idx) => (
-                                <div key={idx} className="bg-gray-900/50 p-3 rounded-lg border border-fuchsia-500/10">
-                                    <span className="text-gray-300">{example}</span>
-                                </div>
-                            ))}
+                            {examples.map((example, idx) => {
+                                // Split the example to highlight the relevant parts
+                                const parts = example.split(' ');
+                                return (
+                                    <div key={idx} className="bg-gray-900/50 p-3 rounded-lg border border-fuchsia-500/10">
+                                        {parts.map((part, partIdx) => {
+                                            // Check if this part contains the relevant article or ending
+                                            const isArticle = germanData.articles_and_pronouns[selectedArticleType].cases[selectedCase][Object.keys(germanData.articles_and_pronouns[selectedArticleType].cases[selectedCase])[0]] === part;
+                                            const hasRelevantEnding = Object.values(germanData.articles_and_pronouns[selectedArticleType].cases[selectedCase]).some(article => part.startsWith(article));
+
+                                            return (
+                                                <span key={partIdx} className={`${
+                                                    isArticle ? 'text-fuchsia-400 font-bold' :
+                                                        hasRelevantEnding ? 'text-pink-400' : 'text-gray-300'
+                                                } ${partIdx > 0 ? 'ml-1' : ''}`}>
+                                                    {part}
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 )}
@@ -128,11 +145,29 @@ const GermanCasesPage = () => {
                 <div className="bg-gray-800/50 rounded-lg p-6 border border-teal-500/20">
                     <h3 className="text-xl font-bold text-teal-300 mb-4">Examples</h3>
                     <div className="space-y-3">
-                        {germanData.examples.without_articles[selectedCase].map((example, idx) => (
-                            <div key={idx} className="bg-gray-900/50 p-3 rounded-lg border border-teal-500/10">
-                                <span className="text-gray-300">{example}</span>
-                            </div>
-                        ))}
+                        {germanData.examples.without_articles[selectedCase].map((example, idx) => {
+                            // Split the example to highlight the relevant parts
+                            const parts = example.split(' ');
+                            return (
+                                <div key={idx} className="bg-gray-900/50 p-3 rounded-lg border border-teal-500/10">
+                                    {parts.map((part, partIdx) => {
+                                        // Check if this part contains an adjective ending
+                                        const endings = germanData.adjective_endings.without_article.cases[selectedCase];
+                                        const hasEnding = Object.values(endings).some(ending =>
+                                            part.endsWith(ending) && part.length > ending.length
+                                        );
+
+                                        return (
+                                            <span key={partIdx} className={`${
+                                                hasEnding ? 'text-cyan-400 font-semibold' : 'text-gray-300'
+                                            } ${partIdx > 0 ? 'ml-1' : ''}`}>
+                                                {part}
+                                            </span>
+                                        );
+                                    })}
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
