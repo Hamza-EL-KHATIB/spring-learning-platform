@@ -21,7 +21,6 @@ const GermanCasesPage = () => {
         </button>
     );
 
-    // Case Selection Card
     const CaseSelector = () => (
         <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 mb-4">
             <h2 className="text-sm text-gray-400 mb-3">Select Case:</h2>
@@ -43,7 +42,6 @@ const GermanCasesPage = () => {
         </div>
     );
 
-    // Article Type Selection Card
     const ArticleTypeSelector = () => (
         <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 mb-4">
             <h2 className="text-sm text-gray-400 mb-3">Select Article Type:</h2>
@@ -69,7 +67,6 @@ const GermanCasesPage = () => {
         </div>
     );
 
-    // Pronoun Type Selection Card
     const PronounTypeSelector = () => (
         <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 mb-4">
             <h2 className="text-sm text-gray-400 mb-3">Select Pronoun Type:</h2>
