@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { Book } from 'lucide-react';
+import { Book, Info } from 'lucide-react';
 import germanData from '../../../data/german/german-cases.json';
 
 const GermanCasesPage = () => {
-    const [activeTab, setActiveTab] = useState('definite');
+    const [activeTab, setActiveTab] = useState('articles');
     const [selectedCase, setSelectedCase] = useState('nominativ');
+    const [selectedArticleType, setSelectedArticleType] = useState('definite_article');
 
     const TabButton = ({ id, label, active, onClick }) => (
         <button
             onClick={() => onClick(id)}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 active
-                    ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/20'
+                    ? 'bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white shadow-lg shadow-fuchsia-500/20'
                     : 'text-gray-400 hover:text-white hover:bg-gray-800'
             }`}
         >
@@ -27,7 +28,7 @@ const GermanCasesPage = () => {
                     onClick={() => setSelectedCase(caseType)}
                     className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                         selectedCase === caseType
-                            ? 'bg-cyan-500 text-white shadow-lg shadow-cyan-500/20'
+                            ? 'bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-lg shadow-cyan-500/20'
                             : 'text-gray-400 hover:text-white hover:bg-gray-800'
                     }`}
                 >
@@ -37,56 +38,102 @@ const GermanCasesPage = () => {
         </div>
     );
 
-    const ArticleTable = ({ articleType }) => {
-        const data = germanData.articles_and_pronouns[articleType].cases[selectedCase];
-        const type = germanData.articles_and_pronouns[articleType].type;
+    const ArticleTypeSelector = () => (
+        <div className="flex space-x-4 mb-6">
+            {[
+                { id: 'definite_article', label: 'Definite Articles' },
+                { id: 'indefinite_article', label: 'Indefinite Articles' },
+                { id: 'negative_article', label: 'Negative Articles' }
+            ].map(type => (
+                <button
+                    key={type.id}
+                    onClick={() => setSelectedArticleType(type.id)}
+                    className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                        selectedArticleType === type.id
+                            ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/20'
+                            : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                    }`}
+                >
+                    {type.label}
+                </button>
+            ))}
+        </div>
+    );
+
+    const ArticlesTable = () => {
+        const data = germanData.articles_and_pronouns[selectedArticleType].cases[selectedCase];
+        const examples = germanData.examples[
+            selectedArticleType === 'definite_article'
+                ? 'with_definite_articles'
+                : selectedArticleType === 'indefinite_article'
+                    ? 'with_indefinite_articles'
+                    : null
+            ]?.[selectedCase];
 
         return (
-            <div className="bg-gray-800/50 rounded-lg p-6 border border-purple-500/20 mb-6">
-                <h3 className="text-xl font-bold text-purple-300 mb-4">{type}</h3>
-                <div className="grid grid-cols-4 gap-4">
-                    {Object.entries(data).map(([gender, article]) => (
-                        <div key={gender} className="bg-gray-900/50 p-4 rounded-lg">
-                            <div className="text-gray-400 text-sm mb-1">{gender}</div>
-                            <div className="text-purple-300 font-medium">{article}</div>
-                        </div>
-                    ))}
+            <div className="space-y-6">
+                <div className="bg-gray-800/50 rounded-lg p-6 border border-violet-500/20">
+                    <div className="grid grid-cols-4 gap-4">
+                        {Object.entries(data).map(([gender, article]) => (
+                            <div key={gender} className="bg-gray-900/50 p-4 rounded-lg border border-violet-500/10">
+                                <div className="text-gray-400 text-sm mb-1">{gender}</div>
+                                <div className="text-2xl font-bold text-violet-300">{article}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
+
+                {examples && (
+                    <div className="bg-gray-800/50 rounded-lg p-6 border border-fuchsia-500/20">
+                        <h3 className="text-xl font-bold text-fuchsia-300 mb-4">Examples</h3>
+                        <div className="space-y-3">
+                            {examples.map((example, idx) => (
+                                <div key={idx} className="bg-gray-900/50 p-3 rounded-lg border border-fuchsia-500/10">
+                                    <span className="text-gray-300">{example}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         );
     };
 
-    const AdjectiveEndingsTable = ({ type }) => {
-        const data = germanData.adjective_endings[type].cases[selectedCase];
-        const description = germanData.adjective_endings[type].description;
+    const AdjectiveEndingsTable = () => {
+        const types = [
+            { id: 'after_definite_article', title: 'After Definite Articles' },
+            { id: 'after_indefinite_article', title: 'After Indefinite Articles' },
+            { id: 'without_article', title: 'Without Articles' }
+        ];
 
         return (
-            <div className="bg-gray-800/50 rounded-lg p-6 border border-purple-500/20 mb-6">
-                <h3 className="text-xl font-bold text-purple-300 mb-2">{description}</h3>
-                <div className="grid grid-cols-4 gap-4">
-                    {Object.entries(data).map(([gender, ending]) => (
-                        <div key={gender} className="bg-gray-900/50 p-4 rounded-lg">
-                            <div className="text-gray-400 text-sm mb-1">{gender}</div>
-                            <div className="text-purple-300 font-medium">{ending}</div>
+            <div className="space-y-8">
+                {types.map(type => {
+                    const data = germanData.adjective_endings[type.id].cases[selectedCase];
+                    return (
+                        <div key={type.id} className="bg-gray-800/50 rounded-lg p-6 border border-cyan-500/20">
+                            <h3 className="text-xl font-bold text-cyan-300 mb-4">{type.title}</h3>
+                            <div className="grid grid-cols-4 gap-4">
+                                {Object.entries(data).map(([gender, ending]) => (
+                                    <div key={gender} className="bg-gray-900/50 p-4 rounded-lg border border-cyan-500/10">
+                                        <div className="text-gray-400 text-sm mb-1">{gender}</div>
+                                        <div className="text-2xl font-bold text-cyan-300">{ending}</div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    ))}
-                </div>
-            </div>
-        );
-    };
+                    );
+                })}
 
-    const ExamplesSection = ({ type }) => {
-        const examples = germanData.examples[type][selectedCase];
-
-        return (
-            <div className="bg-gray-800/50 rounded-lg p-6 border border-purple-500/20">
-                <h3 className="text-xl font-bold text-purple-300 mb-4">Examples</h3>
-                <div className="space-y-3">
-                    {examples.map((example, idx) => (
-                        <div key={idx} className="bg-gray-900/50 p-3 rounded-lg">
-                            <span className="text-gray-300">{example}</span>
-                        </div>
-                    ))}
+                <div className="bg-gray-800/50 rounded-lg p-6 border border-teal-500/20">
+                    <h3 className="text-xl font-bold text-teal-300 mb-4">Examples</h3>
+                    <div className="space-y-3">
+                        {germanData.examples.without_articles[selectedCase].map((example, idx) => (
+                            <div key={idx} className="bg-gray-900/50 p-3 rounded-lg border border-teal-500/10">
+                                <span className="text-gray-300">{example}</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         );
@@ -95,34 +142,27 @@ const GermanCasesPage = () => {
     return (
         <div className="min-h-screen bg-gray-900">
             {/* Title Section */}
-            <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
+            <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-fuchsia-500/20">
                 <div className="flex items-center gap-3">
-                    <Book className="w-8 h-8 text-purple-400" />
-                    <h1 className="text-3xl font-bold text-white">German Cases & Articles</h1>
+                    <Book className="w-8 h-8 text-fuchsia-400" />
+                    <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-pink-400">
+                        German Cases & Articles
+                    </h1>
                 </div>
+                <p className="text-gray-300 mt-4">
+                    Master German grammar cases, articles, and adjective endings with clear examples.
+                </p>
             </div>
 
             {/* Case Selection */}
             <CaseSelector />
 
-            {/* Navigation Tabs */}
+            {/* Main Navigation */}
             <div className="flex space-x-4 mb-8">
                 <TabButton
-                    id="definite"
-                    label="Definite Articles"
-                    active={activeTab === 'definite'}
-                    onClick={setActiveTab}
-                />
-                <TabButton
-                    id="indefinite"
-                    label="Indefinite Articles"
-                    active={activeTab === 'indefinite'}
-                    onClick={setActiveTab}
-                />
-                <TabButton
-                    id="negative"
-                    label="Negative Articles"
-                    active={activeTab === 'negative'}
+                    id="articles"
+                    label="Articles"
+                    active={activeTab === 'articles'}
                     onClick={setActiveTab}
                 />
                 <TabButton
@@ -135,33 +175,15 @@ const GermanCasesPage = () => {
 
             {/* Content Section */}
             <div className="space-y-6">
-                {activeTab === 'definite' && (
+                {activeTab === 'articles' && (
                     <>
-                        <ArticleTable articleType="definite_article" />
-                        <ExamplesSection type="with_definite_articles" />
-                    </>
-                )}
-
-                {activeTab === 'indefinite' && (
-                    <>
-                        <ArticleTable articleType="indefinite_article" />
-                        <ExamplesSection type="with_indefinite_articles" />
-                    </>
-                )}
-
-                {activeTab === 'negative' && (
-                    <>
-                        <ArticleTable articleType="negative_article" />
+                        <ArticleTypeSelector />
+                        <ArticlesTable />
                     </>
                 )}
 
                 {activeTab === 'adjectives' && (
-                    <>
-                        <AdjectiveEndingsTable type="after_definite_article" />
-                        <AdjectiveEndingsTable type="after_indefinite_article" />
-                        <AdjectiveEndingsTable type="without_article" />
-                        <ExamplesSection type="without_articles" />
-                    </>
+                    <AdjectiveEndingsTable />
                 )}
             </div>
         </div>
