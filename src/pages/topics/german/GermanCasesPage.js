@@ -154,38 +154,50 @@ const PronounsTable = ({ selectedCase, selectedPronounType }) => {
     const possessiveArticles = germanData.articles_and_pronouns.possessive_articles;
 
     return (
-        <div className="bg-gray-800/50 rounded-lg p-3 border border-pink-500/20">
-            <div className="overflow-x-auto">
-                <table className="w-full">
-                    <thead>
-                    <tr className="border-b border-gray-700">
-                        <th className="text-left p-2 text-gray-400">Possessive</th>
-                        <th className="text-left p-2 text-gray-400">Masculine</th>
-                        <th className="text-left p-2 text-gray-400">Neuter</th>
-                        <th className="text-left p-2 text-gray-400">Feminine</th>
-                        <th className="text-left p-2 text-gray-400">Plural</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {Object.entries(possessiveArticles).map(([key, article]) => {
-                        if (!article?.cases?.[selectedCase]) return null;
-
-                        return (
-                            <tr key={key} className="border-b border-gray-700/50">
-                                <td className="p-2">
-                                    <span className="text-pink-300 font-medium">{key}</span>
-                                    <span className="text-xs text-gray-500 ml-2">({article.meaning})</span>
-                                </td>
-                                <td className="p-2 text-pink-300">{article.cases[selectedCase].masculine}</td>
-                                <td className="p-2 text-pink-300">{article.cases[selectedCase].neuter}</td>
-                                <td className="p-2 text-pink-300">{article.cases[selectedCase].feminine}</td>
-                                <td className="p-2 text-pink-300">{article.cases[selectedCase].plural}</td>
-                            </tr>
-                        );
-                    })}
-                    </tbody>
-                </table>
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700/50 overflow-hidden">
+            <div className="grid grid-cols-5 border-b border-gray-700/50">
+                <div className="p-4 text-gray-400 font-medium">Possessive</div>
+                <div className="p-4 text-gray-400 font-medium">Masculine</div>
+                <div className="p-4 text-gray-400 font-medium">Neuter</div>
+                <div className="p-4 text-gray-400 font-medium">Feminine</div>
+                <div className="p-4 text-gray-400 font-medium">Plural</div>
             </div>
+
+            {Object.entries(possessiveArticles).map(([key, article]) => {
+                if (!article?.cases?.[selectedCase]) return null;
+
+                return (
+                    <div
+                        key={key}
+                        className="grid grid-cols-5 border-b border-gray-700/50 last:border-0 hover:bg-gray-800/50 transition-colors group"
+                    >
+                        <div className="p-4">
+                            <span className="text-fuchsia-400 font-medium">{key}</span>
+                            <span className="text-gray-500 text-sm ml-2">({article.meaning})</span>
+                        </div>
+                        <div className="p-4">
+                            <span className="text-gray-300 group-hover:text-white transition-colors">
+                                {article.cases[selectedCase].masculine}
+                            </span>
+                        </div>
+                        <div className="p-4">
+                            <span className="text-gray-300 group-hover:text-white transition-colors">
+                                {article.cases[selectedCase].neuter}
+                            </span>
+                        </div>
+                        <div className="p-4">
+                            <span className="text-gray-300 group-hover:text-white transition-colors">
+                                {article.cases[selectedCase].feminine}
+                            </span>
+                        </div>
+                        <div className="p-4">
+                            <span className="text-gray-300 group-hover:text-white transition-colors">
+                                {article.cases[selectedCase].plural}
+                            </span>
+                        </div>
+                    </div>
+                );
+            })}
         </div>
     );
 };
