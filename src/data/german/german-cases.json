@@ -1,0 +1,428 @@
+{
+  "articles_and_pronouns": {
+    "definite_article": {
+      "type": "bestimmt",
+      "cases": {
+        "nominativ": {
+          "masculine": "der",
+          "neuter": "das",
+          "feminine": "die",
+          "plural": "die"
+        },
+        "akkusativ": {
+          "masculine": "den",
+          "neuter": "das",
+          "feminine": "die",
+          "plural": "die"
+        },
+        "dativ": {
+          "masculine": "dem",
+          "neuter": "dem",
+          "feminine": "der",
+          "plural": "den"
+        }
+      }
+    },
+    "indefinite_article": {
+      "type": "unbestimmt",
+      "cases": {
+        "nominativ": {
+          "masculine": "ein",
+          "neuter": "ein",
+          "feminine": "eine",
+          "plural": "-"
+        },
+        "akkusativ": {
+          "masculine": "einen",
+          "neuter": "ein",
+          "feminine": "eine",
+          "plural": "-"
+        },
+        "dativ": {
+          "masculine": "einem",
+          "neuter": "einem",
+          "feminine": "einer",
+          "plural": "-"
+        }
+      }
+    },
+    "negative_article": {
+      "type": "Negation",
+      "cases": {
+        "nominativ": {
+          "masculine": "kein",
+          "neuter": "kein",
+          "feminine": "keine",
+          "plural": "keine"
+        },
+        "akkusativ": {
+          "masculine": "keinen",
+          "neuter": "kein",
+          "feminine": "keine",
+          "plural": "keine"
+        },
+        "dativ": {
+          "masculine": "keinem",
+          "neuter": "keinem",
+          "feminine": "keiner",
+          "plural": "keinen"
+        }
+      }
+    },
+    "personal_pronouns": {
+      "cases": {
+        "nominativ": {
+          "masculine": "er",
+          "neuter": "es",
+          "feminine": "sie",
+          "plural": "sie"
+        },
+        "akkusativ": {
+          "masculine": "ihn",
+          "neuter": "es",
+          "feminine": "sie",
+          "plural": "sie"
+        },
+        "dativ": {
+          "masculine": "ihm",
+          "neuter": "ihm",
+          "feminine": "ihr",
+          "plural": "ihnen"
+        }
+      }
+    },
+    "possessive_articles": {
+      "mein": {
+        "meaning": "my",
+        "cases": {
+          "nominativ": {
+            "masculine": "mein",
+            "neuter": "mein",
+            "feminine": "meine",
+            "plural": "meine"
+          },
+          "akkusativ": {
+            "masculine": "meinen",
+            "neuter": "mein",
+            "feminine": "meine",
+            "plural": "meine"
+          },
+          "dativ": {
+            "masculine": "meinem",
+            "neuter": "meinem",
+            "feminine": "meiner",
+            "plural": "meinen"
+          }
+        }
+      },
+      "dein": {
+        "meaning": "your (informal)",
+        "cases": {
+          "nominativ": {
+            "masculine": "dein",
+            "neuter": "dein",
+            "feminine": "deine",
+            "plural": "deine"
+          },
+          "akkusativ": {
+            "masculine": "deinen",
+            "neuter": "dein",
+            "feminine": "deine",
+            "plural": "deine"
+          },
+          "dativ": {
+            "masculine": "deinem",
+            "neuter": "deinem",
+            "feminine": "deiner",
+            "plural": "deinen"
+          }
+        }
+      },
+      "sein": {
+        "meaning": "his/its",
+        "cases": {
+          "nominativ": {
+            "masculine": "sein",
+            "neuter": "sein",
+            "feminine": "seine",
+            "plural": "seine"
+          },
+          "akkusativ": {
+            "masculine": "seinen",
+            "neuter": "sein",
+            "feminine": "seine",
+            "plural": "seine"
+          },
+          "dativ": {
+            "masculine": "seinem",
+            "neuter": "seinem",
+            "feminine": "seiner",
+            "plural": "seinen"
+          }
+        }
+      },
+      "ihr_her": {
+        "meaning": "her",
+        "cases": {
+          "nominativ": {
+            "masculine": "ihr",
+            "neuter": "ihr",
+            "feminine": "ihre",
+            "plural": "ihre"
+          },
+          "akkusativ": {
+            "masculine": "ihren",
+            "neuter": "ihr",
+            "feminine": "ihre",
+            "plural": "ihre"
+          },
+          "dativ": {
+            "masculine": "ihrem",
+            "neuter": "ihrem",
+            "feminine": "ihrer",
+            "plural": "ihren"
+          }
+        }
+      },
+      "unser": {
+        "meaning": "our",
+        "cases": {
+          "nominativ": {
+            "masculine": "unser",
+            "neuter": "unser",
+            "feminine": "unsere",
+            "plural": "unsere"
+          },
+          "akkusativ": {
+            "masculine": "unseren",
+            "neuter": "unser",
+            "feminine": "unsere",
+            "plural": "unsere"
+          },
+          "dativ": {
+            "masculine": "unserem",
+            "neuter": "unserem",
+            "feminine": "unserer",
+            "plural": "unseren"
+          }
+        }
+      },
+      "euer": {
+        "meaning": "your (plural)",
+        "cases": {
+          "nominativ": {
+            "masculine": "euer",
+            "neuter": "euer",
+            "feminine": "eure",
+            "plural": "eure"
+          },
+          "akkusativ": {
+            "masculine": "euren",
+            "neuter": "euer",
+            "feminine": "eure",
+            "plural": "eure"
+          },
+          "dativ": {
+            "masculine": "eurem",
+            "neuter": "eurem",
+            "feminine": "eurer",
+            "plural": "euren"
+          }
+        }
+      },
+      "ihr_their": {
+        "meaning": "their",
+        "cases": {
+          "nominativ": {
+            "masculine": "ihr",
+            "neuter": "ihr",
+            "feminine": "ihre",
+            "plural": "ihre"
+          },
+          "akkusativ": {
+            "masculine": "ihren",
+            "neuter": "ihr",
+            "feminine": "ihre",
+            "plural": "ihre"
+          },
+          "dativ": {
+            "masculine": "ihrem",
+            "neuter": "ihrem",
+            "feminine": "ihrer",
+            "plural": "ihren"
+          }
+        }
+      },
+      "Ihr": {
+        "meaning": "your (formal)",
+        "cases": {
+          "nominativ": {
+            "masculine": "Ihr",
+            "neuter": "Ihr",
+            "feminine": "Ihre",
+            "plural": "Ihre"
+          },
+          "akkusativ": {
+            "masculine": "Ihren",
+            "neuter": "Ihr",
+            "feminine": "Ihre",
+            "plural": "Ihre"
+          },
+          "dativ": {
+            "masculine": "Ihrem",
+            "neuter": "Ihrem",
+            "feminine": "Ihrer",
+            "plural": "Ihren"
+          }
+        }
+      }
+    }
+  },
+  "adjective_endings": {
+    "after_definite_article": {
+      "description": "After der, die, das, die",
+      "cases": {
+        "nominativ": {
+          "masculine": "-e",
+          "neuter": "-e",
+          "feminine": "-e",
+          "plural": "-en"
+        },
+        "akkusativ": {
+          "masculine": "-en",
+          "neuter": "-e",
+          "feminine": "-e",
+          "plural": "-en"
+        },
+        "dativ": {
+          "masculine": "-en",
+          "neuter": "-en",
+          "feminine": "-en",
+          "plural": "-en"
+        }
+      }
+    },
+    "after_indefinite_article": {
+      "description": "After ein-, kein-, mein- or possessive",
+      "cases": {
+        "nominativ": {
+          "masculine": "-er",
+          "neuter": "-es",
+          "feminine": "-e",
+          "plural": "-en"
+        },
+        "akkusativ": {
+          "masculine": "-en",
+          "neuter": "-es",
+          "feminine": "-e",
+          "plural": "-en"
+        },
+        "dativ": {
+          "masculine": "-en",
+          "neuter": "-en",
+          "feminine": "-en",
+          "plural": "-en"
+        }
+      }
+    },
+    "without_article": {
+      "description": "Null Article",
+      "cases": {
+        "nominativ": {
+          "masculine": "-er",
+          "neuter": "-es",
+          "feminine": "-e",
+          "plural": "-e"
+        },
+        "akkusativ": {
+          "masculine": "-en",
+          "neuter": "-es",
+          "feminine": "-e",
+          "plural": "-e"
+        },
+        "dativ": {
+          "masculine": "-em",
+          "neuter": "-em",
+          "feminine": "-er",
+          "plural": "-en"
+        }
+      }
+    }
+  },
+  "examples": {
+    "with_definite_articles": {
+      "nominativ": [
+        "der große Mann",
+        "die neue Frau",
+        "das kleine Kind",
+        "die alten Leute"
+      ],
+      "akkusativ": [
+        "den großen Mann",
+        "die neue Frau",
+        "das kleine Kind",
+        "die alten Leute"
+      ],
+      "dativ": [
+        "dem großen Mann",
+        "der neuen Frau",
+        "dem kleinen Kind",
+        "den alten Leuten"
+      ]
+    },
+    "with_indefinite_articles": {
+      "nominativ": [
+        "ein großer Mann",
+        "eine neue Frau",
+        "ein kleines Kind"
+      ],
+      "akkusativ": [
+        "einen großen Mann",
+        "eine neue Frau",
+        "ein kleines Kind"
+      ],
+      "dativ": [
+        "einem großen Mann",
+        "einer neuen Frau",
+        "einem kleinen Kind"
+      ]
+    },
+    "without_articles": {
+      "nominativ": [
+        "kalter Kaffee",
+        "frische Milch",
+        "warmes Wasser",
+        "alte Bücher"
+      ],
+      "akkusativ": [
+        "kalten Kaffee",
+        "frische Milch",
+        "warmes Wasser",
+        "alte Bücher"
+      ],
+      "dativ": [
+        "kaltem Kaffee",
+        "frischer Milch",
+        "warmem Wasser",
+        "alten Büchern"
+      ]
+    },
+    "with_possessive_articles": {
+      "nominativ": [
+        "mein alter Computer",
+        "meine neue Software",
+        "mein neues Programm"
+      ],
+      "akkusativ": [
+        "meinen alten Computer",
+        "meine neue Software",
+        "mein neues Programm"
+      ],
+      "dativ": [
+        "meinem alten Computer",
+        "meiner neuen Software",
+        "meinem neuen Programm"
+      ]
+    }
+  }
+}
