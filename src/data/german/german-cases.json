@@ -69,28 +69,56 @@
         }
       }
     },
-    "personal_pronouns": {
-      "cases": {
-        "nominativ": {
-          "masculine": "er",
-          "neuter": "es",
-          "feminine": "sie",
-          "plural": "sie"
-        },
-        "akkusativ": {
-          "masculine": "ihn",
-          "neuter": "es",
-          "feminine": "sie",
-          "plural": "sie"
-        },
-        "dativ": {
-          "masculine": "ihm",
-          "neuter": "ihm",
-          "feminine": "ihr",
-          "plural": "ihnen"
-        }
+
+  "personal_pronouns": {
+    "cases": {
+      "nominativ": {
+        "1st_singular": "ich",
+        "2nd_singular": "du",
+        "3rd_masculine": "er",
+        "3rd_neuter": "es",
+        "3rd_feminine": "sie",
+        "1st_plural": "wir",
+        "2nd_plural": "ihr",
+        "3rd_plural": "sie",
+        "2nd_formal": "Sie"
+      },
+      "akkusativ": {
+        "1st_singular": "mich",
+        "2nd_singular": "dich",
+        "3rd_masculine": "ihn",
+        "3rd_neuter": "es",
+        "3rd_feminine": "sie",
+        "1st_plural": "uns",
+        "2nd_plural": "euch",
+        "3rd_plural": "sie",
+        "2nd_formal": "Sie"
+      },
+      "dativ": {
+        "1st_singular": "mir",
+        "2nd_singular": "dir",
+        "3rd_masculine": "ihm",
+        "3rd_neuter": "ihm",
+        "3rd_feminine": "ihr",
+        "1st_plural": "uns",
+        "2nd_plural": "euch",
+        "3rd_plural": "ihnen",
+        "2nd_formal": "Ihnen"
       }
     },
+    "descriptions": {
+      "1st_singular": "I/me",
+      "2nd_singular": "you (informal)",
+      "3rd_masculine": "he/him",
+      "3rd_neuter": "it",
+      "3rd_feminine": "she/her",
+      "1st_plural": "we/us",
+      "2nd_plural": "you all (informal)",
+      "3rd_plural": "they/them",
+      "2nd_formal": "you (formal)"
+    }
+  }
+,
     "possessive_articles": {
       "mein": {
         "meaning": "my",
