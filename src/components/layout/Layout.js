@@ -10,12 +10,13 @@ const Layout = ({ children }) => {
     const isVocabulary = location.pathname === '/vocabulary';
     const isKonjugation = location.pathname === '/konjugation';
     const isPortal = location.pathname === '/learn/german';
+    const isGermanCases = location.pathname === '/german-cases';
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-900">
             <Header />
             <main className="flex-grow container mx-auto px-4 py-8">
-                {isHomePage || isVocabulary || isKonjugation || isPortal ? (
+                {isHomePage || isVocabulary || isKonjugation || isPortal || isGermanCases ? (
                     children
                 ) : (
                     <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
