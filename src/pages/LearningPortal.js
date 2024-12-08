@@ -26,16 +26,6 @@ const LearningPortal = () => {
                     </div>
                 </Link>
 
-                <Link to="/learn/german-cases" className="block">
-                    <div className="p-6 bg-gray-800 rounded-lg border border-gray-700 hover:border-purple-500/50 transition-colors">
-                        <div className="flex items-center gap-2 mb-2">
-                            <LucideBook className="w-5 h-5 text-purple-400" />
-                            <h3 className="text-lg font-medium text-white">Case Articles and Adjective Endings</h3>
-                        </div>
-                        <p className="text-sm text-gray-400">Master German grammar cases, articles, and adjective endings with clear examples.</p>
-                    </div>
-                </Link>
-
                 <Link to="/german/articles" className="block">
                     <div className="p-6 bg-gray-800 rounded-lg border border-gray-700 hover:border-purple-500/50 transition-colors">
                         <div className="flex items-center gap-2 mb-2">
