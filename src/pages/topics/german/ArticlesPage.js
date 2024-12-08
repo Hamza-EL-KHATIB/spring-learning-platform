@@ -3,7 +3,6 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import articlesJson from '../../../data/german/articles.json';
 
 const ArticlesPage = () => {
-    const [expandedSection, setExpandedSection] = useState('definite_article');
     const [expandedPossessive, setExpandedPossessive] = useState(null);
     const [activeTab, setActiveTab] = useState('definite_article');
 
@@ -14,11 +13,6 @@ const ArticlesPage = () => {
         { id: 'personal_pronouns', title: 'Personal Pronouns' },
         { id: 'possessive_articles', title: 'Possessive Articles' },
     ];
-
-    const toggleSection = (section) => {
-        setExpandedSection(expandedSection === section ? null : section);
-        setActiveTab(section);
-    };
 
     const togglePossessive = (type) => {
         setExpandedPossessive(expandedPossessive === type ? null : type);
