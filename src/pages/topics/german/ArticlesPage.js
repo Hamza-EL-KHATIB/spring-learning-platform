@@ -216,57 +216,47 @@ const ArticlesPage = () => {
     const renderPossessives = (data) => {
         return (
             <div className="space-y-6">
-                {/* Summary Table */}
-                <div>
-                    <h3 className="text-xl font-semibold text-white mb-4">Overview</h3>
-                    {renderPossessiveSummaryTable(data)}
+                {/* Singular Possessors */}
+                <div className="mb-6">
+                    <h4 className="text-lg font-medium text-gray-300 mb-4">Singular Possessors</h4>
+                    <div className="space-y-4">
+                        {Object.entries(data.singular_possessors).map(([person, possessives]) => (
+                            <div key={person} className="space-y-2">
+                                <h5 className="text-md font-medium text-gray-400 capitalize mb-2">
+                                    {person.replace(/_/g, ' ')}
+                                </h5>
+                                {Object.entries(possessives).map(([type, data]) =>
+                                    renderPossessiveArticle(type, data)
+                                )}
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
-                <div className="border-t border-gray-700 pt-6">
-                    <h3 className="text-xl font-semibold text-white mb-4">Detailed Examples</h3>
-
-                    {/* Singular Possessors */}
-                    <div className="mb-6">
-                        <h4 className="text-lg font-medium text-gray-300 mb-4">Singular Possessors</h4>
-                        <div className="space-y-4">
-                            {Object.entries(data.singular_possessors).map(([person, possessives]) => (
-                                <div key={person} className="space-y-2">
-                                    <h5 className="text-md font-medium text-gray-400 capitalize mb-2">
-                                        {person.replace(/_/g, ' ')}
-                                    </h5>
-                                    {Object.entries(possessives).map(([type, data]) =>
-                                        renderPossessiveArticle(type, data)
-                                    )}
-                                </div>
-                            ))}
-                        </div>
+                {/* Plural Possessors */}
+                <div className="mb-6">
+                    <h4 className="text-lg font-medium text-gray-300 mb-4">Plural Possessors</h4>
+                    <div className="space-y-4">
+                        {Object.entries(data.plural_possessors).map(([person, possessives]) => (
+                            <div key={person} className="space-y-2">
+                                <h5 className="text-md font-medium text-gray-400 capitalize mb-2">
+                                    {person.replace(/_/g, ' ')}
+                                </h5>
+                                {Object.entries(possessives).map(([type, data]) =>
+                                    renderPossessiveArticle(type, data)
+                                )}
+                            </div>
+                        ))}
                     </div>
+                </div>
 
-                    {/* Plural Possessors */}
-                    <div className="mb-6">
-                        <h4 className="text-lg font-medium text-gray-300 mb-4">Plural Possessors</h4>
-                        <div className="space-y-4">
-                            {Object.entries(data.plural_possessors).map(([person, possessives]) => (
-                                <div key={person} className="space-y-2">
-                                    <h5 className="text-md font-medium text-gray-400 capitalize mb-2">
-                                        {person.replace(/_/g, ' ')}
-                                    </h5>
-                                    {Object.entries(possessives).map(([type, data]) =>
-                                        renderPossessiveArticle(type, data)
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Formal */}
-                    <div>
-                        <h4 className="text-lg font-medium text-gray-300 mb-4">Formal</h4>
-                        <div className="space-y-4">
-                            {Object.entries(data.formal).map(([type, data]) =>
-                                renderPossessiveArticle(type, data)
-                            )}
-                        </div>
+                {/* Formal */}
+                <div>
+                    <h4 className="text-lg font-medium text-gray-300 mb-4">Formal</h4>
+                    <div className="space-y-4">
+                        {Object.entries(data.formal).map(([type, data]) =>
+                            renderPossessiveArticle(type, data)
+                        )}
                     </div>
                 </div>
             </div>
