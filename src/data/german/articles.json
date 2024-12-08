@@ -1,12 +1,12 @@
 {
   "definite_article": {
     "type": "bestimmt",
-    "description": "The definite article (der, die, das) is used for specific or known objects/people",
+    "description": "The definite article (der, die, das) is used for specific or known objects/people.",
     "usage_hints": [
-      "Used with specific/known objects",
-      "Used with unique items",
-      "Used when the noun has been previously mentioned",
-      "Used with general statements or abstractions"
+      "used with specific/known objects",
+      "used with unique items",
+      "used when the noun has been previously mentioned",
+      "used with general statements or abstractions"
     ],
     "examples": {
       "nominativ": {
@@ -45,12 +45,12 @@
   },
   "indefinite_article": {
     "type": "unbestimmt",
-    "description": "The indefinite article (ein, eine) is used for non-specific or new objects/people",
+    "description": "The indefinite article (ein, eine) is used for non-specific or new objects/people.",
     "usage_hints": [
-      "Used when introducing something new",
-      "Used for non-specific items",
-      "Not used in plural form",
-      "Used in professions and descriptions"
+      "used when introducing something new",
+      "used for non-specific items",
+      "not used in plural form",
+      "used in professions and descriptions"
     ],
     "examples": {
       "nominativ": {
@@ -88,13 +88,13 @@
     }
   },
   "negative_article": {
-    "type": "Negation",
-    "description": "The negative article (kein, keine) is used to negate nouns or express 'not any'",
+    "type": "negation",
+    "description": "The negative article (kein, keine) is used to negate nouns or express 'not any'.",
     "usage_hints": [
-      "Used to negate nouns (not a/not any)",
-      "Used with countable and uncountable nouns",
-      "Functions like the indefinite article but negative",
-      "Used when negating existence or possession"
+      "used to negate nouns (not a/not any)",
+      "used with countable and uncountable nouns",
+      "functions like the indefinite article but negative",
+      "used when negating existence or possession"
     ],
     "examples": {
       "nominativ": {
@@ -132,124 +132,124 @@
     }
   },
   "personal_pronouns": {
-    "description": "Personal pronouns replace nouns and change form based on their role in the sentence",
+    "description": "Personal pronouns replace nouns and change form based on their role in the sentence.",
     "usage_hints": [
-      "Used to replace previously mentioned nouns",
-      "Changes form based on case",
-      "Formal 'Sie' is always capitalized",
-      "Third person varies by gender"
+      "used to replace previously mentioned nouns",
+      "changes form based on case",
+      "formal 'Sie' is always capitalized",
+      "third person varies by gender"
     ],
     "cases": {
       "nominativ": {
-        "1st_singular": {
+        "first_singular": {
           "pronoun": "ich",
           "meaning": "I"
         },
-        "2nd_singular": {
+        "second_singular": {
           "pronoun": "du",
           "meaning": "you (informal)"
         },
-        "3rd_masculine": {
+        "third_masculine": {
           "pronoun": "er",
           "meaning": "he"
         },
-        "3rd_neuter": {
+        "third_neuter": {
           "pronoun": "es",
           "meaning": "it"
         },
-        "3rd_feminine": {
+        "third_feminine": {
           "pronoun": "sie",
           "meaning": "she"
         },
-        "1st_plural": {
+        "first_plural": {
           "pronoun": "wir",
           "meaning": "we"
         },
-        "2nd_plural": {
+        "second_plural": {
           "pronoun": "ihr",
           "meaning": "you all (informal)"
         },
-        "3rd_plural": {
+        "third_plural": {
           "pronoun": "sie",
           "meaning": "they"
         },
-        "2nd_formal": {
+        "second_formal": {
           "pronoun": "Sie",
           "meaning": "you (formal)"
         }
       },
       "akkusativ": {
-        "1st_singular": {
+        "first_singular": {
           "pronoun": "mich",
           "meaning": "me"
         },
-        "2nd_singular": {
+        "second_singular": {
           "pronoun": "dich",
           "meaning": "you (informal)"
         },
-        "3rd_masculine": {
+        "third_masculine": {
           "pronoun": "ihn",
           "meaning": "him"
         },
-        "3rd_neuter": {
+        "third_neuter": {
           "pronoun": "es",
           "meaning": "it"
         },
-        "3rd_feminine": {
+        "third_feminine": {
           "pronoun": "sie",
           "meaning": "her"
         },
-        "1st_plural": {
+        "first_plural": {
           "pronoun": "uns",
           "meaning": "us"
         },
-        "2nd_plural": {
+        "second_plural": {
           "pronoun": "euch",
           "meaning": "you all (informal)"
         },
-        "3rd_plural": {
+        "third_plural": {
           "pronoun": "sie",
           "meaning": "them"
         },
-        "2nd_formal": {
+        "second_formal": {
           "pronoun": "Sie",
           "meaning": "you (formal)"
         }
       },
       "dativ": {
-        "1st_singular": {
+        "first_singular": {
           "pronoun": "mir",
           "meaning": "to/for me"
         },
-        "2nd_singular": {
+        "second_singular": {
           "pronoun": "dir",
           "meaning": "to/for you (informal)"
         },
-        "3rd_masculine": {
+        "third_masculine": {
           "pronoun": "ihm",
           "meaning": "to/for him"
         },
-        "3rd_neuter": {
+        "third_neuter": {
           "pronoun": "ihm",
           "meaning": "to/for it"
         },
-        "3rd_feminine": {
+        "third_feminine": {
           "pronoun": "ihr",
           "meaning": "to/for her"
         },
-        "1st_plural": {
+        "first_plural": {
           "pronoun": "uns",
           "meaning": "to/for us"
         },
-        "2nd_plural": {
+        "second_plural": {
           "pronoun": "euch",
           "meaning": "to/for you all (informal)"
         },
-        "3rd_plural": {
+        "third_plural": {
           "pronoun": "ihnen",
           "meaning": "to/for them"
         },
-        "2nd_formal": {
+        "second_formal": {
           "pronoun": "Ihnen",
           "meaning": "to/for you (formal)"
         }
@@ -271,15 +271,15 @@
     }
   },
   "possessive_articles": {
-    "description": "Possessive articles show ownership and change form based on case and gender",
+    "description": "Possessive articles show ownership and change form based on case and gender.",
     "singular_possessors": {
       "first_person": {
         "ich": {
           "meaning": "my",
           "usage_hints": [
-            "Used for things belonging to 'ich' (I)",
-            "Changes form based on case and gender of the owned thing",
-            "Not the owner's gender"
+            "used for things belonging to 'ich' (I)",
+            "changes form based on case and gender of the owned thing",
+            "not the owner's gender"
           ],
           "examples": {
             "nominativ": {
@@ -321,8 +321,8 @@
         "du": {
           "meaning": "your (informal)",
           "usage_hints": [
-            "Used for things belonging to 'du' (informal you)",
-            "Only used with people you address informally"
+            "used for things belonging to 'du' (you informal)",
+            "only used with people you address informally"
           ],
           "cases": {
             "nominativ": {
@@ -347,11 +347,11 @@
         }
       },
       "third_person": {
-        "er/es": {
+        "er_es": {
           "meaning": "his/its",
           "usage_hints": [
-            "Used for things belonging to 'er' (he) or 'es' (it)",
-            "Same form for masculine and neuter owners"
+            "used for things belonging to 'er' (he) or 'es' (it)",
+            "same form for masculine and neuter owners"
           ],
           "cases": {
             "nominativ": {
@@ -377,8 +377,8 @@
         "sie": {
           "meaning": "her",
           "usage_hints": [
-            "Used for things belonging to 'sie' (she)",
-            "Not to be confused with plural 'ihr'"
+            "used for things belonging to 'sie' (she)",
+            "not to be confused with plural 'ihr'"
           ],
           "cases": {
             "nominativ": {
@@ -408,8 +408,8 @@
         "wir": {
           "meaning": "our",
           "usage_hints": [
-            "Used for things belonging to 'wir' (we)",
-            "Represents group ownership"
+            "used for things belonging to 'wir' (we)",
+            "represents group ownership"
           ],
           "cases": {
             "nominativ": {
@@ -437,8 +437,8 @@
         "ihr": {
           "meaning": "your (plural)",
           "usage_hints": [
-            "Used for things belonging to 'ihr' (you all)",
-            "Informal plural ownership"
+            "used for things belonging to 'ihr' (you all)",
+            "informal plural ownership"
           ],
           "cases": {
             "nominativ": {
@@ -466,8 +466,8 @@
         "sie": {
           "meaning": "their",
           "usage_hints": [
-            "Used for things belonging to 'sie' (they)",
-            "Used for group ownership"
+            "used for things belonging to 'sie' (they)",
+            "used for group ownership"
           ],
           "cases": {
             "nominativ": {
@@ -496,9 +496,9 @@
       "Sie": {
         "meaning": "your (formal)",
         "usage_hints": [
-          "Used for formal address",
-          "Always capitalized",
-          "Used with 'Sie' form"
+          "used for formal address",
+          "always capitalized",
+          "used with 'Sie' form"
         ],
         "cases": {
           "nominativ": {
