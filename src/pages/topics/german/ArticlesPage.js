@@ -166,17 +166,19 @@ const ArticlesPage = () => {
 
         const getPossessiveForm = (pronoun, caseType, gender) => {
             const forms = {
-                'ich': articlesJson.possessive_articles.singular_possessors.first_person.ich?.cases,
-                'du': articlesJson.possessive_articles.singular_possessors.second_person.du?.cases,
-                'er/es': articlesJson.possessive_articles.singular_possessors.third_person.er_es?.cases,
-                'sie': articlesJson.possessive_articles.singular_possessors.third_person.sie?.cases,
-                'wir': articlesJson.possessive_articles.plural_possessors.first_person.wir?.cases,
-                'ihr': articlesJson.possessive_articles.plural_possessors.second_person.ihr?.cases,
-                'sie/Sie': articlesJson.possessive_articles.formal.Sie?.cases
+                'ich': data.singular_possessors.first_person.ich?.cases,
+                'du': data.singular_possessors.second_person.du?.cases,
+                'er/es': data.singular_possessors.third_person.er_es?.cases,
+                'sie': data.singular_possessors.third_person.sie?.cases,
+                'wir': data.plural_possessors.first_person.wir?.cases,
+                'ihr': data.plural_possessors.second_person.ihr?.cases,
+                'sie/Sie': data.formal.Sie?.cases
             };
 
             return forms[pronoun]?.[caseType]?.[gender] || '-';
         };
+
+        const cases = ['nominativ', 'akkusativ', 'dativ'];
 
         return (
             <div className="overflow-x-auto mb-8">
@@ -193,20 +195,19 @@ const ArticlesPage = () => {
                     </thead>
                     <tbody>
                     {pronouns.map((p, pIndex) => (
-                        ['nominativ', 'akkusativ', 'dativ'].map((caseType, caseIdx) => {
-                            const isFirstRowOfBlock = caseIdx === 0;
-                            const blockBg = pIndex % 2 === 0 ? 'bg-gray-800/30' : 'bg-gray-800/20';
-                            const cellBg = pIndex % 2 === 0 ? 'bg-gray-800/30' : 'bg-gray-800/20';
-                            return (
+                        <React.Fragment key={p.pronoun}>
+                            {/* Header row for each pronoun block */}
+                            <tr className="bg-gray-800">
+                                <td colSpan={6} className="p-2 text-white font-semibold">
+                                    {p.pronoun}
+                                </td>
+                            </tr>
+                            {cases.map((caseType) => (
                                 <tr key={`${p.pronoun}-${caseType}`} className="border-t border-gray-800">
-                                    {isFirstRowOfBlock && (
-                                        <td rowSpan="3" className={`text-gray-300 p-2 ${blockBg} font-medium align-middle`} style={{minWidth: '80px'}}>
-                                            {p.pronoun}
-                                        </td>
-                                    )}
-                                    <td className={`text-gray-300 p-2 ${cellBg} capitalize`}>
-                                        {caseType}
+                                    <td className="text-gray-300 p-2 capitalize bg-gray-800/30">
+                                        {/* We leave this cell blank since we already have a header for the pronoun */}
                                     </td>
+                                    <td className="text-gray-300 p-2 capitalize">{caseType}</td>
                                     <td className="text-blue-300 p-2 text-center">
                                         {getPossessiveForm(p.pronoun, caseType, 'masculine')}
                                     </td>
@@ -220,8 +221,8 @@ const ArticlesPage = () => {
                                         {getPossessiveForm(p.pronoun, caseType, 'plural')}
                                     </td>
                                 </tr>
-                            );
-                        })
+                            ))}
+                        </React.Fragment>
                     ))}
                     </tbody>
                 </table>
