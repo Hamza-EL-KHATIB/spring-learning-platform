@@ -190,15 +190,22 @@ const ArticlesPage = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {pronouns.map((p) => (
+                    {pronouns.map((p, pIdx) => (
                         ['nominativ', 'akkusativ', 'dativ'].map((caseType, caseIdx) => (
-                            <tr key={`${p.pronoun}-${caseType}`} className="border-t border-gray-800">
+                            <tr
+                                key={`${p.pronoun}-${caseType}`}
+                                className={`
+                                ${caseIdx === 2 && pIdx !== pronouns.length - 1 ? 'border-b-2 border-b-gray-600 border-dashed' : ''}
+                                ${caseIdx === 0 ? 'border-t border-gray-800' : ''}
+                                ${pIdx % 2 === 0 ? 'bg-gray-800/20' : 'bg-gray-800/10'}
+                            `}
+                            >
                                 {caseIdx === 0 && (
-                                    <td rowSpan="3" className="text-gray-300 p-2 bg-gray-800/30">
+                                    <td rowSpan="3" className="text-gray-300 p-2 font-medium">
                                         {p.pronoun}
                                     </td>
                                 )}
-                                <td className="text-gray-300 p-2 bg-gray-800/30 capitalize">{caseType}</td>
+                                <td className="text-gray-300 p-2 capitalize font-medium">{caseType}</td>
                                 <td className="text-blue-300 p-2 text-center">{getPossessiveForm(p.pronoun, caseType, 'masculine')}</td>
                                 <td className="text-green-300 p-2 text-center">{getPossessiveForm(p.pronoun, caseType, 'neuter')}</td>
                                 <td className="text-pink-300 p-2 text-center">{getPossessiveForm(p.pronoun, caseType, 'feminine')}</td>
