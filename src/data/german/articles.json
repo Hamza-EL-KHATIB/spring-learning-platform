@@ -524,21 +524,74 @@
     }
   },
   "endings_pattern": {
-    "description": "A quick reference to the typical article endings by case and gender/number.",
-    "definite_articles": {
-      "nominativ": { "masculine": "der", "neuter": "das", "feminine": "die", "plural": "die" },
-      "akkusativ": { "masculine": "den", "neuter": "das", "feminine": "die", "plural": "die" },
-      "dativ": { "masculine": "dem", "neuter": "dem", "feminine": "der", "plural": "den" }
+    "description": "A reference showing how endings are added to base forms for different cases, genders, and numbers. This focuses on the patterns of endings rather than just the final forms.",
+    "explanation": {
+      "note": "We start from a 'base form' and then show how each case/gender changes the ending. For 'ein-words' (ein, mein, dein, sein, ihr, unser, euer, kein, Ihr), the masculine nominative and neuter nominative/akkusativ often have no extra ending, while feminine and plural typically add '-e'. Cases like akkusativ masculine often add '-en', dative masculine/neuter often add '-em', dative feminine adds '-er', and plural dative adds '-en'."
     },
-    "indefinite_articles": {
-      "nominativ": { "masculine": "ein", "neuter": "ein", "feminine": "eine", "plural": "-" },
-      "akkusativ": { "masculine": "einen", "neuter": "ein", "feminine": "eine", "plural": "-" },
-      "dativ": { "masculine": "einem", "neuter": "einem", "feminine": "einer", "plural": "-" }
+
+    "definite_articles_pattern": {
+      "description": "Definite articles (der, die, das) carry distinct forms, but the endings can be observed as patterns.",
+      "patterns": {
+        "masculine": {
+          "nominativ": "der (no extra ending, base: -r)",
+          "akkusativ": "den (-en)",
+          "dativ": "dem (-em)"
+        },
+        "feminine": {
+          "nominativ": "die (-e)",
+          "akkusativ": "die (-e)",
+          "dativ": "der (-er)"
+        },
+        "neuter": {
+          "nominativ": "das (no extra ending, base: -s)",
+          "akkusativ": "das (no extra ending, base: -s)",
+          "dativ": "dem (-em)"
+        },
+        "plural": {
+          "nominativ": "die (-e)",
+          "akkusativ": "die (-e)",
+          "dativ": "den (-en)"
+        }
+      }
     },
-    "negative_articles": {
-      "nominativ": { "masculine": "kein", "neuter": "kein", "feminine": "keine", "plural": "keine" },
-      "akkusativ": { "masculine": "keinen", "neuter": "kein", "feminine": "keine", "plural": "keine" },
-      "dativ": { "masculine": "keinem", "neuter": "keinem", "feminine": "keiner", "plural": "keinen" }
+
+    "ein_word_pattern": {
+      "description": "Ein-words (ein, mein, dein, sein, ihr, unser, euer, kein, Ihr) follow the same pattern. The base form is like 'ein', which has no ending in masculine nominativ and neuter nominativ/akkusativ. Other genders and cases add predictable endings.",
+      "patterns": {
+        "masculine": {
+          "nominativ": "ein (no ending)",
+          "akkusativ": "einen (-en)",
+          "dativ": "einem (-em)"
+        },
+        "feminine": {
+          "nominativ": "eine (-e)",
+          "akkusativ": "eine (-e)",
+          "dativ": "einer (-er)"
+        },
+        "neuter": {
+          "nominativ": "ein (no ending)",
+          "akkusativ": "ein (no ending)",
+          "dativ": "einem (-em)"
+        },
+        "plural": {
+          "note": "For indefinite/possessive/negative articles, plural forms usually mirror the feminine pattern but add different endings in dative.",
+          "nominativ": "meine/keine ( -e )",
+          "akkusativ": "meine/keine ( -e )",
+          "dativ": "meinen/keinen ( -en )"
+        }
+      }
+    },
+
+    "summarized_endings_reference": {
+      "description": "Summary of common endings:",
+      "common_endings": [
+        { "ending": "-e", "usage": "Often marks feminine nominative/akkusativ and plural nominative/akkusativ." },
+        { "ending": "-en", "usage": "Used for masculine akkusativ in ein-words, plural dativ, and often in definite articles masculine akkusativ (den) and plural dativ (den)." },
+        { "ending": "-em", "usage": "Marks dative masculine/neuter in ein-words and definite articles (einem, dem)." },
+        { "ending": "-er", "usage": "Marks dative feminine (einer, der)." },
+        { "ending": "no ending", "usage": "Masculine nominativ in ein-words (ein, mein), neuter nominativ/akkusativ in ein-words (ein, mein), and sometimes masculine/neuter nominativ/akkusativ in definite articles (der/das already contain their markers but think of them as no additional ending beyond the article’s root)."}
+      ]
     }
   }
+
 }

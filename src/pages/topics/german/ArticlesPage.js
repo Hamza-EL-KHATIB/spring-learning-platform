@@ -5,6 +5,7 @@ import articlesJson from '../../../data/german/articles.json';
 const ArticlesPage = () => {
     const [expandedPossessive, setExpandedPossessive] = useState(null);
     const [activeTab, setActiveTab] = useState('definite_article');
+    const [possessiveView, setPossessiveView] = useState('overview');
 
     const articleTypes = [
         { id: 'definite_article', title: 'Definite Articles' },
@@ -190,22 +191,15 @@ const ArticlesPage = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {pronouns.map((p, pIdx) => (
+                    {pronouns.map((p) => (
                         ['nominativ', 'akkusativ', 'dativ'].map((caseType, caseIdx) => (
-                            <tr
-                                key={`${p.pronoun}-${caseType}`}
-                                className={`
-                                ${caseIdx === 2 && pIdx !== pronouns.length - 1 ? 'border-b-2 border-b-gray-600 border-dashed' : ''}
-                                ${caseIdx === 0 ? 'border-t border-gray-800' : ''}
-                                ${pIdx % 2 === 0 ? 'bg-gray-800/20' : 'bg-gray-800/10'}
-                            `}
-                            >
+                            <tr key={`${p.pronoun}-${caseType}`} className="border-t border-gray-800">
                                 {caseIdx === 0 && (
-                                    <td rowSpan="3" className="text-gray-300 p-2 font-medium">
+                                    <td rowSpan="3" className="text-gray-300 p-2 bg-gray-800/30">
                                         {p.pronoun}
                                     </td>
                                 )}
-                                <td className="text-gray-300 p-2 capitalize font-medium">{caseType}</td>
+                                <td className="text-gray-300 p-2 bg-gray-800/30 capitalize">{caseType}</td>
                                 <td className="text-blue-300 p-2 text-center">{getPossessiveForm(p.pronoun, caseType, 'masculine')}</td>
                                 <td className="text-green-300 p-2 text-center">{getPossessiveForm(p.pronoun, caseType, 'neuter')}</td>
                                 <td className="text-pink-300 p-2 text-center">{getPossessiveForm(p.pronoun, caseType, 'feminine')}</td>
@@ -293,7 +287,26 @@ const ArticlesPage = () => {
             )}
 
             {key === 'possessive_articles' ? (
-                renderPossessives(data)
+                <div>
+                    {/* Tabs */}
+                    <div className="mb-6 border-b border-gray-700">
+                        <button
+                            onClick={() => setPossessiveView('overview')}
+                            className={`px-4 py-2 font-medium ${possessiveView === 'overview' ? 'text-purple-400 border-b-2 border-purple-400' : 'text-gray-400'}`}
+                        >
+                            Overview
+                        </button>
+                        <button
+                            onClick={() => setPossessiveView('detailed')}
+                            className={`px-4 py-2 font-medium ${possessiveView === 'detailed' ? 'text-purple-400 border-b-2 border-purple-400' : 'text-gray-400'}`}
+                        >
+                            Detailed Examples
+                        </button>
+                    </div>
+
+                    {/* Content */}
+                    {possessiveView === 'overview' ? renderPossessiveSummaryTable(data) : renderPossessives(data)}
+                </div>
             ) : (
                 <>
                     {data.cases && (
