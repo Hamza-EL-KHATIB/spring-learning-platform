@@ -12,7 +12,10 @@ const Layout = ({ children }) => {
         '/learn/konjugation',
         '/learn/german',
         '/learn/german-cases',
-        '/learn/german-case-rules'
+        '/learn/german-case-rules',
+        '/german/articles',
+        '/german/adjectives',
+        '/german/cases',
     ].includes(pathname);
 
     return (

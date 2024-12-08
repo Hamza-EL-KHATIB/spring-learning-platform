@@ -1,0 +1,2165 @@
+{
+  "grammar_patterns": {
+    "definite_article": {
+      "description": "der/die/das/die (the)",
+      "patterns": {
+        "nominativ": {
+          "masculine": {
+            "pattern": "der + [adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "der große Mann",
+                "breakdown": {
+                  "article": "der",
+                  "adjective": "groß → große",
+                  "noun": "Mann"
+                },
+                "translation": "the tall man"
+              },
+              {
+                "complete": "der alte Tisch",
+                "breakdown": {
+                  "article": "der",
+                  "adjective": "alt → alte",
+                  "noun": "Tisch"
+                },
+                "translation": "the old table"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "das + [adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "das kleine Kind",
+                "breakdown": {
+                  "article": "das",
+                  "adjective": "klein → kleine",
+                  "noun": "Kind"
+                },
+                "translation": "the small child"
+              },
+              {
+                "complete": "das kalte Wasser",
+                "breakdown": {
+                  "article": "das",
+                  "adjective": "kalt → kalte",
+                  "noun": "Wasser"
+                },
+                "translation": "the cold water"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "die + [adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "die neue Tasche",
+                "breakdown": {
+                  "article": "die",
+                  "adjective": "neu → neue",
+                  "noun": "Tasche"
+                },
+                "translation": "the new bag"
+              },
+              {
+                "complete": "die schöne Blume",
+                "breakdown": {
+                  "article": "die",
+                  "adjective": "schön → schöne",
+                  "noun": "Blume"
+                },
+                "translation": "the beautiful flower"
+              }
+            ]
+          },
+          "plural": {
+            "pattern": "die + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "die alten Bücher",
+                "breakdown": {
+                  "article": "die",
+                  "adjective": "alt → alten",
+                  "noun": "Bücher"
+                },
+                "translation": "the old books"
+              },
+              {
+                "complete": "die kleinen Kinder",
+                "breakdown": {
+                  "article": "die",
+                  "adjective": "klein → kleinen",
+                  "noun": "Kinder"
+                },
+                "translation": "the small children"
+              }
+            ]
+          }
+        },
+        "akkusativ": {
+          "masculine": {
+            "pattern": "den + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "den großen Mann",
+                "breakdown": {
+                  "article": "den",
+                  "adjective": "groß → großen",
+                  "noun": "Mann"
+                },
+                "translation": "the tall man"
+              },
+              {
+                "complete": "den roten Apfel",
+                "breakdown": {
+                  "article": "den",
+                  "adjective": "rot → roten",
+                  "noun": "Apfel"
+                },
+                "translation": "the red apple"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "das + [adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "das kleine Haus",
+                "breakdown": {
+                  "article": "das",
+                  "adjective": "klein → kleine",
+                  "noun": "Haus"
+                },
+                "translation": "the small house"
+              },
+              {
+                "complete": "das neue Auto",
+                "breakdown": {
+                  "article": "das",
+                  "adjective": "neu → neue",
+                  "noun": "Auto"
+                },
+                "translation": "the new car"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "die + [adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "die große Tasche",
+                "breakdown": {
+                  "article": "die",
+                  "adjective": "groß → große",
+                  "noun": "Tasche"
+                },
+                "translation": "the big bag"
+              },
+              {
+                "complete": "die rote Jacke",
+                "breakdown": {
+                  "article": "die",
+                  "adjective": "rot → rote",
+                  "noun": "Jacke"
+                },
+                "translation": "the red jacket"
+              }
+            ]
+          },
+          "plural": {
+            "pattern": "die + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "die alten Bücher",
+                "breakdown": {
+                  "article": "die",
+                  "adjective": "alt → alten",
+                  "noun": "Bücher"
+                },
+                "translation": "the old books"
+              },
+              {
+                "complete": "die neuen Autos",
+                "breakdown": {
+                  "article": "die",
+                  "adjective": "neu → neuen",
+                  "noun": "Autos"
+                },
+                "translation": "the new cars"
+              }
+            ]
+          }
+        },
+        "dativ": {
+          "masculine": {
+            "pattern": "dem + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "dem großen Mann",
+                "breakdown": {
+                  "article": "dem",
+                  "adjective": "groß → großen",
+                  "noun": "Mann"
+                },
+                "translation": "to/for the tall man"
+              },
+              {
+                "complete": "dem alten Hund",
+                "breakdown": {
+                  "article": "dem",
+                  "adjective": "alt → alten",
+                  "noun": "Hund"
+                },
+                "translation": "to/for the old dog"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "dem + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "dem kleinen Kind",
+                "breakdown": {
+                  "article": "dem",
+                  "adjective": "klein → kleinen",
+                  "noun": "Kind"
+                },
+                "translation": "to/for the small child"
+              },
+              {
+                "complete": "dem neuen Haus",
+                "breakdown": {
+                  "article": "dem",
+                  "adjective": "neu → neuen",
+                  "noun": "Haus"
+                },
+                "translation": "to/for the new house"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "der + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "der alten Frau",
+                "breakdown": {
+                  "article": "der",
+                  "adjective": "alt → alten",
+                  "noun": "Frau"
+                },
+                "translation": "to/for the old woman"
+              },
+              {
+                "complete": "der roten Tasche",
+                "breakdown": {
+                  "article": "der",
+                  "adjective": "rot → roten",
+                  "noun": "Tasche"
+                },
+                "translation": "to/for the red bag"
+              }
+            ]
+          },
+          "plural": {
+            "pattern": "den + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "den alten Büchern",
+                "breakdown": {
+                  "article": "den",
+                  "adjective": "alt → alten",
+                  "noun": "Büchern"
+                },
+                "translation": "to/for the old books"
+              },
+              {
+                "complete": "den kleinen Kindern",
+                "breakdown": {
+                  "article": "klein → kleinen",
+                  "adjective": "klein → kleinen",
+                  "noun": "Kindern"
+                },
+                "translation": "to/for the small children"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "indefinite_article": {
+      "description": "ein/eine (a/an)",
+      "patterns": {
+        "nominativ": {
+          "masculine": {
+            "pattern": "ein + [adj]-er + [noun]",
+            "examples": [
+              {
+                "complete": "ein großer Mann",
+                "breakdown": {
+                  "article": "ein",
+                  "adjective": "groß → großer",
+                  "noun": "Mann"
+                },
+                "translation": "a tall man"
+              },
+              {
+                "complete": "ein alter Tisch",
+                "breakdown": {
+                  "article": "ein",
+                  "adjective": "alt → alter",
+                  "noun": "Tisch"
+                },
+                "translation": "an old table"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "ein + [adj]-es + [noun]",
+            "examples": [
+              {
+                "complete": "ein kleines Kind",
+                "breakdown": {
+                  "article": "ein",
+                  "adjective": "klein → kleines",
+                  "noun": "Kind"
+                },
+                "translation": "a small child"
+              },
+              {
+                "complete": "ein neues Auto",
+                "breakdown": {
+                  "article": "ein",
+                  "adjective": "neu → neues",
+                  "noun": "Auto"
+                },
+                "translation": "a new car"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "eine + [adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "eine neue Tasche",
+                "breakdown": {
+                  "article": "eine",
+                  "adjective": "neu → neue",
+                  "noun": "Tasche"
+                },
+                "translation": "a new bag"
+              },
+              {
+                "complete": "eine schöne Blume",
+                "breakdown": {
+                  "article": "eine",
+                  "adjective": "schön → schöne",
+                  "noun": "Blume"
+                },
+                "translation": "a beautiful flower"
+              }
+            ]
+          },
+          "plural": {
+            "pattern": "- + [adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "alte Bücher",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "alt → alte",
+                  "noun": "Bücher"
+                },
+                "translation": "old books"
+              }
+            ]
+          }
+        },
+        "akkusativ": {
+          "masculine": {
+            "pattern": "einen + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "einen großen Mann",
+                "breakdown": {
+                  "article": "einen",
+                  "adjective": "groß → großen",
+                  "noun": "Mann"
+                },
+                "translation": "a tall man"
+              },
+              {
+                "complete": "einen roten Apfel",
+                "breakdown": {
+                  "article": "einen",
+                  "adjective": "rot → roten",
+                  "noun": "Apfel"
+                },
+                "translation": "a red apple"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "ein + [adj]-es + [noun]",
+            "examples": [
+              {
+                "complete": "ein kleines Haus",
+                "breakdown": {
+                  "article": "ein",
+                  "adjective": "klein → kleines",
+                  "noun": "Haus"
+                },
+                "translation": "a small house"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "eine + [adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "eine große Tasche",
+                "breakdown": {
+                  "article": "eine",
+                  "adjective": "groß → große",
+                  "noun": "Tasche"
+                },
+                "translation": "a big bag"
+              }
+            ]
+          }
+        },
+        "dativ": {
+          "masculine": {
+            "pattern": "einem + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "einem großen Mann",
+                "breakdown": {
+                  "article": "einem",
+                  "adjective": "groß → großen",
+                  "noun": "Mann"
+                },
+                "translation": "to/for a tall man"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "einem + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "einem kleinen Kind",
+                "breakdown": {
+                  "article": "einem",
+                  "adjective": "klein → kleinen",
+                  "noun": "Kind"
+                },
+                "translation": "to/for a small child"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "einer + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "einer alten Frau",
+                "breakdown": {
+                  "article": "einer",
+                  "adjective": "alt → alten",
+                  "noun": "Frau"
+                },
+                "translation": "to/for an old woman"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "negative_article": {
+      "description": "kein/keine (no/not any)",
+      "patterns": {
+        "nominativ": {
+          "masculine": {
+            "pattern": "kein + [adj]-er + [noun]",
+            "examples": [
+              {
+                "complete": "kein großer Mann",
+                "breakdown": {
+                  "article": "kein",
+                  "adjective": "groß → großer",
+                  "noun": "Mann"
+                },
+                "translation": "no tall man"
+              },
+              {
+                "complete": "kein alter Tisch",
+                "breakdown": {
+                  "article": "kein",
+                  "adjective": "alt → alter",
+                  "noun": "Tisch"
+                },
+                "translation": "no old table"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "kein + [adj]-es + [noun]",
+            "examples": [
+              {
+                "complete": "kein kleines Kind",
+                "breakdown": {
+                  "article": "kein",
+                  "adjective": "klein → kleines",
+                  "noun": "Kind"
+                },
+                "translation": "no small child"
+              },
+              {
+                "complete": "kein neues Auto",
+                "breakdown": {
+                  "article": "kein",
+                  "adjective": "neu → neues",
+                  "noun": "Auto"
+                },
+                "translation": "no new car"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "keine + [adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "keine neue Tasche",
+                "breakdown": {
+                  "article": "keine",
+                  "adjective": "neu → neue",
+                  "noun": "Tasche"
+                },
+                "translation": "no new bag"
+              },
+              {
+                "complete": "keine schöne Blume",
+                "breakdown": {
+                  "article": "keine",
+                  "adjective": "schön → schöne",
+                  "noun": "Blume"
+                },
+                "translation": "no beautiful flower"
+              }
+            ]
+          },
+          "plural": {
+            "pattern": "keine + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "keine alten Bücher",
+                "breakdown": {
+                  "article": "keine",
+                  "adjective": "alt → alten",
+                  "noun": "Bücher"
+                },
+                "translation": "no old books"
+              }
+            ]
+          }
+        },
+        "akkusativ": {
+          "masculine": {
+            "pattern": "keinen + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "keinen großen Mann",
+                "breakdown": {
+                  "article": "keinen",
+                  "adjective": "groß → großen",
+                  "noun": "Mann"
+                },
+                "translation": "no tall man"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "kein + [adj]-es + [noun]",
+            "examples": [
+              {
+                "complete": "kein kleines Haus",
+                "breakdown": {
+                  "article": "kein",
+                  "adjective": "klein → kleines",
+                  "noun": "Haus"
+                },
+                "translation": "no small house"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "keine + [adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "keine große Tasche",
+                "breakdown": {
+                  "article": "keine",
+                  "adjective": "groß → große",
+                  "noun": "Tasche"
+                },
+                "translation": "no big bag"
+              }
+            ]
+          },
+          "plural": {
+            "pattern": "keine + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "keine alten Bücher",
+                "breakdown": {
+                  "article": "keine",
+                  "adjective": "alt → alten",
+                  "noun": "Bücher"
+                },
+                "translation": "no old books"
+              }
+            ]
+          }
+        },
+        "dativ": {
+          "masculine": {
+            "pattern": "keinem + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "keinem großen Mann",
+                "breakdown": {
+                  "article": "keinem",
+                  "adjective": "groß → großen",
+                  "noun": "Mann"
+                },
+                "translation": "to/for no tall man"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "keinem + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "keinem kleinen Kind",
+                "breakdown": {
+                  "article": "keinem",
+                  "adjective": "klein → kleinen",
+                  "noun": "Kind"
+                },
+                "translation": "to/for no small child"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "keiner + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "keiner alten Frau",
+                "breakdown": {
+                  "article": "keiner",
+                  "adjective": "alt → alten",
+                  "noun": "Frau"
+                },
+                "translation": "to/for no old woman"
+              }
+            ]
+          },
+          "plural": {
+            "pattern": "keinen + [adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "keinen alten Büchern",
+                "breakdown": {
+                  "article": "keinen",
+                  "adjective": "alt → alten",
+                  "noun": "Büchern"
+                },
+                "translation": "to/for no old books"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "possessive_articles": {
+      "mein": {
+        "description": "my/mine",
+        "patterns": {
+          "nominativ": {
+            "masculine": {
+              "pattern": "mein + [adj]-er + [noun]",
+              "examples": [
+                {
+                  "complete": "mein großer Bruder",
+                  "breakdown": {
+                    "article": "mein",
+                    "adjective": "groß → großer",
+                    "noun": "Bruder"
+                  },
+                  "translation": "my tall brother"
+                },
+                {
+                  "complete": "mein alter Hund",
+                  "breakdown": {
+                    "article": "mein",
+                    "adjective": "alt → alter",
+                    "noun": "Hund"
+                  },
+                  "translation": "my old dog"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "mein + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "mein kleines Haus",
+                  "breakdown": {
+                    "article": "mein",
+                    "adjective": "klein → kleines",
+                    "noun": "Haus"
+                  },
+                  "translation": "my small house"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "meine + [adj]-e + [noun]",
+              "examples": [
+                {
+                  "complete": "meine neue Tasche",
+                  "breakdown": {
+                    "article": "meine",
+                    "adjective": "neu → neue",
+                    "noun": "Tasche"
+                  },
+                  "translation": "my new bag"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "meine + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "meine alten Bücher",
+                  "breakdown": {
+                    "article": "meine",
+                    "adjective": "alt → alten",
+                    "noun": "Bücher"
+                  },
+                  "translation": "my old books"
+                }
+              ]
+            }
+          },
+          "akkusativ": {
+            "masculine": {
+              "pattern": "meinen + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "meinen großen Bruder",
+                  "breakdown": {
+                    "article": "meinen",
+                    "adjective": "groß → großen",
+                    "noun": "Bruder"
+                  },
+                  "translation": "my tall brother"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "mein + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "mein kleines Haus",
+                  "breakdown": {
+                    "article": "mein",
+                    "adjective": "klein → kleines",
+                    "noun": "Haus"
+                  },
+                  "translation": "my small house"
+                }
+              ]
+            }
+          },
+          "dativ": {
+            "masculine": {
+              "pattern": "meinem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "meinem großen Bruder",
+                  "breakdown": {
+                    "article": "meinem",
+                    "adjective": "groß → großen",
+                    "noun": "Bruder"
+                  },
+                  "translation": "to/for my tall brother"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "dein": {
+        "description": "your/yours (informal singular)",
+        "patterns": {
+          "nominativ": {
+            "masculine": {
+              "pattern": "dein + [adj]-er + [noun]",
+              "examples": [
+                {
+                  "complete": "dein neuer Wagen",
+                  "breakdown": {
+                    "article": "dein",
+                    "adjective": "neu → neuer",
+                    "noun": "Wagen"
+                  },
+                  "translation": "your new car"
+                },
+                {
+                  "complete": "dein alter Computer",
+                  "breakdown": {
+                    "article": "dein",
+                    "adjective": "alt → alter",
+                    "noun": "Computer"
+                  },
+                  "translation": "your old computer"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "dein + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "dein neues Handy",
+                  "breakdown": {
+                    "article": "dein",
+                    "adjective": "neu → neues",
+                    "noun": "Handy"
+                  },
+                  "translation": "your new phone"
+                },
+                {
+                  "complete": "dein kleines Buch",
+                  "breakdown": {
+                    "article": "dein",
+                    "adjective": "klein → kleines",
+                    "noun": "Buch"
+                  },
+                  "translation": "your small book"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "deine + [adj]-e + [noun]",
+              "examples": [
+                {
+                  "complete": "deine neue Tasche",
+                  "breakdown": {
+                    "article": "deine",
+                    "adjective": "neu → neue",
+                    "noun": "Tasche"
+                  },
+                  "translation": "your new bag"
+                },
+                {
+                  "complete": "deine rote Jacke",
+                  "breakdown": {
+                    "article": "deine",
+                    "adjective": "rot → rote",
+                    "noun": "Jacke"
+                  },
+                  "translation": "your red jacket"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "deine + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "deine alten Bücher",
+                  "breakdown": {
+                    "article": "deine",
+                    "adjective": "alt → alten",
+                    "noun": "Bücher"
+                  },
+                  "translation": "your old books"
+                },
+                {
+                  "complete": "deine neuen Schuhe",
+                  "breakdown": {
+                    "article": "deine",
+                    "adjective": "neu → neuen",
+                    "noun": "Schuhe"
+                  },
+                  "translation": "your new shoes"
+                }
+              ]
+            }
+          },
+          "akkusativ": {
+            "masculine": {
+              "pattern": "deinen + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "deinen neuen Wagen",
+                  "breakdown": {
+                    "article": "deinen",
+                    "adjective": "neu → neuen",
+                    "noun": "Wagen"
+                  },
+                  "translation": "your new car"
+                },
+                {
+                  "complete": "deinen roten Stift",
+                  "breakdown": {
+                    "article": "deinen",
+                    "adjective": "rot → roten",
+                    "noun": "Stift"
+                  },
+                  "translation": "your red pen"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "dein + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "dein neues Handy",
+                  "breakdown": {
+                    "article": "dein",
+                    "adjective": "neu → neues",
+                    "noun": "Handy"
+                  },
+                  "translation": "your new phone"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "deine + [adj]-e + [noun]",
+              "examples": [
+                {
+                  "complete": "deine neue Tasche",
+                  "breakdown": {
+                    "article": "deine",
+                    "adjective": "neu → neue",
+                    "noun": "Tasche"
+                  },
+                  "translation": "your new bag"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "deine + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "deine alten Bücher",
+                  "breakdown": {
+                    "article": "deine",
+                    "adjective": "alt → alten",
+                    "noun": "Bücher"
+                  },
+                  "translation": "your old books"
+                }
+              ]
+            }
+          },
+          "dativ": {
+            "masculine": {
+              "pattern": "deinem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "deinem neuen Wagen",
+                  "breakdown": {
+                    "article": "deinem",
+                    "adjective": "neu → neuen",
+                    "noun": "Wagen"
+                  },
+                  "translation": "to/for your new car"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "deinem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "deinem neuen Handy",
+                  "breakdown": {
+                    "article": "deinem",
+                    "adjective": "neu → neuen",
+                    "noun": "Handy"
+                  },
+                  "translation": "to/for your new phone"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "deiner + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "deiner neuen Tasche",
+                  "breakdown": {
+                    "article": "deiner",
+                    "adjective": "neu → neuen",
+                    "noun": "Tasche"
+                  },
+                  "translation": "to/for your new bag"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "deinen + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "deinen alten Büchern",
+                  "breakdown": {
+                    "article": "deinen",
+                    "adjective": "alt → alten",
+                    "noun": "Büchern"
+                  },
+                  "translation": "to/for your old books"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sein": {
+        "description": "his/its",
+        "patterns": {
+          "nominativ": {
+            "masculine": {
+              "pattern": "sein + [adj]-er + [noun]",
+              "examples": [
+                {
+                  "complete": "sein alter Vater",
+                  "breakdown": {
+                    "article": "sein",
+                    "adjective": "alt → alter",
+                    "noun": "Vater"
+                  },
+                  "translation": "his old father"
+                },
+                {
+                  "complete": "sein neuer Job",
+                  "breakdown": {
+                    "article": "sein",
+                    "adjective": "neu → neuer",
+                    "noun": "Job"
+                  },
+                  "translation": "his new job"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "sein + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "sein kleines Auto",
+                  "breakdown": {
+                    "article": "sein",
+                    "adjective": "klein → kleines",
+                    "noun": "Auto"
+                  },
+                  "translation": "his small car"
+                },
+                {
+                  "complete": "sein neues Haus",
+                  "breakdown": {
+                    "article": "sein",
+                    "adjective": "neu → neues",
+                    "noun": "Haus"
+                  },
+                  "translation": "his new house"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "seine + [adj]-e + [noun]",
+              "examples": [
+                {
+                  "complete": "seine neue Wohnung",
+                  "breakdown": {
+                    "article": "seine",
+                    "adjective": "neu → neue",
+                    "noun": "Wohnung"
+                  },
+                  "translation": "his new apartment"
+                },
+                {
+                  "complete": "seine alte Katze",
+                  "breakdown": {
+                    "article": "seine",
+                    "adjective": "alt → alte",
+                    "noun": "Katze"
+                  },
+                  "translation": "his old cat"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "seine + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "seine alten Freunde",
+                  "breakdown": {
+                    "article": "seine",
+                    "adjective": "alt → alten",
+                    "noun": "Freunde"
+                  },
+                  "translation": "his old friends"
+                },
+                {
+                  "complete": "seine neuen Kollegen",
+                  "breakdown": {
+                    "article": "seine",
+                    "adjective": "neu → neuen",
+                    "noun": "Kollegen"
+                  },
+                  "translation": "his new colleagues"
+                }
+              ]
+            }
+          },
+          "akkusativ": {
+            "masculine": {
+              "pattern": "seinen + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "seinen alten Wagen",
+                  "breakdown": {
+                    "article": "seinen",
+                    "adjective": "alt → alten",
+                    "noun": "Wagen"
+                  },
+                  "translation": "his old car"
+                },
+                {
+                  "complete": "seinen großen Hund",
+                  "breakdown": {
+                    "article": "seinen",
+                    "adjective": "groß → großen",
+                    "noun": "Hund"
+                  },
+                  "translation": "his big dog"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "sein + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "sein neues Fahrrad",
+                  "breakdown": {
+                    "article": "sein",
+                    "adjective": "neu → neues",
+                    "noun": "Fahrrad"
+                  },
+                  "translation": "his new bicycle"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "seine + [adj]-e + [noun]",
+              "examples": [
+                {
+                  "complete": "seine alte Uhr",
+                  "breakdown": {
+                    "article": "seine",
+                    "adjective": "alt → alte",
+                    "noun": "Uhr"
+                  },
+                  "translation": "his old watch"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "seine + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "seine neuen Bücher",
+                  "breakdown": {
+                    "article": "seine",
+                    "adjective": "neu → neuen",
+                    "noun": "Bücher"
+                  },
+                  "translation": "his new books"
+                }
+              ]
+            }
+          },
+          "dativ": {
+            "masculine": {
+              "pattern": "seinem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "seinem alten Wagen",
+                  "breakdown": {
+                    "article": "seinem",
+                    "adjective": "alt → alten",
+                    "noun": "Wagen"
+                  },
+                  "translation": "to/for his old car"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "seinem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "seinem neuen Fahrrad",
+                  "breakdown": {
+                    "article": "seinem",
+                    "adjective": "neu → neuen",
+                    "noun": "Fahrrad"
+                  },
+                  "translation": "to/for his new bicycle"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "seiner + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "seiner alten Uhr",
+                  "breakdown": {
+                    "article": "seiner",
+                    "adjective": "alt → alten",
+                    "noun": "Uhr"
+                  },
+                  "translation": "to/for his old watch"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "seinen + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "seinen neuen Büchern",
+                  "breakdown": {
+                    "article": "seinen",
+                    "adjective": "neu → neuen",
+                    "noun": "Büchern"
+                  },
+                  "translation": "to/for his new books"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "ihr_her": {
+        "description": "her/hers",
+        "patterns": {
+          "nominativ": {
+            "masculine": {
+              "pattern": "ihr + [adj]-er + [noun]",
+              "examples": [
+                {
+                  "complete": "ihr kleiner Bruder",
+                  "breakdown": {
+                    "article": "ihr",
+                    "adjective": "klein → kleiner",
+                    "noun": "Bruder"
+                  },
+                  "translation": "her little brother"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "ihr + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "ihr neues Auto",
+                  "breakdown": {
+                    "article": "ihr",
+                    "adjective": "neu → neues",
+                    "noun": "Auto"
+                  },
+                  "translation": "her new car"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "ihre + [adj]-e + [noun]",
+              "examples": [
+                {
+                  "complete": "ihre rote Tasche",
+                  "breakdown": {
+                    "article": "ihre",
+                    "adjective": "rot → rote",
+                    "noun": "Tasche"
+                  },
+                  "translation": "her red bag"
+                }
+              ]
+            }
+          },
+          "akkusativ": {
+            "masculine": {
+              "pattern": "ihren + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "ihren kleinen Bruder",
+                  "breakdown": {
+                    "article": "ihren",
+                    "adjective": "klein → kleinen",
+                    "noun": "Bruder"
+                  },
+                  "translation": "her little brother"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "ihr + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "ihr neues Auto",
+                  "breakdown": {
+                    "article": "ihr",
+                    "adjective": "neu → neues",
+                    "noun": "Auto"
+                  },
+                  "translation": "her new car"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "ihre + [adj]-e + [noun]",
+              "examples": [
+                {
+                  "complete": "ihre rote Tasche",
+                  "breakdown": {
+                    "article": "ihre",
+                    "adjective": "rot → rote",
+                    "noun": "Tasche"
+                  },
+                  "translation": "her red bag"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "ihre + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "ihre alten Bücher",
+                  "breakdown": {
+                    "article": "ihre",
+                    "adjective": "alt → alten",
+                    "noun": "Bücher"
+                  },
+                  "translation": "her old books"
+                }
+              ]
+            }
+          },
+          "dativ": {
+            "masculine": {
+              "pattern": "ihrem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "ihrem kleinen Bruder",
+                  "breakdown": {
+                    "article": "ihrem",
+                    "adjective": "klein → kleinen",
+                    "noun": "Bruder"
+                  },
+                  "translation": "to/for her little brother"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "ihrem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "ihrem neuen Auto",
+                  "breakdown": {
+                    "article": "ihrem",
+                    "adjective": "neu → neuen",
+                    "noun": "Auto"
+                  },
+                  "translation": "to/for her new car"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "ihrer + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "ihrer roten Tasche",
+                  "breakdown": {
+                    "article": "ihrer",
+                    "adjective": "rot → roten",
+                    "noun": "Tasche"
+                  },
+                  "translation": "to/for her red bag"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "ihren + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "ihren alten Büchern",
+                  "breakdown": {
+                    "article": "ihren",
+                    "adjective": "alt → alten",
+                    "noun": "Büchern"
+                  },
+                  "translation": "to/for her old books"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "unser": {
+        "description": "our/ours",
+        "patterns": {
+          "nominativ": {
+            "masculine": {
+              "pattern": "unser + [adj]-er + [noun]",
+              "examples": [
+                {
+                  "complete": "unser alter Lehrer",
+                  "breakdown": {
+                    "article": "unser",
+                    "adjective": "alt → alter",
+                    "noun": "Lehrer"
+                  },
+                  "translation": "our old teacher"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "unser + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "unser kleines Haus",
+                  "breakdown": {
+                    "article": "unser",
+                    "adjective": "klein → kleines",
+                    "noun": "Haus"
+                  },
+                  "translation": "our small house"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "unsere + [adj]-e + [noun]",
+              "examples": [
+                {
+                  "complete": "unsere neue Wohnung",
+                  "breakdown": {
+                    "article": "unsere",
+                    "adjective": "neu → neue",
+                    "noun": "Wohnung"
+                  },
+                  "translation": "our new apartment"
+                }
+              ]
+            }
+          },
+          "akkusativ": {
+            "masculine": {
+              "pattern": "unseren + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "unseren alten Lehrer",
+                  "breakdown": {
+                    "article": "unseren",
+                    "adjective": "alt → alten",
+                    "noun": "Lehrer"
+                  },
+                  "translation": "our old teacher"
+                },
+                {
+                  "complete": "unseren großen Garten",
+                  "breakdown": {
+                    "article": "unseren",
+                    "adjective": "groß → großen",
+                    "noun": "Garten"
+                  },
+                  "translation": "our big garden"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "unser + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "unser kleines Haus",
+                  "breakdown": {
+                    "article": "unser",
+                    "adjective": "klein → kleines",
+                    "noun": "Haus"
+                  },
+                  "translation": "our small house"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "unsere + [adj]-e + [noun]",
+              "examples": [
+                {
+                  "complete": "unsere neue Wohnung",
+                  "breakdown": {
+                    "article": "unsere",
+                    "adjective": "neu → neue",
+                    "noun": "Wohnung"
+                  },
+                  "translation": "our new apartment"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "unsere + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "unsere alten Bücher",
+                  "breakdown": {
+                    "article": "unsere",
+                    "adjective": "alt → alten",
+                    "noun": "Bücher"
+                  },
+                  "translation": "our old books"
+                }
+              ]
+            }
+          },
+          "dativ": {
+            "masculine": {
+              "pattern": "unserem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "unserem alten Lehrer",
+                  "breakdown": {
+                    "article": "unserem",
+                    "adjective": "alt → alten",
+                    "noun": "Lehrer"
+                  },
+                  "translation": "to/for our old teacher"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "unserem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "unserem kleinen Haus",
+                  "breakdown": {
+                    "article": "unserem",
+                    "adjective": "klein → kleinen",
+                    "noun": "Haus"
+                  },
+                  "translation": "to/for our small house"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "unserer + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "unserer neuen Wohnung",
+                  "breakdown": {
+                    "article": "unserer",
+                    "adjective": "neu → neuen",
+                    "noun": "Wohnung"
+                  },
+                  "translation": "to/for our new apartment"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "unseren + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "unseren alten Büchern",
+                  "breakdown": {
+                    "article": "unseren",
+                    "adjective": "alt → alten",
+                    "noun": "Büchern"
+                  },
+                  "translation": "to/for our old books"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "euer": {
+        "description": "your/yours (plural informal)",
+        "patterns": {
+          "nominativ": {
+            "masculine": {
+              "pattern": "euer + [adj]-er + [noun]",
+              "examples": [
+                {
+                  "complete": "euer großer Garten",
+                  "breakdown": {
+                    "article": "euer",
+                    "adjective": "groß → großer",
+                    "noun": "Garten"
+                  },
+                  "translation": "your big garden"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "euer + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "euer neues Projekt",
+                  "breakdown": {
+                    "article": "euer",
+                    "adjective": "neu → neues",
+                    "noun": "Projekt"
+                  },
+                  "translation": "your new project"
+                }
+              ]
+            }
+          },
+          "akkusativ": {
+            "masculine": {
+              "pattern": "euren + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "euren großen Garten",
+                  "breakdown": {
+                    "article": "euren",
+                    "adjective": "groß → großen",
+                    "noun": "Garten"
+                  },
+                  "translation": "your big garden"
+                },
+                {
+                  "complete": "euren neuen Wagen",
+                  "breakdown": {
+                    "article": "euren",
+                    "adjective": "neu → neuen",
+                    "noun": "Wagen"
+                  },
+                  "translation": "your new car"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "euer + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "euer neues Projekt",
+                  "breakdown": {
+                    "article": "euer",
+                    "adjective": "neu → neues",
+                    "noun": "Projekt"
+                  },
+                  "translation": "your new project"
+                },
+                {
+                  "complete": "euer kleines Boot",
+                  "breakdown": {
+                    "article": "euer",
+                    "adjective": "klein → kleines",
+                    "noun": "Boot"
+                  },
+                  "translation": "your small boat"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "eure + [adj]-e + [noun]",
+              "examples": [
+                {
+                  "complete": "eure neue Küche",
+                  "breakdown": {
+                    "article": "eure",
+                    "adjective": "neu → neue",
+                    "noun": "Küche"
+                  },
+                  "translation": "your new kitchen"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "eure + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "eure alten Fotos",
+                  "breakdown": {
+                    "article": "eure",
+                    "adjective": "alt → alten",
+                    "noun": "Fotos"
+                  },
+                  "translation": "your old photos"
+                }
+              ]
+            }
+          },
+          "dativ": {
+            "masculine": {
+              "pattern": "eurem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "eurem großen Garten",
+                  "breakdown": {
+                    "article": "eurem",
+                    "adjective": "groß → großen",
+                    "noun": "Garten"
+                  },
+                  "translation": "to/for your big garden"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "eurem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "eurem neuen Projekt",
+                  "breakdown": {
+                    "article": "eurem",
+                    "adjective": "neu → neuen",
+                    "noun": "Projekt"
+                  },
+                  "translation": "to/for your new project"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "eurer + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "eurer neuen Küche",
+                  "breakdown": {
+                    "article": "eurer",
+                    "adjective": "neu → neuen",
+                    "noun": "Küche"
+                  },
+                  "translation": "to/for your new kitchen"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "euren + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "euren alten Fotos",
+                  "breakdown": {
+                    "article": "euren",
+                    "adjective": "alt → alten",
+                    "noun": "Fotos"
+                  },
+                  "translation": "to/for your old photos"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "ihr_their": {
+        "description": "their/theirs",
+        "patterns": {
+          "nominativ": {
+            "masculine": {
+              "pattern": "ihr + [adj]-er + [noun]",
+              "examples": [
+                {
+                  "complete": "ihr alter Hund",
+                  "breakdown": {
+                    "article": "ihr",
+                    "adjective": "alt → alter",
+                    "noun": "Hund"
+                  },
+                  "translation": "their old dog"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "ihr + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "ihr schönes Haus",
+                  "breakdown": {
+                    "article": "ihr",
+                    "adjective": "schön → schönes",
+                    "noun": "Haus"
+                  },
+                  "translation": "their beautiful house"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "Ihr": {
+        "description": "your/yours (formal)",
+        "patterns": {
+          "nominativ": {
+            "masculine": {
+              "pattern": "Ihr + [adj]-er + [noun]",
+              "examples": [
+                {
+                  "complete": "Ihr neuer Pass",
+                  "breakdown": {
+                    "article": "Ihr",
+                    "adjective": "neu → neuer",
+                    "noun": "Pass"
+                  },
+                  "translation": "your new passport"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "Ihr + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "Ihr neues Büro",
+                  "breakdown": {
+                    "article": "Ihr",
+                    "adjective": "neu → neues",
+                    "noun": "Büro"
+                  },
+                  "translation": "your new office"
+                }
+              ]
+            }
+          },
+          "akkusativ": {
+            "masculine": {
+              "pattern": "Ihren + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "Ihren neuen Pass",
+                  "breakdown": {
+                    "article": "Ihren",
+                    "adjective": "neu → neuen",
+                    "noun": "Pass"
+                  },
+                  "translation": "your new passport"
+                },
+                {
+                  "complete": "Ihren wichtigen Termin",
+                  "breakdown": {
+                    "article": "Ihren",
+                    "adjective": "wichtig → wichtigen",
+                    "noun": "Termin"
+                  },
+                  "translation": "your important appointment"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "Ihr + [adj]-es + [noun]",
+              "examples": [
+                {
+                  "complete": "Ihr neues Büro",
+                  "breakdown": {
+                    "article": "Ihr",
+                    "adjective": "neu → neues",
+                    "noun": "Büro"
+                  },
+                  "translation": "your new office"
+                },
+                {
+                  "complete": "Ihr großes Projekt",
+                  "breakdown": {
+                    "article": "Ihr",
+                    "adjective": "groß → großes",
+                    "noun": "Projekt"
+                  },
+                  "translation": "your big project"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "Ihre + [adj]-e + [noun]",
+              "examples": [
+                {
+                  "complete": "Ihre neue Kreditkarte",
+                  "breakdown": {
+                    "article": "Ihre",
+                    "adjective": "neu → neue",
+                    "noun": "Kreditkarte"
+                  },
+                  "translation": "your new credit card"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "Ihre + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "Ihre wichtigen Dokumente",
+                  "breakdown": {
+                    "article": "Ihre",
+                    "adjective": "wichtig → wichtigen",
+                    "noun": "Dokumente"
+                  },
+                  "translation": "your important documents"
+                }
+              ]
+            }
+          },
+          "dativ": {
+            "masculine": {
+              "pattern": "Ihrem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "Ihrem neuen Pass",
+                  "breakdown": {
+                    "article": "Ihrem",
+                    "adjective": "neu → neuen",
+                    "noun": "Pass"
+                  },
+                  "translation": "to/for your new passport"
+                }
+              ]
+            },
+            "neuter": {
+              "pattern": "Ihrem + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "Ihrem neuen Büro",
+                  "breakdown": {
+                    "article": "Ihrem",
+                    "adjective": "neu → neuen",
+                    "noun": "Büro"
+                  },
+                  "translation": "to/for your new office"
+                }
+              ]
+            },
+            "feminine": {
+              "pattern": "Ihrer + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "Ihrer neuen Kreditkarte",
+                  "breakdown": {
+                    "article": "Ihrer",
+                    "adjective": "neu → neuen",
+                    "noun": "Kreditkarte"
+                  },
+                  "translation": "to/for your new credit card"
+                }
+              ]
+            },
+            "plural": {
+              "pattern": "Ihren + [adj]-en + [noun]",
+              "examples": [
+                {
+                  "complete": "Ihren wichtigen Dokumenten",
+                  "breakdown": {
+                    "article": "Ihren",
+                    "adjective": "wichtig → wichtigen",
+                    "noun": "Dokumenten"
+                  },
+                  "translation": "to/for your important documents"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "without_article": {
+      "description": "No article (null article)",
+      "patterns": {
+        "nominativ": {
+          "masculine": {
+            "pattern": "[adj]-er + [noun]",
+            "examples": [
+              {
+                "complete": "kalter Kaffee",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "kalt → kalter",
+                  "noun": "Kaffee"
+                },
+                "translation": "cold coffee"
+              },
+              {
+                "complete": "frischer Fisch",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "frisch → frischer",
+                  "noun": "Fisch"
+                },
+                "translation": "fresh fish"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "[adj]-es + [noun]",
+            "examples": [
+              {
+                "complete": "warmes Wasser",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "warm → warmes",
+                  "noun": "Wasser"
+                },
+                "translation": "warm water"
+              },
+              {
+                "complete": "frisches Brot",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "frisch → frisches",
+                  "noun": "Brot"
+                },
+                "translation": "fresh bread"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "[adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "frische Milch",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "frisch → frische",
+                  "noun": "Milch"
+                },
+                "translation": "fresh milk"
+              },
+              {
+                "complete": "kalte Luft",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "kalt → kalte",
+                  "noun": "Luft"
+                },
+                "translation": "cold air"
+              }
+            ]
+          },
+          "plural": {
+            "pattern": "[adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "alte Bücher",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "alt → alte",
+                  "noun": "Bücher"
+                },
+                "translation": "old books"
+              },
+              {
+                "complete": "kleine Kinder",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "klein → kleine",
+                  "noun": "Kinder"
+                },
+                "translation": "small children"
+              }
+            ]
+          }
+        },
+        "akkusativ": {
+          "masculine": {
+            "pattern": "[adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "kalten Kaffee",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "kalt → kalten",
+                  "noun": "Kaffee"
+                },
+                "translation": "cold coffee"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "[adj]-es + [noun]",
+            "examples": [
+              {
+                "complete": "warmes Wasser",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "warm → warmes",
+                  "noun": "Wasser"
+                },
+                "translation": "warm water"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "[adj]-e + [noun]",
+            "examples": [
+              {
+                "complete": "frische Milch",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "frisch → frische",
+                  "noun": "Milch"
+                },
+                "translation": "fresh milk"
+              }
+            ]
+          }
+        },
+        "dativ": {
+          "masculine": {
+            "pattern": "[adj]-em + [noun]",
+            "examples": [
+              {
+                "complete": "kaltem Kaffee",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "kalt → kaltem",
+                  "noun": "Kaffee"
+                },
+                "translation": "with/to cold coffee"
+              }
+            ]
+          },
+          "neuter": {
+            "pattern": "[adj]-em + [noun]",
+            "examples": [
+              {
+                "complete": "warmem Wasser",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "warm → warmem",
+                  "noun": "Wasser"
+                },
+                "translation": "with/to warm water"
+              }
+            ]
+          },
+          "feminine": {
+            "pattern": "[adj]-er + [noun]",
+            "examples": [
+              {
+                "complete": "frischer Milch",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "frisch → frischer",
+                  "noun": "Milch"
+                },
+                "translation": "with/to fresh milk"
+              }
+            ]
+          },
+          "plural": {
+            "pattern": "[adj]-en + [noun]",
+            "examples": [
+              {
+                "complete": "alten Büchern",
+                "breakdown": {
+                  "article": "-",
+                  "adjective": "alt → alten",
+                  "noun": "Büchern"
+                },
+                "translation": "with/to old books"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
