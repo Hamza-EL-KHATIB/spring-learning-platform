@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Book, ChevronDown, ChevronRight, Info } from 'lucide-react';
+import { ChevronDown, ChevronRight, Info } from 'lucide-react';
 import adjectivesJson from '../../../data/german/adjectives.json';
 
 const ExplanationCard = () => (
