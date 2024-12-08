@@ -1,9 +1,164 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronRight, Info } from 'lucide-react';
+import { ChevronDown, ChevronRight, Info, Table } from 'lucide-react';
 import adjectivesJson from '../../../data/german/adjectives.json';
 
+const EndingsOverview = () => {
+    const articleTypes = {
+        after_definite_article: "Definite Article (der/die/das)",
+        after_indefinite_article: "Indefinite Article (ein/eine)",
+        without_article: "Without Article"
+    };
+
+    const cases = ['nominativ', 'akkusativ', 'dativ'];
+    const genders = ['masculine', 'feminine', 'neuter', 'plural'];
+
+    return (
+        <div className="space-y-8">
+            <div className="bg-gray-800/50 rounded-lg p-6 border border-cyan-500/20">
+                <div className="flex items-center mb-4">
+                    <Table className="w-5 h-5 text-cyan-400 mr-2" />
+                    <h2 className="text-lg font-semibold text-white">Adjective Endings Overview</h2>
+                </div>
+
+                {Object.entries(articleTypes).map(([type, title]) => (
+                    <div key={type} className="mb-8">
+                        <h3 className="text-xl font-semibold text-white mb-4">{title}</h3>
+                        <div className="overflow-x-auto">
+                            <table className="w-full">
+                                <thead>
+                                <tr>
+                                    <th className="text-left text-gray-400 pb-2">Case / Gender</th>
+                                    {genders.map(gender => (
+                                        <th key={gender} className="text-left text-gray-400 pb-2 capitalize">{gender}</th>
+                                    ))}
+                                </tr>
+                                </thead>
+                                <tbody className="divide-y divide-gray-800">
+                                {cases.map(caseType => (
+                                    <tr key={caseType} className="border-t border-gray-800">
+                                        <td className="py-3 text-gray-300 capitalize">{caseType}</td>
+                                        {genders.map(gender => (
+                                            <td key={gender} className="py-3">
+                          <span className="text-cyan-400 font-medium">
+                            {adjectivesJson.adjective_patterns[type]?.cases?.[caseType]?.[gender]?.ending || '-'}
+                          </span>
+                                            </td>
+                                        ))}
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* Quick Tips */}
+            <div className="bg-gray-800/50 rounded-lg p-6 border border-purple-500/20">
+                <h3 className="text-lg font-semibold text-white mb-4">Memory Aids</h3>
+                <ul className="list-disc list-inside space-y-2 text-gray-300">
+                    {adjectivesJson.memory_aids.map((tip, index) => (
+                        <li key={index}>{tip}</li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    );
+};
+
+const DetailedExplanations = () => {
+    const [activeCase, setActiveCase] = useState('nominativ');
+    const [activeArticleType, setActiveArticleType] = useState('after_definite_article');
+
+    const articleTypes = {
+        after_definite_article: { description: 'After Definite Article' },
+        after_indefinite_article: { description: 'After Indefinite Article' },
+        without_article: { description: 'Without Article' }
+    };
+
+    const cases = ['nominativ', 'akkusativ', 'dativ'];
+    const currentPattern = adjectivesJson.adjective_patterns[activeArticleType];
+    const currentCaseData = currentPattern?.cases?.[activeCase];
+
+    return (
+        <div className="space-y-8">
+            <ExplanationCard />
+
+            {/* Navigation */}
+            <div className="flex space-x-4 mb-8">
+                <div className="flex-1">
+                    <h3 className="text-sm uppercase tracking-wider text-gray-400 mb-2">Case</h3>
+                    <div className="flex space-x-2">
+                        {cases.map(caseType => (
+                            <button
+                                key={caseType}
+                                onClick={() => setActiveCase(caseType)}
+                                className={`px-4 py-2 rounded-lg font-medium ${
+                                    activeCase === caseType
+                                        ? 'bg-purple-500 text-white'
+                                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                                }`}
+                            >
+                                {caseType.charAt(0).toUpperCase() + caseType.slice(1)}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="flex-1">
+                    <h3 className="text-sm uppercase tracking-wider text-gray-400 mb-2">Article Type</h3>
+                    <div className="flex space-x-2">
+                        {Object.entries(articleTypes).map(([type, data]) => (
+                            <button
+                                key={type}
+                                onClick={() => setActiveArticleType(type)}
+                                className={`px-4 py-2 rounded-lg font-medium ${
+                                    activeArticleType === type
+                                        ? 'bg-cyan-500 text-white'
+                                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                                }`}
+                            >
+                                {data.description}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Pattern Description */}
+            {currentPattern && (
+                <div className="bg-gray-800/50 rounded-lg p-6 border border-purple-500/20">
+                    <h3 className="text-xl font-semibold text-white mb-4">{currentPattern.description}</h3>
+                    <p className="text-gray-300 mb-4">{currentPattern.explanation}</p>
+                    {currentPattern.pattern_hints && (
+                        <ul className="list-disc list-inside space-y-2 text-gray-300">
+                            {currentPattern.pattern_hints.map((hint, index) => (
+                                <li key={index}>{hint}</li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            )}
+
+            {/* Examples Grid */}
+            {currentCaseData && (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {Object.entries(currentCaseData).map(([gender, data]) => (
+                        <GenderSection
+                            key={`${activeArticleType}-${activeCase}-${gender}`}
+                            gender={gender}
+                            data={data}
+                        />
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
+
+// Existing components remain the same
 const ExplanationCard = () => (
-    <div className="bg-gray-800/50 rounded-lg p-6 border border-cyan-500/20 mb-8">
+    <div className="bg-gray-800/50 rounded-lg p-6 border border-cyan-500/20">
         <div className="flex items-center mb-4">
             <Info className="w-5 h-5 text-cyan-400 mr-2" />
             <h2 className="text-lg font-semibold text-white">Understanding German Adjective Endings</h2>
@@ -18,6 +173,28 @@ const ExplanationCard = () => (
         </div>
     </div>
 );
+
+const GenderSection = ({ gender, data }) => {
+    const [expanded, setExpanded] = useState(false);
+
+    if (!data || !data.example) return null;
+
+    return (
+        <div className="bg-gray-800 rounded-lg p-6 border border-purple-500/20">
+            <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-semibold text-white capitalize">{gender}</h3>
+                <div className="text-sm text-cyan-400 bg-cyan-950/50 px-3 py-1 rounded-full">
+                    Ending: {data.ending}
+                </div>
+            </div>
+            <PatternExample
+                example={data.example}
+                expanded={expanded}
+                onToggle={() => setExpanded(!expanded)}
+            />
+        </div>
+    );
+};
 
 const PatternExample = ({ example, expanded, onToggle }) => {
     if (!example) return null;
@@ -61,41 +238,8 @@ const PatternExample = ({ example, expanded, onToggle }) => {
     );
 };
 
-const GenderSection = ({ gender, data }) => {
-    const [expanded, setExpanded] = useState(false);
-
-    if (!data || !data.example) return null;
-
-    return (
-        <div className="bg-gray-800 rounded-lg p-6 border border-purple-500/20">
-            <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-semibold text-white capitalize">{gender}</h3>
-                <div className="text-sm text-cyan-400 bg-cyan-950/50 px-3 py-1 rounded-full">
-                    Ending: {data.ending}
-                </div>
-            </div>
-            <PatternExample
-                example={data.example}
-                expanded={expanded}
-                onToggle={() => setExpanded(!expanded)}
-            />
-        </div>
-    );
-};
-
 const AdjectivesPage = () => {
-    const [activeCase, setActiveCase] = useState('nominativ');
-    const [activeArticleType, setActiveArticleType] = useState('after_definite_article');
-
-    const articleTypes = {
-        after_definite_article: { description: 'After Definite Article' },
-        after_indefinite_article: { description: 'After Indefinite Article' },
-        without_article: { description: 'Without Article' }
-    };
-
-    const cases = ['nominativ', 'akkusativ', 'dativ'];
-    const currentPattern = adjectivesJson.adjective_patterns[activeArticleType];
-    const currentCaseData = currentPattern?.cases?.[activeCase];
+    const [activeTab, setActiveTab] = useState('overview');
 
     return (
         <div className="min-h-screen bg-gray-900 py-8">
@@ -110,76 +254,32 @@ const AdjectivesPage = () => {
                     </p>
                 </div>
 
-                <ExplanationCard />
-
-                {/* Navigation */}
+                {/* Tabs */}
                 <div className="flex space-x-4 mb-8">
-                    <div className="flex-1">
-                        <h3 className="text-sm uppercase tracking-wider text-gray-400 mb-2">Case</h3>
-                        <div className="flex space-x-2">
-                            {cases.map(caseType => (
-                                <button
-                                    key={caseType}
-                                    onClick={() => setActiveCase(caseType)}
-                                    className={`px-4 py-2 rounded-lg font-medium ${
-                                        activeCase === caseType
-                                            ? 'bg-purple-500 text-white'
-                                            : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                                    }`}
-                                >
-                                    {caseType.charAt(0).toUpperCase() + caseType.slice(1)}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="flex-1">
-                        <h3 className="text-sm uppercase tracking-wider text-gray-400 mb-2">Article Type</h3>
-                        <div className="flex space-x-2">
-                            {Object.entries(articleTypes).map(([type, data]) => (
-                                <button
-                                    key={type}
-                                    onClick={() => setActiveArticleType(type)}
-                                    className={`px-4 py-2 rounded-lg font-medium ${
-                                        activeArticleType === type
-                                            ? 'bg-cyan-500 text-white'
-                                            : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                                    }`}
-                                >
-                                    {data.description}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
+                    <button
+                        onClick={() => setActiveTab('overview')}
+                        className={`px-4 py-2 rounded-lg font-medium ${
+                            activeTab === 'overview'
+                                ? 'bg-purple-500 text-white'
+                                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                        }`}
+                    >
+                        Overview Tables
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('detailed')}
+                        className={`px-4 py-2 rounded-lg font-medium ${
+                            activeTab === 'detailed'
+                                ? 'bg-purple-500 text-white'
+                                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                        }`}
+                    >
+                        Detailed Explanations
+                    </button>
                 </div>
 
-                {/* Pattern Description */}
-                {currentPattern && (
-                    <div className="mb-8 bg-gray-800/50 rounded-lg p-6 border border-purple-500/20">
-                        <h3 className="text-xl font-semibold text-white mb-4">{currentPattern.description}</h3>
-                        <p className="text-gray-300 mb-4">{currentPattern.explanation}</p>
-                        {currentPattern.pattern_hints && (
-                            <ul className="list-disc list-inside space-y-2 text-gray-300">
-                                {currentPattern.pattern_hints.map((hint, index) => (
-                                    <li key={index}>{hint}</li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                )}
-
-                {/* Patterns Grid */}
-                {currentCaseData && (
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        {Object.entries(currentCaseData).map(([gender, data]) => (
-                            <GenderSection
-                                key={`${activeArticleType}-${activeCase}-${gender}`}
-                                gender={gender}
-                                data={data}
-                            />
-                        ))}
-                    </div>
-                )}
+                {/* Content */}
+                {activeTab === 'overview' ? <EndingsOverview /> : <DetailedExplanations />}
             </div>
         </div>
     );
