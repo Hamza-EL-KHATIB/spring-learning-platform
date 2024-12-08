@@ -1,0 +1,762 @@
+{
+  "adjective_patterns": {
+    "description": "German adjective endings change based on the article type, case, and gender",
+    "usage_hints": [
+      "Adjective endings depend on whether there's an article and what type it is",
+      "The ending changes based on case (nominativ, akkusativ, dativ)",
+      "Gender and number also affect the ending",
+      "The article 'takes over' some of the grammatical information"
+    ],
+    "after_definite_article": {
+      "description": "Adjective endings after der, die, das, die",
+      "explanation": "After definite articles, the adjective takes weaker endings because the article already carries strong gender/case markers",
+      "pattern_hints": [
+        "Most endings are -e or -en",
+        "Plural always takes -en",
+        "Dativ always takes -en"
+      ],
+      "triggering_articles": [
+        {
+          "article": "der",
+          "meaning": "the (masculine)"
+        },
+        {
+          "article": "die",
+          "meaning": "the (feminine/plural)"
+        },
+        {
+          "article": "das",
+          "meaning": "the (neuter)"
+        }
+      ],
+      "usage_situations": [
+        {
+          "situation": "Specific known objects",
+          "example": {
+            "german": "der alte Computer",
+            "english": "the old computer (a specific one)"
+          }
+        },
+        {
+          "situation": "Previously mentioned items",
+          "example": {
+            "german": "das neue Buch... Das interessante Buch",
+            "english": "a new book... The interesting book"
+          }
+        },
+        {
+          "situation": "Unique items",
+          "example": {
+            "german": "die helle Sonne",
+            "english": "the bright sun"
+          }
+        },
+        {
+          "situation": "General statements",
+          "example": {
+            "german": "die kleinen Kinder",
+            "english": "the small children (in general)"
+          }
+        }
+      ],
+      "cases": {
+        "nominativ": {
+          "masculine": {
+            "ending": "-e",
+            "example": {
+              "german": "der große Mann",
+              "english": "the tall man",
+              "breakdown": {
+                "article": "der",
+                "adjective": "groß → große",
+                "noun": "Mann"
+              }
+            }
+          },
+          "neuter": {
+            "ending": "-e",
+            "example": {
+              "german": "das kleine Kind",
+              "english": "the small child",
+              "breakdown": {
+                "article": "das",
+                "adjective": "klein → kleine",
+                "noun": "Kind"
+              }
+            }
+          },
+          "feminine": {
+            "ending": "-e",
+            "example": {
+              "german": "die neue Frau",
+              "english": "the new woman",
+              "breakdown": {
+                "article": "die",
+                "adjective": "neu → neue",
+                "noun": "Frau"
+              }
+            }
+          },
+          "plural": {
+            "ending": "-en",
+            "example": {
+              "german": "die alten Leute",
+              "english": "the old people",
+              "breakdown": {
+                "article": "die",
+                "adjective": "alt → alten",
+                "noun": "Leute"
+              }
+            }
+          }
+        },
+        "akkusativ": {
+          "masculine": {
+            "ending": "-en",
+            "example": {
+              "german": "den großen Mann",
+              "english": "the tall man",
+              "breakdown": {
+                "article": "den",
+                "adjective": "groß → großen",
+                "noun": "Mann"
+              }
+            }
+          },
+          "neuter": {
+            "ending": "-e",
+            "example": {
+              "german": "das kleine Kind",
+              "english": "the small child",
+              "breakdown": {
+                "article": "das",
+                "adjective": "klein → kleine",
+                "noun": "Kind"
+              }
+            }
+          },
+          "feminine": {
+            "ending": "-e",
+            "example": {
+              "german": "die neue Frau",
+              "english": "the new woman",
+              "breakdown": {
+                "article": "die",
+                "adjective": "neu → neue",
+                "noun": "Frau"
+              }
+            }
+          },
+          "plural": {
+            "ending": "-en",
+            "example": {
+              "german": "die alten Leute",
+              "english": "the old people",
+              "breakdown": {
+                "article": "die",
+                "adjective": "alt → alten",
+                "noun": "Leute"
+              }
+            }
+          }
+        },
+        "dativ": {
+          "masculine": {
+            "ending": "-en",
+            "example": {
+              "german": "dem großen Mann",
+              "english": "to/for the tall man",
+              "breakdown": {
+                "article": "dem",
+                "adjective": "groß → großen",
+                "noun": "Mann"
+              }
+            }
+          },
+          "neuter": {
+            "ending": "-en",
+            "example": {
+              "german": "dem kleinen Kind",
+              "english": "to/for the small child",
+              "breakdown": {
+                "article": "dem",
+                "adjective": "klein → kleinen",
+                "noun": "Kind"
+              }
+            }
+          },
+          "feminine": {
+            "ending": "-en",
+            "example": {
+              "german": "der neuen Frau",
+              "english": "to/for the new woman",
+              "breakdown": {
+                "article": "der",
+                "adjective": "neu → neuen",
+                "noun": "Frau"
+              }
+            }
+          },
+          "plural": {
+            "ending": "-en",
+            "example": {
+              "german": "den alten Leuten",
+              "english": "to/for the old people",
+              "breakdown": {
+                "article": "den",
+                "adjective": "alt → alten",
+                "noun": "Leuten"
+              }
+            }
+          }
+        }
+      },
+      "common_adjectives": [
+        {
+          "adjective": "groß",
+          "meaning": "big, tall",
+          "examples": ["der große Mann", "die große Frau"]
+        },
+        {
+          "adjective": "klein",
+          "meaning": "small",
+          "examples": ["das kleine Kind", "der kleine Hund"]
+        },
+        {
+          "adjective": "neu",
+          "meaning": "new",
+          "examples": ["das neue Auto", "die neue Tasche"]
+        },
+        {
+          "adjective": "alt",
+          "meaning": "old",
+          "examples": ["der alte Mann", "die alten Bücher"]
+        }
+      ]
+    },
+    "after_indefinite_article": {
+      "description": "Adjective endings after ein-, kein-, mein- or possessive articles",
+      "explanation": "After indefinite articles and possessives, the adjective takes stronger endings because these articles don't carry all gender/case markers",
+      "pattern_hints": [
+        "Nominativ masculine uses -er (like 'der')",
+        "Nominativ/Akkusativ neuter uses -es (like 'das')",
+        "Feminine and plural follow similar patterns to definite articles",
+        "Dativ always takes -en"
+      ],
+      "triggering_articles": [
+        {
+          "article": "ein/eine",
+          "meaning": "a/an",
+          "type": "indefinite"
+        },
+        {
+          "article": "kein/keine",
+          "meaning": "no/not any",
+          "type": "negative"
+        },
+        {
+          "group": "possessive",
+          "articles": [
+            {
+              "article": "mein-",
+              "meaning": "my"
+            },
+            {
+              "article": "dein-",
+              "meaning": "your (informal)"
+            },
+            {
+              "article": "sein-",
+              "meaning": "his/its"
+            },
+            {
+              "article": "ihr-",
+              "meaning": "her/their"
+            },
+            {
+              "article": "unser-",
+              "meaning": "our"
+            },
+            {
+              "article": "euer-",
+              "meaning": "your (plural)"
+            },
+            {
+              "article": "Ihr-",
+              "meaning": "your (formal)"
+            }
+          ]
+        }
+      ],
+      "usage_situations": [
+        {
+          "situation": "Introducing new items",
+          "example": {
+            "german": "ein neuer Computer",
+            "english": "a new computer (first mention)"
+          }
+        },
+        {
+          "situation": "Showing possession",
+          "example": {
+            "german": "mein alter Laptop",
+            "english": "my old laptop"
+          }
+        },
+        {
+          "situation": "Negation",
+          "example": {
+            "german": "keine große Datei",
+            "english": "no large file"
+          }
+        },
+        {
+          "situation": "Non-specific items",
+          "example": {
+            "german": "ein schnelles Programm",
+            "english": "a fast program (any one)"
+          }
+        }
+      ],
+      "cases": {
+        "nominativ": {
+          "masculine": {
+            "ending": "-er",
+            "example": {
+              "german": "ein großer Mann",
+              "english": "a tall man",
+              "breakdown": {
+                "article": "ein",
+                "adjective": "groß → großer",
+                "noun": "Mann"
+              }
+            }
+          },
+          "neuter": {
+            "ending": "-es",
+            "example": {
+              "german": "ein kleines Kind",
+              "english": "a small child",
+              "breakdown": {
+                "article": "ein",
+                "adjective": "klein → kleines",
+                "noun": "Kind"
+              }
+            }
+          },
+          "feminine": {
+            "ending": "-e",
+            "example": {
+              "german": "eine neue Frau",
+              "english": "a new woman",
+              "breakdown": {
+                "article": "eine",
+                "adjective": "neu → neue",
+                "noun": "Frau"
+              }
+            }
+          },
+          "plural": {
+            "ending": "-en",
+            "example":
+              {
+                "german": "meine alten Bücher",
+                "english": "my old books",
+                "breakdown": {
+                  "article": "meine",
+                  "adjective": "alt → alten",
+                  "noun": "Bücher"
+                }
+              }
+
+          }
+        },
+        "akkusativ": {
+          "masculine": {
+            "ending": "-en",
+            "example": {
+              "german": "einen großen Mann",
+              "english": "a tall man",
+              "breakdown": {
+                "article": "einen",
+                "adjective": "groß → großen",
+                "noun": "Mann"
+              }
+            }
+          },
+          "neuter": {
+            "ending": "-es",
+            "example": {
+              "german": "ein kleines Kind",
+              "english": "a small child",
+              "breakdown": {
+                "article": "ein",
+                "adjective": "klein → kleines",
+                "noun": "Kind"
+              }
+            }
+          },
+          "feminine": {
+            "ending": "-e",
+            "example": {
+              "german": "eine neue Frau",
+              "english": "a new woman",
+              "breakdown": {
+                "article": "eine",
+                "adjective": "neu → neue",
+                "noun": "Frau"
+              }
+            }
+          },
+          "plural": {
+            "ending": "-en",
+            "example": {
+              "german": "meine alten Bücher",
+              "english": "my old books",
+              "breakdown": {
+                "article": "meine",
+                "adjective": "alt → alten",
+                "noun": "Bücher"
+              }
+            }
+          }
+        },
+        "dativ": {
+          "masculine": {
+            "ending": "-en",
+            "example": {
+              "german": "einem großen Mann",
+              "english": "to/for a tall man",
+              "breakdown": {
+                "article": "einem",
+                "adjective": "groß → großen",
+                "noun": "Mann"
+              }
+            }
+          },
+          "neuter": {
+            "ending": "-en",
+            "example": {
+              "german": "einem kleinen Kind",
+              "english": "to/for a small child",
+              "breakdown": {
+                "article": "einem",
+                "adjective": "klein → kleinen",
+                "noun": "Kind"
+              }
+            }
+          },
+          "feminine": {
+            "ending": "-en",
+            "example": {
+              "german": "einer neuen Frau",
+              "english": "to/for a new woman",
+              "breakdown": {
+                "article": "einer",
+                "adjective": "neu → neuen",
+                "noun": "Frau"
+              }
+            }
+          },
+          "plural": {
+            "ending": "-en",
+            "example": {
+              "german": "meinen alten Büchern",
+              "english": "to/for my old books",
+              "breakdown": {
+                "article": "meinen",
+                "adjective": "alt → alten",
+                "noun": "Büchern"
+              }
+            }
+          }
+        }
+      },
+      "additional_examples": [
+        {
+          "category": "possessive",
+          "examples": [
+            {
+              "german": "mein kleiner Hund",
+              "english": "my small dog"
+            },
+            {
+              "german": "deine neue Tasche",
+              "english": "your new bag"
+            }
+          ]
+        },
+        {
+          "category": "negative",
+          "examples": [
+            {
+              "german": "kein großes Haus",
+              "english": "no big house"
+            },
+            {
+              "german": "keine alten Bücher",
+              "english": "no old books"
+            }
+          ]
+        }
+      ]
+    },
+    "without_article": {
+      "description": "Adjective endings when no article is used (null article)",
+      "explanation": "Without articles, adjectives must carry all gender/case markers themselves, thus taking the strongest endings",
+      "pattern_hints": [
+        "Takes same endings as 'der words' in nominativ",
+        "Masculine/neuter dativ uses -em",
+        "Feminine dativ uses -er",
+        "Most other forms follow definite article patterns"
+      ],
+      "triggering_articles": "none",
+      "usage_situations": [
+        {
+          "situation": "With uncountable nouns",
+          "example": {
+            "german": "heißer Kaffee",
+            "english": "hot coffee"
+          }
+        },
+        {
+          "situation": "With plural nouns (when speaking generally)",
+          "example": {
+            "german": "neue Programme",
+            "english": "new programs (in general)"
+          }
+        },
+        {
+          "situation": "Materials and substances",
+          "example": {
+            "german": "sauberer Code",
+            "english": "clean code"
+          }
+        },
+        {
+          "situation": "With professions or nationalities",
+          "example": {
+            "german": "deutscher Entwickler",
+            "english": "German developer"
+          }
+        },
+        {
+          "situation": "Languages",
+          "example": {
+            "german": "modernes Deutsch",
+            "english": "modern German"
+          }
+        },
+        {
+          "situation": "Abstract concepts",
+          "example": {
+            "german": "neue Technologie",
+            "english": "new technology (in general)"
+          }
+        },
+        {
+          "situation": "With measurement or quantity",
+          "example": {
+            "german": "schneller Fortschritt",
+            "english": "rapid progress"
+          }
+        }
+      ],
+      "cases": {
+        "nominativ": {
+          "masculine": {
+            "ending": "-er",
+            "example": {
+              "german": "kalter Kaffee",
+              "english": "cold coffee",
+              "breakdown": {
+                "article": "-",
+                "adjective": "kalt → kalter",
+                "noun": "Kaffee"
+              }
+            }
+          },
+          "neuter": {
+            "ending": "-es",
+            "example": {
+              "german": "warmes Wasser",
+              "english": "warm water",
+              "breakdown": {
+                "article": "-",
+                "adjective": "warm → warmes",
+                "noun": "Wasser"
+              }
+            }
+          },
+          "feminine": {
+            "ending": "-e",
+            "example": {
+              "german": "frische Milch",
+              "english": "fresh milk",
+              "breakdown": {
+                "article": "-",
+                "adjective": "frisch → frische",
+                "noun": "Milch"
+              }
+            }
+          },
+          "plural": {
+            "ending": "-e",
+            "example": {
+              "german": "alte Bücher",
+              "english": "old books",
+              "breakdown": {
+                "article": "-",
+                "adjective": "alt → alte",
+                "noun": "Bücher"
+              }
+            }
+          }
+        },
+        "akkusativ": {
+          "masculine": {
+            "ending": "-en",
+            "example": {
+              "german": "kalten Kaffee",
+              "english": "cold coffee",
+              "breakdown": {
+                "article": "-",
+                "adjective": "kalt → kalten",
+                "noun": "Kaffee"
+              }
+            }
+          },
+          "neuter": {
+            "ending": "-es",
+            "example": {
+              "german": "warmes Wasser",
+              "english": "warm water",
+              "breakdown": {
+                "article": "-",
+                "adjective": "warm → warmes",
+                "noun": "Wasser"
+              }
+            }
+          },
+          "feminine": {
+            "ending": "-e",
+            "example": {
+              "german": "frische Milch",
+              "english": "fresh milk",
+              "breakdown": {
+                "article": "-",
+                "adjective": "frisch → frische",
+                "noun": "Milch"
+              }
+            }
+          },
+          "plural": {
+            "ending": "-e",
+            "example": {
+              "german": "alte Bücher",
+              "english": "old books",
+              "breakdown": {
+                "article": "-",
+                "adjective": "alt → alte",
+                "noun": "Bücher"
+              }
+            }
+          }
+        },
+        "dativ": {
+          "masculine": {
+            "ending": "-em",
+            "example": {
+              "german": "kaltem Kaffee",
+              "english": "with/to cold coffee",
+              "breakdown": {
+                "article": "-",
+                "adjective": "kalt → kaltem",
+                "noun": "Kaffee"
+              }
+            }
+          },
+          "neuter": {
+            "ending": "-em",
+            "example": {
+              "german": "warmem Wasser",
+              "english": "with/to warm water",
+              "breakdown": {
+                "article": "-",
+                "adjective": "warm → warmem",
+                "noun": "Wasser"
+              }
+            }
+          },
+          "feminine": {
+            "ending": "-er",
+            "example": {
+              "german": "frischer Milch",
+              "english": "with/to fresh milk",
+              "breakdown": {
+                "article": "-",
+                "adjective": "frisch → frischer",
+                "noun": "Milch"
+              }
+            }
+          },
+          "plural": {
+            "ending": "-en",
+            "example": {
+              "german": "alten Büchern",
+              "english": "with/to old books",
+              "breakdown": {
+                "article": "-",
+                "adjective": "alt → alten",
+                "noun": "Büchern"
+              }
+            }
+          }
+        }
+      },
+      "common_examples": {
+        "food_and_drink": [
+          {
+            "german": "heißer Tee",
+            "english": "hot tea"
+          },
+          {
+            "german": "frisches Brot",
+            "english": "fresh bread"
+          }
+        ],
+        "professions": [
+          {
+            "german": "deutscher Lehrer",
+            "english": "German teacher"
+          },
+          {
+            "german": "technische Entwicklerin",
+            "english": "technical developer"
+          }
+        ],
+        "materials": [
+          {
+            "german": "weiches Leder",
+            "english": "soft leather"
+          },
+          {
+            "german": "hartes Holz",
+            "english": "hard wood"
+          }
+        ]
+      }
+    }
+  },
+  "general_tips": [
+    "The ending depends on three factors: article type, case, and gender",
+    "Dativ case often uses -en endings",
+    "Plural typically uses -en except in nominativ/akkusativ without article",
+    "When in doubt with dativ, use -en"
+  ],
+  "memory_aids": [
+    "After definite articles, most endings are -e or -en",
+    "Without articles, use the der/die/das endings from nominativ",
+    "Dativ is the 'friendly' case - likes to end in -en"
+  ]
+}
