@@ -1,32 +1,35 @@
 {
   "adjective_patterns": {
-    "description": "German adjective endings change based on the article type, case, and gender",
+    "description": "German adjective endings change based on the article type, case, and gender.",
     "usage_hints": [
-      "Adjective endings depend on whether there's an article and what type it is",
-      "The ending changes based on case (nominativ, akkusativ, dativ)",
-      "Gender and number also affect the ending",
-      "The article 'takes over' some of the grammatical information"
+      "Adjective endings depend on whether there's an article and what type it is.",
+      "The ending changes based on case (Nominativ, Akkusativ, Dativ).",
+      "Gender and number also affect the ending.",
+      "The article 'takes over' some of the grammatical information."
     ],
     "after_definite_article": {
-      "description": "Adjective endings after der, die, das, die",
-      "explanation": "After definite articles, the adjective takes weaker endings because the article already carries strong gender/case markers",
+      "description": "Adjective endings after definite articles (der, die, das, die).",
+      "explanation": "Definite articles carry strong gender/case markers, so adjectives take weaker endings.",
       "pattern_hints": [
-        "Most endings are -e or -en",
-        "Plural always takes -en",
-        "Dativ always takes -en"
+        "Most endings are -e or -en.",
+        "Plural always takes -en.",
+        "Dativ always takes -en."
       ],
       "triggering_articles": [
         {
           "article": "der",
-          "meaning": "the (masculine)"
+          "meaning": "the (masculine)",
+          "type": "definite"
         },
         {
           "article": "die",
-          "meaning": "the (feminine/plural)"
+          "meaning": "the (feminine/plural)",
+          "type": "definite"
         },
         {
           "article": "das",
-          "meaning": "the (neuter)"
+          "meaning": "the (neuter)",
+          "type": "definite"
         }
       ],
       "usage_situations": [
@@ -34,14 +37,14 @@
           "situation": "Specific known objects",
           "example": {
             "german": "der alte Computer",
-            "english": "the old computer (a specific one)"
+            "english": "the old computer"
           }
         },
         {
           "situation": "Previously mentioned items",
           "example": {
-            "german": "das neue Buch... Das interessante Buch",
-            "english": "a new book... The interesting book"
+            "german": "das neue Buch... das interessante Buch",
+            "english": "the new book... the interesting book"
           }
         },
         {
@@ -55,7 +58,7 @@
           "situation": "General statements",
           "example": {
             "german": "die kleinen Kinder",
-            "english": "the small children (in general)"
+            "english": "the small children"
           }
         }
       ],
@@ -211,37 +214,18 @@
           }
         }
       },
-      "common_adjectives": [
-        {
-          "adjective": "groß",
-          "meaning": "big, tall",
-          "examples": ["der große Mann", "die große Frau"]
-        },
-        {
-          "adjective": "klein",
-          "meaning": "small",
-          "examples": ["das kleine Kind", "der kleine Hund"]
-        },
-        {
-          "adjective": "neu",
-          "meaning": "new",
-          "examples": ["das neue Auto", "die neue Tasche"]
-        },
-        {
-          "adjective": "alt",
-          "meaning": "old",
-          "examples": ["der alte Mann", "die alten Bücher"]
-        }
-      ]
+      "common_adjectives": [],
+      "additional_examples": [],
+      "common_examples": []
     },
     "after_indefinite_article": {
-      "description": "Adjective endings after ein-, kein-, mein- or possessive articles",
-      "explanation": "After indefinite articles and possessives, the adjective takes stronger endings because these articles don't carry all gender/case markers",
+      "description": "Adjective endings after indefinite articles, possessives, and 'kein-'.",
+      "explanation": "Indefinite articles and possessives do not carry full gender/case markers, so adjectives take stronger endings.",
       "pattern_hints": [
-        "Nominativ masculine uses -er (like 'der')",
-        "Nominativ/Akkusativ neuter uses -es (like 'das')",
-        "Feminine and plural follow similar patterns to definite articles",
-        "Dativ always takes -en"
+        "Nominativ masculine uses -er (like 'der').",
+        "Nominativ/Akkusativ neuter uses -es (like 'das').",
+        "Feminine and plural often follow -e and -en patterns.",
+        "Dativ always takes -en."
       ],
       "triggering_articles": [
         {
@@ -255,37 +239,39 @@
           "type": "negative"
         },
         {
-          "group": "possessive",
-          "articles": [
-            {
-              "article": "mein-",
-              "meaning": "my"
-            },
-            {
-              "article": "dein-",
-              "meaning": "your (informal)"
-            },
-            {
-              "article": "sein-",
-              "meaning": "his/its"
-            },
-            {
-              "article": "ihr-",
-              "meaning": "her/their"
-            },
-            {
-              "article": "unser-",
-              "meaning": "our"
-            },
-            {
-              "article": "euer-",
-              "meaning": "your (plural)"
-            },
-            {
-              "article": "Ihr-",
-              "meaning": "your (formal)"
-            }
-          ]
+          "article": "mein-",
+          "meaning": "my",
+          "type": "possessive"
+        },
+        {
+          "article": "dein-",
+          "meaning": "your (informal)",
+          "type": "possessive"
+        },
+        {
+          "article": "sein-",
+          "meaning": "his/its",
+          "type": "possessive"
+        },
+        {
+          "article": "ihr-",
+          "meaning": "her/their",
+          "type": "possessive"
+        },
+        {
+          "article": "unser-",
+          "meaning": "our",
+          "type": "possessive"
+        },
+        {
+          "article": "euer-",
+          "meaning": "your (plural)",
+          "type": "possessive"
+        },
+        {
+          "article": "Ihr-",
+          "meaning": "your (formal)",
+          "type": "possessive"
         }
       ],
       "usage_situations": [
@@ -293,7 +279,7 @@
           "situation": "Introducing new items",
           "example": {
             "german": "ein neuer Computer",
-            "english": "a new computer (first mention)"
+            "english": "a new computer"
           }
         },
         {
@@ -314,7 +300,7 @@
           "situation": "Non-specific items",
           "example": {
             "german": "ein schnelles Programm",
-            "english": "a fast program (any one)"
+            "english": "a fast program"
           }
         }
       ],
@@ -358,17 +344,15 @@
           },
           "plural": {
             "ending": "-en",
-            "example":
-              {
-                "german": "meine alten Bücher",
-                "english": "my old books",
-                "breakdown": {
-                  "article": "meine",
-                  "adjective": "alt → alten",
-                  "noun": "Bücher"
-                }
+            "example": {
+              "german": "meine alten Bücher",
+              "english": "my old books",
+              "breakdown": {
+                "article": "meine",
+                "adjective": "alt → alten",
+                "noun": "Bücher"
               }
-
+            }
           }
         },
         "akkusativ": {
@@ -472,6 +456,7 @@
           }
         }
       },
+      "common_adjectives": [],
       "additional_examples": [
         {
           "category": "possessive",
@@ -499,18 +484,19 @@
             }
           ]
         }
-      ]
+      ],
+      "common_examples": []
     },
     "without_article": {
-      "description": "Adjective endings when no article is used (null article)",
-      "explanation": "Without articles, adjectives must carry all gender/case markers themselves, thus taking the strongest endings",
+      "description": "Adjective endings when no article is used (null article).",
+      "explanation": "Without articles, adjectives carry all gender/case markers, taking the strongest endings.",
       "pattern_hints": [
-        "Takes same endings as 'der words' in nominativ",
-        "Masculine/neuter dativ uses -em",
-        "Feminine dativ uses -er",
-        "Most other forms follow definite article patterns"
+        "Takes the same endings as 'der/die/das' in nominativ.",
+        "Masculine/neuter dativ uses -em.",
+        "Feminine dativ uses -er.",
+        "Most other forms follow definite article patterns."
       ],
-      "triggering_articles": "none",
+      "triggering_articles": [],
       "usage_situations": [
         {
           "situation": "With uncountable nouns",
@@ -520,10 +506,10 @@
           }
         },
         {
-          "situation": "With plural nouns (when speaking generally)",
+          "situation": "With plural nouns (general sense)",
           "example": {
             "german": "neue Programme",
-            "english": "new programs (in general)"
+            "english": "new programs"
           }
         },
         {
@@ -534,7 +520,7 @@
           }
         },
         {
-          "situation": "With professions or nationalities",
+          "situation": "Professions or nationalities",
           "example": {
             "german": "deutscher Entwickler",
             "english": "German developer"
@@ -551,11 +537,11 @@
           "situation": "Abstract concepts",
           "example": {
             "german": "neue Technologie",
-            "english": "new technology (in general)"
+            "english": "new technology"
           }
         },
         {
-          "situation": "With measurement or quantity",
+          "situation": "Measurement or quantity",
           "example": {
             "german": "schneller Fortschritt",
             "english": "rapid progress"
@@ -714,49 +700,82 @@
           }
         }
       },
-      "common_examples": {
-        "food_and_drink": [
-          {
-            "german": "heißer Tee",
-            "english": "hot tea"
-          },
-          {
-            "german": "frisches Brot",
-            "english": "fresh bread"
-          }
-        ],
-        "professions": [
-          {
-            "german": "deutscher Lehrer",
-            "english": "German teacher"
-          },
-          {
-            "german": "technische Entwicklerin",
-            "english": "technical developer"
-          }
-        ],
-        "materials": [
-          {
-            "german": "weiches Leder",
-            "english": "soft leather"
-          },
-          {
-            "german": "hartes Holz",
-            "english": "hard wood"
-          }
-        ]
-      }
+      "common_adjectives": [],
+      "additional_examples": [],
+      "common_examples": [
+        {
+          "category": "food_and_drink",
+          "examples": [
+            {
+              "german": "heißer Tee",
+              "english": "hot tea"
+            },
+            {
+              "german": "frisches Brot",
+              "english": "fresh bread"
+            }
+          ]
+        },
+        {
+          "category": "professions",
+          "examples": [
+            {
+              "german": "deutscher Lehrer",
+              "english": "German teacher"
+            },
+            {
+              "german": "technische Entwicklerin",
+              "english": "technical developer"
+            }
+          ]
+        },
+        {
+          "category": "materials",
+          "examples": [
+            {
+              "german": "weiches Leder",
+              "english": "soft leather"
+            },
+            {
+              "german": "hartes Holz",
+              "english": "hard wood"
+            }
+          ]
+        }
+      ]
     }
   },
+  "common_adjectives": [
+    {
+      "adjective": "groß",
+      "meaning": "big, tall",
+      "examples": ["der große Mann", "die große Frau"]
+    },
+    {
+      "adjective": "klein",
+      "meaning": "small",
+      "examples": ["das kleine Kind", "der kleine Hund"]
+    },
+    {
+      "adjective": "neu",
+      "meaning": "new",
+      "examples": ["das neue Auto", "die neue Tasche"]
+    },
+    {
+      "adjective": "alt",
+      "meaning": "old",
+      "examples": ["der alte Mann", "die alten Bücher"]
+    }
+  ],
   "general_tips": [
-    "The ending depends on three factors: article type, case, and gender",
-    "Dativ case often uses -en endings",
-    "Plural typically uses -en except in nominativ/akkusativ without article",
-    "When in doubt with dativ, use -en"
+    "The ending depends on article type, case, and gender.",
+    "Dativ case often uses -en endings.",
+    "Plural typically uses -en except in nominativ/akkusativ without article.",
+    "When in doubt with dativ, use -en."
   ],
   "memory_aids": [
-    "After definite articles, most endings are -e or -en",
-    "Without articles, use the der/die/das endings from nominativ",
-    "Dativ is the 'friendly' case - likes to end in -en"
+    "After definite articles, most endings are -e or -en.",
+    "Without articles, use the der/die/das endings from nominativ.",
+    "Dativ is the 'friendly' case - likes to end in -en."
   ]
 }
