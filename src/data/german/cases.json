@@ -1,0 +1,710 @@
+{
+  "cases": {
+    "overview": {
+      "basic_rules": [
+        {
+          "case": "Nominativ",
+          "basic_rule": "Usually the subject",
+          "question_words": ["Wer?", "Was?"],
+          "quick_tip": "If you can replace with 'er' (he)"
+        },
+        {
+          "case": "Akkusativ",
+          "basic_rule": "What or Whom is affected",
+          "question_words": ["Was?", "Wen?"],
+          "quick_tip": "If you can replace with 'ihn' (him)"
+        },
+        {
+          "case": "Dativ",
+          "basic_rule": "To whom or For whom the action is directed",
+          "question_words": ["Wem?", "Für wen?"],
+          "quick_tip": "If you can replace with 'ihm' (to him)"
+        }
+      ]
+    },
+    "detailed": {
+      "nominativ": {
+        "name": "Nominativ",
+        "description": "The subject case - who/what performs the action",
+        "usage": [
+          "Subject of a sentence",
+          "After verbs: sein, werden, bleiben"
+        ],
+        "key_questions": {
+          "who": "Wer?",
+          "what": "Was?"
+        },
+        "trigger_verbs": [
+          {
+            "verb": "sein",
+            "meaning": "to be",
+            "example": {
+              "german": "Das ist ein Apfel",
+              "english": "That is an apple"
+            }
+          },
+          {
+            "verb": "werden",
+            "meaning": "to become",
+            "example": {
+              "german": "Ich werde ein Arzt",
+              "english": "I'm becoming a doctor"
+            }
+          },
+          {
+            "verb": "bleiben",
+            "meaning": "to stay",
+            "example": {
+              "german": "Er bleibt ein Programmierer",
+              "english": "He remains a programmer"
+            }
+          }
+        ],
+        "examples": [
+          {
+            "german": "Der Code kompiliert",
+            "english": "The code compiles",
+            "explanation": "Code is the subject performing the action"
+          },
+          {
+            "german": "Die Software funktioniert",
+            "english": "The software works",
+            "explanation": "Software is the subject"
+          },
+          {
+            "german": "Das System wird aktualisiert",
+            "english": "The system is being updated",
+            "explanation": "System is the subject being acted upon"
+          }
+        ]
+      },
+      "akkusativ": {
+        "name": "Akkusativ",
+        "description": "The direct object case - what/whom is directly affected by the action",
+        "usage": [
+          "Direct object in the sentence",
+          "After specific prepositions",
+          "For motion/direction with two-way prepositions"
+        ],
+        "key_questions": {
+          "what": "Was?",
+          "whom": "Wen?"
+        },
+        "trigger_verbs": [
+          {
+            "verb": "haben",
+            "meaning": "to have",
+            "example": {
+              "german": "Ich habe einen Computer",
+              "english": "I have a computer"
+            }
+          },
+          {
+            "verb": "brauchen",
+            "meaning": "to need",
+            "example": {
+              "german": "Ich brauche den Code",
+              "english": "I need the code"
+            }
+          },
+          {
+            "verb": "sehen",
+            "meaning": "to see",
+            "example": {
+              "german": "Ich sehe den Fehler",
+              "english": "I see the error"
+            }
+          },
+          {
+            "verb": "programmieren",
+            "meaning": "to program",
+            "example": {
+              "german": "Ich programmiere die Anwendung",
+              "english": "I program the application"
+            }
+          },
+          {
+            "verb": "entwickeln",
+            "meaning": "to develop",
+            "example": {
+              "german": "Wir entwickeln die Software",
+              "english": "We develop the software"
+            }
+          },
+          {
+            "verb": "testen",
+            "meaning": "to test",
+            "example": {
+              "german": "Sie testen den Code",
+              "english": "They test the code"
+            }
+          },
+          {
+            "verb": "implementieren",
+            "meaning": "to implement",
+            "example": {
+              "german": "Wir implementieren die Funktion",
+              "english": "We implement the function"
+            }
+          },
+          {
+            "verb": "debuggen",
+            "meaning": "to debug",
+            "example": {
+              "german": "Ich debugge den Code",
+              "english": "I debug the code"
+            }
+          },
+          {
+            "verb": "optimieren",
+            "meaning": "to optimize",
+            "example": {
+              "german": "Sie optimieren die Leistung",
+              "english": "They optimize the performance"
+            }
+          },
+          {
+            "verb": "kaufen"
+          },
+          {
+            "verb": "trinken"
+          },
+          {
+            "verb": "essen"
+          },
+          {
+            "verb": "lesen"
+          },
+          {
+            "verb": "finden"
+          },
+          {
+            "verb": "hören"
+          },
+          {
+            "verb": "machen"
+          },
+          {
+            "verb": "etc..."
+          }
+        ],
+        "prepositions": {
+          "akkusativ_only": [
+            {
+              "preposition": "durch",
+              "meaning": "through",
+              "example": {
+                "german": "durch den Code gehen",
+                "english": "go through the code"
+              }
+            },
+            {
+              "preposition": "für",
+              "meaning": "for",
+              "example": {
+                "german": "für das Projekt",
+                "english": "for the project"
+              }
+            },
+            {
+              "preposition": "ohne",
+              "meaning": "without",
+              "example": {
+                "german": "ohne den Compiler",
+                "english": "without the compiler"
+              }
+            },
+            {
+              "preposition": "gegen",
+              "meaning": "against",
+              "example": {
+                "german": "gegen den Bug",
+                "english": "against the bug"
+              }
+            },
+            {
+              "preposition": "um",
+              "meaning": "around",
+              "example": {
+                "german": "um das Problem",
+                "english": "around the problem"
+              }
+            },
+            {
+              "preposition": "bis",
+              "meaning": "until",
+              "example": {
+                "german": "bis den Release",
+                "english": "until the release"
+              }
+            },
+            {
+              "preposition": "entlang",
+              "meaning": "along",
+              "example": {
+                "german": "den Code entlang",
+                "english": "along the code"
+              }
+            },
+            {
+              "preposition": "wider",
+              "meaning": "against"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "german": "Ich schreibe den Code",
+            "english": "I write the code",
+            "explanation": "Code is the direct object being written"
+          },
+          {
+            "german": "Wir testen die Software",
+            "english": "We test the software",
+            "explanation": "Software is being directly affected by testing"
+          },
+          {
+            "german": "Er startet den Server",
+            "english": "He starts the server",
+            "explanation": "Server is the direct object being started"
+          },
+          {
+            "german": "Sie aktualisiert das System",
+            "english": "She updates the system",
+            "explanation": "System is directly affected by the update"
+          }
+        ]
+      },
+      "dativ": {
+        "name": "Dativ",
+        "description": "The indirect object case - to/for whom the action is directed",
+        "usage": [
+          "Indirect object in the sentence",
+          "After specific prepositions",
+          "For static location with two-way prepositions",
+          "After specific verbs that require dative"
+        ],
+        "key_questions": {
+          "to_whom": "Wem?",
+          "for_whom": "Für wen?"
+        },
+        "trigger_verbs": [
+          {
+            "verb": "helfen",
+            "meaning": "to help",
+            "example": {
+              "german": "Ich helfe dem Benutzer",
+              "english": "I help the user"
+            }
+          },
+          {
+            "verb": "danken",
+            "meaning": "to thank",
+            "example": {
+              "german": "Ich danke dem Team",
+              "english": "I thank the team"
+            }
+          },
+          {
+            "verb": "gehören",
+            "meaning": "to belong",
+            "example": {
+              "german": "Das gehört dem System",
+              "english": "That belongs to the system"
+            }
+          },
+          {
+            "verb": "folgen",
+            "meaning": "to follow",
+            "example": {
+              "german": "Das Programm folgt dem Protokoll",
+              "english": "The program follows the protocol"
+            }
+          },
+          {
+            "verb": "glauben",
+            "meaning": "to believe"
+          },
+          {
+            "verb": "passen",
+            "meaning": "to fit"
+          },
+          {
+            "verb": "fehlen",
+            "meaning": "to miss/to be missing"
+          },
+          {
+            "verb": "vertrauen",
+            "meaning": "to trust"
+          },
+          {
+            "verb": "schmecken",
+            "meaning": "to taste"
+          },
+          {
+            "verb": "raten",
+            "meaning": "to advise"
+          }
+        ],
+        "prepositions": {
+          "dativ_only": [
+            {
+              "preposition": "mit",
+              "meaning": "with",
+              "example": {
+                "german": "mit dem Computer",
+                "english": "with the computer"
+              }
+            },
+            {
+              "preposition": "nach",
+              "meaning": "after, to",
+              "example": {
+                "german": "nach dem Update",
+                "english": "after the update"
+              }
+            },
+            {
+              "preposition": "bei",
+              "meaning": "at, with",
+              "example": {
+                "german": "bei der Entwicklung",
+                "english": "during development"
+              }
+            },
+            {
+              "preposition": "aus",
+              "meaning": "from, out of",
+              "example": {
+                "german": "aus dem Ordner",
+                "english": "from the folder"
+              }
+            },
+            {
+              "preposition": "zu",
+              "meaning": "to",
+              "example": {
+                "german": "zu dem Server",
+                "english": "to the server"
+              }
+            },
+            {
+              "preposition": "von",
+              "meaning": "from",
+              "example": {
+                "german": "von dem Programm",
+                "english": "from the program"
+              }
+            },
+            {
+              "preposition": "seit",
+              "meaning": "since"
+            },
+            {
+              "preposition": "gegenüber",
+              "meaning": "opposite"
+            },
+            {
+              "preposition": "außer",
+              "meaning": "except for"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "german": "Ich gebe dem Benutzer Zugriff",
+            "english": "I give the user access",
+            "explanation": "The user is the indirect object receiving access"
+          },
+          {
+            "german": "Das System folgt dem Protokoll",
+            "english": "The system follows the protocol",
+            "explanation": "Protocol is the indirect object being followed"
+          },
+          {
+            "german": "Wir helfen dem Kunden",
+            "english": "We help the customer",
+            "explanation": "Customer is receiving the help (indirect object)"
+          },
+          {
+            "german": "Die Datei liegt auf dem Server",
+            "english": "The file is on the server",
+            "explanation": "Static location using two-way preposition"
+          }
+        ]
+      }
+    },
+    "two_way_prepositions": {
+      "description": "Prepositions that can take either akkusativ (for motion/direction) or dativ (for static location)",
+      "usage_rule": {
+        "akkusativ": "Used when there is motion or direction change (movement to a new position)",
+        "dativ": "Used for static location or position (no movement)",
+        "memory_aid": "Motion (Akkusativ) = writing to a new location; Location (Dativ) = reading from current location"
+      },
+      "prepositions": [
+        {
+          "preposition": "an",
+          "meaning": "on, at",
+          "examples": {
+            "akkusativ": {
+              "german": "Ich stelle das Buch an die Wand",
+              "english": "I put the book on the wall",
+              "explanation": "Motion - moving the book to the wall"
+            },
+            "dativ": {
+              "german": "Das Bild hängt an der Wand",
+              "english": "The picture hangs on the wall",
+              "explanation": "Static location - picture is already there"
+            }
+          }
+        },
+        {
+          "preposition": "auf",
+          "meaning": "on, onto",
+          "examples": {
+            "akkusativ": {
+              "german": "Ich lade die Datei auf den Server",
+              "english": "I upload the file onto the server",
+              "explanation": "Motion - moving file to server"
+            },
+            "dativ": {
+              "german": "Die Datei ist auf dem Server",
+              "english": "The file is on the server",
+              "explanation": "Static location - file location"
+            }
+          }
+        },
+        {
+          "preposition": "hinter",
+          "meaning": "behind",
+          "examples": {
+            "akkusativ": {
+              "german": "Ich schreibe Code hinter die Funktion",
+              "english": "I write code behind the function",
+              "explanation": "Motion - adding code to new location"
+            },
+            "dativ": {
+              "german": "Der Bug ist hinter dem Login",
+              "english": "The bug is behind the login",
+              "explanation": "Static location - where the bug is"
+            }
+          }
+        },
+        {
+          "preposition": "in",
+          "meaning": "in, into",
+          "examples": {
+            "akkusativ": {
+              "german": "Ich speichere die Datei in den Ordner",
+              "english": "I save the file into the folder",
+              "explanation": "Motion - moving file into folder"
+            },
+            "dativ": {
+              "german": "Die Datei ist in dem Ordner",
+              "english": "The file is in the folder",
+              "explanation": "Static location - where the file is"
+            }
+          }
+        },
+        {
+          "preposition": "neben",
+          "meaning": "next to",
+          "examples": {
+            "akkusativ": {
+              "german": "Ich stelle den Monitor neben den Computer",
+              "english": "I put the monitor next to the computer",
+              "explanation": "Motion - moving monitor"
+            },
+            "dativ": {
+              "german": "Der Monitor steht neben dem Computer",
+              "english": "The monitor is next to the computer",
+              "explanation": "Static location"
+            }
+          }
+        },
+        {
+          "preposition": "über",
+          "meaning": "above, over",
+          "examples": {
+            "akkusativ": {
+              "german": "Ich schreibe Kommentare über den Code",
+              "english": "I write comments over the code",
+              "explanation": "Motion - adding comments"
+            },
+            "dativ": {
+              "german": "Die Kommentare sind über dem Code",
+              "english": "The comments are above the code",
+              "explanation": "Static location"
+            }
+          }
+        },
+        {
+          "preposition": "unter",
+          "meaning": "under",
+          "examples": {
+            "akkusativ": {
+              "german": "Ich füge Text unter den Header",
+              "english": "I add text under the header",
+              "explanation": "Motion - adding text"
+            },
+            "dativ": {
+              "german": "Der Text ist unter dem Header",
+              "english": "The text is under the header",
+              "explanation": "Static location"
+            }
+          }
+        },
+        {
+          "preposition": "vor",
+          "meaning": "in front of",
+          "examples": {
+            "akkusativ": {
+              "german": "Ich setze eine Validierung vor die Funktion",
+              "english": "I put a validation in front of the function",
+              "explanation": "Motion - adding validation"
+            },
+            "dativ": {
+              "german": "Die Validierung ist vor der Funktion",
+              "english": "The validation is in front of the function",
+              "explanation": "Static location"
+            }
+          }
+        },
+        {
+          "preposition": "zwischen",
+          "meaning": "between",
+          "examples": {
+            "akkusativ": {
+              "german": "Ich füge Code zwischen die Funktionen",
+              "english": "I insert code between the functions",
+              "explanation": "Motion - inserting code"
+            },
+            "dativ": {
+              "german": "Der Code ist zwischen den Funktionen",
+              "english": "The code is between the functions",
+              "explanation": "Static location"
+            }
+          }
+        }
+      ]
+    },
+    "memory_aids": {
+      "case_logic": {
+        "title": "Case Logic for Developers",
+        "comparisons": [
+          {
+            "case": "Nominativ",
+            "programming_comparison": "Like the main() function - the subject that starts the action",
+            "example": {
+              "german": "Der Code ist neu",
+              "english": "The code is new",
+              "explanation": "Code is the subject, like main()"
+            }
+          },
+          {
+            "case": "Akkusativ",
+            "programming_comparison": "Like function parameters - the direct object being affected",
+            "example": {
+              "german": "Ich pushe den Code",
+              "english": "I push the code",
+              "explanation": "Code is the parameter being acted upon"
+            }
+          },
+          {
+            "case": "Dativ",
+            "programming_comparison": "Like helper function parameters - the indirect object receiving the action",
+            "example": {
+              "german": "Ich gebe dem System Daten",
+              "english": "I give the system data",
+              "explanation": "System is receiving the data indirectly"
+            }
+          }
+        ]
+      },
+      "common_scenarios": {
+        "version_control": {
+          "title": "Version Control Examples",
+          "examples": [
+            {
+              "case": "Nominativ",
+              "german": "Der Code ist neu",
+              "english": "The code is new"
+            },
+            {
+              "case": "Akkusativ",
+              "german": "Ich pushe den Code",
+              "english": "I push the code"
+            },
+            {
+              "case": "Dativ",
+              "german": "Ich folge dem Branch",
+              "english": "I follow the branch"
+            }
+          ]
+        },
+        "debugging": {
+          "title": "Debug Process Examples",
+          "examples": [
+            {
+              "case": "Nominativ",
+              "german": "Der Bug existiert",
+              "english": "The bug exists"
+            },
+            {
+              "case": "Akkusativ",
+              "german": "Ich finde den Bug",
+              "english": "I find the bug"
+            },
+            {
+              "case": "Dativ",
+              "german": "Ich helfe dem System",
+              "english": "I help the system"
+            }
+          ]
+        },
+        "development": {
+          "title": "Development Examples",
+          "examples": [
+            {
+              "case": "Nominativ",
+              "german": "Die Funktion läuft",
+              "english": "The function runs"
+            },
+            {
+              "case": "Akkusativ",
+              "german": "Ich schreibe die Funktion",
+              "english": "I write the function"
+            },
+            {
+              "case": "Dativ",
+              "german": "Ich gebe der Funktion Parameter",
+              "english": "I give the function parameters"
+            }
+          ]
+        }
+      },
+      "general_tips": [
+        "Think of Nominativ as the doer of the action",
+        "Akkusativ is what's being directly affected",
+        "Dativ is who/what receives the action indirectly",
+        "When in doubt about two-way prepositions, ask if there's movement",
+        "Dative prepositions often indicate relationships or static positions",
+        "Accusative prepositions often indicate direction or purpose"
+      ],
+      "quick_tests": [
+        {
+          "name": "Subject Test",
+          "description": "If you can replace it with 'er/sie/es', it's Nominativ"
+        },
+        {
+          "name": "Direct Object Test",
+          "description": "If you can replace it with 'ihn', it's Akkusativ"
+        },
+        {
+          "name": "Indirect Object Test",
+          "description": "If you can replace it with 'ihm', it's Dativ"
+        }
+      ]
+    }
+  }
+}
