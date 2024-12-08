@@ -13,7 +13,7 @@ const ArticlesPage = () => {
         { id: 'negative_article', title: 'Negative Articles' },
         { id: 'personal_pronouns', title: 'Personal Pronouns' },
         { id: 'possessive_articles', title: 'Possessive Articles' },
-        { id: 'endings_pattern', title: 'Endings Pattern' } // New tab for endings pattern
+        { id: 'endings_pattern', title: 'Endings Pattern' }
     ];
 
     const togglePossessive = (type) => {
@@ -232,7 +232,6 @@ const ArticlesPage = () => {
     const renderPossessives = (data) => {
         return (
             <div className="space-y-6">
-                {/* Singular Possessors */}
                 <div className="mb-6">
                     <h4 className="text-lg font-medium text-gray-300 mb-4">Singular Possessors</h4>
                     <div className="space-y-4">
@@ -249,7 +248,6 @@ const ArticlesPage = () => {
                     </div>
                 </div>
 
-                {/* Plural Possessors */}
                 <div className="mb-6">
                     <h4 className="text-lg font-medium text-gray-300 mb-4">Plural Possessors</h4>
                     <div className="space-y-4">
@@ -266,7 +264,6 @@ const ArticlesPage = () => {
                     </div>
                 </div>
 
-                {/* Formal */}
                 <div>
                     <h4 className="text-lg font-medium text-gray-300 mb-4">Formal</h4>
                     <div className="space-y-4">
@@ -294,23 +291,20 @@ const ArticlesPage = () => {
 
             {key === 'possessive_articles' ? (
                 <div>
-                    {/* Tabs */}
-                    <div className="mb-6 border-b border-gray-700">
+                    <div className="mb-6 border-b border-gray-700 flex">
                         <button
                             onClick={() => setPossessiveView('overview')}
-                            className={`px-4 py-2 font-medium ${possessiveView === 'overview' ? 'text-purple-400 border-b-2 border-purple-400' : 'text-gray-400'}`}
+                            className={`px-4 py-2 font-medium ${possessiveView === 'overview' ? 'text-purple-400 border-b-2 border-purple-400' : 'text-gray-400 hover:text-gray-300'}`}
                         >
                             Overview
                         </button>
                         <button
                             onClick={() => setPossessiveView('detailed')}
-                            className={`px-4 py-2 font-medium ${possessiveView === 'detailed' ? 'text-purple-400 border-b-2 border-purple-400' : 'text-gray-400'}`}
+                            className={`px-4 py-2 font-medium ${possessiveView === 'detailed' ? 'text-purple-400 border-b-2 border-purple-400' : 'text-gray-400 hover:text-gray-300'}`}
                         >
                             Detailed Examples
                         </button>
                     </div>
-
-                    {/* Content */}
                     {possessiveView === 'overview' ? renderPossessiveSummaryTable(data) : renderPossessives(data)}
                 </div>
             ) : (
@@ -336,14 +330,13 @@ const ArticlesPage = () => {
     );
 
     const renderDefiniteArticlesPattern = (pattern) => {
-        // Transform the pattern into a table
         const genders = Object.keys(pattern.patterns);
         const cases = ["nominativ", "akkusativ", "dativ"];
 
         return (
-            <div className="mb-6">
-                <h3 className="text-lg font-semibold text-gray-300 mb-2">Definite Articles Pattern</h3>
-                <p className="text-gray-400 text-sm mb-4">{pattern.description}</p>
+            <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 space-y-4">
+                <h3 className="text-lg font-bold text-white">Definite Articles Pattern</h3>
+                {pattern.description && <p className="text-gray-400 text-sm">{pattern.description}</p>}
                 <div className="overflow-x-auto">
                     <table className="w-full text-sm border-collapse">
                         <thead>
@@ -361,9 +354,7 @@ const ArticlesPage = () => {
                                 {genders.map(g => {
                                     const form = pattern.patterns[g][c];
                                     return (
-                                        <td key={g} className="p-2 text-gray-200">
-                                            {form}
-                                        </td>
+                                        <td key={g} className="p-2 text-gray-200">{form}</td>
                                     );
                                 })}
                             </tr>
@@ -380,9 +371,9 @@ const ArticlesPage = () => {
         const cases = ["nominativ", "akkusativ", "dativ"];
 
         return (
-            <div className="mb-6">
-                <h3 className="text-lg font-semibold text-gray-300 mb-2">Ein-Word Pattern</h3>
-                <p className="text-gray-400 text-sm mb-4">{pattern.description}</p>
+            <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 space-y-4">
+                <h3 className="text-lg font-bold text-white">Ein-Word Pattern</h3>
+                {pattern.description && <p className="text-gray-400 text-sm">{pattern.description}</p>}
                 <div className="overflow-x-auto">
                     <table className="w-full text-sm border-collapse">
                         <thead>
@@ -401,8 +392,7 @@ const ArticlesPage = () => {
                                     const forms = pattern.patterns[g];
                                     const form = forms[c];
                                     const note = g === "plural" && forms.note ?
-                                        <div className="text-xs text-gray-500 italic">{forms.note}</div>
-                                        : null;
+                                        <div className="text-xs text-gray-500 italic">{forms.note}</div> : null;
                                     return (
                                         <td key={g} className="p-2 text-gray-200 align-top">
                                             {form}
@@ -420,9 +410,9 @@ const ArticlesPage = () => {
     };
 
     const renderSummarizedEndingsReference = (ref) => (
-        <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-300 mb-2">Summarized Endings Reference</h3>
-            <p className="text-gray-400 text-sm mb-4">{ref.description}</p>
+        <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 space-y-4">
+            <h3 className="text-lg font-bold text-white">Summarized Endings Reference</h3>
+            {ref.description && <p className="text-gray-400 text-sm">{ref.description}</p>}
             <div className="overflow-x-auto">
                 <table className="w-full text-sm border-collapse">
                     <thead>
@@ -446,15 +436,6 @@ const ArticlesPage = () => {
 
     const renderEndingsPattern = (data) => (
         <div className="mt-6 space-y-6">
-            <p className="text-gray-300 mb-2">{data.description}</p>
-
-            {/* Instead of a lot of text, keep explanation minimal or optional */}
-            {data.explanation && data.explanation.note && (
-                <div className="bg-gray-800/50 rounded p-3 text-gray-300 text-sm italic">
-                    {data.explanation.note}
-                </div>
-            )}
-
             {data.definite_articles_pattern && renderDefiniteArticlesPattern(data.definite_articles_pattern)}
             {data.ein_word_pattern && renderEinWordPattern(data.ein_word_pattern)}
             {data.summarized_endings_reference && renderSummarizedEndingsReference(data.summarized_endings_reference)}
@@ -462,55 +443,70 @@ const ArticlesPage = () => {
     );
 
     return (
-        <div className="min-h-screen bg-gray-900">
-            <div className="container mx-auto px-4 py-8">
-                <div className="max-w-4xl mx-auto">
-                    {/* Title Section */}
-                    <div className="mb-8">
-                        <h1 className="text-3xl font-bold text-white">German Articles</h1>
-                        <p className="text-gray-400 mt-2">
-                            Learn about German articles and their various forms, endings, and usage.
-                        </p>
-                    </div>
+        <>
+            {/* Add custom scrollbar hiding */}
+            <style>
+                {`
+                    .tabs-container::-webkit-scrollbar {
+                        display: none;
+                    }
+                    .tabs-container {
+                        -ms-overflow-style: none; 
+                        scrollbar-width: none; 
+                    }
+                `}
+            </style>
 
-                    {/* Main Card with Tabs */}
-                    <div className="bg-gray-800/50 rounded-xl border border-gray-700">
-                        {/* Tabs */}
-                        <div className="flex overflow-x-auto border-b border-gray-700">
-                            {articleTypes.map((type) => (
-                                <button
-                                    key={type.id}
-                                    onClick={() => setActiveTab(type.id)}
-                                    className={`px-4 py-3 whitespace-nowrap font-medium transition-colors ${
-                                        activeTab === type.id
-                                            ? 'text-purple-400 border-b-2 border-purple-400'
-                                            : 'text-gray-400 hover:text-gray-300'
-                                    }`}
-                                >
-                                    {type.title}
-                                </button>
-                            ))}
+            <div className="min-h-screen bg-gray-900">
+                <div className="container mx-auto px-4 py-8">
+                    <div className="max-w-4xl mx-auto">
+                        {/* Title Section */}
+                        <div className="mb-8">
+                            <h1 className="text-3xl font-bold text-white">German Articles</h1>
+                            <p className="text-gray-400 mt-2">
+                                Learn about German articles and their various forms, endings, and usage.
+                            </p>
                         </div>
 
-                        {/* Content */}
-                        <div className="p-6 text-sm sm:text-base">
-                            {activeTab !== 'endings_pattern' && Object.entries(articlesJson).map(([key, data]) =>
-                                    activeTab === key && (
-                                        <div key={key}>
-                                            <p className="text-gray-400">{data.description}</p>
-                                            {renderArticleContent(key, data)}
-                                        </div>
-                                    )
-                            )}
+                        {/* Main Card with Tabs */}
+                        <div className="bg-gray-800/50 rounded-xl border border-gray-700">
+                            {/* Tabs */}
+                            <div className="flex overflow-x-auto border-b border-gray-700 tabs-container">
+                                {articleTypes.map((type) => (
+                                    <button
+                                        key={type.id}
+                                        onClick={() => setActiveTab(type.id)}
+                                        className={`px-4 py-3 whitespace-nowrap font-medium transition-colors ${
+                                            activeTab === type.id
+                                                ? 'text-purple-400 border-b-2 border-purple-400'
+                                                : 'text-gray-400 hover:text-gray-300'
+                                        }`}
+                                    >
+                                        {type.title}
+                                    </button>
+                                ))}
+                            </div>
 
-                            {activeTab === 'endings_pattern' && articlesJson.endings_pattern && (
-                                renderEndingsPattern(articlesJson.endings_pattern)
-                            )}
+                            {/* Content */}
+                            <div className="p-6 text-sm sm:text-base">
+                                {activeTab !== 'endings_pattern' && Object.entries(articlesJson).map(([key, data]) =>
+                                        activeTab === key && (
+                                            <div key={key}>
+                                                <p className="text-gray-400">{data.description}</p>
+                                                {renderArticleContent(key, data)}
+                                            </div>
+                                        )
+                                )}
+
+                                {activeTab === 'endings_pattern' && articlesJson.endings_pattern && (
+                                    renderEndingsPattern(articlesJson.endings_pattern)
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
