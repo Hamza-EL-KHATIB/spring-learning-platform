@@ -44,6 +44,9 @@ import CodeReviewsPage from "./pages/topics/bestPractices/CodeReviewsPage";
 import LearningPortal from './pages/LearningPortal';
 
 import GermanCasesPage from "./pages/topics/german/GermanCasesPage";
+import ArticlesPage from "./pages/topics/german/ArticlesPage";
+import AdjectivesPage from "./pages/topics/german/AdjectivesPage";
+import CasesPage from "./pages/topics/german/CasesPage";
 
 
 const App = () => {
@@ -58,6 +61,9 @@ const App = () => {
                     <Route path="/learn/konjugation" element={<KonjugationPage />} />
                     <Route path="/learn/german" element={<LearningPortal />} />
                     <Route path="/learn/german-cases" element={<GermanCasesPage />} />
+                    <Route path="/german/articles" element={<ArticlesPage />} />
+                    <Route path="/german/adjectives" element={<AdjectivesPage />} />
+                    <Route path="/german/cases" element={<CasesPage />} />
 
 
                     {/* Java Routes */}
