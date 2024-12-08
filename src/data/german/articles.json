@@ -524,42 +524,36 @@
     }
   },
   "endings_pattern": {
-    "description": "A reference showing how endings are added to base forms for different cases, genders, and numbers. This focuses on the patterns of endings rather than just the final forms.",
-    "explanation": {
-      "note": "We start from a 'base form' and then show how each case/gender changes the ending. For 'ein-words' (ein, mein, dein, sein, ihr, unser, euer, kein, Ihr), the masculine nominative and neuter nominative/akkusativ often have no extra ending, while feminine and plural typically add '-e'. Cases like akkusativ masculine often add '-en', dative masculine/neuter often add '-em', dative feminine adds '-er', and plural dative adds '-en'."
-    },
-
     "definite_articles_pattern": {
       "description": "Definite articles (der, die, das) carry distinct forms, but the endings can be observed as patterns.",
       "patterns": {
         "masculine": {
-          "nominativ": "der (no extra ending, base: -r)",
-          "akkusativ": "den (-en)",
-          "dativ": "dem (-em)"
+          "nominativ": "der",
+          "akkusativ": "den (-n)",
+          "dativ": "dem (-m)"
         },
         "feminine": {
-          "nominativ": "die (-e)",
-          "akkusativ": "die (-e)",
-          "dativ": "der (-er)"
+          "nominativ": "die",
+          "akkusativ": "die",
+          "dativ": "der (-r)"
         },
         "neuter": {
-          "nominativ": "das (no extra ending, base: -s)",
-          "akkusativ": "das (no extra ending, base: -s)",
+          "nominativ": "das",
+          "akkusativ": "das",
           "dativ": "dem (-em)"
         },
         "plural": {
-          "nominativ": "die (-e)",
-          "akkusativ": "die (-e)",
+          "nominativ": "die",
+          "akkusativ": "die",
           "dativ": "den (-en)"
         }
       }
     },
-
     "ein_word_pattern": {
       "description": "Ein-words (ein, mein, dein, sein, ihr, unser, euer, kein, Ihr) follow the same pattern. The base form is like 'ein', which has no ending in masculine nominativ and neuter nominativ/akkusativ. Other genders and cases add predictable endings.",
       "patterns": {
         "masculine": {
-          "nominativ": "ein (no ending)",
+          "nominativ": "ein",
           "akkusativ": "einen (-en)",
           "dativ": "einem (-em)"
         },
@@ -569,19 +563,17 @@
           "dativ": "einer (-er)"
         },
         "neuter": {
-          "nominativ": "ein (no ending)",
-          "akkusativ": "ein (no ending)",
+          "nominativ": "ein",
+          "akkusativ": "ein",
           "dativ": "einem (-em)"
         },
         "plural": {
-          "note": "For indefinite/possessive/negative articles, plural forms usually mirror the feminine pattern but add different endings in dative.",
           "nominativ": "meine/keine ( -e )",
           "akkusativ": "meine/keine ( -e )",
           "dativ": "meinen/keinen ( -en )"
         }
       }
     },
-
     "summarized_endings_reference": {
       "description": "Summary of common endings:",
       "common_endings": [
@@ -593,5 +585,4 @@
       ]
     }
   }
-
 }

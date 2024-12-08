@@ -13,6 +13,7 @@ const ArticlesPage = () => {
         { id: 'negative_article', title: 'Negative Articles' },
         { id: 'personal_pronouns', title: 'Personal Pronouns' },
         { id: 'possessive_articles', title: 'Possessive Articles' },
+        { id: 'endings_pattern', title: 'Endings Pattern' } // New tab for endings pattern
     ];
 
     const togglePossessive = (type) => {
@@ -165,13 +166,13 @@ const ArticlesPage = () => {
 
         const getPossessiveForm = (pronoun, caseType, gender) => {
             const forms = {
-                'ich': data.singular_possessors.first_person.ich?.cases,
-                'du': data.singular_possessors.second_person.du?.cases,
-                'er/es': data.singular_possessors.third_person.er_es?.cases,
-                'sie': data.singular_possessors.third_person.sie?.cases,
-                'wir': data.plural_possessors.first_person.wir?.cases,
-                'ihr': data.plural_possessors.second_person.ihr?.cases,
-                'sie/Sie': data.formal.Sie?.cases
+                'ich': articlesJson.possessive_articles.singular_possessors.first_person.ich?.cases,
+                'du': articlesJson.possessive_articles.singular_possessors.second_person.du?.cases,
+                'er/es': articlesJson.possessive_articles.singular_possessors.third_person.er_es?.cases,
+                'sie': articlesJson.possessive_articles.singular_possessors.third_person.sie?.cases,
+                'wir': articlesJson.possessive_articles.plural_possessors.first_person.wir?.cases,
+                'ihr': articlesJson.possessive_articles.plural_possessors.second_person.ihr?.cases,
+                'sie/Sie': articlesJson.possessive_articles.formal.Sie?.cases
             };
 
             return forms[pronoun]?.[caseType]?.[gender] || '-';
@@ -179,33 +180,48 @@ const ArticlesPage = () => {
 
         return (
             <div className="overflow-x-auto mb-8">
-                <table className="w-full text-sm">
+                <table className="w-full text-sm border-collapse">
                     <thead>
-                    <tr>
-                        <th className="text-left p-2 bg-gray-800/50 text-gray-300">Person</th>
-                        <th className="text-center p-2 bg-gray-800/50 text-gray-300">Case</th>
-                        <th className="text-center p-2 bg-gray-800/50 text-blue-300">Maskulinum</th>
-                        <th className="text-center p-2 bg-gray-800/50 text-green-300">Neutrum</th>
-                        <th className="text-center p-2 bg-gray-800/50 text-pink-300">Femininum</th>
-                        <th className="text-center p-2 bg-gray-800/50 text-purple-300">Plural</th>
+                    <tr className="bg-gray-800/50">
+                        <th className="text-left p-2 text-gray-300">Person</th>
+                        <th className="text-center p-2 text-gray-300">Case</th>
+                        <th className="text-center p-2 text-blue-300">Masculine</th>
+                        <th className="text-center p-2 text-green-300">Neuter</th>
+                        <th className="text-center p-2 text-pink-300">Feminine</th>
+                        <th className="text-center p-2 text-purple-300">Plural</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {pronouns.map((p) => (
-                        ['nominativ', 'akkusativ', 'dativ'].map((caseType, caseIdx) => (
-                            <tr key={`${p.pronoun}-${caseType}`} className="border-t border-gray-800">
-                                {caseIdx === 0 && (
-                                    <td rowSpan="3" className="text-gray-300 p-2 bg-gray-800/30">
-                                        {p.pronoun}
+                    {pronouns.map((p, pIndex) => (
+                        ['nominativ', 'akkusativ', 'dativ'].map((caseType, caseIdx) => {
+                            const isFirstRowOfBlock = caseIdx === 0;
+                            const blockBg = pIndex % 2 === 0 ? 'bg-gray-800/30' : 'bg-gray-800/20';
+                            const cellBg = pIndex % 2 === 0 ? 'bg-gray-800/30' : 'bg-gray-800/20';
+                            return (
+                                <tr key={`${p.pronoun}-${caseType}`} className="border-t border-gray-800">
+                                    {isFirstRowOfBlock && (
+                                        <td rowSpan="3" className={`text-gray-300 p-2 ${blockBg} font-medium align-middle`} style={{minWidth: '80px'}}>
+                                            {p.pronoun}
+                                        </td>
+                                    )}
+                                    <td className={`text-gray-300 p-2 ${cellBg} capitalize`}>
+                                        {caseType}
                                     </td>
-                                )}
-                                <td className="text-gray-300 p-2 bg-gray-800/30 capitalize">{caseType}</td>
-                                <td className="text-blue-300 p-2 text-center">{getPossessiveForm(p.pronoun, caseType, 'masculine')}</td>
-                                <td className="text-green-300 p-2 text-center">{getPossessiveForm(p.pronoun, caseType, 'neuter')}</td>
-                                <td className="text-pink-300 p-2 text-center">{getPossessiveForm(p.pronoun, caseType, 'feminine')}</td>
-                                <td className="text-purple-300 p-2 text-center">{getPossessiveForm(p.pronoun, caseType, 'plural')}</td>
-                            </tr>
-                        ))
+                                    <td className="text-blue-300 p-2 text-center">
+                                        {getPossessiveForm(p.pronoun, caseType, 'masculine')}
+                                    </td>
+                                    <td className="text-green-300 p-2 text-center">
+                                        {getPossessiveForm(p.pronoun, caseType, 'neuter')}
+                                    </td>
+                                    <td className="text-pink-300 p-2 text-center">
+                                        {getPossessiveForm(p.pronoun, caseType, 'feminine')}
+                                    </td>
+                                    <td className="text-purple-300 p-2 text-center">
+                                        {getPossessiveForm(p.pronoun, caseType, 'plural')}
+                                    </td>
+                                </tr>
+                            );
+                        })
                     ))}
                     </tbody>
                 </table>
@@ -225,8 +241,8 @@ const ArticlesPage = () => {
                                 <h5 className="text-md font-medium text-gray-400 capitalize mb-2">
                                     {person.replace(/_/g, ' ')}
                                 </h5>
-                                {Object.entries(possessives).map(([type, data]) =>
-                                    renderPossessiveArticle(type, data)
+                                {Object.entries(possessives).map(([type, d]) =>
+                                    renderPossessiveArticle(type, d)
                                 )}
                             </div>
                         ))}
@@ -242,8 +258,8 @@ const ArticlesPage = () => {
                                 <h5 className="text-md font-medium text-gray-400 capitalize mb-2">
                                     {person.replace(/_/g, ' ')}
                                 </h5>
-                                {Object.entries(possessives).map(([type, data]) =>
-                                    renderPossessiveArticle(type, data)
+                                {Object.entries(possessives).map(([type, d]) =>
+                                    renderPossessiveArticle(type, d)
                                 )}
                             </div>
                         ))}
@@ -254,8 +270,8 @@ const ArticlesPage = () => {
                 <div>
                     <h4 className="text-lg font-medium text-gray-300 mb-4">Formal</h4>
                     <div className="space-y-4">
-                        {Object.entries(data.formal).map(([type, data]) =>
-                            renderPossessiveArticle(type, data)
+                        {Object.entries(data.formal).map(([type, d]) =>
+                            renderPossessiveArticle(type, d)
                         )}
                     </div>
                 </div>
@@ -319,6 +335,132 @@ const ArticlesPage = () => {
         </div>
     );
 
+    const renderDefiniteArticlesPattern = (pattern) => {
+        // Transform the pattern into a table
+        const genders = Object.keys(pattern.patterns);
+        const cases = ["nominativ", "akkusativ", "dativ"];
+
+        return (
+            <div className="mb-6">
+                <h3 className="text-lg font-semibold text-gray-300 mb-2">Definite Articles Pattern</h3>
+                <p className="text-gray-400 text-sm mb-4">{pattern.description}</p>
+                <div className="overflow-x-auto">
+                    <table className="w-full text-sm border-collapse">
+                        <thead>
+                        <tr className="bg-gray-800/50">
+                            <th className="p-2 text-gray-300 text-left">Case</th>
+                            {genders.map(g => (
+                                <th key={g} className="p-2 text-gray-300 text-left capitalize">{g}</th>
+                            ))}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {cases.map(c => (
+                            <tr key={c} className="border-t border-gray-800">
+                                <td className="p-2 text-gray-300 font-medium capitalize bg-gray-800/30">{c}</td>
+                                {genders.map(g => {
+                                    const form = pattern.patterns[g][c];
+                                    return (
+                                        <td key={g} className="p-2 text-gray-200">
+                                            {form}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        );
+    };
+
+    const renderEinWordPattern = (pattern) => {
+        const genders = Object.keys(pattern.patterns);
+        const cases = ["nominativ", "akkusativ", "dativ"];
+
+        return (
+            <div className="mb-6">
+                <h3 className="text-lg font-semibold text-gray-300 mb-2">Ein-Word Pattern</h3>
+                <p className="text-gray-400 text-sm mb-4">{pattern.description}</p>
+                <div className="overflow-x-auto">
+                    <table className="w-full text-sm border-collapse">
+                        <thead>
+                        <tr className="bg-gray-800/50">
+                            <th className="p-2 text-gray-300 text-left">Case</th>
+                            {genders.map(g => (
+                                <th key={g} className="p-2 text-gray-300 text-left capitalize">{g}</th>
+                            ))}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {cases.map(c => (
+                            <tr key={c} className="border-t border-gray-800">
+                                <td className="p-2 text-gray-300 font-medium capitalize bg-gray-800/30">{c}</td>
+                                {genders.map(g => {
+                                    const forms = pattern.patterns[g];
+                                    const form = forms[c];
+                                    const note = g === "plural" && forms.note ?
+                                        <div className="text-xs text-gray-500 italic">{forms.note}</div>
+                                        : null;
+                                    return (
+                                        <td key={g} className="p-2 text-gray-200 align-top">
+                                            {form}
+                                            {note}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        );
+    };
+
+    const renderSummarizedEndingsReference = (ref) => (
+        <div className="mb-6">
+            <h3 className="text-lg font-semibold text-gray-300 mb-2">Summarized Endings Reference</h3>
+            <p className="text-gray-400 text-sm mb-4">{ref.description}</p>
+            <div className="overflow-x-auto">
+                <table className="w-full text-sm border-collapse">
+                    <thead>
+                    <tr className="bg-gray-800/50">
+                        <th className="p-2 text-gray-300 text-left">Ending</th>
+                        <th className="p-2 text-gray-300 text-left">Usage</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {ref.common_endings.map((ending, idx) => (
+                        <tr key={idx} className="border-t border-gray-800">
+                            <td className="p-2 text-gray-300 font-medium">{ending.ending}</td>
+                            <td className="p-2 text-gray-400">{ending.usage}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+
+    const renderEndingsPattern = (data) => (
+        <div className="mt-6 space-y-6">
+            <p className="text-gray-300 mb-2">{data.description}</p>
+
+            {/* Instead of a lot of text, keep explanation minimal or optional */}
+            {data.explanation && data.explanation.note && (
+                <div className="bg-gray-800/50 rounded p-3 text-gray-300 text-sm italic">
+                    {data.explanation.note}
+                </div>
+            )}
+
+            {data.definite_articles_pattern && renderDefiniteArticlesPattern(data.definite_articles_pattern)}
+            {data.ein_word_pattern && renderEinWordPattern(data.ein_word_pattern)}
+            {data.summarized_endings_reference && renderSummarizedEndingsReference(data.summarized_endings_reference)}
+        </div>
+    );
+
     return (
         <div className="min-h-screen bg-gray-900">
             <div className="container mx-auto px-4 py-8">
@@ -327,7 +469,7 @@ const ArticlesPage = () => {
                     <div className="mb-8">
                         <h1 className="text-3xl font-bold text-white">German Articles</h1>
                         <p className="text-gray-400 mt-2">
-                            Learn about German articles and their various forms across different cases
+                            Learn about German articles and their various forms, endings, and usage.
                         </p>
                     </div>
 
@@ -351,14 +493,18 @@ const ArticlesPage = () => {
                         </div>
 
                         {/* Content */}
-                        <div className="p-6">
-                            {Object.entries(articlesJson).map(([key, data]) =>
+                        <div className="p-6 text-sm sm:text-base">
+                            {activeTab !== 'endings_pattern' && Object.entries(articlesJson).map(([key, data]) =>
                                     activeTab === key && (
                                         <div key={key}>
                                             <p className="text-gray-400">{data.description}</p>
                                             {renderArticleContent(key, data)}
                                         </div>
                                     )
+                            )}
+
+                            {activeTab === 'endings_pattern' && articlesJson.endings_pattern && (
+                                renderEndingsPattern(articlesJson.endings_pattern)
                             )}
                         </div>
                     </div>
