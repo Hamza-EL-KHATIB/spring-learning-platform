@@ -522,5 +522,23 @@
         }
       }
     }
+  },
+  "endings_pattern": {
+    "description": "A quick reference to the typical article endings by case and gender/number.",
+    "definite_articles": {
+      "nominativ": { "masculine": "der", "neuter": "das", "feminine": "die", "plural": "die" },
+      "akkusativ": { "masculine": "den", "neuter": "das", "feminine": "die", "plural": "die" },
+      "dativ": { "masculine": "dem", "neuter": "dem", "feminine": "der", "plural": "den" }
+    },
+    "indefinite_articles": {
+      "nominativ": { "masculine": "ein", "neuter": "ein", "feminine": "eine", "plural": "-" },
+      "akkusativ": { "masculine": "einen", "neuter": "ein", "feminine": "eine", "plural": "-" },
+      "dativ": { "masculine": "einem", "neuter": "einem", "feminine": "einer", "plural": "-" }
+    },
+    "negative_articles": {
+      "nominativ": { "masculine": "kein", "neuter": "kein", "feminine": "keine", "plural": "keine" },
+      "akkusativ": { "masculine": "keinen", "neuter": "kein", "feminine": "keine", "plural": "keine" },
+      "dativ": { "masculine": "keinem", "neuter": "keinem", "feminine": "keiner", "plural": "keinen" }
+    }
   }
 }
