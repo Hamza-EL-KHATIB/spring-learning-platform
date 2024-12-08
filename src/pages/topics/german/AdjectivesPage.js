@@ -19,7 +19,7 @@ const ExplanationCard = () => (
     </div>
 );
 
-const PatternTransformation = ({ example, expanded, onToggle }) => {
+const PatternExample = ({ example, expanded, onToggle }) => {
     if (!example) return null;
 
     return (
@@ -61,15 +61,8 @@ const PatternTransformation = ({ example, expanded, onToggle }) => {
     );
 };
 
-const GenderSection = ({ gender, data, patternKey }) => {
-    const [expandedExamples, setExpandedExamples] = useState({});
-
-    const toggleExample = (index) => {
-        setExpandedExamples(prev => ({
-            ...prev,
-            [index]: !prev[index]
-        }));
-    };
+const GenderSection = ({ gender, data }) => {
+    const [expanded, setExpanded] = useState(false);
 
     if (!data || !data.example) return null;
 
@@ -81,11 +74,10 @@ const GenderSection = ({ gender, data, patternKey }) => {
                     Ending: {data.ending}
                 </div>
             </div>
-
-            <PatternTransformation
+            <PatternExample
                 example={data.example}
-                expanded={expandedExamples[0]}
-                onToggle={() => toggleExample(0)}
+                expanded={expanded}
+                onToggle={() => setExpanded(!expanded)}
             />
         </div>
     );
@@ -161,7 +153,7 @@ const AdjectivesPage = () => {
                     </div>
                 </div>
 
-                {/* Description Card */}
+                {/* Pattern Description */}
                 {currentPattern && (
                     <div className="mb-8 bg-gray-800/50 rounded-lg p-6 border border-purple-500/20">
                         <h3 className="text-xl font-semibold text-white mb-4">{currentPattern.description}</h3>
@@ -184,7 +176,6 @@ const AdjectivesPage = () => {
                                 key={`${activeArticleType}-${activeCase}-${gender}`}
                                 gender={gender}
                                 data={data}
-                                patternKey={`${activeArticleType}-${activeCase}-${gender}`}
                             />
                         ))}
                     </div>
