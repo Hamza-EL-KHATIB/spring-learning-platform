@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GraduationCap, ScrollText, LucideBook, FileText, Feather, Asterisk } from 'lucide-react';
+import { GraduationCap, ScrollText, FileText, Feather, Asterisk } from 'lucide-react';
 
 const LearningPortal = () => {
     return (
