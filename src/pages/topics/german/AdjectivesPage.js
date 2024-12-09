@@ -4,8 +4,8 @@ import adjectivesJson from '../../../data/german/adjectives.json';
 
 const EndingsOverview = () => {
     const articleTypes = {
+        after_indefinite_article: "Indefinite Article (ein-/kein-/mein-)",
         after_definite_article: "Definite Article (der/die/das)",
-        after_indefinite_article: "Indefinite Article (ein/eine)",
         without_article: "Without Article"
     };
 
