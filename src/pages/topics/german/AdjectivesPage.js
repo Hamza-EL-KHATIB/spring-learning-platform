@@ -29,21 +29,35 @@ const EndingsOverview = () => {
                                 <tr>
                                     <th className="text-left text-gray-400 pb-2">Case / Gender</th>
                                     {genders.map(gender => (
-                                        <th key={gender} className="text-left text-gray-400 pb-2 capitalize">{gender}</th>
+                                        <th key={gender} className="text-left text-gray-400 pb-2 capitalize">
+                                            {gender}
+                                        </th>
                                     ))}
                                 </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-800">
                                 {cases.map(caseType => (
                                     <tr key={caseType} className="border-t border-gray-800">
-                                        <td className="py-2 text-gray-300 capitalize whitespace-nowrap">{caseType}</td>
-                                        {genders.map(gender => (
-                                            <td key={gender} className="py-2 whitespace-nowrap">
+                                        <td className="py-2 text-gray-300 capitalize whitespace-nowrap">
+                                            {caseType}
+                                        </td>
+                                        {genders.map(gender => {
+                                            const path = adjectivesJson.adjective_patterns[type]?.cases?.[caseType]?.[gender];
+                                            const ending = path?.ending || '-';
+                                            const article = path?.example?.breakdown?.article || '-';
+
+                                            return (
+                                                <td key={gender} className="py-2 whitespace-nowrap">
+                                                    {/* Display article and ending together */}
+                                                    <span className="text-gray-300 mr-2">
+                                                            {article}
+                                                        </span>
                                                     <span className="text-cyan-400 font-medium">
-                                                        {adjectivesJson.adjective_patterns[type]?.cases?.[caseType]?.[gender]?.ending || '-'}
-                                                    </span>
-                                            </td>
-                                        ))}
+                                                            {ending}
+                                                        </span>
+                                                </td>
+                                            );
+                                        })}
                                     </tr>
                                 ))}
                                 </tbody>
