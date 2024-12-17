@@ -523,6 +523,212 @@
       }
     }
   },
+  "possessive_pronouns": {
+    "description": "Possessive pronouns replace a previously mentioned noun and indicate ownership. They stand on their own without a following noun, similar to 'mine', 'yours', 'his', 'hers' in English.",
+    "usage_hints": [
+      "Use them when you don't want to repeat the noun.",
+      "They must agree in case, gender, and number with the noun they replace.",
+      "Formed from the possessive stem (mein-, dein-, sein-, ihr-, unser-, euer-, ihr-, Ihr-) plus case endings."
+    ],
+    "examples": {
+      "german": "Ist das dein Buch? Ja, das ist meins.",
+      "english": "Is that your book? Yes, that’s mine."
+    },
+    "forms": {
+      "mine": {
+        "owner": "ich",
+        "meaning": "mine",
+        "cases": {
+          "nominativ": {
+            "masculine": "meiner",
+            "feminine": "meine",
+            "neuter": "meins",
+            "plural": "meine"
+          },
+          "akkusativ": {
+            "masculine": "meinen",
+            "feminine": "meine",
+            "neuter": "meins",
+            "plural": "meine"
+          },
+          "dativ": {
+            "masculine": "meinem",
+            "feminine": "meiner",
+            "neuter": "meinem",
+            "plural": "meinen"
+          }
+        }
+      },
+      "yours_informal_singular": {
+        "owner": "du",
+        "meaning": "yours (informal singular)",
+        "cases": {
+          "nominativ": {
+            "masculine": "deiner",
+            "feminine": "deine",
+            "neuter": "deins",
+            "plural": "deine"
+          },
+          "akkusativ": {
+            "masculine": "deinen",
+            "feminine": "deine",
+            "neuter": "deins",
+            "plural": "deine"
+          },
+          "dativ": {
+            "masculine": "deinem",
+            "feminine": "deiner",
+            "neuter": "deinem",
+            "plural": "deinen"
+          }
+        }
+      },
+      "his_its": {
+        "owner": "er/es",
+        "meaning": "his/its",
+        "cases": {
+          "nominativ": {
+            "masculine": "seiner",
+            "feminine": "seine",
+            "neuter": "seins",
+            "plural": "seine"
+          },
+          "akkusativ": {
+            "masculine": "seinen",
+            "feminine": "seine",
+            "neuter": "seins",
+            "plural": "seine"
+          },
+          "dativ": {
+            "masculine": "seinem",
+            "feminine": "seiner",
+            "neuter": "seinem",
+            "plural": "seinen"
+          }
+        }
+      },
+      "hers": {
+        "owner": "sie (singular)",
+        "meaning": "hers",
+        "cases": {
+          "nominativ": {
+            "masculine": "ihrer",
+            "feminine": "ihre",
+            "neuter": "ihres",
+            "plural": "ihre"
+          },
+          "akkusativ": {
+            "masculine": "ihren",
+            "feminine": "ihre",
+            "neuter": "ihres",
+            "plural": "ihre"
+          },
+          "dativ": {
+            "masculine": "ihrem",
+            "feminine": "ihrer",
+            "neuter": "ihrem",
+            "plural": "ihren"
+          }
+        }
+      },
+      "ours": {
+        "owner": "wir",
+        "meaning": "ours",
+        "cases": {
+          "nominativ": {
+            "masculine": "unserer",
+            "feminine": "unsere",
+            "neuter": "unsers",
+            "plural": "unsere"
+          },
+          "akkusativ": {
+            "masculine": "unseren",
+            "feminine": "unsere",
+            "neuter": "unsers",
+            "plural": "unsere"
+          },
+          "dativ": {
+            "masculine": "unserem",
+            "feminine": "unserer",
+            "neuter": "unserem",
+            "plural": "unseren"
+          }
+        }
+      },
+      "yours_informal_plural": {
+        "owner": "ihr (plural)",
+        "meaning": "yours (informal plural)",
+        "cases": {
+          "nominativ": {
+            "masculine": "eurer",
+            "feminine": "eure",
+            "neuter": "eures",
+            "plural": "eure"
+          },
+          "akkusativ": {
+            "masculine": "euren",
+            "feminine": "eure",
+            "neuter": "eures",
+            "plural": "eure"
+          },
+          "dativ": {
+            "masculine": "eurem",
+            "feminine": "eurer",
+            "neuter": "eurem",
+            "plural": "euren"
+          }
+        }
+      },
+      "theirs": {
+        "owner": "sie (plural)",
+        "meaning": "theirs",
+        "cases": {
+          "nominativ": {
+            "masculine": "ihrer",
+            "feminine": "ihre",
+            "neuter": "ihres",
+            "plural": "ihre"
+          },
+          "akkusativ": {
+            "masculine": "ihren",
+            "feminine": "ihre",
+            "neuter": "ihres",
+            "plural": "ihre"
+          },
+          "dativ": {
+            "masculine": "ihrem",
+            "feminine": "ihrer",
+            "neuter": "ihrem",
+            "plural": "ihren"
+          }
+        }
+      },
+      "yours_formal": {
+        "owner": "Sie (formal)",
+        "meaning": "yours (formal)",
+        "cases": {
+          "nominativ": {
+            "masculine": "Ihrer",
+            "feminine": "Ihre",
+            "neuter": "Ihres",
+            "plural": "Ihre"
+          },
+          "akkusativ": {
+            "masculine": "Ihren",
+            "feminine": "Ihre",
+            "neuter": "Ihres",
+            "plural": "Ihre"
+          },
+          "dativ": {
+            "masculine": "Ihrem",
+            "feminine": "Ihrer",
+            "neuter": "Ihrem",
+            "plural": "Ihren"
+          }
+        }
+      }
+    }
+  },
   "endings_pattern": {
     "definite_articles_pattern": {
       "description": "Definite articles (der, die, das) carry distinct forms, but the endings can be observed as patterns.",
