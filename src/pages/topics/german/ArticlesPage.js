@@ -6,6 +6,8 @@ const ArticlesPage = () => {
     const [expandedPossessive, setExpandedPossessive] = useState(null);
     const [activeTab, setActiveTab] = useState('definite_article');
     const [possessiveView, setPossessiveView] = useState('overview');
+    const [possessivePronounsView, setPossessivePronounsView] = useState('overview');
+    const [expandedPronoun, setExpandedPronoun] = useState(null);
 
     const articleTypes = [
         { id: 'definite_article', title: 'Definite Articles' },
@@ -13,6 +15,7 @@ const ArticlesPage = () => {
         { id: 'negative_article', title: 'Negative Articles' },
         { id: 'personal_pronouns', title: 'Personal Pronouns' },
         { id: 'possessive_articles', title: 'Possessive Articles' },
+        { id: 'possessive_pronouns', title: 'Possessive Pronouns' },
         { id: 'endings_pattern', title: 'Endings Pattern' }
     ];
 
@@ -277,6 +280,140 @@ const ArticlesPage = () => {
         );
     };
 
+    const renderPossessivePronounsSummaryTable = (data) => {
+        const { forms } = data;
+        if (!forms) {
+            return <p className="text-gray-400">No forms available for possessive pronouns.</p>;
+        }
+
+        // We will show a table where each pronoun has a block of rows for each case.
+        // Columns: Owner, Case, Masculine, Neuter, Feminine, Plural
+        const cases = ["nominativ", "akkusativ", "dativ"];
+
+        return (
+            <div className="overflow-x-auto mb-8">
+                <table className="w-full text-sm border-collapse">
+                    <thead>
+                    <tr className="bg-gray-800/50">
+                        <th className="p-2 text-gray-300 text-left">Pronoun</th>
+                        <th className="p-2 text-gray-300 text-left">Case</th>
+                        <th className="p-2 text-blue-300 text-left">Masculine</th>
+                        <th className="p-2 text-green-300 text-left">Neuter</th>
+                        <th className="p-2 text-pink-300 text-left">Feminine</th>
+                        <th className="p-2 text-purple-300 text-left">Plural</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {Object.entries(forms).map(([key, pronounData]) => (
+                        <React.Fragment key={key}>
+                            {/* A header row for the pronoun */}
+                            <tr className="bg-gray-800">
+                                <td colSpan={6} className="p-2 text-white font-semibold">
+                                    {pronounData.meaning} ({pronounData.owner})
+                                </td>
+                            </tr>
+                            {cases.map((caseType) => {
+                                const caseForms = pronounData.cases[caseType];
+                                return (
+                                    <tr key={caseType} className="border-t border-gray-800">
+                                        <td className="p-2 text-gray-300 font-medium bg-gray-800/30">
+                                            {/* blank since we have the pronoun name above */}
+                                        </td>
+                                        <td className="p-2 text-gray-300 capitalize">{caseType}</td>
+                                        <td className="p-2 text-blue-300">{caseForms.masculine}</td>
+                                        <td className="p-2 text-green-300">{caseForms.neuter}</td>
+                                        <td className="p-2 text-pink-300">{caseForms.feminine}</td>
+                                        <td className="p-2 text-purple-300">{caseForms.plural}</td>
+                                    </tr>
+                                );
+                            })}
+                        </React.Fragment>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
+        );
+    };
+
+    const renderPossessivePronounsDetailed = (data, expandedPronoun, setExpandedPronoun) => {
+        const { forms } = data;
+        if (!forms) {
+            return <p className="text-gray-400">No forms available for possessive pronouns.</p>;
+        }
+
+        const togglePronoun = (key) => {
+            setExpandedPronoun(expandedPronoun === key ? null : key);
+        };
+
+        const cases = ["nominativ", "akkusativ", "dativ"];
+
+        return (
+            <div className="space-y-6">
+                {Object.entries(forms).map(([key, pronounData]) => {
+                    const isExpanded = expandedPronoun === key;
+                    return (
+                        <div className="bg-gray-800/50 rounded-lg p-4" key={key}>
+                            <button
+                                onClick={() => togglePronoun(key)}
+                                className="w-full flex items-center justify-between text-left"
+                            >
+                                <div>
+                                    <h3 className="text-lg font-semibold text-white">
+                                        {pronounData.meaning} ({pronounData.owner})
+                                    </h3>
+                                    <p className="text-gray-400 text-sm">Possessive Pronoun</p>
+                                </div>
+                                {isExpanded ? (
+                                    <ChevronUp className="w-5 h-5 text-gray-400" />
+                                ) : (
+                                    <ChevronDown className="w-5 h-5 text-gray-400" />
+                                )}
+                            </button>
+
+                            {isExpanded && (
+                                <div className="mt-4 space-y-4">
+                                    <div>
+                                        <h4 className="text-md font-medium text-gray-300 mb-2">Cases</h4>
+                                        <div className="overflow-x-auto">
+                                            <table className="w-full text-sm border-collapse">
+                                                <thead>
+                                                <tr className="bg-gray-800/50">
+                                                    <th className="p-2 text-gray-300 text-left">Case</th>
+                                                    <th className="p-2 text-blue-300 text-left">Masculine</th>
+                                                    <th className="p-2 text-green-300 text-left">Neuter</th>
+                                                    <th className="p-2 text-pink-300 text-left">Feminine</th>
+                                                    <th className="p-2 text-purple-300 text-left">Plural</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {cases.map((caseType) => {
+                                                    const caseForms = pronounData.cases[caseType];
+                                                    return (
+                                                        <tr key={caseType} className="border-t border-gray-800">
+                                                            <td className="p-2 text-gray-300 font-medium capitalize bg-gray-800/30">
+                                                                {caseType}
+                                                            </td>
+                                                            <td className="p-2 text-blue-300">{caseForms.masculine}</td>
+                                                            <td className="p-2 text-green-300">{caseForms.neuter}</td>
+                                                            <td className="p-2 text-pink-300">{caseForms.feminine}</td>
+                                                            <td className="p-2 text-purple-300">{caseForms.plural}</td>
+                                                        </tr>
+                                                    );
+                                                })}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    {/* Add any examples or additional info here if available */}
+                                </div>
+                            )}
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    };
+
     const renderArticleContent = (key, data) => (
         <div className="mt-6 space-y-6">
             {data.usage_hints && (
@@ -290,7 +427,30 @@ const ArticlesPage = () => {
                 </div>
             )}
 
-            {key === 'possessive_articles' ? (
+            {/* Check if it's possessive pronouns and render similar UI as possessive articles */}
+            {key === 'possessive_pronouns' ? (
+                <div>
+                    <div className="mb-6 border-b border-gray-700 flex">
+                        <button
+                            onClick={() => setPossessivePronounsView('overview')}
+                            className={`px-4 py-2 font-medium ${possessivePronounsView === 'overview' ? 'text-purple-400 border-b-2 border-purple-400' : 'text-gray-400 hover:text-gray-300'}`}
+                        >
+                            Overview
+                        </button>
+                        <button
+                            onClick={() => setPossessivePronounsView('detailed')}
+                            className={`px-4 py-2 font-medium ${possessivePronounsView === 'detailed' ? 'text-purple-400 border-b-2 border-purple-400' : 'text-gray-400 hover:text-gray-300'}`}
+                        >
+                            Detailed Examples
+                        </button>
+                    </div>
+                    {possessivePronounsView === 'overview'
+                        ? renderPossessivePronounsSummaryTable(data)
+                        : renderPossessivePronounsDetailed(data, expandedPronoun, setExpandedPronoun)
+                    }
+
+                </div>
+            ) : key === 'possessive_articles' ? (
                 <div>
                     <div className="mb-6 border-b border-gray-700 flex">
                         <button
@@ -313,9 +473,9 @@ const ArticlesPage = () => {
                     {data.cases && (
                         <div>
                             <h3 className="text-lg font-semibold text-gray-300 mb-4">Cases</h3>
-                            {key === 'personal_pronouns' ?
-                                renderPersonalPronounTable(data.cases) :
-                                renderCaseTable(data.cases)}
+                            {key === 'personal_pronouns'
+                                ? renderPersonalPronounTable(data.cases)
+                                : renderCaseTable(data.cases)}
                         </div>
                     )}
 
@@ -445,7 +605,6 @@ const ArticlesPage = () => {
 
     return (
         <>
-            {/* Add custom scrollbar hiding */}
             <style>
                 {`
                     .tabs-container::-webkit-scrollbar {
@@ -461,7 +620,6 @@ const ArticlesPage = () => {
             <div className="min-h-screen bg-gray-900">
                 <div className="container mx-auto px-4 py-8">
                     <div className="max-w-4xl mx-auto">
-                        {/* Title Section */}
                         <div className="mb-8">
                             <h1 className="text-3xl font-bold text-white">German Articles</h1>
                             <p className="text-gray-400 mt-2">
@@ -469,9 +627,7 @@ const ArticlesPage = () => {
                             </p>
                         </div>
 
-                        {/* Main Card with Tabs */}
                         <div className="bg-gray-800/50 rounded-xl border border-gray-700">
-                            {/* Tabs */}
                             <div className="flex overflow-x-auto border-b border-gray-700 tabs-container">
                                 {articleTypes.map((type) => (
                                     <button
@@ -488,7 +644,6 @@ const ArticlesPage = () => {
                                 ))}
                             </div>
 
-                            {/* Content */}
                             <div className="p-6 text-sm sm:text-base">
                                 {activeTab !== 'endings_pattern' && Object.entries(articlesJson).map(([key, data]) =>
                                         activeTab === key && (
