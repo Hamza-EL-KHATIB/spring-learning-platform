@@ -607,19 +607,31 @@ const ArticlesPage = () => {
         <>
             <style>
                 {`
-                    .tabs-container::-webkit-scrollbar {
-                        display: none;
-                    }
-                    .tabs-container {
-                        -ms-overflow-style: none; 
-                        scrollbar-width: none; 
-                    }
-                `}
+                .custom-scrollbar::-webkit-scrollbar {
+                    height: 6px;
+                    background: transparent;
+                }
+                
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: rgba(31, 41, 55, 0.5);
+                    border-radius: 3px;
+                }
+                
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background: #4F46E5;
+                    border-radius: 3px;
+                }
+                
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: #6366F1;
+                }
+            `}
             </style>
 
             <div className="min-h-screen bg-gray-900">
                 <div className="container mx-auto px-4 py-8">
                     <div className="max-w-4xl mx-auto">
+                        {/* Title Section */}
                         <div className="mb-8">
                             <h1 className="text-3xl font-bold text-white">German Articles</h1>
                             <p className="text-gray-400 mt-2">
@@ -627,23 +639,27 @@ const ArticlesPage = () => {
                             </p>
                         </div>
 
+                        {/* Main Card with Tabs */}
                         <div className="bg-gray-800/50 rounded-xl border border-gray-700">
-                            <div className="flex overflow-x-auto border-b border-gray-700 tabs-container">
-                                {articleTypes.map((type) => (
-                                    <button
-                                        key={type.id}
-                                        onClick={() => setActiveTab(type.id)}
-                                        className={`px-4 py-3 whitespace-nowrap font-medium transition-colors ${
-                                            activeTab === type.id
-                                                ? 'text-purple-400 border-b-2 border-purple-400'
-                                                : 'text-gray-400 hover:text-gray-300'
-                                        }`}
-                                    >
-                                        {type.title}
-                                    </button>
-                                ))}
+                            <div className="relative w-full overflow-x-auto bg-gray-800/80 custom-scrollbar">
+                                <div className="flex min-w-max border-b border-gray-700/50">
+                                    {articleTypes.map((type) => (
+                                        <button
+                                            key={type.id}
+                                            onClick={() => setActiveTab(type.id)}
+                                            className={`px-6 py-4 whitespace-nowrap font-medium transition-all hover:bg-gray-700/30 ${
+                                                activeTab === type.id
+                                                    ? 'text-purple-400 border-b-2 border-purple-400 bg-gray-700/20'
+                                                    : 'text-gray-400'
+                                            }`}
+                                        >
+                                            {type.title}
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
 
+                            {/* Content remains the same */}
                             <div className="p-6 text-sm sm:text-base">
                                 {activeTab !== 'endings_pattern' && Object.entries(articlesJson).map(([key, data]) =>
                                         activeTab === key && (
