@@ -608,7 +608,7 @@ const ArticlesPage = () => {
             <style>
                 {`
                 .custom-scrollbar::-webkit-scrollbar {
-                    height: 6px;
+                    height: 15px;
                     background: transparent;
                 }
                 
