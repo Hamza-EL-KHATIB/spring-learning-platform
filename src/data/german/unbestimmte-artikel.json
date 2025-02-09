@@ -1,0 +1,178 @@
+{
+  "id": "unbestimmte-artikel",
+  "title": "Unbestimmte Artikel (Indefinite Articles)",
+  "level": "A1",
+  "type": "grammar",
+  "description": "Indefinite articles (ein, eine) are used when referring to non-specific items or when mentioning something for the first time. They change form based on gender and case.",
+
+  "structure": {
+    "explanation": "Indefinite articles are used for non-specific nouns and first mentions",
+    "formation": "Articles are chosen based on the noun's gender and modified according to case",
+    "usage": "Used for non-specific items, first mentions, and some professions"
+  },
+
+  "tables": [
+    {
+      "title": "Complete Case Table",
+      "description": "Indefinite articles across all cases and genders",
+      "headers": ["Case", "Masculine", "Feminine", "Neuter", "Plural"],
+      "rows": [
+        {
+          "case": "Nominativ",
+          "masculine": "ein",
+          "feminine": "eine",
+          "neuter": "ein",
+          "plural": "-"
+        },
+        {
+          "case": "Akkusativ",
+          "masculine": "einen",
+          "feminine": "eine",
+          "neuter": "ein",
+          "plural": "-"
+        },
+        {
+          "case": "Dativ",
+          "masculine": "einem",
+          "feminine": "einer",
+          "neuter": "einem",
+          "plural": "-"
+        }
+      ]
+    }
+  ],
+
+  "rules": [
+    {
+      "rule": "First Mention",
+      "explanation": "Use indefinite articles when mentioning something for the first time",
+      "examples": [
+        {
+          "german": "Ich sehe einen Hund.",
+          "english": "I see a dog."
+        },
+        {
+          "german": "Das ist eine Katze.",
+          "english": "That is a cat."
+        }
+      ]
+    },
+    {
+      "rule": "Non-specific Items",
+      "explanation": "Use for items that aren't specific or defined",
+      "examples": [
+        {
+          "german": "Ich brauche ein Buch.",
+          "english": "I need a book."
+        },
+        {
+          "german": "Er kauft eine Zeitung.",
+          "english": "He buys a newspaper."
+        }
+      ]
+    }
+  ],
+
+  "specialCases": [
+    {
+      "case": "No Plural Form",
+      "explanation": "There is no plural indefinite article in German. Use no article or some/any (einige, manche)",
+      "examples": [
+        {
+          "german": "Ich habe Bücher.",
+          "english": "I have books."
+        }
+      ]
+    },
+    {
+      "case": "Professions without Modifiers",
+      "explanation": "Don't use articles with professions when there are no additional descriptors",
+      "examples": [
+        {
+          "german": "Ich bin Lehrer.",
+          "english": "I am a teacher."
+        },
+        {
+          "german": "Sie ist Studentin.",
+          "english": "She is a student."
+        }
+      ]
+    }
+  ],
+
+  "commonMistakes": [
+    {
+      "mistake": "Using with plural nouns",
+      "correction": "Omit article or use alternative expressions for plural",
+      "examples": {
+        "wrong": "ein Bücher",
+        "correct": "Bücher",
+        "explanation": "Indefinite articles are not used with plural nouns"
+      }
+    },
+    {
+      "mistake": "Using with professions incorrectly",
+      "correction": "Omit article for unmodified professions",
+      "examples": {
+        "wrong": "Ich bin ein Lehrer",
+        "correct": "Ich bin Lehrer",
+        "explanation": "Basic professions don't use articles"
+      }
+    }
+  ],
+
+  "exercises": [
+    {
+      "type": "article selection",
+      "instruction": "Choose the correct indefinite article",
+      "questions": [
+        {
+          "question": "Das ist ___ Buch. (n)",
+          "answer": "ein",
+          "explanation": "Buch is neuter"
+        },
+        {
+          "question": "Ich sehe ___ Mann. (m)",
+          "answer": "einen",
+          "explanation": "Accusative masculine requires 'einen'"
+        }
+      ]
+    }
+  ],
+
+  "practiceStrategies": {
+    "tips": [
+      "Learn together with definite articles",
+      "Practice all cases systematically",
+      "Pay special attention to profession rules",
+      "Practice with real-world objects",
+      "Create example sentences with different cases"
+    ]
+  },
+
+  "relatedTopics": [
+    {
+      "id": "bestimmte-artikel",
+      "title": "Definite Articles",
+      "relationship": "Contrasting article type"
+    },
+    {
+      "id": "negativartikel",
+      "title": "Negative Articles",
+      "relationship": "Related article type"
+    },
+    {
+      "id": "nullartikel",
+      "title": "Zero Article",
+      "relationship": "When no article is used"
+    }
+  ],
+
+  "metadata": {
+    "tags": ["German", "Grammar", "Articles", "A1", "Indefinite"],
+    "difficulty": "beginner",
+    "prerequisites": ["Basic German vocabulary"],
+    "timeEstimate": 90,
+    "lastUpdated": "2024-02-09"
+  }
+}
