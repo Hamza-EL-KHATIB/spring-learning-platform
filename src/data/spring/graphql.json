@@ -1,0 +1,184 @@
+{
+  "title": "Spring GraphQL",
+  "topics": [
+    {
+      "id": "graphql-fundamentals",
+      "title": "GraphQL Fundamentals",
+      "description": "Core concepts of GraphQL in Spring",
+      "concepts": [
+        {
+          "name": "GraphQL Principles",
+          "principles": [
+            {
+              "name": "Single Endpoint",
+              "description": "All operations are exposed via one endpoint."
+            },
+            {
+              "name": "Declarative Data Fetching",
+              "description": "Clients request exactly the data they need."
+            },
+            {
+              "name": "Strongly Typed Schema",
+              "description": "A well-defined schema enforces type safety."
+            }
+          ]
+        },
+        {
+          "name": "GraphQL Operations",
+          "operations": [
+            {
+              "operation": "Query",
+              "usage": "Fetch data from the server."
+            },
+            {
+              "operation": "Mutation",
+              "usage": "Modify server-side data."
+            },
+            {
+              "operation": "Subscription",
+              "usage": "Receive real-time data updates."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "graphql-schema",
+      "title": "GraphQL Schema & Type Definitions",
+      "description": "Defining GraphQL schemas using SDL and Spring annotations",
+      "components": [
+        {
+          "name": "Schema Definition Language (SDL)",
+          "description": "Defines types, queries, mutations, and subscriptions in a declarative way."
+        },
+        {
+          "name": "Annotations",
+          "annotations": [
+            {
+              "name": "@SchemaMapping",
+              "description": "Maps a schema field to a method."
+            },
+            {
+              "name": "@QueryMapping",
+              "description": "Maps a GraphQL query to a controller method."
+            },
+            {
+              "name": "@MutationMapping",
+              "description": "Maps a GraphQL mutation to a controller method."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "graphql-controller",
+      "title": "GraphQL Controllers & Resolvers",
+      "description": "Setting up endpoints using Spring controllers and resolvers",
+      "components": [
+        {
+          "name": "GraphQL Controller",
+          "description": "Handles GraphQL queries and mutations using Spring annotations",
+          "example": {
+            "code": "@Controller\npublic class UserGraphQLController {\n    @QueryMapping\n    public User user(@Argument Long id) {\n        return userService.findById(id);\n    }\n\n    @MutationMapping\n    public User createUser(@Argument UserInput input) {\n        return userService.create(input);\n    }\n}"
+          }
+        },
+        {
+          "name": "Resolvers",
+          "description": "Methods that fetch nested or related data for complex types."
+        }
+      ]
+    },
+    {
+      "id": "graphql-data-fetching",
+      "title": "GraphQL Query Execution & N+1 Problem",
+      "description": "Optimizing data fetching and mitigating the N+1 query issue",
+      "features": [
+        {
+          "name": "N+1 Problem",
+          "description": "Occurs when fetching nested data results in multiple redundant database calls."
+        },
+        {
+          "name": "DataLoader",
+          "description": "Batches and caches data-fetching to resolve the N+1 problem.",
+          "example": {
+            "code": "DataLoader<Long, User> userDataLoader = DataLoader.newDataLoader(userIds ->\n    CompletableFuture.supplyAsync(() -> userService.findUsersByIds(userIds))\n);\n// Register this DataLoader in the GraphQL context for efficient batching"
+          }
+        }
+      ]
+    },
+    {
+      "id": "graphql-error-handling",
+      "title": "GraphQL Error Handling",
+      "description": "Managing errors and exceptions in GraphQL responses",
+      "components": [
+        {
+          "name": "GraphQLError",
+          "description": "An interface to represent errors during GraphQL execution."
+        },
+        {
+          "name": "Global Exception Handling",
+          "description": "Use Spring's @ControllerAdvice to handle exceptions and format error responses."
+        }
+      ]
+    },
+    {
+      "id": "graphql-security",
+      "title": "GraphQL Security",
+      "description": "Securing GraphQL endpoints with Spring Security integration",
+      "features": [
+        {
+          "name": "Authentication & Authorization",
+          "description": "Protect endpoints by integrating Spring Security with GraphQL.",
+          "annotations": [
+            {
+              "name": "@PreAuthorize",
+              "description": "Restricts access to queries or mutations based on user roles."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "graphql-testing",
+      "title": "GraphQL Testing",
+      "description": "Testing GraphQL queries and mutations effectively",
+      "types": [
+        {
+          "name": "GraphQlTester",
+          "description": "A testing tool to execute GraphQL queries and validate responses.",
+          "example": {
+            "code": "GraphQlTester tester = GraphQlTester.create(graphQlSource);\n\ntester.document(\"{ user(id: 1) { id, name } }\")\n       .execute()\n       .path(\"user.name\")\n       .entity(String.class)\n       .isEqualTo(\"John Doe\");"
+          }
+        }
+      ]
+    },
+    {
+      "id": "graphql-best-practices",
+      "title": "GraphQL Best Practices",
+      "practices": [
+        {
+          "category": "Schema Design",
+          "recommendations": [
+            "Design clear, intuitive, and well-documented schemas",
+            "Keep queries and mutations focused and minimal",
+            "Use descriptive names and types"
+          ]
+        },
+        {
+          "category": "Performance Optimization",
+          "recommendations": [
+            "Utilize DataLoader to batch and cache requests",
+            "Monitor and profile query performance regularly"
+          ]
+        },
+        {
+          "category": "Error Management",
+          "recommendations": [
+            "Provide meaningful error messages without exposing internal details",
+            "Implement global error handling strategies"
+          ]
+        }
+      ]
+    }
+  ]
+}
