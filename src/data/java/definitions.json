@@ -20,8 +20,8 @@
           },
           {
             "principle": "Polymorphism",
-            "definition": "The ability of an object to take on multiple forms, often through method overriding and interfaces.",
-            "example": "A `Shape` interface implemented by `Circle` and `Square` classes."
+            "definition": "The ability of an object to take on multiple forms. In Java, we distinguish static polymorphism (method overloading, resolved at compile-time) and dynamic polymorphism (method overriding, resolved at runtime).",
+            "example": "A `Shape` interface implemented by `Circle` and `Square` classes, where the `draw()` method behaves differently based on the actual object."
           },
           {
             "principle": "Abstraction",
@@ -38,17 +38,31 @@
           {
             "name": "Class Loader",
             "function": "Loads, links, and initializes classes in the JVM.",
-            "stages": ["Loading", "Linking", "Initialization"]
+            "stages": [
+              "Loading",
+              "Linking",
+              "Initialization"
+            ]
           },
           {
             "name": "Runtime Data Area",
             "function": "Memory areas managed during runtime, including Method Area, Heap, and Stack.",
-            "sub-areas": ["Method Area", "Heap", "Stack", "PC Register", "Native Method Stack"]
+            "sub-areas": [
+              "Method Area",
+              "Heap",
+              "Stack",
+              "PC Register",
+              "Native Method Stack"
+            ]
           },
           {
             "name": "Execution Engine",
             "function": "Executes bytecode using an interpreter and/or a JIT compiler.",
-            "components": ["Interpreter", "JIT Compiler", "Garbage Collector"]
+            "components": [
+              "Interpreter",
+              "JIT Compiler",
+              "Garbage Collector"
+            ]
           }
         ]
       },
@@ -60,34 +74,54 @@
           {
             "name": "Heap",
             "description": "Used for dynamic memory allocation of objects; managed by the Garbage Collector.",
-            "characteristics": ["Shared across threads", "Garbage collected", "Slower access"]
+            "characteristics": [
+              "Shared across threads",
+              "Garbage collected",
+              "Slower access"
+            ]
           },
           {
             "name": "Stack",
             "description": "Stores method call frames and local variables; has a LIFO structure.",
-            "characteristics": ["Thread-specific", "Faster access", "Fixed size"]
+            "characteristics": [
+              "Thread-specific",
+              "Faster access",
+              "Fixed size"
+            ]
           }
         ]
       },
       {
         "id": "java-platform-components",
         "title": "Java Platform Components",
-        "description": "The JDK, JRE, and JVM components and their roles.",
+        "description": "The components of the JDK, JRE, and JVM and their roles.",
         "components": [
           {
             "name": "JDK",
-            "definition": "Java Development Kit - includes JRE and development tools like the compiler and debugger.",
-            "tools": ["javac", "java", "javadoc"]
+            "definition": "Java Development Kit - includes the JRE and development tools such as the compiler and debugger.",
+            "tools": [
+              "javac",
+              "java",
+              "javadoc"
+            ]
           },
           {
             "name": "JRE",
-            "definition": "Java Runtime Environment - provides libraries and JVM for running Java applications.",
-            "includes": ["Class libraries", "Runtime environment"]
+            "definition": "Java Runtime Environment - provides libraries and the JVM for running Java applications.",
+            "includes": [
+              "Class libraries",
+              "Runtime environment"
+            ]
           },
           {
             "name": "JVM",
-            "definition": "Java Virtual Machine - a virtual engine that executes Java bytecode.",
-            "features": ["Platform-independent execution", "Garbage Collection", "Memory management"]
+            "definition": "Java Virtual Machine - a virtual engine that executes Java bytecode. It integrates an interpreter as well as a Just-In-Time (JIT) compiler, which compiles bytecode into native machine code at runtime to optimize performance.",
+            "features": [
+              "Platform-independent execution",
+              "Garbage Collection",
+              "Memory management",
+              "Just-In-Time (JIT) compilation"
+            ]
           }
         ]
       }

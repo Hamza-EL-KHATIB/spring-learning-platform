@@ -1,0 +1,130 @@
+{
+  "definitions": {
+    "title": "Définitions de Base de Java",
+    "description": "Une liste complète des concepts fondamentaux et de la terminologie en Java.",
+    "topics": [
+      {
+        "id": "oop-principles",
+        "title": "Principes de Programmation Orientée Objet",
+        "description": "Les principes fondamentaux de la POO sur lesquels Java est basé : encapsulation, héritage, polymorphisme et abstraction.",
+        "details": [
+          {
+            "principle": "Encapsulation",
+            "definition": "Encapsuler les données et le comportement dans une seule unité ou classe et restreindre l'accès à certains composants.",
+            "example": "Utiliser des champs privés avec des méthodes getter/setter publiques."
+          },
+          {
+            "principle": "Héritage",
+            "definition": "Un mécanisme par lequel une classe peut hériter des champs et des méthodes d'une autre classe.",
+            "example": "Une classe `Dog` qui hérite de `Animal`."
+          },
+          {
+            "principle": "Polymorphisme",
+            "definition": "La capacité d'un objet à prendre plusieurs formes. En Java, on distingue le polymorphisme statique (surcharge de méthodes, résolu à la compilation) et le polymorphisme dynamique (redéfinition de méthodes, résolu à l'exécution).",
+            "example": "Une interface `Shape` implémentée par les classes `Circle` et `Square`, où la méthode `draw()` peut se comporter différemment selon l'objet réel."
+          },
+          {
+            "principle": "Abstraction",
+            "definition": "Cacher les détails complexes de l'implémentation et ne montrer que les fonctionnalités essentielles.",
+            "example": "Utiliser des classes abstraites ou des interfaces."
+          }
+        ]
+      },
+      {
+        "id": "jvm-architecture",
+        "title": "Architecture de la Machine Virtuelle Java (JVM)",
+        "description": "Composants et fonctionnement de la JVM, incluant le Chargeur de Classes, la Zone de Données d'Exécution et le Moteur d'Exécution.",
+        "components": [
+          {
+            "name": "Chargeur de Classes",
+            "function": "Charge, lie et initialise les classes dans la JVM.",
+            "stages": [
+              "Chargement",
+              "Liaison",
+              "Initialisation"
+            ]
+          },
+          {
+            "name": "Zone de Données d'Exécution",
+            "function": "Zones de mémoire gérées pendant l'exécution, incluant la Zone de Méthodes, le Tas et la Pile.",
+            "sub-areas": [
+              "Zone de Méthodes",
+              "Tas",
+              "Pile",
+              "Registre PC",
+              "Pile des Méthodes Natives"
+            ]
+          },
+          {
+            "name": "Moteur d'Exécution",
+            "function": "Exécute le bytecode à l'aide d'un interpréteur et/ou d'un compilateur JIT.",
+            "components": [
+              "Interpréteur",
+              "Compilateur JIT",
+              "Ramasse-miettes"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "java-memory-management",
+        "title": "Gestion de la Mémoire en Java",
+        "description": "Gestion de la mémoire en Java, en se concentrant sur le Tas et la Pile gérés par la JVM.",
+        "memory-areas": [
+          {
+            "name": "Tas",
+            "description": "Utilisé pour l'allocation dynamique de mémoire pour les objets; géré par le ramasse-miettes.",
+            "characteristics": [
+              "Partagé entre les threads",
+              "Collecté par le ramasse-miettes",
+              "Accès plus lent"
+            ]
+          },
+          {
+            "name": "Pile",
+            "description": "Stocke les trames d'appels de méthodes et les variables locales; possède une structure LIFO.",
+            "characteristics": [
+              "Spécifique à chaque thread",
+              "Accès plus rapide",
+              "Taille fixe"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "java-platform-components",
+        "title": "Composants de la Plateforme Java",
+        "description": "Les composants du JDK, du JRE et de la JVM et leurs rôles.",
+        "components": [
+          {
+            "name": "JDK",
+            "definition": "Java Development Kit - inclut le JRE et des outils de développement tels que le compilateur et le débogueur.",
+            "tools": [
+              "javac",
+              "java",
+              "javadoc"
+            ]
+          },
+          {
+            "name": "JRE",
+            "definition": "Java Runtime Environment - fournit des bibliothèques et la JVM pour exécuter des applications Java.",
+            "includes": [
+              "Bibliothèques de classes",
+              "Environnement d'exécution"
+            ]
+          },
+          {
+            "name": "JVM",
+            "definition": "Java Virtual Machine - un moteur virtuel qui exécute le bytecode Java. Elle intègre un interpréteur ainsi qu'un compilateur Just-In-Time (JIT) qui compile le bytecode en code machine natif à l'exécution pour optimiser les performances.",
+            "features": [
+              "Exécution indépendante de la plateforme",
+              "Ramasse-miettes",
+              "Gestion de la mémoire",
+              "Compilation Just-In-Time (JIT)"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
