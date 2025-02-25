@@ -1,8 +1,56 @@
-import React from 'react';
-import definitionsJson from '../../../data/java/definitions.json';
-import { Box, Cpu, Database, MemoryStick } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import definitionsJsonEn from '../../../data/java/definitions.json';
+import definitionsJsonFr from '../../../data/java/definitions-fr.json';
+import { Box, Cpu, Database, MemoryStick, Globe } from 'lucide-react';
 
 const DefinitionsPage = () => {
+    // State for language selection (default to English, check localStorage)
+    const [language, setLanguage] = useState(() => {
+        return localStorage.getItem('definitionsPageLanguage') || 'en';
+    });
+
+    // State for definitions content
+    const [definitionsJson, setDefinitionsJson] = useState(
+        language === 'en' ? definitionsJsonEn : definitionsJsonFr
+    );
+
+    // Update content when language changes
+    useEffect(() => {
+        setDefinitionsJson(language === 'en' ? definitionsJsonEn : definitionsJsonFr);
+        localStorage.setItem('definitionsPageLanguage', language);
+    }, [language]);
+
+    // Language Selector Component
+    const LanguageSelector = () => {
+        return (
+            <div className="flex items-center gap-3 mb-6">
+                <Globe className="w-5 h-5 text-purple-400" />
+                <div className="flex rounded-lg overflow-hidden border border-gray-700">
+                    <button
+                        onClick={() => setLanguage('en')}
+                        className={`px-3 py-1.5 text-sm ${
+                            language === 'en'
+                                ? 'bg-purple-500/30 text-purple-300'
+                                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                        }`}
+                    >
+                        English
+                    </button>
+                    <button
+                        onClick={() => setLanguage('fr')}
+                        className={`px-3 py-1.5 text-sm ${
+                            language === 'fr'
+                                ? 'bg-purple-500/30 text-purple-300'
+                                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                        }`}
+                    >
+                        Français
+                    </button>
+                </div>
+            </div>
+        );
+    };
+
     // Render OOP Principles
     const renderOOPPrinciples = (details) => (
         <div className="grid grid-cols-1 gap-6">
@@ -11,7 +59,9 @@ const DefinitionsPage = () => {
                     <h4 className="text-lg font-medium text-purple-300 mb-2">{item.principle}</h4>
                     <p className="text-gray-300 mb-3">{item.definition}</p>
                     <div className="mt-2">
-                        <h5 className="text-sm text-gray-400 mb-2">Example:</h5>
+                        <h5 className="text-sm text-gray-400 mb-2">
+                            {language === 'en' ? 'Example:' : 'Exemple:'}
+                        </h5>
                         <p className="text-gray-300 bg-gray-700/50 p-2 rounded">{item.example}</p>
                     </div>
                 </div>
@@ -28,7 +78,9 @@ const DefinitionsPage = () => {
                     <p className="text-gray-300 mb-3">{component.function}</p>
                     {component.stages && (
                         <div className="mt-2">
-                            <h5 className="text-sm text-gray-400 mb-2">Stages:</h5>
+                            <h5 className="text-sm text-gray-400 mb-2">
+                                {language === 'en' ? 'Stages:' : 'Étapes:'}
+                            </h5>
                             <ul className="list-disc list-inside space-y-1">
                                 {component.stages.map((stage, stageIdx) => (
                                     <li key={stageIdx} className="text-gray-300">{stage}</li>
@@ -38,7 +90,9 @@ const DefinitionsPage = () => {
                     )}
                     {component["sub-areas"] && (
                         <div className="mt-2">
-                            <h5 className="text-sm text-gray-400 mb-2">Memory Areas:</h5>
+                            <h5 className="text-sm text-gray-400 mb-2">
+                                {language === 'en' ? 'Memory Areas:' : 'Zones de Mémoire:'}
+                            </h5>
                             <ul className="list-disc list-inside space-y-1">
                                 {component["sub-areas"].map((area, areaIdx) => (
                                     <li key={areaIdx} className="text-gray-300">{area}</li>
@@ -48,7 +102,9 @@ const DefinitionsPage = () => {
                     )}
                     {component.components && (
                         <div className="mt-2">
-                            <h5 className="text-sm text-gray-400 mb-2">Components:</h5>
+                            <h5 className="text-sm text-gray-400 mb-2">
+                                {language === 'en' ? 'Components:' : 'Composants:'}
+                            </h5>
                             <ul className="list-disc list-inside space-y-1">
                                 {component.components.map((comp, compIdx) => (
                                     <li key={compIdx} className="text-gray-300">{comp}</li>
@@ -69,7 +125,9 @@ const DefinitionsPage = () => {
                     <h4 className="text-lg font-medium text-purple-300 mb-2">{area.name}</h4>
                     <p className="text-gray-300 mb-3">{area.description}</p>
                     <div className="mt-2">
-                        <h5 className="text-sm text-gray-400 mb-2">Characteristics:</h5>
+                        <h5 className="text-sm text-gray-400 mb-2">
+                            {language === 'en' ? 'Characteristics:' : 'Caractéristiques:'}
+                        </h5>
                         <ul className="list-disc list-inside space-y-1">
                             {area.characteristics.map((char, charIdx) => (
                                 <li key={charIdx} className="text-gray-300">{char}</li>
@@ -90,7 +148,9 @@ const DefinitionsPage = () => {
                     <p className="text-gray-300 mb-3">{component.definition}</p>
                     {component.tools && (
                         <div className="mt-2">
-                            <h5 className="text-sm text-gray-400 mb-2">Tools:</h5>
+                            <h5 className="text-sm text-gray-400 mb-2">
+                                {language === 'en' ? 'Tools:' : 'Outils:'}
+                            </h5>
                             <ul className="list-disc list-inside space-y-1">
                                 {component.tools.map((tool, toolIdx) => (
                                     <li key={toolIdx} className="text-gray-300">{tool}</li>
@@ -100,7 +160,9 @@ const DefinitionsPage = () => {
                     )}
                     {component.includes && (
                         <div className="mt-2">
-                            <h5 className="text-sm text-gray-400 mb-2">Includes:</h5>
+                            <h5 className="text-sm text-gray-400 mb-2">
+                                {language === 'en' ? 'Includes:' : 'Inclut:'}
+                            </h5>
                             <ul className="list-disc list-inside space-y-1">
                                 {component.includes.map((item, itemIdx) => (
                                     <li key={itemIdx} className="text-gray-300">{item}</li>
@@ -110,7 +172,9 @@ const DefinitionsPage = () => {
                     )}
                     {component.features && (
                         <div className="mt-2">
-                            <h5 className="text-sm text-gray-400 mb-2">Features:</h5>
+                            <h5 className="text-sm text-gray-400 mb-2">
+                                {language === 'en' ? 'Features:' : 'Fonctionnalités:'}
+                            </h5>
                             <ul className="list-disc list-inside space-y-1">
                                 {component.features.map((feature, featureIdx) => (
                                     <li key={featureIdx} className="text-gray-300">{feature}</li>
@@ -125,6 +189,9 @@ const DefinitionsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
+            {/* Language Selector */}
+            <LanguageSelector />
+
             {/* Title Section */}
             <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
                 <h1 className="text-3xl font-bold text-white mb-2">{definitionsJson.definitions.title}</h1>
