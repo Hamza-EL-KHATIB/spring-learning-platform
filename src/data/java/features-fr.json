@@ -1,0 +1,705 @@
+{
+  "title": "Fonctionnalités Java 8+",
+  "topics": [
+    {
+      "id": "streams",
+      "title": "Stream API",
+      "description": "L'API Stream introduit une approche fonctionnelle et déclarative pour le traitement des collections d'objets. Elle facilite l'exécution de manipulations complexes de données telles que le filtrage, la transformation et la réduction, le tout avec un code concis et lisible, tout en supportant l'exécution parallèle.",
+      "operations": [
+        {
+          "name": "Stream Creation",
+          "methods": [
+            {
+              "name": "stream()",
+              "description": "Crée un flux séquentiel à partir d'une collection, permettant d'effectuer des opérations d'agrégation sur ses éléments.",
+              "example": "collection.stream()"
+            },
+            {
+              "name": "of()",
+              "description": "Crée un flux à partir de valeurs spécifiées, ce qui est utile pour construire rapidement un flux à partir d'éléments connus.",
+              "example": "Stream.of(1, 2, 3, 4, 5)"
+            },
+            {
+              "name": "generate()",
+              "description": "Crée un flux infini en utilisant un Supplier, souvent utilisé pour générer des valeurs aléatoires ou des motifs répétitifs.",
+              "example": "Stream.generate(Math::random)"
+            },
+            {
+              "name": "iterate()",
+              "description": "Crée un flux infini en appliquant de manière itérative une fonction à partir d'une graine initiale, utile pour générer des séquences.",
+              "example": "Stream.iterate(0, n -> n + 2)"
+            },
+            {
+              "name": "Arrays.stream()",
+              "description": "Convertit un tableau en flux, permettant d'effectuer des opérations sur les éléments du tableau.",
+              "example": "Arrays.stream(new int[]{1, 2, 3})"
+            }
+          ]
+        },
+        {
+          "name": "Intermediate Operations",
+          "methods": [
+            {
+              "name": "filter()",
+              "description": "Ne conserve que les éléments qui satisfont un prédicat donné.",
+              "example": "list.stream().filter(n -> n > 10)"
+            },
+            {
+              "name": "map()",
+              "description": "Transforme chaque élément du flux en utilisant la fonction fournie.",
+              "example": "list.stream().map(String::toUpperCase)"
+            },
+            {
+              "name": "flatMap()",
+              "description": "Convertit chaque élément en un flux, puis aplatit les flux résultants en un seul flux continu.",
+              "example": "list.stream().flatMap(List::stream)"
+            },
+            {
+              "name": "sorted()",
+              "description": "Trie les éléments du flux selon l'ordre naturel ou selon un comparateur personnalisé.",
+              "example": "stream.sorted()"
+            },
+            {
+              "name": "distinct()",
+              "description": "Élimine les éléments en double du flux.",
+              "example": "stream.distinct()"
+            },
+            {
+              "name": "limit()",
+              "description": "Limite le flux à un nombre maximal d'éléments spécifié.",
+              "example": "stream.limit(5)"
+            },
+            {
+              "name": "skip()",
+              "description": "Ignore les n premiers éléments du flux, retournant un flux commençant après ces éléments.",
+              "example": "stream.skip(3)"
+            },
+            {
+              "name": "peek()",
+              "description": "Exécute l'action fournie sur chaque élément au fur et à mesure de sa consommation, souvent utilisé pour le débogage.",
+              "example": "stream.peek(System.out::println)"
+            }
+          ]
+        },
+        {
+          "name": "Terminal Operations",
+          "methods": [
+            {
+              "name": "collect()",
+              "description": "Accumule les éléments du flux dans une collection ou un résultat résumé en utilisant un Collector.",
+              "example": "stream.collect(Collectors.toList())"
+            },
+            {
+              "name": "reduce()",
+              "description": "Réduit les éléments du flux à une seule valeur en utilisant une fonction d'accumulation.",
+              "example": "stream.reduce(0, Integer::sum)"
+            },
+            {
+              "name": "forEach()",
+              "description": "Exécute une action sur chaque élément du flux.",
+              "example": "stream.forEach(System.out::println)"
+            },
+            {
+              "name": "forEachOrdered()",
+              "description": "Exécute une action sur chaque élément du flux tout en préservant l'ordre d'apparition.",
+              "example": "stream.forEachOrdered(System.out::println)"
+            },
+            {
+              "name": "toArray()",
+              "description": "Convertit le flux en un tableau contenant tous ses éléments.",
+              "example": "Object[] array = stream.toArray()"
+            },
+            {
+              "name": "count()",
+              "description": "Renvoie le nombre total d'éléments dans le flux.",
+              "example": "long count = stream.count()"
+            },
+            {
+              "name": "anyMatch()",
+              "description": "Renvoie true si au moins un élément du flux satisfait le prédicat donné.",
+              "example": "stream.anyMatch(n -> n > 10)"
+            },
+            {
+              "name": "allMatch()",
+              "description": "Renvoie true si tous les éléments du flux satisfont le prédicat donné.",
+              "example": "stream.allMatch(n -> n > 0)"
+            },
+            {
+              "name": "noneMatch()",
+              "description": "Renvoie true si aucun élément du flux ne satisfait le prédicat donné.",
+              "example": "stream.noneMatch(n -> n < 0)"
+            },
+            {
+              "name": "findFirst()",
+              "description": "Récupère le premier élément du flux, s'il est présent, encapsulé dans un Optional.",
+              "example": "Optional<T> first = stream.findFirst()"
+            },
+            {
+              "name": "findAny()",
+              "description": "Récupère un élément quelconque du flux, particulièrement utile dans les flux parallèles, encapsulé dans un Optional.",
+              "example": "Optional<T> any = stream.findAny()"
+            },
+            {
+              "name": "max()",
+              "description": "Trouve l'élément maximum du flux selon un comparateur fourni.",
+              "example": "stream.max(Comparator.naturalOrder())"
+            },
+            {
+              "name": "min()",
+              "description": "Trouve l'élément minimum du flux selon un comparateur fourni.",
+              "example": "stream.min(Comparator.naturalOrder())"
+            },
+            {
+              "name": "summaryStatistics()",
+              "description": "Génère des statistiques récapitulatives (nombre, somme, minimum, moyenne, maximum) pour les flux numériques.",
+              "example": "IntSummaryStatistics stats = intStream.summaryStatistics()"
+            }
+          ]
+        },
+        {
+          "name": "Parallel Streams",
+          "methods": [
+            {
+              "name": "parallel()",
+              "description": "Convertit un flux séquentiel en flux parallèle pour tirer parti du traitement multi-cœurs et améliorer les performances.",
+              "example": "stream.parallel().forEach(System.out::println)"
+            },
+            {
+              "name": "sequential()",
+              "description": "Convertit un flux parallèle en flux séquentiel pour préserver l'ordre des éléments.",
+              "example": "stream.parallel().sequential()"
+            },
+            {
+              "name": "parallelStream()",
+              "description": "Crée directement un flux parallèle à partir d'une collection, permettant un traitement concurrent.",
+              "example": "collection.parallelStream()"
+            }
+          ]
+        },
+        {
+          "name": "Specialized Streams",
+          "methods": [
+            {
+              "name": "IntStream",
+              "description": "Un flux spécialisé pour les valeurs entières primitives, conçu pour éviter le surcoût du boxing.",
+              "example": "IntStream.range(1, 10).sum()"
+            },
+            {
+              "name": "LongStream",
+              "description": "Un flux spécialisé pour les valeurs longues primitives, offrant des opérations numériques efficaces.",
+              "example": "LongStream.of(1L, 2L, 3L)"
+            },
+            {
+              "name": "DoubleStream",
+              "description": "Un flux spécialisé pour les valeurs doubles primitives, optimisé pour l'arithmétique à virgule flottante.",
+              "example": "DoubleStream.generate(Math::random).limit(5)"
+            },
+            {
+              "name": "Stream Support Methods",
+              "description": "Méthodes pour convertir entre les flux d'objets et les flux primitifs, facilitant des opérations telles que la transformation.",
+              "example": "stream.mapToInt(String::length)"
+            }
+          ]
+        },
+        {
+          "name": "Collectors",
+          "methods": [
+            {
+              "name": "toList()",
+              "description": "Collecte les éléments du flux dans une List.",
+              "example": "stream.collect(Collectors.toList())"
+            },
+            {
+              "name": "toSet()",
+              "description": "Collecte les éléments du flux dans un Set, en éliminant automatiquement les doublons.",
+              "example": "stream.collect(Collectors.toSet())"
+            },
+            {
+              "name": "toCollection()",
+              "description": "Collecte les éléments dans un type spécifique de collection fourni par un Supplier.",
+              "example": "stream.collect(Collectors.toCollection(LinkedList::new))"
+            },
+            {
+              "name": "toMap()",
+              "description": "Transforme le flux en un Map en appliquant des fonctions de mappage pour les clés et les valeurs.",
+              "example": "stream.collect(Collectors.toMap(keyMapper, valueMapper))"
+            },
+            {
+              "name": "toConcurrentMap()",
+              "description": "Transforme le flux en un ConcurrentMap thread-safe en utilisant des fonctions de mappage pour les clés et les valeurs.",
+              "example": "stream.collect(Collectors.toConcurrentMap(keyMapper, valueMapper))"
+            },
+            {
+              "name": "joining()",
+              "description": "Concatène les éléments du flux en une seule chaîne de caractères avec un délimiteur optionnel.",
+              "example": "stream.collect(Collectors.joining(\", \"))"
+            },
+            {
+              "name": "counting()",
+              "description": "Compte le nombre d'éléments dans le flux.",
+              "example": "stream.collect(Collectors.counting())"
+            },
+            {
+              "name": "summingInt()",
+              "description": "Calcule la somme des valeurs entières du flux.",
+              "example": "stream.collect(Collectors.summingInt(Integer::intValue))"
+            },
+            {
+              "name": "summingLong()",
+              "description": "Calcule la somme des valeurs longues du flux.",
+              "example": "stream.collect(Collectors.summingLong(Long::longValue))"
+            },
+            {
+              "name": "summingDouble()",
+              "description": "Calcule la somme des valeurs doubles du flux.",
+              "example": "stream.collect(Collectors.summingDouble(Double::doubleValue))"
+            },
+            {
+              "name": "averagingInt()",
+              "description": "Calcule la moyenne des valeurs entières du flux.",
+              "example": "stream.collect(Collectors.averagingInt(Integer::intValue))"
+            },
+            {
+              "name": "averagingLong()",
+              "description": "Calcule la moyenne des valeurs longues du flux.",
+              "example": "stream.collect(Collectors.averagingLong(Long::longValue))"
+            },
+            {
+              "name": "averagingDouble()",
+              "description": "Calcule la moyenne des valeurs doubles du flux.",
+              "example": "stream.collect(Collectors.averagingDouble(Double::doubleValue))"
+            },
+            {
+              "name": "summarizingInt()",
+              "description": "Produit des statistiques récapitulatives pour les valeurs entières du flux.",
+              "example": "stream.collect(Collectors.summarizingInt(Integer::intValue))"
+            },
+            {
+              "name": "summarizingLong()",
+              "description": "Produit des statistiques récapitulatives pour les valeurs longues du flux.",
+              "example": "stream.collect(Collectors.summarizingLong(Long::longValue))"
+            },
+            {
+              "name": "summarizingDouble()",
+              "description": "Produit des statistiques récapitulatives pour les valeurs doubles du flux.",
+              "example": "stream.collect(Collectors.summarizingDouble(Double::doubleValue))"
+            },
+            {
+              "name": "maxBy()",
+              "description": "Trouve l'élément maximum du flux en utilisant un comparateur fourni.",
+              "example": "stream.collect(Collectors.maxBy(Comparator.naturalOrder()))"
+            },
+            {
+              "name": "minBy()",
+              "description": "Trouve l'élément minimum du flux en utilisant un comparateur fourni.",
+              "example": "stream.collect(Collectors.minBy(Comparator.naturalOrder()))"
+            },
+            {
+              "name": "reducing()",
+              "description": "Réduit les éléments du flux à une seule valeur en utilisant un opérateur binaire associatif.",
+              "example": "stream.collect(Collectors.reducing(0, Integer::intValue, Integer::sum))"
+            },
+            {
+              "name": "collectingAndThen()",
+              "description": "Effectue une transformation finale sur le résultat produit par un Collector.",
+              "example": "stream.collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList))"
+            },
+            {
+              "name": "groupingBy()",
+              "description": "Groupe les éléments du flux selon une fonction de classification dans un Map.",
+              "example": "stream.collect(Collectors.groupingBy(String::length))"
+            },
+            {
+              "name": "groupingByConcurrent()",
+              "description": "Une version concurrente de groupingBy qui retourne un ConcurrentMap thread-safe.",
+              "example": "stream.collect(Collectors.groupingByConcurrent(String::length))"
+            },
+            {
+              "name": "partitioningBy()",
+              "description": "Partitionne les éléments du flux en deux groupes basés sur un prédicat, retournant un Map avec des clés booléennes.",
+              "example": "stream.collect(Collectors.partitioningBy(n -> n > 10))"
+            },
+            {
+              "name": "mapping()",
+              "description": "Applique une fonction de transformation aux éléments avant de les collecter dans une collection.",
+              "example": "stream.collect(Collectors.mapping(String::toUpperCase, Collectors.toList()))"
+            }
+          ]
+        },
+        {
+          "name": "Examples",
+          "methods": [
+            {
+              "name": "Processing a List of Names",
+              "description": "Filtre une liste de noms pour inclure uniquement ceux qui commencent par 'A', les convertit en majuscules, et collecte les résultats dans une nouvelle liste.",
+              "example": "names.stream().filter(n -> n.startsWith(\"A\")).map(String::toUpperCase).collect(Collectors.toList())"
+            },
+            {
+              "name": "Calculating Total Order Amount",
+              "description": "Additionne les montants totaux d'une liste de commandes, fournissant une valeur agrégée unique.",
+              "example": "orders.stream().mapToDouble(Order::getAmount).sum()"
+            },
+            {
+              "name": "Grouping Employees by Department",
+              "description": "Organise les employés en groupes selon leur département en utilisant le collecteur groupingBy.",
+              "example": "employees.stream().collect(Collectors.groupingBy(Employee::getDepartment))"
+            },
+            {
+              "name": "Parallel Stream Processing",
+              "description": "Traite un grand ensemble de données en parallèle pour améliorer les performances en exploitant plusieurs cœurs.",
+              "example": "largeDataSet.parallelStream().filter(...).collect(...)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "completableFuture",
+      "title": "CompletableFuture",
+      "description": "CompletableFuture est un Future amélioré qui supporte la programmation asynchrone, offrant une approche plus flexible et fonctionnelle pour gérer les opérations concurrentes.",
+      "features": [
+        {
+          "category": "Creation",
+          "methods": [
+            {
+              "name": "supplyAsync()",
+              "description": "Crée un CompletableFuture qui fournit un résultat de manière asynchrone en utilisant un Supplier.",
+              "example": "CompletableFuture.supplyAsync(() -> fetchData())"
+            },
+            {
+              "name": "runAsync()",
+              "description": "Crée un CompletableFuture qui exécute une tâche Runnable de manière asynchrone sans retourner de résultat.",
+              "example": "CompletableFuture.runAsync(() -> process())"
+            }
+          ]
+        },
+        {
+          "category": "Transformation",
+          "methods": [
+            {
+              "name": "thenApply()",
+              "description": "Transforme le résultat d'un CompletableFuture en utilisant une fonction, renvoyant un nouveau CompletableFuture avec le résultat transformé.",
+              "example": "future.thenApply(result -> result.toUpperCase())"
+            },
+            {
+              "name": "thenCompose()",
+              "description": "Chaîne plusieurs opérations asynchrones en utilisant le résultat d'un future pour en démarrer un autre.",
+              "example": "future.thenCompose(result -> fetchMore(result))"
+            },
+            {
+              "name": "thenCombine()",
+              "description": "Combine les résultats de deux CompletableFutures indépendants en utilisant une fonction spécifiée.",
+              "example": "future1.thenCombine(future2, (r1, r2) -> r1 + r2)"
+            }
+          ]
+        },
+        {
+          "category": "Error Handling",
+          "methods": [
+            {
+              "name": "exceptionally()",
+              "description": "Gère les exceptions en fournissant un résultat alternatif si une erreur se produit lors de l'opération asynchrone.",
+              "example": "future.exceptionally(ex -> handleError(ex))"
+            },
+            {
+              "name": "handle()",
+              "description": "Traite à la fois les résultats réussis et les exceptions, permettant de retourner une valeur en fonction de l'issue.",
+              "example": "future.handle((result, ex) -> ex != null ? handleError(ex) : result)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dateTime",
+      "title": "Date/Time API",
+      "description": "Des classes modernes et complètes pour gérer les dates et les heures en Java. Ces classes offrent une meilleure clarté, flexibilité et précision par rapport aux anciennes API de date/heure.",
+      "classes": [
+        {
+          "name": "LocalDate",
+          "description": "Représente une date sans heure ni information de fuseau horaire, idéale pour représenter des dates calendaires.",
+          "examples": [
+            {
+              "operation": "Création",
+              "code": "LocalDate.now()"
+            },
+            {
+              "operation": "Parsing",
+              "code": "LocalDate.parse(\"2024-01-01\")"
+            },
+            {
+              "operation": "Manipulation",
+              "code": "date.plusDays(1).minusMonths(1)"
+            }
+          ]
+        },
+        {
+          "name": "LocalTime",
+          "description": "Représente une heure sans date ni fuseau horaire, utile pour spécifier des heures de la journée.",
+          "examples": [
+            {
+              "operation": "Création",
+              "code": "LocalTime.of(13, 30)"
+            },
+            {
+              "operation": "Parsing",
+              "code": "LocalTime.parse(\"13:30:00\")"
+            }
+          ]
+        },
+        {
+          "name": "LocalDateTime",
+          "description": "Combine la date et l'heure sans information de fuseau horaire, fournissant une représentation complète date-heure.",
+          "examples": [
+            {
+              "operation": "Création",
+              "code": "LocalDateTime.now()"
+            },
+            {
+              "operation": "Formatting",
+              "code": "dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)"
+            }
+          ]
+        },
+        {
+          "name": "ZonedDateTime",
+          "description": "Représente la date et l'heure avec information de fuseau horaire, permettant des conversions entre différents fuseaux horaires.",
+          "examples": [
+            {
+              "operation": "Création",
+              "code": "ZonedDateTime.now(ZoneId.of(\"Europe/Paris\"))"
+            },
+            {
+              "operation": "Conversion",
+              "code": "zonedDateTime.withZoneSameInstant(ZoneId.of(\"America/New_York\"))"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "methodReferences",
+      "title": "Method References",
+      "description": "Les références de méthodes offrent un moyen concis de faire référence à des méthodes ou constructeurs existants, améliorant la lisibilité du code et réduisant le code répétitif dans les expressions lambda.",
+      "types": [
+        {
+          "type": "Static Method Reference",
+          "syntax": "ClassName::staticMethod",
+          "example": "String::valueOf",
+          "description": "Une référence concise à une méthode statique."
+        },
+        {
+          "type": "Instance Method Reference",
+          "syntax": "ClassName::instanceMethod",
+          "example": "String::toLowerCase",
+          "description": "Une référence à une méthode d'instance pour un objet ou une classe donnée."
+        },
+        {
+          "type": "Constructor Reference",
+          "syntax": "ClassName::new",
+          "example": "ArrayList::new",
+          "description": "Une abréviation pour appeler un constructeur afin de créer de nouveaux objets."
+        }
+      ],
+      "examples": [
+        {
+          "scenario": "Avec les Streams",
+          "code": "list.stream().forEach(System.out::println)",
+          "description": "Affiche chaque élément du flux en utilisant une référence de méthode."
+        },
+        {
+          "scenario": "Avec un Comparator",
+          "code": "list.sort(String::compareToIgnoreCase)",
+          "description": "Trie une liste de chaînes de caractères de manière insensible à la casse en utilisant une référence de méthode."
+        }
+      ]
+    },
+    {
+      "id": "defaultMethods",
+      "title": "Default Methods",
+      "description": "Les méthodes par défaut permettent aux interfaces de fournir des implémentations concrètes, permettant d'étendre les interfaces avec de nouveaux comportements sans casser les implémentations existantes.",
+      "features": [
+        {
+          "aspect": "Purpose",
+          "description": "Étendre les interfaces avec de nouvelles méthodes sans rompre la compatibilité ascendante."
+        },
+        {
+          "aspect": "Rules",
+          "points": [
+            "Doit être déclaré avec le mot-clé 'default'",
+            "Peut être surchargée par les classes implémentantes",
+            "Peut appeler d'autres méthodes de l'interface",
+            "Ne peut pas remplacer les méthodes de la classe Object"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "title": "Simple Default Method",
+          "code": "interface Vehicle { default void start() { System.out.println(\"Starting vehicle\"); } }",
+          "description": "Fournit une implémentation par défaut standard pour une méthode d'interface."
+        },
+        {
+          "title": "Multiple Default Methods",
+          "code": "interface Collection { default Stream<E> stream() { ... } default Stream<E> parallelStream() { ... } }",
+          "description": "Montre comment une interface peut inclure plusieurs méthodes par défaut."
+        }
+      ]
+    },
+    {
+      "id": "lambdaExpressions",
+      "title": "Lambda Expressions",
+      "description": "Les expressions lambda permettent la création de fonctions anonymes de manière concise et lisible, réduisant le code boilerplate et améliorant la programmation fonctionnelle.",
+      "syntax": "parameters -> expression",
+      "examples": [
+        {
+          "scenario": "Simple Expression",
+          "code": "(int x, int y) -> x + y",
+          "description": "Additionne deux nombres."
+        },
+        {
+          "scenario": "Single Parameter",
+          "code": "n -> n * n",
+          "description": "Élève un nombre au carré."
+        },
+        {
+          "scenario": "Block of Code",
+          "code": "(String s) -> { System.out.println(s); }",
+          "description": "Affiche une chaîne de caractères en utilisant un bloc de code."
+        }
+      ]
+    },
+    {
+      "id": "functionalInterfaces",
+      "title": "Functional Interfaces",
+      "description": "Les interfaces fonctionnelles sont des interfaces avec une seule méthode abstraite, formant la base des expressions lambda et de la programmation fonctionnelle en Java.",
+      "examples": [
+        {
+          "name": "Predicate<T>",
+          "description": "Représente une fonction qui prend une valeur et renvoie un résultat booléen.",
+          "method": "boolean test(T t)"
+        },
+        {
+          "name": "Consumer<T>",
+          "description": "Représente une opération qui accepte une seule entrée et exécute une action sans renvoyer de résultat.",
+          "method": "void accept(T t)"
+        },
+        {
+          "name": "Function<T,R>",
+          "description": "Représente une fonction qui prend un argument et produit un résultat.",
+          "method": "R apply(T t)"
+        }
+      ],
+      "note": "Utilisez l'annotation @FunctionalInterface pour indiquer clairement les interfaces fonctionnelles."
+    },
+    {
+      "id": "optional",
+      "title": "Optional Class",
+      "description": "Optional est un conteneur qui peut contenir ou non une valeur non nulle, aidant à éviter les exceptions de pointeur nul et à exprimer explicitement l'absence d'une valeur.",
+      "methods": [
+        {
+          "name": "of()",
+          "description": "Crée un Optional contenant une valeur non nulle.",
+          "example": "Optional.of(value)"
+        },
+        {
+          "name": "empty()",
+          "description": "Crée une instance vide d'Optional.",
+          "example": "Optional.empty()"
+        },
+        {
+          "name": "ofNullable()",
+          "description": "Crée un Optional qui contient la valeur donnée, ou est vide si la valeur est nulle.",
+          "example": "Optional.ofNullable(value)"
+        },
+        {
+          "name": "get()",
+          "description": "Récupère la valeur si présente ; lance une NoSuchElementException si l'Optional est vide.",
+          "example": "optional.get()"
+        },
+        {
+          "name": "isPresent()",
+          "description": "Vérifie si l'Optional contient une valeur.",
+          "example": "optional.isPresent()"
+        },
+        {
+          "name": "ifPresent()",
+          "description": "Exécute l'action donnée si une valeur est présente dans l'Optional.",
+          "example": "optional.ifPresent(value -> System.out.println(value))"
+        }
+      ]
+    },
+    {
+      "id": "annotations",
+      "title": "Annotations Enhancements",
+      "description": "Les améliorations récentes des annotations permettent d'avoir des métadonnées plus expressives. Ces améliorations incluent les annotations de type et les annotations répétitives, qui aident à réduire le code redondant et à améliorer la clarté.",
+      "features": [
+        {
+          "name": "Type Annotations",
+          "description": "Annotations qui peuvent être appliquées partout où un type est utilisé, fournissant des métadonnées supplémentaires.",
+          "example": "@Nonnull String text"
+        },
+        {
+          "name": "Repeating Annotations",
+          "description": "Permet d'appliquer la même annotation plusieurs fois à une seule déclaration.",
+          "example": "@Schedule(dayOfMonth=\"last\") @Schedule(dayOfWeek=\"Fri\") void doPeriodic() {}"
+        }
+      ]
+    },
+    {
+      "id": "nashorn",
+      "title": "Nashorn JavaScript Engine",
+      "description": "Nashorn est un moteur JavaScript léger intégré à Java, permettant le scripting dynamique en autorisant l'intégration et l'exécution de code JavaScript dans des applications Java.",
+      "features": [
+        {
+          "aspect": "Integration",
+          "description": "Permet d'intégrer directement du code JavaScript dans des applications Java, facilitant le scripting dynamique et une intégration transparente avec les bibliothèques Java.",
+          "example": "ScriptEngine engine = new ScriptEngineManager().getEngineByName(\"nashorn\");"
+        },
+        {
+          "aspect": "Performance",
+          "description": "Offre des performances améliorées par rapport aux anciens moteurs JavaScript, rendant l'exécution de code JavaScript plus efficace."
+        }
+      ]
+    },
+    {
+      "id": "base64",
+      "title": "Base64 Encoding and Decoding",
+      "description": "Fournit un support intégré pour encoder des données binaires en chaînes Base64 et décoder des chaînes Base64 en données binaires, simplifiant ainsi les conversions de données.",
+      "methods": [
+        {
+          "name": "getEncoder()",
+          "description": "Renvoie un encodeur Base64 qui convertit des données binaires en une chaîne encodée en Base64.",
+          "example": "Base64.getEncoder().encodeToString(bytes)"
+        },
+        {
+          "name": "getDecoder()",
+          "description": "Renvoie un décodeur Base64 qui convertit une chaîne encodée en Base64 en données binaires.",
+          "example": "Base64.getDecoder().decode(string)"
+        }
+      ]
+    },
+    {
+      "id": "concurrency",
+      "title": "Concurrency Utilities",
+      "description": "Les nouvelles API de concurrence et améliorations en Java offrent un support robuste pour la programmation multi-thread, rendant le code concurrent plus sûr et plus efficace.",
+      "classes": [
+        {
+          "name": "StampedLock",
+          "description": "Un verrou avec un mécanisme estampillé qui supporte à la fois les modes de verrouillage optimiste et pessimiste, permettant un contrôle précis de l'accès en lecture/écriture.",
+          "example": "StampedLock lock = new StampedLock();"
+        },
+        {
+          "name": "LongAdder",
+          "description": "Une alternative haute performance à AtomicLong, conçue pour les scénarios à forte contention afin de réduire le surcoût lié à la contention.",
+          "example": "LongAdder adder = new LongAdder();"
+        },
+        {
+          "name": "ConcurrentHashMap Enhancements",
+          "description": "Des méthodes améliorées pour effectuer des opérations en masse et des fonctions de mappage de manière concurrente, boostant les performances dans les environnements multi-thread.",
+          "example": "map.forEach((key, value) -> { /* process */ });"
+        }
+      ]
+    }
+  ]
+}

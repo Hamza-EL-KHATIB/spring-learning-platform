@@ -1,28 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     List, Zap, Calendar, Code, GitMerge, KeyRound, Box,
-    Terminal, Database, Hash, BookOpen
+    Terminal, Database, Hash, BookOpen, Globe
 } from 'lucide-react';
-import featuresJson from '../../../data/java/features.json';
+import featuresJsonEn from '../../../data/java/features.json';
+import featuresJsonFr from '../../../data/java/features-fr.json';
 import CodeBlock from '../../../components/CodeBlock';
 import FloatingMenu from '../../../components/layout/FloatingMenu';
 
+// Language Selector Component
+const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
+    return (
+        <div className="flex items-center gap-3 mb-6">
+            <Globe className="w-5 h-5 text-purple-400" />
+            <div className="flex rounded-lg overflow-hidden border border-gray-700">
+                <button
+                    onClick={() => onLanguageChange('en')}
+                    className={`px-3 py-1.5 text-sm ${
+                        currentLanguage === 'en'
+                            ? 'bg-purple-500/30 text-purple-300'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                    }`}
+                >
+                    English
+                </button>
+                <button
+                    onClick={() => onLanguageChange('fr')}
+                    className={`px-3 py-1.5 text-sm ${
+                        currentLanguage === 'fr'
+                            ? 'bg-purple-500/30 text-purple-300'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                    }`}
+                >
+                    Français
+                </button>
+            </div>
+        </div>
+    );
+};
+
 const FeaturesPage = () => {
+    // Get the language preference from localStorage if available, otherwise default to English
+    const [language, setLanguage] = useState(() => {
+        return localStorage.getItem('featuresPageLanguage') || 'en';
+    });
+
+    // Set features data based on language
+    const [featuresJson, setFeaturesJson] = useState(language === 'en' ? featuresJsonEn : featuresJsonFr);
     const [activeTab, setActiveTab] = useState('streams');
     const [setSelectedStreamCategory] = useState(null);
+
+    // Change the language and save the preference
+    const handleLanguageChange = (lang) => {
+        setLanguage(lang);
+        localStorage.setItem('featuresPageLanguage', lang);
+    };
+
+    // Update content based on selected language
+    useEffect(() => {
+        setFeaturesJson(language === 'en' ? featuresJsonEn : featuresJsonFr);
+    }, [language]);
 
     const tabs = [
         { id: 'streams', title: 'Stream API', icon: <List /> },
         { id: 'completableFuture', title: 'CompletableFuture', icon: <Zap /> },
-        { id: 'dateTime', title: 'Date/Time API', icon: <Calendar /> },
-        { id: 'methodReferences', title: 'Method References', icon: <GitMerge /> },
-        { id: 'defaultMethods', title: 'Default Methods', icon: <Code /> },
-        { id: 'lambdaExpressions', title: 'Lambda Expressions', icon: <Terminal /> },
-        { id: 'functionalInterfaces', title: 'Functional Interfaces', icon: <Box /> },
+        { id: 'dateTime', title: language === 'fr' ? 'API Date/Heure' : 'Date/Time API', icon: <Calendar /> },
+        { id: 'methodReferences', title: language === 'fr' ? 'Références de méthode' : 'Method References', icon: <GitMerge /> },
+        { id: 'defaultMethods', title: language === 'fr' ? 'Méthodes par défaut' : 'Default Methods', icon: <Code /> },
+        { id: 'lambdaExpressions', title: language === 'fr' ? 'Expressions Lambda' : 'Lambda Expressions', icon: <Terminal /> },
+        { id: 'functionalInterfaces', title: language === 'fr' ? 'Interfaces fonctionnelles' : 'Functional Interfaces', icon: <Box /> },
         { id: 'optional', title: 'Optional', icon: <KeyRound /> },
-        { id: 'annotations', title: 'Annotations', icon: <Hash /> },
+        { id: 'annotations', title: language === 'fr' ? 'Annotations' : 'Annotations', icon: <Hash /> },
         { id: 'base64', title: 'Base64', icon: <BookOpen /> },
-        { id: 'concurrency', title: 'Concurrency', icon: <Database /> }
+        { id: 'concurrency', title: language === 'fr' ? 'Concurrence' : 'Concurrency', icon: <Database /> }
     ];
 
     const TopicNavigation = ({ activeTab, onTabChange, topics }) => (
@@ -70,7 +120,7 @@ const FeaturesPage = () => {
                 ))}
             </div>
 
-            <ContentCard title="Examples">
+            <ContentCard title={language === 'fr' ? 'Exemples' : 'Examples'}>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {examples.map((example, idx) => (
                         <div key={idx} className="bg-gray-900/50 rounded-lg p-6 border border-gray-700/50">
@@ -175,20 +225,20 @@ const FeaturesPage = () => {
                              scrollbarColor: 'rgb(147, 51, 234) rgb(31, 41, 55)',
                          }}>
                         <style jsx>{`
-                        .hide-scrollbar::-webkit-scrollbar {
-                            height: 6px;
-                            background: rgb(31, 41, 55);
-                            border-radius: 3px;
-                        }
-                        .hide-scrollbar::-webkit-scrollbar-thumb {
-                            background: linear-gradient(to right, rgb(147, 51, 234), rgb(219, 39, 119));
-                            border-radius: 3px;
-                        }
-                        .hide-scrollbar::-webkit-scrollbar-track {
-                            background: rgb(31, 41, 55);
-                            border-radius: 3px;
-                        }
-                    `}</style>
+                            .hide-scrollbar::-webkit-scrollbar {
+                                height: 6px;
+                                background: rgb(31, 41, 55);
+                                border-radius: 3px;
+                            }
+                            .hide-scrollbar::-webkit-scrollbar-thumb {
+                                background: linear-gradient(to right, rgb(147, 51, 234), rgb(219, 39, 119));
+                                border-radius: 3px;
+                            }
+                            .hide-scrollbar::-webkit-scrollbar-track {
+                                background: rgb(31, 41, 55);
+                                border-radius: 3px;
+                            }
+                        `}</style>
                         {operations.map((operation, idx) => (
                             <button
                                 key={idx}
@@ -244,7 +294,7 @@ const FeaturesPage = () => {
                     <ContentCard key={idx}>
                         <h4 className="text-lg font-medium text-purple-300 mb-2">{ref.type}</h4>
                         <div className="text-gray-400 mb-3 text-sm">
-                            Syntax: <code className="text-pink-400">{ref.syntax}</code>
+                            {language === 'fr' ? 'Syntaxe' : 'Syntax'}: <code className="text-pink-400">{ref.syntax}</code>
                         </div>
                         <div className="bg-gray-900/50 rounded-lg border border-gray-700/50">
                             <CodeBlock code={ref.example} />
@@ -253,7 +303,7 @@ const FeaturesPage = () => {
                 ))}
             </div>
 
-            <ContentCard title="Examples">
+            <ContentCard title={language === 'fr' ? 'Exemples' : 'Examples'}>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {examples.map((example, idx) => (
                         <div key={idx} className="bg-gray-900/50 rounded-lg p-6 border border-gray-700/50">
@@ -272,7 +322,7 @@ const FeaturesPage = () => {
         <div className="space-y-6">
             <ContentCard>
                 <div className="text-gray-400 mb-6 text-lg">
-                    Syntax: <code className="text-pink-400 bg-gray-800/50 px-2 py-1 rounded">{syntax}</code>
+                    {language === 'fr' ? 'Syntaxe' : 'Syntax'}: <code className="text-pink-400 bg-gray-800/50 px-2 py-1 rounded">{syntax}</code>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {examples.map((example, idx) => (
@@ -404,6 +454,12 @@ const FeaturesPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
+            {/* Language Selector */}
+            <LanguageSelector
+                currentLanguage={language}
+                onLanguageChange={handleLanguageChange}
+            />
+
             {/* Header */}
             <div className="mb-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50
                       rounded-xl p-6 border border-purple-500/20 shadow-lg">
