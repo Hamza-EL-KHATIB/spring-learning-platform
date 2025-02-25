@@ -30,6 +30,7 @@ import RedisPage from './pages/topics/databases/RedisPage';
 // Architecture imports
 import DesignPatternsPage from './pages/topics/architecture/DesignPatternsPage';
 import SolidPage from './pages/topics/architecture/SolidPage';
+import PrinciplesPage from './pages/topics/architecture/PrinciplesPage';
 
 // DevOps imports
 import GitPage from './pages/topics/devops/GitPage';
@@ -94,6 +95,7 @@ const App = () => {
                     {/* Architecture Routes */}
                     <Route path="/architecture/design-patterns" element={<DesignPatternsPage />} />
                     <Route path="/architecture/solid" element={<SolidPage />} />
+                    <Route path="/architecture/principles" element={<PrinciplesPage />} />
 
                     {/* DevOps Routes */}
                     <Route path="/devops/git" element={<GitPage />} />
