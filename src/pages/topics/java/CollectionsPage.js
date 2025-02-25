@@ -1,16 +1,72 @@
-import React, { useState } from 'react';
-import { List, Clock, Layers, Database, GitBranch } from 'lucide-react';
-import collectionsJson from '../../../data/java/collections.json';
+import React, { useState, useEffect } from 'react';
+import { List, Clock, Layers, Database, GitBranch, Globe } from 'lucide-react';
+import collectionsJsonEn from '../../../data/java/collections.json';
+import collectionsJsonFr from '../../../data/java/collections-fr.json';
+
+// Simple Language Selector Component
+const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
+    return (
+        <div className="flex items-center gap-3 mb-6">
+            <Globe className="w-5 h-5 text-purple-400" />
+            <div className="flex rounded-lg overflow-hidden border border-gray-700">
+                <button
+                    onClick={() => onLanguageChange('en')}
+                    className={`px-3 py-1.5 text-sm ${
+                        currentLanguage === 'en'
+                            ? 'bg-purple-500/30 text-purple-300'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                    }`}
+                >
+                    English
+                </button>
+                <button
+                    onClick={() => onLanguageChange('fr')}
+                    className={`px-3 py-1.5 text-sm ${
+                        currentLanguage === 'fr'
+                            ? 'bg-purple-500/30 text-purple-300'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                    }`}
+                >
+                    Français
+                </button>
+            </div>
+        </div>
+    );
+};
 
 const CollectionsPage = () => {
+    // Get the language preference from localStorage if available, otherwise default to English
+    const [language, setLanguage] = useState(() => {
+        return localStorage.getItem('collectionsPageLanguage') || 'en';
+    });
+
+    const [collectionsJson, setCollectionsJson] = useState(
+        language === 'en' ? collectionsJsonEn : collectionsJsonFr
+    );
+
     const [activeTab, setActiveTab] = useState('list');
+
+    // Change the language and save the preference
+    const handleLanguageChange = (lang) => {
+        setLanguage(lang);
+        localStorage.setItem('collectionsPageLanguage', lang);
+    };
+
+    useEffect(() => {
+        // Update content based on selected language
+        setCollectionsJson(language === 'en' ? collectionsJsonEn : collectionsJsonFr);
+    }, [language]);
 
     const tabs = [
         { id: 'list', title: 'List', icon: <List className="w-4 h-4" /> },
         { id: 'set', title: 'Set', icon: <Layers className="w-4 h-4" /> },
         { id: 'queue', title: 'Queue', icon: <GitBranch className="w-4 h-4" /> },
         { id: 'map', title: 'Map', icon: <Database className="w-4 h-4" /> },
-        { id: 'performance', title: 'Performance', icon: <Clock className="w-4 h-4" /> }
+        {
+            id: 'performance',
+            title: language === 'en' ? 'Performance' : 'Performance',
+            icon: <Clock className="w-4 h-4" />
+        }
     ];
 
     const TabNavigation = () => (
@@ -59,11 +115,21 @@ const CollectionsPage = () => {
                 <table className="w-full">
                     <thead>
                     <tr className="border-b border-gray-700">
-                        <th className="text-left p-3 text-gray-400">Collection Type</th>
-                        <th className="text-left p-3 text-gray-400">Access Time</th>
-                        <th className="text-left p-3 text-gray-400">Insert Time</th>
-                        <th className="text-left p-3 text-gray-400">Delete Time</th>
-                        <th className="text-left p-3 text-gray-400">Memory Overhead</th>
+                        <th className="text-left p-3 text-gray-400">
+                            {language === 'en' ? 'Collection Type' : 'Type de Collection'}
+                        </th>
+                        <th className="text-left p-3 text-gray-400">
+                            {language === 'en' ? 'Access Time' : 'Temps d\'accès'}
+                        </th>
+                        <th className="text-left p-3 text-gray-400">
+                            {language === 'en' ? 'Insert Time' : 'Temps d\'insertion'}
+                        </th>
+                        <th className="text-left p-3 text-gray-400">
+                            {language === 'en' ? 'Delete Time' : 'Temps de suppression'}
+                        </th>
+                        <th className="text-left p-3 text-gray-400">
+                            {language === 'en' ? 'Memory Overhead' : 'Surcharge mémoire'}
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -108,6 +174,12 @@ const CollectionsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
+            {/* Language Selector */}
+            <LanguageSelector
+                currentLanguage={language}
+                onLanguageChange={handleLanguageChange}
+            />
+
             {/* Header */}
             <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
                 <h1 className="text-3xl font-bold text-white mb-2">{collectionsJson.title}</h1>
