@@ -4,11 +4,11 @@
     {
       "id": "ioc-container",
       "title": "IoC Container & Dependency Injection",
-      "description": "Core concept of Spring that manages object creation and dependencies",
+      "description": "This fundamental concept of Spring shifts control of object creation and dependency management from application code to the container, promoting loose coupling, modular design, and easier testing.",
       "concepts": [
         {
           "name": "Inversion of Control",
-          "description": "Design principle where control of object creation and lifecycle is transferred to the container",
+          "description": "Inversion of Control (IoC) is a design principle where the control over object creation and lifecycle is transferred from the application code to the Spring container. This inversion makes the system more decoupled and easier to maintain.",
           "benefits": [
             "Loose coupling",
             "Better testability",
@@ -21,7 +21,7 @@
           "types": [
             {
               "type": "Constructor Injection",
-              "description": "Dependencies provided through constructor",
+              "description": "Dependencies are injected via the constructor, ensuring that all required dependencies are provided at creation time. This supports immutability and makes dependency requirements explicit.",
               "example": {
                 "code": "@Component\npublic class UserService {\n    private final UserRepository userRepository;\n\n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}",
                 "advantages": [
@@ -33,28 +33,28 @@
             },
             {
               "type": "Setter Injection",
-              "description": "Dependencies provided through setter methods",
+              "description": "Dependencies are provided through setter methods after object instantiation, offering flexibility to change dependencies later and supporting optional dependencies.",
               "example": {
                 "code": "@Component\npublic class UserService {\n    private UserRepository userRepository;\n\n    @Autowired\n    public void setUserRepository(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}",
                 "advantages": [
-                  "Optional dependencies",
-                  "Flexible injection",
-                  "Can change dependencies at runtime"
+                  "Allows optional dependencies",
+                  "Provides flexibility in dependency management",
+                  "Enables runtime modification of dependencies"
                 ]
               }
             },
             {
               "type": "Field Injection",
-              "description": "Dependencies injected directly into fields",
+              "description": "Dependencies are injected directly into class fields using reflection. This approach reduces boilerplate code but can obscure the required dependencies and complicate testing.",
               "example": {
                 "code": "@Component\npublic class UserService {\n    @Autowired\n    private UserRepository userRepository;\n}",
                 "advantages": [
                   "Less boilerplate code",
-                  "Simple to write"
+                  "Simpler to write"
                 ],
                 "disadvantages": [
                   "Harder to test",
-                  "Cannot make fields final",
+                  "Cannot declare fields as final",
                   "Hidden dependencies"
                 ]
               }
@@ -66,11 +66,11 @@
     {
       "id": "bean-lifecycle",
       "title": "Bean Lifecycle",
-      "description": "Lifecycle of Spring-managed beans from creation to destruction",
+      "description": "A comprehensive overview of the entire lifecycle of Spring-managed beans, detailing every phase from definition and instantiation to initialization and eventual destruction, with opportunities for custom behavior at each stage.",
       "phases": [
         {
           "phase": "Bean Definitions Declared",
-          "description": "Bean definitions are declared using XML, annotations, package scanning, or Groovy configuration.",
+          "description": "At this stage, bean definitions are declared by developers using XML, annotations, package scanning, or Groovy configuration. This creates the blueprint for how beans should be instantiated and configured.",
           "events": [
             "Annotations like @Component, @Service, @Controller, etc.",
             "XML or @Configuration class declarations"
@@ -78,7 +78,7 @@
         },
         {
           "phase": "Bean Definitions Loaded",
-          "description": "BeanDefinitionReader parses the configuration and creates BeanDefinition objects.",
+          "description": "The Spring container reads the configuration metadata and converts it into BeanDefinition objects that encapsulate details such as scope, dependencies, and initialization methods.",
           "events": [
             "Configuration is read by BeanDefinitionReader",
             "BeanDefinition objects are created"
@@ -86,7 +86,7 @@
         },
         {
           "phase": "Bean Definitions Processed",
-          "description": "BeanFactoryPostProcessor tweaks BeanDefinitions before bean creation.",
+          "description": "Before any beans are instantiated, BeanFactoryPostProcessors modify or enrich the BeanDefinition objects, allowing for custom adjustments like property overrides.",
           "events": [
             "Modifications to BeanDefinitions",
             "Custom BeanFactoryPostProcessor implementations"
@@ -94,7 +94,7 @@
         },
         {
           "phase": "Instantiation",
-          "description": "Beans are instantiated by BeanFactory.",
+          "description": "The container instantiates the bean by invoking its constructor. In cases where FactoryBeans are used, custom creation logic is applied to generate the bean instance.",
           "events": [
             "Constructor is invoked",
             "Custom FactoryBean instances are used if applicable"
@@ -102,7 +102,7 @@
         },
         {
           "phase": "Dependency Injection",
-          "description": "Dependencies are injected into the bean (constructor or setter).",
+          "description": "After instantiation, the Spring container injects the necessary dependencies into the bean via constructor or setter injection, ensuring the bean is fully prepared for use.",
           "events": [
             "Constructor injection",
             "Setter injection",
@@ -111,7 +111,7 @@
         },
         {
           "phase": "Post-Processing (Before Initialization)",
-          "description": "BeanPostProcessor adjusts beans before initialization.",
+          "description": "Registered BeanPostProcessors have the opportunity to modify the bean instance before its initialization callbacks are executed, for instance by wrapping it with proxies or altering its configuration.",
           "events": [
             "BeanPostProcessor is called before @PostConstruct",
             "Adjustments to the bean proxy or dependencies"
@@ -119,7 +119,7 @@
         },
         {
           "phase": "Initialization",
-          "description": "Bean is initialized using lifecycle callbacks.",
+          "description": "During initialization, the bean undergoes lifecycle callbacks such as @PostConstruct methods, the afterPropertiesSet method (if it implements InitializingBean), or custom initialization methods to finalize its configuration.",
           "events": [
             "BeanNameAware.setBeanName()",
             "BeanFactoryAware.setBeanFactory()",
@@ -131,7 +131,7 @@
         },
         {
           "phase": "Post-Processing (After Initialization)",
-          "description": "BeanPostProcessor adjusts beans after initialization.",
+          "description": "After the bean is initialized, BeanPostProcessors can further modify the bean instance, for tasks such as AOP proxy wrapping or additional customizations.",
           "events": [
             "Second round of BeanPostProcessor is executed",
             "Circular dependencies or proxy wrapping handled"
@@ -139,14 +139,14 @@
         },
         {
           "phase": "Application Context",
-          "description": "Fully created beans are stored in the application context and ready for use.",
+          "description": "Once fully processed, the bean is stored in the ApplicationContext, making it available for retrieval and use throughout the application.",
           "events": [
             "Bean is accessible via ApplicationContext"
           ]
         },
         {
           "phase": "Destruction",
-          "description": "Bean is destroyed when the application context is closed or bean is disposed.",
+          "description": "When the application context is closed or a bean is explicitly disposed, the destruction phase is triggered, invoking callbacks such as @PreDestroy methods, DisposableBean.destroy(), or custom destroy methods to release resources.",
           "events": [
             "@PreDestroy methods",
             "DisposableBean.destroy()",
@@ -158,36 +158,36 @@
     {
       "id": "bean-scopes",
       "title": "Bean Scopes",
-      "description": "Available scopes for Spring beans",
+      "description": "An overview of the different scopes available for Spring beans, which determine the bean's lifecycle and visibility within the application context. Each scope is tailored for specific use cases.",
       "scopes": [
         {
           "name": "singleton",
-          "description": "Single instance per Spring container",
+          "description": "A singleton bean is created once per Spring container, ensuring a single shared instance throughout the application's lifecycle. This scope is ideal for stateless services.",
           "usage": "@Scope(\"singleton\")",
           "defaultScope": true,
           "bestFor": "Stateless beans"
         },
         {
           "name": "prototype",
-          "description": "New instance every time requested",
+          "description": "A prototype bean is instantiated each time it is requested from the container, making it suitable for stateful beans that require a unique instance for every use.",
           "usage": "@Scope(\"prototype\")",
           "bestFor": "Stateful beans"
         },
         {
           "name": "request",
-          "description": "One instance per HTTP request",
+          "description": "A request-scoped bean is created once per HTTP request, which makes it ideal for web-specific components that should only exist for the duration of a single request.",
           "usage": "@Scope(\"request\")",
           "bestFor": "Web-specific beans"
         },
         {
           "name": "session",
-          "description": "One instance per HTTP session",
+          "description": "A session-scoped bean is instantiated once per HTTP session, allowing it to maintain state across multiple requests from the same user.",
           "usage": "@Scope(\"session\")",
           "bestFor": "User-specific beans"
         },
         {
           "name": "application",
-          "description": "One instance per ServletContext",
+          "description": "An application-scoped bean is created once per ServletContext, providing a single instance that spans the entire lifecycle of the web application.",
           "usage": "@Scope(\"application\")",
           "bestFor": "Application-wide beans"
         }
@@ -196,11 +196,11 @@
     {
       "id": "configuration",
       "title": "Spring Configuration",
-      "description": "Ways to configure Spring applications",
+      "description": "A detailed exploration of the various methods for configuring Spring applications, each offering unique advantages such as type safety, ease of refactoring, and a clear separation between configuration and business logic.",
       "methods": [
         {
           "type": "Java Configuration",
-          "description": "Configuration using Java classes",
+          "description": "Configuration using Java classes leverages annotations and code-based definitions to create and manage beans. This method provides type safety and excellent IDE support, making it easier to maintain and refactor.",
           "example": {
             "code": "@Configuration\npublic class AppConfig {\n    @Bean\n    public UserService userService() {\n        return new UserService();\n    }\n}",
             "advantages": [
@@ -212,7 +212,7 @@
         },
         {
           "type": "XML Configuration",
-          "description": "Configuration using XML files",
+          "description": "Configuration using XML files separates configuration from code, allowing beans and their dependencies to be defined externally. This approach is useful for legacy systems and when dynamic reconfiguration without recompilation is required.",
           "example": {
             "code": "<beans>\n    <bean id=\"userService\" class=\"com.example.UserService\">\n        <property name=\"userRepository\" ref=\"userRepository\"/>\n    </bean>\n</beans>",
             "advantages": [
@@ -224,7 +224,7 @@
         },
         {
           "type": "Annotation Configuration",
-          "description": "Configuration using annotations",
+          "description": "Annotation-based configuration embeds metadata directly in the code using annotations like @Component and @Autowired. This reduces external configuration and makes the dependency injection process more intuitive.",
           "example": {
             "code": "@Component\npublic class UserService {\n    @Autowired\n    private UserRepository userRepository;\n}",
             "advantages": [
@@ -239,46 +239,46 @@
     {
       "id": "aop",
       "title": "Aspect-Oriented Programming",
-      "description": "Handling cross-cutting concerns in Spring",
+      "description": "Aspect-Oriented Programming (AOP) in Spring enables the modularization of cross-cutting concerns—such as logging, security, and transaction management—by separating these aspects from the core business logic.",
       "concepts": [
         {
           "term": "Aspect",
-          "description": "Module encapsulating cross-cutting concern",
+          "description": "An aspect is a modular unit that encapsulates a cross-cutting concern (e.g., logging or security) that affects multiple parts of the application.",
           "example": "Logging, Transaction Management"
         },
         {
           "term": "Join Point",
-          "description": "Point in program execution where aspect can be applied",
+          "description": "A join point is a specific point in the execution of a program, such as a method call or exception handling, where an aspect can be applied.",
           "example": "Method execution, Exception handling"
         },
         {
           "term": "Pointcut",
-          "description": "Expression matching join points",
-          "example": "@Pointcut(\"execution(* com.example.service.*.*(..))\""
+          "description": "A pointcut is an expression that selects one or more join points where an aspect's advice should be executed.",
+          "example": "@Pointcut(\"execution(* com.example.service.*.*(..))\")"
         },
         {
           "term": "Advice",
-          "description": "Action taken at join point",
+          "description": "Advice defines the action taken by an aspect at a join point. It can be executed before, after, or around the join point, depending on the type of advice.",
           "types": [
             {
               "name": "@Before",
-              "description": "Executes before join point"
+              "description": "Executes before the join point, often used for logging, validation, or security checks."
             },
             {
               "name": "@After",
-              "description": "Executes after join point"
+              "description": "Executes after the join point has completed, regardless of its outcome."
             },
             {
               "name": "@Around",
-              "description": "Wraps join point execution"
+              "description": "Wraps the join point execution, allowing actions both before and after, and can control whether the join point proceeds."
             },
             {
               "name": "@AfterReturning",
-              "description": "Executes after successful execution"
+              "description": "Executes after a successful join point execution, enabling post-processing of the returned value."
             },
             {
               "name": "@AfterThrowing",
-              "description": "Executes if method throws exception"
+              "description": "Executes if the join point throws an exception, facilitating centralized error handling or logging."
             }
           ]
         }
@@ -286,18 +286,19 @@
       "examples": [
         {
           "title": "Logging Aspect",
-          "code": "@Aspect\n@Component\npublic class LoggingAspect {\n    @Before(\"execution(* com.example.service.*.*(..))\")\n    public void logBefore(JoinPoint joinPoint) {\n        // Logging logic\n    }\n}"
+          "code": "@Aspect\n@Component\npublic class LoggingAspect {\n    @Before(\"execution(* com.example.service.*.*(..))\")\n    public void logBefore(JoinPoint joinPoint) {\n        // Logging logic\n    }\n}",
+          "description": "This example demonstrates a logging aspect that executes before any method within the specified package, providing a centralized logging mechanism."
         }
       ]
     },
     {
       "id": "spring-components",
       "title": "Spring Core Components",
-      "description": "Core components and their relationships in Spring Framework",
+      "description": "An in-depth overview of the core components in the Spring Framework and how they interact to form a robust, flexible foundation for enterprise applications.",
       "components": [
         {
           "name": "BeanFactory",
-          "description": "Simplest container in Spring, responsible for bean instantiation, configuration, and lifecycle",
+          "description": "The simplest container in Spring, responsible for instantiating, configuring, and managing the lifecycle of beans. It emphasizes lazy initialization by creating beans only when required.",
           "characteristics": [
             "Lazy initialization",
             "Basic IoC container",
@@ -306,17 +307,17 @@
           "relationships": [
             {
               "component": "BeanPostProcessor",
-              "description": "Provides hooks for modifying beans"
+              "description": "Provides hooks for modifying beans during their lifecycle."
             },
             {
               "component": "BeanFactoryPostProcessor",
-              "description": "Modifies bean definitions"
+              "description": "Allows modification of bean definitions before bean instantiation."
             }
           ]
         },
         {
           "name": "ApplicationContext",
-          "description": "Advanced container extending BeanFactory with additional enterprise features",
+          "description": "An advanced container that extends BeanFactory by adding enterprise-specific features such as internationalization, event propagation, and resource management. It eagerly initializes singleton beans, ensuring that all necessary beans are available at startup.",
           "features": [
             "Event propagation",
             "Internationalization",
@@ -326,43 +327,43 @@
           "relationships": [
             {
               "component": "Environment",
-              "description": "Manages configuration and properties"
+              "description": "Manages application properties and configuration profiles."
             },
             {
               "component": "Resource",
-              "description": "Handles application resources"
+              "description": "Provides a unified way to access various types of resources."
             },
             {
               "component": "PropertyEditor",
-              "description": "Manages property conversion"
+              "description": "Handles conversion of property values to the required data types."
             }
           ]
         },
         {
           "name": "BeanPostProcessor",
-          "description": "Interface for customizing new bean instances",
+          "description": "An interface that allows for custom modification of new bean instances, both before and after initialization, such as wrapping them with proxies or altering their properties.",
           "methods": [
             {
               "name": "postProcessBeforeInitialization",
-              "description": "Called before bean initialization"
+              "description": "Called before a bean's initialization callbacks are invoked."
             },
             {
               "name": "postProcessAfterInitialization",
-              "description": "Called after bean initialization"
+              "description": "Called after a bean has been fully initialized, allowing for further modifications."
             }
           ]
         },
         {
           "name": "BeanFactoryPostProcessor",
-          "description": "Modifies bean definitions before instantiation",
-          "usage": "Programmatically modify bean properties",
+          "description": "An interface that enables the modification of bean definitions after they have been loaded but before any beans are instantiated, allowing for custom alterations to bean properties and configurations.",
+          "usage": "Programmatically modify bean properties and configurations",
           "example": {
             "code": "@Component\npublic class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor {\n    @Override\n    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {\n        // Modify bean definitions\n    }\n}"
           }
         },
         {
           "name": "BeanDefinition",
-          "description": "Metadata for bean creation",
+          "description": "Encapsulates the metadata required for bean creation, including class name, constructor arguments, property values, dependencies, and scope. This metadata guides the container in managing bean instantiation and lifecycle.",
           "properties": [
             "Class name",
             "Constructor arguments",
@@ -374,25 +375,25 @@
         },
         {
           "name": "FactoryBean",
-          "description": "Special bean type for custom object creation logic",
+          "description": "A special type of bean that encapsulates custom object creation logic. It abstracts complex creation processes, allowing for flexible and reusable bean definitions.",
           "methods": [
             {
               "name": "getObject",
-              "description": "Returns the object created by this factory"
+              "description": "Returns the object created by this factory bean."
             },
             {
               "name": "getObjectType",
-              "description": "Returns the type of object this factory creates"
+              "description": "Returns the type of object that this factory bean creates."
             },
             {
               "name": "isSingleton",
-              "description": "Whether created object is a singleton"
+              "description": "Indicates whether the created object is a singleton."
             }
           ]
         },
         {
           "name": "Environment",
-          "description": "Represents application environment with properties and profiles",
+          "description": "Represents the application's environment, including active profiles and properties. It is essential for runtime configuration management and property resolution.",
           "features": [
             "Profile management",
             "Property resolution",
@@ -401,7 +402,7 @@
         },
         {
           "name": "Resource",
-          "description": "Abstraction for accessing resources",
+          "description": "An abstraction for accessing resources such as files, classpath resources, or URLs, providing a consistent approach to resource management across different environments.",
           "types": [
             "ClassPathResource",
             "FileSystemResource",
@@ -411,12 +412,12 @@
         },
         {
           "name": "PropertyEditor",
-          "description": "Converts string representations to Java objects",
+          "description": "Used to convert string representations of property values into the required Java object types, playing a key role in data binding and type conversion.",
           "usage": "Property binding and type conversion"
         },
         {
           "name": "BeanWrapper",
-          "description": "Interface for accessing bean properties",
+          "description": "Provides a way to access and manipulate bean properties, including support for nested properties and automatic type conversion.",
           "features": [
             "Property access",
             "Property type conversion",
@@ -425,7 +426,7 @@
         },
         {
           "name": "ConversionService",
-          "description": "Type conversion system",
+          "description": "A flexible type conversion system that supports conversion between different data types, essential for property binding and formatting in Spring applications.",
           "features": [
             "Type conversion",
             "Property binding",
@@ -435,7 +436,7 @@
       ],
       "additionalFeatures": {
         "propertyPlaceholderConfigurer": {
-          "description": "Replaces placeholders in bean definitions",
+          "description": "A mechanism that replaces placeholder values in bean definitions with actual property values from external sources, facilitating externalized configuration and dynamic property management.",
           "usage": "Externalized configuration",
           "example": "${property.name}"
         }
