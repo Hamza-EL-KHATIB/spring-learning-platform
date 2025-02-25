@@ -1,0 +1,184 @@
+{
+  "title": "Spring GraphQL",
+  "topics": [
+    {
+      "id": "graphql-fundamentals",
+      "title": "Fondamentaux de GraphQL",
+      "description": "Concepts de base de GraphQL dans Spring",
+      "concepts": [
+        {
+          "name": "Principes de GraphQL",
+          "principles": [
+            {
+              "name": "Point d'accès unique",
+              "description": "Toutes les opérations sont exposées via un seul point d'accès."
+            },
+            {
+              "name": "Récupération de données déclarative",
+              "description": "Les clients demandent exactement les données dont ils ont besoin."
+            },
+            {
+              "name": "Schéma fortement typé",
+              "description": "Un schéma bien défini garantit la sécurité des types."
+            }
+          ]
+        },
+        {
+          "name": "Opérations GraphQL",
+          "operations": [
+            {
+              "operation": "Requête",
+              "usage": "Récupérer les données depuis le serveur."
+            },
+            {
+              "operation": "Mutation",
+              "usage": "Modifier les données côté serveur."
+            },
+            {
+              "operation": "Abonnement",
+              "usage": "Recevoir des mises à jour de données en temps réel."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "graphql-schema",
+      "title": "Schéma GraphQL et Définitions de Types",
+      "description": "Définir les schémas GraphQL en utilisant SDL et les annotations Spring",
+      "components": [
+        {
+          "name": "Schema Definition Language (SDL)",
+          "description": "Définit les types, requêtes, mutations et abonnements de manière déclarative."
+        },
+        {
+          "name": "Annotations",
+          "annotations": [
+            {
+              "name": "@SchemaMapping",
+              "description": "Mappe un champ du schéma à une méthode."
+            },
+            {
+              "name": "@QueryMapping",
+              "description": "Mappe une requête GraphQL à une méthode de contrôleur."
+            },
+            {
+              "name": "@MutationMapping",
+              "description": "Mappe une mutation GraphQL à une méthode de contrôleur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "graphql-controller",
+      "title": "Contrôleurs et Résolveurs GraphQL",
+      "description": "Configurer les points d'accès en utilisant les contrôleurs et résolveurs Spring",
+      "components": [
+        {
+          "name": "GraphQL Controller",
+          "description": "Gère les requêtes et mutations GraphQL en utilisant les annotations Spring",
+          "example": {
+            "code": "@Controller\npublic class UserGraphQLController {\n    @QueryMapping\n    public User user(@Argument Long id) {\n        return userService.findById(id);\n    }\n\n    @MutationMapping\n    public User createUser(@Argument UserInput input) {\n        return userService.create(input);\n    }\n}"
+          }
+        },
+        {
+          "name": "Resolvers",
+          "description": "Méthodes permettant de récupérer des données imbriquées ou liées pour des types complexes."
+        }
+      ]
+    },
+    {
+      "id": "graphql-data-fetching",
+      "title": "Exécution des requêtes GraphQL et problème N+1",
+      "description": "Optimiser la récupération des données et atténuer le problème des requêtes N+1",
+      "features": [
+        {
+          "name": "Problème N+1",
+          "description": "Se produit lorsque la récupération d'une liste d'entités provoque une requête supplémentaire pour chaque donnée associée. Cela engendre des problèmes de performance à cause de l'exécution de N+1 requêtes."
+        },
+        {
+          "name": "DataLoader",
+          "description": "Regroupe et met en cache la récupération des données pour résoudre le problème N+1.",
+          "example": {
+            "code": "DataLoader<Long, User> userDataLoader = DataLoader.newDataLoader(userIds ->\n    CompletableFuture.supplyAsync(() -> userService.findUsersByIds(userIds))\n);\n// Enregistrez ce DataLoader dans le contexte GraphQL pour un groupement efficace"
+          }
+        }
+      ]
+    },
+    {
+      "id": "graphql-error-handling",
+      "title": "Gestion des erreurs GraphQL",
+      "description": "Gérer les erreurs et exceptions dans les réponses GraphQL",
+      "components": [
+        {
+          "name": "GraphQLError",
+          "description": "Une interface pour représenter les erreurs lors de l'exécution de GraphQL."
+        },
+        {
+          "name": "Global Exception Handling",
+          "description": "Utilisez @ControllerAdvice de Spring pour gérer les exceptions et formater les réponses d'erreur."
+        }
+      ]
+    },
+    {
+      "id": "graphql-security",
+      "title": "Sécurité GraphQL",
+      "description": "Sécuriser les points d'accès GraphQL grâce à l'intégration de Spring Security",
+      "features": [
+        {
+          "name": "Authentification et Autorisation",
+          "description": "Protégez les points d'accès en intégrant Spring Security avec GraphQL.",
+          "annotations": [
+            {
+              "name": "@PreAuthorize",
+              "description": "Restreint l'accès aux requêtes ou mutations en fonction des rôles de l'utilisateur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "graphql-testing",
+      "title": "Tests GraphQL",
+      "description": "Tester efficacement les requêtes et mutations GraphQL",
+      "types": [
+        {
+          "name": "GraphQlTester",
+          "description": "Un outil de test pour exécuter des requêtes GraphQL et valider les réponses.",
+          "example": {
+            "code": "GraphQlTester tester = GraphQlTester.create(graphQlSource);\n\ntester.document(\"{ user(id: 1) { id, name } }\")\n       .execute()\n       .path(\"user.name\")\n       .entity(String.class)\n       .isEqualTo(\"John Doe\");"
+          }
+        }
+      ]
+    },
+    {
+      "id": "graphql-best-practices",
+      "title": "Bonnes pratiques GraphQL",
+      "practices": [
+        {
+          "category": "Conception du schéma",
+          "recommendations": [
+            "Concevez des schémas clairs, intuitifs et bien documentés",
+            "Gardez les requêtes et mutations ciblées et minimales",
+            "Utilisez des noms et des types descriptifs"
+          ]
+        },
+        {
+          "category": "Optimisation des performances",
+          "recommendations": [
+            "Utilisez DataLoader pour regrouper et mettre en cache les requêtes",
+            "Surveillez et profilez régulièrement les performances des requêtes"
+          ]
+        },
+        {
+          "category": "Gestion des erreurs",
+          "recommendations": [
+            "Fournissez des messages d'erreur significatifs sans exposer les détails internes",
+            "Mettez en place des stratégies de gestion globale des erreurs"
+          ]
+        }
+      ]
+    }
+  ]
+}
