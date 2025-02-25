@@ -67,7 +67,8 @@ const Sidebar = () => {
             icon: <Box className="w-5 h-5"/>,
             items: [
                 {path: '/architecture/design-patterns', title: 'Design Patterns'},
-                {path: '/architecture/solid', title: 'SOLID Principles'}
+                {path: '/architecture/solid', title: 'SOLID Principles'},
+                { path: '/architecture/principles', title: 'YAGNI, KISS, DRY' }
             ]
         },
         devops: {

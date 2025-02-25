@@ -1,0 +1,17 @@
+{
+  "title": "Essential Software Principles: YAGNI, KISS, and DRY",
+  "definitions": [
+    {
+      "term": "YAGNI",
+      "definition": "You Ain't Gonna Need It. Only implement functionality when it is necessary, avoiding overengineering by not adding features that may never be used."
+    },
+    {
+      "term": "KISS",
+      "definition": "Keep It Simple, Stupid. Design and implement solutions in a straightforward manner, minimizing complexity and unnecessary complications."
+    },
+    {
+      "term": "DRY",
+      "definition": "Don't Repeat Yourself. Avoid duplication in code by abstracting common logic into reusable components, ensuring maintainability and reducing errors."
+    }
+  ]
+}

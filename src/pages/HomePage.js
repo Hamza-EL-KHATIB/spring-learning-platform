@@ -81,7 +81,8 @@ const HomePage = () => {
             title: "Software Architecture",
             items: [
                 { title: "Design Patterns", path: "/architecture/design-patterns", icon: LayoutGrid, description: "Common software patterns" },
-                { title: "SOLID Principles", path: "/architecture/solid", icon: BookOpenCheck, description: "Design principles" }
+                { title: "SOLID Principles", path: "/architecture/solid", icon: BookOpenCheck, description: "Design principles" },
+                { title: "YAGNI, KISS, DRY", path: "/architecture/principles", icon: BookOpenCheck, description: "Design principles" },
             ]
         },
         processes: {
