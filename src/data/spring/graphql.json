@@ -95,7 +95,7 @@
       "features": [
         {
           "name": "N+1 Problem",
-          "description": "Occurs when fetching nested data results in multiple redundant database calls."
+          "description": "Occurs when retrieving a list of entities causes an additional query for each entity’s related data. This leads to performance issues due to executing N+1 queries."
         },
         {
           "name": "DataLoader",
