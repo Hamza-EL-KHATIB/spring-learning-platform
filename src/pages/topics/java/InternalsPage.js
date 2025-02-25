@@ -1,9 +1,58 @@
-import React from 'react';
-import internalsJson from '../../../data/java/internals.json';
+import React, { useState, useEffect } from 'react';
+import internalsJsonEn from '../../../data/java/internals.json';
+import internalsJsonFr from '../../../data/java/internals-fr.json';
 import CodeBlock from '../../../components/CodeBlock';
-import { Book, Terminal, Layers } from 'lucide-react';
+import { Book, Terminal, Layers, Globe } from 'lucide-react';
+
+// Simple Language Selector Component
+const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
+    return (
+        <div className="flex items-center gap-3 mb-6">
+            <Globe className="w-5 h-5 text-purple-400" />
+            <div className="flex rounded-lg overflow-hidden border border-gray-700">
+                <button
+                    onClick={() => onLanguageChange('en')}
+                    className={`px-3 py-1.5 text-sm ${
+                        currentLanguage === 'en'
+                            ? 'bg-purple-500/30 text-purple-300'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                    }`}
+                >
+                    English
+                </button>
+                <button
+                    onClick={() => onLanguageChange('fr')}
+                    className={`px-3 py-1.5 text-sm ${
+                        currentLanguage === 'fr'
+                            ? 'bg-purple-500/30 text-purple-300'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                    }`}
+                >
+                    Français
+                </button>
+            </div>
+        </div>
+    );
+};
 
 const InternalsPage = () => {
+    // Get the language preference from localStorage if available, otherwise default to English
+    const [language, setLanguage] = useState(() => {
+        return localStorage.getItem('internalsPageLanguage') || 'en';
+    });
+
+    const [internalsJson, setInternalsJson] = useState(language === 'en' ? internalsJsonEn : internalsJsonFr);
+
+    // Change the language and save the preference
+    const handleLanguageChange = (lang) => {
+        setLanguage(lang);
+        localStorage.setItem('internalsPageLanguage', lang);
+    };
+
+    useEffect(() => {
+        // Update content based on selected language
+        setInternalsJson(language === 'en' ? internalsJsonEn : internalsJsonFr);
+    }, [language]);
 
     // Render sections for Memory Management (Stack and Heap)
     const renderMemorySections = (sections) => (
@@ -55,6 +104,12 @@ const InternalsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
+            {/* Language Selector */}
+            <LanguageSelector
+                currentLanguage={language}
+                onLanguageChange={handleLanguageChange}
+            />
+
             {/* Title Section */}
             <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
                 <h1 className="text-3xl font-bold text-white mb-2">{internalsJson.title}</h1>
