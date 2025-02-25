@@ -1,0 +1,188 @@
+{
+  "sections": [
+    {
+      "number": 1,
+      "title": "Protocole de Revue de Code",
+      "content": {
+        "Additions and Corrections": {
+          "Roles": {
+            "Observers": {
+              "description": "Permettre aux développeurs juniors d'observer les revues pour apprendre les meilleures pratiques."
+            },
+            "Secondary Reviewers": {
+              "description": "Dans les zones de code critiques, avoir plusieurs relecteurs pour un examen approfondi."
+            }
+          },
+          "Submission Guidelines": {
+            "Up-to-date Branches": {
+              "description": "Assurez-vous que la branche de fonctionnalité est synchronisée avec la branche principale afin d'éviter des conflits de fusion."
+            },
+            "PR Size": {
+              "description": "Encourager des pull requests petites et gérables se concentrant sur une seule fonctionnalité ou correction de bug."
+            },
+            "Automated Checklists": {
+              "description": "Utiliser des modèles de pull request avec des listes de vérification pour s'assurer que tous les critères de soumission sont remplis."
+            }
+          },
+          "Review Timeline": {
+            "Prioritization": {
+              "points": [
+                "Définir comment les corrections urgentes sont prioritaires par rapport aux améliorations fonctionnelles.",
+                "Fixer des attentes pour les délais de réponse pendant les différentes phases du projet."
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "number": 2,
+      "title": "Étapes pour la Revue de Code",
+      "content": {
+        "Additions and Corrections": {
+          "Understand the Context": {
+            "Business Requirements": {
+              "description": "Assurez-vous que les modifications de code correspondent aux besoins et exigences métier."
+            },
+            "Related Modules": {
+              "description": "Vérifier comment les modifications affectent les autres parties du système."
+            }
+          },
+          "Check for Breaking Changes": {
+            "Backward Compatibility": {
+              "description": "Confirmer que les modifications n'endommagent pas les API ou fonctionnalités existantes."
+            },
+            "Deprecation Notices": {
+              "description": "Si vous supprimez ou modifiez une fonctionnalité, assurez-vous que des avertissements de dépréciation appropriés sont en place."
+            }
+          },
+          "Test Coverage": {
+            "Quality of Tests": {
+              "description": "Évaluer si les tests couvrent efficacement les cas limites et les points potentiels de défaillance."
+            },
+            "Integration Tests": {
+              "description": "S'assurer que les tests d'intégration sont mis à jour ou ajoutés lorsque cela est nécessaire."
+            }
+          },
+          "API Changes": {
+            "Documentation": {
+              "points": [
+                "Mettre à jour la documentation de l'API pour refléter les modifications.",
+                "S'assurer que la gestion des versions est correctement effectuée pour les API publiques."
+              ]
+            }
+          },
+          "Logic and Performance": {
+            "Algorithm Efficiency": {
+              "description": "Évaluer si les algorithmes les plus efficaces sont utilisés."
+            },
+            "Resource Utilization": {
+              "description": "Vérifier la consommation inutile de ressources (mémoire, CPU)."
+            }
+          },
+          "Code Modularity and Readability": {
+            "Design Patterns": {
+              "description": "S'assurer que les patrons de conception appropriés sont appliqués lorsque cela est bénéfique."
+            },
+            "Comments and Documentation": {
+              "description": "Vérifier que les segments de code complexes sont bien documentés."
+            }
+          },
+          "Git and CI/CD Checks": {
+            "Commit Messages": {
+              "description": "S'assurer qu'ils sont descriptifs et respectent les conventions de l'équipe (par exemple, Conventional Commits)."
+            },
+            "No Sensitive Data": {
+              "description": "Vérifier qu'aucune information sensible (comme des clés API) n'est incluse."
+            }
+          },
+          "Tools and Automation": {
+            "GitHub Actions": {
+              "Automated Code Reviews": {
+                "description": "Intégrer des outils comme CodeGuru ou ReviewNB pour une analyse de code automatisée."
+              },
+              "Security Scans": {
+                "description": "Automatiser les analyses de sécurité en utilisant des outils comme Snyk ou Dependabot."
+              }
+            },
+            "Code Quality Tools": {
+              "IDE Integration": {
+                "description": "Encourager l'utilisation de plugins tels que SonarLint pour un retour immédiat pendant le développement."
+              },
+              "Custom Rulesets": {
+                "description": "Développer des règles personnalisées spécifiques aux besoins de votre projet."
+              }
+            },
+            "Static Code Analysis": {
+              "Performance Profiling": {
+                "description": "Utiliser des outils pour analyser l'impact des modifications de code sur la performance."
+              },
+              "Thread Safety Checks": {
+                "description": "Pour les applications concurrentes, s'assurer que la sécurité des threads est maintenue."
+              }
+            }
+          },
+          "Security Considerations": {
+            "Input Validation": {
+              "description": "Vérifier la validation et la sanitation appropriées des entrées utilisateur pour prévenir les attaques par injection."
+            },
+            "Authentication and Authorization": {
+              "description": "S'assurer que des mécanismes d'authentification sécurisés sont utilisés et que les points d'accès sensibles sont protégés."
+            },
+            "Data Privacy": {
+              "description": "Vérifier que les données personnelles ou sensibles sont traitées conformément aux réglementations telles que le RGPD."
+            },
+            "Dependency Management": {
+              "description": "Vérifier les vulnérabilités connues dans les dépendances et s'assurer qu'elles sont mises à jour vers des versions sécurisées."
+            }
+          },
+          "Legal and Compliance": {
+            "Licensing": {
+              "description": "S'assurer que tout le code tiers et les bibliothèques respectent les politiques de licence de l'entreprise."
+            },
+            "Regulatory Compliance": {
+              "description": "Vérifier que le code respecte les réglementations spécifiques à l'industrie (par exemple, HIPAA, PCI DSS)."
+            }
+          }
+        }
+      }
+    },
+    {
+      "number": 3,
+      "title": "Points à Vérifier",
+      "content": {
+        "New Section": {
+          "Small, Focused Commits": {
+            "description": "Encourager des commits petits et ciblés sur un seul problème ou fonctionnalité pour faciliter la revue."
+          },
+          "Consistent Coding Style": {
+            "description": "Utiliser des formateurs de code (comme Prettier) pour maintenir un style cohérent à travers la base de code."
+          },
+          "Documentation": {
+            "description": "Insister sur l'importance de mettre à jour la documentation parallèlement aux changements de code."
+          },
+          "Error Handling": {
+            "description": "S'assurer que des mécanismes de gestion des erreurs et de journalisation adéquats sont en place."
+          }
+        }
+      }
+    },
+    {
+      "number": 4,
+      "title": "À Éviter",
+      "content": {
+        "Additions": {
+          "Nitpicking": {
+            "description": "Éviter de se concentrer sur des problèmes mineurs qui pourraient être corrigés automatiquement par des linters ou des formateurs."
+          },
+          "Bias": {
+            "description": "Être conscient des préjugés personnels envers certains styles ou pratiques de codage qui ne font pas partie des normes de l'équipe."
+          },
+          "Approval Without Review": {
+            "description": "Décourager l'approbation de pull requests sans une revue approfondie, même pour de petits changements."
+          }
+        }
+      }
+    }
+  ]
+}
