@@ -1,11 +1,63 @@
-import React, { useState } from 'react';
-import { Box, Database, GitMerge, Settings, Shield, Code, Layers } from 'lucide-react';
-import coreJson from '../../../data/spring/core.json';
+import React, { useState, useEffect } from 'react';
+import { Box, Database, GitMerge, Settings, Shield, Code, Layers, Globe } from 'lucide-react';
+import coreJsonEn from '../../../data/spring/core.json';
+import coreJsonFr from '../../../data/spring/core-fr.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
+// Language Selector Component
+const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
+    return (
+        <div className="flex items-center gap-3 mb-6">
+            <Globe className="w-5 h-5 text-purple-400" />
+            <div className="flex rounded-lg overflow-hidden border border-gray-700">
+                <button
+                    onClick={() => onLanguageChange('en')}
+                    className={`px-3 py-1.5 text-sm ${
+                        currentLanguage === 'en'
+                            ? 'bg-purple-500/30 text-purple-300'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                    }`}
+                >
+                    English
+                </button>
+                <button
+                    onClick={() => onLanguageChange('fr')}
+                    className={`px-3 py-1.5 text-sm ${
+                        currentLanguage === 'fr'
+                            ? 'bg-purple-500/30 text-purple-300'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                    }`}
+                >
+                    Français
+                </button>
+            </div>
+        </div>
+    );
+};
+
 const CorePage = () => {
+    // Get the language preference from localStorage or default to English
+    const [language, setLanguage] = useState(() => {
+        return localStorage.getItem('corePageLanguage') || 'en';
+    });
+
+    // State for the content based on language
+    const [coreJson, setCoreJson] = useState(language === 'en' ? coreJsonEn : coreJsonFr);
+
+    // Active tab state
     const [activeTab, setActiveTab] = useState('ioc-container');
+
+    // Change the language and save the preference
+    const handleLanguageChange = (lang) => {
+        setLanguage(lang);
+        localStorage.setItem('corePageLanguage', lang);
+    };
+
+    useEffect(() => {
+        // Update content based on selected language
+        setCoreJson(language === 'en' ? coreJsonEn : coreJsonFr);
+    }, [language]);
 
     const TabNavigation = () => (
         <div className="mb-8 flex flex-wrap gap-4">
@@ -35,7 +87,9 @@ const CorePage = () => {
 
                     {component.characteristics && (
                         <div className="mt-4">
-                            <h4 className="text-lg font-medium text-gray-200 mb-2">Characteristics</h4>
+                            <h4 className="text-lg font-medium text-gray-200 mb-2">
+                                {language === 'en' ? 'Characteristics' : 'Caractéristiques'}
+                            </h4>
                             <ul className="list-disc list-inside text-gray-300 space-y-1">
                                 {component.characteristics.map((char, charIdx) => (
                                     <li key={charIdx}>{char}</li>
@@ -46,7 +100,9 @@ const CorePage = () => {
 
                     {component.relationships && (
                         <div className="mt-4">
-                            <h4 className="text-lg font-medium text-gray-200 mb-2">Relationships</h4>
+                            <h4 className="text-lg font-medium text-gray-200 mb-2">
+                                {language === 'en' ? 'Relationships' : 'Relations'}
+                            </h4>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {component.relationships.map((rel, relIdx) => (
                                     <div key={relIdx} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
@@ -60,7 +116,9 @@ const CorePage = () => {
 
                     {component.methods && (
                         <div className="mt-4">
-                            <h4 className="text-lg font-medium text-gray-200 mb-2">Methods</h4>
+                            <h4 className="text-lg font-medium text-gray-200 mb-2">
+                                {language === 'en' ? 'Methods' : 'Méthodes'}
+                            </h4>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {component.methods.map((method, methodIdx) => (
                                     <div key={methodIdx} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
@@ -74,7 +132,9 @@ const CorePage = () => {
 
                     {component.example && (
                         <div className="mt-4">
-                            <h4 className="text-lg font-medium text-gray-200 mb-2">Example</h4>
+                            <h4 className="text-lg font-medium text-gray-200 mb-2">
+                                {language === 'en' ? 'Example' : 'Exemple'}
+                            </h4>
                             <SyntaxHighlighter
                                 language="java"
                                 style={oneDark}
@@ -93,33 +153,6 @@ const CorePage = () => {
         </div>
     );
 
-    /*const renderAdditionalFeatures = (features) => (
-        <div className="space-y-6">
-            {features && Object.entries(features).map(([key, value], idx) => (
-                <div key={idx} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                    <h3 className="text-xl font-semibold text-purple-400 mb-3">
-                        {key.replace(/([A-Z])/g, ' $1').trim()}
-                    </h3>
-                    <p className="text-gray-300 mb-4">{value.description}</p>
-
-                    {value.usage && (
-                        <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50 mb-4">
-                            <h4 className="text-sm font-medium text-gray-200 mb-2">Usage</h4>
-                            <p className="text-gray-300">{value.usage}</p>
-                        </div>
-                    )}
-
-                    {value.example && (
-                        <div className="mt-4">
-                            <h4 className="text-lg font-medium text-gray-200 mb-2">Example</h4>
-                            <code className="text-purple-300">{value.example}</code>
-                        </div>
-                    )}
-                </div>
-            ))}
-        </div>
-    );*/
-
     const renderSpringConfigurations = (configs) => (
         <div className="space-y-6">
             {configs && configs.map((config, idx) => (
@@ -130,7 +163,9 @@ const CorePage = () => {
                     {config.example && (
                         <div className="mt-4">
                             <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                <h4 className="text-lg font-medium text-gray-200 mb-3">Example</h4>
+                                <h4 className="text-lg font-medium text-gray-200 mb-3">
+                                    {language === 'en' ? 'Example' : 'Exemple'}
+                                </h4>
                                 <SyntaxHighlighter
                                     language="java"
                                     style={oneDark}
@@ -145,7 +180,9 @@ const CorePage = () => {
 
                                 {config.example.advantages && (
                                     <div className="mt-4">
-                                        <h5 className="text-sm font-medium text-green-400 mb-2">Advantages</h5>
+                                        <h5 className="text-sm font-medium text-green-400 mb-2">
+                                            {language === 'en' ? 'Advantages' : 'Avantages'}
+                                        </h5>
                                         <ul className="list-disc list-inside text-gray-300">
                                             {config.example.advantages.map((adv, advIdx) => (
                                                 <li key={advIdx}>{adv}</li>
@@ -170,14 +207,18 @@ const CorePage = () => {
 
                     {concept.example && (
                         <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50 mb-4">
-                            <h4 className="text-sm font-medium text-gray-200 mb-2">Example</h4>
+                            <h4 className="text-sm font-medium text-gray-200 mb-2">
+                                {language === 'en' ? 'Example' : 'Exemple'}
+                            </h4>
                             <p className="text-gray-300">{concept.example}</p>
                         </div>
                     )}
 
                     {concept.types && (
                         <div className="mt-4">
-                            <h4 className="text-lg font-medium text-gray-200 mb-3">Advice Types</h4>
+                            <h4 className="text-lg font-medium text-gray-200 mb-3">
+                                {language === 'en' ? 'Advice Types' : 'Types de Conseils'}
+                            </h4>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {concept.types.map((type, typeIdx) => (
                                     <div key={typeIdx} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
@@ -221,7 +262,9 @@ const CorePage = () => {
 
                     {concept.benefits && (
                         <div className="mt-4">
-                            <h4 className="text-lg font-medium text-gray-200 mb-2">Benefits</h4>
+                            <h4 className="text-lg font-medium text-gray-200 mb-2">
+                                {language === 'en' ? 'Benefits' : 'Avantages'}
+                            </h4>
                             <ul className="list-disc list-inside text-gray-300">
                                 {concept.benefits.map((benefit, bidx) => (
                                     <li key={bidx}>{benefit}</li>
@@ -251,7 +294,9 @@ const CorePage = () => {
 
                                     {type.example.advantages && (
                                         <div className="mt-4">
-                                            <h5 className="text-sm font-medium text-green-400 mb-2">Advantages</h5>
+                                            <h5 className="text-sm font-medium text-green-400 mb-2">
+                                                {language === 'en' ? 'Advantages' : 'Avantages'}
+                                            </h5>
                                             <ul className="list-disc list-inside text-gray-300">
                                                 {type.example.advantages.map((adv, advIdx) => (
                                                     <li key={advIdx}>{adv}</li>
@@ -262,7 +307,9 @@ const CorePage = () => {
 
                                     {type.example.disadvantages && (
                                         <div className="mt-4">
-                                            <h5 className="text-sm font-medium text-red-400 mb-2">Disadvantages</h5>
+                                            <h5 className="text-sm font-medium text-red-400 mb-2">
+                                                {language === 'en' ? 'Disadvantages' : 'Inconvénients'}
+                                            </h5>
                                             <ul className="list-disc list-inside text-gray-300">
                                                 {type.example.disadvantages.map((dis, disIdx) => (
                                                     <li key={disIdx}>{dis}</li>
@@ -288,7 +335,9 @@ const CorePage = () => {
 
                     {phase.events && (
                         <div className="space-y-2">
-                            <h4 className="text-lg font-medium text-gray-200 mb-2">Events</h4>
+                            <h4 className="text-lg font-medium text-gray-200 mb-2">
+                                {language === 'en' ? 'Events' : 'Événements'}
+                            </h4>
                             <ul className="list-disc list-inside text-gray-300 space-y-1">
                                 {phase.events.map((event, eventIdx) => (
                                     <li key={eventIdx}>{event}</li>
@@ -309,7 +358,7 @@ const CorePage = () => {
                         <h3 className="text-xl font-semibold text-purple-400">{scope.name}</h3>
                         {scope.defaultScope && (
                             <span className="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full">
-                                Default Scope
+                                {language === 'en' ? 'Default Scope' : 'Portée par Défaut'}
                             </span>
                         )}
                     </div>
@@ -319,14 +368,18 @@ const CorePage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {scope.usage && (
                             <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                <h4 className="text-sm font-medium text-gray-200 mb-2">Usage</h4>
+                                <h4 className="text-sm font-medium text-gray-200 mb-2">
+                                    {language === 'en' ? 'Usage' : 'Utilisation'}
+                                </h4>
                                 <code className="text-purple-300 text-sm">{scope.usage}</code>
                             </div>
                         )}
 
                         {scope.bestFor && (
                             <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                <h4 className="text-sm font-medium text-gray-200 mb-2">Best For</h4>
+                                <h4 className="text-sm font-medium text-gray-200 mb-2">
+                                    {language === 'en' ? 'Best For' : 'Idéal Pour'}
+                                </h4>
                                 <p className="text-gray-300">{scope.bestFor}</p>
                             </div>
                         )}
@@ -360,6 +413,12 @@ const CorePage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
+            {/* Language Selector */}
+            <LanguageSelector
+                currentLanguage={language}
+                onLanguageChange={handleLanguageChange}
+            />
+
             {/* Header */}
             <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
                 <h1 className="text-3xl font-bold text-white mb-2">{coreJson.title}</h1>
