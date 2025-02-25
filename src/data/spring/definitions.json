@@ -1,0 +1,49 @@
+{
+  "title": "Spring Interview Definitions",
+  "definitions": [
+    {
+      "term": "Inversion of Control (IoC)",
+      "definition": "A design principle where the control of object creation and dependency management is delegated to an external container, enhancing modularity and testability."
+    },
+    {
+      "term": "Dependency Injection (DI)",
+      "definition": "A pattern in which an object's dependencies are provided by an external source (usually the IoC container) rather than the object instantiating them itself, promoting loose coupling."
+    },
+    {
+      "term": "IoC Container",
+      "definition": "The core component of the Spring framework that manages the lifecycle, configuration, and dependency injection of beans. It instantiates and wires application objects based on configuration metadata."
+    },
+    {
+      "term": "Bean",
+      "definition": "An object that is instantiated, configured, and managed by the Spring IoC container. Beans can be defined using XML, annotations, or Java configuration."
+    },
+    {
+      "term": "Bean Lifecycle",
+      "definition": "The complete process a Spring bean undergoes—from instantiation and dependency injection to initialization and eventual destruction—with opportunities for custom behavior at various stages."
+    },
+    {
+      "term": "ApplicationContext vs BeanFactory",
+      "definition": "BeanFactory provides basic dependency injection capabilities, whereas ApplicationContext adds enterprise features like event propagation, internationalization, and resource management."
+    },
+    {
+      "term": "Autowiring",
+      "definition": "A feature in Spring that automatically resolves and injects bean dependencies by type, name, or constructor, reducing the need for explicit configuration."
+    },
+    {
+      "term": "Bean Scopes",
+      "definition": "Defines the lifecycle and visibility of a bean within the container. Common scopes include singleton, prototype, request, session, and application."
+    },
+    {
+      "term": "Aspect-Oriented Programming (AOP)",
+      "definition": "A programming paradigm that separates cross-cutting concerns (like logging, security, or transaction management) from business logic using aspects, advices, join points, and pointcuts."
+    },
+    {
+      "term": "Spring Boot",
+      "definition": "An opinionated framework built on top of Spring that simplifies application development by providing auto-configuration, starter dependencies, and embedded servers, significantly reducing boilerplate configuration."
+    },
+    {
+      "term": "Transaction Management in Spring",
+      "definition": "A mechanism for managing transactions declaratively or programmatically to ensure data consistency and integrity, integrating with various transaction managers like JTA, JDBC, or Hibernate."
+    }
+  ]
+}

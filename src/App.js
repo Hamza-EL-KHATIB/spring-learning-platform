@@ -19,6 +19,7 @@ import SpringCorePage from './pages/topics/spring/CorePage';
 import SpringDataPage from './pages/topics/spring/DataPage';
 import SpringRestPage from './pages/topics/spring/RestPage';
 import SpringGraphQLPage from './pages/topics/spring/GraphQLPage';
+import SpringDefinitionsPage from './pages/topics/spring/DefinitionsPage';
 
 // Database imports
 import SQLPage from './pages/topics/databases/SQLPage';
@@ -82,6 +83,7 @@ const App = () => {
                     <Route path="/spring/data" element={<SpringDataPage />} />
                     <Route path="/spring/rest" element={<SpringRestPage />} />
                     <Route path="/spring/graphql" element={<SpringGraphQLPage />} />
+                    <Route path="/spring/definitions" element={<SpringDefinitionsPage />} />
 
                     {/* Database Routes */}
                     <Route path="/databases/sql" element={<SQLPage />} />

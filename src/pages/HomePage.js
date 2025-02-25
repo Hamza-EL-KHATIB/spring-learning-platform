@@ -63,7 +63,9 @@ const HomePage = () => {
                 { title: "Spring Core", path: "/spring/core", icon: Server, description: "IoC, DI, and core concepts" },
                 { title: "Spring Boot", path: "/spring/boot", icon: XSquare, description: "Auto-configuration and features" },
                 { title: "Spring Data", path: "/spring/data", icon: Database, description: "Data access and repositories" },
-                { title: "REST APIs", path: "/spring/rest", icon: FileCode, description: "RESTful web services" }
+                { title: "REST APIs", path: "/spring/rest", icon: FileCode, description: "RESTful web services" },
+                { title: "GraphQL", path: "/spring/graphql", icon: FileCode, description: "GraphQL APIs" },
+                { title: "Spring Definitions", path: "/spring/definitions", icon: BookOpenCheck, description: "Core Spring concepts and terminology" }
             ]
         },
         databases: {
