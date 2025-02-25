@@ -1,16 +1,49 @@
-import React, { useState } from 'react';
-import solidJson from '../../../data/architecture/solid.json';
+import React, { useState, useEffect } from 'react';
+import solidJsonEn from '../../../data/architecture/solid.json';
+import solidJsonFr from '../../../data/architecture/solid-fr.json';
 import {
     AlertTriangle,
     CheckCircle2,
     XCircle,
     Lightbulb,
     ListChecks,
-    Box
+    Box,
+    Globe
 } from 'lucide-react';
 import CodeBlock from '../../../components/CodeBlock';
 
-const PrincipleCard = ({ principle }) => {
+// Simple Language Selector Component
+const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
+    return (
+        <div className="flex items-center gap-3 mb-6">
+            <Globe className="w-5 h-5 text-purple-400" />
+            <div className="flex rounded-lg overflow-hidden border border-gray-700">
+                <button
+                    onClick={() => onLanguageChange('en')}
+                    className={`px-3 py-1.5 text-sm ${
+                        currentLanguage === 'en'
+                            ? 'bg-purple-500/30 text-purple-300'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                    }`}
+                >
+                    English
+                </button>
+                <button
+                    onClick={() => onLanguageChange('fr')}
+                    className={`px-3 py-1.5 text-sm ${
+                        currentLanguage === 'fr'
+                            ? 'bg-purple-500/30 text-purple-300'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                    }`}
+                >
+                    Français
+                </button>
+            </div>
+        </div>
+    );
+};
+
+const PrincipleCard = ({ principle, language }) => {
     const [showGoodPractice, setShowGoodPractice] = useState(false);
 
     return (
@@ -34,12 +67,16 @@ const PrincipleCard = ({ principle }) => {
                 {/* Example Section */}
                 <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                        <h4 className="text-lg font-medium text-white">Example</h4>
+                        <h4 className="text-lg font-medium text-white">
+                            {language === 'en' ? 'Example' : 'Exemple'}
+                        </h4>
                         <button
                             onClick={() => setShowGoodPractice(!showGoodPractice)}
                             className="text-sm px-3 py-1 rounded-full bg-gray-700/50 text-gray-300 hover:bg-gray-700"
                         >
-                            Show {showGoodPractice ? 'Bad' : 'Good'} Practice
+                            {showGoodPractice
+                                ? (language === 'en' ? 'Show Bad Practice' : 'Afficher le mauvais exemple')
+                                : (language === 'en' ? 'Show Good Practice' : 'Afficher le bon exemple')}
                         </button>
                     </div>
 
@@ -67,7 +104,7 @@ const PrincipleCard = ({ principle }) => {
                     <div>
                         <h4 className="flex items-center gap-2 text-lg font-medium text-white mb-3">
                             <CheckCircle2 className="w-5 h-5 text-green-400" />
-                            Benefits
+                            {language === 'en' ? 'Benefits' : 'Avantages'}
                         </h4>
                         <ul className="space-y-2">
                             {principle.benefits.map((benefit, idx) => (
@@ -81,7 +118,7 @@ const PrincipleCard = ({ principle }) => {
                     <div>
                         <h4 className="flex items-center gap-2 text-lg font-medium text-white mb-3">
                             <AlertTriangle className="w-5 h-5 text-yellow-400" />
-                            Violation Indicators
+                            {language === 'en' ? 'Violation Indicators' : 'Indicateurs de violation'}
                         </h4>
                         <ul className="space-y-2">
                             {principle.indicators_of_violation.map((indicator, idx) => (
@@ -115,11 +152,15 @@ const GuidelineSection = ({ title, items, icon: Icon, color }) => (
     </div>
 );
 
-const MisconceptionCard = ({ misconception }) => (
+const MisconceptionCard = ({ misconception, language }) => (
     <div className="bg-gray-800/40 rounded-lg border border-gray-700/50 p-6">
         <div className="flex items-center gap-2 text-red-400 mb-2">
             <XCircle className="w-5 h-5" />
-            <h4 className="font-medium">Misconception about {misconception.principle}</h4>
+            <h4 className="font-medium">
+                {language === 'en'
+                    ? `Misconception about ${misconception.principle}`
+                    : `Idée fausse sur ${misconception.principle}`}
+            </h4>
         </div>
         <p className="text-gray-300 mb-3">{misconception.misconception}</p>
         <div className="flex items-center gap-2 text-green-400 mb-2">
@@ -130,7 +171,24 @@ const MisconceptionCard = ({ misconception }) => (
 );
 
 const SolidPage = () => {
-    const [activePrinciple, setActivePrinciple] = useState(solidJson.principles[0].acronym.toLowerCase());
+    // Get the language preference from localStorage if available, otherwise default to English
+    const [language, setLanguage] = useState(() => {
+        return localStorage.getItem('solidPageLanguage') || 'en';
+    });
+
+    const [solidJson, setSolidJson] = useState(language === 'en' ? solidJsonEn : solidJsonFr);
+    const [activePrinciple, setActivePrinciple] = useState('s');
+
+    // Change the language and save the preference
+    const handleLanguageChange = (lang) => {
+        setLanguage(lang);
+        localStorage.setItem('solidPageLanguage', lang);
+    };
+
+    useEffect(() => {
+        // Update content based on selected language
+        setSolidJson(language === 'en' ? solidJsonEn : solidJsonFr);
+    }, [language]);
 
     const TabNavigation = () => (
         <div className="mb-8 flex flex-wrap gap-4">
@@ -153,6 +211,12 @@ const SolidPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
+            {/* Language Selector */}
+            <LanguageSelector
+                currentLanguage={language}
+                onLanguageChange={handleLanguageChange}
+            />
+
             {/* Header */}
             <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
                 <h1 className="text-3xl font-bold text-white mb-2">{solidJson.title}</h1>
@@ -168,23 +232,26 @@ const SolidPage = () => {
                     principle={solidJson.principles.find(p =>
                         p.acronym.toLowerCase() === activePrinciple
                     )}
+                    language={language}
                 />
             </div>
 
             {/* Guidelines and Misconceptions */}
             <div className="space-y-8">
-                <h2 className="text-2xl font-bold text-white mb-6">Guidelines & Common Misconceptions</h2>
+                <h2 className="text-2xl font-bold text-white mb-6">
+                    {language === 'en' ? 'Guidelines & Common Misconceptions' : 'Directives et idées fausses courantes'}
+                </h2>
 
                 {/* Implementation Guidelines */}
                 <div className="grid md:grid-cols-2 gap-6">
                     <GuidelineSection
-                        title="When to Apply"
+                        title={language === 'en' ? 'When to Apply' : 'Quand appliquer'}
                         items={solidJson.implementation_guidelines.when_to_apply}
                         icon={ListChecks}
                         color="text-cyan-400"
                     />
                     <GuidelineSection
-                        title="Key Considerations"
+                        title={language === 'en' ? 'Key Considerations' : 'Considérations clés'}
                         items={solidJson.implementation_guidelines.considerations}
                         icon={Lightbulb}
                         color="text-yellow-400"
@@ -194,7 +261,11 @@ const SolidPage = () => {
                 {/* Misconceptions */}
                 <div className="grid md:grid-cols-2 gap-6">
                     {solidJson.common_misconceptions.map((misconception, idx) => (
-                        <MisconceptionCard key={idx} misconception={misconception} />
+                        <MisconceptionCard
+                            key={idx}
+                            misconception={misconception}
+                            language={language}
+                        />
                     ))}
                 </div>
             </div>

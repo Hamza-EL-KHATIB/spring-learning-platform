@@ -1,0 +1,209 @@
+{
+  "title": "Principes SOLID",
+  "description": "Les cinq principes fondamentaux de la programmation et de la conception orientées objet",
+  "principles": [
+    {
+      "name": "Principe de responsabilité unique (SRP)",
+      "acronym": "S",
+      "definition": "Une classe ne devrait avoir qu'une seule raison de changer",
+      "key_concept": "Chaque classe ne devrait avoir qu'un seul rôle ou responsabilité",
+      "examples": [
+        {
+          "bad_practice": {
+            "title": "Violation du SRP",
+            "code": "public class UserService {\n    public void saveUser(User user) {\n        // Save user to database\n    }\n    \n    public void sendEmail(User user) {\n        // Send welcome email\n    }\n    \n    public void generateReport(User user) {\n        // Generate user report\n    }\n}"
+          },
+          "good_practice": {
+            "title": "Respect du SRP",
+            "code": "public class UserService {\n    private EmailService emailService;\n    private ReportService reportService;\n    \n    public void saveUser(User user) {\n        // Save user to database\n    }\n}\n\npublic class EmailService {\n    public void sendEmail(User user) {\n        // Send welcome email\n    }\n}\n\npublic class ReportService {\n    public void generateReport(User user) {\n        // Generate user report\n    }\n}"
+          }
+        }
+      ],
+      "benefits": [
+        "Plus facile à comprendre et à maintenir",
+        "Meilleure testabilité",
+        "Couplage réduit",
+        "Plus facile à modifier sans impacter les autres parties"
+      ],
+      "indicators_of_violation": [
+        "La classe a plusieurs méthodes sans lien",
+        "Les modifications d'une fonctionnalité nécessitent de modifier plusieurs classes",
+        "La classe a plusieurs raisons de changer"
+      ]
+    },
+    {
+      "name": "Principe ouvert-fermé (OCP)",
+      "acronym": "O",
+      "definition": "Les entités logicielles devraient être ouvertes à l'extension mais fermées à la modification",
+      "key_concept": "Étendre la fonctionnalité en ajoutant du nouveau code plutôt qu'en modifiant le code existant",
+      "examples": [
+        {
+          "bad_practice": {
+            "title": "Violation du OCP",
+            "code": "public class PaymentProcessor {\n    public void processPayment(String paymentType) {\n        if (paymentType.equals(\"CREDIT_CARD\")) {\n            // Process credit card\n        } else if (paymentType.equals(\"PAYPAL\")) {\n            // Process PayPal\n        }\n        // Adding new payment type requires modifying this class\n    }\n}"
+          },
+          "good_practice": {
+            "title": "Respect du OCP",
+            "code": "public interface PaymentProcessor {\n    void processPayment();\n}\n\npublic class CreditCardProcessor implements PaymentProcessor {\n    public void processPayment() {\n        // Process credit card\n    }\n}\n\npublic class PayPalProcessor implements PaymentProcessor {\n    public void processPayment() {\n        // Process PayPal\n    }\n}\n\n// New payment types can be added without modifying existing code"
+          }
+        }
+      ],
+      "benefits": [
+        "De nouvelles fonctionnalités peuvent être ajoutées sans modifier le code existant",
+        "Risque réduit de bugs dans le code existant",
+        "Plus facile à maintenir et à tester",
+        "Meilleure organisation du code"
+      ],
+      "indicators_of_violation": [
+        "Modifications fréquentes des classes existantes lors de l'ajout de fonctionnalités",
+        "De grandes structures if/else ou switch",
+        "Couplage étroit entre les classes"
+      ]
+    },
+    {
+      "name": "Principe de substitution de Liskov (LSP)",
+      "acronym": "L",
+      "definition": "Les sous-types doivent être substituables à leurs types de base sans altérer la correction du programme",
+      "key_concept": "Les classes dérivées doivent pouvoir être utilisées via l'interface de la classe de base sans que le client ne remarque la différence",
+      "examples": [
+        {
+          "bad_practice": {
+            "title": "Violation du LSP",
+            "code": "public class Bird {\n    public void fly() { }\n}\n\npublic class Penguin extends Bird {\n    @Override\n    public void fly() {\n        throw new UnsupportedOperationException(\"Penguins can't fly\");\n    }\n}"
+          },
+          "good_practice": {
+            "title": "Respect du LSP",
+            "code": "public interface FlyingBird {\n    void fly();\n}\n\npublic class Bird { }\n\npublic class Sparrow extends Bird implements FlyingBird {\n    public void fly() { }\n}\n\npublic class Penguin extends Bird {\n    // No fly method\n}"
+          }
+        }
+      ],
+      "benefits": [
+        "Réutilisabilité du code",
+        "Hiérarchies d'héritage maintenables",
+        "Comportement prévisible des classes de base",
+        "Meilleure abstraction"
+      ],
+      "indicators_of_violation": [
+        "Implémentations de méthodes vides",
+        "Lancer des exceptions dans les méthodes des sous-classes",
+        "Vérification de type dans les méthodes"
+      ]
+    },
+    {
+      "name": "Principe de ségrégation des interfaces (ISP)",
+      "acronym": "I",
+      "definition": "Les clients ne devraient pas être forcés de dépendre d'interfaces qu'ils n'utilisent pas",
+      "key_concept": "Plusieurs interfaces spécifiques sont préférables à une interface généraliste",
+      "examples": [
+        {
+          "bad_practice": {
+            "title": "Violation de l'ISP",
+            "code": "public interface Worker {\n    void work();\n    void eat();\n    void sleep();\n}\n\npublic class Robot implements Worker {\n    public void work() { }\n    public void eat() { throw new UnsupportedOperationException(); }\n    public void sleep() { throw new UnsupportedOperationException(); }\n}"
+          },
+          "good_practice": {
+            "title": "Respect de l'ISP",
+            "code": "public interface Workable {\n    void work();\n}\n\npublic interface Eatable {\n    void eat();\n}\n\npublic interface Sleepable {\n    void sleep();\n}\n\npublic class Human implements Workable, Eatable, Sleepable {\n    public void work() { }\n    public void eat() { }\n    public void sleep() { }\n}\n\npublic class Robot implements Workable {\n    public void work() { }\n}"
+          }
+        }
+      ],
+      "benefits": [
+        "Meilleure abstraction",
+        "Interfaces plus ciblées",
+        "Plus facile à implémenter et à maintenir",
+        "Couplage réduit"
+      ],
+      "indicators_of_violation": [
+        "Interfaces volumineuses avec de nombreuses méthodes",
+        "Classes implémentant des méthodes inutiles",
+        "Méthodes d'interface lançant UnsupportedOperationException"
+      ]
+    },
+    {
+      "name": "Principe d'inversion des dépendances (DIP)",
+      "acronym": "D",
+      "definition": "Les modules de haut niveau ne devraient pas dépendre des modules de bas niveau. Les deux devraient dépendre d'abstractions",
+      "key_concept": "Dépendre des abstractions plutôt que des implémentations concrètes",
+      "examples": [
+        {
+          "bad_practice": {
+            "title": "Violation du DIP",
+            "code": "public class UserService {\n    private MySQLDatabase database = new MySQLDatabase();\n    \n    public void saveUser(User user) {\n        database.save(user);\n    }\n}"
+          },
+          "good_practice": {
+            "title": "Respect du DIP",
+            "code": "public interface Database {\n    void save(User user);\n}\n\npublic class UserService {\n    private final Database database;\n    \n    public UserService(Database database) {\n        this.database = database;\n    }\n    \n    public void saveUser(User user) {\n        database.save(user);\n    }\n}"
+          }
+        }
+      ],
+      "benefits": [
+        "Couplage faible",
+        "Plus facile à tester (peut utiliser des implémentations factices)",
+        "Code plus flexible et réutilisable",
+        "Plus facile à changer d'implémentation"
+      ],
+      "indicators_of_violation": [
+        "Instanciation directe des dépendances",
+        "Couplage étroit aux classes concrètes",
+        "Difficulté à réaliser des tests unitaires"
+      ]
+    }
+  ],
+  "practical_applications": {
+    "spring_framework": [
+      {
+        "principle": "SRP",
+        "example": "Utiliser les annotations @Service, @Repository, et @Controller pour séparer les préoccupations"
+      },
+      {
+        "principle": "OCP",
+        "example": "Utiliser les interfaces et @Autowired pour l'injection de dépendances"
+      },
+      {
+        "principle": "DIP",
+        "example": "Container IoC de Spring et injection de dépendances"
+      }
+    ],
+    "design_patterns": [
+      {
+        "principle": "OCP",
+        "patterns": [
+          "Stratégie",
+          "Méthode Template"
+        ]
+      },
+      {
+        "principle": "DIP",
+        "patterns": [
+          "Fabrique",
+          "Fabrique abstraite"
+        ]
+      }
+    ]
+  },
+  "common_misconceptions": [
+    {
+      "principle": "SRP",
+      "misconception": "Une classe ne devrait avoir qu'une seule méthode",
+      "clarification": "Le principe concerne le fait d'avoir une seule responsabilité ou raison de changer, et non le nombre de méthodes"
+    },
+    {
+      "principle": "OCP",
+      "misconception": "Ne jamais modifier le code existant",
+      "clarification": "Vous pouvez modifier le code pour corriger des bugs ou améliorer l'implémentation, mais les nouvelles fonctionnalités doivent être ajoutées par extension"
+    }
+  ],
+  "implementation_guidelines": {
+    "when_to_apply": [
+      "Lors de la conception initiale",
+      "Lors de la refactorisation du code existant",
+      "Lors de l'ajout de nouvelles fonctionnalités",
+      "Lorsqu'on fait face à des problèmes de maintenance"
+    ],
+    "considerations": [
+      "Éviter la sur-ingénierie",
+      "Trouver un équilibre entre les principes et le pragmatisme",
+      "Prendre en compte l'expérience de l'équipe et les contraintes du projet",
+      "Commencer par le principe le plus pertinent pour votre problème"
+    ]
+  }
+}
