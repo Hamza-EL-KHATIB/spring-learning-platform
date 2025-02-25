@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link, useLocation} from 'react-router-dom';
 import {
     ChevronRight,
     Database,
@@ -25,65 +25,70 @@ const Sidebar = () => {
     const navigationGroups = {
         java: {
             title: "Java Core",
-            icon: <Code className="w-5 h-5" />,
+            icon: <Code className="w-5 h-5"/>,
             items: [
-                { path: '/java/collections', title: 'Collections Framework', icon: <Layers className="w-4 h-4" /> },
-                { path: '/java/concurrency', title: 'Concurrency & Multithreading', icon: <Activity className="w-4 h-4" /> },
-                { path: '/java/definitions', title: 'Java Definitions', icon: <FileText className="w-4 h-4" /> },
-                { path: '/java/exceptions', title: 'Exception Handling', icon: <Box className="w-4 h-4" /> },
-                { path: '/java/features', title: 'Java Features', icon: <Cpu className="w-4 h-4" /> },
-                { path: '/java/gc', title: 'Garbage Collection', icon: <RefreshCw className="w-4 h-4" /> },
-                { path: '/java/internals', title: 'Java Internals', icon: <Layers className="w-4 h-4" /> }
+                {path: '/java/collections', title: 'Collections Framework', icon: <Layers className="w-4 h-4"/>},
+                {
+                    path: '/java/concurrency',
+                    title: 'Concurrency & Multithreading',
+                    icon: <Activity className="w-4 h-4"/>
+                },
+                {path: '/java/definitions', title: 'Java Definitions', icon: <FileText className="w-4 h-4"/>},
+                {path: '/java/exceptions', title: 'Exception Handling', icon: <Box className="w-4 h-4"/>},
+                {path: '/java/features', title: 'Java Features', icon: <Cpu className="w-4 h-4"/>},
+                {path: '/java/gc', title: 'Garbage Collection', icon: <RefreshCw className="w-4 h-4"/>},
+                {path: '/java/internals', title: 'Java Internals', icon: <Layers className="w-4 h-4"/>}
             ]
         },
         spring: {
             title: "Spring Framework",
-            icon: <Server className="w-5 h-5" />,
+            icon: <Server className="w-5 h-5"/>,
             items: [
-                { path: '/spring/core', title: 'Spring Core' },
-                { path: '/spring/boot', title: 'Spring Boot' },
-                { path: '/spring/data', title: 'Spring Data' },
-                { path: '/spring/rest', title: 'REST APIs' },
-                { path: '/spring/graphql', title: 'GraphQL' }
+                {path: '/spring/core', title: 'Spring Core'},
+                {path: '/spring/boot', title: 'Spring Boot'},
+                {path: '/spring/data', title: 'Spring Data'},
+                {path: '/spring/rest', title: 'REST APIs'},
+                {path: '/spring/graphql', title: 'GraphQL'},
+                {path: '/spring/definitions', title: 'Spring Definitions'}
             ]
         },
         databases: {
             title: "Database Technologies",
-            icon: <Database className="w-5 h-5" />,
+            icon: <Database className="w-5 h-5"/>,
             items: [
-                { path: '/databases/sql', title: 'SQL Fundamentals' },
-                { path: '/databases/hibernate', title: 'Hibernate ORM' },
-                { path: '/databases/transactions', title: 'Transactions' },
-                { path: '/databases/redis', title: 'Redis' }
+                {path: '/databases/sql', title: 'SQL Fundamentals'},
+                {path: '/databases/hibernate', title: 'Hibernate ORM'},
+                {path: '/databases/transactions', title: 'Transactions'},
+                {path: '/databases/redis', title: 'Redis'}
             ]
         },
         architecture: {
             title: "Architecture",
-            icon: <Box className="w-5 h-5" />,
+            icon: <Box className="w-5 h-5"/>,
             items: [
-                { path: '/architecture/design-patterns', title: 'Design Patterns' },
-                { path: '/architecture/solid', title: 'SOLID Principles' }
+                {path: '/architecture/design-patterns', title: 'Design Patterns'},
+                {path: '/architecture/solid', title: 'SOLID Principles'}
             ]
         },
         devops: {
             title: "DevOps",
-            icon: <GitBranch className="w-5 h-5" />,
+            icon: <GitBranch className="w-5 h-5"/>,
             items: [
-                { path: '/devops/git', title: 'Git' }
+                {path: '/devops/git', title: 'Git'}
             ]
         },
         agile: {
             title: "Agile",
-            icon: <Users className="w-5 h-5" />,
+            icon: <Users className="w-5 h-5"/>,
             items: [
-                { path: '/agile/scrum', title: 'Scrum' }
+                {path: '/agile/scrum', title: 'Scrum'}
             ]
         },
         "best-practices": {
             title: "Best Practices",
-            icon: <Code className="w-5 h-5" />,
+            icon: <Code className="w-5 h-5"/>,
             items: [
-                { path: '/best-practices/code-reviews', title: 'Code Reviews' }
+                {path: '/best-practices/code-reviews', title: 'Code Reviews'}
             ]
         }
     };
