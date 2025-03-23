@@ -48,6 +48,8 @@ const JavaFundamentalsPage = () => {
         </div>
     );
 
+    //==========================================================================================================
+
     // Render Core Concepts section
     const renderCoreConceptsSection = (section) => {
         if (!section?.subsections?.length) return null;
@@ -584,7 +586,14 @@ const JavaFundamentalsPage = () => {
 
     // Render Memory Management section
     const renderMemoryManagementSection = (section) => {
-        if (!section.subsections) return null;
+        if (!section?.subsections?.length) return null;
+
+        // High-performance dispatcher using Map (faster than object property lookup)
+        const renderers = new Map([
+            ["Stack vs Heap Memory", renderStackHeapMemory],
+            ["Variable Storage", renderVariableStorage],
+            ["Garbage Collection", renderGarbageCollection]
+        ]);
 
         return (
             <div className="space-y-8">
@@ -595,190 +604,720 @@ const JavaFundamentalsPage = () => {
                         icon={<MemoryStick className="w-5 h-5 text-cyan-400" />}
                         className="mb-6"
                     >
-                        {subsection.content && (
-                            <p className="text-gray-300 mb-4">{subsection.content}</p>
-                        )}
+                        {/* Content is rendered directly without conditional */}
+                        {subsection.content && <p className="text-gray-300 mb-4">{subsection.content}</p>}
 
-                        {/* Stack vs Heap Memory */}
-                        {subsection.memory && (
-                            <div className="space-y-6 mt-4">
-                                {subsection.memory.map((memType, memIdx) => (
-                                    <div key={memIdx} className="bg-gray-800/50 rounded-lg overflow-hidden">
-                                        <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 px-5 py-3 border-b border-gray-700">
-                                            <h4 className="text-lg font-medium text-cyan-400">{memType.type}</h4>
-                                        </div>
-                                        <div className="p-5">
-                                            <div className="mb-4">
-                                                <h5 className="text-md font-medium text-gray-300 mb-2">Characteristics:</h5>
-                                                <ul className="list-disc list-inside space-y-1">
-                                                    {memType.characteristics.map((char, charIdx) => (
-                                                        <li key={charIdx} className="text-gray-300">{char}</li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-
-                                            {memType.example && (
-                                                <CodeExample code={memType.example} title="Example" />
-                                            )}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-
-                        {/* Memory Diagram */}
-                        {subsection.diagram && (
-                            <div className="mt-6 p-4 bg-gray-800/50 rounded-lg border border-gray-700/50">
-                                <h4 className="text-md font-medium text-gray-300 mb-3">Memory Diagram:</h4>
-                                <pre className="text-gray-300 text-sm font-mono overflow-x-auto whitespace-pre">
-                                    {subsection.diagram}
-                                </pre>
-                            </div>
-                        )}
-
-                        {/* Variable Storage */}
-                        {subsection.variables && (
-                            <div className="mt-6">
-                                <h4 className="text-md font-medium text-gray-300 mb-3">Variable Storage:</h4>
-                                <div className="overflow-x-auto">
-                                    <table className="w-full border-collapse">
-                                        <thead>
-                                        <tr className="bg-gray-800">
-                                            <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Type</th>
-                                            <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Storage</th>
-                                            <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Lifecycle</th>
-                                            <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Scope</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {subsection.variables.map((variable, varIdx) => (
-                                            <tr key={varIdx} className={varIdx % 2 === 0 ? "bg-gray-900/50" : "bg-gray-800/50"}>
-                                                <td className="border border-gray-700 px-4 py-2 text-cyan-400">{variable.type}</td>
-                                                <td className="border border-gray-700 px-4 py-2 text-gray-300">{variable.storage}</td>
-                                                <td className="border border-gray-700 px-4 py-2 text-gray-300">{variable.lifecycle}</td>
-                                                <td className="border border-gray-700 px-4 py-2 text-gray-300">{variable.scope}</td>
-                                            </tr>
-                                        ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Garbage Collection */}
-                        {subsection.details && subsection.title === "Garbage Collection" && (
-                            <div className="space-y-4 mt-4">
-                                <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700/50">
-                                    <ul className="list-disc list-inside space-y-1">
-                                        {subsection.details.map((detail, detailIdx) => (
-                                            <li key={detailIdx} className="text-gray-300">{detail}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                {subsection.process && (
-                                    <div className="mt-4">
-                                        <h4 className="text-md font-medium text-gray-300 mb-2">Garbage Collection Process:</h4>
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                            {subsection.process.map((proc, procIdx) => (
-                                                <div key={procIdx} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                                    <div className="flex items-center gap-2 mb-2">
-                                                        <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-medium">
-                                                            {procIdx + 1}
-                                                        </div>
-                                                        <h5 className="text-cyan-400 font-medium">{proc.step}</h5>
-                                                    </div>
-                                                    <p className="text-gray-300 text-sm">{proc.description}</p>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {subsection.collectors && (
-                                    <div className="mt-6">
-                                        <h4 className="text-md font-medium text-gray-300 mb-3">Garbage Collectors:</h4>
-                                        <div className="space-y-3">
-                                            {subsection.collectors.map((collector, collIdx) => (
-                                                <div key={collIdx} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                                    <h5 className="text-cyan-400 font-medium mb-1">{collector.name}</h5>
-                                                    <p className="text-gray-300 text-sm mb-2">{collector.description}</p>
-                                                    {collector.flag && (
-                                                        <code className="text-xs font-mono bg-gray-800 px-2 py-1 rounded text-pink-400">
-                                                            {collector.flag}
-                                                        </code>
-                                                    )}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {subsection.tuning && (
-                                    <div className="mt-6">
-                                        <h4 className="text-md font-medium text-gray-300 mb-2">Tuning Tips:</h4>
-                                        <ul className="list-disc list-inside space-y-1">
-                                            {subsection.tuning.map((tip, tipIdx) => (
-                                                <li key={tipIdx} className="text-gray-300">{tip}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-                            </div>
-                        )}
+                        {/* Call specialized renderer with direct lookup - faster than conditionals */}
+                        {renderers.get(subsection.title)?.(subsection)}
                     </Card>
                 ))}
             </div>
         );
     };
 
-    const renderConstructorsSection = (section) => (
-        <div className="space-y-8">
-            <p className="text-gray-300">This section will render constructors information</p>
+    const renderStackHeapMemory = ({memory, diagram}) => (
+        <>
+            {memory?.length && (
+                <div className="space-y-6 mt-4">
+                    {memory.map(({type, characteristics, example}, i) => (
+                        <div key={i} className="bg-gray-800/50 rounded-lg overflow-hidden">
+                            <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 px-5 py-3 border-b border-gray-700">
+                                <h4 className="text-lg font-medium text-cyan-400">{type}</h4>
+                            </div>
+                            <div className="p-5">
+                                {characteristics?.length && (
+                                    <div className="mb-4">
+                                        <h5 className="text-md font-medium text-gray-300 mb-2">Characteristics:</h5>
+                                        <ul className="list-disc list-inside space-y-1">
+                                            {characteristics.map((char, j) => (
+                                                <li key={j} className="text-gray-300">{char}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                                {example && <CodeExample code={example} title="Example" />}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {diagram && (
+                <div className="mt-6 p-4 bg-gray-800/50 rounded-lg border border-gray-700/50">
+                    <h4 className="text-md font-medium text-gray-300 mb-3">Memory Diagram:</h4>
+                    <pre className="text-gray-300 text-sm font-mono overflow-x-auto whitespace-pre">
+                    {diagram}
+                </pre>
+                </div>
+            )}
+        </>
+    );
+
+    const renderVariableStorage = ({variables}) => (
+        variables?.length && (
+            <div className="mt-6">
+                <h4 className="text-md font-medium text-gray-300 mb-3">Variable Storage:</h4>
+                <div className="overflow-x-auto">
+                    <table className="w-full border-collapse">
+                        <thead>
+                        <tr className="bg-gray-800">
+                            <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Type</th>
+                            <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Storage</th>
+                            <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Lifecycle</th>
+                            <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Scope</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {variables.map((variable, i) => (
+                            <tr key={i} className={i % 2 === 0 ? "bg-gray-900/50" : "bg-gray-800/50"}>
+                                <td className="border border-gray-700 px-4 py-2 text-cyan-400">{variable.type}</td>
+                                <td className="border border-gray-700 px-4 py-2 text-gray-300">{variable.storage}</td>
+                                <td className="border border-gray-700 px-4 py-2 text-gray-300">{variable.lifecycle}</td>
+                                <td className="border border-gray-700 px-4 py-2 text-gray-300">{variable.scope}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        )
+    );
+
+    const renderGarbageCollection = ({details, process, collectors, tuning}) => (
+        <div className="space-y-4 mt-4">
+            {/* Details list */}
+            {details?.length && (
+                <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700/50">
+                    <ul className="list-disc list-inside space-y-1">
+                        {details.map((detail, i) => (
+                            <li key={i} className="text-gray-300">{detail}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+
+            {/* Process grid */}
+            {process?.length && (
+                <div className="mt-4">
+                    <h4 className="text-md font-medium text-gray-300 mb-2">Garbage Collection Process:</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {process.map(({step, description}, i) => (
+                            <div key={i} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-medium">
+                                        {i + 1}
+                                    </div>
+                                    <h5 className="text-cyan-400 font-medium">{step}</h5>
+                                </div>
+                                <p className="text-gray-300 text-sm">{description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Collectors section */}
+            {collectors?.length && (
+                <div className="mt-6">
+                    <h4 className="text-md font-medium text-gray-300 mb-3">Garbage Collectors:</h4>
+                    <div className="space-y-3">
+                        {collectors.map(({name, description, flag}, i) => (
+                            <div key={i} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
+                                <h5 className="text-cyan-400 font-medium mb-1">{name}</h5>
+                                <p className="text-gray-300 text-sm mb-2">{description}</p>
+                                {flag && (
+                                    <code className="text-xs font-mono bg-gray-800 px-2 py-1 rounded text-pink-400">
+                                        {flag}
+                                    </code>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Tuning tips */}
+            {tuning?.length && (
+                <div className="mt-6">
+                    <h4 className="text-md font-medium text-gray-300 mb-2">Tuning Tips:</h4>
+                    <ul className="list-disc list-inside space-y-1">
+                        {tuning.map((tip, i) => (
+                            <li key={i} className="text-gray-300">{tip}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 
-    const renderKeywordsModifiersSection = (section) => (
-        <div className="space-y-8">
-            <p className="text-gray-300">This section will render keywords and modifiers</p>
-        </div>
+    // Render Constructors section
+    const renderConstructorsSection = (section) => {
+        if (!section?.subsections?.length) return null;
+
+        // Map-based lookup for O(1) access performance
+        const renderers = new Map([
+            ["Types of Constructors", renderTypesOfConstructors],
+            ["Constructor Chaining", renderConstructorChaining]
+        ]);
+
+        return (
+            <div className="space-y-8">
+                {section.subsections.map((subsection, idx) => (
+                    <Card
+                        key={idx}
+                        title={subsection.title}
+                        icon={<Layout className="w-5 h-5 text-cyan-400" />}
+                        className="mb-6"
+                    >
+                        {/* Content text */}
+                        {subsection.content && <p className="text-gray-300 mb-4">{subsection.content}</p>}
+
+                        {/* Call specialized renderer via constant-time lookup */}
+                        {renderers.get(subsection.title)?.(subsection)}
+                    </Card>
+                ))}
+            </div>
+        );
+    };
+
+    const renderTypesOfConstructors = ({types, example}) => (
+        <>
+            {/* Constructor types grid */}
+            {types?.length && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 mb-6">
+                    {types.map(({type, description, notes}, i) => (
+                        <div key={i} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
+                            <h4 className="text-md font-medium text-cyan-400 mb-1">{type}</h4>
+                            <p className="text-gray-300 text-sm">{description}</p>
+                            {notes && <p className="text-gray-400 text-xs mt-2 italic">{notes}</p>}
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {/* Code example */}
+            {example && <CodeExample code={example} title="Constructor Examples" />}
+        </>
     );
 
-    const renderClassesInterfacesSection = (section) => (
-        <div className="space-y-8">
-            <p className="text-gray-300">This section will render classes and interfaces information</p>
-        </div>
+    const renderConstructorChaining = ({example}) => (
+        example && <CodeExample code={example} title="Constructor Chaining Example" />
     );
 
-    const renderStringHandlingSection = (section) => (
-        <div className="space-y-8">
-            <p className="text-gray-300">This section will render string handling information</p>
-        </div>
+    // Render Keywords and Modifiers section
+    const renderKeywordsModifiersSection = (section) => {
+        if (!section?.subsections?.length) return null;
+
+        // Single function for 'this' and 'super' keywords (identical structure)
+        const renderSimpleKeyword = ({title, content, uses, example}) => (
+            <>
+                {content && <p className="text-gray-300 mb-3">{content}</p>}
+
+                {uses?.length > 0 && (
+                    <div className="bg-gray-800/50 rounded-lg p-4 mb-4 border border-gray-700/50">
+                        <h4 className="text-sm font-medium text-gray-300 mb-2">Uses:</h4>
+                        <ul className="list-disc list-inside space-y-1">
+                            {uses.map((use, i) => <li key={i} className="text-gray-300">{use}</li>)}
+                        </ul>
+                    </div>
+                )}
+
+                {example && <CodeExample code={example} title={`${title} Example`} />}
+            </>
+        );
+
+        // Function for 'final' and 'static' keywords (which have applications array with type/description objects)
+        const renderComplexKeyword = ({title, content, applications, example}) => (
+            <>
+                {content && <p className="text-gray-300 mb-3">{content}</p>}
+
+                {applications?.length > 0 && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                        {applications.map(({type, description}, i) => (
+                            <div key={i} className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50">
+                                <code className="text-cyan-400 font-mono block mb-1">{type}</code>
+                                <p className="text-gray-300 text-sm">{description}</p>
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {example && <CodeExample code={example} title={`${title} Example`} />}
+            </>
+        );
+
+        // Map-based dispatcher for O(1) lookup
+        const renderers = {
+            "this Keyword": renderSimpleKeyword,
+            "super Keyword": renderSimpleKeyword,
+            "final Keyword": renderComplexKeyword,
+            "static Keyword": renderComplexKeyword
+        };
+
+        return (
+            <div className="space-y-6">
+                {section.subsections.map((subsection, i) => (
+                    <Card
+                        key={i}
+                        title={subsection.title}
+                        icon={<Code className="w-5 h-5 text-cyan-400" />}
+                        className="mb-6"
+                    >
+                        {renderers[subsection.title]?.(subsection)}
+                    </Card>
+                ))}
+            </div>
+        );
+    };
+
+    // Render Classes and Interfaces section
+    const renderClassesInterfacesSection = (section) => {
+        if (!section?.subsections?.length) return null;
+
+        // Performance-optimized lookup table with mapped renderers
+        const renderers = new Map([
+            ["Class Types", renderClassTypes],
+            ["Interfaces", renderInterfaces],
+            ["Enum Types", renderEnum],
+            ["Enums with Fields and Methods", renderEnum],
+            ["Enum Methods", renderEnumMethods]
+        ]);
+
+        return (
+            <div className="space-y-6">
+                {section.subsections.map((subsection, i) => (
+                    <Card
+                        key={i}
+                        title={subsection.title}
+                        icon={<Server className="w-5 h-5 text-cyan-400" />}
+                        className="mb-6"
+                    >
+                        {renderers.get(subsection.title)?.(subsection)}
+                    </Card>
+                ))}
+            </div>
+        );
+    };
+
+    const renderClassTypes = ({content, types, example}) => (
+        <>
+            {content && <p className="text-gray-300 mb-4">{content}</p>}
+
+            {types?.length > 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    {types.map(({type, description, notes}, i) => (
+                        <div key={i} className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50">
+                            <h4 className="text-md font-medium text-cyan-400 mb-1">{type}</h4>
+                            <p className="text-gray-300 text-sm">{description}</p>
+                            {notes && <p className="text-gray-400 italic text-xs mt-2">{notes}</p>}
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {example && <CodeExample code={example} title="Class Types Examples" />}
+        </>
     );
 
-    const renderPackagesAccessSection = (section) => (
-        <div className="space-y-8">
-            <p className="text-gray-300">This section will render packages and access control information</p>
-        </div>
+    const renderInterfaces = ({content, notes, example}) => (
+        <>
+            {content && <p className="text-gray-300 mb-4">{content}</p>}
+
+            {notes?.length > 0 && (
+                <div className="bg-gray-800/50 rounded-lg p-4 mb-6 border border-gray-700/50">
+                    <ul className="list-disc list-inside space-y-1">
+                        {notes.map((note, i) => <li key={i} className="text-gray-300">{note}</li>)}
+                    </ul>
+                </div>
+            )}
+
+            {example && <CodeExample code={example} title="Interface Example" />}
+        </>
     );
 
-    const renderBestPracticesSection = (section) => (
-        <div className="space-y-8">
-            <p className="text-gray-300">This section will render best practices</p>
-        </div>
+    const renderEnum = ({content, example}) => (
+        <>
+            {content && <p className="text-gray-300 mb-4">{content}</p>}
+            {example && <CodeExample code={example} title="Enum Example" />}
+        </>
     );
 
-    const renderInterviewFocusSection = (section) => (
-        <div className="space-y-8">
-            <p className="text-gray-300">This section will render interview focus areas</p>
-        </div>
+    const renderEnumMethods = ({content, methods, example}) => (
+        <>
+            {content && <p className="text-gray-300 mb-4">{content}</p>}
+
+            {methods?.length > 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    {methods.map(({method, description}, i) => (
+                        <div key={i} className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50">
+                            <code className="text-cyan-400 font-mono block mb-1">{method}</code>
+                            <p className="text-gray-300 text-sm">{description}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {example && <CodeExample code={example} title="Enum Methods Example" />}
+        </>
     );
 
-    const renderInterviewFAQsSection = (section) => (
-        <div className="space-y-8">
-            <p className="text-gray-300">This section will render interview FAQs</p>
-        </div>
+    // Render String Handling section
+    const renderStringHandlingSection = (section) => {
+        if (!section?.subsections?.length) return null;
+
+        // Fast renderer lookup - O(1) operation with Map
+        const renderers = new Map([
+            ["String Immutability", renderBasicExample],
+            ["String Pool", renderBasicExample],
+            ["String vs StringBuilder vs StringBuffer", renderComparisonSection]
+        ]);
+
+        return (
+            <div className="space-y-6">
+                {section.subsections.map((subsection, i) => (
+                    <Card
+                        key={i}
+                        title={subsection.title}
+                        icon={<Book className="w-5 h-5 text-cyan-400" />}
+                        className="mb-6"
+                    >
+                        {renderers.get(subsection.title)?.(subsection)}
+                    </Card>
+                ))}
+            </div>
+        );
+    };
+
+    const renderBasicExample = ({content, example}) => (
+        <>
+            {content && <p className="text-gray-300 mb-4">{content}</p>}
+            {example && <CodeExample code={example} title="Example" />}
+        </>
     );
+
+    const renderComparisonSection = ({content, comparison, example}) => (
+        <>
+            {content && <p className="text-gray-300 mb-4">{content}</p>}
+
+            {comparison?.length > 0 && (
+                <div className="overflow-x-auto mb-6">
+                    <table className="w-full border-collapse">
+                        <thead className="bg-gray-800">
+                        <tr>
+                            <th className="border border-gray-700 px-3 py-2 text-left text-gray-300">Class</th>
+                            <th className="border border-gray-700 px-3 py-2 text-center text-gray-300">Thread Safe</th>
+                            <th className="border border-gray-700 px-3 py-2 text-center text-gray-300">Mutable</th>
+                            <th className="border border-gray-700 px-3 py-2 text-left text-gray-300">Performance</th>
+                            <th className="border border-gray-700 px-3 py-2 text-left text-gray-300">Use Case</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {comparison.map(({class: className, threadSafe, mutable, performance, useCase}, i) => (
+                            <tr key={i} className={i % 2 === 0 ? "bg-gray-900/50" : "bg-gray-800/50"}>
+                                <td className="border border-gray-700 px-3 py-2 font-mono text-cyan-400">{className}</td>
+                                <td className="border border-gray-700 px-3 py-2 text-center">
+                                    <span className={threadSafe ? "text-green-400" : "text-red-400"}>
+                                        {threadSafe ? "✓" : "✗"}
+                                    </span>
+                                </td>
+                                <td className="border border-gray-700 px-3 py-2 text-center">
+                                    <span className={mutable ? "text-green-400" : "text-red-400"}>
+                                        {mutable ? "✓" : "✗"}
+                                    </span>
+                                </td>
+                                <td className="border border-gray-700 px-3 py-2 text-gray-300">{performance}</td>
+                                <td className="border border-gray-700 px-3 py-2 text-gray-300">{useCase}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
+
+            {example && <CodeExample code={example} title="Example" />}
+        </>
+    );
+
+    // Render Packages and Access Control section
+    const renderPackagesAccessSection = (section) => {
+        if (!section?.subsections?.length) return null;
+
+        // Map for O(1) renderer lookup
+        const renderers = new Map([
+            ["Package Declaration", renderSimpleExample],
+            ["Import Statement", renderMultipleExamples],
+            ["Package Visibility", renderPackageRules],
+            ["Default Package", renderPackageRules]
+        ]);
+
+        return (
+            <div className="space-y-6">
+                {section.subsections.map((subsection, i) => (
+                    <Card
+                        key={i}
+                        title={subsection.title}
+                        icon={<GitBranch className="w-5 h-5 text-cyan-400" />}
+                        className="mb-6"
+                    >
+                        {renderers.get(subsection.title)?.(subsection)}
+                    </Card>
+                ))}
+            </div>
+        );
+    };
+
+    const renderSimpleExample = ({content, example}) => (
+        <>
+            {content && <p className="text-gray-300 mb-4">{content}</p>}
+            {example && <CodeExample code={example} title="Example" />}
+        </>
+    );
+
+    const renderMultipleExamples = ({content, examples}) => (
+        <>
+            {content && <p className="text-gray-300 mb-4">{content}</p>}
+
+            {examples?.length > 0 && (
+                <div className="space-y-4 mt-4">
+                    {examples.map(({description, code}, i) => (
+                        <div key={i} className="bg-gray-800/50 rounded-lg overflow-hidden border border-gray-700/50">
+                            <div className="bg-gray-700/50 px-4 py-2 border-b border-gray-700">
+                                <h4 className="text-sm font-medium text-gray-300">{description}</h4>
+                            </div>
+                            <div className="p-4">
+                                <code className="text-sm font-mono text-pink-400 block whitespace-pre">{code}</code>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </>
+    );
+
+    const renderPackageRules = ({content, rules, reasons}) => {
+        // Determine which list to use (rules or reasons) with direct property access
+        const items = rules || reasons;
+        const title = rules ? "Rules" : "Reasons";
+
+        return (
+            <>
+                {content && <p className="text-gray-300 mb-4">{content}</p>}
+
+                {items?.length > 0 && (
+                    <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50">
+                        {rules && reasons && <h4 className="text-sm font-medium text-gray-300 mb-2">{title}:</h4>}
+                        <ul className="list-disc list-inside space-y-1">
+                            {items.map((item, i) => <li key={i} className="text-gray-300">{item}</li>)}
+                        </ul>
+                    </div>
+                )}
+            </>
+        );
+    };
+
+    // Render Best Practices section
+    const renderBestPracticesSection = (section) => {
+        if (!section?.practices?.length) return null;
+
+        // Optimized renderer for simple string arrays (closures created once)
+        const renderSimpleList = (items) => (
+            <ul className="list-disc list-inside space-y-1">
+                {items.map((item, i) => <li key={i} className="text-gray-300">{item}</li>)}
+            </ul>
+        );
+
+        // Optimized renderer for object arrays with name/description
+        const renderDetailedList = (items) => (
+            <div className="space-y-3">
+                {items.map(({name, description}, i) => (
+                    <div key={i} className="bg-gray-800/50 rounded p-3 border border-gray-700/50">
+                        <h4 className="text-cyan-400 font-medium text-sm">{name}</h4>
+                        <p className="text-gray-300 text-sm">{description}</p>
+                    </div>
+                ))}
+            </div>
+        );
+
+        return (
+            <div className="space-y-6">
+                {section.content && <p className="text-gray-300 mb-4">{section.content}</p>}
+
+                {section.practices.map(({category, conventions, practices, principles}, i) => {
+                    // Determine which array to use (constant-time property access)
+                    const items = conventions || practices || principles;
+                    // Fast check for rendering method (boolean operation instead of conditional)
+                    const isObjectArray = principles && principles[0] && typeof principles[0] === 'object';
+
+                    return (
+                        <Card
+                            key={i}
+                            title={category}
+                            icon={<Clock className="w-5 h-5 text-cyan-400" />}
+                            className="mb-4"
+                        >
+                            {/* Short-circuit conditional rendering for performance */}
+                            {items?.length > 0 && (
+                                isObjectArray ? renderDetailedList(items) : renderSimpleList(items)
+                            )}
+                        </Card>
+                    );
+                })}
+            </div>
+        );
+    };
+
+    // Render Interview Focus Areas section
+    const renderInterviewFocusSection = (section) => {
+        // Early return for invalid data
+        if (!section?.areas?.length) return null;
+
+        return (
+            <div className="space-y-6">
+                {/* Render content once with no conditional */}
+                {section.content && <p className="text-gray-300 mb-6">{section.content}</p>}
+
+                {/* Grid layout for better screen utilization */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {section.areas.map(({area, description}, i) => (
+                        <div
+                            key={i}
+                            className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50 hover:bg-gray-700/50 transition-colors"
+                        >
+                            <h3 className="text-lg font-medium text-cyan-400 mb-1">{area}</h3>
+                            <p className="text-gray-300 text-sm">{description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    };
+
+    // Render Interview FAQs section
+    const renderInterviewFAQsSection = (section) => {
+        if (!section?.categories?.length) return null;
+
+        return (
+            <div className="space-y-6">
+                {section.description && (
+                    <div className="bg-gray-800/70 rounded-lg p-4 border-l-4 border-cyan-500">
+                        <p className="text-gray-300">{section.description}</p>
+                    </div>
+                )}
+
+                <FAQContent categories={section.categories} />
+            </div>
+        );
+    };
+
+    const FAQContent = React.memo(({ categories }) => {
+        const [searchText, setSearchText] = React.useState('');
+        const [expandedId, setExpandedId] = React.useState(null);
+
+        // Direct search filter skips unnecessary iterations and avoids regex overhead
+        const searchFilter = React.useCallback((q, a) => {
+            if (!searchText) return true;
+            const text = searchText.toLowerCase();
+            return q.toLowerCase().includes(text) || a.toLowerCase().includes(text);
+        }, [searchText]);
+
+        // Single toggle handler for all questions - O(1) operation
+        const toggleQuestion = React.useCallback(id => {
+            setExpandedId(current => current === id ? null : id);
+        }, []);
+
+        return (
+            <>
+                {/* Optimized search input */}
+                <div className="relative mb-6">
+                    <input
+                        type="text"
+                        placeholder="Search FAQs..."
+                        value={searchText}
+                        onChange={e => setSearchText(e.target.value)}
+                        className="w-full px-4 py-3 pl-10 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-cyan-500"
+                    />
+                    {/* Search icon - static to avoid re-renders */}
+                    <svg className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+
+                    {searchText && (
+                        <button
+                            className="absolute right-3 top-3.5 text-gray-400 hover:text-white"
+                            onClick={() => setSearchText('')}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    )}
+                </div>
+
+                {/* Optimized category rendering */}
+                {categories.map((category, i) => {
+                    // Filter questions once per category render - exact match to search text
+                    const filteredQuestions = searchText
+                        ? category.questions.filter(q => searchFilter(q.question, q.answer))
+                        : category.questions;
+
+                    // Skip rendering empty categories after filtering
+                    if (filteredQuestions.length === 0) return null;
+
+                    return (
+                        <div key={i} className="mb-8">
+                            <h3 className="text-lg font-semibold text-white bg-gray-800/80 py-3 px-4 rounded-lg mb-4 border-l-4 border-cyan-500">
+                                {category.category}
+                            </h3>
+
+                            <div className="space-y-3">
+                                {filteredQuestions.map((qa, j) => {
+                                    const questionId = `q-${i}-${j}`;
+                                    const isExpanded = expandedId === questionId;
+
+                                    return (
+                                        <div key={j} className="bg-gray-800/50 rounded-lg overflow-hidden">
+                                            <button
+                                                onClick={() => toggleQuestion(questionId)}
+                                                className={`w-full text-left p-4 flex justify-between items-center transition-colors ${
+                                                    isExpanded ? 'bg-cyan-900/30' : 'hover:bg-gray-700/50'
+                                                }`}
+                                            >
+                                                <h4 className="text-md font-medium text-cyan-300 pr-6">{qa.question}</h4>
+                                                <span className="flex-shrink-0 text-gray-400">
+                                                {isExpanded ? "−" : "+"}
+                                            </span>
+                                            </button>
+
+                                            {isExpanded && (
+                                                <div className="p-4 pt-0 border-t border-gray-700/50">
+                                                    <p className="text-gray-300 whitespace-pre-line mt-3">{qa.answer}</p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    );
+                })}
+
+                {/* No results message */}
+                {searchText && !categories.some(c =>
+                    c.questions.some(q => searchFilter(q.question, q.answer))
+                ) && (
+                    <div className="text-center py-8">
+                        <p className="text-gray-400">No matching questions found. Try a different search term.</p>
+                    </div>
+                )}
+            </>
+        );
+    });
+
+    FAQContent.displayName = 'FAQContent';
+
+    //==========================================================================================================
 
     // Helper function to render a subsection
     const renderSubsection = (subsection) => (
