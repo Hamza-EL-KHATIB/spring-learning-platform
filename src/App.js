@@ -50,6 +50,7 @@ import GermanCasesPage from "./pages/topics/german/GermanCasesPage";
 import ArticlesPage from "./pages/topics/german/ArticlesPage";
 import AdjectivesPage from "./pages/topics/german/AdjectivesPage";
 import CasesPage from "./pages/topics/german/CasesPage";
+import JavaFundamentalsPage from "./pages/topics/java/JavaFundamentalsPage";
 
 
 const App = () => {
@@ -77,6 +78,7 @@ const App = () => {
                     <Route path="/java/gc" element={<GCPage />} />
                     <Route path="/java/definitions" element={<DefinitionsPage />} />
                     <Route path="/java/internals" element={<InternalsPage />} />
+                    <Route path="/java/fundamentals" element={<JavaFundamentalsPage />} />
 
                     {/* Spring Routes */}
                     <Route path="/spring/boot" element={<SpringBootPage />} />
