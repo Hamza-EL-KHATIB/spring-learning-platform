@@ -34,11 +34,8 @@ const Sidebar = () => {
                     title: 'Concurrency & Multithreading',
                     icon: <Activity className="w-4 h-4"/>
                 },
-                {path: '/java/definitions', title: 'Java Definitions', icon: <FileText className="w-4 h-4"/>},
                 {path: '/java/exceptions', title: 'Exception Handling', icon: <Box className="w-4 h-4"/>},
                 {path: '/java/features', title: 'Java Features', icon: <Cpu className="w-4 h-4"/>},
-                {path: '/java/gc', title: 'Garbage Collection', icon: <RefreshCw className="w-4 h-4"/>},
-                {path: '/java/internals', title: 'Java Internals', icon: <Layers className="w-4 h-4"/>}
             ]
         },
         spring: {
