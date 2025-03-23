@@ -32,7 +32,6 @@ import gitJson from '../data/devops/git.json';
 
 // Scrum import
 import scrumJson from '../data/scrum/scrum.json';
-import javaFundamentalsPage from "./topics/java/JavaFundamentalsPage";
 
 const jsonData = {
     java: {
