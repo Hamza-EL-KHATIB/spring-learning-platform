@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, memo, useMemo, useCallback} from 'react';
+import React, {useState, useEffect, useRef, memo, useMemo} from 'react';
 import {
     Book,
     Code,
@@ -970,6 +970,7 @@ const JavaFundamentalsPage = () => {
             </div>
         );
     };
+
     const renderConstructors = () => {
         const section = content.sections[4];
         if (!section) return null;
@@ -1045,6 +1046,7 @@ const JavaFundamentalsPage = () => {
             </div>
         );
     };
+
     const renderKeywords = () => {
         const section = content.sections[5];
         if (!section) return null;
@@ -1221,6 +1223,7 @@ const JavaFundamentalsPage = () => {
             </div>
         );
     };
+
     const renderClassesAndInterfaces = () => {
         const section = content.sections[6];
         if (!section) return null;
@@ -1376,6 +1379,7 @@ const JavaFundamentalsPage = () => {
             </div>
         );
     };
+
     const renderStringHandling = () => {
         const section = content.sections[7]; // Direct array access is O(1)
         if (!section) return null;
@@ -1623,6 +1627,7 @@ const JavaFundamentalsPage = () => {
             </div>
         );
     };
+
     const renderPackagesAndAccess = () => {
         const section = content.sections[8];
         if (!section) return null;
@@ -1862,73 +1867,13 @@ const JavaFundamentalsPage = () => {
             </div>
         );
     };
+
     const renderBestPractices = () => {
         const section = content.sections[9];
         if (!section) return null;
 
         // Destructure for performance
         const {practices} = section;
-
-        // Efficiently render a practice category with its items
-        const renderPracticeCategory = useCallback(({category, conventions, practices, principles}) => {
-            // Determine the right items array to render based on what's available
-            const items = conventions || practices || principles;
-            if (!items?.length) return null;
-
-            // Memoized category icon mapping for performance
-            const categoryIcons = {
-                'Naming Conventions': <Code className="w-5 h-5 text-cyan-400"/>,
-                'Conventions de Nommage': <Code className="w-5 h-5 text-cyan-400"/>,
-                'Code Organization': <Layout className="w-5 h-5 text-cyan-400"/>,
-                'Organisation du Code': <Layout className="w-5 h-5 text-cyan-400"/>,
-                'Encapsulation': <Shield className="w-5 h-5 text-cyan-400"/>,
-                'Design Principles': <Box className="w-5 h-5 text-cyan-400"/>,
-                'Principes de Conception': <Box className="w-5 h-5 text-cyan-400"/>,
-                'Immutability': <Lock className="w-5 h-5 text-cyan-400"/>,
-                'Immutabilité': <Lock className="w-5 h-5 text-cyan-400"/>,
-                'Error Handling': <AlertTriangle className="w-5 h-5 text-cyan-400"/>,
-                'Gestion des Erreurs': <AlertTriangle className="w-5 h-5 text-cyan-400"/>,
-                'Memory Management': <MemoryStick className="w-5 h-5 text-cyan-400"/>,
-                'Gestion de la Mémoire': <MemoryStick className="w-5 h-5 text-cyan-400"/>,
-                'Coding Principles': <GitBranch className="w-5 h-5 text-cyan-400"/>,
-                'Principes de Codage': <GitBranch className="w-5 h-5 text-cyan-400"/>
-            };
-
-            // Get the appropriate icon, or use a default
-            const icon = categoryIcons[category] || <Code className="w-5 h-5 text-cyan-400"/>;
-
-            return (
-                <div className="bg-gray-800/50 rounded-lg p-5 border border-gray-700/50">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2 bg-gray-700/50 rounded-lg">
-                            {icon}
-                        </div>
-                        <h3 className="text-xl font-semibold text-white">{category}</h3>
-                    </div>
-
-                    {/* Render simple list items */}
-                    {Array.isArray(items) && !items[0]?.name && (
-                        <ul className="space-y-2 text-gray-300 list-disc list-inside">
-                            {items.map((item, idx) => (
-                                <li key={idx}>{item}</li>
-                            ))}
-                        </ul>
-                    )}
-
-                    {/* Render complex items with name/description */}
-                    {Array.isArray(items) && items[0]?.name && (
-                        <div className="space-y-3">
-                            {items.map((item, idx) => (
-                                <div key={idx} className="bg-gray-800/70 p-3 rounded-lg">
-                                    <h4 className="text-purple-300 font-medium mb-1">{item.name}</h4>
-                                    <p className="text-gray-300">{item.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </div>
-            );
-        }, [language]); // Only re-create when language changes
 
         return (
             <div className="space-y-6">
@@ -1940,6 +1885,7 @@ const JavaFundamentalsPage = () => {
             </div>
         );
     };
+
     const renderInterviewFocus = () => {
         const section = content.sections[10]; // Direct index access instead of find
         if (!section) return null;
@@ -1986,9 +1932,6 @@ const JavaFundamentalsPage = () => {
     const renderInterviewFAQs = () => {
         const section = content.sections[11]; // FAQ section
         if (!section || !section.categories) return renderGenericSection(11);
-
-        // State for expanded category (start with first category open)
-        const [expandedCategory, setExpandedCategory] = useState(0);
 
         // Efficient answer renderer that handles code blocks and inline code
         const AnswerRenderer = memo(({answer}) => {
