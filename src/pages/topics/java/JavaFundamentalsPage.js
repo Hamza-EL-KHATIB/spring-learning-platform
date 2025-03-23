@@ -25,28 +25,21 @@ const JavaFundamentalsPage = () => {
 
     // TabNavigation component
     const TabNavigation = () => (
-        <div className="relative overflow-x-auto mb-8">
-            <div
-                className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
-            <div
-                className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
-
-            <div className="flex space-x-2 py-2 px-8 overflow-x-auto custom-scrollbar">
-                {javaFundamentalsJson.sections.map((section, index) => (
-                    <button
-                        key={index}
-                        onClick={() => setActiveSection(index)}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-colors shadow-lg ${
-                            activeSection === index
-                                ? 'bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 shadow-cyan-500/50'
-                                : 'bg-gray-800 text-gray-300 hover:bg-gray-700 shadow-gray-900/50'
-                        }`}
-                    >
-                        {sectionIcons[section.title] || <Box className="w-5 h-5"/>}
-                        {section.title}
-                    </button>
-                ))}
-            </div>
+        <div className="mb-8 flex flex-wrap gap-4">
+            {javaFundamentalsJson.sections.map((section, index) => (
+                <button
+                    key={index}
+                    onClick={() => setActiveSection(index)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+                        activeSection === index
+                            ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                            : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
+                    }`}
+                >
+                    {sectionIcons[section.title] || <Box className="w-5 h-5"/>}
+                    {section.title}
+                </button>
+            ))}
         </div>
     );
 

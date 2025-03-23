@@ -9,9 +9,6 @@ import CollectionsPage from './pages/topics/java/CollectionsPage';
 import ConcurrencyPage from './pages/topics/java/ConcurrencyPage';
 import ExceptionsPage from './pages/topics/java/ExceptionsPage';
 import FeaturesPage from './pages/topics/java/FeaturesPage';
-import GCPage from './pages/topics/java/GCPage';
-import DefinitionsPage from './pages/topics/java/DefinitionsPage';
-import InternalsPage from './pages/topics/java/InternalsPage';
 
 // Spring imports
 import SpringBootPage from './pages/topics/spring/BootPage';
@@ -75,9 +72,6 @@ const App = () => {
                     <Route path="/java/concurrency" element={<ConcurrencyPage />} />
                     <Route path="/java/exceptions" element={<ExceptionsPage />} />
                     <Route path="/java/features" element={<FeaturesPage />} />
-                    <Route path="/java/gc" element={<GCPage />} />
-                    <Route path="/java/definitions" element={<DefinitionsPage />} />
-                    <Route path="/java/internals" element={<InternalsPage />} />
                     <Route path="/java/fundamentals" element={<JavaFundamentalsPage />} />
 
                     {/* Spring Routes */}

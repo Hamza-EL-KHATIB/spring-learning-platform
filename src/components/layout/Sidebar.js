@@ -13,7 +13,7 @@ import {
     Cpu,
     Layers,
     RefreshCw,
-    X
+    X, BookOpen
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -27,7 +27,7 @@ const Sidebar = () => {
             title: "Java Core",
             icon: <Code className="w-5 h-5"/>,
             items: [
-                { path: '/java/fundamentals', title: 'Java Fundamentals' },
+                { path: '/java/fundamentals', title: 'Java Fundamentals', icon: <BookOpen className="w-4 h-4"/>},
                 {path: '/java/collections', title: 'Collections Framework', icon: <Layers className="w-4 h-4"/>},
                 {
                     path: '/java/concurrency',
