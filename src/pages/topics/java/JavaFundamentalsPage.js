@@ -697,8 +697,192 @@ const JavaFundamentalsPage = () => {
         );
     };
 
-    // Placeholder functions for sections that aren't fully implemented yet
-    const renderMemoryManagement = () => renderGenericSection(3);
+    // Memory Management section specialized renderer
+    const renderMemoryManagement = () => {
+        const section = content.sections[3];
+        if (!section) return null;
+
+        // Efficiently render Stack vs Heap Memory subsection
+        const renderMemoryTypes = (subsection) => (
+            <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700/50 mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-gray-700/50 rounded-lg">
+                        <MemoryStick className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{subsection.title}</h3>
+                </div>
+
+                {subsection.content && <p className="text-gray-300 mb-4">{subsection.content}</p>}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                    {subsection.memory.map((memory, idx) => (
+                        <div key={idx} className="bg-gray-800/70 p-5 rounded-lg border border-gray-700/30 flex flex-col h-full">
+                            <h4 className="text-xl font-semibold text-purple-300 mb-3">{memory.type}</h4>
+
+                            <div className="flex-grow">
+                                <h5 className="text-sm font-medium text-cyan-300 mb-2">
+                                    {language === 'en' ? 'Characteristics:' : 'Caractéristiques:'}
+                                </h5>
+                                <ul className="list-disc list-inside space-y-1 mb-4">
+                                    {memory.characteristics.map((char, charIdx) => (
+                                        <li key={charIdx} className="text-gray-300">{char}</li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div className="mt-3">
+                                <h5 className="text-sm font-medium text-cyan-300 mb-2">
+                                    {language === 'en' ? 'Example:' : 'Exemple:'}
+                                </h5>
+                                <CodeBlock code={memory.example} />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {subsection.diagram && (
+                    <div className="mt-6 bg-gray-800/70 p-4 rounded-lg">
+                        <h4 className="text-md font-semibold text-cyan-300 mb-3">
+                            {language === 'en' ? 'Memory Diagram:' : 'Diagramme de Mémoire:'}
+                        </h4>
+                        <pre className="text-gray-300 text-sm font-mono overflow-x-auto whitespace-pre">
+                            {subsection.diagram}
+                        </pre>
+                    </div>
+                )}
+            </div>
+        );
+
+        // Efficiently render Variable Storage subsection
+        const renderVariableStorage = (subsection) => (
+            <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700/50 mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-gray-700/50 rounded-lg">
+                        <Database className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{subsection.title}</h3>
+                </div>
+
+                {subsection.content && <p className="text-gray-300 mb-4">{subsection.content}</p>}
+
+                <div className="overflow-x-auto mt-4">
+                    <table className="min-w-full bg-gray-800/50 rounded-lg">
+                        <thead>
+                        <tr className="border-b border-gray-700">
+                            <th className="py-2 px-4 text-left text-sm text-gray-400">{language === 'en' ? 'Type' : 'Type'}</th>
+                            <th className="py-2 px-4 text-left text-sm text-gray-400">{language === 'en' ? 'Storage' : 'Stockage'}</th>
+                            <th className="py-2 px-4 text-left text-sm text-gray-400">{language === 'en' ? 'Lifecycle' : 'Cycle de vie'}</th>
+                            <th className="py-2 px-4 text-left text-sm text-gray-400">{language === 'en' ? 'Scope' : 'Portée'}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {subsection.variables.map((variable, idx) => (
+                            <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-800/30' : 'bg-gray-800/10'}>
+                                <td className="py-2 px-4 text-purple-300 font-medium">{variable.type}</td>
+                                <td className="py-2 px-4 text-gray-300">{variable.storage}</td>
+                                <td className="py-2 px-4 text-gray-300">{variable.lifecycle}</td>
+                                <td className="py-2 px-4 text-gray-300">{variable.scope}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        );
+
+        // Efficiently render Garbage Collection subsection
+        const renderGarbageCollection = (subsection) => (
+            <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700/50 mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-gray-700/50 rounded-lg">
+                        <GitBranch className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{subsection.title}</h3>
+                </div>
+
+                {subsection.content && <p className="text-gray-300 mb-4">{subsection.content}</p>}
+
+                {/* Details about GC */}
+                {subsection.details && (
+                    <div className="bg-gray-800/70 p-4 rounded-lg mb-6">
+                        <ul className="list-disc list-inside space-y-2">
+                            {subsection.details.map((detail, idx) => (
+                                <li key={idx} className="text-gray-300">{detail}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
+                {/* GC Process */}
+                {subsection.process && (
+                    <div className="mt-6">
+                        <h4 className="text-md font-semibold text-cyan-300 mb-3">
+                            {language === 'en' ? 'Garbage Collection Process:' : 'Processus de Garbage Collection:'}
+                        </h4>
+                        <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                            {subsection.process.map((step, idx) => (
+                                <div key={idx} className="flex-1 bg-gray-800/70 p-4 rounded-lg border-l-4 border-cyan-500">
+                                    <div className="text-cyan-300 font-medium mb-1">{step.step}</div>
+                                    <p className="text-gray-300">{step.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* GC Collectors */}
+                {subsection.collectors && (
+                    <div className="mt-6">
+                        <h4 className="text-md font-semibold text-cyan-300 mb-3">
+                            {language === 'en' ? 'Garbage Collectors:' : 'Collecteurs de Garbage:'}
+                        </h4>
+                        <div className="space-y-3">
+                            {subsection.collectors.map((collector, idx) => (
+                                <div key={idx} className="bg-gray-800/70 p-4 rounded-lg">
+                                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
+                                        <h5 className="text-purple-300 font-medium">{collector.name}</h5>
+                                        <code className="bg-gray-900/50 px-2 py-1 rounded text-pink-300 text-xs font-mono">
+                                            {collector.flag}
+                                        </code>
+                                    </div>
+                                    <p className="text-gray-300">{collector.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* GC Tuning */}
+                {subsection.tuning && (
+                    <div className="mt-6">
+                        <h4 className="text-md font-semibold text-cyan-300 mb-3">
+                            {language === 'en' ? 'Tuning Tips:' : 'Conseils d\'optimisation:'}
+                        </h4>
+                        <div className="bg-gray-800/70 p-4 rounded-lg">
+                            <ul className="list-disc list-inside space-y-2">
+                                {subsection.tuning.map((tip, idx) => (
+                                    <li key={idx} className="text-gray-300 whitespace-pre-wrap"
+                                        dangerouslySetInnerHTML={{
+                                            __html: tip.replace(/`([^`]+)`/g, '<code class="bg-gray-900/50 px-1 py-0.5 rounded text-pink-300 font-mono">$1</code>')
+                                        }}
+                                    />
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                )}
+            </div>
+        );
+
+        // Efficiently render all subsections with direct access by index
+        return (
+            <div className="space-y-6">
+                {section.subsections[0] && renderMemoryTypes(section.subsections[0])}
+                {section.subsections[1] && renderVariableStorage(section.subsections[1])}
+                {section.subsections[2] && renderGarbageCollection(section.subsections[2])}
+            </div>
+        );
+    };
     const renderConstructors = () => renderGenericSection(4);
     const renderKeywords = () => renderGenericSection(5);
     const renderClassesAndInterfaces = () => renderGenericSection(6);
