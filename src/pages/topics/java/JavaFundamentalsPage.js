@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, memo, useMemo} from 'react';
+import React, {useState, useEffect, memo, useMemo} from 'react';
 import {
     Book,
     Code,
@@ -16,11 +16,11 @@ import {
     XCircle,
     AlertTriangle,
     Lock,
-    ChevronDown
 } from 'lucide-react';
 import javaFundamentalsJsonEn from '../../../data/java/java-fundamentals.json';
 import javaFundamentalsJsonFr from '../../../data/java/java-fundamentals-fr.json';
 import CodeBlock from '../../../components/CodeBlock';
+import EnhancedInterviewFAQs from "./EnhancedInterviewFAQs";
 
 const JavaFundamentalsPage = () => {
     // Language state with localStorage persistence
@@ -36,9 +36,6 @@ const JavaFundamentalsPage = () => {
 
     // Active section index
     const [activeSection, setActiveSection] = useState(0);
-
-    // State for expanded category (start with first category open) - moved from renderInterviewFAQs
-    const [expandedCategory, setExpandedCategory] = useState(0);
 
     // Memoized callback for rendering practice category - moved from renderBestPractices
     const renderPracticeCategory = memo(({category, conventions, practices, principles}) => {
@@ -100,9 +97,6 @@ const JavaFundamentalsPage = () => {
             </div>
         );
     });
-
-    // Tab navigation ref
-    const tabsRef = useRef(null);
 
     // Update localStorage when language changes
     useEffect(() => {
@@ -476,22 +470,6 @@ const JavaFundamentalsPage = () => {
     // Render Data Types and Variables section (second section)
     const renderDataTypes = () => {
         const section = content.sections[1];
-        if (!section) return null;
-
-        return (
-            <div className="space-y-6">
-                {section.subsections?.map((subsection, idx) => (
-                    <React.Fragment key={idx}>
-                        {renderSubsection(subsection, sectionIcons[section.title])}
-                    </React.Fragment>
-                ))}
-            </div>
-        );
-    };
-
-    // Generic section renderer for placeholder sections
-    const renderGenericSection = (sectionIndex) => {
-        const section = content.sections[sectionIndex];
         if (!section) return null;
 
         return (
@@ -1872,9 +1850,6 @@ const JavaFundamentalsPage = () => {
         const section = content.sections[9];
         if (!section) return null;
 
-        // Destructure for performance
-        const {practices} = section;
-
         return (
             <div className="space-y-6">
                 {section.practices?.map((practice, idx) => (
@@ -1931,115 +1906,9 @@ const JavaFundamentalsPage = () => {
     ));
     const renderInterviewFAQs = () => {
         const section = content.sections[11]; // FAQ section
-        if (!section || !section.categories) return renderGenericSection(11);
+        if (!section || !section.categories) return null;
 
-        // Efficient answer renderer that handles code blocks and inline code
-        const AnswerRenderer = memo(({answer}) => {
-            // Fast path for answers without code blocks
-            if (!answer.includes('```')) {
-                return (
-                    <p className="text-gray-300">
-                        {answer.split(/`([^`]+)`/).map((part, idx) => (
-                            idx % 2 === 0 ? (
-                                <span key={idx}>{part}</span>
-                            ) : (
-                                <code key={idx} className="bg-gray-800/70 px-1 py-0.5 rounded text-pink-300 font-mono">
-                                    {part}
-                                </code>
-                            )
-                        ))}
-                    </p>
-                );
-            }
-
-            // Handle more complex answers with code blocks
-            return (
-                <div className="space-y-3">
-                    {answer.split(/(```[\s\S]*?```)/g).map((part, idx) => {
-                        if (part.startsWith('```')) {
-                            // Extract clean code without backticks and language marker
-                            const code = part.replace(/```(?:\w+)?\n|```/g, '');
-                            return <CodeBlock key={idx} code={code}/>;
-                        }
-
-                        // Skip empty parts
-                        if (!part.trim()) return null;
-
-                        // Handle text with possible inline code
-                        return (
-                            <p key={idx} className="text-gray-300">
-                                {part.split(/`([^`]+)`/).map((text, textIdx) => (
-                                    textIdx % 2 === 0 ? (
-                                        <span key={textIdx}>{text}</span>
-                                    ) : (
-                                        <code key={textIdx}
-                                              className="bg-gray-800/70 px-1 py-0.5 rounded text-pink-300 font-mono">
-                                            {text}
-                                        </code>
-                                    )
-                                ))}
-                            </p>
-                        );
-                    })}
-                </div>
-            );
-        });
-
-        return (
-            <div className="space-y-6">
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700/50 mb-6">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2 bg-gray-700/50 rounded-lg">
-                            <Book className="w-5 h-5 text-cyan-400"/>
-                        </div>
-                        <h3 className="text-xl font-semibold text-white">{section.title}</h3>
-                    </div>
-
-                    {section.description && <p className="text-gray-300 mb-6">{section.description}</p>}
-
-                    {/* FAQ Categories Accordion */}
-                    <div className="space-y-4 mt-6">
-                        {section.categories.map((category, idx) => (
-                            <div key={idx} className="bg-gray-800/70 rounded-lg overflow-hidden">
-                                {/* Category Header - toggles expansion */}
-                                <button
-                                    onClick={() => setExpandedCategory(prev => prev === idx ? null : idx)}
-                                    className={`w-full px-6 py-4 flex items-center justify-between transition-colors ${
-                                        expandedCategory === idx
-                                            ? 'bg-cyan-900/30 border-l-4 border-cyan-500'
-                                            : 'bg-gray-700/50 hover:bg-gray-700/70'
-                                    }`}
-                                >
-                                    <h4 className={`text-lg font-medium ${
-                                        expandedCategory === idx ? 'text-cyan-300' : 'text-cyan-400'
-                                    }`}>
-                                        {category.category}
-                                    </h4>
-                                    <ChevronDown
-                                        className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${
-                                            expandedCategory === idx ? 'transform rotate-180' : ''
-                                        }`}
-                                    />
-                                </button>
-
-                                {/* Questions and Answers - only rendered when category is expanded */}
-                                {expandedCategory === idx && (
-                                    <div className="px-6 py-4 space-y-6">
-                                        {category.questions.map((qa, qaIdx) => (
-                                            <div key={qaIdx}
-                                                 className="border-b border-gray-700/50 pb-6 last:border-0 last:pb-0">
-                                                <h5 className="text-md font-medium text-purple-300 mb-3">{qa.question}</h5>
-                                                <AnswerRenderer answer={qa.answer}/>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        );
+        return <EnhancedInterviewFAQs section={section} language={language} />;
     };
 
     return (

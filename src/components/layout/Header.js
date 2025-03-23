@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Github, Menu, X, BookOpen, GraduationCap, Book } from "lucide-react";
+import { Github, Menu, X, GraduationCap } from "lucide-react";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
