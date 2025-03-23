@@ -51,11 +51,8 @@ const HomePage = () => {
                 { title: "Java Fundamentals", path: "/java/fundamentals", icon: BookOpen, description: "Fundamentals of Java" },
                 { title: "Collections Framework", path: "/java/collections", icon: Folder, description: "Lists, Sets, Maps, and more" },
                 { title: "Concurrency & Multithreading", path: "/java/concurrency", icon: Activity, description: "Threads, executors, synchronization" },
-                { title: "Definitions", path: "/java/definitions", icon: BookOpen, description: "Core Java concepts and terminology" },
                 { title: "Exception Handling", path: "/java/exceptions", icon: Box, description: "Error handling and management" },
                 { title: "Java Features", path: "/java/features", icon: Cpu, description: "Modern Java capabilities" },
-                { title: "Garbage Collection", path: "/java/gc", icon: RefreshCw, description: "Memory management" },
-                { title: "Java Internals", path: "/java/internals", icon: Binary, description: "JVM and internal mechanics" }
             ]
         },
         spring: {
