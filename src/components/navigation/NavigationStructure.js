@@ -10,6 +10,7 @@ const NavigationStructure = () => {
             title: 'Java Core',
             icon: <Code className="w-6 h-6" />,
             subcategories: [
+                { id: 'fundamentals', title: 'Java Fundamentals', path: '/java/fundamentals' },
                 { id: 'collections', title: 'Collections Framework', path: '/java/collections' },
                 { id: 'concurrency', title: 'Concurrency & Multithreading', path: '/java/concurrency' },
                 { id: 'exceptions', title: 'Exception Handling', path: '/java/exceptions' },

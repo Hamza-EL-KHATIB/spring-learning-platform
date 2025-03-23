@@ -27,6 +27,7 @@ const Sidebar = () => {
             title: "Java Core",
             icon: <Code className="w-5 h-5"/>,
             items: [
+                { path: '/java/fundamentals', title: 'Java Fundamentals' },
                 {path: '/java/collections', title: 'Collections Framework', icon: <Layers className="w-4 h-4"/>},
                 {
                     path: '/java/concurrency',

@@ -1,0 +1,1356 @@
+{
+  "title": "Fondamentaux Java",
+  "sections": [
+    {
+      "title": "Concepts de Base",
+      "subsections": [
+        {
+          "title": "Qu'est-ce que Java ?",
+          "content": "Java est un langage de programmation orienté objet de haut niveau conçu pour l'indépendance des plateformes grâce à sa capacité \"écrire une fois, exécuter partout\". Il est compilé en bytecode qui s'exécute sur la Machine Virtuelle Java (JVM).",
+          "keyFeatures": [
+            {
+              "feature": "Indépendance de Plateforme",
+              "description": "Les programmes Java peuvent s'exécuter sur n'importe quel appareil disposant d'une JVM compatible"
+            },
+            {
+              "feature": "Orienté Objet",
+              "description": "Prend en charge l'encapsulation, l'héritage, le polymorphisme et l'abstraction"
+            },
+            {
+              "feature": "Robuste et Sécurisé",
+              "description": "Fournit une gestion automatique de la mémoire, une gestion des exceptions et une vérification de type forte"
+            },
+            {
+              "feature": "Multi-threading",
+              "description": "Facilite l'exécution concurrente des tâches"
+            },
+            {
+              "feature": "Bibliothèque Standard Riche",
+              "description": "APIs complètes pour diverses fonctionnalités"
+            }
+          ]
+        },
+        {
+          "title": "Composants de la Plateforme Java",
+          "content": "",
+          "components": [
+            {
+              "name": "JDK (Java Development Kit)",
+              "description": "Package de développement complet qui inclut des outils pour le développement d'applications Java (javac, jdb, etc.)",
+              "tools": [
+                "javac - Compilateur Java qui convertit le code source en bytecode",
+                "java - Lanceur d'application Java qui démarre la JVM et exécute le bytecode",
+                "javadoc - Générateur de documentation qui crée une documentation API à partir des commentaires du code source Java",
+                "jdb - Débogueur Java"
+              ]
+            },
+            {
+              "name": "JRE (Java Runtime Environment)",
+              "description": "Fournit l'environnement d'exécution, comprenant les bibliothèques de classes Java et la JVM",
+              "includes": [
+                "Bibliothèques de classes",
+                "Environnement d'exécution"
+              ]
+            },
+            {
+              "name": "JVM (Java Virtual Machine)",
+              "description": "Exécute le bytecode, le traduisant en code machine natif",
+              "features": [
+                "Exécution indépendante de la plateforme",
+                "Garbage Collection",
+                "Gestion de la mémoire",
+                "Compilation JIT (Just-In-Time)"
+              ]
+            }
+          ],
+          "diagram": "┌─────────────────────────────────────────┐\n│ JDK (Java Development Kit)              │\n│  ┌──────────────────────────────────┐   │\n│  │ JRE (Java Runtime Environment)   │   │\n│  │  ┌───────────────────────────┐   │   │\n│  │  │ JVM (Java Virtual Machine)│   │   │\n│  │  └───────────────────────────┘   │   │\n│  │                                  │   │\n│  │  Java Class Libraries            │   │\n│  └──────────────────────────────────┘   │\n│                                         │\n│  Development Tools                      │\n│  (javac, java, javadoc, etc.)           │\n└─────────────────────────────────────────┘"
+        },
+        {
+          "title": "Architecture JVM",
+          "content": "La JVM comporte trois composants principaux qui travaillent ensemble pour charger, vérifier et exécuter le bytecode Java :",
+          "components": [
+            {
+              "name": "Class Loader",
+              "function": "Charge, lie et initialise les classes dans la JVM.",
+              "stages": [
+                {
+                  "name": "Loading",
+                  "description": "Lit le fichier de classe et crée des données binaires"
+                },
+                {
+                  "name": "Linking",
+                  "description": "Effectue la vérification, la préparation et la résolution des références symboliques"
+                },
+                {
+                  "name": "Initialization",
+                  "description": "Exécute les initialisateurs statiques et initialise les champs statiques"
+                }
+              ]
+            },
+            {
+              "name": "Runtime Data Area",
+              "function": "Zones de mémoire gérées pendant l'exécution",
+              "areas": [
+                {
+                  "name": "Method Area",
+                  "description": "Stocke les structures de classes, les méthodes et le pool constant d'exécution"
+                },
+                {
+                  "name": "Heap",
+                  "description": "Stocke tous les objets et leurs variables d'instance"
+                },
+                {
+                  "name": "Stack",
+                  "description": "Zone spécifique au thread stockant les variables locales et les résultats partiels"
+                },
+                {
+                  "name": "PC Register",
+                  "description": "Contient l'adresse de l'instruction JVM en cours d'exécution"
+                },
+                {
+                  "name": "Native Method Stack",
+                  "description": "Utilisé pour l'exécution de méthodes natives"
+                }
+              ]
+            },
+            {
+              "name": "Execution Engine",
+              "function": "Exécute le bytecode en utilisant un interpréteur et/ou un compilateur JIT.",
+              "components": [
+                {
+                  "name": "Interpreter",
+                  "description": "Interprète les instructions bytecode une par une"
+                },
+                {
+                  "name": "JIT Compiler",
+                  "description": "Compile le bytecode fréquemment exécuté en code machine natif pour les performances"
+                },
+                {
+                  "name": "Garbage Collector",
+                  "description": "Récupère automatiquement la mémoire des objets inutilisés"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Processus de Compilation et d'Exécution",
+          "content": "",
+          "steps": [
+            {
+              "step": 1,
+              "description": "Écrire le code source Java (fichier .java)"
+            },
+            {
+              "step": 2,
+              "description": "Compiler avec le compilateur javac pour produire du bytecode (fichier .class)"
+            },
+            {
+              "step": 3,
+              "description": "Exécuter le bytecode sur la JVM"
+            },
+            {
+              "step": 4,
+              "description": "La JVM traduit le bytecode en code spécifique à la machine en utilisant le compilateur JIT (Just-In-Time)"
+            }
+          ]
+        },
+        {
+          "title": "Méthode Main",
+          "content": "Le point d'entrée pour les applications Java :",
+          "code": "public static void main(String[] args) {\n    // L'application commence ici\n}",
+          "keywords": [
+            {
+              "keyword": "public",
+              "description": "Accessible depuis l'extérieur de la classe"
+            },
+            {
+              "keyword": "static",
+              "description": "Appartient à la classe, pas aux instances"
+            },
+            {
+              "keyword": "void",
+              "description": "Ne renvoie aucune valeur"
+            },
+            {
+              "keyword": "main",
+              "description": "Le nom de méthode spécifique reconnu comme point d'entrée"
+            },
+            {
+              "keyword": "String[] args",
+              "description": "Arguments de ligne de commande transmis au programme"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Types de Données et Variables",
+      "subsections": [
+        {
+          "title": "Types de Données Primitifs",
+          "content": "Java possède huit types de données primitifs qui représentent des valeurs de base :",
+          "types": [
+            {
+              "dataType": "byte",
+              "size": "8 bits",
+              "range": "-128 à 127",
+              "defaultValue": "0",
+              "usage": "Optimisation d'espace pour les tableaux"
+            },
+            {
+              "dataType": "short",
+              "size": "16 bits",
+              "range": "-32,768 à 32,767",
+              "defaultValue": "0",
+              "usage": "Économie de mémoire dans les grands tableaux"
+            },
+            {
+              "dataType": "int",
+              "size": "32 bits",
+              "range": "-2^31 à 2^31-1",
+              "defaultValue": "0",
+              "usage": "Valeur par défaut pour les entiers"
+            },
+            {
+              "dataType": "long",
+              "size": "64 bits",
+              "range": "-2^63 à 2^63-1",
+              "defaultValue": "0L",
+              "usage": "Pour les valeurs entières plus grandes"
+            },
+            {
+              "dataType": "float",
+              "size": "32 bits",
+              "range": "~±3.40282347E+38F",
+              "defaultValue": "0.0f",
+              "usage": "Virgule flottante à précision simple"
+            },
+            {
+              "dataType": "double",
+              "size": "64 bits",
+              "range": "~±1.79769313486231570E+308",
+              "defaultValue": "0.0d",
+              "usage": "Valeur par défaut pour les décimaux"
+            },
+            {
+              "dataType": "char",
+              "size": "16 bits",
+              "range": "0 à 65,535 (Unicode)",
+              "defaultValue": "'\\u0000'",
+              "usage": "Caractère Unicode unique"
+            },
+            {
+              "dataType": "boolean",
+              "size": "1 bit",
+              "range": "true ou false",
+              "defaultValue": "false",
+              "usage": "Conditions logiques"
+            }
+          ]
+        },
+        {
+          "title": "Types de Données de Référence",
+          "content": "Les types de données de référence stockent des références (adresses mémoire) vers des objets plutôt que de stocker les valeurs réelles :",
+          "types": [
+            {
+              "type": "Classes",
+              "description": "Plan défini par l'utilisateur pour les objets"
+            },
+            {
+              "type": "Interfaces",
+              "description": "Contrat abstrait pour les classes"
+            },
+            {
+              "type": "Arrays",
+              "description": "Collection d'éléments du même type"
+            },
+            {
+              "type": "Strings",
+              "description": "Classe spéciale représentant du texte (séquence immuable de caractères)"
+            },
+            {
+              "type": "Enums",
+              "description": "Type spécial de classe pour les constantes"
+            }
+          ]
+        },
+        {
+          "title": "Types de Variables",
+          "content": "",
+          "types": [
+            {
+              "type": "Variables Locales",
+              "description": "Déclarées à l'intérieur des méthodes, constructeurs ou blocs"
+            },
+            {
+              "type": "Variables d'Instance",
+              "description": "Déclarées dans une classe mais en dehors de toute méthode"
+            },
+            {
+              "type": "Variables Statiques (Variables de Classe)",
+              "description": "Déclarées avec le mot-clé `static`"
+            }
+          ]
+        },
+        {
+          "title": "Conversion de Type",
+          "content": "",
+          "conversions": [
+            {
+              "type": "Conversion d'élargissement (Implicite)",
+              "description": "Conversion d'un type plus petit vers un type plus grand",
+              "example": "int intValue = 10;\ndouble doubleValue = intValue; // Conversion automatique"
+            },
+            {
+              "type": "Conversion de rétrécissement (Explicite)",
+              "description": "Conversion d'un type plus grand vers un type plus petit",
+              "example": "double doubleValue = 10.5;\nint intValue = (int) doubleValue; // Cast explicite requis"
+            }
+          ]
+        },
+        {
+          "title": "Constantes",
+          "content": "Les constantes en Java sont déclarées en utilisant le mot-clé `final` :",
+          "examples": [
+            "final double PI = 3.14159;",
+            "static final int MAX_USERS = 10000;  // Constante de classe"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Concepts de Programmation Orientée Objet",
+      "subsections": [
+        {
+          "title": "Classes et Objets",
+          "content": "",
+          "concepts": [
+            {
+              "concept": "Classe",
+              "description": "Plan pour créer des objets"
+            },
+            {
+              "concept": "Objet",
+              "description": "Instance d'une classe avec état (champs) et comportement (méthodes)"
+            }
+          ],
+          "example": "public class Car {\n    // Champs (état)\n    private String model;\n    private int year;\n    \n    // Constructeur\n    public Car(String model, int year) {\n        this.model = model;\n        this.year = year;\n    }\n    \n    // Méthodes (comportement)\n    public void drive() {\n        System.out.println(\"Driving the \" + model);\n    }\n}\n\n// Création d'un objet\nCar myCar = new Car(\"Tesla\", 2023);\nmyCar.drive();"
+        },
+        {
+          "title": "Les Quatre Piliers de la POO",
+          "content": "",
+          "pillars": [
+            {
+              "name": "Encapsulation",
+              "description": "L'encapsulation consiste à regrouper les données (champs) et les méthodes qui opèrent sur ces données dans une seule unité (classe), en restreignant l'accès direct aux données.",
+              "implementation": [
+                "Utiliser des modificateurs d'accès private pour les champs",
+                "Fournir des méthodes getter et setter publiques pour un accès contrôlé"
+              ],
+              "benefits": [
+                "Masquage et protection des données",
+                "Maintenabilité et flexibilité",
+                "Contrôle sur la validation des données"
+              ],
+              "definition": "Encapsuler les données et le comportement dans une seule unité ou classe et restreindre l'accès à certains composants.",
+              "example": "public class Employee {\n    private int exp; // Le champ est privé (encapsulé)\n    \n    // Méthode getter\n    public int getExp() {\n        return exp;\n    }\n    \n    // Méthode setter avec validation\n    public void setExp(int exp) {\n        if (exp < 0) {\n            throw new IllegalArgumentException(\"L'expérience ne peut pas être négative\");\n        }\n        this.exp = exp;\n    }\n}"
+            },
+            {
+              "name": "Héritage",
+              "description": "L'héritage permet à une classe d'hériter des propriétés et des comportements d'une autre classe, favorisant la réutilisation du code et établissant une relation parent-enfant.",
+              "implementation": [
+                "Utiliser le mot-clé `extends` pour l'héritage de classe",
+                "Utiliser le mot-clé `implements` pour l'implémentation d'interface"
+              ],
+              "types": [
+                {
+                  "type": "Héritage Simple",
+                  "description": "Une classe hérite d'une classe"
+                },
+                {
+                  "type": "Héritage Multiniveau",
+                  "description": "Une classe hérite d'une classe enfant"
+                },
+                {
+                  "type": "Héritage Hiérarchique",
+                  "description": "Plusieurs classes héritent d'une classe"
+                }
+              ],
+              "definition": "Un mécanisme où une classe peut hériter des champs et des méthodes d'une autre classe.",
+              "example": "// Classe parent\npublic class Employee {\n    protected String name;\n    protected double salary;\n    \n    public void work() {\n        System.out.println(\"Employee working\");\n    }\n}\n\n// Classe enfant héritant de Employee\npublic class Manager extends Employee {\n    private int teamSize;\n    \n    public void manage() {\n        System.out.println(\"Managing team of \" + teamSize);\n    }\n    \n    // Redéfinition de la méthode parent\n    @Override\n    public void work() {\n        System.out.println(\"Manager working on leadership tasks\");\n    }\n}"
+            },
+            {
+              "name": "Polymorphisme",
+              "description": "Le polymorphisme permet aux objets de prendre différentes formes selon le contexte, principalement par la surcharge et la redéfinition de méthode.",
+              "types": [
+                {
+                  "type": "Polymorphisme au moment de la compilation (Liaison statique)",
+                  "description": "Surcharge de méthode : même nom de méthode avec différents paramètres"
+                },
+                {
+                  "type": "Polymorphisme au moment de l'exécution (Liaison dynamique)",
+                  "description": "Redéfinition de méthode : la sous-classe fournit une implémentation spécifique d'une méthode déjà définie dans la classe parente"
+                }
+              ],
+              "definition": "La capacité d'un objet à prendre plusieurs formes. En Java, on distingue le polymorphisme statique (surcharge de méthode, résolu à la compilation) et le polymorphisme dynamique (redéfinition de méthode, résolu à l'exécution).",
+              "example": "// Surcharge de méthode (Polymorphisme à la compilation)\npublic class Calculator {\n    public int add(int a, int b) {\n        return a + b;\n    }\n    \n    public double add(double a, double b) {\n        return a + b;\n    }\n    \n    public int add(int a, int b, int c) {\n        return a + b + c;\n    }\n}\n\n// Redéfinition de méthode (Polymorphisme à l'exécution)\nclass Animal {\n    public void makeSound() {\n        System.out.println(\"Animal makes a sound\");\n    }\n}\n\nclass Dog extends Animal {\n    @Override\n    public void makeSound() {\n        System.out.println(\"Dog barks\");\n    }\n}\n\nclass Cat extends Animal {\n    @Override\n    public void makeSound() {\n        System.out.println(\"Cat meows\");\n    }\n}",
+              "comparison": [
+                {
+                  "aspect": "Moment d'occurrence",
+                  "methodOverloading": "Compilation (liaison statique)",
+                  "methodOverriding": "Exécution (liaison dynamique)"
+                },
+                {
+                  "aspect": "Paramètres",
+                  "methodOverloading": "Doivent différer en type, nombre ou ordre",
+                  "methodOverriding": "Doivent être les mêmes"
+                },
+                {
+                  "aspect": "Type de retour",
+                  "methodOverloading": "Peut être différent",
+                  "methodOverriding": "Doit être le même ou covariant"
+                },
+                {
+                  "aspect": "Modificateur d'accès",
+                  "methodOverloading": "Peut être différent",
+                  "methodOverriding": "Ne peut pas être plus restrictif"
+                },
+                {
+                  "aspect": "Exceptions",
+                  "methodOverloading": "Peut lancer différentes exceptions",
+                  "methodOverriding": "Ne peut pas lancer d'exceptions plus larges"
+                }
+              ]
+            },
+            {
+              "name": "Abstraction",
+              "description": "L'abstraction se concentre sur la dissimulation des détails d'implémentation et ne montre que les caractéristiques nécessaires d'un objet.",
+              "implementation": [
+                {
+                  "type": "Classes Abstraites",
+                  "description": "Peuvent contenir à la fois des méthodes abstraites et concrètes"
+                },
+                {
+                  "type": "Interfaces",
+                  "description": "Définissent des contrats que les classes d'implémentation doivent respecter"
+                }
+              ],
+              "definition": "Masquer les détails d'implémentation complexes et ne montrer que les fonctionnalités essentielles.",
+              "example": "// Classe abstraite\npublic abstract class Shape {\n    // Méthode concrète\n    public void display() {\n        System.out.println(\"Displaying shape\");\n    }\n    \n    // Méthode abstraite - pas d'implémentation\n    public abstract double calculateArea();\n}\n\n// Interface\npublic interface Drawable {\n    void draw(); // Méthode abstraite\n    \n    // Méthode par défaut (Java 8+)\n    default void info() {\n        System.out.println(\"This is a drawable object\");\n    }\n}\n\n// Classe concrète implémentant l'abstraction\npublic class Circle extends Shape implements Drawable {\n    private double radius;\n    \n    public Circle(double radius) {\n        this.radius = radius;\n    }\n    \n    @Override\n    public double calculateArea() {\n        return Math.PI * radius * radius;\n    }\n    \n    @Override\n    public void draw() {\n        System.out.println(\"Drawing a circle\");\n    }\n}"
+            }
+          ]
+        },
+        {
+          "title": "Modificateurs d'Accès",
+          "content": "Les modificateurs d'accès contrôlent la visibilité et l'accessibilité des classes, des méthodes et des champs :",
+          "modifiers": [
+            {
+              "modifier": "public",
+              "class": true,
+              "package": true,
+              "subclass": true,
+              "world": true
+            },
+            {
+              "modifier": "protected",
+              "class": true,
+              "package": true,
+              "subclass": true,
+              "world": false
+            },
+            {
+              "modifier": "default (sans modificateur)",
+              "class": true,
+              "package": true,
+              "subclass": false,
+              "world": false
+            },
+            {
+              "modifier": "private",
+              "class": true,
+              "package": false,
+              "subclass": false,
+              "world": false
+            }
+          ]
+        },
+        {
+          "title": "Modificateurs Non-Accès",
+          "content": "",
+          "modifiers": [
+            {
+              "modifier": "static",
+              "description": "Appartient à la classe plutôt qu'aux instances"
+            },
+            {
+              "modifier": "final",
+              "useCases": [
+                "Pour les classes : Ne peut pas être étendue",
+                "Pour les méthodes : Ne peut pas être redéfinie",
+                "Pour les variables : Ne peut pas être réassignée après l'initialisation"
+              ]
+            },
+            {
+              "modifier": "abstract",
+              "useCases": [
+                "Pour les classes : Ne peut pas être instanciée, peut contenir des méthodes abstraites",
+                "Pour les méthodes : Déclarée sans implémentation"
+              ]
+            },
+            {
+              "modifier": "synchronized",
+              "description": "Contrôle l'accès des threads aux sections critiques du code"
+            },
+            {
+              "modifier": "volatile",
+              "description": "Garantit qu'une variable est toujours lue depuis la mémoire principale, pas depuis le cache du thread"
+            },
+            {
+              "modifier": "transient",
+              "description": "Les champs marqués comme transient ne sont pas sérialisés"
+            },
+            {
+              "modifier": "native",
+              "description": "Indique une méthode implémentée dans un code dépendant de la plateforme"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gestion de la Mémoire",
+      "subsections": [
+        {
+          "title": "Mémoire Stack vs Heap",
+          "content": "",
+          "memory": [
+            {
+              "type": "Mémoire Stack",
+              "characteristics": [
+                "Stocke les variables locales, les appels de méthode et les références",
+                "Spécifique au thread (chaque thread a son propre stack)",
+                "Gestion automatique de la mémoire (LIFO - Last In, First Out)",
+                "Accès plus rapide que le heap",
+                "Taille limitée",
+                "Utilisé pour l'allocation de mémoire statique",
+                "Les types de données primitifs y sont stockés"
+              ],
+              "example": "public void calculateSum(int a) {\n    int b = 5;\n    String name = \"John\"; // La référence est stockée dans la stack, la chaîne réelle dans le heap\n    double result = a + b;\n}"
+            },
+            {
+              "type": "Mémoire Heap",
+              "characteristics": [
+                "Stocke les objets et les tableaux",
+                "Partagée entre tous les threads",
+                "Gérée par le Garbage Collector",
+                "Accès plus lent que la stack",
+                "Taille plus grande",
+                "Utilisée pour l'allocation dynamique de mémoire",
+                "Les objets et les variables d'instance y sont stockés"
+              ],
+              "example": "public class Memory {\n    private int[] numbers = new int[10]; // L'objet tableau est stocké dans le heap\n    public void createObjects() {\n        Person john = new Person(\"John\"); // L'objet Person est stocké dans le heap\n    }\n}"
+            }
+          ],
+          "diagram": "┌───────────────────┐     ┌───────────────────────────┐\n│  Stack Memory     │     │      Heap Memory          │\n├───────────────────┤     ├───────────────────────────┤\n│ Thread 1 Stack    │     │                           │\n│ - Local variables │     │     Objects               │\n│ - Method frames   │     │     Arrays                │\n│ - References ─────┼────►│     Class instances       │\n│                   │     │                           │\n├───────────────────┤     │                           │\n│ Thread 2 Stack    │     │                           │\n│ ...               │     │                           │\n└───────────────────┘     └───────────────────────────┘"
+        },
+        {
+          "title": "Stockage des Variables",
+          "content": "",
+          "variables": [
+            {
+              "type": "Variables locales",
+              "storage": "Stack",
+              "lifecycle": "Exécution de méthode",
+              "scope": "Méthode, bloc"
+            },
+            {
+              "type": "Variables d'instance",
+              "storage": "Heap (dans l'objet)",
+              "lifecycle": "Durée de vie de l'objet",
+              "scope": "Classe entière"
+            },
+            {
+              "type": "Variables statiques",
+              "storage": "Method Area (partie logique du heap)",
+              "lifecycle": "Durée de vie de la classe",
+              "scope": "Application entière"
+            }
+          ]
+        },
+        {
+          "title": "Garbage Collection",
+          "content": "Le Garbage Collector de Java récupère automatiquement la mémoire occupée par des objets qui ne sont plus utilisés :",
+          "details": [
+            "Les objets sans références sont éligibles pour le garbage collection",
+            "Le processus GC comprend le marquage, le balayage et la compaction de la mémoire",
+            "Différents algorithmes GC pour différents scénarios (Serial, Parallel, CMS, G1)",
+            "Peut être influencé mais pas directement contrôlé par le programmeur"
+          ],
+          "process": [
+            {
+              "step": "Marking",
+              "description": "Identifie les objets vivants"
+            },
+            {
+              "step": "Sweeping",
+              "description": "Supprime les objets inutilisés"
+            },
+            {
+              "step": "Compaction",
+              "description": "Réorganise la mémoire pour réduire la fragmentation"
+            }
+          ],
+          "collectors": [
+            {
+              "name": "Serial Garbage Collector",
+              "description": "Un collecteur à thread unique, adapté aux systèmes mono-cœur et aux applications avec de petites exigences de données.",
+              "flag": "-XX:+UseSerialGC"
+            },
+            {
+              "name": "Parallel Garbage Collector",
+              "description": "Utilise plusieurs threads pour les opérations GC, le rendant adapté aux applications à haut débit.",
+              "flag": "-XX:+UseParallelGC"
+            },
+            {
+              "name": "CMS (Concurrent Mark-Sweep) Garbage Collector",
+              "description": "Conçu pour les applications qui privilégient la faible latence ; minimise les temps de pause en effectuant le GC simultanément avec les threads d'application.",
+              "flag": "-XX:+UseConcMarkSweepGC"
+            },
+            {
+              "name": "G1 (Garbage-First) Garbage Collector",
+              "description": "Divise le heap en régions et se concentre sur la collecte des régions contenant le plus de déchets, le rendant adapté aux heaps plus grands et minimisant les pauses.",
+              "flag": "-XX:+UseG1GC"
+            },
+            {
+              "name": "Z Garbage Collector",
+              "description": "Un collecteur à faible latence conçu pour les grandes tailles de heap, maintenant des temps de pause très bas.",
+              "flag": "-XX:+UseZGC"
+            }
+          ],
+          "tuning": [
+            "Utilisez des options de ligne de commande comme `-XX:+UseG1GC` ou `-XX:+UseParallelGC` pour sélectionner le garbage collector.",
+            "Ajustez la taille du heap avec les options `-Xms` (taille initiale du heap) et `-Xmx` (taille maximale du heap) pour fournir une mémoire adéquate.",
+            "Surveillez le comportement GC à l'aide d'outils comme VisualVM ou Java Flight Recorder pour des informations sur les performances."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Constructeurs",
+      "subsections": [
+        {
+          "title": "Types de Constructeurs",
+          "content": "Les constructeurs sont des méthodes spéciales utilisées pour initialiser des objets. Ils ont le même nom que la classe et sont appelés lorsqu'un objet est créé.",
+          "types": [
+            {
+              "type": "Constructeur par Défaut",
+              "description": "Pas de paramètres",
+              "notes": "Fourni par Java si aucun autre constructeur n'est défini"
+            },
+            {
+              "type": "Constructeur Paramétré",
+              "description": "Prend des paramètres pour initialiser l'état de l'objet"
+            },
+            {
+              "type": "Constructeur de Copie",
+              "description": "Crée un nouvel objet comme une copie d'un objet existant"
+            }
+          ],
+          "example": "public class Student {\n    private String name;\n    private int age;\n    \n    // Constructeur par défaut\n    public Student() {\n        name = \"Unknown\";\n        age = 0;\n    }\n    \n    // Constructeur paramétré\n    public Student(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n    \n    // Constructeur de copie\n    public Student(Student other) {\n        this.name = other.name;\n        this.age = other.age;\n    }\n}"
+        },
+        {
+          "title": "Chaînage de Constructeurs",
+          "content": "Le chaînage de constructeurs est le processus d'appel d'un constructeur depuis un autre dans la même classe :",
+          "example": "public class Vehicle {\n    private String brand;\n    private String model;\n    \n    // Constructeur avec les deux paramètres\n    public Vehicle(String brand, String model) {\n        this.brand = brand;\n        this.model = model;\n    }\n    \n    // Constructeur avec un paramètre, chaîne vers le constructeur à deux paramètres\n    public Vehicle(String brand) {\n        this(brand, \"Unknown\"); // Appelle le constructeur ci-dessus\n    }\n    \n    // Constructeur par défaut, chaîne vers le constructeur à un paramètre\n    public Vehicle() {\n        this(\"Unknown\"); // Appelle le constructeur ci-dessus\n    }\n}"
+        }
+      ]
+    },
+    {
+      "title": "Mots-clés et Modificateurs",
+      "subsections": [
+        {
+          "title": "Mot-clé this",
+          "content": "Le mot-clé `this` fait référence à l'instance courante de la classe :",
+          "uses": [
+            "Distinguer entre les variables d'instance et les paramètres",
+            "Passer l'objet courant à une autre méthode",
+            "Appeler un autre constructeur dans la même classe"
+          ],
+          "example": "public class Person {\n    private String name;\n    \n    public void setName(String name) {\n        this.name = name; // Distinguer entre le champ et le paramètre\n    }\n    \n    public void introduce(Person otherPerson) {\n        otherPerson.greet(this); // Passer l'objet courant\n    }\n}"
+        },
+        {
+          "title": "Mot-clé super",
+          "content": "Le mot-clé `super` fait référence à la classe parente :",
+          "uses": [
+            "Accéder aux membres de la classe parente (champs, méthodes)",
+            "Appeler le constructeur de la classe parente"
+          ],
+          "example": "class Animal {\n    protected String type;\n    \n    public Animal(String type) {\n        this.type = type;\n    }\n    \n    public void makeSound() {\n        System.out.println(\"Some sound\");\n    }\n}\n\nclass Dog extends Animal {\n    private String breed;\n    \n    public Dog(String breed) {\n        super(\"Dog\"); // Appel du constructeur parent\n        this.breed = breed;\n    }\n    \n    @Override\n    public void makeSound() {\n        super.makeSound(); // Appel de la méthode parente\n        System.out.println(\"Bark\");\n    }\n}"
+        },
+        {
+          "title": "Mot-clé final",
+          "content": "Le mot-clé `final` peut être appliqué à différentes entités :",
+          "applications": [
+            {
+              "type": "variable final",
+              "description": "Ne peut pas être réassignée après l'initialisation"
+            },
+            {
+              "type": "méthode final",
+              "description": "Ne peut pas être redéfinie dans les sous-classes"
+            },
+            {
+              "type": "classe final",
+              "description": "Ne peut pas être étendue (sous-classée)"
+            }
+          ],
+          "example": "// Variable final\nfinal int MAX_SPEED = 120; // Constante (ne peut pas être modifiée)\n\n// Méthode final\npublic final void secureMethod() {\n    // Ne peut pas être redéfinie\n}\n\n// Classe final\npublic final class SecurityManager {\n    // Ne peut pas être étendue\n}"
+        },
+        {
+          "title": "Mot-clé static",
+          "content": "Le mot-clé `static` est utilisé pour les variables, méthodes, blocs et classes imbriquées qui appartiennent à la classe plutôt qu'aux instances :",
+          "applications": [
+            {
+              "type": "variable static",
+              "description": "Partagée entre toutes les instances de la classe"
+            },
+            {
+              "type": "méthode static",
+              "description": "Peut être appelée sans créer d'instance"
+            },
+            {
+              "type": "bloc static",
+              "description": "Exécuté lorsque la classe est chargée par la JVM"
+            },
+            {
+              "type": "classe imbriquée static",
+              "description": "Associée à la classe externe, pas aux instances"
+            }
+          ],
+          "example": "public class MathUtil {\n    // Variable static\n    public static final double PI = 3.14159;\n    \n    // Bloc static (exécuté lors du chargement de la classe)\n    static {\n        System.out.println(\"MathUtil class loaded\");\n    }\n    \n    // Méthode static\n    public static int square(int num) {\n        return num * num;\n    }\n    \n    // Classe imbriquée static\n    public static class Calculator {\n        public static int add(int a, int b) {\n            return a + b;\n        }\n    }\n}\n\n// Utilisation sans instantiation\ndouble area = MathUtil.PI * radius * radius;\nint squared = MathUtil.square(5);\nint sum = MathUtil.Calculator.add(3, 4);"
+        }
+      ]
+    },
+    {
+      "title": "Classes et Interfaces",
+      "subsections": [
+        {
+          "title": "Types de Classes",
+          "content": "",
+          "types": [
+            {
+              "type": "Classe Régulière (Top-Level)",
+              "description": "Classe standard définie au niveau du fichier"
+            },
+            {
+              "type": "Classe Interne (Classe Imbriquée Non-static)",
+              "description": "Classe définie à l'intérieur d'une autre classe",
+              "notes": "A accès aux membres de la classe externe"
+            },
+            {
+              "type": "Classe Imbriquée Static",
+              "description": "Classe static définie à l'intérieur d'une autre classe",
+              "notes": "Pas d'accès aux variables d'instance de la classe externe"
+            },
+            {
+              "type": "Classe Abstraite",
+              "description": "Ne peut pas être instanciée",
+              "notes": "Peut contenir des méthodes abstraites et concrètes"
+            },
+            {
+              "type": "Classe Final",
+              "description": "Ne peut pas être sous-classée"
+            },
+            {
+              "type": "Classe Anonyme",
+              "description": "Classe sans nom, définie et instanciée dans une seule expression"
+            }
+          ],
+          "example": "// Classe régulière\npublic class OuterClass {\n    private int outerField = 10;\n    \n    // Classe interne (classe imbriquée non-static)\n    public class InnerClass {\n        public void printOuterField() {\n            System.out.println(outerField); // Peut accéder aux champs de la classe externe\n        }\n    }\n    \n    // Classe imbriquée static\n    public static class StaticNestedClass {\n        public void printMessage() {\n            // Ne peut pas accéder à outerField directement\n            System.out.println(\"Inside static nested class\");\n        }\n    }\n    \n    public void createAnonymousClass() {\n        // Classe anonyme\n        Runnable r = new Runnable() {\n            @Override\n            public void run() {\n                System.out.println(\"Anonymous class running\");\n            }\n        };\n    }\n}\n\n// Classe abstraite\npublic abstract class Shape {\n    public abstract double area();\n    \n    public void display() {\n        System.out.println(\"This is a shape\");\n    }\n}\n\n// Classe final\npublic final class Utility {\n    // Ne peut pas être sous-classée\n}"
+        },
+        {
+          "title": "Interfaces",
+          "content": "Les interfaces définissent des contrats que les classes d'implémentation doivent respecter :",
+          "notes": [
+            "Avant Java 8, ne contenaient que des méthodes abstraites",
+            "À partir de Java 8, peuvent contenir des méthodes par défaut et statiques",
+            "À partir de Java 9, peuvent contenir des méthodes privées"
+          ],
+          "example": "public interface Playable {\n    // Méthode abstraite (implicitement public et abstract)\n    void play();\n    \n    // Méthode par défaut (Java 8+)\n    default void pause() {\n        System.out.println(\"Pausing playback\");\n    }\n    \n    // Méthode statique (Java 8+)\n    static boolean isSupported(String format) {\n        return true;\n    }\n    \n    // Méthode privée (Java 9+)\n    private void internalHelper() {\n        System.out.println(\"Helper method\");\n    }\n}"
+        },
+        {
+          "title": "Types Enum",
+          "content": "Les enums sont des classes spéciales qui représentent un groupe de constantes :",
+          "example": "public enum Day {\n    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;\n    \n    // Les enums peuvent avoir des champs, des méthodes et des constructeurs\n    private boolean isWeekday;\n    \n    static {\n        // Initialiser le statut de jour de semaine\n        MONDAY.isWeekday = true;\n        TUESDAY.isWeekday = true;\n        // ...\n    }\n    \n    public boolean isWeekday() {\n        return isWeekday;\n    }\n}\n\n// Utilisation\nDay today = Day.MONDAY;\nif (today.isWeekday()) {\n    System.out.println(\"It's a workday\");\n}"
+        },
+        {
+          "title": "Enums avec Champs et Méthodes",
+          "content": "",
+          "example": "public enum Planet {\n    MERCURY(3.303e+23, 2.4397e6),\n    VENUS(4.869e+24, 6.0518e6),\n    EARTH(5.976e+24, 6.37814e6);\n    \n    private final double mass;   // en kilogrammes\n    private final double radius; // en mètres\n    \n    Planet(double mass, double radius) {\n        this.mass = mass;\n        this.radius = radius;\n    }\n    \n    public double getMass() {\n        return mass;\n    }\n    \n    public double getSurfaceGravity() {\n        return G * mass / (radius * radius);\n    }\n    \n    private static final double G = 6.67300E-11;\n}"
+        },
+        {
+          "title": "Méthodes Enum",
+          "content": "Méthodes intégrées disponibles pour tous les enums :",
+          "methods": [
+            {
+              "method": "values()",
+              "description": "Renvoie un tableau de toutes les constantes enum"
+            },
+            {
+              "method": "valueOf(String name)",
+              "description": "Renvoie la constante enum avec le nom spécifié"
+            },
+            {
+              "method": "name()",
+              "description": "Renvoie le nom de la constante enum"
+            },
+            {
+              "method": "ordinal()",
+              "description": "Renvoie la position de la constante enum (base zéro)"
+            }
+          ],
+          "example": "// Itérer à travers les valeurs enum\nfor (Day day : Day.values()) {\n    System.out.println(day);\n}"
+        }
+      ]
+    },
+    {
+      "title": "Gestion des Chaînes",
+      "subsections": [
+        {
+          "title": "Immutabilité des Strings",
+          "content": "Les Strings en Java sont immuables - une fois créées, leurs valeurs ne peuvent pas être modifiées :",
+          "example": "String s = \"Hello\";\ns.concat(\" World\");  // Ceci crée un nouveau String\nSystem.out.println(s);  // Affiche toujours \"Hello\"\n\n// Pour changer la référence :\ns = s.concat(\" World\");  // Maintenant s pointe vers le nouveau String \"Hello World\""
+        },
+        {
+          "title": "Pool de Strings",
+          "content": "Java maintient une zone de mémoire spéciale appelée Pool de Strings pour optimiser l'utilisation de la mémoire en réutilisant les littéraux de chaîne.",
+          "example": "String s1 = \"Hello\";  // Va dans le pool de strings\nString s2 = \"Hello\";  // Réutilise le même objet du pool de strings\nString s3 = new String(\"Hello\");  // Crée un nouvel objet en dehors du pool\n\nSystem.out.println(s1 == s2);  // true (même référence d'objet)\nSystem.out.println(s1 == s3);  // false (objets différents)\nSystem.out.println(s1.equals(s3));  // true (même contenu)"
+        },
+        {
+          "title": "String vs StringBuilder vs StringBuffer",
+          "content": "",
+          "comparison": [
+            {
+              "class": "String",
+              "threadSafe": true,
+              "mutable": false,
+              "performance": "Plus lent pour la concaténation",
+              "useCase": "Texte simple avec peu de modifications"
+            },
+            {
+              "class": "StringBuilder",
+              "threadSafe": false,
+              "mutable": true,
+              "performance": "Plus rapide",
+              "useCase": "Manipulation de chaînes mono-thread"
+            },
+            {
+              "class": "StringBuffer",
+              "threadSafe": true,
+              "mutable": true,
+              "performance": "Moyen",
+              "useCase": "Manipulation de chaînes multi-thread"
+            }
+          ],
+          "example": "// Concaténation de String (inefficace pour les boucles)\nString result = \"\";\nfor (int i = 0; i < 10; i++) {\n    result += i;  // Crée un nouvel objet String à chaque fois\n}\n\n// StringBuilder (efficace)\nStringBuilder sb = new StringBuilder();\nfor (int i = 0; i < 10; i++) {\n    sb.append(i);  // Modifie le même objet\n}\nString result = sb.toString();"
+        }
+      ]
+    },
+    {
+      "title": "Packages et Contrôle d'Accès",
+      "subsections": [
+        {
+          "title": "Déclaration de Package",
+          "content": "Les packages sont utilisés pour organiser les classes et éviter les conflits de noms :",
+          "example": "package com.company.project.module;\n\npublic class MyClass {\n    // Définition de classe\n}"
+        },
+        {
+          "title": "Instruction Import",
+          "content": "Les instructions import permettent d'utiliser des classes d'autres packages :",
+          "examples": [
+            {
+              "description": "Import spécifique",
+              "code": "import java.util.ArrayList;"
+            },
+            {
+              "description": "Import de toutes les classes d'un package",
+              "code": "import java.util.*;"
+            },
+            {
+              "description": "Import statique pour les membres statiques",
+              "code": "import static java.lang.Math.PI;"
+            }
+          ]
+        },
+        {
+          "title": "Visibilité des Packages",
+          "content": "",
+          "rules": [
+            "Les classes du même package peuvent accéder aux membres package-private (default) les unes des autres",
+            "Les packages différents ne peuvent accéder qu'aux membres publics",
+            "Les membres protected sont accessibles dans le même package et par les sous-classes"
+          ]
+        },
+        {
+          "title": "Package par Défaut",
+          "content": "Les classes sans déclaration de package sont dans le package par défaut. L'utilisation du package par défaut n'est pas recommandée pour le code de production car :",
+          "reasons": [
+            "Ne peut pas être importé par des classes dans des packages nommés",
+            "Augmente le risque de collisions de noms",
+            "Rend plus difficile l'organisation du code"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Meilleures Pratiques",
+      "content": "",
+      "practices": [
+        {
+          "category": "Conventions de Nommage",
+          "conventions": [
+            "Classes/Interfaces : PascalCase (ex. `StudentRecord`)",
+            "Méthodes/Variables : camelCase (ex. `calculateTotal`)",
+            "Constantes : UPPER_SNAKE_CASE (ex. `MAX_VALUE`)",
+            "Packages : minuscules avec points (ex. `com.company.project`)"
+          ]
+        },
+        {
+          "category": "Organisation du Code",
+          "practices": [
+            "Une classe top-level par fichier",
+            "Regrouper les fonctionnalités liées dans des packages",
+            "Garder les classes concentrées sur une seule responsabilité"
+          ]
+        },
+        {
+          "category": "Encapsulation",
+          "practices": [
+            "Garder les champs privés",
+            "Fournir des getters et setters publics lorsque nécessaire",
+            "Valider les entrées dans les setters"
+          ]
+        },
+        {
+          "category": "Principes de Conception",
+          "principles": [
+            "Favoriser la composition plutôt que l'héritage",
+            "Programmer vers des interfaces, pas des implémentations",
+            "Maintenir les classes faiblement couplées"
+          ]
+        },
+        {
+          "category": "Immutabilité",
+          "practices": [
+            "Rendre les classes immuables lorsque c'est approprié",
+            "Utiliser des champs et des classes final",
+            "Retourner des copies défensives des champs mutables"
+          ]
+        },
+        {
+          "category": "Gestion des Erreurs",
+          "practices": [
+            "Utiliser les exceptions de manière appropriée",
+            "Ne jamais masquer les exceptions sans traitement approprié",
+            "Nettoyer les ressources dans les blocs finally ou try-with-resources"
+          ]
+        },
+        {
+          "category": "Gestion de la Mémoire",
+          "practices": [
+            "Éviter de créer des objets inutiles",
+            "Fermer correctement les ressources",
+            "Être conscient des fuites de mémoire (ex. via des collections statiques)"
+          ]
+        },
+        {
+          "category": "Principes de Codage",
+          "principles": [
+            {
+              "name": "DRY (Don't Repeat Yourself)",
+              "description": "Éviter la duplication en abstrayant le code commun"
+            },
+            {
+              "name": "KISS (Keep It Simple, Stupid)",
+              "description": "Favoriser la simplicité dans la conception"
+            },
+            {
+              "name": "YAGNI (You Ain't Gonna Need It)",
+              "description": "N'implémenter des fonctionnalités que lorsqu'elles sont nécessaires"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Domaines d'intérêt pour les Entretiens",
+      "content": "Lors de la préparation aux entretiens Java, portez une attention particulière à :",
+      "areas": [
+        {
+          "area": "Principes OOP",
+          "description": "Comprendre l'encapsulation, l'héritage, le polymorphisme et l'abstraction"
+        },
+        {
+          "area": "Gestion de la Mémoire",
+          "description": "Stack vs. heap, cycle de vie des objets, garbage collection"
+        },
+        {
+          "area": "Modificateurs d'Accès",
+          "description": "Rôle des accès public, private, protected et default"
+        },
+        {
+          "area": "Static vs. Non-static",
+          "description": "Différences et utilisations appropriées"
+        },
+        {
+          "area": "Types de Classes",
+          "description": "Classes abstraites vs. interfaces, classes internes"
+        },
+        {
+          "area": "Mots-clés",
+          "description": "final, static, this, super"
+        },
+        {
+          "area": "Constructeurs",
+          "description": "Types, chaînage et blocs d'initialisation"
+        },
+        {
+          "area": "Redéfinition et Surcharge de Méthodes",
+          "description": "Règles et différences"
+        },
+        {
+          "area": "Patterns Communs",
+          "description": "Singleton, Factory, Builder"
+        },
+        {
+          "area": "Gestion des Chaînes",
+          "description": "Immutabilité, pool de strings, String vs StringBuilder vs StringBuffer"
+        }
+      ]
+    },
+    {
+      "title": "FAQ d'Entretien",
+      "description": "Cette section couvre les questions fréquemment posées lors des entretiens Java, en se concentrant sur les fondamentaux de base de Java. Ces questions et réponses vous aideront à vous préparer aux entretiens techniques en fournissant des explications concises des concepts clés.",
+      "categories": [
+        {
+          "category": "Bases Java",
+          "questions": [
+            {
+              "question": "Que se passe-t-il si une instruction break n'est pas utilisée avec les instructions case dans un bloc switch?",
+              "answer": "Sans instruction break, l'exécution « traverse » les instructions case suivantes. Une fois qu'un cas correspondant est trouvé, toutes les instructions des cas suivants seront exécutées jusqu'à ce qu'un break soit rencontré ou que le bloc switch se termine. Ce comportement peut être intentionnellement utilisé pour les cas qui partagent la même exécution de code."
+            },
+            {
+              "question": "Quelle est la différence entre JDK, JRE et JVM?",
+              "answer": "- JDK (Java Development Kit) : Package de développement complet contenant le JRE plus des outils de développement comme le compilateur (javac), le débogueur et les outils de documentation.\n- JRE (Java Runtime Environment) : Fournit l'environnement d'exécution pour exécuter des applications Java, y compris la JVM et les bibliothèques de base.\n- JVM (Java Virtual Machine) : Le moteur qui exécute le bytecode Java, offrant l'indépendance de plateforme grâce à sa capacité « écrire une fois, exécuter partout »."
+            },
+            {
+              "question": "Quelle est la différence entre '==' et la méthode equals() pour comparer des objets?",
+              "answer": "L'opérateur '==' compare les références d'objets (si deux références pointent vers le même emplacement mémoire), tandis que la méthode equals() compare le contenu/les valeurs des objets. Pour les Strings et autres objets, utilisez equals() pour comparer le contenu, pas '=='."
+            },
+            {
+              "question": "Un programme Java peut-il s'exécuter sans JDK, JRE ou JVM installé?",
+              "answer": "Non, un programme Java ne peut pas s'exécuter sans au moins le JRE installé, qui inclut la JVM. Le JDK n'est requis que pour le développement, pas pour l'exécution des programmes compilés."
+            }
+          ]
+        },
+        {
+          "category": "Types de Données et Variables",
+          "questions": [
+            {
+              "question": "Quelle est la différence entre les types de données primitifs et les types de données de référence?",
+              "answer": "- Les types de données primitifs (byte, short, int, long, float, double, char, boolean) stockent des valeurs réelles en mémoire (typiquement sur la stack) et ne sont pas des objets.\n- Les types de données de référence stockent des références/adresses d'objets situés dans la mémoire heap, pas les valeurs réelles."
+            },
+            {
+              "question": "Quelles sont les valeurs par défaut des différents types de données en Java?",
+              "answer": "- Types numériques (byte, short, int, long) : 0\n- Float/Double : 0.0\n- Char : '\\u0000' (caractère nul)\n- Boolean : false\n- Types de référence : null"
+            },
+            {
+              "question": "Quelle est la différence entre les variables locales et les variables d'instance concernant l'initialisation par défaut?",
+              "answer": "Les variables d'instance reçoivent des valeurs par défaut basées sur leur type de données. Les variables locales doivent être explicitement initialisées avant utilisation ; elles ne reçoivent pas de valeurs par défaut, et tenter d'utiliser une variable locale non initialisée entraîne une erreur de compilation."
+            },
+            {
+              "question": "Quel est le rôle du mot-clé final lorsqu'il est appliqué aux variables?",
+              "answer": "Lorsqu'il est appliqué à une variable, final en fait une constante qui ne peut pas être réassignée après l'initialisation. Pour les types primitifs, la valeur ne peut pas changer. Pour les types de référence, la référence ne peut pas changer, mais l'état interne de l'objet peut toujours être modifié."
+            }
+          ]
+        },
+        {
+          "category": "Programmation Orientée Objet",
+          "questions": [
+            {
+              "question": "Comment l'encapsulation aide-t-elle à créer un code maintenable?",
+              "answer": "L'encapsulation aide par :\n1. Masquer les détails d'implémentation et n'exposer que les fonctionnalités nécessaires\n2. Protéger l'intégrité des données grâce à un accès contrôlé via getters et setters\n3. Permettre des changements d'implémentation sans affecter le code client\n4. Activer la logique de validation lors de la modification de l'état de l'objet"
+            },
+            {
+              "question": "Quelle est la différence entre la surcharge de méthode et la redéfinition de méthode?",
+              "answer": "- Surcharge de Méthode : Plusieurs méthodes dans la même classe avec le même nom mais des paramètres différents (polymorphisme à la compilation)\n- Redéfinition de Méthode : La sous-classe fournit une implémentation spécifique d'une méthode déjà définie dans la classe parent (polymorphisme à l'exécution)"
+            },
+            {
+              "question": "Une classe peut-elle être à la fois abstraite et finale?",
+              "answer": "Non. Ces modificateurs se contredisent - les classes abstraites sont destinées à être étendues, tandis que les classes finales ne peuvent pas être étendues. Utiliser les deux ensemble créerait une classe qui ne peut ni être instanciée (car abstraite) ni étendue (car finale), la rendant inutilisable."
+            },
+            {
+              "question": "Quelle est la différence entre les mots-clés extends et implements?",
+              "answer": "'extends' est utilisé pour l'héritage de classe à classe (une classe héritant d'une superclasse), tandis que 'implements' est utilisé pour l'héritage de classe à interface (une classe implémentant une interface)."
+            },
+            {
+              "question": "Une interface peut-elle étendre une autre interface? Une classe peut-elle implémenter plusieurs interfaces?",
+              "answer": "Oui aux deux. Une interface peut étendre une ou plusieurs autres interfaces, et une classe peut implémenter plusieurs interfaces, permettant à Java de réaliser une forme d'héritage multiple pour le comportement."
+            }
+          ]
+        },
+        {
+          "category": "Gestion de la Mémoire",
+          "questions": [
+            {
+              "question": "Quelle est la différence entre la mémoire stack et heap en Java?",
+              "answer": "- Stack : Stocke les variables locales, les appels de méthode et les références. Elle est gérée automatiquement avec une approche LIFO (Last-In-First-Out) et est spécifique au thread.\n- Heap : Stocke les objets et les tableaux. Elle est partagée entre tous les threads, gérée par le garbage collector, et a un espace mémoire plus grand mais plus lent."
+            },
+            {
+              "question": "Comment fonctionne le garbage collection en Java?",
+              "answer": "Le garbage collection en Java récupère automatiquement la mémoire des objets qui ne sont plus accessibles. Le processus implique :\n1. Marking : Identifier quels objets sont encore utilisés\n2. Sweeping : Récupérer la mémoire des objets inutilisés\n3. Compacting : Réorganiser éventuellement la mémoire pour réduire la fragmentation\n\nLa JVM utilise différents algorithmes GC selon les besoins de l'application et la configuration de la JVM."
+            },
+            {
+              "question": "Pouvez-vous forcer le garbage collection en Java?",
+              "answer": "Vous pouvez suggérer le garbage collection en appelant `System.gc()` ou `Runtime.getRuntime().gc()`, mais il n'y a aucune garantie que la JVM l'exécutera réellement. La JVM décide en fin de compte quand exécuter le garbage collection en fonction de ses propres algorithmes et politiques de gestion de la mémoire."
+            },
+            {
+              "question": "Qu'est-ce qu'une fuite de mémoire en Java et comment peut-elle se produire?",
+              "answer": "Une fuite de mémoire en Java se produit lorsque des objets qui ne sont plus nécessaires sont toujours référencés, empêchant le garbage collection. Les causes courantes comprennent :\n1. Ressources non fermées (streams, connexions)\n2. Implémentation incorrecte de collections statiques\n3. Objets ajoutés à des collections de longue durée mais jamais supprimés\n4. Références d'objets non intentionnelles dans des caches sans politiques d'éviction appropriées\n5. Instances de classes internes conservant des références implicites aux instances de classes externes"
+            }
+          ]
+        },
+        {
+          "category": "Caractéristiques du Langage",
+          "questions": [
+            {
+              "question": "Quelle est la différence entre String, StringBuilder et StringBuffer?",
+              "answer": "- String : Immuable (ne peut pas être modifié après création), thread-safe\n- StringBuilder : Mutable, non thread-safe, meilleures performances dans des scénarios mono-thread\n- StringBuffer : Mutable, thread-safe (méthodes synchronisées), légèrement plus lent que StringBuilder"
+            },
+            {
+              "question": "Comment fonctionne le pool de strings en Java?",
+              "answer": "Le pool de strings est une zone mémoire spéciale dans le heap où Java stocke les littéraux de chaîne. Lors de la création d'une chaîne à l'aide de littéraux (`String s = \"hello\"`), Java vérifie si la chaîne existe déjà dans le pool. Si c'est le cas, il renvoie une référence à la chaîne existante; sinon, il crée une nouvelle chaîne et l'ajoute au pool. Ce mécanisme optimise l'utilisation de la mémoire en réutilisant les objets string."
+            },
+            {
+              "question": "Quel est le but du mot-clé this en Java?",
+              "answer": "Le mot-clé 'this' fait référence à l'instance courante de la classe et est utilisé pour :\n1. Distinguer entre les variables d'instance et les paramètres portant le même nom\n2. Passer l'objet courant comme argument à une autre méthode\n3. Appeler un autre constructeur de la même classe (chaînage de constructeurs)"
+            },
+            {
+              "question": "À quoi sert le mot-clé super?",
+              "answer": "Le mot-clé 'super' est utilisé pour :\n1. Accéder aux méthodes ou champs de la classe parent qui sont masqués par la classe enfant\n2. Appeler le constructeur de la classe parent depuis le constructeur de la classe enfant"
+            },
+            {
+              "question": "Que se passe-t-il si static est appliqué à une variable locale?",
+              "answer": "Cela entraîne une erreur de compilation. Le mot-clé static ne peut pas être appliqué aux variables locales, uniquement aux membres de classe (variables et méthodes) et aux blocs."
+            }
+          ]
+        },
+        {
+          "category": "Constructeurs et Initialisation",
+          "questions": [
+            {
+              "question": "Que se passe-t-il si vous ne définissez aucun constructeur dans une classe?",
+              "answer": "Java fournit automatiquement un constructeur par défaut sans argument qui initialise les variables d'instance à leurs valeurs par défaut. Ce constructeur implicite est perdu une fois que vous définissez tout autre constructeur."
+            },
+            {
+              "question": "Les constructeurs peuvent-ils être surchargés? Peuvent-ils être redéfinis?",
+              "answer": "Les constructeurs peuvent être surchargés (plusieurs constructeurs avec différents paramètres dans la même classe), mais ils ne peuvent pas être redéfinis dans les sous-classes car ils ne sont pas hérités."
+            },
+            {
+              "question": "Qu'est-ce que le chaînage de constructeurs et comment est-il implémenté?",
+              "answer": "Le chaînage de constructeurs est le processus d'appel d'un constructeur depuis un autre dans la même classe. Il est implémenté en utilisant `this()` avec les paramètres appropriés. Cela aide à éviter la duplication de code lorsque plusieurs constructeurs partagent une logique d'initialisation commune."
+            },
+            {
+              "question": "Quelle est la différence entre les blocs d'initialisation d'instance et statiques?",
+              "answer": "- Les blocs d'initialisation d'instance s'exécutent chaque fois qu'un objet est créé, avant le constructeur.\n- Les blocs d'initialisation statiques s'exécutent une seule fois lors du chargement de la classe, quel que soit le nombre d'objets créés."
+            }
+          ]
+        },
+        {
+          "category": "Packages et Contrôle d'Accès",
+          "questions": [
+            {
+              "question": "Que se passe-t-il si vous ne définissez pas explicitement un package pour une classe Java?",
+              "answer": "La classe est placée dans le package par défaut. Ceci n'est généralement pas recommandé pour le code de production car :\n1. Les classes dans le package par défaut ne peuvent pas être importées par des classes dans des packages nommés\n2. Cela augmente le risque de conflits de noms\n3. Cela rend la base de code plus difficile à organiser et à maintenir"
+            },
+            {
+              "question": "Quelle est la différence entre les modificateurs d'accès public, protected, default et private?",
+              "answer": "- public : Accessible de partout\n- protected : Accessible dans le même package et par les sous-classes\n- default (sans modificateur) : Accessible uniquement dans le même package\n- private : Accessible uniquement dans la même classe"
+            },
+            {
+              "question": "Une interface peut-elle contenir des variables? Quels sont leurs modificateurs implicites?",
+              "answer": "Oui, les interfaces peuvent contenir des variables. Par défaut, toutes les variables dans une interface sont implicitement `public static final` (constantes), même si ces modificateurs ne sont pas explicitement écrits."
+            }
+          ]
+        },
+        {
+          "category": "Collections et Generics",
+          "questions": [
+            {
+              "question": "Quelles sont les principales différences entre ArrayList et LinkedList?",
+              "answer": "- ArrayList : Implémenté comme un tableau redimensionnable, offrant un accès aléatoire rapide mais des insertions/suppressions plus lentes au milieu\n- LinkedList : Implémenté comme une liste doublement liée, offrant des insertions/suppressions rapides mais un accès aléatoire plus lent"
+            },
+            {
+              "question": "Comment fonctionne HashMap en interne?",
+              "answer": "HashMap fonctionne par :\n1. Utilisation d'une fonction de hachage pour calculer un index à partir du hashCode() de la clé\n2. Stockage des entrées (paires clé-valeur) dans un tableau de buckets/bins\n3. Gestion des collisions (lorsque différentes clés se hachent vers le même index) en utilisant soit des listes liées, soit des arbres équilibrés (à partir de Java 8)\n4. Maintien d'un facteur de charge pour déterminer quand redimensionner le tableau sous-jacent"
+            },
+            {
+              "question": "Que se passe-t-il si vous utilisez un objet mutable comme clé dans un HashMap?",
+              "answer": "Utiliser un objet mutable comme clé de HashMap est dangereux car :\n1. Si le hashCode de la clé change après l'insertion (en raison d'une mutation), la carte ne pourra pas localiser l'entrée\n2. Cela peut entraîner une perte apparente de données, des clés dupliquées ou un comportement incohérent\n3. Cela peut également causer des fuites de mémoire car l'entrée pourrait devenir irrécupérable"
+            },
+            {
+              "question": "Quelle est la différence entre les itérateurs fail-fast et fail-safe?",
+              "answer": "- Les itérateurs fail-fast (comme ceux dans ArrayList, HashMap) lancent ConcurrentModificationException si la collection est modifiée pendant l'itération\n- Les itérateurs fail-safe (comme ceux dans ConcurrentHashMap, CopyOnWriteArrayList) opèrent sur un clone de la collection et ne lancent pas d'exceptions lors de modification concurrente"
+            }
+          ]
+        },
+        {
+          "category": "Gestion des Exceptions",
+          "questions": [
+            {
+              "question": "Quelle est la différence entre les exceptions vérifiées et non vérifiées?",
+              "answer": "- Exceptions vérifiées : Étendent Exception (pas RuntimeException), doivent être déclarées dans la signature de la méthode ou traitées dans des blocs try-catch, représentent des conditions récupérables\n- Exceptions non vérifiées : Étendent RuntimeException, n'ont pas besoin d'être déclarées ou capturées, représentent généralement des erreurs de programmation"
+            },
+            {
+              "question": "Que se passe-t-il si une exception est lancée dans un bloc finally?",
+              "answer": "Si une exception est lancée dans un bloc finally, elle remplace toute exception lancée dans les blocs try ou catch correspondants. L'exception originale est perdue à moins d'être explicitement traitée dans le bloc finally."
+            },
+            {
+              "question": "Pouvez-vous avoir un bloc try sans bloc catch?",
+              "answer": "Oui, un bloc try peut exister sans bloc catch s'il a un bloc finally. Cette structure (try-finally sans catch) est utile lorsque vous voulez vous assurer que le code de nettoyage s'exécute indépendamment de la survenue d'une exception, mais que vous ne voulez pas gérer l'exception localement."
+            },
+            {
+              "question": "Quel est le but de l'instruction try-with-resources?",
+              "answer": "L'instruction try-with-resources ferme automatiquement les ressources qui implémentent les interfaces AutoCloseable ou Closeable, assurant une bonne gestion des ressources même lorsque des exceptions se produisent. Cela élimine le besoin de blocs finally explicites pour le nettoyage des ressources."
+            }
+          ]
+        },
+        {
+          "category": "Bases du Multithreading",
+          "questions": [
+            {
+              "question": "Quelle est la différence entre étendre Thread et implémenter Runnable?",
+              "answer": "- Étendre Thread : Crée une classe de thread spécialisée mais limite l'héritage puisque Java ne supporte pas l'héritage multiple\n- Implémenter Runnable : Sépare la tâche du mécanisme de thread, permettant à la même tâche d'être exécutée par plusieurs threads et permettant à la classe d'implémentation d'étendre une autre classe"
+            },
+            {
+              "question": "Quelle est la différence entre les méthodes start() et run()?",
+              "answer": "- Appeler `start()` crée un nouveau thread puis invoque la méthode `run()` dans ce nouveau thread\n- Appeler directement `run()` exécute la méthode dans le thread courant, sans créer de nouveau thread"
+            },
+            {
+              "question": "Qu'est-ce que la sécurité des threads et comment pouvez-vous l'atteindre?",
+              "answer": "La sécurité des threads signifie qu'un morceau de code fonctionne correctement lors d'une exécution simultanée par plusieurs threads. Les techniques pour atteindre la sécurité des threads incluent :\n1. Synchronisation (utilisant des méthodes/blocs synchronized)\n2. Utilisation de collections thread-safe (ConcurrentHashMap, etc.)\n3. Utilisation d'objets immuables\n4. Utilisation de classes atomiques (AtomicInteger, etc.)\n5. Utilisation de variables thread-local\n6. Utilisation de verrous explicites (ReentrantLock, etc.)"
+            }
+          ]
+        },
+        {
+          "category": "Modèles de Codage Courants",
+          "questions": [
+            {
+              "question": "Comment implémenteriez-vous un modèle Singleton en Java?",
+              "answer": "Un Singleton thread-safe avec initialisation paresseuse utilisant un verrouillage double-check :\n\n```java\npublic class Singleton {\n    private static volatile Singleton instance;\n    \n    private Singleton() {}\n    \n    public static Singleton getInstance() {\n        if (instance == null) {\n            synchronized (Singleton.class) {\n                if (instance == null) {\n                    instance = new Singleton();\n                }\n            }\n        }\n        return instance;\n    }\n}\n```"
+            },
+            {
+              "question": "Comment pouvez-vous créer une classe immuable en Java?",
+              "answer": "Pour créer une classe immuable :\n1. Déclarer la classe comme final pour empêcher l'héritage\n2. Rendre tous les champs privés et final\n3. Ne pas fournir de méthodes setter\n4. Si la classe contient des objets mutables, ne pas permettre l'accès direct à ceux-ci (retourner des copies défensives)\n5. Si nécessaire, implémenter un constructeur qui fait des copies défensives des paramètres d'entrée mutables"
+            },
+            {
+              "question": "Comment compareriez-vous deux objets en Java?",
+              "answer": "Pour une comparaison correcte des objets :\n1. Redéfinir la méthode `equals()` pour définir ce qui rend deux objets égaux\n2. Redéfinir également `hashCode()` pour maintenir le contrat que des objets égaux doivent avoir des codes de hachage égaux\n3. Envisager d'implémenter l'interface `Comparable` si un ordre naturel est nécessaire\n4. Pour une comparaison avancée, envisager d'utiliser des implémentations de `Comparator`"
+            },
+            {
+              "question": "Quelle est la différence entre la copie superficielle et la copie profonde?",
+              "answer": "- Copie superficielle : Crée un nouvel objet avec des copies des champs de premier niveau, mais les objets référencés sont partagés avec l'original\n- Copie profonde : Crée un nouvel objet et copie récursivement tous les objets référencés par l'original, résultant en une copie complètement indépendante"
+            }
+          ]
+        },
+        {
+          "category": "Gestion de la Mémoire et Architecture JVM",
+          "questions": [
+            {
+              "question": "Quelle est la différence entre un processus et un thread en Java?",
+              "answer": "En Java, un processus est une exécution de programme indépendante avec son propre espace mémoire et ses ressources, tandis qu'un thread est une unité d'exécution légère au sein d'un processus. Les threads au sein du même processus partagent l'espace mémoire et les ressources.\n\nDifférences clés :\n- Les processus ont une mémoire séparée ; les threads partagent la mémoire\n- La communication inter-processus est plus complexe que la communication inter-threads\n- La création de thread est plus rapide que la création de processus\n- Si un thread plante, il peut faire planter l'ensemble du processus"
+            },
+            {
+              "question": "Comment la JVM gère-t-elle la mémoire à travers différentes générations?",
+              "answer": "La JVM utilise une approche de garbage collection générationnelle :\n- Young Generation (Eden + espaces Survivor) : Où les nouveaux objets sont alloués. La plupart des objets meurent jeunes, rendant cette zone efficacement gérée par des cycles GC mineurs.\n- Old Generation : Les objets de longue durée qui survivent à plusieurs cycles GC y sont promus. Nettoyés par des événements GC majeurs.\n- Metaspace (a remplacé PermGen en Java 8+) : Stocke les métadonnées de classe, les données de méthode et autres éléments internes de la JVM.\n\nCette conception générationnelle optimise les performances en concentrant le garbage collection fréquent sur les zones à fort renouvellement d'objets tout en minimisant les perturbations des objets de longue durée."
+            }
+          ]
+        },
+        {
+          "category": "Approfondissement du Threading",
+          "questions": [
+            {
+              "question": "Qu'est-ce que la sécurité des threads et comment pouvez-vous l'atteindre?",
+              "answer": "La sécurité des threads signifie qu'un morceau de code fonctionne correctement lors d'une exécution simultanée par plusieurs threads. Les techniques pour atteindre la sécurité des threads incluent :\n1. Synchronisation (utilisant des méthodes/blocs synchronized)\n2. Utilisation de collections thread-safe (ConcurrentHashMap, etc.)\n3. Utilisation d'objets immuables\n4. Utilisation de classes atomiques (AtomicInteger, etc.)\n5. Utilisation de variables thread-local\n6. Utilisation de verrous explicites (ReentrantLock, etc.)"
+            },
+            {
+              "question": "Qu'est-ce que ThreadLocal et quand l'utiliseriez-vous?",
+              "answer": "ThreadLocal fournit des variables confinées au thread—chaque thread accédant à une variable ThreadLocal a sa propre copie initialisée indépendamment.\n\nUtilisations clés :\n- Stockage d'identité utilisateur/transactions dans les applications web\n- Générateurs de nombres aléatoires spécifiques au thread\n- Cache par thread pour éviter la synchronisation\n- Stockage de contexte qui suit un fil logique d'exécution\n\nImportant : Toujours nettoyer les variables ThreadLocal lorsque vous avez terminé (surtout dans les pools de threads) en appelant `remove()` pour éviter les fuites de mémoire."
+            },
+            {
+              "question": "Quelle est la différence entre volatile et synchronized?",
+              "answer": "Les deux aident à la sécurité des threads mais de différentes manières :\n- volatile assure la visibilité (les changements sont toujours lus/écrits depuis/vers la mémoire principale) mais ne fournit pas d'atomicité pour les opérations composées\n- synchronized fournit à la fois la visibilité et l'atomicité grâce à des verrous exclusifs\n\nUtilisez volatile pour les drapeaux simples ou les valeurs d'état où vous avez besoin de visibilité mais pas d'exclusion mutuelle. Utilisez synchronized lorsque plusieurs opérations doivent être atomiques."
+            }
+          ]
+        },
+        {
+          "category": "Sujets Avancés du Framework Collections",
+          "questions": [
+            {
+              "question": "Quelle est la différence entre ArrayList et LinkedList?",
+              "answer": "- ArrayList utilise un tableau dynamique - accès aléatoire O(1), insertions/suppressions au milieu O(n)\n- LinkedList utilise une liste doublement liée - insertions/suppressions à des positions connues O(1), accès aléatoire O(n)\n- ArrayList est plus efficace en mémoire tandis que LinkedList a une surcharge pour les pointeurs de nœuds\n- ArrayList est préféré pour les opérations d'accès fréquentes, LinkedList pour les insertions/suppressions fréquentes"
+            },
+            {
+              "question": "En quoi les collections concurrentes diffèrent-elles des collections synchronisées?",
+              "answer": "- Collections synchronisées (comme celles créées avec Collections.synchronizedList()) :\n  - Utilisent un verrouillage complet de la collection, ne permettant qu'à un seul thread d'accéder à la fois\n  - Créent des goulots d'étranglement de contention sous forte charge\n  - Lancent ConcurrentModificationException pendant l'itération si modifiées\n- Collections concurrentes (comme ConcurrentHashMap, CopyOnWriteArrayList) :\n  - Utilisent un verrouillage à grain fin ou des algorithmes sans verrouillage\n  - Permettent à plusieurs threads d'accéder simultanément à différentes parties\n  - Supportent l'accès concurrent pendant l'itération (fail-safe)\n  - Offrent généralement un débit plus élevé sous contention"
+            },
+            {
+              "question": "Que se passe-t-il si vous modifiez une collection pendant que vous itérez dessus?",
+              "answer": "Pour la plupart des collections standard (ArrayList, HashMap, etc.), vous obtiendrez une ConcurrentModificationException car elles utilisent des itérateurs fail-fast qui détectent les changements structurels.\n\nLes solutions incluent :\n1. Utiliser CopyOnWriteArrayList ou des collections concurrentes similaires\n2. Créer une copie de la collection avant l'itération\n3. Utiliser la méthode remove() de l'Iterator au lieu de celle de la collection\n4. Utiliser les méthodes de l'API Stream comme filter() au lieu de la suppression manuelle"
+            }
+          ]
+        },
+        {
+          "category": "Programmation Fonctionnelle et Java 8+",
+          "questions": [
+            {
+              "question": "Comment fonctionne l'évaluation paresseuse de l'API Stream?",
+              "answer": "Les opérations de Stream consistent en :\n1. Opérations intermédiaires (map, filter, etc.) qui transforment le stream mais ne traitent pas les éléments\n2. Opérations terminales (collect, reduce, etc.) qui déclenchent le traitement réel\n\nAvantages de l'évaluation paresseuse :\n- Les opérations sont fusionnées et optimisées en un seul passage\n- Les éléments sont traités un par un à travers tout le pipeline\n- Les opérations à court-circuit peuvent arrêter le traitement tôt\n- Performance améliorée en évitant les calculs inutiles\n\nPar exemple, dans `stream.filter().map().limit(5)`, si seulement 5 éléments sont nécessaires, le stream ne traitera pas tous les éléments."
+            },
+            {
+              "question": "Quelle est la différence entre Function, Consumer, Supplier et Predicate?",
+              "answer": "Ce sont des interfaces fonctionnelles clés :\n- Function<T,R> : Prend un T et renvoie un R (`R apply(T t)`) - utilisé pour les transformations\n- Consumer<T> : Prend un T et ne renvoie rien (`void accept(T t)`) - utilisé pour les effets de bord\n- Supplier<T> : Ne prend rien et renvoie un T (`T get()`) - utilisé pour la génération paresseuse\n- Predicate<T> : Prend un T et renvoie un booléen (`boolean test(T t)`) - utilisé pour le filtrage"
+            }
+          ]
+        },
+        {
+          "category": "Système de Types Avancé et Generics",
+          "questions": [
+            {
+              "question": "Comment fonctionnent les wildcards dans les types génériques et quand devriez-vous les utiliser?",
+              "answer": "Les wildcards dans les generics se présentent sous trois formes :\n1. Wildcard non borné (`List<?>`) : Utilisez quand le type réel n'a pas d'importance, seules les méthodes d'objet générales seront appelées\n2. Wildcard borné supérieur (`List<? extends Number>`) : Utilisez quand vous devez lire des éléments d'une structure mais pas la modifier\n3. Wildcard borné inférieur (`List<? super Integer>`) : Utilisez quand vous devez ajouter des éléments à une structure\n\nRappelez-vous le principe PECS (Producer-Extends, Consumer-Super) :\n- Utilisez \"extends\" quand vous voulez obtenir des valeurs (producteur)\n- Utilisez \"super\" quand vous voulez mettre des valeurs (consommateur)"
+            },
+            {
+              "question": "Qu'est-ce que l'effacement de type et comment affecte-t-il les generics?",
+              "answer": "L'effacement de type signifie que les informations de type générique sont supprimées pendant la compilation. À l'exécution :\n- `List<String>` et `List<Integer>` deviennent tous deux simplement `List`\n- Les paramètres de type sont remplacés par leurs bornes ou Object si non bornés\n- Les cast nécessaires sont insérés par le compilateur\n\nImplications :\n- Impossible de vérifier si un objet est `List<String>` à l'exécution\n- Impossible de créer des tableaux de types génériques\n- Impossible d'utiliser des types primitifs comme paramètres de type\n- Impossible de surcharger des méthodes qui ont la même signature après effacement"
+            }
+          ]
+        },
+        {
+          "category": "Reflection et Java Avancé",
+          "questions": [
+            {
+              "question": "Qu'est-ce que la reflection et quand l'utiliseriez-vous?",
+              "answer": "La reflection permet l'inspection et la manipulation des classes, interfaces, méthodes et champs à l'exécution.\n\nUtilisations courantes :\n- Développement de frameworks (Spring, Hibernate, Jackson)\n- Outils de test et frameworks de mock\n- Traitement d'annotations à l'exécution\n- Création de proxy dynamique\n- Accès aux champs/méthodes privés dans les tests\n\nBien que puissante, la reflection présente des inconvénients :\n- Surcharge de performance\n- Perte de vérification de type à la compilation\n- Restrictions de sécurité lors de l'exécution avec SecurityManager\n- Risque de violation de l'encapsulation"
+            },
+            {
+              "question": "Comment fonctionnent les proxies dynamiques en Java?",
+              "answer": "Les proxies dynamiques créent des implémentations d'interfaces à l'exécution en utilisant la méthode `Proxy.newProxyInstance()`.\n\nIls sont utilisés pour :\n- Programmation orientée aspect\n- Frameworks ORM\n- Couches d'invocation de service\n- Appels de procédure distante\n- Décoration d'interfaces avec des préoccupations transversales\n\nLes composants clés sont :\n1. L'interface(s) à implémenter\n2. Un InvocationHandler qui intercepte les appels de méthode"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
