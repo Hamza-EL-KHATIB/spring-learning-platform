@@ -48,6 +48,7 @@ const HomePage = () => {
         java: {
             title: "Java Core",
             items: [
+                { title: "Java Fundamentals", path: "/java/fundamentals", icon: BookOpen, description: "Fundamentals of Java" },
                 { title: "Collections Framework", path: "/java/collections", icon: Folder, description: "Lists, Sets, Maps, and more" },
                 { title: "Concurrency & Multithreading", path: "/java/concurrency", icon: Activity, description: "Threads, executors, synchronization" },
                 { title: "Definitions", path: "/java/definitions", icon: BookOpen, description: "Core Java concepts and terminology" },

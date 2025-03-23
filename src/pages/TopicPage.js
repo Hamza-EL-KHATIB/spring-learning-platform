@@ -7,9 +7,7 @@ import collectionsJson from '../data/java/collections.json';
 import concurrencyJson from '../data/java/concurrency.json';
 import exceptionsJson from '../data/java/exceptions.json';
 import featuresJson from '../data/java/features.json';
-import gcJson from '../data/java/gc.json';
-import definitionsJson from '../data/java/definitions.json';
-import internalsJson from '../data/java/internals.json';
+import javaFundamentalsJson from '../data/java/java-fundamentals.json';
 
 // Spring imports
 import bootJson from '../data/spring/boot.json';
@@ -28,16 +26,13 @@ import redisJson from '../data/databases/redis.json';
 // Architecture imports
 import designPatternsJson from '../data/architecture/design-patterns.json';
 import solidJson from '../data/architecture/solid.json';
-//import bestPracticesJson from '../data/architecture/best-practices.json';
-//import performanceJson from '../data/architecture/performance.json';
 
 // DevOps imports
 import gitJson from '../data/devops/git.json';
-//import cicdJson from '../data/devops/cicd.json';
-//import containersJson from '../data/devops/containers.json';
 
 // Scrum import
 import scrumJson from '../data/scrum/scrum.json';
+import javaFundamentalsPage from "./topics/java/JavaFundamentalsPage";
 
 const jsonData = {
     java: {
@@ -45,9 +40,7 @@ const jsonData = {
         concurrency: concurrencyJson,
         exceptions: exceptionsJson,
         features: featuresJson,
-        gc: gcJson,
-        definitions: definitionsJson,
-        internals: internalsJson
+        fundamentals: javaFundamentalsJson,
     },
     spring: {
         boot: bootJson,
