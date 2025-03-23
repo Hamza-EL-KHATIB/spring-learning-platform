@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Book, Code, Database, Server, Layout, Box, Cpu, MemoryStick, Clock, GitBranch } from 'lucide-react';
+import React, {useState} from 'react';
+import {Book, Code, Database, Server, Layout, Box, Cpu, MemoryStick, Clock, GitBranch} from 'lucide-react';
 import javaFundamentalsJson from '../../../data/java/java-fundamentals.json';
 import CodeBlock from '../../../components/CodeBlock';
 
@@ -9,25 +9,27 @@ const JavaFundamentalsPage = () => {
 
     // Icons mapping for sections
     const sectionIcons = {
-        'Core Concepts': <Cpu className="w-5 h-5" />,
-        'Data Types and Variables': <Database className="w-5 h-5" />,
-        'Object-Oriented Programming Concepts': <Box className="w-5 h-5" />,
-        'Memory Management': <MemoryStick className="w-5 h-5" />,
-        'Constructors': <Layout className="w-5 h-5" />,
-        'Keywords and Modifiers': <Code className="w-5 h-5" />,
-        'Classes and Interfaces': <Server className="w-5 h-5" />,
-        'String Handling': <Book className="w-5 h-5" />,
-        'Packages and Access Control': <GitBranch className="w-5 h-5" />,
-        'Best Practices': <Clock className="w-5 h-5" />,
-        'Interview Focus Areas': <Box className="w-5 h-5" />,
-        'Interview FAQs': <Book className="w-5 h-5" />
+        'Core Concepts': <Cpu className="w-5 h-5"/>,
+        'Data Types and Variables': <Database className="w-5 h-5"/>,
+        'Object-Oriented Programming Concepts': <Box className="w-5 h-5"/>,
+        'Memory Management': <MemoryStick className="w-5 h-5"/>,
+        'Constructors': <Layout className="w-5 h-5"/>,
+        'Keywords and Modifiers': <Code className="w-5 h-5"/>,
+        'Classes and Interfaces': <Server className="w-5 h-5"/>,
+        'String Handling': <Book className="w-5 h-5"/>,
+        'Packages and Access Control': <GitBranch className="w-5 h-5"/>,
+        'Best Practices': <Clock className="w-5 h-5"/>,
+        'Interview Focus Areas': <Box className="w-5 h-5"/>,
+        'Interview FAQs': <Book className="w-5 h-5"/>
     };
 
     // TabNavigation component
     const TabNavigation = () => (
         <div className="relative overflow-x-auto mb-8">
-            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
+            <div
+                className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
+            <div
+                className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
 
             <div className="flex space-x-2 py-2 px-8 overflow-x-auto custom-scrollbar">
                 {javaFundamentalsJson.sections.map((section, index) => (
@@ -40,7 +42,7 @@ const JavaFundamentalsPage = () => {
                                 : 'bg-gray-800 text-gray-300 hover:bg-gray-700 shadow-gray-900/50'
                         }`}
                     >
-                        {sectionIcons[section.title] || <Box className="w-5 h-5" />}
+                        {sectionIcons[section.title] || <Box className="w-5 h-5"/>}
                         {section.title}
                     </button>
                 ))}
@@ -69,7 +71,7 @@ const JavaFundamentalsPage = () => {
                     <Card
                         key={idx}
                         title={subsection.title}
-                        icon={<Cpu className="w-5 h-5 text-cyan-400" />}
+                        icon={<Cpu className="w-5 h-5 text-cyan-400"/>}
                         className="mb-6"
                     >
                         {/* Always render content if available */}
@@ -106,9 +108,9 @@ const JavaFundamentalsPage = () => {
                             <p className="text-gray-300 mb-3">{component.description}</p>
 
                             {/* Component properties - use short circuit operators for minimal rendering logic */}
-                            {component.tools?.length && <List title="Tools" items={component.tools} />}
-                            {component.includes?.length && <List title="Includes" items={component.includes} />}
-                            {component.features?.length && <List title="Features" items={component.features} />}
+                            {component.tools?.length && <List title="Tools" items={component.tools}/>}
+                            {component.includes?.length && <List title="Includes" items={component.includes}/>}
+                            {component.features?.length && <List title="Features" items={component.features}/>}
 
                             {/* Optimize complex renderings with conditional fragments */}
                             {component.stages?.length && (
@@ -169,7 +171,8 @@ const JavaFundamentalsPage = () => {
                 <div className="space-y-2">
                     {steps.map(({step, description}, i) => (
                         <div key={i} className="flex gap-3 items-center">
-                            <div className="flex-none w-8 h-8 flex items-center justify-center bg-cyan-500/20 text-cyan-400 rounded-full font-medium">
+                            <div
+                                className="flex-none w-8 h-8 flex items-center justify-center bg-cyan-500/20 text-cyan-400 rounded-full font-medium">
                                 {step}
                             </div>
                             <p className="text-gray-300">{description}</p>
@@ -183,7 +186,7 @@ const JavaFundamentalsPage = () => {
     const renderMainMethod = ({code, keywords}) => (
         <>
             {/* Use logical AND for conditional rendering - more efficient than ternary */}
-            {code && <CodeExample code={code} title="Main Method" />}
+            {code && <CodeExample code={code} title="Main Method"/>}
 
             {keywords?.length && (
                 <div className="mt-4">
@@ -266,7 +269,7 @@ const JavaFundamentalsPage = () => {
                         <div key={i} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
                             <h4 className="text-md font-medium text-cyan-400 mb-2">{conv.type}</h4>
                             <p className="text-gray-300 mb-3">{conv.description}</p>
-                            {conv.example && <CodeBlock code={conv.example} />}
+                            {conv.example && <CodeBlock code={conv.example}/>}
                         </div>
                     ))}
                 </div>
@@ -293,7 +296,7 @@ const JavaFundamentalsPage = () => {
                     <Card
                         key={idx}
                         title={subsection.title}
-                        icon={<Database className="w-5 h-5 text-cyan-400" />}
+                        icon={<Database className="w-5 h-5 text-cyan-400"/>}
                         className="mb-6"
                     >
                         {/* Always render content if available */}
@@ -332,7 +335,7 @@ const JavaFundamentalsPage = () => {
                     <Card
                         key={idx}
                         title={subsection.title}
-                        icon={<Box className="w-5 h-5 text-cyan-400" />}
+                        icon={<Box className="w-5 h-5 text-cyan-400"/>}
                         className="mb-6"
                     >
                         {subsection.content && <p className="text-gray-300 mb-4">{subsection.content}</p>}
@@ -360,7 +363,7 @@ const JavaFundamentalsPage = () => {
                         </div>
                     ))}
                 </div>
-                {subsection.example && <CodeExample code={subsection.example} title="Example" />}
+                {subsection.example && <CodeExample code={subsection.example} title="Example"/>}
             </>
         );
     };
@@ -424,7 +427,7 @@ const JavaFundamentalsPage = () => {
                         </div>
                     )}
 
-                    {pillar.example && <CodeExample code={pillar.example} title="Example" />}
+                    {pillar.example && <CodeExample code={pillar.example} title="Example"/>}
                 </>
             );
         }
@@ -449,7 +452,7 @@ const JavaFundamentalsPage = () => {
                     </div>
                 )}
 
-                {pillar.example && <CodeExample code={pillar.example} title="Example" />}
+                {pillar.example && <CodeExample code={pillar.example} title="Example"/>}
 
                 {pillar.comparison && (
                     <div className="mt-4 overflow-x-auto">
@@ -458,8 +461,12 @@ const JavaFundamentalsPage = () => {
                             <thead>
                             <tr className="bg-gray-800">
                                 <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Aspect</th>
-                                <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Method Overloading</th>
-                                <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Method Overriding</th>
+                                <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Method
+                                    Overloading
+                                </th>
+                                <th className="border border-gray-700 px-4 py-2 text-left text-gray-300">Method
+                                    Overriding
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -601,7 +608,7 @@ const JavaFundamentalsPage = () => {
                     <Card
                         key={idx}
                         title={subsection.title}
-                        icon={<MemoryStick className="w-5 h-5 text-cyan-400" />}
+                        icon={<MemoryStick className="w-5 h-5 text-cyan-400"/>}
                         className="mb-6"
                     >
                         {/* Content is rendered directly without conditional */}
@@ -621,7 +628,8 @@ const JavaFundamentalsPage = () => {
                 <div className="space-y-6 mt-4">
                     {memory.map(({type, characteristics, example}, i) => (
                         <div key={i} className="bg-gray-800/50 rounded-lg overflow-hidden">
-                            <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 px-5 py-3 border-b border-gray-700">
+                            <div
+                                className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 px-5 py-3 border-b border-gray-700">
                                 <h4 className="text-lg font-medium text-cyan-400">{type}</h4>
                             </div>
                             <div className="p-5">
@@ -635,7 +643,7 @@ const JavaFundamentalsPage = () => {
                                         </ul>
                                     </div>
                                 )}
-                                {example && <CodeExample code={example} title="Example" />}
+                                {example && <CodeExample code={example} title="Example"/>}
                             </div>
                         </div>
                     ))}
@@ -704,7 +712,8 @@ const JavaFundamentalsPage = () => {
                         {process.map(({step, description}, i) => (
                             <div key={i} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
                                 <div className="flex items-center gap-2 mb-2">
-                                    <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-medium">
+                                    <div
+                                        className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-medium">
                                         {i + 1}
                                     </div>
                                     <h5 className="text-cyan-400 font-medium">{step}</h5>
@@ -766,7 +775,7 @@ const JavaFundamentalsPage = () => {
                     <Card
                         key={idx}
                         title={subsection.title}
-                        icon={<Layout className="w-5 h-5 text-cyan-400" />}
+                        icon={<Layout className="w-5 h-5 text-cyan-400"/>}
                         className="mb-6"
                     >
                         {/* Content text */}
@@ -796,12 +805,12 @@ const JavaFundamentalsPage = () => {
             )}
 
             {/* Code example */}
-            {example && <CodeExample code={example} title="Constructor Examples" />}
+            {example && <CodeExample code={example} title="Constructor Examples"/>}
         </>
     );
 
     const renderConstructorChaining = ({example}) => (
-        example && <CodeExample code={example} title="Constructor Chaining Example" />
+        example && <CodeExample code={example} title="Constructor Chaining Example"/>
     );
 
     // Render Keywords and Modifiers section
@@ -822,7 +831,7 @@ const JavaFundamentalsPage = () => {
                     </div>
                 )}
 
-                {example && <CodeExample code={example} title={`${title} Example`} />}
+                {example && <CodeExample code={example} title={`${title} Example`}/>}
             </>
         );
 
@@ -842,7 +851,7 @@ const JavaFundamentalsPage = () => {
                     </div>
                 )}
 
-                {example && <CodeExample code={example} title={`${title} Example`} />}
+                {example && <CodeExample code={example} title={`${title} Example`}/>}
             </>
         );
 
@@ -860,7 +869,7 @@ const JavaFundamentalsPage = () => {
                     <Card
                         key={i}
                         title={subsection.title}
-                        icon={<Code className="w-5 h-5 text-cyan-400" />}
+                        icon={<Code className="w-5 h-5 text-cyan-400"/>}
                         className="mb-6"
                     >
                         {renderers[subsection.title]?.(subsection)}
@@ -889,7 +898,7 @@ const JavaFundamentalsPage = () => {
                     <Card
                         key={i}
                         title={subsection.title}
-                        icon={<Server className="w-5 h-5 text-cyan-400" />}
+                        icon={<Server className="w-5 h-5 text-cyan-400"/>}
                         className="mb-6"
                     >
                         {renderers.get(subsection.title)?.(subsection)}
@@ -915,7 +924,7 @@ const JavaFundamentalsPage = () => {
                 </div>
             )}
 
-            {example && <CodeExample code={example} title="Class Types Examples" />}
+            {example && <CodeExample code={example} title="Class Types Examples"/>}
         </>
     );
 
@@ -931,14 +940,14 @@ const JavaFundamentalsPage = () => {
                 </div>
             )}
 
-            {example && <CodeExample code={example} title="Interface Example" />}
+            {example && <CodeExample code={example} title="Interface Example"/>}
         </>
     );
 
     const renderEnum = ({content, example}) => (
         <>
             {content && <p className="text-gray-300 mb-4">{content}</p>}
-            {example && <CodeExample code={example} title="Enum Example" />}
+            {example && <CodeExample code={example} title="Enum Example"/>}
         </>
     );
 
@@ -957,7 +966,7 @@ const JavaFundamentalsPage = () => {
                 </div>
             )}
 
-            {example && <CodeExample code={example} title="Enum Methods Example" />}
+            {example && <CodeExample code={example} title="Enum Methods Example"/>}
         </>
     );
 
@@ -978,7 +987,7 @@ const JavaFundamentalsPage = () => {
                     <Card
                         key={i}
                         title={subsection.title}
-                        icon={<Book className="w-5 h-5 text-cyan-400" />}
+                        icon={<Book className="w-5 h-5 text-cyan-400"/>}
                         className="mb-6"
                     >
                         {renderers.get(subsection.title)?.(subsection)}
@@ -991,7 +1000,7 @@ const JavaFundamentalsPage = () => {
     const renderBasicExample = ({content, example}) => (
         <>
             {content && <p className="text-gray-300 mb-4">{content}</p>}
-            {example && <CodeExample code={example} title="Example" />}
+            {example && <CodeExample code={example} title="Example"/>}
         </>
     );
 
@@ -1034,7 +1043,7 @@ const JavaFundamentalsPage = () => {
                 </div>
             )}
 
-            {example && <CodeExample code={example} title="Example" />}
+            {example && <CodeExample code={example} title="Example"/>}
         </>
     );
 
@@ -1056,7 +1065,7 @@ const JavaFundamentalsPage = () => {
                     <Card
                         key={i}
                         title={subsection.title}
-                        icon={<GitBranch className="w-5 h-5 text-cyan-400" />}
+                        icon={<GitBranch className="w-5 h-5 text-cyan-400"/>}
                         className="mb-6"
                     >
                         {renderers.get(subsection.title)?.(subsection)}
@@ -1069,7 +1078,7 @@ const JavaFundamentalsPage = () => {
     const renderSimpleExample = ({content, example}) => (
         <>
             {content && <p className="text-gray-300 mb-4">{content}</p>}
-            {example && <CodeExample code={example} title="Example" />}
+            {example && <CodeExample code={example} title="Example"/>}
         </>
     );
 
@@ -1152,7 +1161,7 @@ const JavaFundamentalsPage = () => {
                         <Card
                             key={i}
                             title={category}
-                            icon={<Clock className="w-5 h-5 text-cyan-400" />}
+                            icon={<Clock className="w-5 h-5 text-cyan-400"/>}
                             className="mb-4"
                         >
                             {/* Short-circuit conditional rendering for performance */}
@@ -1197,125 +1206,389 @@ const JavaFundamentalsPage = () => {
         if (!section?.categories?.length) return null;
 
         return (
-            <div className="space-y-6">
+            <div className="space-y-8">
                 {section.description && (
-                    <div className="bg-gray-800/70 rounded-lg p-4 border-l-4 border-cyan-500">
+                    <div
+                        className="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-lg p-6 border border-cyan-500/20 shadow-lg">
+                        <h2 className="text-xl font-bold text-white mb-3">Interview Roadmap 🗺️</h2>
                         <p className="text-gray-300">{section.description}</p>
                     </div>
                 )}
 
-                <FAQContent categories={section.categories} />
+                <EnhancedFAQExperience categories={section.categories}/>
             </div>
         );
     };
 
-    const FAQContent = React.memo(({ categories }) => {
+    const EnhancedFAQExperience = React.memo(({categories}) => {
         const [searchText, setSearchText] = React.useState('');
+        const [activeCategory, setActiveCategory] = React.useState(0);
         const [expandedId, setExpandedId] = React.useState(null);
 
-        // Direct search filter skips unnecessary iterations and avoids regex overhead
+        // Fast search filter
         const searchFilter = React.useCallback((q, a) => {
             if (!searchText) return true;
             const text = searchText.toLowerCase();
             return q.toLowerCase().includes(text) || a.toLowerCase().includes(text);
         }, [searchText]);
 
-        // Single toggle handler for all questions - O(1) operation
+        // Toggle question expansion
         const toggleQuestion = React.useCallback(id => {
             setExpandedId(current => current === id ? null : id);
         }, []);
 
+        // Category icons to make navigation more visual and intuitive
+        const categoryIcons = ["💡", "🧠", "🔑", "⚡", "📦", "🔮", "🛠️", "🔄", "🏗️", "📝"];
+
+        // Filter all questions across categories for search results view
+        const hasSearchResults = categories.some(c =>
+            c.questions.some(q => searchFilter(q.question, q.answer))
+        );
+
         return (
             <>
-                {/* Optimized search input */}
-                <div className="relative mb-6">
-                    <input
-                        type="text"
-                        placeholder="Search FAQs..."
-                        value={searchText}
-                        onChange={e => setSearchText(e.target.value)}
-                        className="w-full px-4 py-3 pl-10 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-cyan-500"
-                    />
-                    {/* Search icon - static to avoid re-renders */}
-                    <svg className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-
-                    {searchText && (
-                        <button
-                            className="absolute right-3 top-3.5 text-gray-400 hover:text-white"
-                            onClick={() => setSearchText('')}
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
-                        </button>
-                    )}
+                {/* Engaging search bar */}
+                <div className="relative mb-8">
+                    <div
+                        className="flex items-center bg-gray-800/70 rounded-full border border-gray-700 focus-within:border-cyan-500 transition-all shadow-md overflow-hidden">
+                        <div className="pl-5 text-xl">🔍</div>
+                        <input
+                            type="text"
+                            placeholder="What Java concept are you curious about?"
+                            value={searchText}
+                            onChange={e => setSearchText(e.target.value)}
+                            className="w-full px-4 py-3 bg-transparent text-white focus:outline-none placeholder-gray-400"
+                        />
+                        {searchText && (
+                            <button
+                                className="pr-5 text-gray-400 hover:text-white transition-colors"
+                                onClick={() => setSearchText('')}
+                            >
+                                ✕
+                            </button>
+                        )}
+                    </div>
                 </div>
 
-                {/* Optimized category rendering */}
-                {categories.map((category, i) => {
-                    // Filter questions once per category render - exact match to search text
-                    const filteredQuestions = searchText
-                        ? category.questions.filter(q => searchFilter(q.question, q.answer))
-                        : category.questions;
+                {!searchText ? (
+                    // Standard category view when not searching
+                    <>
+                        {/* Visual category tabs */}
+                        {!searchText && (
+                            <CategoryTabs
+                                categories={categories}
+                                activeCategory={activeCategory}
+                                setActiveCategory={setActiveCategory}
+                                categoryIcons={categoryIcons}
+                            />
+                        )}
 
-                    // Skip rendering empty categories after filtering
-                    if (filteredQuestions.length === 0) return null;
+                        {/* Questions for the active category */}
+                        <div className="space-y-4">
+                            {categories[activeCategory].questions.map((qa, j) => {
+                                const questionId = `q-${activeCategory}-${j}`;
+                                const isExpanded = expandedId === questionId;
 
-                    return (
-                        <div key={i} className="mb-8">
-                            <h3 className="text-lg font-semibold text-white bg-gray-800/80 py-3 px-4 rounded-lg mb-4 border-l-4 border-cyan-500">
-                                {category.category}
+                                return (
+                                    <div
+                                        key={j}
+                                        className={`bg-gray-800/60 rounded-xl overflow-hidden transition-all duration-300 border border-gray-700/50 ${
+                                            isExpanded ? 'shadow-lg border-cyan-500/30' : 'hover:border-gray-600'
+                                        }`}
+                                    >
+                                        <button
+                                            onClick={() => toggleQuestion(questionId)}
+                                            className="w-full text-left p-5 flex justify-between items-start"
+                                        >
+                                            <h4 className="text-md font-medium text-cyan-300 pr-6">{qa.question}</h4>
+                                            <span
+                                                className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all ${
+                                                    isExpanded ? 'bg-cyan-500 text-white' : 'bg-gray-700 text-gray-300'
+                                                }`}>
+                                            {isExpanded ? "−" : "+"}
+                                        </span>
+                                        </button>
+
+                                        {isExpanded && (
+                                            <div className="p-5 pt-1 border-t border-gray-700/30 bg-gray-800/80">
+                                                <p className="text-gray-300 whitespace-pre-line leading-relaxed">{qa.answer}</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </>
+                ) : (
+                    // Search results view
+                    <>
+                        <div className="mb-4 px-1">
+                            <h3 className="text-lg font-medium text-white">
+                                {hasSearchResults ? 'Search Results' : 'No results found'}
                             </h3>
+                        </div>
 
-                            <div className="space-y-3">
-                                {filteredQuestions.map((qa, j) => {
-                                    const questionId = `q-${i}-${j}`;
-                                    const isExpanded = expandedId === questionId;
+                        {hasSearchResults ? (
+                            <div className="space-y-6">
+                                {categories.map((category, i) => {
+                                    const filteredQuestions = category.questions.filter(q =>
+                                        searchFilter(q.question, q.answer)
+                                    );
+
+                                    if (filteredQuestions.length === 0) return null;
 
                                     return (
-                                        <div key={j} className="bg-gray-800/50 rounded-lg overflow-hidden">
-                                            <button
-                                                onClick={() => toggleQuestion(questionId)}
-                                                className={`w-full text-left p-4 flex justify-between items-center transition-colors ${
-                                                    isExpanded ? 'bg-cyan-900/30' : 'hover:bg-gray-700/50'
-                                                }`}
-                                            >
-                                                <h4 className="text-md font-medium text-cyan-300 pr-6">{qa.question}</h4>
-                                                <span className="flex-shrink-0 text-gray-400">
-                                                {isExpanded ? "−" : "+"}
-                                            </span>
-                                            </button>
+                                        <div key={i} className="space-y-3">
+                                            <div className="flex items-center mb-2">
+                                                <span
+                                                    className="text-xl mr-2">{categoryIcons[i % categoryIcons.length]}</span>
+                                                <h3 className="text-md font-medium text-cyan-300">{category.category}</h3>
+                                            </div>
 
-                                            {isExpanded && (
-                                                <div className="p-4 pt-0 border-t border-gray-700/50">
-                                                    <p className="text-gray-300 whitespace-pre-line mt-3">{qa.answer}</p>
-                                                </div>
-                                            )}
+                                            {filteredQuestions.map((qa, j) => {
+                                                const questionId = `sq-${i}-${j}`;
+                                                const isExpanded = expandedId === questionId;
+
+                                                return (
+                                                    <div
+                                                        key={j}
+                                                        className={`bg-gray-800/60 rounded-xl overflow-hidden transition-all border border-gray-700/50 ${
+                                                            isExpanded ? 'shadow-lg border-cyan-500/30' : 'hover:border-gray-600'
+                                                        }`}
+                                                    >
+                                                        <button
+                                                            onClick={() => toggleQuestion(questionId)}
+                                                            className="w-full text-left p-4 flex justify-between items-start"
+                                                        >
+                                                            <h4 className="text-md font-medium text-cyan-300 pr-6">
+                                                                {highlightSearchTerm(qa.question, searchText)}
+                                                            </h4>
+                                                            <span
+                                                                className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center ${
+                                                                    isExpanded ? 'bg-cyan-500 text-white' : 'bg-gray-700 text-gray-300'
+                                                                }`}>
+                                                            {isExpanded ? "−" : "+"}
+                                                        </span>
+                                                        </button>
+
+                                                        {isExpanded && (
+                                                            <div
+                                                                className="p-5 pt-1 border-t border-gray-700/30 bg-gray-800/80">
+                                                                <p className="text-gray-300 whitespace-pre-line leading-relaxed">
+                                                                    {highlightSearchTerm(qa.answer, searchText)}
+                                                                </p>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                );
+                                            })}
                                         </div>
                                     );
                                 })}
                             </div>
-                        </div>
-                    );
-                })}
-
-                {/* No results message */}
-                {searchText && !categories.some(c =>
-                    c.questions.some(q => searchFilter(q.question, q.answer))
-                ) && (
-                    <div className="text-center py-8">
-                        <p className="text-gray-400">No matching questions found. Try a different search term.</p>
-                    </div>
+                        ) : (
+                            <div className="bg-gray-800/40 rounded-xl p-8 text-center border border-gray-700/50">
+                                <span className="text-4xl mb-4 block">🔍</span>
+                                <p className="text-gray-300 mb-2">No matching questions found</p>
+                                <p className="text-gray-400 text-sm">Try different keywords or browse by category</p>
+                            </div>
+                        )}
+                    </>
                 )}
             </>
         );
     });
 
-    FAQContent.displayName = 'FAQContent';
+    const highlightSearchTerm = (text, searchTerm) => {
+        if (!searchTerm) return text;
+
+        const parts = text.split(new RegExp(`(${searchTerm})`, 'gi'));
+        return (
+            <>
+                {parts.map((part, i) =>
+                    part.toLowerCase() === searchTerm.toLowerCase() ?
+                        <span key={i} className="bg-cyan-500/20 text-cyan-300 px-1 rounded">{part}</span> :
+                        part
+                )}
+            </>
+        );
+    };
+
+    EnhancedFAQExperience.displayName = 'EnhancedFAQExperience';
+
+    const CategoryTabs = React.memo(({categories, activeCategory, setActiveCategory, categoryIcons}) => {
+        const scrollRef = React.useRef(null);
+        const [scrollState, setScrollState] = React.useState({canScrollLeft: false, canScrollRight: false});
+
+        // Update scroll shadows based on scroll position
+        const updateScrollShadows = React.useCallback(() => {
+            if (!scrollRef.current) return;
+
+            const {scrollLeft, scrollWidth, clientWidth} = scrollRef.current;
+            setScrollState({
+                canScrollLeft: scrollLeft > 10,
+                canScrollRight: scrollLeft < scrollWidth - clientWidth - 10
+            });
+        }, []);
+
+        // Initialize and attach scroll event listener
+        React.useEffect(() => {
+            const scrollElement = scrollRef.current;
+            if (scrollElement) {
+                updateScrollShadows();
+                scrollElement.addEventListener('scroll', updateScrollShadows);
+                window.addEventListener('resize', updateScrollShadows);
+
+                return () => {
+                    scrollElement.removeEventListener('scroll', updateScrollShadows);
+                    window.addEventListener('resize', updateScrollShadows);
+                };
+            }
+        }, [updateScrollShadows]);
+
+        // Scroll category into view when selected
+        React.useEffect(() => {
+            if (scrollRef.current) {
+                const container = scrollRef.current;
+                const activeButton = container.children[0].children[activeCategory];
+
+                if (activeButton) {
+                    const containerRect = container.getBoundingClientRect();
+                    const buttonRect = activeButton.getBoundingClientRect();
+
+                    // Calculate scroll position to center the button
+                    const scrollLeftTarget =
+                        (buttonRect.left + buttonRect.width / 2) -
+                        (containerRect.left + containerRect.width / 2) +
+                        container.scrollLeft;
+
+                    container.scrollTo({
+                        left: scrollLeftTarget,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        }, [activeCategory]);
+
+        // Scroll handlers for navigation buttons
+        const scrollLeft = () => {
+            if (scrollRef.current) {
+                scrollRef.current.scrollBy({left: -200, behavior: 'smooth'});
+            }
+        };
+
+        const scrollRight = () => {
+            if (scrollRef.current) {
+                scrollRef.current.scrollBy({left: 200, behavior: 'smooth'});
+            }
+        };
+
+        return (
+            <div className="relative mb-8">
+                <style>{scrollbarStyles}</style>
+
+                {/* Navigation buttons */}
+                {scrollState.canScrollLeft && (
+                    <button
+                        onClick={scrollLeft}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-gray-800/80 rounded-full flex items-center justify-center text-cyan-300 shadow-lg hover:bg-gray-700 transition-all"
+                        aria-label="Scroll categories left"
+                    >
+                        ←
+                    </button>
+                )}
+
+                {scrollState.canScrollRight && (
+                    <button
+                        onClick={scrollRight}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-gray-800/80 rounded-full flex items-center justify-center text-cyan-300 shadow-lg hover:bg-gray-700 transition-all"
+                        aria-label="Scroll categories right"
+                    >
+                        →
+                    </button>
+                )}
+
+                {/* Scroll container with gradient indicators */}
+                <div
+                    className={`scroll-shadow-container ${scrollState.canScrollLeft ? 'can-scroll-left' : ''} ${scrollState.canScrollRight ? 'can-scroll-right' : ''}`}>
+                    <div className="scroll-shadow-left"></div>
+                    <div className="scroll-shadow-right"></div>
+
+                    <div
+                        ref={scrollRef}
+                        className="flex overflow-x-auto py-2 px-2 elegant-scrollbar"
+                        aria-label="Category navigation"
+                    >
+                        <div className="flex space-x-3 px-6">
+                            {categories.map((category, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => setActiveCategory(i)}
+                                    className={`px-4 py-2.5 rounded-full transition-all whitespace-nowrap flex items-center ${
+                                        activeCategory === i
+                                            ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg scale-105 font-medium'
+                                            : 'bg-gray-800/80 text-gray-300 hover:bg-gray-700 hover:text-white'
+                                    }`}
+                                    aria-selected={activeCategory === i}
+                                >
+                                    <span className="mr-2">{categoryIcons[i % categoryIcons.length]}</span>
+                                    {category.category}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    });
+
+    const scrollbarStyles = `
+  .elegant-scrollbar::-webkit-scrollbar {
+    height: 6px;
+    background: transparent;
+  }
+  
+  .elegant-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(103, 232, 249, 0.3);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .elegant-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(103, 232, 249, 0.5);
+  }
+  
+  .scroll-shadow-container {
+    position: relative;
+  }
+  
+  .scroll-shadow-left,
+  .scroll-shadow-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .scroll-shadow-left {
+    left: 0;
+    background: linear-gradient(to right, rgba(17, 24, 39, 0.9), transparent);
+  }
+  
+  .scroll-shadow-right {
+    right: 0;
+    background: linear-gradient(to left, rgba(17, 24, 39, 0.9), transparent);
+  }
+  
+  .can-scroll-left .scroll-shadow-left,
+  .can-scroll-right .scroll-shadow-right {
+    opacity: 1;
+  }
+`;
 
     //==========================================================================================================
 
@@ -1371,7 +1644,7 @@ const JavaFundamentalsPage = () => {
     };
 
     // Reusable card component for consistent styling
-    const Card = ({ title, children, icon, className = "" }) => (
+    const Card = ({title, children, icon, className = ""}) => (
         <div className={`bg-gray-800/50 rounded-lg p-6 border border-gray-700/50 ${className}`}>
             {title && (
                 <div className="flex items-center gap-3 mb-4">
@@ -1384,14 +1657,14 @@ const JavaFundamentalsPage = () => {
     );
 
     // Helper components for rendering common patterns
-    const CodeExample = ({ code, title }) => (
+    const CodeExample = ({code, title}) => (
         <div className="mt-4 mb-4">
             <h4 className="text-sm font-medium text-gray-400 mb-2">{title || "Example"}:</h4>
-            <CodeBlock code={code} />
+            <CodeBlock code={code}/>
         </div>
     );
 
-    const List = ({ items, title, className = "" }) => (
+    const List = ({items, title, className = ""}) => (
         <div className="mt-4">
             {title && <h4 className="text-sm font-medium text-gray-400 mb-2">{title}:</h4>}
             <ul className={`list-disc list-inside space-y-1 ${className}`}>
@@ -1413,7 +1686,7 @@ const JavaFundamentalsPage = () => {
             </div>
 
             {/* Navigation */}
-            <TabNavigation />
+            <TabNavigation/>
 
             {/* Content */}
             <div className="space-y-8">
