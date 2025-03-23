@@ -38,7 +38,7 @@ const JavaFundamentalsPage = () => {
     const [activeSection, setActiveSection] = useState(0);
 
     // Memoized callback for rendering practice category - moved from renderBestPractices
-    const renderPracticeCategory = memo(({category, conventions, practices, principles}) => {
+    const RenderPracticeCategory = memo(({category, conventions, practices, principles}) => {
         // Determine the right items array to render based on what's available
         const items = conventions || practices || principles;
         if (!items?.length) return null;
@@ -1854,7 +1854,13 @@ const JavaFundamentalsPage = () => {
             <div className="space-y-6">
                 {section.practices?.map((practice, idx) => (
                     <React.Fragment key={idx}>
-                        {renderPracticeCategory(practice)}
+                        <RenderPracticeCategory
+                            key={idx}
+                            category={practice.category}
+                            conventions={practice.conventions}
+                            practices={practice.practices}
+                            principles={practice.principles}
+                        />
                     </React.Fragment>
                 ))}
             </div>
