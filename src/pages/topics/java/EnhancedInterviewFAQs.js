@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect, useCallback, memo } from 'react';
-import { Search, ChevronDown, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, {useState, useRef, useEffect, useCallback, memo} from 'react';
+import {Search, ChevronDown, X, ChevronLeft, ChevronRight} from 'lucide-react';
 
 // Main component that enhances the Interview FAQs experience
-const EnhancedInterviewFAQs = ({ section, language }) => {
+const EnhancedInterviewFAQs = ({section, language}) => {
     if (!section?.categories?.length) return null;
 
     return (
@@ -18,13 +18,13 @@ const EnhancedInterviewFAQs = ({ section, language }) => {
             </div>
 
             {/* Interactive FAQ experience */}
-            <FAQExperience categories={section.categories} language={language} />
+            <FAQExperience categories={section.categories} language={language}/>
         </div>
     );
 };
 
 // The searchable, interactive FAQ component
-const FAQExperience = memo(({ categories, language }) => {
+const FAQExperience = memo(({categories, language}) => {
     const [searchText, setSearchText] = useState('');
     const [activeCategory, setActiveCategory] = useState(0);
     const [expandedId, setExpandedId] = useState(null);
@@ -53,9 +53,10 @@ const FAQExperience = memo(({ categories, language }) => {
         <>
             {/* Search bar */}
             <div className="relative mb-8">
-                <div className="flex items-center bg-gray-800/70 rounded-full border border-gray-700 focus-within:border-cyan-500 transition-all shadow-md overflow-hidden">
+                <div
+                    className="flex items-center bg-gray-800/70 rounded-full border border-gray-700 focus-within:border-cyan-500 transition-all shadow-md overflow-hidden">
                     <div className="pl-5">
-                        <Search className="w-5 h-5 text-gray-400" />
+                        <Search className="w-5 h-5 text-gray-400"/>
                     </div>
                     <input
                         type="text"
@@ -71,7 +72,7 @@ const FAQExperience = memo(({ categories, language }) => {
                             className="pr-5 text-gray-400 hover:text-white transition-colors"
                             onClick={() => setSearchText('')}
                         >
-                            <X className="w-4 h-4" />
+                            <X className="w-4 h-4"/>
                         </button>
                     )}
                 </div>
@@ -130,7 +131,8 @@ const FAQExperience = memo(({ categories, language }) => {
                                 return (
                                     <div key={i} className="space-y-3">
                                         <div className="flex items-center mb-2">
-                                            <span className="text-xl mr-2">{categoryIcons[i % categoryIcons.length]}</span>
+                                            <span
+                                                className="text-xl mr-2">{categoryIcons[i % categoryIcons.length]}</span>
                                             <h3 className="text-md font-medium text-cyan-300">{category.category}</h3>
                                         </div>
 
@@ -174,7 +176,7 @@ const FAQExperience = memo(({ categories, language }) => {
 FAQExperience.displayName = 'FAQExperience';
 
 // Component for rendering question cards with highlight capability
-const QuestionCard = memo(({ qa, isExpanded, toggleQuestion, searchTerm }) => {
+const QuestionCard = memo(({qa, isExpanded, toggleQuestion, searchTerm}) => {
     return (
         <div
             className={`bg-gray-800/60 rounded-xl overflow-hidden transition-all duration-300 border border-gray-700/50 ${
@@ -214,7 +216,7 @@ const QuestionCard = memo(({ qa, isExpanded, toggleQuestion, searchTerm }) => {
 QuestionCard.displayName = 'QuestionCard';
 
 // Component for formatting answers with code blocks and highlighting
-const AnswerContent = memo(({ answer, searchTerm }) => {
+const AnswerContent = memo(({answer, searchTerm}) => {
     // Process the answer for code blocks and formatting
     if (!answer.includes('```') && !answer.includes('`')) {
         return (
@@ -233,7 +235,8 @@ const AnswerContent = memo(({ answer, searchTerm }) => {
                         // Extract clean code without backticks and language marker
                         const code = part.replace(/```(?:\w+)?\n|```/g, '');
                         return (
-                            <div key={idx} className="bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-300 overflow-x-auto">
+                            <div key={idx}
+                                 className="bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-300 overflow-x-auto">
                                 {code}
                             </div>
                         );
@@ -251,7 +254,8 @@ const AnswerContent = memo(({ answer, searchTerm }) => {
                     {searchTerm ? highlightSearchTerm(text, searchTerm) : text}
                   </span>
                                 ) : (
-                                    <code key={textIdx} className="bg-gray-800/70 px-1 py-0.5 rounded text-pink-300 font-mono">
+                                    <code key={textIdx}
+                                          className="bg-gray-800/70 px-1 py-0.5 rounded text-pink-300 font-mono">
                                         {text}
                                     </code>
                                 )
@@ -303,15 +307,15 @@ const highlightSearchTerm = (text, searchTerm) => {
 };
 
 // Scrollable category tabs with visual indicators
-const CategoryTabs = memo(({ categories, activeCategory, setActiveCategory, categoryIcons, language }) => {
+const CategoryTabs = memo(({categories, activeCategory, setActiveCategory, categoryIcons, language}) => {
     const scrollRef = useRef(null);
-    const [scrollState, setScrollState] = useState({ canScrollLeft: false, canScrollRight: false });
+    const [scrollState, setScrollState] = useState({canScrollLeft: false, canScrollRight: false});
 
     // Update scroll shadows based on scroll position
     const updateScrollShadows = useCallback(() => {
         if (!scrollRef.current) return;
 
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        const {scrollLeft, scrollWidth, clientWidth} = scrollRef.current;
         setScrollState({
             canScrollLeft: scrollLeft > 10,
             canScrollRight: scrollLeft < scrollWidth - clientWidth - 10
@@ -337,7 +341,6 @@ const CategoryTabs = memo(({ categories, activeCategory, setActiveCategory, cate
     useEffect(() => {
         if (scrollRef.current) {
             const container = scrollRef.current;
-            // Fix: Correctly navigate the DOM structure to find the active button
             // The active button is inside the child div that contains all buttons
             const buttonsContainer = container.firstChild;
             const activeButton = buttonsContainer?.children?.[activeCategory];
@@ -364,13 +367,13 @@ const CategoryTabs = memo(({ categories, activeCategory, setActiveCategory, cate
     // Scroll handlers
     const scrollLeft = () => {
         if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: -200, behavior: 'smooth' });
+            scrollRef.current.scrollBy({left: -200, behavior: 'smooth'});
         }
     };
 
     const scrollRight = () => {
         if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+            scrollRef.current.scrollBy({left: 200, behavior: 'smooth'});
         }
     };
 
@@ -383,7 +386,7 @@ const CategoryTabs = memo(({ categories, activeCategory, setActiveCategory, cate
                     className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-gray-800/80 rounded-full flex items-center justify-center text-cyan-300 shadow-lg hover:bg-gray-700 transition-all"
                     aria-label={language === 'en' ? "Scroll categories left" : "Faire défiler les catégories vers la gauche"}
                 >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="w-5 h-5"/>
                 </button>
             )}
 
@@ -393,7 +396,7 @@ const CategoryTabs = memo(({ categories, activeCategory, setActiveCategory, cate
                     className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-gray-800/80 rounded-full flex items-center justify-center text-cyan-300 shadow-lg hover:bg-gray-700 transition-all"
                     aria-label={language === 'en' ? "Scroll categories right" : "Faire défiler les catégories vers la droite"}
                 >
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-5 h-5"/>
                 </button>
             )}
 
@@ -401,19 +404,21 @@ const CategoryTabs = memo(({ categories, activeCategory, setActiveCategory, cate
             <div className="relative">
                 {/* Left shadow gradient */}
                 {scrollState.canScrollLeft && (
-                    <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none"></div>
+                    <div
+                        className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none"></div>
                 )}
 
                 {/* Right shadow gradient */}
                 {scrollState.canScrollRight && (
-                    <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none"></div>
+                    <div
+                        className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none"></div>
                 )}
 
                 {/* Scrollable tabs */}
                 <div
                     ref={scrollRef}
                     className="flex overflow-x-auto py-2 px-2 no-scrollbar"
-                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}
                 >
                     <div className="flex space-x-3 px-4">
                         {categories.map((category, i) => (
