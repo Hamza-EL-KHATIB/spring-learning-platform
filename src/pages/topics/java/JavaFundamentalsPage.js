@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef, useMemo} from 'react';
-import {Book, Code, Database, Server, Layout, Box, Cpu, MemoryStick, Clock, GitBranch, Globe} from 'lucide-react';
+import {Book, Code, Database, Server, Layout, Box, Cpu, MemoryStick, Clock, GitBranch, Globe, Shield, CheckCircle2, XCircle} from 'lucide-react';
 import javaFundamentalsJsonEn from '../../../data/java/java-fundamentals.json';
 import javaFundamentalsJsonFr from '../../../data/java/java-fundamentals-fr.json';
 import CodeBlock from '../../../components/CodeBlock';
@@ -423,8 +423,281 @@ const JavaFundamentalsPage = () => {
         );
     };
 
+    // OOP Concepts section specialized renderer
+    const renderOOPConcepts = () => {
+        const section = content.sections[2];
+        if (!section) return null;
+
+        // Classes and objects subsection renderer
+        const renderClassesAndObjects = (subsection) => (
+            <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700/50 mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-gray-700/50 rounded-lg">
+                        <Code className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{subsection.title}</h3>
+                </div>
+
+                {subsection.content && <p className="text-gray-300 mb-4">{subsection.content}</p>}
+
+                <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {subsection.concepts?.map((item, idx) => (
+                        <div key={idx} className="bg-gray-800/70 p-4 rounded-lg">
+                            <h4 className="text-lg font-medium text-purple-300 mb-2">{item.concept}</h4>
+                            <p className="text-gray-300">{item.description}</p>
+                        </div>
+                    ))}
+                </div>
+
+                {subsection.example && (
+                    <div className="mt-6">
+                        <h4 className="text-md font-semibold text-cyan-300 mb-3">
+                            {language === 'en' ? 'Example Code' : 'Exemple de Code'}
+                        </h4>
+                        <CodeBlock code={subsection.example} />
+                    </div>
+                )}
+            </div>
+        );
+
+        // Four pillars subsection renderer
+        const renderPillars = (subsection) => (
+            <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700/50 mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-gray-700/50 rounded-lg">
+                        <Box className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{subsection.title}</h3>
+                </div>
+
+                {subsection.content && <p className="text-gray-300 mb-4">{subsection.content}</p>}
+
+                <div className="space-y-8 mt-4">
+                    {subsection.pillars?.map((pillar, idx) => (
+                        <div key={idx} className="bg-gray-800/70 p-5 rounded-lg border border-gray-700/30">
+                            <h4 className="text-xl font-semibold text-purple-300 mb-3">{pillar.name}</h4>
+                            <p className="text-gray-300 mb-4">{pillar.description}</p>
+
+                            {pillar.definition && (
+                                <div className="bg-gray-800/30 p-3 rounded border border-purple-500/20 mb-4">
+                                    <p className="text-gray-300 italic">{pillar.definition}</p>
+                                </div>
+                            )}
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                {pillar.implementation && (
+                                    <div className="bg-gray-800/30 p-3 rounded">
+                                        <h5 className="text-md font-medium text-cyan-300 mb-2">
+                                            {language === 'en' ? 'Implementation' : 'Implémentation'}
+                                        </h5>
+                                        <ul className="list-disc list-inside space-y-1">
+                                            {pillar.implementation.map((item, itemIdx) => (
+                                                <li key={itemIdx} className="text-gray-300">
+                                                    {typeof item === 'object' && item.type ?
+                                                        `${item.type}: ${item.description}` :
+                                                        item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+
+                                {pillar.benefits && (
+                                    <div className="bg-gray-800/30 p-3 rounded">
+                                        <h5 className="text-md font-medium text-cyan-300 mb-2">
+                                            {language === 'en' ? 'Benefits' : 'Avantages'}
+                                        </h5>
+                                        <ul className="list-disc list-inside space-y-1">
+                                            {pillar.benefits.map((item, itemIdx) => (
+                                                <li key={itemIdx} className="text-gray-300">{item}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+
+                                {pillar.types && (
+                                    <div className="bg-gray-800/30 p-3 rounded md:col-span-2">
+                                        <h5 className="text-md font-medium text-cyan-300 mb-2">
+                                            {language === 'en' ? 'Types' : 'Types'}
+                                        </h5>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                            {pillar.types.map((type, typeIdx) => (
+                                                <div key={typeIdx} className="bg-gray-800/50 p-2 rounded">
+                                                    <h6 className="text-pink-300 font-medium">{type.type}</h6>
+                                                    <p className="text-gray-300 text-sm">{type.description}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {pillar.comparison && (
+                                    <div className="bg-gray-800/30 p-3 rounded md:col-span-2">
+                                        <h5 className="text-md font-medium text-cyan-300 mb-2">
+                                            {language === 'en' ? 'Comparison' : 'Comparaison'}
+                                        </h5>
+                                        <div className="overflow-x-auto">
+                                            <table className="min-w-full bg-gray-800/50 rounded-lg">
+                                                <thead>
+                                                <tr className="border-b border-gray-700">
+                                                    <th className="py-2 px-3 text-left text-sm text-gray-400">
+                                                        {language === 'en' ? 'Aspect' : 'Aspect'}
+                                                    </th>
+                                                    <th className="py-2 px-3 text-left text-sm text-gray-400">
+                                                        {language === 'en' ? 'Method Overloading' : 'Surcharge de Méthode'}
+                                                    </th>
+                                                    <th className="py-2 px-3 text-left text-sm text-gray-400">
+                                                        {language === 'en' ? 'Method Overriding' : 'Redéfinition de Méthode'}
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {pillar.comparison.map((row, rowIdx) => (
+                                                    <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-gray-800/30' : 'bg-gray-800/10'}>
+                                                        <td className="py-2 px-3 text-purple-300">{row.aspect}</td>
+                                                        <td className="py-2 px-3 text-gray-300">{row.methodOverloading}</td>
+                                                        <td className="py-2 px-3 text-gray-300">{row.methodOverriding}</td>
+                                                    </tr>
+                                                ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {pillar.example && (
+                                <div className="mt-4">
+                                    <h5 className="text-md font-medium text-cyan-300 mb-2">
+                                        {language === 'en' ? 'Example' : 'Exemple'}
+                                    </h5>
+                                    <CodeBlock code={pillar.example} />
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+
+        // Access modifiers subsection renderer
+        const renderAccessModifiers = (subsection) => (
+            <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700/50 mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-gray-700/50 rounded-lg">
+                        <Shield className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{subsection.title}</h3>
+                </div>
+
+                {subsection.content && <p className="text-gray-300 mb-4">{subsection.content}</p>}
+
+                <div className="overflow-x-auto mt-4">
+                    <table className="min-w-full bg-gray-800/50 rounded-lg">
+                        <thead>
+                        <tr className="border-b border-gray-700">
+                            <th className="py-2 px-3 text-left text-sm text-gray-400">
+                                {language === 'en' ? 'Modifier' : 'Modificateur'}
+                            </th>
+                            <th className="py-2 px-3 text-center text-sm text-gray-400">
+                                {language === 'en' ? 'Same Class' : 'Même Classe'}
+                            </th>
+                            <th className="py-2 px-3 text-center text-sm text-gray-400">
+                                {language === 'en' ? 'Same Package' : 'Même Package'}
+                            </th>
+                            <th className="py-2 px-3 text-center text-sm text-gray-400">
+                                {language === 'en' ? 'Subclass' : 'Sous-classe'}
+                            </th>
+                            <th className="py-2 px-3 text-center text-sm text-gray-400">
+                                {language === 'en' ? 'World' : 'Monde'}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {subsection.modifiers.map((mod, idx) => (
+                            <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-800/30' : 'bg-gray-800/10'}>
+                                <td className="py-2 px-3 text-pink-300 font-medium">{mod.modifier}</td>
+                                <td className="py-2 px-3 text-center">
+                                    {mod.class ?
+                                        <CheckCircle2 className="w-5 h-5 text-green-400 mx-auto" /> :
+                                        <XCircle className="w-5 h-5 text-red-400 mx-auto" />}
+                                </td>
+                                <td className="py-2 px-3 text-center">
+                                    {mod.package ?
+                                        <CheckCircle2 className="w-5 h-5 text-green-400 mx-auto" /> :
+                                        <XCircle className="w-5 h-5 text-red-400 mx-auto" />}
+                                </td>
+                                <td className="py-2 px-3 text-center">
+                                    {mod.subclass ?
+                                        <CheckCircle2 className="w-5 h-5 text-green-400 mx-auto" /> :
+                                        <XCircle className="w-5 h-5 text-red-400 mx-auto" />}
+                                </td>
+                                <td className="py-2 px-3 text-center">
+                                    {mod.world ?
+                                        <CheckCircle2 className="w-5 h-5 text-green-400 mx-auto" /> :
+                                        <XCircle className="w-5 h-5 text-red-400 mx-auto" />}
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        );
+
+        // Non-access modifiers subsection renderer
+        const renderNonAccessModifiers = (subsection) => (
+            <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700/50 mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-gray-700/50 rounded-lg">
+                        <Code className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{subsection.title}</h3>
+                </div>
+
+                {subsection.content && <p className="text-gray-300 mb-4">{subsection.content}</p>}
+
+                <div className="space-y-4 mt-4">
+                    {subsection.modifiers.map((mod, idx) => (
+                        <div key={idx} className="bg-gray-800/70 p-4 rounded-lg">
+                            <h4 className="text-lg font-medium text-pink-300 mb-2">
+                                <code className="bg-gray-900/70 px-2 py-1 rounded">{mod.modifier}</code>
+                            </h4>
+
+                            {mod.description && (
+                                <p className="text-gray-300 mb-3">{mod.description}</p>
+                            )}
+
+                            {mod.useCases && (
+                                <div className="ml-4">
+                                    <h5 className="text-sm font-medium text-cyan-300 mb-2">
+                                        {language === 'en' ? 'Use Cases:' : 'Cas d\'utilisation:'}
+                                    </h5>
+                                    <ul className="list-disc list-inside space-y-1">
+                                        {mod.useCases.map((useCase, caseIdx) => (
+                                            <li key={caseIdx} className="text-gray-300">{useCase}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+
+        // Render specialized components based on subsection type
+        return (
+            <div className="space-y-6">
+                {section.subsections[0] && renderClassesAndObjects(section.subsections[0])}
+                {section.subsections[1] && renderPillars(section.subsections[1])}
+                {section.subsections[2] && renderAccessModifiers(section.subsections[2])}
+                {section.subsections[3] && renderNonAccessModifiers(section.subsections[3])}
+            </div>
+        );
+    };
+
     // Placeholder functions for sections that aren't fully implemented yet
-    const renderOOPConcepts = () => renderGenericSection(2);
     const renderMemoryManagement = () => renderGenericSection(3);
     const renderConstructors = () => renderGenericSection(4);
     const renderKeywords = () => renderGenericSection(5);
