@@ -1,0 +1,672 @@
+{
+  "title": "Concurrence Java",
+  "id": "java-concurrency",
+  "tags": ["java", "concurrence", "multithreading", "backend", "entretien"],
+  "sections": [
+    {
+      "id": "core-concepts",
+      "title": "Aperçu des Concepts Fondamentaux",
+      "content": "La concurrence Java est un aspect puissant mais complexe du langage qui permet l'exécution concurrente et le traitement parallèle. Maîtriser ces concepts est essentiel pour développer des applications performantes, réactives et efficaces.",
+      "table": {
+        "headers": ["Concept", "Objectif Principal", "Pertinence en Entretien"],
+        "rows": [
+          ["Threads", "Unité de base d'exécution concurrente", "★★★★★"],
+          ["Synchronisation", "Contrôle d'accès aux ressources partagées", "★★★★★"],
+          ["Sécurité des Threads", "Garantir un comportement correct dans les environnements concurrents", "★★★★★"],
+          ["Locks & Classes Atomiques", "Contrôle de concurrence à granularité fine", "★★★★☆"],
+          ["Coordination des Threads", "Communication entre threads", "★★★★☆"],
+          ["Framework Executor", "Gestion de threads de haut niveau", "★★★★☆"],
+          ["CompletableFuture", "Programmation asynchrone moderne", "★★★☆☆"],
+          ["Collections Concurrentes", "Structures de données thread-safe", "★★★★☆"],
+          ["Stockage Thread-Local", "Données confinées aux threads", "★★★☆☆"],
+          ["Problèmes de Concurrence", "Deadlocks, conditions de course, etc.", "★★★★★"]
+        ]
+      }
+    },
+    {
+      "id": "thread-fundamentals",
+      "title": "Fondamentaux des Threads",
+      "content": "Un thread est la plus petite unité d'exécution au sein d'un processus. Java prend en charge le multithreading, permettant à plusieurs threads de s'exécuter simultanément au sein d'une même application.",
+      "subsections": [
+        {
+          "id": "thread-lifecycle",
+          "title": "États des Threads",
+          "content": "",
+          "states": [
+            {
+              "state": "New",
+              "description": "Thread créé mais non démarré"
+            },
+            {
+              "state": "Runnable",
+              "description": "Thread en cours d'exécution ou prêt à être exécuté"
+            },
+            {
+              "state": "Blocked",
+              "description": "Thread en attente d'un verrou moniteur"
+            },
+            {
+              "state": "Waiting",
+              "description": "Thread en attente indéfinie d'un autre thread"
+            },
+            {
+              "state": "Timed_Waiting",
+              "description": "Thread en attente pour une période spécifiée"
+            },
+            {
+              "state": "Terminated",
+              "description": "Thread ayant terminé son exécution"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thread-creation",
+      "title": "Création de Threads",
+      "content": "Il existe trois approches principales pour créer et démarrer des threads:",
+      "methods": [
+        {
+          "method": "Extension de Thread",
+          "example": "class MyThread extends Thread {\n    public void run() {\n        // Logique du thread\n        System.out.println(\"Thread running\");\n    }\n}\n\n// Utilisation\nMyThread thread = new MyThread();\nthread.start();",
+          "pros": ["Accès direct aux méthodes de thread", "Plus simple pour les débutants"],
+          "cons": ["Impossibilité d'étendre d'autres classes", "Gaspille l'opportunité d'héritage unique"]
+        },
+        {
+          "method": "Implémentation de Runnable",
+          "example": "class MyRunnable implements Runnable {\n    public void run() {\n        // Logique du thread\n        System.out.println(\"Thread running\");\n    }\n}\n\n// Utilisation\nThread thread = new Thread(new MyRunnable());\nthread.start();",
+          "pros": ["Peut étendre d'autres classes", "Meilleure abstraction des tâches", "Sépare mieux la tâche du mécanisme d'exécution", "Permet à la même tâche d'être exécutée par différentes implémentations de thread"],
+          "cons": ["Pas d'accès direct aux méthodes de thread", "Légèrement plus verbeux"]
+        },
+        {
+          "method": "Utilisation d'Expressions Lambda",
+          "example": "Thread thread = new Thread(() -> {\n    // Logique du thread\n    System.out.println(\"Thread running\");\n});\nthread.start();",
+          "pros": ["Concis", "Style fonctionnel", "Approche moderne (Java 8+)"],
+          "cons": ["Limité aux tâches simples", "Moins lisible pour une logique complexe"]
+        }
+      ],
+      "note": "L'implémentation de Runnable est généralement préférée à l'extension de Thread car elle ne gaspille pas l'opportunité d'héritage unique, sépare mieux la tâche du mécanisme d'exécution et permet à la même tâche d'être exécutée par différentes implémentations de thread."
+    },
+    {
+      "id": "thread-vs-process",
+      "title": "Thread vs Processus",
+      "table": {
+        "headers": ["Processus", "Thread"],
+        "rows": [
+          ["Exécution de programme indépendante", "Unité d'exécution légère au sein d'un processus"],
+          ["Possède son propre espace mémoire", "Partage l'espace mémoire avec d'autres threads du processus"],
+          ["Plus gourmand en ressources à créer", "Moins gourmand en ressources à créer"],
+          ["Communication inter-processus complexe", "Communication inter-threads plus simple"],
+          ["Si un processus plante, les autres ne sont pas affectés", "Si un thread plante, il peut faire planter tout le processus"]
+        ]
+      }
+    },
+    {
+      "id": "thread-safety",
+      "title": "Mécanismes de Sécurité des Threads",
+      "content": "La sécurité des threads fait référence au code qui fonctionne correctement lors d'une exécution simultanée par plusieurs threads. Plusieurs mécanismes assurent la sécurité des threads:",
+      "mechanisms": [
+        {
+          "type": "Synchronisation",
+          "content": "La synchronisation garantit qu'un seul thread peut accéder au code synchronisé à la fois, en utilisant des verrous intrinsèques (moniteurs).",
+          "methods": [
+            {
+              "name": "méthode synchronisée",
+              "usage": "Synchronisation au niveau méthode",
+              "example": "public synchronized void synchronizedMethod() {\n    // Un seul thread peut exécuter cette méthode sur cet objet à la fois\n    count++;\n}"
+            },
+            {
+              "name": "bloc synchronisé",
+              "usage": "Synchronisation au niveau bloc",
+              "example": "public void method() {\n    // Code non synchronisé\n    synchronized(this) {\n        // Bloc de code synchronisé\n        count++;\n    }\n    // Code non synchronisé\n}"
+            }
+          ],
+          "whenToUse": [
+            "Quand plusieurs threads doivent accéder à des données mutables partagées",
+            "Quand des opérations composées doivent être atomiques",
+            "Quand vous avez besoin de garanties de visibilité et d'atomicité"
+          ]
+        },
+        {
+          "type": "Volatile",
+          "content": "Le mot-clé `volatile` garantit qu'une variable est toujours lue et écrite dans la mémoire principale, et non depuis des caches locaux aux threads.",
+          "example": "private volatile boolean flag = false;\n\n// Dans un thread\nflag = true;\n\n// Dans un autre thread\nwhile (!flag) {\n    // Ce thread verra la mise à jour effectuée par l'autre thread\n}",
+          "properties": [
+            "Garantit la visibilité des changements entre les threads",
+            "Empêche la réorganisation des instructions autour des accès volatile",
+            "Ne fournit PAS d'atomicité pour les opérations composées (comme i++)"
+          ],
+          "whenToUse": [
+            "Pour des drapeaux ou valeurs d'état simples",
+            "Quand vous avez besoin de visibilité mais pas d'exclusion mutuelle",
+            "Pour le modèle de double-checked locking"
+          ]
+        },
+        {
+          "type": "Classes Atomiques",
+          "content": "Les classes atomiques du package `java.util.concurrent.atomic` fournissent des opérations atomiques sans utiliser de verrous.",
+          "example": "import java.util.concurrent.atomic.AtomicInteger;\n\nAtomicInteger counter = new AtomicInteger(0);\n\n// Incrémentation thread-safe\ncounter.incrementAndGet();  // Renvoie la valeur incrémentée\ncounter.getAndIncrement();  // Renvoie la valeur avant incrémentation\n\n// Mise à jour conditionnelle\ncounter.compareAndSet(expectedValue, newValue);",
+          "classes": [
+            "AtomicInteger, AtomicLong, AtomicBoolean",
+            "AtomicReference<V>",
+            "AtomicIntegerArray, AtomicLongArray, AtomicReferenceArray<V>",
+            "LongAdder, LongAccumulator (performance supérieure en cas de forte contention)"
+          ],
+          "whenToUse": [
+            "Pour des compteurs ou drapeaux simples",
+            "Quand la performance est critique",
+            "Quand la contention de verrou est élevée"
+          ]
+        },
+        {
+          "type": "Locks",
+          "content": "Le package `java.util.concurrent.locks` fournit des mécanismes de verrouillage plus flexibles que les blocs synchronisés.",
+          "example": "import java.util.concurrent.locks.Lock;\nimport java.util.concurrent.locks.ReentrantLock;\n\nLock lock = new ReentrantLock();\n\ntry {\n    lock.lock();  // Acquérir le verrou\n    // Section critique\n} finally {\n    lock.unlock();  // Toujours libérer dans un bloc finally\n}\n\n// Acquisition de verrou temporisée\nif (lock.tryLock(1, TimeUnit.SECONDS)) {\n    try {\n        // Section critique\n    } finally {\n        lock.unlock();\n    }\n} else {\n    // Gérer le délai d'attente dépassé\n}",
+          "lockTypes": [
+            "ReentrantLock: Implémentation de verrou basique avec réentrance",
+            "ReadWriteLock: Permet plusieurs lectures simultanées ou une seule écriture exclusive",
+            "StampedLock: Verrou lecture-écriture amélioré avec lecture optimiste"
+          ],
+          "whenToUse": [
+            "Quand vous avez besoin de plus de flexibilité que synchronized",
+            "Quand vous avez besoin de tentatives de verrouillage temporisées",
+            "Quand vous avez besoin de garanties d'équité",
+            "Quand les informations de propriété du verrou sont nécessaires"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thread-coordination",
+      "title": "Coordination des Threads",
+      "subsections": [
+        {
+          "id": "wait-notify",
+          "title": "wait(), notify(), et notifyAll()",
+          "content": "Ces méthodes permettent aux threads de communiquer et de se coordonner:",
+          "example": "// Thread consommateur\nsynchronized (queue) {\n    while (queue.isEmpty()) {\n        queue.wait();  // Libère le verrou et attend\n    }\n    Object item = queue.remove();\n}\n\n// Thread producteur\nsynchronized (queue) {\n    queue.add(item);\n    queue.notify();  // Réveille un seul thread en attente\n    // OU\n    queue.notifyAll();  // Réveille tous les threads en attente\n}",
+          "important": "wait(), notify(), et notifyAll() doivent être appelés depuis un bloc synchronisé sur l'objet sur lequel ils sont invoqués."
+        },
+        {
+          "id": "join",
+          "title": "join()",
+          "content": "La méthode join() permet à un thread d'attendre qu'un autre se termine:",
+          "example": "Thread thread = new Thread(() -> {\n    // Tâche\n});\nthread.start();\n\n// Le thread courant attendra que l'autre thread se termine\nthread.join();\n// Ou attendre un temps limité\nthread.join(1000);  // Attendre jusqu'à 1000ms"
+        },
+        {
+          "id": "countdown-latch",
+          "title": "CountDownLatch",
+          "content": "Un outil de synchronisation qui permet à un ou plusieurs threads d'attendre qu'un ensemble d'opérations se termine.",
+          "example": "CountDownLatch latch = new CountDownLatch(3);  // Initialisation avec compteur\n\n// Dans les threads de travail\nlatch.countDown();  // Décrémente le compteur\n\n// Dans le thread d'attente\nlatch.await();  // Bloque jusqu'à ce que le compteur atteigne zéro\n// ou avec timeout\nlatch.await(1, TimeUnit.SECONDS);",
+          "useCases": [
+            "Démarrer un groupe de threads en même temps",
+            "Attendre qu'un groupe de threads se termine",
+            "Implémenter une barrière à usage unique"
+          ]
+        },
+        {
+          "id": "cyclic-barrier",
+          "title": "CyclicBarrier",
+          "content": "Un outil de synchronisation qui permet à un ensemble de threads d'attendre les uns les autres pour atteindre un point commun.",
+          "example": "CyclicBarrier barrier = new CyclicBarrier(3, () -> {\n    // Runnable optionnel exécuté quand la barrière est déclenchée\n    System.out.println(\"Tous les threads ont atteint la barrière\");\n});\n\n// Dans chaque thread\nbarrier.await();  // Bloque jusqu'à ce que tous les threads atteignent ce point",
+          "differences": [
+            "Réutilisable après libération des threads",
+            "Tous les threads doivent appeler await() (symétrique)",
+            "Peut exécuter une tâche lorsque la barrière est atteinte"
+          ]
+        },
+        {
+          "id": "phaser",
+          "title": "Phaser",
+          "content": "Une barrière de synchronisation plus flexible qui peut varier en nombre de participants et en phases.",
+          "example": "Phaser phaser = new Phaser(3);  // 3 participants\n\n// Enregistrer un participant supplémentaire\nphaser.register();\n\n// Désenregistrer un participant\nphaser.arriveAndDeregister();\n\n// Attendre la fin de la phase\nphaser.arriveAndAwaitAdvance();",
+          "useCases": [
+            "Calculs multi-phases",
+            "Nombre dynamique de threads participants",
+            "Scénarios de synchronisation plus complexes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "executors",
+      "title": "Framework Executor",
+      "content": "Le framework `java.util.concurrent.Executor` fournit un remplacement de haut niveau pour la manipulation directe des threads.",
+      "subsections": [
+        {
+          "id": "executor-service",
+          "title": "ExecutorService",
+          "example": "// Créer un pool de threads fixe avec 5 threads\nExecutorService executor = Executors.newFixedThreadPool(5);\n\n// Soumettre des tâches\nFuture<String> future = executor.submit(() -> {\n    // Tâche qui retourne un résultat\n    return \"Résultat\";\n});\n\n// Obtenir le résultat (bloque jusqu'à disponibilité)\nString result = future.get();\n\n// Arrêt (attend que les tâches se terminent)\nexecutor.shutdown();\n// Arrêt forcé\nexecutor.shutdownNow();"
+        },
+        {
+          "id": "thread-pool-types",
+          "title": "Types de Pools de Threads",
+          "types": [
+            {
+              "type": "Fixed Thread Pool",
+              "creation": "ExecutorService fixed = Executors.newFixedThreadPool(nThreads);",
+              "description": [
+                "Crée un nombre fixe de threads",
+                "Met les tâches en file d'attente si tous les threads sont occupés",
+                "Bon pour limiter l'utilisation des ressources"
+              ],
+              "bestPractices": [
+                "Dimensionner le pool en fonction des cœurs CPU et du type de tâche (liée au CPU ou I/O)",
+                "Considérer la taille de la file d'attente pour éviter les OutOfMemoryError",
+                "Surveiller les fuites de threads et gérer les exceptions non interceptées"
+              ]
+            },
+            {
+              "type": "Cached Thread Pool",
+              "creation": "ExecutorService cached = Executors.newCachedThreadPool();",
+              "description": [
+                "Crée de nouveaux threads selon les besoins, réutilise les existants",
+                "Termine les threads inutilisés après 60 secondes",
+                "Bon pour de nombreuses tâches de courte durée"
+              ],
+              "bestPractices": [
+                "Utiliser pour des tâches courtes et à faible latence",
+                "Surveiller la création de threads pour éviter l'épuisement des ressources",
+                "Ne convient pas pour de grands volumes de tâches longues"
+              ]
+            },
+            {
+              "type": "Scheduled Thread Pool",
+              "creation": "ScheduledExecutorService scheduled = Executors.newScheduledThreadPool(corePoolSize);\n\n// Exécuter une fois après délai\nscheduled.schedule(task, 1, TimeUnit.SECONDS);\n\n// Exécuter périodiquement avec délai fixe entre la fin et le prochain démarrage\nscheduled.scheduleWithFixedDelay(task, 1, 5, TimeUnit.SECONDS);\n\n// Exécuter périodiquement à taux fixe (essaie de maintenir la fréquence)\nscheduled.scheduleAtFixedRate(task, 1, 5, TimeUnit.SECONDS);",
+              "description": [
+                "Permet de planifier des tâches après un délai ou périodiquement"
+              ],
+              "bestPractices": [
+                "Considérer attentivement les exigences temporelles des tâches",
+                "Gérer les scénarios de chevauchement de tâches",
+                "Surveiller la dérive de planification et ajuster si nécessaire",
+                "Utiliser scheduleWithFixedDelay pour les tâches qui ne doivent pas se chevaucher"
+              ]
+            },
+            {
+              "type": "Single Thread Executor",
+              "creation": "ExecutorService single = Executors.newSingleThreadExecutor();",
+              "description": [
+                "Utilise un seul thread de travail",
+                "Garantit l'exécution séquentielle des tâches"
+              ],
+              "bestPractices": [
+                "Utiliser pour des tâches qui doivent s'exécuter séquentiellement",
+                "Bon pour éliminer les problèmes de sécurité des threads",
+                "Considérer le temps d'exécution des tâches pour éviter le blocage"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "execute-vs-submit",
+          "title": "execute() vs submit()",
+          "table": {
+            "headers": ["execute()", "submit()"],
+            "rows": [
+              ["Retourne void", "Retourne un objet Future"],
+              ["Accepte uniquement Runnable", "Accepte Runnable et Callable"],
+              ["Les exceptions vont au gestionnaire d'exceptions non interceptées", "Les exceptions sont encapsulées dans le Future"],
+              ["Utilisation plus simple", "Plus de contrôle et de surveillance"]
+            ]
+          },
+          "example": "// execute\nexecutor.execute(() -> System.out.println(\"Tâche exécutée\"));\n\n// submit avec Runnable (Future<null>)\nFuture<?> future1 = executor.submit(() -> System.out.println(\"Tâche exécutée\"));\n\n// submit avec Callable (Future<String>)\nFuture<String> future2 = executor.submit(() -> \"Résultat de la tâche\");"
+        }
+      ]
+    },
+    {
+      "id": "completable-future",
+      "title": "CompletableFuture (Java 8+)",
+      "content": "`CompletableFuture` fournit une approche plus fonctionnelle pour la programmation asynchrone.",
+      "example": "// Créer et exécuter un calcul asynchrone\nCompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {\n    // Tâche qui retourne un résultat\n    return \"Résultat\";\n});\n\n// Chaîner des opérations\nCompletableFuture<String> transformed = future\n    .thenApply(s -> s.toUpperCase())  // Transformer le résultat\n    .thenCompose(s -> anotherAsyncOperation(s))  // Chaîner une autre opération asynchrone\n    .thenCombine(otherFuture, (s1, s2) -> s1 + s2);  // Combiner avec un autre future\n\n// Gérer les exceptions\nCompletableFuture<String> handled = future.exceptionally(ex -> {\n    return \"Valeur par défaut en raison d'erreur: \" + ex.getMessage();\n});\n\n// Enregistrer un callback\nfuture.thenAccept(result -> System.out.println(\"Résultat: \" + result));\n\n// Attendre la fin\nString result = future.get();  // Bloquant",
+      "features": [
+        "Opérations non bloquantes",
+        "Composition facile d'opérations asynchrones",
+        "Gestion d'erreurs en style fonctionnel",
+        "Combinaison de plusieurs futures",
+        "Executor par défaut ou personnalisé"
+      ]
+    },
+    {
+      "id": "concurrent-collections",
+      "title": "Collections Concurrentes",
+      "content": "Implémentations de collections thread-safe conçues pour un accès concurrent.",
+      "collections": [
+        {
+          "name": "ConcurrentHashMap",
+          "content": "Alternative thread-safe à `HashMap` avec une meilleure concurrence.",
+          "example": "ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();\n\n// Les opérations de base sont thread-safe\nmap.put(\"key\", 1);\nmap.get(\"key\");\nmap.remove(\"key\");\n\n// Opérations atomiques\nmap.putIfAbsent(\"key\", 1);\nmap.replace(\"key\", 1, 2);\nmap.remove(\"key\", 1);\n\n// Opérations agrégées (Java 8+)\nmap.forEach(4, (key, value) -> System.out.println(key + \"=\" + value));\nint sum = map.reduceValues(4, Integer::sum);",
+          "characteristics": [
+            "Thread-safe sans synchronisation externe",
+            "Meilleure concurrence en utilisant le verrouillage par segment",
+            "N'autorise pas les clés ou valeurs nulles",
+            "L'itération ne lance pas ConcurrentModificationException",
+            "Striping de verrous pour de meilleures performances",
+            "Support des opérations atomiques"
+          ]
+        },
+        {
+          "name": "CopyOnWriteArrayList",
+          "content": "Collections thread-safe optimisées pour les scénarios à forte lecture.",
+          "example": "CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();\nlist.add(\"item\");\n\n// L'itération est sûre même pendant les modifications concurrentes\nfor (String item : list) {\n    // D'autres threads peuvent modifier la liste en toute sécurité\n}",
+          "characteristics": [
+            "Thread-safe sans synchronisation externe",
+            "Toutes les opérations de mutation créent une nouvelle copie du tableau sous-jacent",
+            "Idéal pour les collections rarement modifiées, fréquemment lues",
+            "L'itération ne lance pas ConcurrentModificationException",
+            "Consommation de mémoire plus élevée en raison de la copie"
+          ]
+        },
+        {
+          "name": "BlockingQueue",
+          "content": "Files d'attente thread-safe qui prennent en charge des opérations d'attente jusqu'à ce que la file devienne non vide ou non pleine.",
+          "example": "// File d'attente bornée à capacité fixe\nBlockingQueue<Task> queue = new ArrayBlockingQueue<>(100);\n\n// File d'attente non bornée\nBlockingQueue<Task> unbounded = new LinkedBlockingQueue<>();\n\n// File d'attente basée sur la priorité\nBlockingQueue<Task> priorityQueue = new PriorityBlockingQueue<>();\n\n// File d'attente retardée (les éléments ne peuvent pas être pris avant l'expiration de leur délai)\nBlockingQueue<DelayedTask> delayedQueue = new DelayQueue<>();\n\n// Insertion (attend si la file est pleine)\nqueue.put(task);\n\n// Suppression (attend si la file est vide)\nTask task = queue.take();\n\n// Opérations temporisées\nqueue.offer(task, 1, TimeUnit.SECONDS);  // Attend jusqu'à 1 seconde si pleine\nTask task = queue.poll(1, TimeUnit.SECONDS);  // Attend jusqu'à 1 seconde si vide",
+          "implementations": [
+            {
+              "name": "ArrayBlockingQueue",
+              "description": "File d'attente bloquante bornée avec implémentation par tableau"
+            },
+            {
+              "name": "LinkedBlockingQueue",
+              "description": "File d'attente bloquante optionnellement bornée avec nœuds liés"
+            },
+            {
+              "name": "PriorityBlockingQueue",
+              "description": "File d'attente de priorité bloquante non bornée"
+            },
+            {
+              "name": "DelayQueue",
+              "description": "File d'attente pour éléments retardés, triés par temps d'expiration"
+            }
+          ],
+          "applications": [
+            "Modèle producteur-consommateur",
+            "Pools de threads",
+            "Passage de messages entre threads",
+            "Planification de tâches"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "concurrency-patterns",
+      "title": "Modèles de Concurrence",
+      "patterns": [
+        {
+          "name": "Modèle Producteur-Consommateur",
+          "description": "Sépare la production et la consommation de données, généralement à l'aide d'un tampon partagé.",
+          "example": "class ProducerConsumer {\n    private final BlockingQueue<Item> queue;\n    \n    public ProducerConsumer(int capacity) {\n        this.queue = new ArrayBlockingQueue<>(capacity);\n    }\n    \n    public void produce(Item item) throws InterruptedException {\n        queue.put(item);\n    }\n    \n    public Item consume() throws InterruptedException {\n        return queue.take();\n    }\n}",
+          "implementation": {
+            "using": "BlockingQueue",
+            "advantages": [
+              "Découple la production et la consommation",
+              "Gère la synchronisation automatiquement",
+              "Contrôle le flux avec la contre-pression"
+            ]
+          }
+        },
+        {
+          "name": "Stockage Thread-Local",
+          "description": "Variables confinées aux threads qui ne peuvent être lues et écrites que par le même thread.",
+          "example": "// Définir une variable ThreadLocal\nprivate static ThreadLocal<UserContext> userContextHolder = ThreadLocal.withInitial(() -> new UserContext());\n\n// Définir la valeur pour le thread actuel\nuserContextHolder.set(userContext);\n\n// Obtenir la valeur pour le thread actuel\nUserContext userContext = userContextHolder.get();\n\n// Supprimer la valeur une fois terminée (important pour éviter les fuites de mémoire dans les pools de threads)\nuserContextHolder.remove();",
+          "useCases": [
+            "Contexte par thread (session utilisateur, transaction, etc.)",
+            "Générateurs de nombres aléatoires confinés aux threads",
+            "Mise en cache qui doit être spécifique au thread"
+          ],
+          "warning": "Les variables ThreadLocal dans les pools de threads peuvent entraîner des fuites de mémoire si elles ne sont pas correctement nettoyées après la réutilisation des threads. Toujours appeler remove() une fois terminé."
+        },
+        {
+          "name": "Work Stealing",
+          "description": "Conçu pour les tâches qui peuvent être décomposées en morceaux plus petits de manière récursive.",
+          "example": "// Fork/Join framework utilise le work stealing\nForkJoinPool pool = new ForkJoinPool();\n\n// Soumettre une tâche\nFuture<r> future = pool.submit(new RecursiveTask<r>() {\n    @Override\n    protected Result compute() {\n        if (workIsTooLarge()) {\n            // Diviser le travail et traiter en parallèle\n            return ForkJoinTask.invokeAll(createSubtasks())\n                    .stream()\n                    .map(ForkJoinTask::join)\n                    .reduce(this::combine)\n                    .get();\n        } else {\n            return processSequentially();\n        }\n    }\n});",
+          "implementation": {
+            "using": "ForkJoinPool",
+            "advantages": [
+              "Utilisation efficace du CPU",
+              "Équilibrage automatique de la charge",
+              "Adapté aux algorithmes diviser-pour-régner"
+            ]
+          }
+        },
+        {
+          "name": "Modèle Future",
+          "description": "Obtenir des résultats de calculs asynchrones.",
+          "example": "CompletableFuture<r> future = CompletableFuture.supplyAsync(() -> compute());",
+          "implementation": {
+            "using": "CompletableFuture",
+            "advantages": [
+              "Opérations non bloquantes",
+              "Opérations composables avec thenApply, thenCompose",
+              "Gestion d'exceptions avec exceptionally",
+              "Combinaison de plusieurs futures"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "concurrency-problems",
+      "title": "Problèmes de Concurrence et Solutions",
+      "subsections": [
+        {
+          "id": "race-conditions",
+          "title": "Conditions de Course",
+          "content": "Une condition de course se produit lorsque le comportement d'un programme dépend du timing relatif des événements, comme l'ordre dans lequel les threads s'exécutent.",
+          "example": "// Compteur non sécurisé\nclass Counter {\n    private int count = 0;\n    \n    public void increment() {\n        count++; // Ce n'est pas atomique\n    }\n    \n    public int getCount() {\n        return count;\n    }\n}",
+          "solutions": [
+            {
+              "title": "Utiliser la synchronisation",
+              "code": "public synchronized void increment() {\n    count++;\n}"
+            },
+            {
+              "title": "Utiliser AtomicInteger",
+              "code": "private AtomicInteger count = new AtomicInteger(0);\n\npublic void increment() {\n    count.incrementAndGet();\n}"
+            }
+          ]
+        },
+        {
+          "id": "deadlocks",
+          "title": "Deadlocks",
+          "content": "Un deadlock se produit lorsque deux ou plusieurs threads sont bloqués indéfiniment, chacun attendant des ressources détenues par l'autre.",
+          "example": "// Deadlock potentiel\nsynchronized(resourceA) {\n    // Faire quelque chose\n    synchronized(resourceB) {\n        // Faire autre chose\n    }\n}\n\n// Dans un autre thread\nsynchronized(resourceB) {\n    // Faire quelque chose\n    synchronized(resourceA) {\n        // Faire autre chose\n    }\n}",
+          "solutions": [
+            {
+              "title": "Toujours acquérir les verrous dans le même ordre",
+              "code": "// Les deux threads devraient acquérir les verrous dans le même ordre\nsynchronized(lock1) {\n    synchronized(lock2) {\n        // Code sécurisé\n    }\n}"
+            },
+            {
+              "title": "Utiliser un timeout lors de l'acquisition des verrous",
+              "code": "Lock lock1 = new ReentrantLock();\nLock lock2 = new ReentrantLock();\n\nif (lock1.tryLock(1, TimeUnit.SECONDS)) {\n    try {\n        if (lock2.tryLock(1, TimeUnit.SECONDS)) {\n            try {\n                // Code sécurisé\n            } finally {\n                lock2.unlock();\n            }\n        }\n    } finally {\n        lock1.unlock();\n    }\n}"
+            }
+          ]
+        },
+        {
+          "id": "starvation",
+          "title": "Famine (Starvation)",
+          "content": "La famine se produit lorsqu'un thread ne peut pas accéder régulièrement aux ressources partagées et ne peut pas progresser.",
+          "solutions": [
+            "1. Utiliser des verrous équitables",
+            {
+              "code": "Lock fairLock = new ReentrantLock(true); // true pour un ordre équitable"
+            },
+            "2. Prioriser l'allocation des ressources"
+          ]
+        },
+        {
+          "id": "memory-consistency",
+          "title": "Erreurs de Cohérence Mémoire",
+          "content": "Les erreurs de cohérence mémoire se produisent lorsque différents threads ont des vues incohérentes des mêmes données.",
+          "solutions": [
+            "1. Utiliser `volatile` pour la visibilité",
+            {
+              "code": "private volatile boolean flag = false;"
+            },
+            "2. Utiliser la synchronisation ou des utilitaires concurrents"
+          ]
+        },
+        {
+          "id": "thread-leakage",
+          "title": "Fuite de Threads",
+          "content": "Une fuite de threads se produit lorsque des threads sont créés mais ne sont pas correctement terminés ou nettoyés.",
+          "solutions": [
+            "1. Toujours appeler `shutdown()` sur ExecutorService",
+            {
+              "code": "try {\n    // Utiliser l'executor\n} finally {\n    executor.shutdown();\n}"
+            },
+            "2. Utiliser try-with-resources avec un wrapper AutoCloseable pour ExecutorService"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced-topics",
+      "title": "Sujets Avancés",
+      "subsections": [
+        {
+          "id": "forkjoinpool",
+          "title": "ForkJoinPool et Parallélisme",
+          "content": "Le ForkJoinPool est conçu pour des tâches qui peuvent être décomposées en morceaux plus petits de manière récursive. C'est l'exécuteur par défaut pour les streams parallèles.",
+          "example": "// Tâche fork/join personnalisée\nclass SortTask extends RecursiveAction {\n    private final int[] array;\n    private final int start;\n    private final int end;\n    \n    // Constructeur\n    \n    @Override\n    protected void compute() {\n        if (end - start < THRESHOLD) {\n            // Trier directement\n            Arrays.sort(array, start, end);\n        } else {\n            // Diviser et fork\n            int mid = start + (end - start) / 2;\n            invokeAll(\n                new SortTask(array, start, mid),\n                new SortTask(array, mid, end)\n            );\n            // Fusionner les résultats\n            merge(array, start, mid, end);\n        }\n    }\n}\n\n// Utilisation\nForkJoinPool pool = new ForkJoinPool();\npool.invoke(new SortTask(array, 0, array.length));"
+        },
+        {
+          "id": "parallel-streams",
+          "title": "Streams Parallèles",
+          "content": "Les streams parallèles exécutent des opérations de manière concurrente, améliorant potentiellement les performances sur les systèmes multi-cœurs.",
+          "example": "// Stream séquentiel\nList<Integer> result = numbers.stream()\n    .filter(n -> n % 2 == 0)\n    .map(n -> n * 2)\n    .collect(Collectors.toList());\n\n// Stream parallèle\nList<Integer> result = numbers.parallelStream()\n    .filter(n -> n % 2 == 0)\n    .map(n -> n * 2)\n    .collect(Collectors.toList());\n\n// Ou convertir de séquentiel à parallèle\nList<Integer> result = numbers.stream()\n    .parallel()\n    .filter(n -> n % 2 == 0)\n    .map(n -> n * 2)\n    .collect(Collectors.toList());",
+          "considerations": [
+            "Meilleur pour des opérations intensives en calcul",
+            "Peut être plus lent pour les petits ensembles de données en raison des frais généraux",
+            "Peut ne pas maintenir l'ordre sans ordonancement explicite",
+            "Problèmes de sécurité des threads pour les opérations avec état",
+            "Utilise le ForkJoinPool commun par défaut"
+          ]
+        },
+        {
+          "id": "stamped-lock",
+          "title": "StampedLock",
+          "content": "Un verrou basé sur les capacités avec trois modes: écriture, lecture et lecture optimiste.",
+          "example": "StampedLock lock = new StampedLock();\n\n// Verrou d'écriture\nlong stamp = lock.writeLock();\ntry {\n    // Accès exclusif\n} finally {\n    lock.unlockWrite(stamp);\n}\n\n// Verrou de lecture\nlong stamp = lock.readLock();\ntry {\n    // Accès partagé\n} finally {\n    lock.unlockRead(stamp);\n}\n\n// Lecture optimiste\nlong stamp = lock.tryOptimisticRead();\n// Lire les données\nif (!lock.validate(stamp)) {\n    // Les données ont peut-être été modifiées, acquérir un verrou de lecture\n    stamp = lock.readLock();\n    try {\n        // Relire les données\n    } finally {\n        lock.unlockRead(stamp);\n    }\n}",
+          "advantages": [
+            "Meilleur débit dans les scénarios à forte lecture",
+            "Support pour la mise à niveau/rétrogradation des verrous",
+            "Lecture optimiste pour les scénarios à forte contention"
+          ]
+        },
+        {
+          "id": "longadder",
+          "title": "LongAdder et LongAccumulator",
+          "content": "Alternatives haute performance à AtomicLong pour le comptage fortement disputé.",
+          "example": "LongAdder counter = new LongAdder();\ncounter.increment();\ncounter.add(5);\nlong current = counter.sum();\n\n// LongAccumulator pour accumulation personnalisée\nLongAccumulator accumulator = new LongAccumulator(Long::sum, 0L);\naccumulator.accumulate(10);\naccumulator.accumulate(5);\nlong result = accumulator.get(); // 15"
+        },
+        {
+          "id": "threadlocalrandom",
+          "title": "ThreadLocalRandom",
+          "content": "Génération de nombres aléatoires locale au thread pour de meilleures performances dans des scénarios concurrents.",
+          "example": "// Au lieu de\nRandom random = new Random();\nint value = random.nextInt(100);\n\n// Utiliser\nint value = ThreadLocalRandom.current().nextInt(100);"
+        }
+      ]
+    },
+    {
+      "id": "interview-questions",
+      "title": "Questions Courantes d'Entretien",
+      "questions": [
+        {
+          "question": "Quelle est la différence entre processus et thread?",
+          "answer": "Un processus est une exécution de programme indépendante avec son propre espace mémoire et ses ressources, tandis qu'un thread est une unité d'exécution légère au sein d'un processus. Les threads au sein du même processus partagent l'espace mémoire et les ressources.\n\nDifférences clés:\n- Les processus ont une mémoire séparée; les threads partagent la mémoire\n- La communication inter-processus est plus complexe que la communication inter-threads\n- La création de thread est plus rapide que la création de processus\n- Si un thread plante, il peut faire planter tout le processus"
+        },
+        {
+          "question": "Quelle est la différence entre `synchronized` et `volatile`?",
+          "answer": "Les deux fournissent une sécurité des threads, mais avec des garanties différentes:\n\n**Synchronized:**\n- Fournit des garanties d'exclusion mutuelle et de visibilité\n- Assure qu'un seul thread exécute le code synchronisé à la fois\n- Plus lourd; implique l'acquisition et la libération de verrous\n- Peut être appliqué aux méthodes ou aux blocs\n\n**Volatile:**\n- Fournit uniquement des garanties de visibilité, pas d'atomicité\n- Assure que les lectures/écritures vont directement à la mémoire principale\n- Ne peut pas rendre atomiques les opérations composées (comme i++)\n- Peut uniquement être appliqué aux champs"
+        },
+        {
+          "question": "Quel est le but des méthodes `wait()`, `notify()`, et `notifyAll()`?",
+          "answer": "Ces méthodes sont utilisées pour la communication inter-threads:\n\n- `wait()`: Fait attendre le thread courant jusqu'à ce qu'un autre thread invoque `notify()` ou `notifyAll()` sur le même objet\n- `notify()`: Réveille un seul thread en attente sur l'objet\n- `notifyAll()`: Réveille tous les threads en attente sur l'objet\n\nImportant: Elles doivent être appelées depuis un bloc synchronisé sur l'objet sur lequel elles sont invoquées."
+        },
+        {
+          "question": "Comment ConcurrentHashMap assure-t-il la sécurité des threads?",
+          "answer": "ConcurrentHashMap utilise une approche segmentée ou un verrouillage à granularité fine pour assurer la sécurité des threads sans verrouiller toute la map. Caractéristiques clés:\n\n- Utilise plusieurs verrous (un pour chaque segment/bucket) pour une meilleure concurrence\n- Permet des lectures concurrentes sans verrouillage\n- Fournit des opérations atomiques comme putIfAbsent, replace\n- N'autorise pas les clés ou valeurs nulles\n- Accès concurrent efficace sans bloquer tous les threads"
+        },
+        {
+          "question": "Qu'est-ce qu'un deadlock et comment peut-il être évité?",
+          "answer": "Un deadlock se produit lorsque deux ou plusieurs threads sont bloqués indéfiniment, chacun attendant des ressources détenues par les autres. Pour éviter les deadlocks:\n\n1. Toujours acquérir les verrous dans un ordre cohérent\n2. Utiliser l'acquisition de verrou temporisée (tryLock avec timeout)\n3. Éviter les verrous imbriqués si possible\n4. Utiliser des outils/stratégies de détection de deadlock\n5. Libérer les verrous dans un bloc finally"
+        },
+        {
+          "question": "Quel est le but de ThreadLocal?",
+          "answer": "ThreadLocal fournit des variables confinées aux threads qui ne peuvent être lues et écrites que par le même thread, créant des copies indépendantes pour chaque thread.\n\nUtilisations courantes:\n- Stocker un contexte par thread (identité utilisateur, transactions)\n- Mise en cache spécifique au thread\n- Générateurs de nombres aléatoires par thread\n- Éviter la synchronisation quand chaque thread a besoin de sa propre variable\n\nImportant: Toujours nettoyer les variables ThreadLocal quand c'est fini pour éviter les fuites de mémoire, spécialement dans les pools de threads."
+        },
+        {
+          "question": "Expliquez la différence entre Callable et Runnable.",
+          "answer": "Les deux représentent des tâches qui peuvent être exécutées par un thread, mais:\n\n**Runnable:**\n- Pas de valeur de retour (méthode void run())\n- Ne peut pas lancer d'exceptions vérifiées\n- Utilisé avec Thread et ExecutorService\n\n**Callable:**\n- Retourne une valeur (méthode V call())\n- Peut lancer des exceptions vérifiées\n- Utilisé principalement avec ExecutorService\n- Retourne un objet Future pour récupérer le résultat"
+        },
+        {
+          "question": "Quelle est la différence entre CountDownLatch et CyclicBarrier?",
+          "answer": "Les deux aident à synchroniser les threads, mais:\n\n**CountDownLatch:**\n- Barrière à usage unique avec compteur fixe\n- Le compteur diminue via les appels countDown()\n- Thread(s) en attente libéré(s) quand le compteur atteint zéro\n- Ne peut pas être réinitialisé une fois que le compteur atteint zéro\n\n**CyclicBarrier:**\n- Barrière réutilisable pour plusieurs threads\n- Tous les threads attendent à la barrière jusqu'à ce que le dernier thread arrive\n- Se réinitialise automatiquement pour la réutilisation\n- Action optionnelle peut être exécutée quand la barrière est déclenchée"
+        },
+        {
+          "question": "Comment gérer les exceptions dans les threads?",
+          "answer": "La gestion des exceptions dans les threads nécessite des approches spéciales:\n\n1. Try-catch dans la méthode run():\n```java\npublic void run() {\n    try {\n        // Code\n    } catch (Exception e) {\n        // Gérer\n    }\n}\n```\n\n2. Définir un UncaughtExceptionHandler:\n```java\nthread.setUncaughtExceptionHandler((t, e) -> {\n    // Gérer l'exception du thread t\n});\n```\n\n3. Avec ExecutorService, utiliser Future.get() qui lance ExecutionException:\n```java\nFuture<?> future = executor.submit(task);\ntry {\n    future.get();\n} catch (ExecutionException e) {\n    Throwable cause = e.getCause(); // Exception originale\n}\n```"
+        },
+        {
+          "question": "Quels sont les avantages d'utiliser CompletableFuture par rapport à Future?",
+          "answer": "CompletableFuture offre des améliorations significatives par rapport à Future:\n\n- Composition non bloquante d'opérations asynchrones (thenApply, thenCompose)\n- Gestion des exceptions (exceptionally, handle)\n- Capacité à combiner plusieurs futures (thenCombine, allOf)\n- Support pour les callbacks (thenAccept, thenRun)\n- Ne nécessite pas de vérification manuelle de l'achèvement\n- Permet la spécification d'executor personnalisé\n- Fournit une API fluide pour le style de programmation fonctionnelle"
+        }
+      ]
+    },
+    {
+      "id": "best-practices",
+      "title": "Bonnes Pratiques",
+      "practices": [
+        {
+          "title": "Préférer les utilitaires de concurrence de haut niveau",
+          "items": [
+            "Utiliser des collections concurrentes plutôt que des collections synchronisées",
+            "Utiliser ExecutorService plutôt que des threads bruts",
+            "Utiliser des classes atomiques pour les compteurs",
+            "Utiliser CompletableFuture pour les opérations asynchrones"
+          ]
+        },
+        {
+          "title": "Concevoir pour la sécurité des threads",
+          "items": [
+            "Créer des objets immuables quand c'est possible",
+            "Utiliser le confinement de thread quand c'est approprié",
+            "Documenter les garanties de sécurité des threads",
+            "Minimiser le partage de données mutables"
+          ]
+        },
+        {
+          "title": "Éviter les problèmes courants",
+          "items": [
+            "Acquérir les verrous dans un ordre cohérent pour éviter les deadlocks",
+            "Libérer les ressources dans des blocs finally",
+            "Toujours nettoyer les variables ThreadLocal",
+            "Arrêter correctement les ExecutorServices"
+          ]
+        },
+        {
+          "title": "Considérations de performance",
+          "items": [
+            "Utiliser le fractionnement/striping de verrou pour les scénarios à forte contention",
+            "Considérer les verrous lecture-écriture pour les charges de travail à forte lecture",
+            "Utiliser des algorithmes non bloquants quand c'est possible",
+            "Être prudent avec la synchronisation excessive"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related-topics",
+      "title": "Sujets Connexes",
+      "topics": [
+        "Fondamentaux Java",
+        "Fonctionnalités Java 8+",
+        "Framework de Collections",
+        "Optimisation des Performances",
+        "API Stream",
+        "Expressions Lambda"
+      ]
+    }
+  ],
+  "footer_tags": ["multithreading", "traitement-parallèle", "framework-executor", "sécurité-threads", "deadlocks", "conditions-de-course"]
+}
