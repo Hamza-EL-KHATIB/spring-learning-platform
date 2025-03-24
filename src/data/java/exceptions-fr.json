@@ -4,80 +4,80 @@
   "topics": [
     {
       "id": "core-concepts",
-      "title": "Core Concepts Overview",
-      "description": "Exception handling in Java provides a mechanism to handle runtime errors, allowing the program to continue executing rather than terminating abruptly. This structured approach to error management is fundamental to building robust and maintainable applications.",
+      "title": "Aperçu des Concepts Fondamentaux",
+      "description": "La gestion des exceptions en Java fournit un mécanisme pour gérer les erreurs d'exécution, permettant au programme de continuer à s'exécuter plutôt que de s'arrêter brusquement. Cette approche structurée de la gestion des erreurs est fondamentale pour construire des applications robustes et maintenables.",
       "features": [
         {
-          "name": "Exception Hierarchy",
-          "purpose": "Organize errors in systematic inheritance",
+          "name": "Hiérarchie des Exceptions",
+          "purpose": "Organiser les erreurs dans une hiérarchie d'héritage systématique",
           "interviewRelevance": 5
         },
         {
           "name": "try-catch-finally",
-          "purpose": "Basic exception handling structure",
+          "purpose": "Structure de base pour la gestion des exceptions",
           "interviewRelevance": 5
         },
         {
-          "name": "Checked vs Unchecked",
-          "purpose": "Different types requiring different handling",
+          "name": "Exceptions Vérifiées vs Non Vérifiées",
+          "purpose": "Différents types nécessitant différentes méthodes de gestion",
           "interviewRelevance": 5
         },
         {
           "name": "try-with-resources",
-          "purpose": "Automatic resource management",
+          "purpose": "Gestion automatique des ressources",
           "interviewRelevance": 4
         },
         {
           "name": "throw/throws",
-          "purpose": "Exception propagation mechanisms",
+          "purpose": "Mécanismes de propagation des exceptions",
           "interviewRelevance": 4
         },
         {
-          "name": "Custom Exceptions",
-          "purpose": "Application-specific error handling",
+          "name": "Exceptions Personnalisées",
+          "purpose": "Gestion des erreurs spécifiques à l'application",
           "interviewRelevance": 3
         },
         {
-          "name": "Exception Chaining",
-          "purpose": "Preserving cause of exceptions",
+          "name": "Chaînage d'Exceptions",
+          "purpose": "Préserver la cause des exceptions",
           "interviewRelevance": 3
         },
         {
           "name": "Multi-catch",
-          "purpose": "Handle multiple exceptions similarly",
+          "purpose": "Gérer plusieurs exceptions de manière similaire",
           "interviewRelevance": 3
         },
         {
-          "name": "finally Block Mechanics",
-          "purpose": "Resource cleanup guarantees",
+          "name": "Mécaniques du Bloc finally",
+          "purpose": "Garanties de nettoyage des ressources",
           "interviewRelevance": 3
         }
       ]
     },
     {
       "id": "exception-hierarchy",
-      "title": "Exception Hierarchy",
+      "title": "Hiérarchie des Exceptions",
       "diagram": "graph TD\n    Throwable --> Error\n    Throwable --> Exception\n    Exception --> RuntimeException\n    Exception --> CheckedException[Checked Exceptions]\n    RuntimeException --> NullPointerException\n    RuntimeException --> ArithmeticException\n    RuntimeException --> IndexOutOfBoundsException\n    CheckedException --> IOException\n    CheckedException --> SQLException\n    Error --> OutOfMemoryError\n    Error --> StackOverflowError",
       "classes": [
         {
           "name": "Throwable",
-          "description": "The root class for all errors and exceptions"
+          "description": "La classe racine pour toutes les erreurs et exceptions"
         },
         {
           "name": "Error",
-          "description": "Serious problems that application shouldn't try to handle"
+          "description": "Problèmes graves que l'application ne devrait pas essayer de gérer"
         },
         {
           "name": "Exception",
-          "description": "Problems that can and should be handled by the application",
+          "description": "Problèmes qui peuvent et devraient être gérés par l'application",
           "subclasses": [
             {
               "name": "RuntimeException",
-              "description": "Exceptions that don't need to be declared or caught"
+              "description": "Exceptions qui n'ont pas besoin d'être déclarées ou capturées"
             },
             {
               "name": "Checked Exceptions",
-              "description": "Exceptions that must be either caught or declared"
+              "description": "Exceptions qui doivent être soit capturées, soit déclarées"
             }
           ]
         }
@@ -85,32 +85,32 @@
     },
     {
       "id": "exception-types",
-      "title": "Types of Exceptions",
+      "title": "Types d'Exceptions",
       "types": [
         {
-          "type": "Checked Exceptions",
-          "description": "Exceptions that must be either caught or declared",
+          "type": "Exceptions Vérifiées (Checked Exceptions)",
+          "description": "Exceptions qui doivent être soit capturées, soit déclarées",
           "properties": [
-            "Must be either caught (using try-catch) or declared (using throws)",
-            "Represent conditions that a reasonable application might want to catch",
-            "Examples: IOException, SQLException, ClassNotFoundException"
+            "Doivent être soit capturées (en utilisant try-catch), soit déclarées (en utilisant throws)",
+            "Représentent des conditions qu'une application raisonnable pourrait vouloir capturer",
+            "Exemples: IOException, SQLException, ClassNotFoundException"
           ],
           "examples": [
             {
               "exception": "IOException",
-              "description": "Input/output operations failed or interrupted"
+              "description": "Opérations d'entrée/sortie échouées ou interrompues"
             },
             {
               "exception": "SQLException",
-              "description": "Database access error or other SQL-related issues"
+              "description": "Erreur d'accès à la base de données ou autres problèmes liés à SQL"
             },
             {
               "exception": "ClassNotFoundException",
-              "description": "Application tries to load a class through its string name"
+              "description": "L'application tente de charger une classe par son nom sous forme de chaîne"
             },
             {
               "exception": "InterruptedException",
-              "description": "Thread is interrupted during execution"
+              "description": "Le thread est interrompu pendant l'exécution"
             }
           ],
           "code": [
@@ -125,37 +125,37 @@
           ]
         },
         {
-          "type": "Unchecked Exceptions (RuntimeExceptions)",
-          "description": "Exceptions that don't need to be explicitly caught or declared",
+          "type": "Exceptions Non Vérifiées (RuntimeExceptions)",
+          "description": "Exceptions qui n'ont pas besoin d'être explicitement capturées ou déclarées",
           "properties": [
-            "Don't need to be explicitly caught or declared",
-            "Usually indicate programming errors rather than external conditions",
-            "Examples: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException"
+            "N'ont pas besoin d'être explicitement capturées ou déclarées",
+            "Indiquent généralement des erreurs de programmation plutôt que des conditions externes",
+            "Exemples: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException"
           ],
           "examples": [
             {
               "exception": "NullPointerException",
-              "description": "Attempting to access methods or fields of a null object"
+              "description": "Tentative d'accès à des méthodes ou des champs d'un objet null"
             },
             {
               "exception": "ArrayIndexOutOfBoundsException",
-              "description": "Attempting to access an array element outside its bounds"
+              "description": "Tentative d'accès à un élément de tableau en dehors de ses limites"
             },
             {
               "exception": "ArithmeticException",
-              "description": "Arithmetic errors such as division by zero"
+              "description": "Erreurs arithmétiques comme la division par zéro"
             },
             {
               "exception": "ClassCastException",
-              "description": "Invalid casting between incompatible classes"
+              "description": "Conversion invalide entre classes incompatibles"
             },
             {
               "exception": "IllegalArgumentException",
-              "description": "Method received an argument that is invalid"
+              "description": "Méthode recevant un argument invalide"
             },
             {
               "exception": "IllegalStateException",
-              "description": "Method called at an illegal or inappropriate time"
+              "description": "Méthode appelée à un moment illégal ou inapproprié"
             }
           ],
           "code": [
@@ -166,21 +166,21 @@
           ]
         },
         {
-          "type": "Errors",
-          "description": "Serious problems at the JVM level that shouldn't be caught",
+          "type": "Erreurs (Errors)",
+          "description": "Problèmes graves au niveau de la JVM qui ne devraient pas être capturés",
           "properties": [
-            "Represent serious problems at the JVM level",
-            "Applications shouldn't try to catch or recover from them",
-            "Examples: OutOfMemoryError, StackOverflowError, VirtualMachineError"
+            "Représentent des problèmes graves au niveau de la JVM",
+            "Les applications ne devraient pas essayer de les capturer ou de s'en remettre",
+            "Exemples: OutOfMemoryError, StackOverflowError, VirtualMachineError"
           ],
           "examples": [
             {
               "error": "OutOfMemoryError",
-              "description": "Indicates that the JVM has run out of memory"
+              "description": "Indique que la JVM est à court de mémoire"
             },
             {
               "error": "StackOverflowError",
-              "description": "Occurs when there is excessive deep recursion, causing the call stack to exceed its limit"
+              "description": "Se produit lors d'une récursion trop profonde, entraînant un dépassement de la limite de la pile d'appels"
             }
           ]
         }
@@ -188,25 +188,25 @@
     },
     {
       "id": "handling-exceptions",
-      "title": "Exception Handling Mechanisms",
-      "description": "Java provides several mechanisms to handle exceptions and prevent them from crashing the program.",
+      "title": "Mécanismes de Gestion des Exceptions",
+      "description": "Java fournit plusieurs mécanismes pour gérer les exceptions et empêcher qu'elles ne fassent planter le programme.",
       "methods": [
         {
           "id": "try-catch-finally",
           "method": "try-catch-finally",
-          "description": "Basic exception handling structure",
+          "description": "Structure de base pour la gestion des exceptions",
           "components": [
             {
               "name": "try",
-              "purpose": "Contains code that might throw an exception"
+              "purpose": "Contient le code qui pourrait lancer une exception"
             },
             {
               "name": "catch",
-              "purpose": "Handles specific types of exceptions"
+              "purpose": "Gère des types spécifiques d'exceptions"
             },
             {
               "name": "finally",
-              "purpose": "Executes regardless of whether an exception occurs"
+              "purpose": "S'exécute indépendamment de la survenue d'une exception"
             }
           ],
           "code": {
@@ -217,11 +217,11 @@
         {
           "id": "try-with-resources",
           "method": "try-with-resources",
-          "description": "Automatically closes resources that implement AutoCloseable",
+          "description": "Ferme automatiquement les ressources qui implémentent AutoCloseable",
           "properties": [
-            "Eliminates the need for explicit finally blocks for resource cleanup",
-            "Resources are closed in reverse order of their creation",
-            "Available in Java 7+"
+            "Élimine le besoin de blocs finally explicites pour le nettoyage des ressources",
+            "Les ressources sont fermées dans l'ordre inverse de leur création",
+            "Disponible depuis Java 7+"
           ],
           "code": {
             "language": "java",
@@ -231,10 +231,10 @@
         {
           "id": "multi-catch",
           "method": "Multi-Catch",
-          "description": "Allows handling multiple exception types with the same code",
+          "description": "Permet de gérer plusieurs types d'exceptions avec le même code",
           "properties": [
-            "Exceptions in the same catch must not be in a subclass relationship",
-            "Available in Java 7+"
+            "Les exceptions dans le même catch ne doivent pas être dans une relation de sous-classe",
+            "Disponible depuis Java 7+"
           ],
           "code": {
             "language": "java",
@@ -244,8 +244,8 @@
         {
           "id": "throw",
           "method": "throw",
-          "description": "Used to explicitly throw an exception",
-          "properties": ["Can throw both built-in and custom exceptions"],
+          "description": "Utilisé pour lancer explicitement une exception",
+          "properties": ["Peut lancer à la fois des exceptions intégrées et personnalisées"],
           "code": {
             "language": "java",
             "snippet": "if (age < 0) {\n    throw new IllegalArgumentException(\"Age cannot be negative\");\n}"
@@ -254,8 +254,8 @@
         {
           "id": "throws",
           "method": "throws",
-          "description": "Used in method signature to declare that it can throw checked exceptions",
-          "properties": ["Multiple exceptions can be declared with a comma-separated list"],
+          "description": "Utilisé dans la signature d'une méthode pour déclarer qu'elle peut lancer des exceptions vérifiées",
+          "properties": ["Plusieurs exceptions peuvent être déclarées avec une liste séparée par des virgules"],
           "code": {
             "language": "java",
             "snippet": "public void readFile() throws IOException, FileNotFoundException {\n    // Method implementation\n}"
@@ -265,28 +265,28 @@
     },
     {
       "id": "custom-exceptions",
-      "title": "Custom Exceptions",
-      "description": "Used to represent application-specific error conditions",
+      "title": "Exceptions Personnalisées",
+      "description": "Utilisées pour représenter des conditions d'erreur spécifiques à l'application",
       "steps": [
-        "Extend the appropriate exception class (Exception for checked, RuntimeException for unchecked)",
-        "Implement constructors that chain to the parent",
-        "Add any additional fields or methods needed",
-        "Use the custom exception in application code where needed"
+        "Étendre la classe d'exception appropriée (Exception pour vérifiée, RuntimeException pour non vérifiée)",
+        "Implémenter des constructeurs qui chaînent au parent",
+        "Ajouter des champs ou méthodes supplémentaires si nécessaire",
+        "Utiliser l'exception personnalisée dans le code de l'application où nécessaire"
       ],
-      "bestPractices": ["Include descriptive messages and relevant data"],
+      "bestPractices": ["Inclure des messages descriptifs et des données pertinentes"],
       "examples": [
         {
-          "type": "checked",
+          "type": "vérifiée",
           "name": "InsufficientFundsException",
           "code": "// Custom checked exception\npublic class InsufficientFundsException extends Exception {\n    private double amount;\n    \n    public InsufficientFundsException(String message, double amount) {\n        super(message);\n        this.amount = amount;\n    }\n    \n    public double getAmount() {\n        return amount;\n    }\n}"
         },
         {
-          "type": "unchecked",
+          "type": "non vérifiée",
           "name": "UserNotFoundException",
           "code": "// Custom runtime exception\npublic class UserNotFoundException extends RuntimeException {\n    private String userId;\n    \n    public UserNotFoundException(String userId) {\n        super(\"User not found with ID: \" + userId);\n        this.userId = userId;\n    }\n    \n    public String getUserId() {\n        return userId;\n    }\n}"
         },
         {
-          "type": "basic",
+          "type": "basique",
           "name": "InvalidInputException",
           "code": "public class InvalidInputException extends Exception {\n    public InvalidInputException(String message) {\n        super(message);\n    }\n}"
         }
@@ -294,130 +294,130 @@
     },
     {
       "id": "best-practices",
-      "title": "Exception Handling Best Practices",
+      "title": "Bonnes Pratiques pour la Gestion des Exceptions",
       "practices": [
         {
-          "practice": "Catch specific exceptions",
-          "description": "Prefer catching specific exception types rather than general ones",
+          "practice": "Capturer des exceptions spécifiques",
+          "description": "Préférer capturer des types d'exceptions spécifiques plutôt que généraux",
           "code": {
             "bad": "// Bad practice\ntry {\n    // Code\n} catch (Exception e) { // Too general\n    // Handle\n}",
             "good": "// Good practice\ntry {\n    // Code\n} catch (IOException e) {\n    // Handle IO exception\n} catch (SQLException e) {\n    // Handle SQL exception\n}"
           }
         },
         {
-          "practice": "Don't swallow exceptions",
-          "description": "Always provide proper handling or logging",
+          "practice": "Ne pas avaler les exceptions",
+          "description": "Toujours fournir une gestion ou une journalisation appropriée",
           "code": {
             "bad": "// Bad practice\ntry {\n    // Code\n} catch (Exception e) {\n    // Empty catch block - exceptions are \"swallowed\"\n}",
             "good": "// Good practice\ntry {\n    // Code\n} catch (Exception e) {\n    logger.error(\"Operation failed\", e);\n    // Additional handling if needed\n}"
           }
         },
         {
-          "practice": "Close resources properly",
-          "description": "Use try-with-resources for AutoCloseable resources"
+          "practice": "Fermer les ressources correctement",
+          "description": "Utiliser try-with-resources pour les ressources AutoCloseable"
         },
         {
-          "practice": "Throw early, catch late",
-          "description": "Validate parameters early and handle exceptions at a level where you can provide appropriate recovery"
+          "practice": "Lancer tôt, capturer tard",
+          "description": "Valider les paramètres tôt et gérer les exceptions à un niveau où vous pouvez fournir une récupération appropriée"
         },
         {
-          "practice": "Include informative messages",
-          "description": "Make exception messages clear and specific"
+          "practice": "Inclure des messages informatifs",
+          "description": "Rendre les messages d'exception clairs et spécifiques"
         },
         {
-          "practice": "Wrap lower-level exceptions",
-          "description": "Preserve the original exception cause when throwing new ones",
+          "practice": "Encapsuler les exceptions de bas niveau",
+          "description": "Préserver la cause originale des exceptions lors du lancement de nouvelles",
           "code": {
             "language": "java",
             "snippet": "try {\n    // Lower-level operation\n} catch (SQLException e) {\n    throw new DataAccessException(\"Failed to retrieve user data\", e);\n}"
           }
         },
         {
-          "practice": "Document exceptions",
-          "description": "Use @throws Javadoc to document exceptions thrown by methods"
+          "practice": "Documenter les exceptions",
+          "description": "Utiliser @throws Javadoc pour documenter les exceptions lancées par les méthodes"
         }
       ]
     },
     {
       "id": "multi-threaded-exceptions",
-      "title": "Exception Handling in Multi-Threaded Environments",
+      "title": "Gestion des Exceptions dans les Environnements Multi-Thread",
       "concepts": [
         {
-          "name": "Thread exceptions",
-          "description": "Exceptions in one thread don't affect other threads"
+          "name": "Exceptions de thread",
+          "description": "Les exceptions dans un thread n'affectent pas les autres threads"
         },
         {
           "name": "UncaughtExceptionHandler",
-          "description": "Can be set to handle unhandled exceptions in threads"
+          "description": "Peut être défini pour gérer les exceptions non capturées dans les threads"
         },
         {
-          "name": "CompletableFuture exception handling",
-          "description": "Use exceptionally() or handle() methods"
+          "name": "Gestion des exceptions CompletableFuture",
+          "description": "Utiliser les méthodes exceptionally() ou handle()"
         }
       ],
       "code": [
         {
-          "description": "Setting a default handler for uncaught exceptions",
+          "description": "Définir un gestionnaire par défaut pour les exceptions non capturées",
           "snippet": "Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {\n    System.err.println(\"Unhandled exception in thread: \" + thread.getName());\n    throwable.printStackTrace();\n});"
         },
         {
-          "description": "Using CompletableFuture for exception handling",
+          "description": "Utiliser CompletableFuture pour la gestion des exceptions",
           "snippet": "CompletableFuture.supplyAsync(() -> {\n    // Code that might throw\n    return 100 / 0;  // This will throw ArithmeticException\n}).exceptionally(ex -> {\n    System.out.println(\"Exception caught: \" + ex.getMessage());\n    return 0;  // Fallback value\n});"
         }
       ]
     },
     {
       "id": "try-catch-order",
-      "title": "Order of Exceptions in try-catch",
-      "description": "Catch blocks are evaluated in the order they appear",
-      "rule": "More specific exceptions should be caught before more general ones",
+      "title": "Ordre des Exceptions dans try-catch",
+      "description": "Les blocs catch sont évalués dans l'ordre où ils apparaissent",
+      "rule": "Les exceptions plus spécifiques doivent être capturées avant les plus générales",
       "code": "try {\n    // Code that might throw\n} catch (NullPointerException e) {\n    // Handle NullPointerException - more specific\n} catch (RuntimeException e) {\n    // Handle other RuntimeExceptions - more general\n} catch (Exception e) {\n    // Handle all other exceptions - most general\n}"
     },
     {
       "id": "interview-questions",
-      "title": "Frequently Asked Exception Interview Questions",
+      "title": "Questions d'Entretien Fréquemment Posées sur les Exceptions",
       "questions": [
         {
-          "question": "What is the difference between a return statement in try vs. finally block?",
-          "answer": "If both try and finally blocks have return statements, the value returned by the method is the one from the finally block. The finally block overwrites the return value from the try block.",
+          "question": "Quelle est la différence entre une instruction return dans un bloc try par rapport à un bloc finally?",
+          "answer": "Si les blocs try et finally ont tous deux des instructions return, la valeur retournée par la méthode est celle du bloc finally. Le bloc finally écrase la valeur de retour du bloc try.",
           "code": "public int exampleMethod() {\n    try {\n        return 1;  // This value will be overwritten\n    } finally {\n        return 2;  // This value will be returned\n    }\n}\n// Method returns 2"
         },
         {
-          "question": "What happens if an exception is thrown in a finally block?",
-          "answer": "If an exception is thrown in the finally block, it will override any exception thrown in the try or catch blocks. The original exception is lost unless explicitly handled in the finally block."
+          "question": "Que se passe-t-il si une exception est lancée dans un bloc finally?",
+          "answer": "Si une exception est lancée dans le bloc finally, elle remplacera toute exception lancée dans les blocs try ou catch. L'exception originale est perdue à moins d'être explicitement gérée dans le bloc finally."
         },
         {
-          "question": "Can we have a try block without catch or finally?",
-          "answer": "With try-with-resources (Java 7+), a catch or finally block is optional. However, in a traditional try block, you must have either a catch or a finally block (or both)."
+          "question": "Peut-on avoir un bloc try sans catch ni finally?",
+          "answer": "Avec try-with-resources (Java 7+), un bloc catch ou finally est optionnel. Cependant, dans un bloc try traditionnel, vous devez avoir soit un bloc catch, soit un bloc finally (ou les deux)."
         },
         {
-          "question": "What is the difference between throw and throws?",
-          "answer": "- `throw` is used to explicitly throw an exception within a method\n- `throws` is used in method declaration to specify that the method might throw certain types of exceptions"
+          "question": "Quelle est la différence entre throw et throws?",
+          "answer": "- `throw` est utilisé pour lancer explicitement une exception dans une méthode\n- `throws` est utilisé dans la déclaration de méthode pour spécifier que la méthode peut lancer certains types d'exceptions"
         },
         {
-          "question": "What is the catch-all block and is it a good practice?",
-          "answer": "The catch-all block uses `catch(Exception e)` to catch all exceptions. While convenient, it's generally not a good practice as it:\n- Catches all exceptions, even those you might not know how to handle\n- Makes it difficult to distinguish between different exception types\n- Can hide programming errors that should be fixed\n\nUse it only when you genuinely need to catch all possible exceptions, and avoid empty catch blocks."
+          "question": "Qu'est-ce que le bloc catch-all et est-ce une bonne pratique?",
+          "answer": "Le bloc catch-all utilise `catch(Exception e)` pour capturer toutes les exceptions. Bien que pratique, ce n'est généralement pas une bonne pratique car il :\n- Capture toutes les exceptions, même celles que vous ne savez peut-être pas gérer\n- Rend difficile la distinction entre différents types d'exceptions\n- Peut masquer des erreurs de programmation qui devraient être corrigées\n\nUtilisez-le uniquement lorsque vous avez réellement besoin de capturer toutes les exceptions possibles, et évitez les blocs catch vides."
         },
         {
-          "question": "Is it possible to rethrow an exception?",
-          "answer": "Yes, you can rethrow an exception after catching it:",
+          "question": "Est-il possible de relancer une exception?",
+          "answer": "Oui, vous pouvez relancer une exception après l'avoir capturée:",
           "code": "try {\n    // Code that might throw\n} catch (IOException e) {\n    // Log the exception\n    logger.error(\"IO error\", e);\n    \n    // Rethrow the same exception\n    throw e;\n    \n    // Or wrap it in another exception\n    // throw new ServiceException(\"Service failed\", e);\n}"
         },
         {
-          "question": "How do you create a custom exception?",
-          "answer": "To create a custom exception:\n1. Extend the appropriate exception class (Exception for checked, RuntimeException for unchecked)\n2. Implement constructors that chain to the parent\n3. Add any additional fields or methods needed",
+          "question": "Comment créer une exception personnalisée?",
+          "answer": "Pour créer une exception personnalisée :\n1. Étendre la classe d'exception appropriée (Exception pour vérifiée, RuntimeException pour non vérifiée)\n2. Implémenter des constructeurs qui chaînent au parent\n3. Ajouter des champs ou méthodes supplémentaires si nécessaire",
           "code": "public class BusinessException extends Exception {\n    private String errorCode;\n    \n    public BusinessException(String message) {\n        super(message);\n    }\n    \n    public BusinessException(String message, String errorCode) {\n        super(message);\n        this.errorCode = errorCode;\n    }\n    \n    public BusinessException(String message, Throwable cause) {\n        super(message, cause);\n    }\n    \n    public String getErrorCode() {\n        return errorCode;\n    }\n}"
         },
         {
-          "question": "How do you handle exceptions in a Spring Boot application?",
-          "answer": "In Spring Boot, you can handle exceptions using:\n\n1. **@ExceptionHandler**: Method-level annotation to handle exceptions thrown by specific controller methods\n\n2. **@ControllerAdvice/@RestControllerAdvice**: Class-level annotation for global exception handling",
+          "question": "Comment gérer les exceptions dans une application Spring Boot?",
+          "answer": "Dans Spring Boot, vous pouvez gérer les exceptions en utilisant :\n\n1. **@ExceptionHandler**: Annotation au niveau de la méthode pour gérer les exceptions lancées par des méthodes de contrôleur spécifiques\n\n2. **@ControllerAdvice/@RestControllerAdvice**: Annotation au niveau de la classe pour la gestion globale des exceptions",
           "code": [
             {
-              "name": "@ExceptionHandler example",
+              "name": "Exemple @ExceptionHandler",
               "snippet": "@Controller\npublic class UserController {\n    @ExceptionHandler(UserNotFoundException.class)\n    public ResponseEntity<ErrorResponse> handleUserNotFound(UserNotFoundException ex) {\n        return ResponseEntity.status(HttpStatus.NOT_FOUND)\n                .body(new ErrorResponse(ex.getMessage()));\n    }\n}"
             },
             {
-              "name": "@RestControllerAdvice example",
+              "name": "Exemple @RestControllerAdvice",
               "snippet": "@RestControllerAdvice\npublic class GlobalExceptionHandler {\n    @ExceptionHandler(UserNotFoundException.class)\n    public ResponseEntity<ErrorResponse> handleUserNotFound(UserNotFoundException ex) {\n        return ResponseEntity.status(HttpStatus.NOT_FOUND)\n                .body(new ErrorResponse(ex.getMessage()));\n    }\n    \n    @ExceptionHandler(Exception.class)\n    public ResponseEntity<ErrorResponse> handleGenericException(Exception ex) {\n        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)\n                .body(new ErrorResponse(\"An unexpected error occurred\"));\n    }\n}"
             }
           ]
@@ -426,14 +426,14 @@
     },
     {
       "id": "related-topics",
-      "title": "Related Topics",
+      "title": "Sujets Connexes",
       "topics": [
-        "Error Handling",
-        "Java Fundamentals",
-        "Logging Best Practices",
+        "Gestion des Erreurs",
+        "Fondamentaux Java",
+        "Bonnes Pratiques de Journalisation",
         "CompletableFuture"
       ],
-      "additionalTags": ["exception-handling", "java-core", "interviews"]
+      "additionalTags": ["gestion-des-exceptions", "java-core", "entretiens"]
     }
   ]
 }
