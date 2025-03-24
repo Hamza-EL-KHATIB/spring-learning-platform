@@ -1,11 +1,10 @@
-import React, { useState, useEffect, memo, useCallback } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import concurrencyJsonEn from '../../../data/java/concurrency.json';
 // For a real implementation, we would import the French version:
 // import concurrencyJsonFr from '../../../data/java/concurrency-fr.json';
 import {
-    ArrowDownUp, Lock, Database, Clock, FileText, GitBranch,
-    Info, Cpu, Zap, HelpCircle, Globe, ChevronDown, Code,
-    CheckCircle2, XCircle, AlertTriangle, List, Box, Target
+    ArrowDownUp, Lock, Database, GitBranch,
+    Info, Cpu, Zap, HelpCircle, Globe, ChevronDown, Code, AlertTriangle, Box, Target
 } from 'lucide-react';
 import CodeBlock from '../../../components/CodeBlock';
 
@@ -17,7 +16,7 @@ const ConcurrencyPage = () => {
 
     // For demo purposes, we'll just use English content for both languages
     // In a real implementation, you would choose the correct JSON based on language
-    const [content, setContent] = useState(concurrencyJsonEn);
+    const [content] = useState(concurrencyJsonEn);
 
     // Define tab structure based on the sections in the JSON
     const tabs = [
