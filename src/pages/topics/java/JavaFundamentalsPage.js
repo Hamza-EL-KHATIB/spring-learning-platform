@@ -2,6 +2,7 @@ import React, {useState, useEffect, memo, useMemo} from 'react';
 import {
     Book,
     Code,
+    Target,
     Database,
     Server,
     Layout,
@@ -9,6 +10,7 @@ import {
     Cpu,
     MemoryStick,
     Clock,
+    HelpCircle,
     GitBranch,
     Globe,
     Shield,
@@ -23,6 +25,7 @@ import CodeBlock from '../../../components/CodeBlock';
 import EnhancedInterviewFAQs from "./EnhancedInterviewFAQs";
 
 const JavaFundamentalsPage = () => {
+
     // Language state with localStorage persistence
     const [language, setLanguage] = useState(() =>
         localStorage.getItem('javaFundamentalsLanguage') || 'en'
@@ -34,8 +37,23 @@ const JavaFundamentalsPage = () => {
         [language]
     );
 
+    const tabs = [
+        { id: 'core-concepts', title: language === 'en' ? 'Core Concepts' : 'Concepts de Base', icon: <Cpu className="w-4 h-4" /> },
+        { id: 'data-types', title: language === 'en' ? 'Data Types' : 'Types de Données', icon: <Database className="w-4 h-4" /> },
+        { id: 'oop', title: language === 'en' ? 'OOP' : 'POO', icon: <Box className="w-4 h-4" /> },
+        { id: 'memory', title: language === 'en' ? 'Memory' : 'Mémoire', icon: <MemoryStick className="w-4 h-4" /> },
+        { id: 'constructors', title: language === 'en' ? 'Constructors' : 'Constructeurs', icon: <Layout className="w-4 h-4" /> },
+        { id: 'keywords', title: language === 'en' ? 'Keywords' : 'Mots-clés', icon: <Code className="w-4 h-4" /> },
+        { id: 'classes', title: language === 'en' ? 'Classes & Interfaces' : 'Classes & Interfaces', icon: <Server className="w-4 h-4" /> },
+        { id: 'strings', title: language === 'en' ? 'String Handling' : 'Manipulation de Chaînes', icon: <Book className="w-4 h-4" /> },
+        { id: 'packages', title: language === 'en' ? 'Packages' : 'Packages', icon: <GitBranch className="w-4 h-4" /> },
+        { id: 'best-practices', title: language === 'en' ? 'Best Practices' : 'Bonnes Pratiques', icon: <Clock className="w-4 h-4" /> },
+        { id: 'interview-focus', title: language === 'en' ? 'Interview Focus' : 'Focus d\'Entretien', icon: <Target className="w-4 h-4" /> },
+        { id: 'interview-faqs', title: language === 'en' ? 'Interview FAQs' : 'FAQ d\'Entretien', icon: <HelpCircle className="w-4 h-4" /> }
+    ];
+
     // Active section index
-    const [activeSection, setActiveSection] = useState(0);
+    const [activeTab, setActiveTab] = useState('core-concepts');
 
     // Memoized callback for rendering practice category - moved from renderBestPractices
     const RenderPracticeCategory = memo(({category, conventions, practices, principles}) => {
@@ -161,27 +179,54 @@ const JavaFundamentalsPage = () => {
     );
 
     // Tab Navigation component
-    const TabNavigation = () => {
-        return (
-            <div className="mb-8">
-                <div className="flex flex-wrap gap-2">
-                    {content.sections.map((section, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setActiveSection(index)}
-                            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors shadow-lg ${
-                                activeSection === index
-                                    ? 'bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 shadow-cyan-500/50'
-                                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700 shadow-gray-900/50'
-                            }`}
-                        >
-                            {sectionIcons[section.title] || <Box className="w-5 h-5"/>}
-                            {section.title}
-                        </button>
-                    ))}
-                </div>
-            </div>
-        );
+    const TabNavigation = () => (
+        <div className="mb-8 flex flex-wrap gap-4">
+            {tabs.map((tab) => (
+                <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+                        activeTab === tab.id
+                            ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                            : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
+                    }`}
+                >
+                    {tab.icon}
+                    {tab.title}
+                </button>
+            ))}
+        </div>
+    );
+
+    const renderContent = () => {
+        switch (activeTab) {
+            case 'core-concepts':
+                return renderCoreConcepts();
+            case 'data-types':
+                return renderDataTypes();
+            case 'oop':
+                return renderOOPConcepts();
+            case 'memory':
+                return renderMemoryManagement();
+            case 'constructors':
+                return renderConstructors();
+            case 'keywords':
+                return renderKeywords();
+            case 'classes':
+                return renderClassesAndInterfaces();
+            case 'strings':
+                return renderStringHandling();
+            case 'packages':
+                return renderPackagesAndAccess();
+            case 'best-practices':
+                return renderBestPractices();
+            case 'interview-focus':
+                return renderInterviewFocus();
+            case 'interview-faqs':
+                return renderInterviewFAQs();
+            default:
+                return renderCoreConcepts(); // Default fallback
+        }
     };
 
     // Render a section subsection with proper structure
@@ -1938,18 +1983,7 @@ const JavaFundamentalsPage = () => {
 
             {/* Content - Each section with its specific renderer */}
             <div className="space-y-8">
-                {activeSection === 0 ? renderCoreConcepts() :
-                    activeSection === 1 ? renderDataTypes() :
-                        activeSection === 2 ? renderOOPConcepts() :
-                            activeSection === 3 ? renderMemoryManagement() :
-                                activeSection === 4 ? renderConstructors() :
-                                    activeSection === 5 ? renderKeywords() :
-                                        activeSection === 6 ? renderClassesAndInterfaces() :
-                                            activeSection === 7 ? renderStringHandling() :
-                                                activeSection === 8 ? renderPackagesAndAccess() :
-                                                    activeSection === 9 ? renderBestPractices() :
-                                                        activeSection === 10 ? renderInterviewFocus() :
-                                                            renderInterviewFAQs()}
+                {renderContent()}
             </div>
         </div>
     );
