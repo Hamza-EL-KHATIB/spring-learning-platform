@@ -38,18 +38,50 @@ const JavaFundamentalsPage = () => {
     );
 
     const tabs = [
-        { id: 'core-concepts', title: language === 'en' ? 'Core Concepts' : 'Concepts de Base', icon: <Cpu className="w-4 h-4" /> },
-        { id: 'data-types', title: language === 'en' ? 'Data Types' : 'Types de Données', icon: <Database className="w-4 h-4" /> },
-        { id: 'oop', title: language === 'en' ? 'OOP' : 'POO', icon: <Box className="w-4 h-4" /> },
-        { id: 'memory', title: language === 'en' ? 'Memory' : 'Mémoire', icon: <MemoryStick className="w-4 h-4" /> },
-        { id: 'constructors', title: language === 'en' ? 'Constructors' : 'Constructeurs', icon: <Layout className="w-4 h-4" /> },
-        { id: 'keywords', title: language === 'en' ? 'Keywords' : 'Mots-clés', icon: <Code className="w-4 h-4" /> },
-        { id: 'classes', title: language === 'en' ? 'Classes & Interfaces' : 'Classes & Interfaces', icon: <Server className="w-4 h-4" /> },
-        { id: 'strings', title: language === 'en' ? 'String Handling' : 'Manipulation de Chaînes', icon: <Book className="w-4 h-4" /> },
-        { id: 'packages', title: language === 'en' ? 'Packages' : 'Packages', icon: <GitBranch className="w-4 h-4" /> },
-        { id: 'best-practices', title: language === 'en' ? 'Best Practices' : 'Bonnes Pratiques', icon: <Clock className="w-4 h-4" /> },
-        { id: 'interview-focus', title: language === 'en' ? 'Interview Focus' : 'Focus d\'Entretien', icon: <Target className="w-4 h-4" /> },
-        { id: 'interview-faqs', title: language === 'en' ? 'Interview FAQs' : 'FAQ d\'Entretien', icon: <HelpCircle className="w-4 h-4" /> }
+        {
+            id: 'core-concepts',
+            title: language === 'en' ? 'Core Concepts' : 'Concepts de Base',
+            icon: <Cpu className="w-4 h-4"/>
+        },
+        {
+            id: 'data-types',
+            title: language === 'en' ? 'Data Types' : 'Types de Données',
+            icon: <Database className="w-4 h-4"/>
+        },
+        {id: 'oop', title: language === 'en' ? 'OOP' : 'POO', icon: <Box className="w-4 h-4"/>},
+        {id: 'memory', title: language === 'en' ? 'Memory' : 'Mémoire', icon: <MemoryStick className="w-4 h-4"/>},
+        {
+            id: 'constructors',
+            title: language === 'en' ? 'Constructors' : 'Constructeurs',
+            icon: <Layout className="w-4 h-4"/>
+        },
+        {id: 'keywords', title: language === 'en' ? 'Keywords' : 'Mots-clés', icon: <Code className="w-4 h-4"/>},
+        {
+            id: 'classes',
+            title: language === 'en' ? 'Classes & Interfaces' : 'Classes & Interfaces',
+            icon: <Server className="w-4 h-4"/>
+        },
+        {
+            id: 'strings',
+            title: language === 'en' ? 'String Handling' : 'Manipulation de Chaînes',
+            icon: <Book className="w-4 h-4"/>
+        },
+        {id: 'packages', title: language === 'en' ? 'Packages' : 'Packages', icon: <GitBranch className="w-4 h-4"/>},
+        {
+            id: 'best-practices',
+            title: language === 'en' ? 'Best Practices' : 'Bonnes Pratiques',
+            icon: <Clock className="w-4 h-4"/>
+        },
+        {
+            id: 'interview-focus',
+            title: language === 'en' ? 'Interview Focus' : 'Focus d\'Entretien',
+            icon: <Target className="w-4 h-4"/>
+        },
+        {
+            id: 'interview-faqs',
+            title: language === 'en' ? 'Interview FAQs' : 'FAQ d\'Entretien',
+            icon: <HelpCircle className="w-4 h-4"/>
+        }
     ];
 
     // Active section index
@@ -152,13 +184,13 @@ const JavaFundamentalsPage = () => {
     // Language Selector Component
     const LanguageSelector = () => (
         <div className="flex items-center gap-3 mb-6">
-            <Globe className="w-5 h-5 text-cyan-400"/>
+            <Globe className="w-5 h-5 text-purple-400"/>
             <div className="flex rounded-lg overflow-hidden border border-gray-700">
                 <button
                     onClick={() => setLanguage('en')}
                     className={`px-3 py-1.5 text-sm ${
                         language === 'en'
-                            ? 'bg-cyan-500/30 text-cyan-300'
+                            ? 'bg-purple-500/30 text-purple-300'
                             : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
                     }`}
                 >
@@ -168,7 +200,7 @@ const JavaFundamentalsPage = () => {
                     onClick={() => setLanguage('fr')}
                     className={`px-3 py-1.5 text-sm ${
                         language === 'fr'
-                            ? 'bg-cyan-500/30 text-cyan-300'
+                            ? 'bg-purple-500/30 text-purple-300'
                             : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
                     }`}
                 >
@@ -1868,8 +1900,8 @@ const JavaFundamentalsPage = () => {
                         </h4>
                     </div>
                     <div className="bg-gray-900/50 p-3 rounded">
-                        <code className="text-gray-300 font-mono text-sm">
-                            // {language === 'en' ? 'No package declaration' : 'Pas de déclaration de package'}<br/>
+                        <code
+                            className="text-gray-300 font-mono text-sm"> {language === 'en' ? 'No package declaration' : 'Pas de déclaration de package'}<br/>
                             <br/>
                             public class DefaultPackageClass &#123;<br/>
                             &nbsp;&nbsp;&nbsp;&nbsp;// {language === 'en' ? 'Class implementation' : 'Implémentation de la classe'}<br/>
@@ -1959,7 +1991,7 @@ const JavaFundamentalsPage = () => {
         const section = content.sections[11]; // FAQ section
         if (!section || !section.categories) return null;
 
-        return <EnhancedInterviewFAQs section={section} language={language} />;
+        return <EnhancedInterviewFAQs section={section} language={language}/>;
     };
 
     return (
