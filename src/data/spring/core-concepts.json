@@ -25,7 +25,7 @@
           ]
         },
         {
-          "title": "example",
+          "title": "code_examples",
           "multi-content": [
             {
               "title": "without_ioc",
@@ -459,7 +459,7 @@
           ]
         },
         {
-          "title": "examples",
+          "title": "code_examples",
           "multi-content": [
             {
               "title": "singleton_scope",
@@ -681,7 +681,7 @@
           ]
         },
         {
-          "title": "examples",
+          "title": "code_examples",
           "multi-content": [
             {
               "title": "basic_scanning",
@@ -963,8 +963,13 @@
                   "simple-content": "Validation, logging, security checks"
                 },
                 {
-                  "title": "example",
-                  "simple-content": "@Before(\"execution(* com.example.service.*.*(..))\")\npublic void logBefore(JoinPoint joinPoint) {\n    System.out.println(\"Before executing: \" + joinPoint.getSignature().getName());\n}"
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "",
+                      "simple-content": "@Before(\"execution(* com.example.service.*.*(..))\")\npublic void logBefore(JoinPoint joinPoint) {\n    System.out.println(\"Before executing: \" + joinPoint.getSignature().getName());\n}"
+                    }
+                  ]
                 }
               ]
             },
@@ -1030,26 +1035,36 @@
           "title": "pointcut_expressions",
           "multi-content": [
             {
-              "title": "All methods in service package",
-              "simple-content": "execution(* com.example.service.*.*(..))"
-            },
-            {
-              "title": "All methods in UserService interface",
-              "simple-content": "execution(* com.example.service.UserService+.*(..))"
-            },
-            {
-              "title": "All methods annotated with @Transactional",
-              "simple-content": "@annotation(org.springframework.transaction.annotation.Transactional)"
-            },
-            {
-              "title": "All public methods",
-              "simple-content": "execution(public * *(..))"
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "All methods in service package",
+                  "simple-content": "execution(* com.example.service.*.*(..))"
+                },
+                {
+                  "title": "All methods in UserService interface",
+                  "simple-content": "execution(* com.example.service.UserService+.*(..))"
+                },
+                {
+                  "title": "All methods annotated with @Transactional",
+                  "simple-content": "@annotation(org.springframework.transaction.annotation.Transactional)"
+                },
+                {
+                  "title": "All public methods",
+                  "simple-content": "execution(public * *(..))"
+                }
+              ]
             }
           ]
         },
         {
-          "title": "example",
-          "simple-content": "@Aspect\n@Component\npublic class LoggingAspect {\n    \n    // Define pointcut\n    @Pointcut(\"execution(* com.example.service.*.*(..))\")\n    public void serviceMethods() {}\n    \n    // Before advice\n    @Before(\"serviceMethods()\")\n    public void logBefore(JoinPoint joinPoint) {\n        System.out.println(\"Before executing: \" + joinPoint.getSignature().getName());\n    }\n    \n    // Around advice\n    @Around(\"@annotation(com.example.annotation.LogExecutionTime)\")\n    public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {\n        long start = System.currentTimeMillis();\n        \n        Object result = joinPoint.proceed();\n        \n        long end = System.currentTimeMillis();\n        System.out.println(\"Time taken: \" + (end - start) + \"ms\");\n        \n        return result;\n    }\n}"
+          "title": "code_examples",
+          "multi-content": [
+            {
+              "title": "",
+              "simple-content": "@Aspect\n@Component\npublic class LoggingAspect {\n    \n    // Define pointcut\n    @Pointcut(\"execution(* com.example.service.*.*(..))\")\n    public void serviceMethods() {}\n    \n    // Before advice\n    @Before(\"serviceMethods()\")\n    public void logBefore(JoinPoint joinPoint) {\n        System.out.println(\"Before executing: \" + joinPoint.getSignature().getName());\n    }\n    \n    // Around advice\n    @Around(\"@annotation(com.example.annotation.LogExecutionTime)\")\n    public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {\n        long start = System.currentTimeMillis();\n        \n        Object result = joinPoint.proceed();\n        \n        long end = System.currentTimeMillis();\n        System.out.println(\"Time taken: \" + (end - start) + \"ms\");\n        \n        return result;\n    }\n}"
+            }
+          ]
         }
       ]
     },
@@ -1141,7 +1156,7 @@
           ]
         },
         {
-          "title": "examples",
+          "title": "code_examples",
           "multi-content": [
             {
               "title": "creating_context",
@@ -1245,7 +1260,7 @@
           ]
         },
         {
-          "title": "examples",
+          "title": "code_examples",
           "multi-content": [
             {
               "title": "spring_framework_config",
