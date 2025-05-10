@@ -10,7 +10,6 @@ import javaFundamentalsJson from '../data/java/java-fundamentals.json';
 
 // Spring imports
 import bootJson from '../data/spring/boot.json';
-import coreJson from '../data/spring/core.json';
 import dataJson from '../data/spring/data.json';
 import restJson from '../data/spring/rest.json';
 //import securityJson from '../data/spring/security.json';
@@ -41,7 +40,6 @@ const jsonData = {
     },
     spring: {
         boot: bootJson,
-        core: coreJson,
         data: dataJson,
         rest: restJson,
         //security: securityJson
