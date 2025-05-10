@@ -1,31 +1,31 @@
 {
-  "id": "spring-core-concepts",
-  "title": "Concepts Fondamentaux de Spring",
+  "id": "spring-core-concepts-fr",
+  "title": "Concepts de Base de Spring",
   "topics": [
     {
       "title": "IoC",
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "L'Inversion de Contrôle (IoC) est un principe de conception où le contrôle de la création d'objets et de leur cycle de vie est transféré du code de l'application à un conteneur ou framework externe."
+          "simple-content": "L'Inversion de Contrôle (IoC) est un principe de conception où le contrôle de la création et du cycle de vie des objets est transféré du code de l'application à un conteneur ou un framework externe."
         },
         {
-          "title": "definition",
-          "simple-content": "Un principe de conception où le contrôle de la création d'objets et de la gestion des dépendances est délégué à un conteneur externe, améliorant la modularité et la testabilité."
+          "title": "définition",
+          "simple-content": "Un principe de conception où le contrôle de la création d'objets et la gestion des dépendances est délégué à un conteneur externe, améliorant la modularité et la testabilité."
         },
         {
-          "title": "benefits",
+          "title": "avantages",
           "multi-content": [
-            "Découple la création de composants de leur utilisation",
+            "Découple la création des composants de leur utilisation",
             "Favorise une conception modulaire et la testabilité",
             "Permet une architecture d'application flexible",
             "Forme la base pour l'injection de dépendances",
             "Couplage faible entre les composants",
-            "Meilleure testabilité grâce à une simulation plus facile"
+            "Meilleure testabilité grâce à la facilité de mockage"
           ]
         },
         {
-          "title": "example",
+          "title": "code_examples",
           "multi-content": [
             {
               "title": "without_ioc",
@@ -33,48 +33,48 @@
             },
             {
               "title": "with_ioc",
-              "simple-content": "public class UserService {\n    private UserRepository userRepository;\n    \n    // Le conteneur injecte la dépendance\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}"
+              "simple-content": "public class UserService {\n    private UserRepository userRepository;\n    \n    // Container injects the dependency\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}"
             }
           ]
         }
       ]
     },
     {
-      "title": "DependencyInjection",
+      "title": "Injection de Dépendances",
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "Un modèle spécifique de mise en œuvre de l'IoC où les dépendances d'objets sont fournies par une source externe plutôt que créées en interne."
+          "simple-content": "Un modèle spécifique d'implémentation de l'IoC où les dépendances d'un objet sont fournies par une source externe plutôt que créées en interne."
         },
         {
-          "title": "definition",
+          "title": "définition",
           "simple-content": "Un modèle dans lequel les dépendances d'un objet sont fournies par une source externe (généralement le conteneur IoC) plutôt que l'objet les instanciant lui-même, favorisant un couplage faible."
         },
         {
           "title": "types",
           "multi-content": [
             {
-              "title": "Constructor Injection",
+              "title": "Injection par Constructeur",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Dépendances fournies via le constructeur"
                 },
                 {
-                  "title": "best_for",
+                  "title": "idéal_pour",
                   "simple-content": "Dépendances requises, objets immuables"
                 },
                 {
-                  "title": "example",
+                  "title": "exemple",
                   "simple-content": "public Service(Dependency d) {...}"
                 },
                 {
-                  "title": "advantages",
+                  "title": "avantages",
                   "multi-content": [
                     "Garantit que les dépendances requises sont fournies",
                     "Favorise l'immuabilité (les dépendances peuvent être finales)",
-                    "Rend les dépendances explicites et visibles lors de la construction",
-                    "Plus facile à tester et à simuler",
+                    "Rend les dépendances explicites et visibles à la construction",
+                    "Plus facile à tester et à fournir des mocks",
                     "Fonctionne sans conteneur DI",
                     "Détecte les dépendances circulaires à la compilation"
                   ]
@@ -82,22 +82,22 @@
               ]
             },
             {
-              "title": "Setter Injection",
+              "title": "Injection par Setter",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Dépendances fournies via des méthodes setter"
                 },
                 {
-                  "title": "best_for",
+                  "title": "idéal_pour",
                   "simple-content": "Dépendances optionnelles, objets reconfigurables"
                 },
                 {
-                  "title": "example",
+                  "title": "exemple",
                   "simple-content": "public void setDependency(Dependency d) {...}"
                 },
                 {
-                  "title": "advantages",
+                  "title": "avantages",
                   "multi-content": [
                     "Permet des dépendances optionnelles",
                     "Offre de la flexibilité dans la gestion des dépendances",
@@ -107,29 +107,29 @@
               ]
             },
             {
-              "title": "Field Injection",
+              "title": "Injection par Champ",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Dépendances injectées directement dans les champs"
                 },
                 {
-                  "title": "best_for",
+                  "title": "idéal_pour",
                   "simple-content": "Cas simples (généralement déconseillé)"
                 },
                 {
-                  "title": "example",
+                  "title": "exemple",
                   "simple-content": "@Autowired private Dependency d;"
                 },
                 {
-                  "title": "advantages",
+                  "title": "avantages",
                   "multi-content": [
-                    "Moins de code passe-partout",
+                    "Moins de code standard",
                     "Plus simple à écrire"
                   ]
                 },
                 {
-                  "title": "disadvantages",
+                  "title": "inconvénients",
                   "multi-content": [
                     "Plus difficile à tester",
                     "Impossible de déclarer les champs comme final",
@@ -145,7 +145,7 @@
           "multi-content": [
             {
               "title": "constructor_injection",
-              "simple-content": "@Service\npublic class UserService {\n    private final UserRepository userRepository;\n    \n    @Autowired // Optionnel dans Spring 4.3+ avec un seul constructeur\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}"
+              "simple-content": "@Service\npublic class UserService {\n    private final UserRepository userRepository;\n    \n    @Autowired // Optional in Spring 4.3+ with single constructor\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}"
             },
             {
               "title": "setter_injection",
@@ -160,44 +160,44 @@
       ]
     },
     {
-      "title": "BeanLifecycle",
+      "title": "Cycle de Vie des Beans",
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "Le parcours d'un bean Spring de l'initialisation à la destruction, avec des possibilités de personnalisation à chaque étape."
+          "simple-content": "Le parcours d'un bean Spring de l'initialisation à la destruction, avec des opportunités de personnalisation à chaque étape."
         },
         {
-          "title": "definition",
-          "simple-content": "Le processus complet qu'un bean Spring subit, de l'instanciation et l'injection de dépendances à l'initialisation et à la destruction éventuelle, avec des opportunités de comportement personnalisé à diverses étapes."
+          "title": "définition",
+          "simple-content": "Le processus complet qu'un bean Spring subit—de l'instanciation et l'injection de dépendances à l'initialisation et l'éventuelle destruction—avec des opportunités de comportement personnalisé à diverses étapes."
         },
         {
-          "title": "lifecycle_phases",
+          "title": "phases_du_cycle_de_vie",
           "multi-content": [
             {
-              "title": "Bean Definition",
+              "title": "Définition du Bean",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Spring lit la configuration et crée des objets BeanDefinition"
                 },
                 {
-                  "title": "events",
+                  "title": "événements",
                   "multi-content": [
-                    "Les métadonnées de configuration sont chargées (annotations, XML, config Java)",
-                    "Les objets BeanDefinition sont créés et enregistrés dans le conteneur"
+                    "Les métadonnées de configuration sont chargées (annotations, XML, configuration Java)",
+                    "Les objets BeanDefinition sont créés et enregistrés auprès du conteneur"
                   ]
                 }
               ]
             },
             {
-              "title": "Bean Instantiation",
+              "title": "Instanciation du Bean",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Spring crée l'instance du bean"
                 },
                 {
-                  "title": "events",
+                  "title": "événements",
                   "multi-content": [
                     "Le constructeur est invoqué",
                     "La méthode factory est appelée (si configurée)"
@@ -206,14 +206,14 @@
               ]
             },
             {
-              "title": "Property Population",
+              "title": "Population des Propriétés",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Les dépendances sont injectées"
                 },
                 {
-                  "title": "events",
+                  "title": "événements",
                   "multi-content": [
                     "Les propriétés sont définies",
                     "Les dépendances sont résolues et injectées"
@@ -222,14 +222,14 @@
               ]
             },
             {
-              "title": "Initialization",
+              "title": "Initialisation",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Le bean est initialisé via des callbacks"
                 },
                 {
-                  "title": "events",
+                  "title": "événements",
                   "multi-content": [
                     "BeanNameAware.setBeanName() est appelé",
                     "BeanFactoryAware.setBeanFactory() est appelé",
@@ -237,14 +237,14 @@
                     "Les méthodes BeanPostProcessor.postProcessBeforeInitialization() sont appelées",
                     "Les méthodes @PostConstruct sont appelées",
                     "InitializingBean.afterPropertiesSet() est appelé",
-                    "La méthode init-method personnalisée est appelée",
+                    "La méthode init personnalisée est appelée",
                     "Les méthodes BeanPostProcessor.postProcessAfterInitialization() sont appelées"
                   ]
                 }
               ]
             },
             {
-              "title": "Bean Usage",
+              "title": "Utilisation du Bean",
               "multi-content": [
                 {
                   "title": "description",
@@ -260,11 +260,11 @@
                   "simple-content": "Le bean est détruit lorsque le contexte est fermé"
                 },
                 {
-                  "title": "events",
+                  "title": "événements",
                   "multi-content": [
                     "Les méthodes @PreDestroy sont appelées",
                     "DisposableBean.destroy() est appelé",
-                    "La méthode destroy-method personnalisée est appelée"
+                    "La méthode destroy personnalisée est appelée"
                   ]
                 }
               ]
@@ -272,21 +272,21 @@
           ]
         },
         {
-          "title": "callback_methods",
+          "title": "méthodes_de_callback",
           "multi-content": [
             {
-              "title": "initialization",
+              "title": "initialisation",
               "multi-content": [
                 {
-                  "title": "annotation_based",
+                  "title": "basée_sur_annotation",
                   "simple-content": "@PostConstruct"
                 },
                 {
-                  "title": "interface_based",
+                  "title": "basée_sur_interface",
                   "simple-content": "InitializingBean.afterPropertiesSet()"
                 },
                 {
-                  "title": "xml_based",
+                  "title": "basée_sur_xml",
                   "simple-content": "attribut init-method"
                 }
               ]
@@ -295,15 +295,15 @@
               "title": "destruction",
               "multi-content": [
                 {
-                  "title": "annotation_based",
+                  "title": "basée_sur_annotation",
                   "simple-content": "@PreDestroy"
                 },
                 {
-                  "title": "interface_based",
+                  "title": "basée_sur_interface",
                   "simple-content": "DisposableBean.destroy()"
                 },
                 {
-                  "title": "xml_based",
+                  "title": "basée_sur_xml",
                   "simple-content": "attribut destroy-method"
                 }
               ]
@@ -311,24 +311,24 @@
           ]
         },
         {
-          "title": "example",
-          "simple-content": "@Component\npublic class LifecycleBean implements InitializingBean, DisposableBean {\n    \n    // Constructeur\n    public LifecycleBean() {\n        System.out.println(\"1. Constructeur appelé\");\n    }\n    \n    // Injection par setter\n    @Autowired\n    public void setDependency(SomeDependency dependency) {\n        System.out.println(\"2. Dépendances injectées\");\n    }\n    \n    // Initialisation basée sur annotation\n    @PostConstruct\n    public void postConstruct() {\n        System.out.println(\"3. @PostConstruct appelé\");\n    }\n    \n    // Initialisation basée sur interface\n    @Override\n    public void afterPropertiesSet() throws Exception {\n        System.out.println(\"4. afterPropertiesSet() appelé\");\n    }\n    \n    // Méthode d'initialisation personnalisée\n    public void customInit() {\n        System.out.println(\"5. Méthode d'initialisation personnalisée appelée\");\n    }\n    \n    // Destruction basée sur annotation\n    @PreDestroy\n    public void preDestroy() {\n        System.out.println(\"6. @PreDestroy appelé\");\n    }\n    \n    // Destruction basée sur interface\n    @Override\n    public void destroy() throws Exception {\n        System.out.println(\"7. DisposableBean.destroy() appelé\");\n    }\n}"
+          "title": "exemple",
+          "simple-content": "@Component\npublic class LifecycleBean implements InitializingBean, DisposableBean {\n    \n    // Constructor\n    public LifecycleBean() {\n        System.out.println(\"1. Constructor called\");\n    }\n    \n    // Setter injection\n    @Autowired\n    public void setDependency(SomeDependency dependency) {\n        System.out.println(\"2. Dependencies injected\");\n    }\n    \n    // Annotation-based initialization\n    @PostConstruct\n    public void postConstruct() {\n        System.out.println(\"3. @PostConstruct called\");\n    }\n    \n    // Interface-based initialization\n    @Override\n    public void afterPropertiesSet() throws Exception {\n        System.out.println(\"4. afterPropertiesSet() called\");\n    }\n    \n    // Custom initialization method\n    public void customInit() {\n        System.out.println(\"5. Custom init method called\");\n    }\n    \n    // Annotation-based destruction\n    @PreDestroy\n    public void preDestroy() {\n        System.out.println(\"6. @PreDestroy called\");\n    }\n    \n    // Interface-based destruction\n    @Override\n    public void destroy() throws Exception {\n        System.out.println(\"7. DisposableBean.destroy() called\");\n    }\n}"
         }
       ]
     },
     {
-      "title": "BeanScopes",
+      "title": "Portées des Beans",
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "Les portées de bean définissent le cycle de vie d'un bean, sa visibilité et le nombre d'instances créées."
+          "simple-content": "Les portées des beans définissent le cycle de vie d'un bean, sa visibilité et le nombre d'instances créées."
         },
         {
-          "title": "definition",
+          "title": "définition",
           "simple-content": "Définit le cycle de vie et la visibilité d'un bean dans le conteneur. Chaque portée détermine quand une nouvelle instance est créée et combien de temps elle vit."
         },
         {
-          "title": "scope_types",
+          "title": "types_de_portée",
           "multi-content": [
             {
               "title": "singleton",
@@ -342,12 +342,12 @@
                   "simple-content": "Unique"
                 },
                 {
-                  "title": "lifecycle",
+                  "title": "cycle_de_vie",
                   "simple-content": "Cycle de vie du conteneur"
                 },
                 {
-                  "title": "best_for",
-                  "simple-content": "Services et repositories sans état"
+                  "title": "idéal_pour",
+                  "simple-content": "Services sans état et repositories"
                 }
               ]
             },
@@ -360,15 +360,15 @@
                 },
                 {
                   "title": "instances",
-                  "simple-content": "Multiple"
+                  "simple-content": "Multiples"
                 },
                 {
-                  "title": "lifecycle",
+                  "title": "cycle_de_vie",
                   "simple-content": "De la création jusqu'à ce qu'il ne soit plus référencé"
                 },
                 {
-                  "title": "best_for",
-                  "simple-content": "Objets avec état comme les formulaires ou paniers d'achat"
+                  "title": "idéal_pour",
+                  "simple-content": "Objets avec état comme les formulaires ou les paniers d'achat"
                 }
               ]
             },
@@ -377,18 +377,18 @@
               "multi-content": [
                 {
                   "title": "description",
-                  "simple-content": "Une instance par requête HTTP (compatible web)"
+                  "simple-content": "Une instance par requête HTTP (orienté web)"
                 },
                 {
                   "title": "instances",
-                  "simple-content": "Multiple"
+                  "simple-content": "Multiples"
                 },
                 {
-                  "title": "lifecycle",
+                  "title": "cycle_de_vie",
                   "simple-content": "Requête HTTP"
                 },
                 {
-                  "title": "best_for",
+                  "title": "idéal_pour",
                   "simple-content": "Données spécifiques à la requête HTTP"
                 }
               ]
@@ -398,18 +398,18 @@
               "multi-content": [
                 {
                   "title": "description",
-                  "simple-content": "Une instance par session HTTP (compatible web)"
+                  "simple-content": "Une instance par session HTTP (orienté web)"
                 },
                 {
                   "title": "instances",
-                  "simple-content": "Multiple"
+                  "simple-content": "Multiples"
                 },
                 {
-                  "title": "lifecycle",
+                  "title": "cycle_de_vie",
                   "simple-content": "Session HTTP"
                 },
                 {
-                  "title": "best_for",
+                  "title": "idéal_pour",
                   "simple-content": "Données spécifiques à l'utilisateur dans les applications web"
                 }
               ]
@@ -419,18 +419,18 @@
               "multi-content": [
                 {
                   "title": "description",
-                  "simple-content": "Une instance par ServletContext (compatible web)"
+                  "simple-content": "Une instance par ServletContext (orienté web)"
                 },
                 {
                   "title": "instances",
                   "simple-content": "Unique"
                 },
                 {
-                  "title": "lifecycle",
+                  "title": "cycle_de_vie",
                   "simple-content": "Cycle de vie du ServletContext"
                 },
                 {
-                  "title": "best_for",
+                  "title": "idéal_pour",
                   "simple-content": "Beans à l'échelle de l'application"
                 }
               ]
@@ -440,18 +440,18 @@
               "multi-content": [
                 {
                   "title": "description",
-                  "simple-content": "Une instance par WebSocket (compatible web)"
+                  "simple-content": "Une instance par WebSocket (orienté web)"
                 },
                 {
                   "title": "instances",
-                  "simple-content": "Multiple"
+                  "simple-content": "Multiples"
                 },
                 {
-                  "title": "lifecycle",
+                  "title": "cycle_de_vie",
                   "simple-content": "Cycle de vie WebSocket"
                 },
                 {
-                  "title": "best_for",
+                  "title": "idéal_pour",
                   "simple-content": "Beans spécifiques aux WebSockets"
                 }
               ]
@@ -459,11 +459,11 @@
           ]
         },
         {
-          "title": "examples",
+          "title": "code_examples",
           "multi-content": [
             {
               "title": "singleton_scope",
-              "simple-content": "@Component\n@Scope(\"singleton\") // ou simplement @Component puisque singleton est la valeur par défaut\npublic class UserService { /* ... */ }"
+              "simple-content": "@Component\n@Scope(\"singleton\") // or simply @Component since singleton is default\npublic class UserService { /* ... */ }"
             },
             {
               "title": "prototype_scope",
@@ -471,70 +471,70 @@
             },
             {
               "title": "request_scope",
-              "simple-content": "@Component\n@RequestScope // ou @Scope(value = \"request\", proxyMode = ScopedProxyMode.TARGET_CLASS)\npublic class RequestScopedBean { /* ... */ }"
+              "simple-content": "@Component\n@RequestScope // or @Scope(value = \"request\", proxyMode = ScopedProxyMode.TARGET_CLASS)\npublic class RequestScopedBean { /* ... */ }"
             },
             {
               "title": "mixing_scopes",
-              "simple-content": "// Problème: Injection d'un prototype dans un singleton\n@Component\npublic class SingletonBean {\n    @Autowired\n    private PrototypeBean prototypeBean; // Ce sera toujours la même instance!\n}\n\n// Solution 1: Proxy Scopé\n@Component\n@Scope(value = \"prototype\", proxyMode = ScopedProxyMode.TARGET_CLASS)\npublic class PrototypeBean { /* ... */ }\n\n// Solution 2: ObjectFactory\n@Component\npublic class SingletonBean {\n    @Autowired\n    private ObjectFactory<PrototypeBean> prototypeBeanFactory;\n    \n    public void doSomething() {\n        PrototypeBean prototypeBean = prototypeBeanFactory.getObject(); // Nouvelle instance\n        // Utiliser prototypeBean\n    }\n}"
+              "simple-content": "// Problem: Injecting prototype into singleton\n@Component\npublic class SingletonBean {\n    @Autowired\n    private PrototypeBean prototypeBean; // Will always be the same instance!\n}\n\n// Solution 1: Scoped Proxy\n@Component\n@Scope(value = \"prototype\", proxyMode = ScopedProxyMode.TARGET_CLASS)\npublic class PrototypeBean { /* ... */ }\n\n// Solution 2: ObjectFactory\n@Component\npublic class SingletonBean {\n    @Autowired\n    private ObjectFactory<PrototypeBean> prototypeBeanFactory;\n    \n    public void doSomething() {\n        PrototypeBean prototypeBean = prototypeBeanFactory.getObject(); // New instance\n        // Use prototypeBean\n    }\n}"
             }
           ]
         }
       ]
     },
     {
-      "title": "SpringConfiguration",
+      "title": "Configuration Spring",
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "Différentes approches pour configurer les beans et câbler les dépendances dans les applications Spring."
+          "simple-content": "Différentes approches pour configurer les beans et gérer les dépendances dans les applications Spring."
         },
         {
-          "title": "definition",
-          "simple-content": "Le processus de définition des beans, de leurs dépendances et d'autres paramètres d'application à gérer par le conteneur Spring."
+          "title": "définition",
+          "simple-content": "Le processus de définition des beans, leurs dépendances et autres paramètres d'application à gérer par le conteneur Spring."
         },
         {
-          "title": "configuration_types",
+          "title": "types_de_configuration",
           "multi-content": [
             {
-              "title": "Java Configuration",
+              "title": "Configuration Java",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Utilisation des annotations @Configuration et @Bean dans les classes Java"
                 },
                 {
-                  "title": "best_for",
-                  "simple-content": "Sécurité de type, facilité de refactorisation, support IDE"
+                  "title": "idéal_pour",
+                  "simple-content": "Sécurité de type, facilité de refactoring, support IDE"
                 },
                 {
-                  "title": "advantages",
+                  "title": "avantages",
                   "multi-content": [
                     "Sécurité de type",
                     "Vérifications à la compilation",
-                    "Meilleure prise en charge du refactoring",
+                    "Meilleur support de refactoring",
                     "Autocomplétion IDE",
                     "Configuration programmatique"
                   ]
                 },
                 {
-                  "title": "example",
+                  "title": "exemple",
                   "simple-content": "@Configuration\npublic class AppConfig {\n    \n    @Bean\n    public UserRepository userRepository() {\n        return new JpaUserRepository();\n    }\n    \n    @Bean\n    public UserService userService(UserRepository userRepository) {\n        return new UserServiceImpl(userRepository);\n    }\n}"
                 }
               ]
             },
             {
-              "title": "Annotation-Based",
+              "title": "Configuration par Annotations",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Utilisation du scan de composants avec @Component, @Service, etc."
                 },
                 {
-                  "title": "best_for",
+                  "title": "idéal_pour",
                   "simple-content": "Simplicité, réduction du code standard, convention plutôt que configuration"
                 },
                 {
-                  "title": "advantages",
+                  "title": "avantages",
                   "multi-content": [
                     "Moins de code de configuration",
                     "Configuration plus proche de l'implémentation",
@@ -543,33 +543,33 @@
                   ]
                 },
                 {
-                  "title": "example",
-                  "simple-content": "@Configuration\n@ComponentScan(basePackages = \"com.example\")\npublic class AppConfig {\n    // Configuration pour le scan de composants\n}\n\n@Component\npublic class SimpleComponent { /* ... */ }\n\n@Repository\npublic class JpaUserRepository implements UserRepository { /* ... */ }\n\n@Service\npublic class UserServiceImpl implements UserService {\n    @Autowired\n    private UserRepository userRepository;\n    // Implémentation\n}"
+                  "title": "exemple",
+                  "simple-content": "@Configuration\n@ComponentScan(basePackages = \"com.example\")\npublic class AppConfig {\n    // Configuration for component scanning\n}\n\n@Component\npublic class SimpleComponent { /* ... */ }\n\n@Repository\npublic class JpaUserRepository implements UserRepository { /* ... */ }\n\n@Service\npublic class UserServiceImpl implements UserService {\n    @Autowired\n    private UserRepository userRepository;\n    // Implementation\n}"
                 }
               ]
             },
             {
-              "title": "XML Configuration",
+              "title": "Configuration XML",
               "multi-content": [
                 {
                   "title": "description",
-                  "simple-content": "Utilisation de fichiers XML avec des définitions <bean>"
+                  "simple-content": "Utilisation de fichiers XML avec définitions <bean>"
                 },
                 {
-                  "title": "best_for",
+                  "title": "idéal_pour",
                   "simple-content": "Configuration externe, systèmes hérités"
                 },
                 {
-                  "title": "advantages",
+                  "title": "avantages",
                   "multi-content": [
                     "Pas de recompilation nécessaire pour les changements de configuration",
                     "Séparation complète du code",
-                    "Support Spring hérité",
+                    "Support pour Spring hérité",
                     "Câblage explicite des dépendances"
                   ]
                 },
                 {
-                  "title": "example",
+                  "title": "exemple",
                   "simple-content": "<!-- applicationContext.xml -->\n<beans xmlns=\"http://www.springframework.org/schema/beans\"\n       xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n       xsi:schemaLocation=\"http://www.springframework.org/schema/beans\n                           http://www.springframework.org/schema/beans/spring-beans.xsd\">\n\n    <bean id=\"userRepository\" class=\"com.example.JpaUserRepository\" />\n    \n    <bean id=\"userService\" class=\"com.example.UserServiceImpl\">\n        <constructor-arg ref=\"userRepository\" />\n    </bean>\n</beans>"
                 }
               ]
@@ -577,7 +577,7 @@
           ]
         },
         {
-          "title": "common_annotations",
+          "title": "annotations_courantes",
           "multi-content": [
             {
               "title": "@Configuration",
@@ -613,7 +613,7 @@
             },
             {
               "title": "@Value",
-              "simple-content": "Injecte des valeurs à partir de propriétés ou d'expressions"
+              "simple-content": "Injecte des valeurs depuis des propriétés ou des expressions"
             },
             {
               "title": "@Profile",
@@ -624,33 +624,33 @@
       ]
     },
     {
-      "title": "ComponentScanning",
+      "title": "Scan des Composants",
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "Le processus par lequel Spring identifie et enregistre automatiquement les beans à partir des packages spécifiés."
+          "simple-content": "Le processus par lequel Spring identifie et enregistre automatiquement les beans à partir de packages spécifiés."
         },
         {
-          "title": "definition",
-          "simple-content": "Un mécanisme qui permet à Spring de détecter et d'enregistrer automatiquement les beans Spring en scannant des packages de base spécifiques pour les classes avec des annotations stéréotypées."
+          "title": "définition",
+          "simple-content": "Un mécanisme qui permet à Spring de détecter et d'enregistrer automatiquement des beans Spring en scannant des packages de base spécifiques pour des classes avec des annotations stéréotypées."
         },
         {
-          "title": "key_concepts",
+          "title": "concepts_clés",
           "multi-content": [
             {
-              "title": "base_packages",
-              "simple-content": "Les points de départ pour le scan de composants, généralement le package racine de votre application"
+              "title": "packages_de_base",
+              "simple-content": "Les points de départ pour le scan des composants, généralement le package racine de votre application"
             },
             {
-              "title": "stereotype_annotations",
+              "title": "annotations_stéréotypées",
               "simple-content": "Marqueurs pour les classes qui devraient être automatiquement enregistrées comme beans (@Component et ses spécialisations)"
             },
             {
-              "title": "filters",
+              "title": "filtres",
               "simple-content": "Règles pour inclure ou exclure certaines classes du scan"
             },
             {
-              "title": "bean_naming",
+              "title": "nommage_des_beans",
               "simple-content": "Comment Spring nomme automatiquement les composants scannés (généralement nom de classe en camelCase)"
             }
           ]
@@ -681,7 +681,7 @@
           ]
         },
         {
-          "title": "examples",
+          "title": "code_examples",
           "multi-content": [
             {
               "title": "basic_scanning",
@@ -698,32 +698,32 @@
           ]
         },
         {
-          "title": "scan_process",
+          "title": "processus_de_scan",
           "multi-content": [
             "Spring recherche les packages de base et sous-packages",
             "Trouve les classes avec des annotations stéréotypées",
-            "Lit les métadonnées des annotations",
+            "Lit les métadonnées à partir des annotations",
             "Filtre les classes en fonction des règles d'inclusion/exclusion",
             "Enregistre les BeanDefinitions pour les classes correspondantes",
-            "Nomme les beans (généralement le nom de classe avec première lettre en minuscule)",
+            "Nomme les beans (généralement le nom de classe décapitalisé)",
             "Traite les annotations supplémentaires (comme @Scope, @Lazy)"
           ]
         }
       ]
     },
     {
-      "title": "DependencyResolution",
+      "title": "Résolution des Dépendances",
       "multi-content": [
         {
           "title": "description",
           "simple-content": "Comment Spring résout les dépendances et gère les scénarios avec plusieurs candidats."
         },
         {
-          "title": "definition",
+          "title": "définition",
           "simple-content": "Le processus par lequel Spring identifie et sélectionne les beans appropriés à injecter lorsque des dépendances sont déclarées."
         },
         {
-          "title": "resolution_mechanisms",
+          "title": "mécanismes_de_résolution",
           "multi-content": [
             {
               "title": "@Qualifier",
@@ -733,7 +733,7 @@
                   "simple-content": "Spécifie quel bean injecter lorsque plusieurs candidats existent"
                 },
                 {
-                  "title": "example",
+                  "title": "exemple",
                   "simple-content": "@Service(\"premiumService\")\npublic class PremiumUserService implements UserService { /* ... */ }\n\n@Service(\"basicService\")\npublic class BasicUserService implements UserService { /* ... */ }\n\n@Component\npublic class UserController {\n    private final UserService userService;\n    \n    @Autowired\n    public UserController(@Qualifier(\"premiumService\") UserService userService) {\n        this.userService = userService;\n    }\n}"
                 }
               ]
@@ -746,38 +746,38 @@
                   "simple-content": "Marque un bean comme candidat principal pour l'autowiring"
                 },
                 {
-                  "title": "example",
-                  "simple-content": "@Service\n@Primary\npublic class PrimaryUserService implements UserService { /* ... */ }\n\n@Service\npublic class SecondaryUserService implements UserService { /* ... */ }\n\n@Component\npublic class UserController {\n    private final UserService userService;\n    \n    @Autowired\n    public UserController(UserService userService) {\n        // PrimaryUserService sera injecté\n        this.userService = userService;\n    }\n}"
+                  "title": "exemple",
+                  "simple-content": "@Service\n@Primary\npublic class PrimaryUserService implements UserService { /* ... */ }\n\n@Service\npublic class SecondaryUserService implements UserService { /* ... */ }\n\n@Component\npublic class UserController {\n    private final UserService userService;\n    \n    @Autowired\n    public UserController(UserService userService) {\n        // PrimaryUserService will be injected\n        this.userService = userService;\n    }\n}"
                 }
               ]
             },
             {
-              "title": "Bean Name Autowiring",
+              "title": "Autowiring par Nom de Bean",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Correspondance par nom de paramètre/champ"
                 },
                 {
-                  "title": "example",
-                  "simple-content": "@Component(\"premiumService\")\npublic class PremiumUserService implements UserService { /* ... */ }\n\n@Component(\"basicService\")\npublic class BasicUserService implements UserService { /* ... */ }\n\n@Component\npublic class UserController {\n    private final UserService premiumService; // Le nom correspond à l'id du bean\n    \n    @Autowired\n    public UserController(UserService premiumService) {\n        this.premiumService = premiumService;\n    }\n}"
+                  "title": "exemple",
+                  "simple-content": "@Component(\"premiumService\")\npublic class PremiumUserService implements UserService { /* ... */ }\n\n@Component(\"basicService\")\npublic class BasicUserService implements UserService { /* ... */ }\n\n@Component\npublic class UserController {\n    private final UserService premiumService; // Name matches bean id\n    \n    @Autowired\n    public UserController(UserService premiumService) {\n        this.premiumService = premiumService;\n    }\n}"
                 }
               ]
             }
           ]
         },
         {
-          "title": "resolution_order",
+          "title": "ordre_de_résolution",
           "multi-content": [
             "1. Correspondance exacte de type (si un seul bean du type requis existe)",
             "2. Correspondance par @Qualifier si spécifié",
-            "3. Correspondance avec bean @Primary si disponible",
+            "3. Correspondance avec le bean @Primary si disponible",
             "4. Correspondance par nom (si le nom du paramètre/champ correspond à un nom de bean)",
             "5. Lance une exception si aucun bean unique ne peut être déterminé"
           ]
         },
         {
-          "title": "common_exceptions",
+          "title": "exceptions_courantes",
           "multi-content": [
             {
               "title": "NoSuchBeanDefinitionException",
@@ -789,31 +789,31 @@
             },
             {
               "title": "BeanCreationException",
-              "simple-content": "Erreur lors de la création d'un bean"
+              "simple-content": "Erreur lors de la création du bean"
             }
           ]
         }
       ]
     },
     {
-      "title": "CircularDependencies",
+      "title": "Dépendances Circulaires",
       "multi-content": [
         {
           "title": "description",
           "simple-content": "Une situation où le bean A dépend du bean B, et le bean B dépend du bean A, directement ou indirectement."
         },
         {
-          "title": "definition",
-          "simple-content": "Une dépendance circulaire se produit lorsque deux beans ou plus dépendent l'un de l'autre, créant un cycle de dépendance qui peut causer des problèmes d'initialisation."
+          "title": "définition",
+          "simple-content": "Une dépendance circulaire survient lorsque deux ou plusieurs beans dépendent l'un de l'autre, créant un cycle de dépendances qui peut causer des problèmes d'initialisation."
         },
         {
-          "title": "dependency_types",
+          "title": "types_de_dépendance",
           "multi-content": [
             {
-              "title": "Constructor Injection Circularity",
+              "title": "Circularité d'Injection par Constructeur",
               "multi-content": [
                 {
-                  "title": "resolvable",
+                  "title": "résolvable",
                   "simple-content": "false"
                 },
                 {
@@ -821,16 +821,16 @@
                   "simple-content": "Ne peut pas être résolu par Spring"
                 },
                 {
-                  "title": "example",
+                  "title": "exemple",
                   "simple-content": "@Component\npublic class BeanA {\n    private final BeanB beanB;\n    \n    @Autowired\n    public BeanA(BeanB beanB) {\n        this.beanB = beanB;\n    }\n}\n\n@Component\npublic class BeanB {\n    private final BeanA beanA;\n    \n    @Autowired\n    public BeanB(BeanA beanA) {\n        this.beanA = beanA;\n    }\n}"
                 }
               ]
             },
             {
-              "title": "Setter Injection Circularity",
+              "title": "Circularité d'Injection par Setter",
               "multi-content": [
                 {
-                  "title": "resolvable",
+                  "title": "résolvable",
                   "simple-content": "true"
                 },
                 {
@@ -838,7 +838,7 @@
                   "simple-content": "Peut être résolu par Spring"
                 },
                 {
-                  "title": "example",
+                  "title": "exemple",
                   "simple-content": "@Component\npublic class BeanA {\n    private BeanB beanB;\n    \n    @Autowired\n    public void setBeanB(BeanB beanB) {\n        this.beanB = beanB;\n    }\n}\n\n@Component\npublic class BeanB {\n    private BeanA beanA;\n    \n    @Autowired\n    public void setBeanA(BeanA beanA) {\n        this.beanA = beanA;\n    }\n}"
                 }
               ]
@@ -846,27 +846,27 @@
           ]
         },
         {
-          "title": "detection",
-          "simple-content": "Spring détecte les dépendances circulaires pendant le démarrage de l'application et lance BeanCurrentlyInCreationException si elles ne peuvent pas être résolues."
+          "title": "détection",
+          "simple-content": "Spring détecte les dépendances circulaires lors du démarrage de l'application et lance BeanCurrentlyInCreationException si elles ne peuvent pas être résolues."
         },
         {
-          "title": "resolution_strategies",
+          "title": "stratégies_de_résolution",
           "multi-content": [
             {
-              "title": "Redesign Components",
+              "title": "Reconcevoir les Composants",
               "multi-content": [
                 {
-                  "title": "recommendation",
-                  "simple-content": "Bonne pratique"
+                  "title": "recommandation",
+                  "simple-content": "Meilleure pratique"
                 },
                 {
                   "title": "description",
                   "simple-content": "Repenser les dépendances pour éliminer les références circulaires"
                 },
                 {
-                  "title": "details",
+                  "title": "détails",
                   "multi-content": [
-                    "Extraire les fonctionnalités partagées vers un troisième service",
+                    "Extraire la fonctionnalité partagée vers un troisième service",
                     "Appliquer le Principe d'Inversion de Dépendance",
                     "Utiliser des événements pour la communication"
                   ]
@@ -874,33 +874,33 @@
               ]
             },
             {
-              "title": "Use Setter Injection",
+              "title": "Utiliser l'Injection par Setter",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Passer de l'injection par constructeur à l'injection par setter"
                 },
                 {
-                  "title": "caution",
+                  "title": "mise_en_garde",
                   "simple-content": "Crée la possibilité de beans partiellement initialisés"
                 }
               ]
             },
             {
-              "title": "Use @Lazy Annotation",
+              "title": "Utiliser l'Annotation @Lazy",
               "multi-content": [
                 {
                   "title": "description",
                   "simple-content": "Différer un côté de la dépendance"
                 },
                 {
-                  "title": "example",
+                  "title": "exemple",
                   "simple-content": "@Component\npublic class BeanA {\n    private final BeanB beanB;\n    \n    @Autowired\n    public BeanA(@Lazy BeanB beanB) {\n        this.beanB = beanB;\n    }\n}"
                 }
               ]
             },
             {
-              "title": "Use Events",
+              "title": "Utiliser des Événements",
               "multi-content": [
                 {
                   "title": "description",
@@ -917,54 +917,59 @@
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "L'AOP traite les préoccupations transversales en les séparant de la logique métier principale, favorisant un code plus propre et plus maintenable."
+          "simple-content": "L'AOP aborde les préoccupations transversales en les séparant de la logique métier principale, favorisant un code plus propre et plus maintenable."
         },
         {
-          "title": "definition",
-          "simple-content": "Un paradigme de programmation qui sépare les préoccupations transversales (comme la journalisation, la sécurité ou la gestion des transactions) de la logique métier en utilisant des aspects, des conseils, des points de jonction et des pointcuts."
+          "title": "définition",
+          "simple-content": "Un paradigme de programmation qui sépare les préoccupations transversales (comme la journalisation, la sécurité ou la gestion des transactions) de la logique métier en utilisant des aspects, des conseils, des points de jointure et des points de coupure."
         },
         {
-          "title": "key_concepts",
+          "title": "concepts_clés",
           "multi-content": [
             {
               "title": "Aspect",
               "simple-content": "Un module qui encapsule une préoccupation transversale"
             },
             {
-              "title": "Join Point",
+              "title": "Point de Jointure",
               "simple-content": "Un point spécifique dans l'exécution du programme (par exemple, l'exécution d'une méthode)"
             },
             {
-              "title": "Pointcut",
-              "simple-content": "Une expression qui sélectionne les points de jonction"
+              "title": "Point de Coupure",
+              "simple-content": "Une expression qui sélectionne des points de jointure"
             },
             {
-              "title": "Advice",
-              "simple-content": "Action prise à un point de jonction"
+              "title": "Conseil",
+              "simple-content": "Action prise à un point de jointure"
             },
             {
-              "title": "Weaving",
+              "title": "Tissage",
               "simple-content": "Processus d'application des aspects aux objets cibles"
             }
           ]
         },
         {
-          "title": "advice_types",
+          "title": "types_de_conseil",
           "multi-content": [
             {
               "title": "@Before",
               "multi-content": [
                 {
                   "title": "description",
-                  "simple-content": "S'exécute avant le point de jonction"
+                  "simple-content": "S'exécute avant le point de jointure"
                 },
                 {
-                  "title": "use_cases",
-                  "simple-content": "Validation, journalisation, contrôles de sécurité"
+                  "title": "cas_d_utilisation",
+                  "simple-content": "Validation, journalisation, vérifications de sécurité"
                 },
                 {
-                  "title": "example",
-                  "simple-content": "@Before(\"execution(* com.example.service.*.*(..))\")\npublic void logBefore(JoinPoint joinPoint) {\n    System.out.println(\"Avant l'exécution de: \" + joinPoint.getSignature().getName());\n}"
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "",
+                      "simple-content": "@Before(\"execution(* com.example.service.*.*(..))\")\npublic void logBefore(JoinPoint joinPoint) {\n    System.out.println(\"Before executing: \" + joinPoint.getSignature().getName());\n}"
+                    }
+                  ]
                 }
               ]
             },
@@ -973,10 +978,10 @@
               "multi-content": [
                 {
                   "title": "description",
-                  "simple-content": "S'exécute après le point de jonction (quel que soit le résultat)"
+                  "simple-content": "S'exécute après le point de jointure (indépendamment du résultat)"
                 },
                 {
-                  "title": "use_cases",
+                  "title": "cas_d_utilisation",
                   "simple-content": "Nettoyage des ressources, audit"
                 }
               ]
@@ -986,10 +991,10 @@
               "multi-content": [
                 {
                   "title": "description",
-                  "simple-content": "S'exécute après la complétion réussie du point de jonction"
+                  "simple-content": "S'exécute après la réussite du point de jointure"
                 },
                 {
-                  "title": "use_cases",
+                  "title": "cas_d_utilisation",
                   "simple-content": "Journalisation des résultats, mise en cache"
                 }
               ]
@@ -999,10 +1004,10 @@
               "multi-content": [
                 {
                   "title": "description",
-                  "simple-content": "S'exécute si le point de jonction lance une exception"
+                  "simple-content": "S'exécute si le point de jointure lance une exception"
                 },
                 {
-                  "title": "use_cases",
+                  "title": "cas_d_utilisation",
                   "simple-content": "Gestion des exceptions, alertes"
                 }
               ]
@@ -1012,60 +1017,70 @@
               "multi-content": [
                 {
                   "title": "description",
-                  "simple-content": "Entoure l'exécution du point de jonction"
+                  "simple-content": "Entoure l'exécution du point de jointure"
                 },
                 {
-                  "title": "use_cases",
+                  "title": "cas_d_utilisation",
                   "simple-content": "Gestion des transactions, chronométrage des méthodes"
                 },
                 {
-                  "title": "example",
-                  "simple-content": "@Around(\"execution(* com.example.service.*.*(..))\")\npublic Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {\n    long start = System.currentTimeMillis();\n    \n    Object result = joinPoint.proceed();\n    \n    long end = System.currentTimeMillis();\n    System.out.println(\"Temps pris: \" + (end - start) + \"ms\");\n    \n    return result;\n}"
+                  "title": "exemple",
+                  "simple-content": "@Around(\"execution(* com.example.service.*.*(..))\")\npublic Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {\n    long start = System.currentTimeMillis();\n    \n    Object result = joinPoint.proceed();\n    \n    long end = System.currentTimeMillis();\n    System.out.println(\"Time taken: \" + (end - start) + \"ms\");\n    \n    return result;\n}"
                 }
               ]
             }
           ]
         },
         {
-          "title": "pointcut_expressions",
+          "title": "expressions_de_pointcut",
           "multi-content": [
             {
-              "title": "All methods in service package",
-              "simple-content": "execution(* com.example.service.*.*(..))"
-            },
-            {
-              "title": "All methods in UserService interface",
-              "simple-content": "execution(* com.example.service.UserService+.*(..))"
-            },
-            {
-              "title": "All methods annotated with @Transactional",
-              "simple-content": "@annotation(org.springframework.transaction.annotation.Transactional)"
-            },
-            {
-              "title": "All public methods",
-              "simple-content": "execution(public * *(..))"
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Toutes les méthodes dans le package service",
+                  "simple-content": "execution(* com.example.service.*.*(..))"
+                },
+                {
+                  "title": "Toutes les méthodes dans l'interface UserService",
+                  "simple-content": "execution(* com.example.service.UserService+.*(..))"
+                },
+                {
+                  "title": "Toutes les méthodes annotées avec @Transactional",
+                  "simple-content": "@annotation(org.springframework.transaction.annotation.Transactional)"
+                },
+                {
+                  "title": "Toutes les méthodes publiques",
+                  "simple-content": "execution(public * *(..))"
+                }
+              ]
             }
           ]
         },
         {
-          "title": "example",
-          "simple-content": "@Aspect\n@Component\npublic class LoggingAspect {\n    \n    // Définir pointcut\n    @Pointcut(\"execution(* com.example.service.*.*(..))\")\n    public void serviceMethods() {}\n    \n    // Conseil Before\n    @Before(\"serviceMethods()\")\n    public void logBefore(JoinPoint joinPoint) {\n        System.out.println(\"Avant l'exécution de: \" + joinPoint.getSignature().getName());\n    }\n    \n    // Conseil Around\n    @Around(\"@annotation(com.example.annotation.LogExecutionTime)\")\n    public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {\n        long start = System.currentTimeMillis();\n        \n        Object result = joinPoint.proceed();\n        \n        long end = System.currentTimeMillis();\n        System.out.println(\"Temps pris: \" + (end - start) + \"ms\");\n        \n        return result;\n    }\n}"
+          "title": "code_examples",
+          "multi-content": [
+            {
+              "title": "",
+              "simple-content": "@Aspect\n@Component\npublic class LoggingAspect {\n    \n    // Define pointcut\n    @Pointcut(\"execution(* com.example.service.*.*(..))\")\n    public void serviceMethods() {}\n    \n    // Before advice\n    @Before(\"serviceMethods()\")\n    public void logBefore(JoinPoint joinPoint) {\n        System.out.println(\"Before executing: \" + joinPoint.getSignature().getName());\n    }\n    \n    // Around advice\n    @Around(\"@annotation(com.example.annotation.LogExecutionTime)\")\n    public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {\n        long start = System.currentTimeMillis();\n        \n        Object result = joinPoint.proceed();\n        \n        long end = System.currentTimeMillis();\n        System.out.println(\"Time taken: \" + (end - start) + \"ms\");\n        \n        return result;\n    }\n}"
+            }
+          ]
         }
       ]
     },
     {
-      "title": "ApplicationContext",
+      "title": "Contexte d'Application",
       "multi-content": [
         {
           "title": "description",
           "simple-content": "Un conteneur IoC avancé qui fournit des fonctionnalités de niveau entreprise au-delà de la gestion de base des beans."
         },
         {
-          "title": "definition",
-          "simple-content": "Une interface centrale qui fournit la configuration pour une application, représentant le conteneur IoC Spring et responsable de l'instanciation, de la configuration et de l'assemblage des beans."
+          "title": "définition",
+          "simple-content": "Une interface centrale qui fournit la configuration pour une application, représentant le conteneur IoC Spring et responsable de l'instanciation, la configuration et l'assemblage des beans."
         },
         {
-          "title": "key_features",
+          "title": "fonctionnalités_clés",
           "multi-content": [
             "Étend BeanFactory avec des fonctionnalités d'entreprise",
             "Fournit un mécanisme de publication d'événements",
@@ -1076,7 +1091,7 @@
           ]
         },
         {
-          "title": "context_types",
+          "title": "types_de_contexte",
           "multi-content": [
             {
               "title": "AnnotationConfigApplicationContext",
@@ -1100,11 +1115,11 @@
           "title": "vs_beanfactory",
           "multi-content": [
             {
-              "title": "Bean Instantiation",
+              "title": "Instanciation de Bean",
               "multi-content": [
                 {
                   "title": "beanFactory",
-                  "simple-content": "Paresseux (sur demande)"
+                  "simple-content": "Paresseuse (sur demande)"
                 },
                 {
                   "title": "applicationContext",
@@ -1113,7 +1128,7 @@
               ]
             },
             {
-              "title": "Event Publication",
+              "title": "Publication d'Événements",
               "multi-content": [
                 {
                   "title": "beanFactory",
@@ -1126,7 +1141,7 @@
               ]
             },
             {
-              "title": "Resource Access",
+              "title": "Accès aux Ressources",
               "multi-content": [
                 {
                   "title": "beanFactory",
@@ -1141,33 +1156,33 @@
           ]
         },
         {
-          "title": "examples",
+          "title": "code_examples",
           "multi-content": [
             {
               "title": "creating_context",
-              "simple-content": "// À partir de la configuration Java\nApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);\n\n// À partir de XML\nApplicationContext context = new ClassPathXmlApplicationContext(\"applicationContext.xml\");"
+              "simple-content": "// From Java configuration\nApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);\n\n// From XML\nApplicationContext context = new ClassPathXmlApplicationContext(\"applicationContext.xml\");"
             },
             {
               "title": "getting_beans",
-              "simple-content": "// Par type\nUserService userService = context.getBean(UserService.class);\n\n// Par nom\nUserRepository userRepository = (UserRepository) context.getBean(\"userRepository\");\n\n// Par nom et type\nDataSource dataSource = context.getBean(\"primaryDataSource\", DataSource.class);"
+              "simple-content": "// By type\nUserService userService = context.getBean(UserService.class);\n\n// By name\nUserRepository userRepository = (UserRepository) context.getBean(\"userRepository\");\n\n// By name and type\nDataSource dataSource = context.getBean(\"primaryDataSource\", DataSource.class);"
             }
           ]
         }
       ]
     },
     {
-      "title": "SpringBootVsFramework",
+      "title": "Spring Boot vs Framework",
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "Comprendre les différences entre Spring Boot et le framework Spring Core aide à clarifier leur relation et leurs cas d'utilisation."
+          "simple-content": "Comprendre les différences entre Spring Boot et le Framework Spring de base aide à clarifier leur relation et leurs cas d'utilisation."
         },
         {
-          "title": "definition",
-          "simple-content": "Spring Boot est un framework prescriptif construit sur Spring qui simplifie le développement d'applications en fournissant une auto-configuration, des dépendances starter et des serveurs embarqués, réduisant significativement la configuration boilerplate."
+          "title": "définition",
+          "simple-content": "Spring Boot est un framework dogmatique construit sur Spring qui simplifie le développement d'applications en fournissant l'auto-configuration, des dépendances de démarrage et des serveurs embarqués, réduisant considérablement la configuration standard."
         },
         {
-          "title": "key_differences",
+          "title": "différences_clés",
           "multi-content": [
             {
               "title": "Configuration",
@@ -1183,20 +1198,20 @@
               ]
             },
             {
-              "title": "Setup",
+              "title": "Installation",
               "multi-content": [
                 {
                   "title": "spring_framework",
-                  "simple-content": "Plus de code boilerplate, plusieurs fichiers de configuration"
+                  "simple-content": "Plus de code standard, plusieurs fichiers de configuration"
                 },
                 {
                   "title": "spring_boot",
-                  "simple-content": "Code de configuration minimal, convention plutôt que configuration"
+                  "simple-content": "Code d'installation minimal, convention plutôt que configuration"
                 }
               ]
             },
             {
-              "title": "Deployment",
+              "title": "Déploiement",
               "multi-content": [
                 {
                   "title": "spring_framework",
@@ -1209,7 +1224,7 @@
               ]
             },
             {
-              "title": "Dependencies",
+              "title": "Dépendances",
               "multi-content": [
                 {
                   "title": "spring_framework",
@@ -1217,25 +1232,25 @@
                 },
                 {
                   "title": "spring_boot",
-                  "simple-content": "Dépendances starter avec des ensembles de versions compatibles et testées"
+                  "simple-content": "Dépendances de démarrage avec des ensembles de versions compatibles et testées"
                 }
               ]
             }
           ]
         },
         {
-          "title": "spring_boot_features",
+          "title": "fonctionnalités_spring_boot",
           "multi-content": [
             {
               "title": "Auto-configuration",
               "simple-content": "Configure automatiquement les beans en fonction des dépendances du classpath"
             },
             {
-              "title": "Starter Dependencies",
-              "simple-content": "Ensembles organisés de dépendances pour les cas d'utilisation courants"
+              "title": "Dépendances de Démarrage",
+              "simple-content": "Ensembles sélectionnés de dépendances pour les cas d'utilisation courants"
             },
             {
-              "title": "Embedded Servers",
+              "title": "Serveurs Embarqués",
               "simple-content": "Serveurs d'applications intégrés pour un déploiement simple"
             },
             {
@@ -1245,29 +1260,29 @@
           ]
         },
         {
-          "title": "examples",
+          "title": "code_examples",
           "multi-content": [
             {
               "title": "spring_framework_config",
-              "simple-content": "// Spring Framework - configuration explicite de ViewResolver\n@Configuration\npublic class WebConfig implements WebMvcConfigurer {\n    @Bean\n    public ViewResolver viewResolver() {\n        InternalResourceViewResolver resolver = new InternalResourceViewResolver();\n        resolver.setPrefix(\"/WEB-INF/views/\");\n        resolver.setSuffix(\".jsp\");\n        return resolver;\n    }\n    // Beaucoup plus de beans...\n}"
+              "simple-content": "// Spring Framework - explicit ViewResolver configuration\n@Configuration\npublic class WebConfig implements WebMvcConfigurer {\n    @Bean\n    public ViewResolver viewResolver() {\n        InternalResourceViewResolver resolver = new InternalResourceViewResolver();\n        resolver.setPrefix(\"/WEB-INF/views/\");\n        resolver.setSuffix(\".jsp\");\n        return resolver;\n    }\n    // Many more beans...\n}"
             },
             {
               "title": "spring_boot_config",
-              "simple-content": "// Spring Boot - l'auto-configuration s'en occupe\n@SpringBootApplication\npublic class Application {\n    public static void main(String[] args) {\n        SpringApplication.run(Application.class, args);\n    }\n    // C'est tout! Configuration via application.properties\n}"
+              "simple-content": "// Spring Boot - auto-configuration handles it\n@SpringBootApplication\npublic class Application {\n    public static void main(String[] args) {\n        SpringApplication.run(Application.class, args);\n    }\n    // That's it! Configuration via application.properties\n}"
             }
           ]
         }
       ]
     },
     {
-      "title": "SpringExceptions",
+      "title": "Exceptions Spring",
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "Comprendre les exceptions Spring courantes et comment les dépanner efficacement."
+          "simple-content": "Comprendre les exceptions Spring courantes et comment les résoudre efficacement."
         },
         {
-          "title": "key_exceptions",
+          "title": "exceptions_clés",
           "multi-content": [
             {
               "title": "NoSuchBeanDefinitionException",
@@ -1282,14 +1297,14 @@
                     "Configuration de scan de composants manquante",
                     "Bean non correctement défini",
                     "Bean en dehors des packages scannés",
-                    "Mauvais qualificateur ou nom spécifié",
+                    "Qualifier ou nom incorrect spécifié",
                     "Bean non actif sous le profil actuel"
                   ]
                 },
                 {
-                  "title": "resolution",
+                  "title": "résolution",
                   "multi-content": [
-                    "Vérifier la configuration du scan de composants",
+                    "Vérifier la configuration de scan des composants",
                     "S'assurer que le bean est correctement annoté ou défini",
                     "Vérifier la structure des packages",
                     "Vérifier la configuration du profil"
@@ -1309,12 +1324,12 @@
                   "multi-content": [
                     "Bean de dépendance manquant",
                     "Dépendances ambiguës sans désambiguïsation appropriée",
-                    "Dépendances circulaires avec l'injection par constructeur",
+                    "Dépendances circulaires avec injection par constructeur",
                     "Incompatibilité de type dans la dépendance"
                   ]
                 },
                 {
-                  "title": "resolution",
+                  "title": "résolution",
                   "multi-content": [
                     "S'assurer que toutes les dépendances sont disponibles",
                     "Utiliser @Qualifier ou @Primary pour la désambiguïsation",
@@ -1329,7 +1344,7 @@
               "multi-content": [
                 {
                   "title": "description",
-                  "simple-content": "Se produit pendant le processus d'instanciation des beans"
+                  "simple-content": "Se produit pendant le processus d'instanciation du bean"
                 },
                 {
                   "title": "causes",
@@ -1341,7 +1356,7 @@
                   ]
                 },
                 {
-                  "title": "resolution",
+                  "title": "résolution",
                   "multi-content": [
                     "Vérifier les exceptions dans l'initialisation du bean",
                     "Déboguer les méthodes d'initialisation",
@@ -1361,13 +1376,13 @@
                 {
                   "title": "causes",
                   "multi-content": [
-                    "Dépendances circulaires avec l'injection par constructeur"
+                    "Dépendances circulaires avec injection par constructeur"
                   ]
                 },
                 {
-                  "title": "resolution",
+                  "title": "résolution",
                   "multi-content": [
-                    "Redessiner les composants pour éliminer la dépendance circulaire",
+                    "Reconcevoir les composants pour éliminer la dépendance circulaire",
                     "Utiliser l'injection par setter au lieu de l'injection par constructeur",
                     "Utiliser l'annotation @Lazy sur l'une des dépendances"
                   ]
@@ -1377,23 +1392,23 @@
           ]
         },
         {
-          "title": "troubleshooting_approaches",
+          "title": "approches_de_dépannage",
           "multi-content": [
             {
-              "title": "Read the Stack Trace",
+              "title": "Lire la Trace de la Pile",
               "simple-content": "Examiner attentivement le message d'exception et la trace de la pile"
             },
             {
-              "title": "Enable Debug Logging",
+              "title": "Activer la Journalisation de Débogage",
               "simple-content": "Augmenter le niveau de journalisation pour obtenir plus d'informations"
             },
             {
-              "title": "Use ApplicationContext Events",
-              "simple-content": "Écouter les événements du contexte pour identifier les problèmes"
+              "title": "Utiliser les Événements de ApplicationContext",
+              "simple-content": "Écouter les événements de contexte pour identifier les problèmes"
             },
             {
-              "title": "Inspect Bean Definitions",
-              "simple-content": "Inspecter programmatiquement les définitions de beans"
+              "title": "Inspecter les Définitions de Bean",
+              "simple-content": "Inspecter programmatiquement les définitions de bean"
             }
           ]
         }
