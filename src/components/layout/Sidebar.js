@@ -9,10 +9,8 @@ import {
     Users,
     Code,
     Activity,
-    FileText,
     Cpu,
     Layers,
-    RefreshCw,
     X, BookOpen
 } from 'lucide-react';
 
@@ -36,6 +34,8 @@ const Sidebar = () => {
                 },
                 {path: '/java/exceptions', title: 'Exception Handling', icon: <Box className="w-4 h-4"/>},
                 {path: '/java/features', title: 'Java Features', icon: <Cpu className="w-4 h-4"/>},
+                { title: "Unit Testing", path: "/java/testing", icon: <Box className="w-4 h-4"/> },
+                { title: "Functional Programming", path: "/java/functional-programming", icon: <Box className="w-4 h-4"/> },
             ]
         },
         spring: {

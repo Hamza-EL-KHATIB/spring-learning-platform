@@ -1,0 +1,517 @@
+{
+  "id": "java-unit-testing-mocking",
+  "title": "Unit Testing & Mocking",
+  "tags": ["java", "testing", "junit", "mockito", "backend", "tdd"],
+  "topics": [
+    {
+      "id": "core-concepts",
+      "title": "Core Concepts Overview",
+      "description": "Unit testing and mocking are foundational skills for professional Java developers, ensuring code quality, reliability, and maintainability. These practices are particularly important in enterprise environments where Spring Boot is commonly used.",
+      "features": [
+        {"name": "Unit Testing Basics", "description": "Validate individual components in isolation", "interviewRelevance": 5},
+        {"name": "JUnit Annotations & Lifecycle", "description": "Structure and control test execution", "interviewRelevance": 5},
+        {"name": "Test-Driven Development (TDD)", "description": "Development process with tests first", "interviewRelevance": 4},
+        {"name": "Mocking Frameworks", "description": "Isolate units from dependencies", "interviewRelevance": 5},
+        {"name": "Test Doubles (Mocks vs Stubs)", "description": "Different ways to simulate dependencies", "interviewRelevance": 4},
+        {"name": "Assertions & Verifications", "description": "Validate test results and interactions", "interviewRelevance": 4},
+        {"name": "Testing Best Practices", "description": "Guidelines for effective testing", "interviewRelevance": 3},
+        {"name": "Spring Boot Testing", "description": "Spring-specific testing techniques", "interviewRelevance": 4},
+        {"name": "Test Coverage", "description": "Measure and improve test quality", "interviewRelevance": 3},
+        {"name": "Integration Testing", "description": "Testing component interactions", "interviewRelevance": 3}
+      ]
+    },
+    {
+      "id": "unit-testing-fundamentals",
+      "title": "Unit Testing Fundamentals",
+      "description": "Unit testing is the practice of testing individual components (units) of software in isolation to validate that they work as expected.",
+      "characteristics": [
+        "Tests should be **isolated** (independent of each other)",
+        "Tests should be **deterministic** (same result every time)",
+        "Tests should be **automated** (run without manual intervention)",
+        "Tests should be **fast** (quick feedback loop)",
+        "Tests should be **readable** (clear intent)"
+      ],
+      "patterns": [
+        {
+          "name": "AAA Pattern",
+          "description": "A good unit test follows the \"AAA\" pattern:",
+          "steps": [
+            "**Arrange**: Set up the test conditions and data",
+            "**Act**: Call the method being tested",
+            "**Assert**: Verify the expected outcome"
+          ],
+          "code": "public interface Collection<E> extends Iterable<E> {\n    boolean add(E element);\n    boolean remove(Object element);\n    boolean contains(Object element);\n    int size();\n    boolean isEmpty();\n    Iterator<E> iterator();\n    // Other methods...\n}"
+        }
+      ],
+      "example": {
+        "language": "java",
+        "snippet": "@Test\nvoid shouldReturnUserWhenUserExists() {\n    // Arrange\n    Long userId = 1L;\n    User expectedUser = new User(userId, \"John\");\n    when(userRepository.findById(userId)).thenReturn(Optional.of(expectedUser));\n    \n    // Act\n    User result = userService.getUser(userId);\n    \n    // Assert\n    assertEquals(expectedUser, result);\n}"
+      }
+    },
+    {
+      "id": "junit5",
+      "title": "JUnit 5",
+      "description": "JUnit is the most popular testing framework for Java, providing annotations, assertions, and runners for executing tests.",
+      "subsections": [
+        {
+          "title": "Key Annotations",
+          "tables": [
+            {
+              "headers": ["Annotation", "Purpose", "Example Usage"],
+              "rows": [
+                ["@Test", "Marks a method as a test", "@Test void testMethod() { ... }"],
+                ["@BeforeEach", "Executes before each test method", "@BeforeEach void setup() { ... }"],
+                ["@AfterEach", "Executes after each test method", "@AfterEach void tearDown() { ... }"],
+                ["@BeforeAll", "Executes once before all test methods (static)", "@BeforeAll static void init() { ... }"],
+                ["@AfterAll", "Executes once after all test methods (static)", "@AfterAll static void cleanup() { ... }"],
+                ["@Disabled", "Disables a test method or class", "@Disabled(\"WIP\") @Test void test() { ... }"],
+                ["@DisplayName", "Custom test name", "@DisplayName(\"When user exists\") @Test void test() { ... }"],
+                ["@ParameterizedTest", "Test with multiple parameters", "@ParameterizedTest @ValueSource(ints = {1, 2}) void test(int val) { ... }"],
+                ["@Nested", "Nested test class", "@Nested class WhenUserExists { ... }"],
+                ["@Tag", "Tag for filtering tests", "@Tag(\"slow\") @Test void test() { ... }"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "JUnit 5 Test Lifecycle",
+          "content": "1. Start Test Class\n2. Execute @BeforeAll methods\n3. For Each Test Method:\n   a. Execute @BeforeEach methods\n   b. Execute Test Method\n   c. Execute @AfterEach methods\n4. Execute @AfterAll methods\n5. End Test Class"
+        },
+        {
+          "title": "Basic JUnit 5 Example",
+          "code": {
+            "language": "java",
+            "snippet": "import org.junit.jupiter.api.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class CalculatorTest {\n    private Calculator calculator;\n    \n    @BeforeEach\n    void setUp() {\n        calculator = new Calculator();\n    }\n    \n    @Test\n    @DisplayName(\"2 + 2 should equal 4\")\n    void addShouldReturnSum() {\n        // Arrange - done in setUp\n        // Act\n        int result = calculator.add(2, 2);\n        // Assert\n        assertEquals(4, result, \"Addition should work correctly\");\n    }\n    \n    @Test\n    void divideByZeroShouldThrowException() {\n        // Arrange - done in setUp\n        // Act & Assert\n        assertThrows(ArithmeticException.class, () -> {\n            calculator.divide(1, 0);\n        });\n    }\n    \n    @ParameterizedTest\n    @ValueSource(ints = {0, 1, 2, 3})\n    void isEvenShouldReturnTrueForEvenNumbers(int number) {\n        // Even numbers should return true, odd numbers false\n        assertEquals(number % 2 == 0, calculator.isEven(number));\n    }\n}"
+          }
+        },
+        {
+          "title": "JUnit 5 Assertions",
+          "code": {
+            "language": "java",
+            "snippet": "// Basic assertions\nassertEquals(expected, actual);\nassertNotEquals(unexpected, actual);\nassertTrue(condition);\nassertFalse(condition);\nassertNull(object);\nassertNotNull(object);\n\n// Exception assertions\nassertThrows(Exception.class, () -> { methodThatThrows(); });\nException ex = assertThrows(Exception.class, () -> { methodThatThrows(); });\nassertEquals(\"Expected message\", ex.getMessage());\n\n// Timeouts\nassertTimeout(Duration.ofSeconds(1), () -> { longRunningMethod(); });\n\n// Multiple assertions\nassertAll(\n    () -> assertEquals(1, result.getValue()),\n    () -> assertTrue(result.isActive()),\n    () -> assertNotNull(result.getTimestamp())\n);\n\n// Collection assertions\nList<String> names = Arrays.asList(\"John\", \"Jane\");\nassertIterableEquals(expectedList, names);\nassertTrue(names.contains(\"John\"));\nassertEquals(2, names.size());"
+          }
+        },
+        {
+          "title": "Advanced JUnit 5 Features",
+          "features": [
+            {
+              "name": "Parameterized Tests",
+              "code": {
+                "language": "java",
+                "snippet": "@ParameterizedTest\n@ValueSource(strings = {\"racecar\", \"radar\", \"level\"})\nvoid shouldDetectPalindromes(String word) {\n    assertTrue(isPalindrome(word));\n}\n\n@ParameterizedTest\n@CsvSource({\n    \"apple, 5\",\n    \"banana, 6\",\n    \"cherry, 6\"\n})\nvoid lengthOfString(String word, int expectedLength) {\n    assertEquals(expectedLength, word.length());\n}\n\n@ParameterizedTest\n@MethodSource(\"provideTestData\")\nvoid testWithMethodSource(String input, int expected) {\n    assertEquals(expected, input.length());\n}\n\nstatic Stream<Arguments> provideTestData() {\n    return Stream.of(\n        Arguments.of(\"apple\", 5),\n        Arguments.of(\"banana\", 6)\n    );\n}"
+              }
+            },
+            {
+              "name": "Assumptions",
+              "code": {
+                "language": "java",
+                "snippet": "@Test\nvoid runOnlyOnLinux() {\n    assumeTrue(System.getProperty(\"os.name\").toLowerCase().contains(\"linux\"));\n    // Test code that only works on Linux\n}\n\n@Test\nvoid runOnlyOnDevelopmentEnvironment() {\n    assumingThat(\n        \"dev\".equals(System.getProperty(\"env\")),\n        () -> {\n            // Code that runs only on development environment\n        }\n    );\n    // Code that runs regardless of environment\n}"
+              }
+            },
+            {
+              "name": "Conditional Test Execution",
+              "code": {
+                "language": "java",
+                "snippet": "@Test\n@EnabledOnOs(OS.WINDOWS)\nvoid onlyOnWindows() {\n    // Test only runs on Windows\n}\n\n@Test\n@DisabledIfSystemProperty(named = \"env\", matches = \"prod\")\nvoid notOnProd() {\n    // Test doesn't run in production\n}\n\n@Test\n@EnabledIfEnvironmentVariable(named = \"TEST_MODE\", matches = \"true\")\nvoid onlyInTestMode() {\n    // Test only runs when TEST_MODE=true\n}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tdd",
+      "title": "Test-Driven Development (TDD)",
+      "description": "Test-Driven Development is a development approach where tests are written before the implementation code. It follows a cyclical process known as \"Red-Green-Refactor\":",
+      "process": [
+        "**Red**: Write a failing test that defines a feature or improvement",
+        "**Green**: Write the minimum amount of code to make the test pass",
+        "**Refactor**: Optimize the code while keeping the tests passing"
+      ],
+      "benefits": [
+        "**Improved design**: TDD encourages modular, loosely coupled code since testable code requires good design",
+        "**Higher test coverage**: Nearly 100% test coverage comes naturally as no code is written without a failing test first",
+        "**Faster debugging**: When a test fails, you know exactly what's broken and where",
+        "**Living documentation**: Tests serve as executable documentation of what the code should do",
+        "**Confidence in refactoring**: Comprehensive tests allow safer refactoring and code improvements",
+        "**Reduced defect rates**: Studies show TDD can reduce defect rates by 40-80%",
+        "**Faster development in the long run**: While initially slower, TDD reduces debugging time and rework"
+      ],
+      "example": {
+        "language": "java",
+        "snippet": "// Step 1: Write a failing test\n@Test\nvoid shouldCalculateAreaOfRectangle() {\n    Rectangle rectangle = new Rectangle(5, 10);\n    assertEquals(50, rectangle.calculateArea());\n}\n\n// Step 2: Minimal implementation to pass the test\npublic class Rectangle {\n    private final double width;\n    private final double height;\n    \n    public Rectangle(double width, double height) {\n        this.width = width;\n        this.height = height;\n    }\n    \n    public double calculateArea() {\n        return width * height;\n    }\n}\n\n// Step 3: Refactor if needed while ensuring tests pass"
+      }
+    },
+    {
+      "id": "mockito",
+      "title": "Mockito",
+      "description": "Mockito is a popular mocking framework for Java, used to create substitute objects that mimic the behavior of real objects in controlled ways.",
+      "concepts": [
+        {"name": "Mock", "description": "A substitute for a real object with programmable behavior"},
+        {"name": "Stub", "description": "A pre-programmed mock that returns specific values"},
+        {"name": "Spy", "description": "A partial mock that uses real object behavior unless specified otherwise"},
+        {"name": "Verify", "description": "Check if and how a mock was called"}
+      ],
+      "examples": [
+        {
+          "title": "Basic Mockito Usage",
+          "code": {
+            "language": "java",
+            "snippet": "// Creating a mock\nUserRepository userRepository = Mockito.mock(UserRepository.class);\n\n// Stubbing methods\nwhen(userRepository.findById(1L)).thenReturn(Optional.of(new User(1L, \"John\")));\nwhen(userRepository.findById(2L)).thenReturn(Optional.empty());\nwhen(userRepository.save(any(User.class))).thenReturn(new User(3L, \"Jane\"));\nwhen(userRepository.findByUsername(\"admin\")).thenThrow(new SecurityException());\n\n// Using the mock\nuserService = new UserService(userRepository);\nUser user = userService.getUser(1L);  // Returns the stubbed user\n\n// Verification\nverify(userRepository).findById(1L);\nverify(userRepository, times(1)).findById(1L);\nverify(userRepository, never()).delete(any());\nverify(userRepository, timeout(100)).findById(anyLong());\nverify(userRepository, atLeastOnce()).findById(anyLong());\nverify(userRepository, atMost(3)).findById(anyLong());\n\n// Argument captures\nArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);\nverify(userRepository).save(userCaptor.capture());\nUser capturedUser = userCaptor.getValue();\nassertEquals(\"Jane\", capturedUser.getName());"
+          }
+        },
+        {
+          "title": "Mockito Annotations",
+          "code": {
+            "language": "java",
+            "snippet": "@ExtendWith(MockitoExtension.class)\nclass UserServiceTest {\n    @Mock\n    private UserRepository userRepository;\n    \n    @InjectMocks\n    private UserService userService;\n    \n    @Spy\n    private AuditService auditService;\n    \n    @Captor\n    private ArgumentCaptor<User> userCaptor;\n    \n    @Test\n    void shouldReturnUserWhenUserExists() {\n        // Arrange\n        when(userRepository.findById(1L)).thenReturn(Optional.of(new User(1L, \"John\")));\n        \n        // Act\n        User result = userService.getUser(1L);\n        \n        // Assert\n        assertEquals(\"John\", result.getName());\n        verify(userRepository).findById(1L);\n    }\n}"
+          }
+        },
+        {
+          "title": "Mockito Answer and Callbacks",
+          "code": {
+            "language": "java",
+            "snippet": "// Return different values on consecutive calls\nwhen(userRepository.getNextId())\n    .thenReturn(1L)\n    .thenReturn(2L)\n    .thenReturn(3L);\n\n// Dynamic responses based on arguments\nwhen(userRepository.findById(anyLong())).thenAnswer(invocation -> {\n    Long id = invocation.getArgument(0);\n    return Optional.of(new User(id, \"User \" + id));\n});\n\n// Callbacks for side effects\ndoAnswer(invocation -> {\n    User user = invocation.getArgument(0);\n    System.out.println(\"Saving user: \" + user.getName());\n    return user;\n}).when(userRepository).save(any(User.class));"
+          }
+        },
+        {
+          "title": "Mockito BDD Style",
+          "code": {
+            "language": "java",
+            "snippet": "// BDD style syntax with BDDMockito\nimport static org.mockito.BDDMockito.*;\n\n@Test\nvoid shouldReturnUserWhenUserExists() {\n    // Given\n    given(userRepository.findById(1L)).willReturn(Optional.of(new User(1L, \"John\")));\n    \n    // When\n    User result = userService.getUser(1L);\n    \n    // Then\n    assertThat(result.getName()).isEqualTo(\"John\");\n    then(userRepository).should().findById(1L);\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "test-doubles",
+      "title": "Test Doubles",
+      "description": "Test doubles are objects that stand in for real objects in a test environment. There are different types, each with specific purposes:",
+      "types": [
+        {
+          "name": "Dummy",
+          "purpose": "Objects passed but never used",
+          "implementation": "any(), mock(Class.class)",
+          "example": "// Dummy - passed but never used\ndoSomething(null, mock(Logger.class), \"test\");"
+        },
+        {
+          "name": "Fake",
+          "purpose": "Working but simplified implementations",
+          "implementation": "Custom implementation of interface",
+          "example": "// Fake - simplified implementation\npublic class FakeUserRepository implements UserRepository {\n    private Map<Long, User> users = new HashMap<>();\n    \n    @Override\n    public Optional<User> findById(Long id) {\n        return Optional.ofNullable(users.get(id));\n    }\n    \n    @Override\n    public User save(User user) {\n        users.put(user.getId(), user);\n        return user;\n    }\n}"
+        },
+        {
+          "name": "Stub",
+          "purpose": "Provide answers to specific calls",
+          "implementation": "when().thenReturn()",
+          "example": "// Stub - provides canned answers\nwhen(userRepository.findById(1L)).thenReturn(Optional.of(new User(1L, \"John\")));"
+        },
+        {
+          "name": "Spy",
+          "purpose": "Records calls made for verification",
+          "implementation": "spy(), @Spy",
+          "example": "// Spy - real object with some stubbed methods\nUserRepository userRepositorySpy = spy(new UserRepositoryImpl());\nwhen(userRepositorySpy.findById(1L)).thenReturn(Optional.of(new User(1L, \"John\")));\n// Other methods use real implementation"
+        },
+        {
+          "name": "Mock",
+          "purpose": "Verifies interaction expectations",
+          "implementation": "mock(), @Mock, verify()",
+          "example": "// Mock - expectations and verification\nUserRepository userRepository = mock(UserRepository.class);\nverify(userRepository).findById(1L);"
+        }
+      ]
+    },
+    {
+      "id": "spring-boot-testing",
+      "title": "Spring Boot Testing",
+      "description": "Spring Boot provides comprehensive testing support for different types of tests.",
+      "testSlices": [
+        {"annotation": "@WebMvcTest", "purpose": "Test MVC controllers", "loads": "Controllers, WebMvcConfigurer, etc."},
+        {"annotation": "@DataJpaTest", "purpose": "Test JPA repositories", "loads": "JPA entities, repositories, DataSource"},
+        {"annotation": "@RestClientTest", "purpose": "Test REST clients", "loads": "RestTemplateBuilder, etc."},
+        {"annotation": "@JsonTest", "purpose": "Test JSON serialization", "loads": "Jackson, Gson, etc."},
+        {"annotation": "@WebFluxTest", "purpose": "Test WebFlux controllers", "loads": "WebFlux controllers, WebFluxConfigurer, etc."},
+        {"annotation": "@JdbcTest", "purpose": "Test JDBC code", "loads": "DataSource, JdbcTemplate"},
+        {"annotation": "@DataMongoTest", "purpose": "Test MongoDB repositories", "loads": "MongoDB repositories"}
+      ],
+      "examples": [
+        {
+          "title": "Web Layer Testing with MockMvc",
+          "code": {
+            "language": "java",
+            "snippet": "@WebMvcTest(UserController.class)\nclass UserControllerTest {\n    @Autowired\n    private MockMvc mockMvc;\n    \n    @MockBean\n    private UserService userService;\n    \n    @Test\n    void shouldReturnUserWhenUserExists() throws Exception {\n        // Given\n        User user = new User(1L, \"John\");\n        given(userService.getUser(1L)).willReturn(user);\n        \n        // When/Then\n        mockMvc.perform(get(\"/api/users/1\"))\n            .andExpect(status().isOk())\n            .andExpect(jsonPath(\"$.id\").value(1))\n            .andExpect(jsonPath(\"$.name\").value(\"John\"));\n    }\n    \n    @Test\n    void shouldReturn404WhenUserNotFound() throws Exception {\n        // Given\n        given(userService.getUser(1L)).willThrow(new UserNotFoundException());\n        \n        // When/Then\n        mockMvc.perform(get(\"/api/users/1\"))\n            .andExpect(status().isNotFound());\n    }\n    \n    @Test\n    void shouldCreateUserWhenValid() throws Exception {\n        // Given\n        User user = new User(null, \"John\");\n        User savedUser = new User(1L, \"John\");\n        given(userService.createUser(any(User.class))).willReturn(savedUser);\n        \n        // When/Then\n        mockMvc.perform(post(\"/api/users\")\n                .contentType(MediaType.APPLICATION_JSON)\n                .content(\"{\\\"name\\\":\\\"John\\\"}\"))\n            .andExpect(status().isCreated())\n            .andExpect(header().string(\"Location\", \"/api/users/1\"));\n    }\n}"
+          }
+        },
+        {
+          "title": "Data Layer Testing",
+          "code": {
+            "language": "java",
+            "snippet": "@DataJpaTest\nclass UserRepositoryTest {\n    @Autowired\n    private UserRepository userRepository;\n    \n    @Test\n    void shouldFindUserByName() {\n        // Given\n        User user = new User(null, \"John\");\n        userRepository.save(user);\n        \n        // When\n        List<User> users = userRepository.findByName(\"John\");\n        \n        // Then\n        assertFalse(users.isEmpty());\n        assertEquals(\"John\", users.get(0).getName());\n    }\n    \n    @Test\n    void shouldFindNoUserWhenNameDoesNotExist() {\n        // When\n        List<User> users = userRepository.findByName(\"Unknown\");\n        \n        // Then\n        assertTrue(users.isEmpty());\n    }\n}"
+          }
+        },
+        {
+          "title": "Comprehensive Integration Testing",
+          "code": {
+            "language": "java",
+            "snippet": "@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)\nclass UserApiIntegrationTest {\n    @Autowired\n    private TestRestTemplate restTemplate;\n    \n    @Autowired\n    private UserRepository userRepository;\n    \n    @BeforeEach\n    void setUp() {\n        userRepository.deleteAll();\n    }\n    \n    @Test\n    void shouldReturnUserWhenUserExists() {\n        // Given\n        User user = userRepository.save(new User(null, \"John\"));\n        \n        // When\n        ResponseEntity<User> response = restTemplate.getForEntity(\n            \"/api/users/{id}\", User.class, user.getId());\n        \n        // Then\n        assertEquals(HttpStatus.OK, response.getStatusCode());\n        assertEquals(\"John\", response.getBody().getName());\n    }\n    \n    @Test\n    void shouldReturn404WhenUserNotFound() {\n        // When\n        ResponseEntity<User> response = restTemplate.getForEntity(\n            \"/api/users/{id}\", User.class, 999L);\n        \n        // Then\n        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());\n    }\n}"
+          }
+        },
+        {
+          "title": "Testing with Service Virtualization",
+          "code": {
+            "language": "java",
+            "snippet": "@SpringBootTest\n@AutoConfigureWireMock(port = 0)\nclass ExternalServiceClientTest {\n    @Autowired\n    private ExternalServiceClient client;\n    \n    @Value(\"${wiremock.server.port}\")\n    private int wiremockPort;\n    \n    @Test\n    void shouldReturnDataFromExternalService() {\n        // Given\n        stubFor(get(urlEqualTo(\"/api/external/data\"))\n            .willReturn(aResponse()\n                .withHeader(\"Content-Type\", \"application/json\")\n                .withBody(\"{\\\"value\\\":\\\"test data\\\"}\"));\n        \n        // When\n        ExternalData data = client.fetchData();\n        \n        // Then\n        assertEquals(\"test data\", data.getValue());\n        \n        // Verify the request was made\n        verify(getRequestedFor(urlEqualTo(\"/api/external/data\")));\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "testing-best-practices",
+      "title": "Testing Best Practices",
+      "bestPractices": [
+        {
+          "title": "Writing Maintainable Tests",
+          "items": [
+            "**Test one concept per test**: Focus each test on a specific behavior",
+            "**Use descriptive test names**: Clear intention of what's being tested",
+            "**Follow the AAA pattern**: Arrange, Act, Assert",
+            "**Minimize test interdependence**: Tests should work in isolation",
+            "**Keep tests simple**: Avoid complex logic in tests"
+          ]
+        },
+        {
+          "title": "Test Naming Conventions",
+          "description": "Good test names clearly communicate what is being tested, under what conditions, and what the expected outcome is",
+          "formats": [
+            "**test[Feature][Condition][ExpectedResult]**: testCalculateAreaWithPositiveValuesShouldReturnCorrectResult",
+            "**[Feature][Condition][ExpectedResult]**: calculateAreaWithPositiveValuesShouldReturnCorrectResult",
+            "**should[ExpectedResult]When[Condition]**: shouldReturnCorrectAreaWhenValuesArePositive",
+            "**given[Condition]When[Action]Then[Result] (BDD style)**: givenPositiveValuesWhenCalculatingAreaThenReturnsCorrectResult"
+          ]
+        },
+        {
+          "title": "Common Pitfalls",
+          "items": [
+            "**Testing implementation details**: Focus on behavior, not implementation",
+            "**Brittle tests**: Tests that break with minor changes",
+            "**Overlapping tests**: Multiple tests covering the same functionality",
+            "**Slow tests**: Long-running tests that slow down the feedback loop",
+            "**Test data in production code**: Code written solely to satisfy tests"
+          ]
+        },
+        {
+          "title": "Testing Anti-Patterns",
+          "code": {
+            "language": "java",
+            "snippet": "// Don't: Test implementation details\n@Test\nvoid testBadImplementationFocus() {\n    UserService service = new UserService(mockRepository);\n    // Testing private method through reflection\n    Method method = UserService.class.getDeclaredMethod(\"validateUser\", User.class);\n    method.setAccessible(true);\n    method.invoke(service, user);\n}\n\n// Don't: Write non-deterministic tests\n@Test\nvoid testNonDeterministic() {\n    // Test depends on current date\n    assertTrue(service.isRecent(new Date()));\n}\n\n// Don't: Use sleep for asynchronous testing\n@Test\nvoid testWithSleep() {\n    service.startAsyncProcess();\n    Thread.sleep(1000); // Flaky, depends on timing\n    verify(dependency).processCompleted();\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "test-coverage",
+      "title": "Test Coverage",
+      "description": "Test coverage measures the percentage of your code that is executed by tests.",
+      "coverageTypes": [
+        "**Line Coverage**: Percentage of code lines executed",
+        "**Branch Coverage**: Percentage of branches (if/else, switch) executed",
+        "**Path Coverage**: Percentage of possible execution paths",
+        "**Method Coverage**: Percentage of methods called"
+      ],
+      "tools": ["JaCoCo", "Cobertura", "Clover"],
+      "configuration": {
+        "language": "xml",
+        "snippet": "<!-- JaCoCo Maven Configuration -->\n<plugin>\n    <groupId>org.jacoco</groupId>\n    <artifactId>jacoco-maven-plugin</artifactId>\n    <version>0.8.7</version>\n    <executions>\n        <execution>\n            <goals>\n                <goal>prepare-agent</goal>\n            </goals>\n        </execution>\n        <execution>\n            <id>report</id>\n            <phase>test</phase>\n            <goals>\n                <goal>report</goal>\n            </goals>\n        </execution>\n    </executions>\n</plugin>"
+      },
+      "bestPractices": [
+        "**Don't chase 100% coverage**: Focus on critical code paths",
+        "**Use coverage as a guide, not a goal**: Quality > quantity",
+        "**Combine coverage with mutation testing**: Test effectiveness",
+        "**Cover edge cases and error scenarios**: Not just happy paths",
+        "**Set reasonable targets**: 70-80% is often a good balance"
+      ]
+    },
+    {
+      "id": "interview-questions",
+      "title": "Interview Questions and Answers",
+      "questions": [
+        {
+          "id": "unit-vs-integration",
+          "question": "What is the difference between unit testing and integration testing?",
+          "answer": "Unit testing focuses on testing individual components (classes, methods) in isolation, typically with dependencies mocked or stubbed. Integration testing, on the other hand, tests how multiple components work together.\n\nKey differences:\n\n- **Scope**: Unit tests cover a single unit; integration tests cover multiple units\n- **Dependencies**: Unit tests mock dependencies; integration tests use real dependencies\n- **Speed**: Unit tests are faster; integration tests are slower\n- **Complexity**: Unit tests are simpler; integration tests are more complex\n- **Isolation**: Unit tests run in isolation; integration tests may require infrastructure\n\nBoth types of tests are important in a comprehensive testing strategy. Unit tests provide quick feedback during development, while integration tests ensure components work together correctly."
+        },
+        {
+          "id": "mocking-purpose",
+          "question": "What is mocking and why do we use it in unit testing?",
+          "answer": "Mocking is a technique where we replace real dependencies with objects that simulate their behavior in a controlled way. This is essential for true unit testing, where we want to test a component in isolation.\n\nWe use mocking for several reasons:\n\n- **Isolation**: Test the unit without being affected by its dependencies\n- **Speed**: Avoid slow external systems (databases, web services)\n- **Determinism**: Ensure consistent test results regardless of external state\n- **Availability**: Test when real dependencies are unavailable\n- **Error Simulation**: Easily simulate error conditions from dependencies\n- **Verification**: Confirm interactions between the unit and its dependencies\n\nMockito is one of the most popular mocking frameworks in Java. It allows us to create mock objects, stub their behavior, and verify interactions."
+        },
+        {
+          "id": "mock-vs-spy",
+          "question": "Explain the difference between @Mock and @Spy in Mockito.",
+          "answer": "Both `@Mock` and `@Spy` are Mockito annotations for creating test doubles, but they behave differently:\n\n**@Mock**:\n\n- Creates a complete mock object with no real functionality\n- All methods return default values (null, 0, false) unless stubbed\n- You must explicitly define behavior for methods you want to return specific values\n- Used when you want to completely replace an object with a test double\n\n**@Spy**:\n\n- Creates a partial mock that calls real methods unless specifically stubbed\n- Real implementation is invoked for unstubbed methods\n- Useful when you want to override only some behaviors while keeping the rest\n- Generally used with real objects, not interfaces\n\nThe key difference is that `@Mock` creates a shell with no behavior, while `@Spy` creates a wrapper around a real object that allows you to selectively override methods."
+        },
+        {
+          "id": "junit-lifecycle",
+          "question": "What is the purpose of @BeforeEach and @AfterEach annotations in JUnit 5?",
+          "answer": "`@BeforeEach` and `@AfterEach` are JUnit 5 annotations that help manage the test lifecycle:\n\n**@BeforeEach**:\n\n- Methods annotated with `@BeforeEach` run before each test method in the class\n- Used for setup operations like initializing objects, preparing test data, etc.\n- Each test gets a fresh setup, promoting test isolation\n- Equivalent to `@Before` in JUnit 4\n\n**@AfterEach**:\n\n- Methods annotated with `@AfterEach` run after each test method in the class\n- Used for cleanup operations like closing resources, resetting state, etc.\n- Ensures proper cleanup regardless of whether the test passed or failed\n- Equivalent to `@After` in JUnit 4\n\nThese annotations ensure each test starts with a clean state and properly cleans up after itself, which is crucial for test isolation and reliability."
+        },
+        {
+          "id": "exceptions-testing",
+          "question": "How do you test exceptions in JUnit 5?",
+          "answer": "JUnit 5 provides several ways to test exceptions:\n\n**assertThrows**:\n\n- The most common approach\n- Verifies that the correct exception type is thrown\n- Returns the exception for further assertions\n\n```java\nUserNotFoundException exception = assertThrows(UserNotFoundException.class, () -> {\n    userService.getUser(1L);\n});\n\n// Additional assertions on the exception\nassertEquals(\"User not found with id: 1\", exception.getMessage());\n```\n\n**expectThrows**:\n\n- Similar to assertThrows but with different syntax\n- Used less frequently\n\n**try-catch with fail**:\n\n- The traditional approach (less preferred in JUnit 5)\n- More verbose but provides more control"
+        },
+        {
+          "id": "tdd-benefits",
+          "question": "What is Test-Driven Development (TDD) and what are its benefits?",
+          "answer": "Test-Driven Development is a software development approach where tests are written before the implementation code. It follows a cyclical process:\n\n1. **Red**: Write a failing test that defines the desired functionality\n2. **Green**: Write the minimum amount of code necessary to make the test pass\n3. **Refactor**: Improve the code while ensuring the tests still pass\n\nBenefits of TDD include:\n\n- **Better design**: Writing tests first forces you to think about the interface and responsibilities before implementation\n- **Higher quality code**: TDD tends to produce more modular, loosely coupled code with clearer responsibilities\n- **Built-in regression testing**: Changes that break existing functionality are immediately detected\n- **Documentation by example**: Tests serve as executable documentation of how the code should behave\n- **Focused development**: Helps prevent scope creep by focusing only on what needs to be implemented\n- **Confidence in refactoring**: With comprehensive test coverage, you can refactor with confidence"
+        },
+        {
+          "id": "async-testing",
+          "question": "How would you test asynchronous code in JUnit?",
+          "answer": "Testing asynchronous code requires special handling to ensure tests wait for asynchronous operations to complete. JUnit 5 provides several approaches:\n\n**assertTimeout**:\n\n- Tests that an operation completes within a specific time frame\n- Runs the code in the same thread as the test\n\n**assertTimeoutPreemptively**:\n\n- Similar to assertTimeout but cancels execution if it exceeds the timeout\n- Runs the code in a separate thread\n\n**CompletableFuture methods**:\n\n- Use methods like join(), get(), or get(timeout) to wait for completion\n\n**Awaitility library**:\n\n- A third-party library specifically designed for testing asynchronous code\n\n```java\n@Test\nvoid testAsyncWithAwaitility() {\n    asyncService.startAsyncProcess();\n    \n    await().atMost(2, TimeUnit.SECONDS)\n           .until(() -> asyncService.isProcessComplete());\n    \n    verify(dependency).processCompleted();\n}\n```"
+        },
+        {
+          "id": "mockbean-annotation",
+          "question": "What is the @MockBean annotation in Spring Boot tests and when would you use it?",
+          "answer": "`@MockBean` is a Spring Boot testing annotation that creates a Mockito mock of a bean and adds it to the Spring application context. This replaces any existing bean of the same type in the context or adds it if no bean of that type exists.\n\nWhen to use it:\n\n- In integrated tests where you want to mock specific beans while using real dependencies for others\n- When testing controllers or services that depend on other components you want to mock\n- When you need to simulate specific behaviors of dependencies in a Spring context\n\nThe key difference between `@MockBean` and standard Mockito `@Mock` is that `@MockBean` integrates with the Spring context, replacing or adding beans to the application context, while `@Mock` simply creates a mock object without any Spring integration."
+        },
+        {
+          "id": "database-testing",
+          "question": "How do you handle database tests in Spring Boot?",
+          "answer": "Spring Boot offers several approaches for database testing:\n\n**@DataJpaTest**:\n\n- Configures an in-memory database\n- Sets up Spring Data JPA repositories\n- Auto-configures Hibernate, Spring Data, and the DataSource\n- Each test transaction is rolled back by default\n\n**TestEntityManager**:\n\n- Helper for JPA entity operations in tests\n- Useful for setting up test data\n\n**@JdbcTest**:\n\n- For testing JDBC components\n- Auto-configures an in-memory database and JdbcTemplate\n\n**TestContainers**:\n\n- Third-party library that provides real database instances in Docker containers\n- Useful for testing with the same database used in production\n\nDatabase tests generally should use a separate database from development/production, configure through Spring profiles, and include proper cleanup between tests."
+        },
+        {
+          "id": "test-data-strategies",
+          "question": "What are some strategies for maintaining test data in a database-driven application?",
+          "answer": "Maintaining test data is crucial for reliable database tests. Here are several strategies:\n\n**Test-specific database**:\n\n- Use a separate database for testing\n- Configure through Spring profiles\n- Ensures tests don't interfere with development or production data\n\n**In-memory database**:\n\n- Use H2, HSQLDB, or Derby for tests\n- Fast and isolated\n- Automatically created and destroyed\n\n**Database cleanup**:\n\n- Clear or reset data before/after tests\n- Use `@Transactional` for automatic rollback\n- Implement custom cleanup methods\n\n**TestContainers**:\n\n- Use Docker containers for tests\n- Provides fresh database instances for each test suite\n- Supports various database types (MySQL, PostgreSQL, etc.)\n\n**Database seeding**:\n\n- Pre-populate the database with known test data\n- Use SQL scripts, Flyway, or programmatic seeding\n\n**Fixture classes**:\n\n- Create reusable methods for generating test entities\n- Promotes consistency across tests"
+        }
+      ]
+    },
+    {
+      "id": "advanced-testing-topics",
+      "title": "Advanced Testing Topics",
+      "topics": [
+        {
+          "name": "Property-Based Testing",
+          "description": "Property-based testing focuses on verifying properties (invariants) of the system rather than specific examples. Instead of asserting that specific inputs produce specific outputs, you assert that certain properties hold true for a wide range of inputs.",
+          "code": {
+            "language": "java",
+            "snippet": "// Using jqwik library\n@Property\nvoid concatenationLength(@ForAll String s1, @ForAll String s2) {\n    assertEquals(s1.length() + s2.length(), (s1 + s2).length());\n}\n\n// Using junit-quickcheck\n@Property\nvoid absoluteValueIsAlwaysPositive(@InRange(min = \"-1000\", max = \"1000\") int value) {\n    assertTrue(Math.abs(value) >= 0);\n}"
+          }
+        },
+        {
+          "name": "Mutation Testing",
+          "description": "Mutation testing evaluates the quality of your tests by introducing small changes (mutations) to your code and checking if your tests catch these changes. If tests pass despite the mutation, it suggests your tests might not be thorough enough.",
+          "tool": "PIT (Pitest) for Java",
+          "benefits": [
+            "Helps identify dead code (never executed)",
+            "Identifies ineffective assertions",
+            "Reveals missing test cases"
+          ],
+          "configuration": {
+            "language": "xml",
+            "snippet": "<!-- Maven configuration for PIT -->\n<plugin>\n    <groupId>org.pitest</groupId>\n    <artifactId>pitest-maven</artifactId>\n    <version>1.9.0</version>\n    <dependencies>\n        <dependency>\n            <groupId>org.pitest</groupId>\n            <artifactId>pitest-junit5-plugin</artifactId>\n            <version>1.0.0</version>\n        </dependency>\n    </dependencies>\n</plugin>"
+          }
+        },
+        {
+          "name": "Contract Testing",
+          "description": "Contract testing ensures that services adhere to a predefined contract, particularly useful in microservices architectures. It verifies that service providers and consumers maintain compatible interfaces.",
+          "implementation": "Spring Cloud Contract",
+          "code": {
+            "language": "groovy",
+            "snippet": "// Contract definition (in Groovy DSL)\nContract.make {\n    description \"should return a user when it exists\"\n    request {\n        method GET()\n        url \"/users/1\"\n    }\n    response {\n        status 200\n        headers {\n            contentType applicationJson()\n        }\n        body(\n            id: 1,\n            name: \"John\"\n        )\n    }\n}"
+          },
+          "benefits": [
+            "Early detection of API changes affecting consumers",
+            "Reduced need for end-to-end testing",
+            "Better documentation of expected behavior"
+          ]
+        },
+        {
+          "name": "Performance Testing",
+          "description": "Testing application performance ensures it meets responsiveness, throughput, and scalability requirements.",
+          "tools": ["JMeter", "Gatling"],
+          "code": {
+            "language": "java",
+            "snippet": "// Gatling simulation example\npublic class UserApiSimulation extends Simulation {\n    HttpProtocolBuilder httpProtocol = http\n        .baseUrl(\"http://localhost:8080\")\n        .acceptHeader(\"application/json\");\n        \n    ScenarioBuilder scn = scenario(\"User API Load Test\")\n        .exec(http(\"Get All Users\")\n            .get(\"/api/users\")\n            .check(status().is(200)))\n        .pause(1)\n        .exec(http(\"Get Specific User\")\n            .get(\"/api/users/1\")\n            .check(status().is(200)));\n            \n    {\n        setUp(\n            scn.injectOpen(rampUsers(100).during(30))\n        ).protocols(httpProtocol);\n    }\n}"
+          }
+        },
+        {
+          "name": "Chaos Testing",
+          "description": "Chaos testing deliberately introduces failures to verify system resilience. It helps ensure systems can withstand unexpected issues.",
+          "tool": "Chaos Monkey for Spring Boot",
+          "implementation": {
+            "language": "java",
+            "snippet": "@SpringBootApplication\n@EnableChaos\npublic class Application {\n    public static void main(String[] args) {\n        SpringApplication.run(Application.class, args);\n    }\n}"
+          },
+          "configuration": {
+            "language": "yaml",
+            "snippet": "# application.yml\nchaos:\n  monkey:\n    enabled: true\n    watcher:\n      service: true\n    assaults:\n      latency:\n        enabled: true\n        level: 3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "interview-coding-challenges",
+      "title": "Common Interview Coding Challenges",
+      "challenges": [
+        {
+          "title": "Calculator Division Method Test",
+          "description": "Write a test for a calculator's division method that handles division by zero",
+          "code": {
+            "language": "java",
+            "snippet": "@Test\nvoid divideByZero_ShouldThrowArithmeticException() {\n    // Arrange\n    Calculator calculator = new Calculator();\n    \n    // Act & Assert\n    assertThrows(ArithmeticException.class, () -> {\n        calculator.divide(10, 0);\n    });\n}\n\n@Test\nvoid divide_ShouldReturnCorrectResult_WhenInputsAreValid() {\n    // Arrange\n    Calculator calculator = new Calculator();\n    \n    // Act\n    double result = calculator.divide(10, 2);\n    \n    // Assert\n    assertEquals(5, result);\n}"
+          }
+        },
+        {
+          "title": "User Registration Service Test",
+          "description": "Write tests for a user registration service",
+          "code": {
+            "language": "java",
+            "snippet": "@ExtendWith(MockitoExtension.class)\nclass UserRegistrationServiceTest {\n    @Mock\n    private UserRepository userRepository;\n    \n    @Mock\n    private EmailService emailService;\n    \n    @InjectMocks\n    private UserRegistrationService registrationService;\n    \n    @Test\n    void registerUser_ShouldSaveUser_WhenUserIsValid() {\n        // Arrange\n        User user = new User(null, \"john@example.com\", \"password123\");\n        when(userRepository.findByEmail(\"john@example.com\")).thenReturn(Optional.empty());\n        when(userRepository.save(any(User.class))).thenReturn(new User(1L, \"john@example.com\", \"encodedPassword\"));\n        \n        // Act\n        User result = registrationService.registerUser(user);\n        \n        // Assert\n        assertNotNull(result.getId());\n        verify(userRepository).save(any(User.class));\n        verify(emailService).sendWelcomeEmail(user.getEmail());\n    }\n    \n    @Test\n    void registerUser_ShouldThrowException_WhenEmailAlreadyExists() {\n        // Arrange\n        User user = new User(null, \"john@example.com\", \"password123\");\n        when(userRepository.findByEmail(\"john@example.com\")).thenReturn(Optional.of(new User()));\n        \n        // Act & Assert\n        assertThrows(UserAlreadyExistsException.class, () -> {\n            registrationService.registerUser(user);\n        });\n        \n        verify(userRepository, never()).save(any(User.class));\n        verify(emailService, never()).sendWelcomeEmail(anyString());\n    }\n}"
+          }
+        },
+        {
+          "title": "REST Controller Test",
+          "description": "Write tests for a REST controller using MockMvc",
+          "code": {
+            "language": "java",
+            "snippet": "@WebMvcTest(UserController.class)\nclass UserControllerTest {\n    @Autowired\n    private MockMvc mockMvc;\n    \n    @MockBean\n    private UserService userService;\n    \n    @Test\n    void getUserById_ShouldReturnUser_WhenUserExists() throws Exception {\n        // Arrange\n        User user = new User(1L, \"John\", \"john@example.com\");\n        when(userService.getUserById(1L)).thenReturn(user);\n        \n        // Act & Assert\n        mockMvc.perform(get(\"/api/users/1\")\n                .contentType(MediaType.APPLICATION_JSON))\n                .andExpect(status().isOk())\n                .andExpect(jsonPath(\"$.id\").value(1))\n                .andExpect(jsonPath(\"$.name\").value(\"John\"))\n                .andExpect(jsonPath(\"$.email\").value(\"john@example.com\"));\n    }\n    \n    @Test\n    void createUser_ShouldReturnCreatedUser() throws Exception {\n        // Arrange\n        User user = new User(null, \"John\", \"john@example.com\");\n        User savedUser = new User(1L, \"John\", \"john@example.com\");\n        when(userService.createUser(any(User.class))).thenReturn(savedUser);\n        \n        // Act & Assert\n        mockMvc.perform(post(\"/api/users\")\n                .contentType(MediaType.APPLICATION_JSON)\n                .content(\"{\\\"name\\\":\\\"John\\\",\\\"email\\\":\\\"john@example.com\\\"}\"))\n                .andExpect(status().isCreated())\n                .andExpect(jsonPath(\"$.id\").value(1))\n                .andExpect(jsonPath(\"$.name\").value(\"John\"));\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "Resources",
+      "categories": [
+        {
+          "name": "Books",
+          "items": [
+            "\"Test-Driven Development: By Example\" by Kent Beck",
+            "\"Growing Object-Oriented Software, Guided by Tests\" by Steve Freeman and Nat Pryce",
+            "\"Effective Unit Testing\" by Lasse Koskela",
+            "\"Unit Testing Principles, Practices, and Patterns\" by Vladimir Khorikov"
+          ]
+        },
+        {
+          "name": "Online Resources",
+          "items": [
+            {"name": "JUnit 5 User Guide", "url": "https://junit.org/junit5/docs/current/user-guide/"},
+            {"name": "Mockito Documentation", "url": "https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html"},
+            {"name": "Spring Boot Testing Documentation", "url": "https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing"},
+            {"name": "Baeldung Testing Tutorials", "url": "https://www.baeldung.com/category/testing/"},
+            {"name": "Martin Fowler's article on Test Double", "url": "https://martinfowler.com/bliki/TestDouble.html"}
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedTopics": [
+    "java-fundamentals",
+    "spring-boot",
+    "test-driven-development",
+    "continuous-integration",
+    "design-patterns"
+  ],
+  "additionalTags": ["unit-testing", "mocking", "junit5", "mockito", "test-doubles", "test-driven-development"]
+}

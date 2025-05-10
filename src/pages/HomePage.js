@@ -53,6 +53,8 @@ const HomePage = () => {
                 { title: "Concurrency & Multithreading", path: "/java/concurrency", icon: Activity, description: "Threads, executors, synchronization" },
                 { title: "Exception Handling", path: "/java/exceptions", icon: Box, description: "Error handling and management" },
                 { title: "Java Features", path: "/java/features", icon: Cpu, description: "Modern Java capabilities" },
+                { title: "Unit Testing", path: "/java/testing", icon: FileCheck, description: "Testing with JUnit and Mockito" },
+                { title: "Functional Programming", path: "/java/functional-programming", icon: FileCheck, description: "Functional programming concepts in Java" },
             ]
         },
         spring: {
