@@ -1,0 +1,398 @@
+{
+  "id": "java-programmation-fonctionnelle",
+  "title": "Programmation Fonctionnelle",
+  "tags": ["java", "programmation-fonctionnelle", "lambda", "streams", "backend"],
+  "topics": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "description": "La Programmation Fonctionnelle (PF) est un paradigme de programmation qui traite le calcul comme l'évaluation de fonctions mathématiques et évite les changements d'état et les données mutables. Java 8 a introduit des fonctionnalités significatives qui ont apporté des capacités de programmation fonctionnelle au langage, transformant la façon dont les développeurs Java abordent la résolution de problèmes.",
+      "quotes": [
+        "La programmation fonctionnelle ne consiste pas à éliminer tout état; il s'agit de contrôler où et comment l'état est géré."
+      ]
+    },
+    {
+      "id": "core-concepts",
+      "title": "Aperçu des Concepts Fondamentaux",
+      "description": "Les principes fondamentaux qui définissent le paradigme de programmation fonctionnelle",
+      "conceptTable": {
+        "headers": ["Concept", "Description", "Pertinence en Entretien"],
+        "rows": [
+          ["Fonctions Pures", "Fonctions sans effets secondaires qui retournent la même sortie pour la même entrée", "★★★★☆"],
+          ["Immutabilité", "Création d'objets immuables pour éviter la mutation d'état", "★★★★☆"],
+          ["Fonctions de Première Classe", "Fonctions qui peuvent être passées comme arguments, retournées par d'autres fonctions, et assignées à des variables", "★★★★★"],
+          ["Fonctions d'Ordre Supérieur", "Fonctions qui prennent des fonctions comme paramètres ou retournent des fonctions", "★★★★★"],
+          ["Composition de Fonctions", "Construction de fonctions complexes en combinant des fonctions plus simples", "★★★☆☆"],
+          ["Transparence Référentielle", "Expressions qui peuvent être remplacées par leurs valeurs sans changer le comportement du programme", "★★☆☆☆"],
+          ["Programmation Déclarative", "Expression de la logique sans décrire le flux de contrôle", "★★★★☆"]
+        ]
+      }
+    },
+    {
+      "id": "functional-interfaces",
+      "title": "Interfaces Fonctionnelles",
+      "description": "Les interfaces fonctionnelles servent de pierre angulaire au support de la programmation fonctionnelle en Java. Elles définissent une seule méthode abstraite (SAM) que les lambdas implémentent.",
+      "subtopics": [
+        {
+          "id": "built-in-interfaces",
+          "title": "Principales Interfaces Fonctionnelles Intégrées",
+          "table": {
+            "headers": ["Interface", "Méthode", "Description", "Exemple d'Utilisation"],
+            "rows": [
+              ["`Function<T,R>`", "`R apply(T t)`", "Transforme une entrée en sortie", "Conversion de String en Integer"],
+              ["`Predicate<T>`", "`boolean test(T t)`", "Test booléen sur l'entrée", "Filtrage de collections"],
+              ["`Consumer<T>`", "`void accept(T t)`", "Effectue une opération sans retour", "Affichage d'éléments"],
+              ["`Supplier<T>`", "`T get()`", "Fournit des valeurs sans entrée", "Génération de valeurs paresseuses"],
+              ["`UnaryOperator<T>`", "`T apply(T t)`", "Transformation du même type entrée/sortie", "Transformation de chaînes"],
+              ["`BinaryOperator<T>`", "`T apply(T t1, T t2)`", "Combine deux entrées en une sortie", "Addition de deux nombres"],
+              ["`BiFunction<T,U,R>`", "`R apply(T t, U u)`", "Opération avec deux entrées, une sortie", "Combinaison de valeurs"],
+              ["`BiConsumer<T,U>`", "`void accept(T t, U u)`", "Consomme deux entrées, pas de sortie", "Ajout à une map"],
+              ["`BiPredicate<T,U>`", "`boolean test(T t, U u)`", "Teste deux entrées pour une condition", "Comparaison d'objets"]
+            ]
+          }
+        },
+        {
+          "id": "custom-interfaces",
+          "title": "Création d'Interfaces Fonctionnelles Personnalisées",
+          "code": "// Exemple de création d'interface fonctionnelle personnalisée\n@FunctionalInterface\npublic interface TriFunction<A, B, C, R> {\n    R apply(A a, B b, C c);\n    \n    // Peut contenir des méthodes default et static\n    default TriFunction<A, B, C, R> andThen(Function<? super R, ? extends R> after) {\n        return (a, b, c) -> after.apply(apply(a, b, c));\n    }\n}\n\n// Utilisation\nTriFunction<Integer, Integer, Integer, Integer> sum = (a, b, c) -> a + b + c;\nint result = sum.apply(1, 2, 3); // Retourne 6"
+        }
+      ]
+    },
+    {
+      "id": "lambda-expressions",
+      "title": "Expressions Lambda",
+      "description": "Les expressions lambda offrent une façon concise d'implémenter des interfaces fonctionnelles, éliminant le code boilerplate associé aux classes anonymes.",
+      "subtopics": [
+        {
+          "id": "syntax-variations",
+          "title": "Variations de Syntaxe",
+          "code": "// (paramètres) -> expression\n(int a, int b) -> a + b\n\n// (paramètres) -> { instructions }\n(String s) -> {\n    String result = s.toUpperCase();\n    return result;\n}\n\n// Inférence de type de paramètre\n(a, b) -> a + b\n\n// Paramètre unique (parenthèses optionnelles)\ns -> s.length()\n\n// Pas de paramètres\n() -> 42"
+        },
+        {
+          "id": "variable-capture",
+          "title": "Portée et Capture de Variables",
+          "code": "// Les expressions lambda peuvent accéder à:\n// 1. Variables locales (doivent être effectivement finales)\n// 2. Variables d'instance\n// 3. Variables statiques\n\n// Capture de variable locale effectivement finale\nString prefix = \"User: \";  \nlist.forEach(name -> System.out.println(prefix + name));  // OK\n\n// Tentative de modification des variables capturées provoque une erreur de compilation\nString counter = \"\"; \nlist.forEach(s -> counter += s.length());  // ERREUR: Impossible de modifier counter"
+        }
+      ]
+    },
+    {
+      "id": "method-references",
+      "title": "Références de Méthodes",
+      "description": "Les références de méthodes offrent une syntaxe plus compacte pour invoquer des méthodes existantes, améliorant la lisibilité du code lorsque les expressions lambda n'appellent qu'une seule méthode.",
+      "subtopics": [
+        {
+          "id": "reference-types",
+          "title": "Types de Références de Méthodes",
+          "table": {
+            "headers": ["Type", "Syntaxe", "Équivalent Lambda", "Exemple"],
+            "rows": [
+              ["Méthode Statique", "`ClassName::staticMethod`", "`(args) -> ClassName.staticMethod(args)`", "`Math::max`"],
+              ["Méthode d'Instance d'un Objet Particulier", "`instance::instanceMethod`", "`(args) -> instance.instanceMethod(args)`", "`System.out::println`"],
+              ["Méthode d'Instance d'un Objet Arbitraire", "`ClassName::instanceMethod`", "`(obj, args) -> obj.instanceMethod(args)`", "`String::length`"],
+              ["Constructeur", "`ClassName::new`", "`(args) -> new ClassName(args)`", "`ArrayList::new`"]
+            ]
+          }
+        },
+        {
+          "id": "reference-examples",
+          "title": "Exemples Pratiques",
+          "code": "// Référence de méthode statique\nFunction<List<String>, Integer> size = List::size;\n\n// Référence de méthode d'instance (objet spécifique)\nConsumer<String> printer = System.out::println;\n\n// Référence de méthode d'instance (objet arbitraire)\nFunction<String, Integer> lengthFunc = String::length;\nComparator<String> comparator = String::compareToIgnoreCase;\n\n// Référence de constructeur\nSupplier<List<String>> listFactory = ArrayList::new;\nFunction<Integer, int[]> arrayCreator = int[]::new;"
+        }
+      ]
+    },
+    {
+      "id": "function-composition",
+      "title": "Composition de Fonctions",
+      "description": "La composition de fonctions consiste à construire des opérations complexes en combinant des opérations plus simples, créant un pipeline de transformations.",
+      "code": "// Composition de fonctions avec andThen (f → g)\nFunction<Integer, Integer> f = x -> x + 1;\nFunction<Integer, Integer> g = x -> x * 2;\nFunction<Integer, Integer> h = f.andThen(g);  // h(x) = g(f(x))\n// h(5) = g(f(5)) = g(6) = 12\n\n// Composition de fonctions avec compose (g → f)\nFunction<Integer, Integer> h2 = f.compose(g);  // h2(x) = f(g(x))\n// h2(5) = f(g(5)) = f(10) = 11\n\n// Compositions multiples\nFunction<String, String> pipeline = \n    ((Function<String, String>) s -> s.trim())\n        .andThen(String::toLowerCase)\n        .andThen(s -> s.replaceAll(\"\\\\s+\", \"_\"));\n// pipeline(\"  Hello World  \") = \"hello_world\""
+    },
+    {
+      "id": "exception-handling",
+      "title": "Gestion des Exceptions dans le Code Fonctionnel",
+      "description": "La gestion des exceptions dans les interfaces fonctionnelles peut être délicate car elles ne déclarent pas d'exceptions vérifiées (checked exceptions).",
+      "code": "// Utilisation de méthodes wrapper\npublic static <T, R> Function<T, R> wrap(CheckedFunction<T, R> checkedFunction) {\n    return t -> {\n        try {\n            return checkedFunction.apply(t);\n        } catch (Exception e) {\n            throw new RuntimeException(e);\n        }\n    };\n}\n\n// Définir une interface de fonction avec exceptions\n@FunctionalInterface\ninterface CheckedFunction<T, R> {\n    R apply(T t) throws Exception;\n}\n\n// Exemple d'utilisation\nFunction<String, URL> urlMapper = wrap(URL::new);\nList<URL> urls = strings.stream()\n    .map(urlMapper)\n    .collect(Collectors.toList());"
+    },
+    {
+      "id": "streams",
+      "title": "Traitement Fonctionnel des Données avec Streams",
+      "description": "L'API Stream permet des opérations de style fonctionnel sur les collections, fournissant un outil puissant pour le traitement des données.",
+      "subtopics": [
+        {
+          "id": "stream-pipeline",
+          "title": "Construction d'un Pipeline Stream",
+          "code": "// Un pipeline stream typique se compose de:\n// 1. Source (collection, tableau, générateur)\n// 2. Zéro ou plusieurs opérations intermédiaires (filter, map, etc.)\n// 3. Opération terminale (collect, reduce, forEach, etc.)\n\nList<String> result = people.stream()          // Source\n    .filter(p -> p.getAge() > 18)              // Opération intermédiaire\n    .map(Person::getName)                      // Opération intermédiaire\n    .sorted()                                  // Opération intermédiaire\n    .collect(Collectors.toList());             // Opération terminale"
+        },
+        {
+          "id": "lazy-evaluation",
+          "title": "Évaluation Paresseuse",
+          "description": "Les opérations de stream utilisent l'évaluation paresseuse, ce qui signifie:\n\n- Les opérations intermédiaires ne sont pas exécutées tant qu'une opération terminale n'est pas appelée\n- Les opérations sont fusionnées et optimisées en une seule passe\n- Les éléments sont traités un par un à travers tout le pipeline (fusion de boucles)\n- Les opérations de court-circuit peuvent arrêter le traitement tôt",
+          "code": "// Les opérations ne s'exécutent que lorsque collect() est appelé\nStream<String> stream = list.stream()\n    .filter(s -> {\n        System.out.println(\"Filtrage: \" + s);\n        return s.startsWith(\"A\");\n    })\n    .map(s -> {\n        System.out.println(\"Mapping: \" + s);\n        return s.toLowerCase();\n    });\n// Rien ne se passe jusqu'ici:\nList<String> result = stream.collect(Collectors.toList());"
+        },
+        {
+          "id": "filtering-mapping",
+          "title": "Filtrage et Mapping",
+          "code": "// filter(): Conserve les éléments correspondant au prédicat\nList<Person> adults = people.stream()\n    .filter(person -> person.getAge() >= 18)\n    .collect(Collectors.toList());\n\n// map(): Transforme les éléments\nList<String> names = people.stream()\n    .map(Person::getName)\n    .collect(Collectors.toList());\n\n// flatMap(): Transforme et aplatit\nList<String> allSkills = people.stream()\n    .flatMap(p -> p.getSkills().stream())\n    .distinct()\n    .collect(Collectors.toList());"
+        },
+        {
+          "id": "sorting-limiting",
+          "title": "Tri et Limitation",
+          "code": "// sorted(): Trie les éléments\nList<Person> sortedByName = people.stream()\n    .sorted(Comparator.comparing(Person::getName))\n    .collect(Collectors.toList());\n\n// Tri composé\nList<Person> sortedComplex = people.stream()\n    .sorted(Comparator.comparing(Person::getAge)\n            .thenComparing(Person::getName)\n            .reversed())\n    .collect(Collectors.toList());\n\n// limit() et skip(): Pagination\nList<Person> paginatedResults = people.stream()\n    .skip(pageSize * pageNumber)\n    .limit(pageSize)\n    .collect(Collectors.toList());"
+        },
+        {
+          "id": "reduction",
+          "title": "Agrégation avec Reduction",
+          "code": "// reduce(): Combine les éléments\n// 1. Valeur d'identité\n// 2. Fonction d'accumulation\n// 3. Fonction de combinaison optionnelle (pour les streams parallèles)\n\n// Somme de nombres\nint sum = numbers.stream()\n    .reduce(0, Integer::sum);\n\n// Concaténation de chaînes\nString joined = strings.stream()\n    .reduce(\"\", (a, b) -> a + \",\" + b);\n\n// Recherche du maximum\nOptional<Person> oldest = people.stream()\n    .reduce((p1, p2) -> p1.getAge() > p2.getAge() ? p1 : p2);"
+        },
+        {
+          "id": "collectors",
+          "title": "Collectors pour Agrégations Complexes",
+          "code": "// toList(), toSet(), toMap()\nMap<Integer, Person> peopleById = people.stream()\n    .collect(Collectors.toMap(Person::getId, Function.identity()));\n\n// joining()\nString allNames = people.stream()\n    .map(Person::getName)\n    .collect(Collectors.joining(\", \"));\n\n// groupingBy()\nMap<Department, List<Employee>> byDept = employees.stream()\n    .collect(Collectors.groupingBy(Employee::getDepartment));\n\n// Groupement multi-niveaux\nMap<Department, Map<JobTitle, List<Employee>>> byDeptAndTitle = employees.stream()\n    .collect(Collectors.groupingBy(Employee::getDepartment,\n             Collectors.groupingBy(Employee::getJobTitle)));\n\n// Collectors en aval\nMap<Department, Double> avgSalaryByDept = employees.stream()\n    .collect(Collectors.groupingBy(Employee::getDepartment,\n             Collectors.averagingDouble(Employee::getSalary)));\n\n// partitioningBy(): Divise en deux groupes basés sur un prédicat\nMap<Boolean, List<Employee>> seniorJunior = employees.stream()\n    .collect(Collectors.partitioningBy(e -> e.getYears() > 5));\n\n// summarizingInt/Long/Double\nIntSummaryStatistics stats = employees.stream()\n    .collect(Collectors.summarizingInt(Employee::getAge));\n// stats: {count=x, sum=y, min=a, average=b, max=c}"
+        },
+        {
+          "id": "parallel-streams",
+          "title": "Traitement de Streams Parallèles",
+          "code": "// Création de streams parallèles\nList<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);\nnumbers.parallelStream()\n       .forEach(n -> System.out.println(n + \" \" + Thread.currentThread().getName()));\n\n// Ou à partir d'un stream séquentiel\nnumbers.stream()\n       .parallel()\n       .forEach(n -> System.out.println(n + \" \" + Thread.currentThread().getName()));\n\n// Considérations de performance\n// - Taille du jeu de données (le parallélisme aide avec de grands jeux de données)\n// - Coût de division (ArrayList se divise bien, LinkedList non)\n// - Coût de fusion (opérations avec fusion coûteuse réduisent les avantages)\n// - Sans état (éviter l'état mutable dans les opérations de stream parallèle)"
+        },
+        {
+          "id": "spring-boot-streams",
+          "title": "Opérations Stream dans les Applications Spring Boot",
+          "code": "// Transformation d'entités en DTOs dans un contrôleur REST\n@GetMapping(\"/users\")\npublic List<UserDTO> getAllUsers() {\n    return userRepository.findAll().stream()\n        .map(this::convertToDto)\n        .collect(Collectors.toList());\n}\n\n// Filtrage de données basé sur des critères\npublic List<Product> findProductsByCategory(String category) {\n    return productRepository.findAll().stream()\n        .filter(p -> p.getCategory().equals(category))\n        .collect(Collectors.toList());\n}\n\n// Transformations de données complexes pour rapports\npublic Map<String, DoubleSummaryStatistics> getSalesStatsByRegion() {\n    return orderRepository.findAll().stream()\n        .collect(Collectors.groupingBy(\n            order -> order.getCustomer().getRegion(),\n            Collectors.summarizingDouble(Order::getTotal)\n        ));\n}"
+        }
+      ]
+    },
+    {
+      "id": "immutability",
+      "title": "Immutabilité et Conception Fonctionnelle",
+      "description": "Concevoir avec l'immutabilité est une pierre angulaire de la programmation fonctionnelle en Java.",
+      "subtopics": [
+        {
+          "id": "immutable-class",
+          "title": "Conception de Classe Immuable",
+          "code": "// Principes pour les classes immuables\n// 1. Tous les champs final\n// 2. Pas de setters\n// 3. Ne pas autoriser l'héritage (classe final)\n// 4. Copies profondes des champs mutables\n// 5. Copies défensives pour les getters de champs mutables\n\npublic final class ImmutablePerson {\n    private final String name;\n    private final int age;\n    private final List<String> skills;  // potentiellement mutable\n\n    public ImmutablePerson(String name, int age, List<String> skills) {\n        this.name = name;\n        this.age = age;\n        this.skills = new ArrayList<>(skills);  // copie défensive\n    }\n\n    public String getName() { return name; }\n    public int getAge() { return age; }\n    \n    // Retourne une copie pour éviter la modification\n    public List<String> getSkills() { \n        return new ArrayList<>(skills); \n    }\n    \n    // Fournit des modificateurs de style fonctionnel qui retournent de nouveaux objets\n    public ImmutablePerson withName(String newName) {\n        return new ImmutablePerson(newName, age, skills);\n    }\n    \n    public ImmutablePerson withAge(int newAge) {\n        return new ImmutablePerson(name, newAge, skills);\n    }\n    \n    public ImmutablePerson withSkill(String newSkill) {\n        List<String> newSkills = new ArrayList<>(skills);\n        newSkills.add(newSkill);\n        return new ImmutablePerson(name, age, newSkills);\n    }\n}"
+        },
+        {
+          "id": "persistent-structures",
+          "title": "Structures de Données Persistantes",
+          "description": "Bien que Java ne fournisse pas de collections persistantes intégrées, des bibliothèques comme Vavr offrent des collections immuables avec des interfaces fonctionnelles.",
+          "code": "// Utilisation de Vavr (exemple)\nimport io.vavr.collection.List;\n\nList<Integer> list1 = List.of(1, 2, 3);\nList<Integer> list2 = list1.prepend(0); // list2 = [0, 1, 2, 3], list1 inchangé\n\n// Factories de collections immuables Java 9+\nList<String> immutableList = List.of(\"a\", \"b\", \"c\");\nSet<String> immutableSet = Set.of(\"a\", \"b\", \"c\");\nMap<String, Integer> immutableMap = Map.of(\"a\", 1, \"b\", 2);"
+        }
+      ]
+    },
+    {
+      "id": "monads",
+      "title": "Monades et Structures Fonctionnelles",
+      "description": "Java inclut plusieurs structures similaires aux monades qui permettent la composition fonctionnelle avec effets.",
+      "subtopics": [
+        {
+          "id": "optional",
+          "title": "Optional comme une Monade Maybe",
+          "code": "// Optional pour gérer les valeurs nullables\nOptional<String> optional = Optional.ofNullable(getValue());\n\n// Transformation\nOptional<Integer> length = optional.map(String::length);\n\n// Chaînage d'opérations\nString result = optional\n    .map(String::trim)\n    .filter(s -> !s.isEmpty())\n    .map(String::toUpperCase)\n    .orElse(\"DEFAULT\");\n\n// flatMap pour des opérations retournant Optional\nOptional<User> user = findUserById(id);\nOptional<Address> address = user.flatMap(User::getAddress);\nOptional<String> zipCode = address.flatMap(Address::getZipCode);\n\n// Combinaison de plusieurs Optionals\npublic Optional<Order> createOrder(\n        Optional<User> user, \n        Optional<Product> product) {\n    \n    return user.flatMap(u -> \n        product.map(p -> \n            new Order(u, p)));\n}"
+        },
+        {
+          "id": "completable-future",
+          "title": "CompletableFuture comme une Monade Future",
+          "code": "// Création\nCompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {\n    // Opération potentiellement longue\n    return \"Result\";\n});\n\n// Transformation\nCompletableFuture<Integer> lengthFuture = future.thenApply(String::length);\n\n// Chaînage (équivalent de flatMap)\nCompletableFuture<Double> result = future\n    .thenCompose(str -> fetchNumberFor(str))\n    .thenApply(num -> num * 2.0);\n\n// Combinaison de plusieurs futures\nCompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(() -> 10);\nCompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> 20);\n\nCompletableFuture<Integer> combined = future1.thenCombine(future2, Integer::sum);"
+        },
+        {
+          "id": "stream-monad",
+          "title": "Stream comme une Monade",
+          "code": "// Stream peut être vu comme une monade qui représente une séquence d'éléments\nStream<String> stream = Stream.of(\"a\", \"b\", \"c\");\n\n// Opération map (foncteur)\nStream<Integer> lengths = stream.map(String::length);\n\n// Opération flatMap (liaison monadique)\nStream<Character> chars = Stream.of(\"abc\", \"def\")\n    .flatMap(s -> s.chars().mapToObj(c -> (char)c));"
+        }
+      ]
+    },
+    {
+      "id": "design-patterns",
+      "title": "Patterns de Conception en Style Fonctionnel",
+      "description": "Les patterns de conception traditionnels peuvent être réimplémentés en utilisant des techniques de programmation fonctionnelle.",
+      "patterns": [
+        {
+          "id": "strategy",
+          "name": "Pattern Strategy",
+          "code": "// Approche OOP traditionnelle\ninterface PaymentStrategy {\n    void pay(int amount);\n}\n\nclass CreditCardStrategy implements PaymentStrategy {\n    public void pay(int amount) {\n        System.out.println(\"Paid \" + amount + \" using Credit Card\");\n    }\n}\n\n// Approche fonctionnelle utilisant les lambdas\n// L'interface fonctionnelle EST la stratégie\nConsumer<Integer> creditCardPayment = amount -> \n    System.out.println(\"Paid \" + amount + \" using Credit Card\");\nConsumer<Integer> paypalPayment = amount -> \n    System.out.println(\"Paid \" + amount + \" using PayPal\");\n\n// Utilisation\nvoid processPayment(int amount, Consumer<Integer> paymentStrategy) {\n    paymentStrategy.accept(amount);\n}"
+        },
+        {
+          "id": "decorator",
+          "name": "Pattern Decorator",
+          "code": "// Décorateurs fonctionnels utilisant la composition de Function\nFunction<Coffee, Coffee> withMilk = coffee -> {\n    coffee.ingredients.add(\"Milk\");\n    coffee.cost += 0.5;\n    return coffee;\n};\n\nFunction<Coffee, Coffee> withSugar = coffee -> {\n    coffee.ingredients.add(\"Sugar\");\n    coffee.cost += 0.2;\n    return coffee;\n};\n\n// Combinaison de décorateurs\nFunction<Coffee, Coffee> sweetMilkyCoffee = withMilk.andThen(withSugar);\nCoffee myCoffee = sweetMilkyCoffee.apply(new Coffee());"
+        },
+        {
+          "id": "command",
+          "name": "Pattern Command",
+          "code": "// Command comme interface fonctionnelle\n@FunctionalInterface\ninterface Command {\n    void execute();\n}\n\n// Création de commandes avec lambdas\nCommand turnOnLight = () -> light.turnOn();\nCommand turnOffLight = () -> light.turnOff();\n\n// Utilisation des commandes\nvoid executeCommand(Command command) {\n    command.execute();\n}\nexecuteCommand(turnOnLight);\n\n// Command avec paramètres\n@FunctionalInterface\ninterface ParameterizedCommand<T> {\n    void execute(T param);\n}\nParameterizedCommand<Integer> dimLight = level -> light.dim(level);"
+        }
+      ]
+    },
+    {
+      "id": "spring-boot",
+      "title": "Programmation Fonctionnelle avec Spring Boot",
+      "description": "Application des principes de programmation fonctionnelle dans les applications Spring Boot.",
+      "implementations": [
+        {
+          "id": "service-layer",
+          "title": "Implémentations de Couche Service",
+          "code": "// Approche impérative traditionnelle\n@Service\npublic class UserServiceImperative {\n    @Autowired\n    private UserRepository userRepository;\n    \n    public List<UserDTO> getActiveUsersWithPremiumSubscription() {\n        List<User> allUsers = userRepository.findAll();\n        List<UserDTO> result = new ArrayList<>();\n        \n        for (User user : allUsers) {\n            if (user.isActive() && user.hasPremiumSubscription()) {\n                UserDTO dto = new UserDTO();\n                dto.setId(user.getId());\n                dto.setName(user.getName());\n                dto.setEmail(user.getEmail());\n                result.add(dto);\n            }\n        }\n        \n        return result;\n    }\n}\n\n// Approche fonctionnelle\n@Service\npublic class UserServiceFunctional {\n    @Autowired\n    private UserRepository userRepository;\n    \n    public List<UserDTO> getActiveUsersWithPremiumSubscription() {\n        return userRepository.findAll().stream()\n            .filter(User::isActive)\n            .filter(User::hasPremiumSubscription)\n            .map(this::convertToDto)\n            .collect(Collectors.toList());\n    }\n    \n    private UserDTO convertToDto(User user) {\n        return new UserDTO(user.getId(), user.getName(), user.getEmail());\n    }\n}"
+        },
+        {
+          "id": "validation",
+          "title": "Validation de Requête et Gestion d'Erreurs",
+          "code": "// Approche de validation fonctionnelle utilisant Optional\n@PostMapping(\"/users\")\npublic ResponseEntity<?> createUser(@RequestBody UserRequest request) {\n    return validateUserRequest(request)\n        .map(userService::createUser)\n        .map(user -> ResponseEntity.status(HttpStatus.CREATED).body(user))\n        .orElseGet(() -> ResponseEntity.badRequest().build());\n}\n\nprivate Optional<UserRequest> validateUserRequest(UserRequest request) {\n    return Optional.ofNullable(request)\n        .filter(req -> req.getName() != null && !req.getName().isEmpty())\n        .filter(req -> req.getEmail() != null && req.getEmail().contains(\"@\"));\n}"
+        }
+      ]
+    },
+    {
+      "id": "testing",
+      "title": "Test de Code Fonctionnel",
+      "description": "Approches et techniques pour tester des constructions de programmation fonctionnelle.",
+      "testTypes": [
+        {
+          "id": "pure-functions",
+          "title": "Test de Fonctions Pures",
+          "code": "// Les fonctions pures sont faciles à tester - même entrée, même sortie\n@Test\nvoid testStringToLength() {\n    Function<String, Integer> stringToLength = String::length;\n    \n    assertEquals(3, stringToLength.apply(\"abc\"));\n    assertEquals(0, stringToLength.apply(\"\"));\n    assertEquals(5, stringToLength.apply(\"hello\"));\n}"
+        },
+        {
+          "id": "streams",
+          "title": "Test avec Streams",
+          "code": "@Test\nvoid testFilterAndMap() {\n    List<String> input = Arrays.asList(\"apple\", \"banana\", \"cherry\");\n    \n    List<String> result = input.stream()\n        .filter(s -> s.startsWith(\"a\"))\n        .map(String::toUpperCase)\n        .collect(Collectors.toList());\n    \n    assertEquals(1, result.size());\n    assertEquals(\"APPLE\", result.get(0));\n}"
+        },
+        {
+          "id": "higher-order",
+          "title": "Test de Fonctions d'Ordre Supérieur",
+          "code": "@Test\nvoid testComposedFunction() {\n    Function<Integer, Integer> times2 = x -> x * 2;\n    Function<Integer, Integer> minus1 = x -> x - 1;\n    \n    // Test de composition\n    Function<Integer, Integer> composed = times2.andThen(minus1);\n    \n    assertEquals(3, composed.apply(2));  // (2*2)-1 = 3\n    assertEquals(9, composed.apply(5));  // (5*2)-1 = 9\n}"
+        }
+      ]
+    },
+    {
+      "id": "interview-questions",
+      "title": "Questions d'Entretien Principales",
+      "description": "Questions d'entretien courantes sur la programmation fonctionnelle en Java avec des réponses complètes.",
+      "questions": [
+        {
+          "id": "fp-basics",
+          "question": "Qu'est-ce que la programmation fonctionnelle et comment Java la supporte-t-elle?",
+          "answer": "La programmation fonctionnelle est un paradigme qui traite le calcul comme l'évaluation de fonctions mathématiques et évite les changements d'état et les données mutables. Java supporte la programmation fonctionnelle via:\n\n- Les interfaces fonctionnelles (interfaces avec une seule méthode abstraite)\n- Les expressions lambda pour implémenter ces interfaces de façon concise\n- Les références de méthodes pour référencer des méthodes existantes de façon fonctionnelle\n- L'API Stream pour le traitement de données de style fonctionnel\n- Optional pour une meilleure gestion des nulls\n- CompletableFuture pour la programmation asynchrone fonctionnelle\n\nCes fonctionnalités permettent d'écrire du code plus concis, expressif et potentiellement plus maintenable en se concentrant sur ce qu'il faut faire plutôt que sur comment le faire."
+        },
+        {
+          "id": "lambda-vs-method-ref",
+          "question": "Quelle est la différence entre une expression lambda et une référence de méthode?",
+          "answer": "Les expressions lambda et les références de méthodes sont toutes deux des manières d'implémenter des interfaces fonctionnelles, mais elles diffèrent par leur syntaxe et leurs cas d'utilisation:\n\n**Expressions Lambda**:\n\n- Définissent des fonctions anonymes en ligne\n- Peuvent contenir plusieurs instructions et une logique personnalisée\n- Plus flexibles pour les implémentations personnalisées\n- Syntaxe: `(paramètres) -> expression` ou `(paramètres) -> { instructions }`\n\n**Références de Méthodes**:\n\n- Référencent des méthodes existantes par nom\n- Plus concises quand une lambda appellerait juste une méthode\n- Limitées à l'appel de méthodes existantes telles quelles\n- Syntaxe: `ClassName::staticMethod`, `instance::instanceMethod`, ou `ClassName::new`\n\nExemple:\n\n```java\n// Lambda\nConsumer<String> printer1 = s -> System.out.println(s);\n// Référence de méthode équivalente\nConsumer<String> printer2 = System.out::println;\n```\n\nChoisissez les références de méthodes lorsque vous déléguez simplement à une méthode existante; utilisez les lambdas lorsqu'une logique plus complexe est nécessaire."
+        },
+        {
+          "id": "functional-interfaces",
+          "question": "Que sont les interfaces fonctionnelles et comment sont-elles liées aux expressions lambda?",
+          "answer": "Une interface fonctionnelle est une interface avec exactement une méthode abstraite. Elles servent de types cibles pour les expressions lambda et les références de méthodes.\n\nPoints clés:\n\n- Elles peuvent être annotées avec `@FunctionalInterface` (optionnel mais recommandé)\n- Elles peuvent contenir des méthodes default et static en plus de la méthode abstraite unique\n- Une expression lambda fournit l'implémentation de la méthode abstraite dans l'interface fonctionnelle\n- Les exemples courants incluent: `Predicate<T>`, `Function<T,R>`, `Consumer<T>`, et `Supplier<T>`\n\nLa relation entre les interfaces fonctionnelles et les lambdas est qu'une expression lambda peut être assignée à une variable d'un type d'interface fonctionnelle si les types de paramètres et de retour de la lambda sont compatibles avec la méthode abstraite de l'interface."
+        },
+        {
+          "id": "stream-vs-loops",
+          "question": "En quoi l'API Stream diffère-t-elle des boucles pour le traitement des collections?",
+          "answer": "1. **Déclaratif vs. Impératif**:\n    \n    - Les streams sont déclaratifs (vous spécifiez quoi faire, pas comment)\n    - Les boucles sont impératives (vous spécifiez les étapes exactes à suivre)\n2. **Évaluation Paresseuse**:\n    \n    - Les streams utilisent l'évaluation paresseuse; les opérations ne sont pas effectuées tant qu'une opération terminale n'est pas appelée\n    - Les boucles s'exécutent immédiatement\n3. **Parallélisme**:\n    \n    - Les streams peuvent facilement passer au traitement parallèle avec `parallel()`\n    - La parallélisation des boucles nécessite une gestion manuelle des threads\n4. **Immutabilité**:\n    \n    - Les opérations de stream ne modifient pas les données source\n    - Les boucles modifient souvent les collections sur place\n5. **Pipelining**:\n    \n    - Les streams supportent le chaînage d'opérations dans un style d'API fluide\n    - Les boucles nécessitent souvent des variables intermédiaires\n\nExemple:\n\n```java\n// Boucle impérative\nList<String> longNames = new ArrayList<>();\nfor (String name : names) {\n    if (name.length() > 5) {\n        String upperCase = name.toUpperCase();\n        longNames.add(upperCase);\n    }\n}\n\n// Équivalent stream fonctionnel\nList<String> longNames = names.stream()\n    .filter(name -> name.length() > 5)\n    .map(String::toUpperCase)\n    .collect(Collectors.toList());\n```"
+        },
+        {
+          "id": "map-vs-flatmap",
+          "question": "Quelle est la différence entre map() et flatMap() dans l'API Stream?",
+          "answer": "`map()` et `flatMap()` sont toutes deux des opérations intermédiaires dans l'API Stream qui transforment des éléments, mais elles diffèrent dans la façon dont elles gèrent les structures hiérarchiques ou imbriquées:\n\n**map()**:\n\n- Transforme chaque élément en exactement un élément résultat\n- Transformation un-à-un\n- Le résultat est un stream avec le même nombre d'éléments que l'original\n- À utiliser quand chaque entrée produit une seule sortie discrète\n\n**flatMap()**:\n\n- Transforme chaque élément en zéro ou plusieurs éléments, puis aplatit les résultats\n- Transformation un-à-plusieurs\n- Le résultat peut avoir un nombre d'éléments différent de l'original\n- À utiliser lors du traitement de collections imbriquées ou lorsque chaque entrée produit plusieurs sorties ou un autre stream\n\nExemple:\n\n```java\n// map(): Liste de longueurs\nList<Integer> lengths = words.stream()\n    .map(String::length)\n    .collect(Collectors.toList());\n\n// flatMap(): Liste de caractères individuels de tous les mots\nList<Character> allChars = words.stream()\n    .flatMap(word -> word.chars().mapToObj(c -> (char)c))\n    .collect(Collectors.toList());\n\n// flatMap(): Combinaison de plusieurs listes\nList<List<Integer>> listOfLists = Arrays.asList(\n    Arrays.asList(1, 2), Arrays.asList(3, 4, 5)\n);\nList<Integer> allNumbers = listOfLists.stream()\n    .flatMap(List::stream)\n    .collect(Collectors.toList()); // [1, 2, 3, 4, 5]\n```"
+        },
+        {
+          "id": "exceptions",
+          "question": "Comment gérer les exceptions dans les expressions lambda?",
+          "answer": "La gestion des exceptions dans les expressions lambda peut être délicate car les interfaces fonctionnelles ne déclarent généralement pas d'exceptions vérifiées. Voici plusieurs approches:\n\n1. **Utiliser try-catch à l'intérieur de la lambda**:\n\n```java\nlist.forEach(s -> {\n    try {\n        // Code qui pourrait lancer une exception\n        processItem(s);\n    } catch (IOException e) {\n        // Gérer l'exception\n        throw new RuntimeException(e);\n    }\n});\n```\n\n2. **Créer une méthode utilitaire wrapper**:\n\n```java\n@FunctionalInterface\ninterface CheckedFunction<T, R> {\n    R apply(T t) throws Exception;\n}\n\n// Méthode wrapper\npublic static <T, R> Function<T, R> wrap(CheckedFunction<T, R> function) {\n    return t -> {\n        try {\n            return function.apply(t);\n        } catch (Exception e) {\n            throw new RuntimeException(e);\n        }\n    };\n}\n\n// Utilisation\nList<URL> urls = strings.stream()\n    .map(wrap(URL::new))\n    .collect(Collectors.toList());\n```\n\n3. **Utiliser des bibliothèques spécialisées** comme Vavr ou jOOλ qui fournissent des utilitaires de gestion d'exceptions.\n    \n4. **Refactoriser pour éviter les exceptions vérifiées** quand c'est possible.\n    \n\nLa solution la plus élégante dépend souvent de vos exigences spécifiques pour la gestion des exceptions et la propagation des erreurs."
+        },
+        {
+          "id": "pure-functions",
+          "question": "Que sont les fonctions pures et pourquoi sont-elles importantes en programmation fonctionnelle?",
+          "answer": "Une fonction pure est une fonction qui:\n\n1. Produit toujours la même sortie pour la même entrée (déterministe)\n2. N'a pas d'effets secondaires (ne modifie pas l'état en dehors de sa portée)\n3. Ne dépend pas d'état externe (s'appuie uniquement sur ses paramètres)\n\nLes fonctions pures sont importantes en programmation fonctionnelle pour plusieurs raisons:\n\n- **Prévisibilité**: Elles produisent toujours le même résultat pour les mêmes entrées\n- **Testabilité**: Elles sont plus faciles à tester car elles ne dépendent pas du contexte ou de l'état\n- **Parallélisation**: Elles peuvent s'exécuter en parallèle sans problèmes de synchronisation\n- **Mémoïsation**: Les résultats peuvent être mis en cache puisque l'appel de la fonction avec les mêmes entrées produira le même résultat\n- **Raisonnement**: Le code devient plus facile à comprendre et à raisonner\n\nExemple de fonction pure:\n\n```java\n// Fonction pure\nint add(int a, int b) {\n    return a + b;\n}\n\n// Fonction impure (a un effet secondaire)\nvoid addAndPrint(int a, int b) {\n    System.out.println(a + b);  // Effet secondaire: opération I/O\n}\n\n// Fonction impure (dépend d'état externe)\nint addToCounter(int a) {\n    return a + counter;  // Dépend de la variable externe 'counter'\n}\n```\n\nEn Java, de nombreuses opérations de l'API Stream encouragent un style fonctionnel pur, bien que Java n'impose pas la pureté comme le font certains langages fonctionnels."
+        },
+        {
+          "id": "optional",
+          "question": "Comment la classe Optional aide-t-elle en programmation fonctionnelle?",
+          "answer": "La classe `Optional<T>` est un conteneur qui peut ou non contenir une valeur non-null. Elle s'aligne avec les principes de programmation fonctionnelle par:\n\n1. **Rendre la nullabilité explicite**: Elle indique clairement qu'une valeur peut être absente\n2. **Prévenir les exceptions de pointeur null**: Force la gestion explicite des conditions null possibles\n3. **Support des opérations fonctionnelles**: Fournit les méthodes map(), flatMap(), et filter() pour la composition fonctionnelle\n4. **Encourager l'immutabilité**: Optional est immuable et ne permet pas de définir une valeur après création\n5. **Promouvoir le style déclaratif**: Permet d'exprimer la logique de manière déclarative plutôt qu'impérative\n\nExemple d'utilisation:\n\n```java\n// Au lieu de vérifications null:\nUser user = getUser(id);\nif (user != null) {\n    Address address = user.getAddress();\n    if (address != null) {\n        ZipCode zipCode = address.getZipCode();\n        if (zipCode != null) {\n            return zipCode.getValue();\n        }\n    }\n}\nreturn \"Unknown\";\n\n// Avec Optional:\nreturn getUserOptional(id)\n    .flatMap(User::getAddressOptional)\n    .flatMap(Address::getZipCodeOptional)\n    .map(ZipCode::getValue)\n    .orElse(\"Unknown\");\n```\n\nBonnes pratiques:\n\n- Utiliser Optional comme type de retour, pas comme type de paramètre ou type de champ\n- Utiliser Optional.empty() au lieu de null pour les variables Optional\n- Préférer orElseGet() à orElse() quand la valeur par défaut est coûteuse à créer\n- Ne pas utiliser Optional.get() sans vérifier d'abord isPresent()"
+        },
+        {
+          "id": "function-composition",
+          "question": "Qu'est-ce que la composition de fonctions et comment est-elle implémentée en Java?",
+          "answer": "La composition de fonctions est une technique de programmation fonctionnelle où deux ou plusieurs fonctions sont combinées pour former une nouvelle fonction. La sortie d'une fonction devient l'entrée de la fonction suivante dans la chaîne.\n\nEn Java, la composition de fonctions est implémentée via les méthodes `andThen()` et `compose()` de l'interface `Function`:\n\n- `andThen(Function after)`: Crée une fonction composite qui applique d'abord cette fonction puis applique la fonction after\n- `compose(Function before)`: Crée une fonction composite qui applique d'abord la fonction before puis applique cette fonction\n\n```java\nFunction<Integer, Integer> multiplyBy2 = x -> x * 2;\nFunction<Integer, Integer> add3 = x -> x + 3;\n\n// Composition de fonctions avec andThen\nFunction<Integer, Integer> multiplyBy2ThenAdd3 = multiplyBy2.andThen(add3);\nint result1 = multiplyBy2ThenAdd3.apply(5); // (5 * 2) + 3 = 13\n\n// Composition de fonctions avec compose\nFunction<Integer, Integer> add3ThenMultiplyBy2 = multiplyBy2.compose(add3);\nint result2 = add3ThenMultiplyBy2.apply(5); // (5 + 3) * 2 = 16\n\n// Compositions complexes\nFunction<String, String> pipeline = \n    ((Function<String, String>) String::trim)\n        .andThen(String::toLowerCase)\n        .andThen(s -> s.replaceAll(\"\\\\s+\", \"_\"));\n        \nString result = pipeline.apply(\"  Hello World  \"); // \"hello_world\"\n```\n\nLa composition de fonctions permet de construire des transformations complexes à partir de fonctions plus simples et réutilisables, favorisant la réutilisation du code et la modularité."
+        },
+        {
+          "id": "advantages-challenges",
+          "question": "Quels sont les avantages et les défis de la programmation fonctionnelle en Java?",
+          "answer": "**Avantages**:\n\n1. **Lisibilité et Expressivité**: Code concis et déclaratif qui montre ce qui est fait plutôt que comment\n2. **Réduction de l'État Mutable**: Moins de mutation d'état signifie moins de bugs liés à la gestion d'état\n3. **Concurrence Facilitée**: Les fonctions pures et l'immutabilité simplifient le traitement parallèle\n4. **Testabilité Améliorée**: Les fonctions pures sont plus faciles à tester car elles ne dépendent que de leurs entrées\n5. **Composition**: Construction d'opérations complexes à partir d'opérations plus simples augmente la réutilisabilité\n6. **Niveau d'Abstraction Plus Élevé**: Concentration sur les opérations plutôt que sur les détails d'implémentation\n\n**Défis**:\n\n1. **Courbe d'Apprentissage**: Les développeurs issus de milieux impératifs peuvent trouver les concepts fonctionnels difficiles\n2. **Surcoût de Performance**: L'immutabilité peut parfois conduire à une augmentation de la création d'objets\n3. **Débogage**: Les traces de pile pour les streams et lambdas peuvent être plus difficiles à interpréter\n4. **Limitations de l'Inférence de Type**: L'inférence de type de Java n'est pas aussi puissante que dans certains langages fonctionnels\n5. **Gestion des Exceptions**: Les exceptions vérifiées ne fonctionnent pas bien avec les interfaces fonctionnelles\n6. **Intégration avec du Code Hérité**: Le mélange des styles fonctionnel et impératif peut être difficile\n7. **Pattern Matching Limité**: Java manque de pattern matching complet (bien que cela s'améliore dans les versions récentes)\n\nL'approche de Java à la programmation fonctionnelle est pragmatique, offrant des fonctionnalités fonctionnelles au sein d'un langage orienté objet plutôt que d'être un langage fonctionnel pur. Cela offre de la flexibilité mais nécessite de comprendre les deux paradigmes pour une utilisation efficace."
+        }
+      ]
+    },
+    {
+      "id": "advanced-topics",
+      "title": "Sujets Avancés",
+      "description": "Concepts et techniques avancés de programmation fonctionnelle en Java.",
+      "subtopics": [
+        {
+          "id": "recursion",
+          "title": "Récursion en Programmation Fonctionnelle",
+          "code": "// Factorielle récursive avec fonctions pures\nFunction<Integer, Integer> factorial = n -> {\n    if (n <= 1) return 1;\n    return n * factorial.apply(n - 1);  // Ne fonctionne pas - référence factorial pas encore définie\n};\n\n// Solution utilisant le pattern Y-combinator ou récursion explicite\npublic static Function<Integer, Integer> factorial() {\n    return new Function<Integer, Integer>() {\n        @Override\n        public Integer apply(Integer n) {\n            if (n <= 1) return 1;\n            return n * apply(n - 1);\n        }\n    };\n}\n\n// Récursion terminale (non optimisée en Java)\npublic static int factorialTailRec(int n, int accumulator) {\n    if (n <= 1) return accumulator;\n    return factorialTailRec(n - 1, n * accumulator);\n}"
+        },
+        {
+          "id": "currying",
+          "title": "Currying et Application Partielle",
+          "code": "// Currying: transformer une fonction avec plusieurs arguments en une séquence de fonctions\n// Fonction originale: (X, Y) -> Z\n// Forme curryfiée: X -> (Y -> Z)\n\n// Currying manuel\nBiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;\nFunction<Integer, Function<Integer, Integer>> curriedAdd = \n    a -> b -> a + b;\n\n// Utilisation\nint result1 = add.apply(3, 4);  // 7\nint result2 = curriedAdd.apply(3).apply(4);  // 7\n\n// Application partielle\nFunction<Integer, Integer> add3 = curriedAdd.apply(3);\nint result3 = add3.apply(4);  // 7\nint result4 = add3.apply(5);  // 8\n\n// Utilitaire de currying générique\npublic static <T, U, R> Function<T, Function<U, R>> curry(BiFunction<T, U, R> biFunction) {\n    return t -> u -> biFunction.apply(t, u);\n}\n\n// Utilisation\nFunction<Integer, Function<Integer, Integer>> curriedAdd2 = curry(add);"
+        },
+        {
+          "id": "data-structures",
+          "title": "Structures de Données Fonctionnelles",
+          "code": "// Java manque de structures de données persistantes intégrées, mais des bibliothèques comme Vavr les fournissent\n// Exemple utilisant Vavr (pas intégré à Java)\n\n// Liste immuable\nio.vavr.collection.List<Integer> list1 = io.vavr.collection.List.of(1, 2, 3);\nio.vavr.collection.List<Integer> list2 = list1.prepend(0);\nio.vavr.collection.List<Integer> list3 = list2.append(4);\n\nSystem.out.println(list1);  // [1, 2, 3] - original inchangé\nSystem.out.println(list2);  // [0, 1, 2, 3]\nSystem.out.println(list3);  // [0, 1, 2, 3, 4]\n\n// Alternatives intégrées à Java (depuis Java 9)\nList<Integer> immutableList = List.of(1, 2, 3);\n// Les tentatives suivantes de modification lanceront UnsupportedOperationException"
+        },
+        {
+          "id": "memoization",
+          "title": "Évaluation Paresseuse et Mémoïsation",
+          "code": "// Évaluation paresseuse avec Supplier\nSupplier<ExpensiveObject> lazySingleton = () -> {\n    System.out.println(\"Creating expensive object...\");\n    return new ExpensiveObject(\"data\");\n};\n\n// Objet créé seulement quand nécessaire\nExpensiveObject object = lazySingleton.get();\n\n// Mémoïsation simple\npublic static <T, R> Function<T, R> memoize(Function<T, R> function) {\n    Map<T, R> cache = new ConcurrentHashMap<>();\n    return input -> cache.computeIfAbsent(input, function);\n}\n\n// Utilisation\nFunction<Integer, BigInteger> factorial = memoize(n -> {\n    System.out.println(\"Computing factorial for \" + n);\n    return n <= 1 ? BigInteger.ONE : \n        BigInteger.valueOf(n).multiply(factorial.apply(n - 1));\n});\n\n// Premier appel calcule, les appels suivants utilisent la valeur en cache\nfactorial.apply(5);  // Calcule et met en cache\nfactorial.apply(5);  // Retourne la valeur en cache"
+        }
+      ]
+    },
+    {
+      "id": "learning-resources",
+      "title": "Ressources pour Approfondir",
+      "resources": [
+        {
+          "category": "Livres",
+          "items": [
+            "\"Modern Java in Action\" par Raoul-Gabriel Urma",
+            "\"Functional Programming in Java\" par Venkat Subramaniam",
+            "\"Java 8 Lambdas\" par Richard Warburton"
+          ]
+        },
+        {
+          "category": "Ressources en Ligne",
+          "items": [
+            "Tutoriels Java d'Oracle sur les Expressions Lambda",
+            "Articles de Baeldung sur la Programmation Fonctionnelle",
+            "Track de Programmation Fonctionnelle en Java de JetBrains Academy"
+          ]
+        },
+        {
+          "category": "Sujets Connexes",
+          "items": [
+            "Fonctionnalités Java 8+",
+            "API Stream",
+            "Expressions Lambda",
+            "Patterns de Conception",
+            "Concurrence"
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedTopics": [
+    "Fonctionnalités Java 8+",
+    "API Stream",
+    "Concurrence",
+    "Framework Collections",
+    "Patterns de Conception"
+  ],
+  "additionalTags": [
+    "expressions-lambda",
+    "fonctions-ordre-superieur",
+    "immutabilite",
+    "monades",
+    "interfaces-fonctionnelles",
+    "streams",
+    "optional",
+    "completable-future"
+  ]
+}

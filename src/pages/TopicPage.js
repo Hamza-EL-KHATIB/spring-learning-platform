@@ -6,7 +6,6 @@ import { Code, Info, AlertCircle } from 'lucide-react';
 import collectionsJson from '../data/java/collections.json';
 import concurrencyJson from '../data/java/concurrency.json';
 import exceptionsJson from '../data/java/exceptions.json';
-import featuresJson from '../data/java/features.json';
 import javaFundamentalsJson from '../data/java/java-fundamentals.json';
 
 // Spring imports
@@ -38,7 +37,6 @@ const jsonData = {
         collections: collectionsJson,
         concurrency: concurrencyJson,
         exceptions: exceptionsJson,
-        features: featuresJson,
         fundamentals: javaFundamentalsJson,
     },
     spring: {

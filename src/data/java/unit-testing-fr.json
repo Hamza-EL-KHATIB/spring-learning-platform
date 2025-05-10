@@ -1,0 +1,517 @@
+{
+  "id": "java-unit-testing-mocking",
+  "title": "Tests Unitaires & Mocking",
+  "tags": ["java", "testing", "junit", "mockito", "backend", "tdd"],
+  "topics": [
+    {
+      "id": "core-concepts",
+      "title": "Vue d'ensemble des concepts fondamentaux",
+      "description": "Les tests unitaires et le mocking sont des compétences fondamentales pour les développeurs Java professionnels, garantissant la qualité, la fiabilité et la maintenabilité du code. Ces pratiques sont particulièrement importantes dans les environnements d'entreprise où Spring Boot est couramment utilisé.",
+      "features": [
+        {"name": "Bases des tests unitaires", "description": "Valider les composants individuels en isolation", "interviewRelevance": 5},
+        {"name": "Annotations JUnit & cycle de vie", "description": "Structurer et contrôler l'exécution des tests", "interviewRelevance": 5},
+        {"name": "Développement piloté par les tests (TDD)", "description": "Processus de développement avec les tests en premier", "interviewRelevance": 4},
+        {"name": "Frameworks de mocking", "description": "Isoler les unités de leurs dépendances", "interviewRelevance": 5},
+        {"name": "Doublures de test (Mocks vs Stubs)", "description": "Différentes façons de simuler les dépendances", "interviewRelevance": 4},
+        {"name": "Assertions & Vérifications", "description": "Valider les résultats des tests et les interactions", "interviewRelevance": 4},
+        {"name": "Bonnes pratiques de test", "description": "Directives pour des tests efficaces", "interviewRelevance": 3},
+        {"name": "Tests avec Spring Boot", "description": "Techniques de test spécifiques à Spring", "interviewRelevance": 4},
+        {"name": "Couverture de test", "description": "Mesurer et améliorer la qualité des tests", "interviewRelevance": 3},
+        {"name": "Tests d'intégration", "description": "Tester les interactions entre composants", "interviewRelevance": 3}
+      ]
+    },
+    {
+      "id": "unit-testing-fundamentals",
+      "title": "Fondamentaux des tests unitaires",
+      "description": "Le test unitaire est la pratique consistant à tester des composants individuels (unités) d'un logiciel en isolation pour valider qu'ils fonctionnent comme prévu.",
+      "characteristics": [
+        "Les tests doivent être **isolés** (indépendants les uns des autres)",
+        "Les tests doivent être **déterministes** (même résultat à chaque fois)",
+        "Les tests doivent être **automatisés** (s'exécuter sans intervention manuelle)",
+        "Les tests doivent être **rapides** (boucle de rétroaction rapide)",
+        "Les tests doivent être **lisibles** (intention claire)"
+      ],
+      "patterns": [
+        {
+          "name": "Modèle AAA",
+          "description": "Un bon test unitaire suit le modèle \"AAA\" :",
+          "steps": [
+            "**Arrange** (Préparer) : Configurer les conditions et les données du test",
+            "**Act** (Agir) : Appeler la méthode à tester",
+            "**Assert** (Vérifier) : Vérifier le résultat attendu"
+          ],
+          "code": "public interface Collection<E> extends Iterable<E> {\n    boolean add(E element);\n    boolean remove(Object element);\n    boolean contains(Object element);\n    int size();\n    boolean isEmpty();\n    Iterator<E> iterator();\n    // Other methods...\n}"
+        }
+      ],
+      "example": {
+        "language": "java",
+        "snippet": "@Test\nvoid shouldReturnUserWhenUserExists() {\n    // Arrange\n    Long userId = 1L;\n    User expectedUser = new User(userId, \"John\");\n    when(userRepository.findById(userId)).thenReturn(Optional.of(expectedUser));\n    \n    // Act\n    User result = userService.getUser(userId);\n    \n    // Assert\n    assertEquals(expectedUser, result);\n}"
+      }
+    },
+    {
+      "id": "junit5",
+      "title": "JUnit 5",
+      "description": "JUnit est le framework de test le plus populaire pour Java, fournissant des annotations, des assertions et des lanceurs pour exécuter des tests.",
+      "subsections": [
+        {
+          "title": "Annotations principales",
+          "tables": [
+            {
+              "headers": ["Annotation", "Objectif", "Exemple d'utilisation"],
+              "rows": [
+                ["@Test", "Marque une méthode comme un test", "@Test void testMethod() { ... }"],
+                ["@BeforeEach", "S'exécute avant chaque méthode de test", "@BeforeEach void setup() { ... }"],
+                ["@AfterEach", "S'exécute après chaque méthode de test", "@AfterEach void tearDown() { ... }"],
+                ["@BeforeAll", "S'exécute une fois avant toutes les méthodes de test (statique)", "@BeforeAll static void init() { ... }"],
+                ["@AfterAll", "S'exécute une fois après toutes les méthodes de test (statique)", "@AfterAll static void cleanup() { ... }"],
+                ["@Disabled", "Désactive une méthode ou une classe de test", "@Disabled(\"WIP\") @Test void test() { ... }"],
+                ["@DisplayName", "Nom de test personnalisé", "@DisplayName(\"When user exists\") @Test void test() { ... }"],
+                ["@ParameterizedTest", "Test avec plusieurs paramètres", "@ParameterizedTest @ValueSource(ints = {1, 2}) void test(int val) { ... }"],
+                ["@Nested", "Classe de test imbriquée", "@Nested class WhenUserExists { ... }"],
+                ["@Tag", "Étiquette pour filtrer les tests", "@Tag(\"slow\") @Test void test() { ... }"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Cycle de vie des tests JUnit 5",
+          "content": "1. Démarrage de la classe de test\n2. Exécution des méthodes @BeforeAll\n3. Pour chaque méthode de test :\n   a. Exécution des méthodes @BeforeEach\n   b. Exécution de la méthode de test\n   c. Exécution des méthodes @AfterEach\n4. Exécution des méthodes @AfterAll\n5. Fin de la classe de test"
+        },
+        {
+          "title": "Exemple de base JUnit 5",
+          "code": {
+            "language": "java",
+            "snippet": "import org.junit.jupiter.api.*;\nimport static org.junit.jupiter.api.Assertions.*;\n\npublic class CalculatorTest {\n    private Calculator calculator;\n    \n    @BeforeEach\n    void setUp() {\n        calculator = new Calculator();\n    }\n    \n    @Test\n    @DisplayName(\"2 + 2 should equal 4\")\n    void addShouldReturnSum() {\n        // Arrange - done in setUp\n        // Act\n        int result = calculator.add(2, 2);\n        // Assert\n        assertEquals(4, result, \"Addition should work correctly\");\n    }\n    \n    @Test\n    void divideByZeroShouldThrowException() {\n        // Arrange - done in setUp\n        // Act & Assert\n        assertThrows(ArithmeticException.class, () -> {\n            calculator.divide(1, 0);\n        });\n    }\n    \n    @ParameterizedTest\n    @ValueSource(ints = {0, 1, 2, 3})\n    void isEvenShouldReturnTrueForEvenNumbers(int number) {\n        // Even numbers should return true, odd numbers false\n        assertEquals(number % 2 == 0, calculator.isEven(number));\n    }\n}"
+          }
+        },
+        {
+          "title": "Assertions JUnit 5",
+          "code": {
+            "language": "java",
+            "snippet": "// Assertions de base\nassertEquals(expected, actual);\nassertNotEquals(unexpected, actual);\nassertTrue(condition);\nassertFalse(condition);\nassertNull(object);\nassertNotNull(object);\n\n// Assertions d'exceptions\nassertThrows(Exception.class, () -> { methodThatThrows(); });\nException ex = assertThrows(Exception.class, () -> { methodThatThrows(); });\nassertEquals(\"Expected message\", ex.getMessage());\n\n// Timeouts\nassertTimeout(Duration.ofSeconds(1), () -> { longRunningMethod(); });\n\n// Assertions multiples\nassertAll(\n    () -> assertEquals(1, result.getValue()),\n    () -> assertTrue(result.isActive()),\n    () -> assertNotNull(result.getTimestamp())\n);\n\n// Assertions de collections\nList<String> names = Arrays.asList(\"John\", \"Jane\");\nassertIterableEquals(expectedList, names);\nassertTrue(names.contains(\"John\"));\nassertEquals(2, names.size());"
+          }
+        },
+        {
+          "title": "Fonctionnalités avancées de JUnit 5",
+          "features": [
+            {
+              "name": "Tests paramétrés",
+              "code": {
+                "language": "java",
+                "snippet": "@ParameterizedTest\n@ValueSource(strings = {\"racecar\", \"radar\", \"level\"})\nvoid shouldDetectPalindromes(String word) {\n    assertTrue(isPalindrome(word));\n}\n\n@ParameterizedTest\n@CsvSource({\n    \"apple, 5\",\n    \"banana, 6\",\n    \"cherry, 6\"\n})\nvoid lengthOfString(String word, int expectedLength) {\n    assertEquals(expectedLength, word.length());\n}\n\n@ParameterizedTest\n@MethodSource(\"provideTestData\")\nvoid testWithMethodSource(String input, int expected) {\n    assertEquals(expected, input.length());\n}\n\nstatic Stream<Arguments> provideTestData() {\n    return Stream.of(\n        Arguments.of(\"apple\", 5),\n        Arguments.of(\"banana\", 6)\n    );\n}"
+              }
+            },
+            {
+              "name": "Suppositions",
+              "code": {
+                "language": "java",
+                "snippet": "@Test\nvoid runOnlyOnLinux() {\n    assumeTrue(System.getProperty(\"os.name\").toLowerCase().contains(\"linux\"));\n    // Code de test qui ne fonctionne que sur Linux\n}\n\n@Test\nvoid runOnlyOnDevelopmentEnvironment() {\n    assumingThat(\n        \"dev\".equals(System.getProperty(\"env\")),\n        () -> {\n            // Code qui s'exécute uniquement dans l'environnement de développement\n        }\n    );\n    // Code qui s'exécute quel que soit l'environnement\n}"
+              }
+            },
+            {
+              "name": "Exécution conditionnelle de tests",
+              "code": {
+                "language": "java",
+                "snippet": "@Test\n@EnabledOnOs(OS.WINDOWS)\nvoid onlyOnWindows() {\n    // Test qui ne s'exécute que sur Windows\n}\n\n@Test\n@DisabledIfSystemProperty(named = \"env\", matches = \"prod\")\nvoid notOnProd() {\n    // Test qui ne s'exécute pas en production\n}\n\n@Test\n@EnabledIfEnvironmentVariable(named = \"TEST_MODE\", matches = \"true\")\nvoid onlyInTestMode() {\n    // Test qui ne s'exécute que lorsque TEST_MODE=true\n}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tdd",
+      "title": "Développement piloté par les tests (TDD)",
+      "description": "Le développement piloté par les tests est une approche de développement où les tests sont écrits avant le code d'implémentation. Il suit un processus cyclique connu sous le nom de \"Red-Green-Refactor\" :",
+      "process": [
+        "**Red** (Rouge) : Écrire un test qui échoue qui définit une fonctionnalité ou une amélioration",
+        "**Green** (Vert) : Écrire le minimum de code nécessaire pour faire passer le test",
+        "**Refactor** (Restructurer) : Optimiser le code tout en maintenant les tests au vert"
+      ],
+      "benefits": [
+        "**Amélioration de la conception** : TDD encourage un code modulaire et faiblement couplé, car un code testable nécessite une bonne conception",
+        "**Couverture de test élevée** : Une couverture de test de près de 100% vient naturellement puisqu'aucun code n'est écrit sans un test qui échoue d'abord",
+        "**Débogage plus rapide** : Quand un test échoue, vous savez exactement ce qui est cassé et où",
+        "**Documentation vivante** : Les tests servent de documentation exécutable de ce que le code doit faire",
+        "**Confiance dans la restructuration** : Des tests complets permettent une refactorisation plus sûre et des améliorations du code",
+        "**Réduction des taux de défauts** : Des études montrent que TDD peut réduire les taux de défauts de 40-80%",
+        "**Développement plus rapide à long terme** : Bien qu'initialement plus lent, TDD réduit le temps de débogage et de reprise"
+      ],
+      "example": {
+        "language": "java",
+        "snippet": "// Étape 1 : Écrire un test qui échoue\n@Test\nvoid shouldCalculateAreaOfRectangle() {\n    Rectangle rectangle = new Rectangle(5, 10);\n    assertEquals(50, rectangle.calculateArea());\n}\n\n// Étape 2 : Implémentation minimale pour faire passer le test\npublic class Rectangle {\n    private final double width;\n    private final double height;\n    \n    public Rectangle(double width, double height) {\n        this.width = width;\n        this.height = height;\n    }\n    \n    public double calculateArea() {\n        return width * height;\n    }\n}\n\n// Étape 3 : Restructurer si nécessaire tout en maintenant les tests au vert"
+      }
+    },
+    {
+      "id": "mockito",
+      "title": "Mockito",
+      "description": "Mockito est un framework de mocking populaire pour Java, utilisé pour créer des objets de substitution qui imitent le comportement d'objets réels de manière contrôlée.",
+      "concepts": [
+        {"name": "Mock", "description": "Un substitut d'un objet réel avec un comportement programmable"},
+        {"name": "Stub", "description": "Un mock pré-programmé qui renvoie des valeurs spécifiques"},
+        {"name": "Spy", "description": "Un mock partiel qui utilise le comportement de l'objet réel sauf indication contraire"},
+        {"name": "Verify", "description": "Vérifier si et comment un mock a été appelé"}
+      ],
+      "examples": [
+        {
+          "title": "Utilisation de base de Mockito",
+          "code": {
+            "language": "java",
+            "snippet": "// Création d'un mock\nUserRepository userRepository = Mockito.mock(UserRepository.class);\n\n// Bouchonnage des méthodes\nwhen(userRepository.findById(1L)).thenReturn(Optional.of(new User(1L, \"John\")));\nwhen(userRepository.findById(2L)).thenReturn(Optional.empty());\nwhen(userRepository.save(any(User.class))).thenReturn(new User(3L, \"Jane\"));\nwhen(userRepository.findByUsername(\"admin\")).thenThrow(new SecurityException());\n\n// Utilisation du mock\nuserService = new UserService(userRepository);\nUser user = userService.getUser(1L);  // Renvoie l'utilisateur bouchonné\n\n// Vérification\nverify(userRepository).findById(1L);\nverify(userRepository, times(1)).findById(1L);\nverify(userRepository, never()).delete(any());\nverify(userRepository, timeout(100)).findById(anyLong());\nverify(userRepository, atLeastOnce()).findById(anyLong());\nverify(userRepository, atMost(3)).findById(anyLong());\n\n// Capture d'arguments\nArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);\nverify(userRepository).save(userCaptor.capture());\nUser capturedUser = userCaptor.getValue();\nassertEquals(\"Jane\", capturedUser.getName());"
+          }
+        },
+        {
+          "title": "Annotations Mockito",
+          "code": {
+            "language": "java",
+            "snippet": "@ExtendWith(MockitoExtension.class)\nclass UserServiceTest {\n    @Mock\n    private UserRepository userRepository;\n    \n    @InjectMocks\n    private UserService userService;\n    \n    @Spy\n    private AuditService auditService;\n    \n    @Captor\n    private ArgumentCaptor<User> userCaptor;\n    \n    @Test\n    void shouldReturnUserWhenUserExists() {\n        // Arrange\n        when(userRepository.findById(1L)).thenReturn(Optional.of(new User(1L, \"John\")));\n        \n        // Act\n        User result = userService.getUser(1L);\n        \n        // Assert\n        assertEquals(\"John\", result.getName());\n        verify(userRepository).findById(1L);\n    }\n}"
+          }
+        },
+        {
+          "title": "Mockito Answer et Callbacks",
+          "code": {
+            "language": "java",
+            "snippet": "// Retourner différentes valeurs sur des appels consécutifs\nwhen(userRepository.getNextId())\n    .thenReturn(1L)\n    .thenReturn(2L)\n    .thenReturn(3L);\n\n// Réponses dynamiques basées sur les arguments\nwhen(userRepository.findById(anyLong())).thenAnswer(invocation -> {\n    Long id = invocation.getArgument(0);\n    return Optional.of(new User(id, \"User \" + id));\n});\n\n// Callbacks pour effets secondaires\ndoAnswer(invocation -> {\n    User user = invocation.getArgument(0);\n    System.out.println(\"Saving user: \" + user.getName());\n    return user;\n}).when(userRepository).save(any(User.class));"
+          }
+        },
+        {
+          "title": "Style BDD avec Mockito",
+          "code": {
+            "language": "java",
+            "snippet": "// Syntaxe style BDD avec BDDMockito\nimport static org.mockito.BDDMockito.*;\n\n@Test\nvoid shouldReturnUserWhenUserExists() {\n    // Given\n    given(userRepository.findById(1L)).willReturn(Optional.of(new User(1L, \"John\")));\n    \n    // When\n    User result = userService.getUser(1L);\n    \n    // Then\n    assertThat(result.getName()).isEqualTo(\"John\");\n    then(userRepository).should().findById(1L);\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "test-doubles",
+      "title": "Doublures de test",
+      "description": "Les doublures de test sont des objets qui remplacent les objets réels dans un environnement de test. Il existe différents types, chacun avec des objectifs spécifiques :",
+      "types": [
+        {
+          "name": "Dummy",
+          "purpose": "Objets passés mais jamais utilisés",
+          "implementation": "any(), mock(Class.class)",
+          "example": "// Dummy - passé mais jamais utilisé\ndoSomething(null, mock(Logger.class), \"test\");"
+        },
+        {
+          "name": "Fake",
+          "purpose": "Implémentations fonctionnelles mais simplifiées",
+          "implementation": "Implémentation personnalisée d'interface",
+          "example": "// Fake - implémentation simplifiée\npublic class FakeUserRepository implements UserRepository {\n    private Map<Long, User> users = new HashMap<>();\n    \n    @Override\n    public Optional<User> findById(Long id) {\n        return Optional.ofNullable(users.get(id));\n    }\n    \n    @Override\n    public User save(User user) {\n        users.put(user.getId(), user);\n        return user;\n    }\n}"
+        },
+        {
+          "name": "Stub",
+          "purpose": "Fournir des réponses à des appels spécifiques",
+          "implementation": "when().thenReturn()",
+          "example": "// Stub - fournit des réponses pré-définies\nwhen(userRepository.findById(1L)).thenReturn(Optional.of(new User(1L, \"John\")));"
+        },
+        {
+          "name": "Spy",
+          "purpose": "Enregistre les appels effectués pour vérification",
+          "implementation": "spy(), @Spy",
+          "example": "// Spy - objet réel avec certaines méthodes bouchonnées\nUserRepository userRepositorySpy = spy(new UserRepositoryImpl());\nwhen(userRepositorySpy.findById(1L)).thenReturn(Optional.of(new User(1L, \"John\")));\n// Les autres méthodes utilisent l'implémentation réelle"
+        },
+        {
+          "name": "Mock",
+          "purpose": "Vérifie les attentes d'interaction",
+          "implementation": "mock(), @Mock, verify()",
+          "example": "// Mock - attentes et vérification\nUserRepository userRepository = mock(UserRepository.class);\nverify(userRepository).findById(1L);"
+        }
+      ]
+    },
+    {
+      "id": "spring-boot-testing",
+      "title": "Tests avec Spring Boot",
+      "description": "Spring Boot fournit un support complet de test pour différents types de tests.",
+      "testSlices": [
+        {"annotation": "@WebMvcTest", "purpose": "Tester les contrôleurs MVC", "loads": "Contrôleurs, WebMvcConfigurer, etc."},
+        {"annotation": "@DataJpaTest", "purpose": "Tester les repositories JPA", "loads": "Entités JPA, repositories, DataSource"},
+        {"annotation": "@RestClientTest", "purpose": "Tester les clients REST", "loads": "RestTemplateBuilder, etc."},
+        {"annotation": "@JsonTest", "purpose": "Tester la sérialisation JSON", "loads": "Jackson, Gson, etc."},
+        {"annotation": "@WebFluxTest", "purpose": "Tester les contrôleurs WebFlux", "loads": "Contrôleurs WebFlux, WebFluxConfigurer, etc."},
+        {"annotation": "@JdbcTest", "purpose": "Tester le code JDBC", "loads": "DataSource, JdbcTemplate"},
+        {"annotation": "@DataMongoTest", "purpose": "Tester les repositories MongoDB", "loads": "Repositories MongoDB"}
+      ],
+      "examples": [
+        {
+          "title": "Test de la couche web avec MockMvc",
+          "code": {
+            "language": "java",
+            "snippet": "@WebMvcTest(UserController.class)\nclass UserControllerTest {\n    @Autowired\n    private MockMvc mockMvc;\n    \n    @MockBean\n    private UserService userService;\n    \n    @Test\n    void shouldReturnUserWhenUserExists() throws Exception {\n        // Given\n        User user = new User(1L, \"John\");\n        given(userService.getUser(1L)).willReturn(user);\n        \n        // When/Then\n        mockMvc.perform(get(\"/api/users/1\"))\n            .andExpect(status().isOk())\n            .andExpect(jsonPath(\"$.id\").value(1))\n            .andExpect(jsonPath(\"$.name\").value(\"John\"));\n    }\n    \n    @Test\n    void shouldReturn404WhenUserNotFound() throws Exception {\n        // Given\n        given(userService.getUser(1L)).willThrow(new UserNotFoundException());\n        \n        // When/Then\n        mockMvc.perform(get(\"/api/users/1\"))\n            .andExpect(status().isNotFound());\n    }\n    \n    @Test\n    void shouldCreateUserWhenValid() throws Exception {\n        // Given\n        User user = new User(null, \"John\");\n        User savedUser = new User(1L, \"John\");\n        given(userService.createUser(any(User.class))).willReturn(savedUser);\n        \n        // When/Then\n        mockMvc.perform(post(\"/api/users\")\n                .contentType(MediaType.APPLICATION_JSON)\n                .content(\"{\\\"name\\\":\\\"John\\\"}\"))\n            .andExpect(status().isCreated())\n            .andExpect(header().string(\"Location\", \"/api/users/1\"));\n    }\n}"
+          }
+        },
+        {
+          "title": "Test de la couche d'accès aux données",
+          "code": {
+            "language": "java",
+            "snippet": "@DataJpaTest\nclass UserRepositoryTest {\n    @Autowired\n    private UserRepository userRepository;\n    \n    @Test\n    void shouldFindUserByName() {\n        // Given\n        User user = new User(null, \"John\");\n        userRepository.save(user);\n        \n        // When\n        List<User> users = userRepository.findByName(\"John\");\n        \n        // Then\n        assertFalse(users.isEmpty());\n        assertEquals(\"John\", users.get(0).getName());\n    }\n    \n    @Test\n    void shouldFindNoUserWhenNameDoesNotExist() {\n        // When\n        List<User> users = userRepository.findByName(\"Unknown\");\n        \n        // Then\n        assertTrue(users.isEmpty());\n    }\n}"
+          }
+        },
+        {
+          "title": "Tests d'intégration complets",
+          "code": {
+            "language": "java",
+            "snippet": "@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)\nclass UserApiIntegrationTest {\n    @Autowired\n    private TestRestTemplate restTemplate;\n    \n    @Autowired\n    private UserRepository userRepository;\n    \n    @BeforeEach\n    void setUp() {\n        userRepository.deleteAll();\n    }\n    \n    @Test\n    void shouldReturnUserWhenUserExists() {\n        // Given\n        User user = userRepository.save(new User(null, \"John\"));\n        \n        // When\n        ResponseEntity<User> response = restTemplate.getForEntity(\n            \"/api/users/{id}\", User.class, user.getId());\n        \n        // Then\n        assertEquals(HttpStatus.OK, response.getStatusCode());\n        assertEquals(\"John\", response.getBody().getName());\n    }\n    \n    @Test\n    void shouldReturn404WhenUserNotFound() {\n        // When\n        ResponseEntity<User> response = restTemplate.getForEntity(\n            \"/api/users/{id}\", User.class, 999L);\n        \n        // Then\n        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());\n    }\n}"
+          }
+        },
+        {
+          "title": "Tests avec virtualisation de service",
+          "code": {
+            "language": "java",
+            "snippet": "@SpringBootTest\n@AutoConfigureWireMock(port = 0)\nclass ExternalServiceClientTest {\n    @Autowired\n    private ExternalServiceClient client;\n    \n    @Value(\"${wiremock.server.port}\")\n    private int wiremockPort;\n    \n    @Test\n    void shouldReturnDataFromExternalService() {\n        // Given\n        stubFor(get(urlEqualTo(\"/api/external/data\"))\n            .willReturn(aResponse()\n                .withHeader(\"Content-Type\", \"application/json\")\n                .withBody(\"{\\\"value\\\":\\\"test data\\\"}\"));\n        \n        // When\n        ExternalData data = client.fetchData();\n        \n        // Then\n        assertEquals(\"test data\", data.getValue());\n        \n        // Verify the request was made\n        verify(getRequestedFor(urlEqualTo(\"/api/external/data\")));\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "testing-best-practices",
+      "title": "Bonnes pratiques de test",
+      "bestPractices": [
+        {
+          "title": "Écrire des tests maintenables",
+          "items": [
+            "**Tester un concept par test** : Chaque test doit se concentrer sur un comportement spécifique",
+            "**Utiliser des noms de tests descriptifs** : Intention claire de ce qui est testé",
+            "**Suivre le modèle AAA** : Arrange (Préparer), Act (Agir), Assert (Vérifier)",
+            "**Minimiser l'interdépendance des tests** : Les tests doivent fonctionner isolément",
+            "**Garder les tests simples** : Éviter la logique complexe dans les tests"
+          ]
+        },
+        {
+          "title": "Conventions de nommage des tests",
+          "description": "Les bons noms de tests communiquent clairement ce qui est testé, sous quelles conditions, et quel est le résultat attendu",
+          "formats": [
+            "**test[Fonctionnalité][Condition][RésultatAttendu]** : testCalculateAreaWithPositiveValuesShouldReturnCorrectResult",
+            "**[Fonctionnalité][Condition][RésultatAttendu]** : calculateAreaWithPositiveValuesShouldReturnCorrectResult",
+            "**should[RésultatAttendu]When[Condition]** : shouldReturnCorrectAreaWhenValuesArePositive",
+            "**given[Condition]When[Action]Then[Résultat] (style BDD)** : givenPositiveValuesWhenCalculatingAreaThenReturnsCorrectResult"
+          ]
+        },
+        {
+          "title": "Pièges courants",
+          "items": [
+            "**Tester les détails d'implémentation** : Se concentrer sur le comportement, pas l'implémentation",
+            "**Tests fragiles** : Tests qui échouent avec des changements mineurs",
+            "**Tests redondants** : Plusieurs tests couvrant la même fonctionnalité",
+            "**Tests lents** : Tests longs qui ralentissent la boucle de feedback",
+            "**Données de test dans le code de production** : Code écrit uniquement pour satisfaire les tests"
+          ]
+        },
+        {
+          "title": "Anti-patterns de test",
+          "code": {
+            "language": "java",
+            "snippet": "// À éviter : Tester les détails d'implémentation\n@Test\nvoid testBadImplementationFocus() {\n    UserService service = new UserService(mockRepository);\n    // Tester une méthode privée par réflexion\n    Method method = UserService.class.getDeclaredMethod(\"validateUser\", User.class);\n    method.setAccessible(true);\n    method.invoke(service, user);\n}\n\n// À éviter : Écrire des tests non-déterministes\n@Test\nvoid testNonDeterministic() {\n    // Test dépendant de la date actuelle\n    assertTrue(service.isRecent(new Date()));\n}\n\n// À éviter : Utiliser sleep pour les tests asynchrones\n@Test\nvoid testWithSleep() {\n    service.startAsyncProcess();\n    Thread.sleep(1000); // Fragile, dépend du timing\n    verify(dependency).processCompleted();\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "test-coverage",
+      "title": "Couverture de test",
+      "description": "La couverture de test mesure le pourcentage de votre code qui est exécuté par les tests.",
+      "coverageTypes": [
+        "**Couverture de ligne** : Pourcentage de lignes de code exécutées",
+        "**Couverture de branche** : Pourcentage de branches (if/else, switch) exécutées",
+        "**Couverture de chemin** : Pourcentage de chemins d'exécution possibles",
+        "**Couverture de méthode** : Pourcentage de méthodes appelées"
+      ],
+      "tools": ["JaCoCo", "Cobertura", "Clover"],
+      "configuration": {
+        "language": "xml",
+        "snippet": "<!-- Configuration Maven pour JaCoCo -->\n<plugin>\n    <groupId>org.jacoco</groupId>\n    <artifactId>jacoco-maven-plugin</artifactId>\n    <version>0.8.7</version>\n    <executions>\n        <execution>\n            <goals>\n                <goal>prepare-agent</goal>\n            </goals>\n        </execution>\n        <execution>\n            <id>report</id>\n            <phase>test</phase>\n            <goals>\n                <goal>report</goal>\n            </goals>\n        </execution>\n    </executions>\n</plugin>"
+      },
+      "bestPractices": [
+        "**Ne pas viser 100% de couverture** : Se concentrer sur les chemins de code critiques",
+        "**Utiliser la couverture comme guide, pas comme objectif** : Qualité > quantité",
+        "**Combiner couverture avec tests de mutation** : Efficacité des tests",
+        "**Couvrir les cas limites et scénarios d'erreur** : Pas seulement les chemins heureux",
+        "**Définir des objectifs raisonnables** : 70-80% est souvent un bon équilibre"
+      ]
+    },
+    {
+      "id": "interview-questions",
+      "title": "Questions et réponses d'entretien",
+      "questions": [
+        {
+          "id": "unit-vs-integration",
+          "question": "Quelle est la différence entre les tests unitaires et les tests d'intégration ?",
+          "answer": "Les tests unitaires se concentrent sur le test de composants individuels (classes, méthodes) en isolation, généralement avec des dépendances simulées (mockées). Les tests d'intégration, quant à eux, testent comment plusieurs composants fonctionnent ensemble.\n\nDifférences principales :\n\n- **Portée** : Les tests unitaires couvrent une seule unité; les tests d'intégration couvrent plusieurs unités\n- **Dépendances** : Les tests unitaires simulent les dépendances; les tests d'intégration utilisent des dépendances réelles\n- **Vitesse** : Les tests unitaires sont plus rapides; les tests d'intégration sont plus lents\n- **Complexité** : Les tests unitaires sont plus simples; les tests d'intégration sont plus complexes\n- **Isolation** : Les tests unitaires s'exécutent en isolation; les tests d'intégration peuvent nécessiter une infrastructure\n\nLes deux types de tests sont importants dans une stratégie de test complète. Les tests unitaires fournissent un feedback rapide pendant le développement, tandis que les tests d'intégration s'assurent que les composants fonctionnent correctement ensemble."
+        },
+        {
+          "id": "mocking-purpose",
+          "question": "Qu'est-ce que le mocking et pourquoi l'utilisons-nous dans les tests unitaires ?",
+          "answer": "Le mocking est une technique où nous remplaçons des dépendances réelles par des objets qui simulent leur comportement de manière contrôlée. C'est essentiel pour les vrais tests unitaires, où nous voulons tester un composant en isolation.\n\nNous utilisons le mocking pour plusieurs raisons :\n\n- **Isolation** : Tester l'unité sans être affecté par ses dépendances\n- **Vitesse** : Éviter les systèmes externes lents (bases de données, services web)\n- **Déterminisme** : Assurer des résultats de test cohérents indépendamment de l'état externe\n- **Disponibilité** : Tester quand les dépendances réelles sont indisponibles\n- **Simulation d'erreurs** : Simuler facilement des conditions d'erreur des dépendances\n- **Vérification** : Confirmer les interactions entre l'unité et ses dépendances\n\nMockito est l'un des frameworks de mocking les plus populaires en Java. Il nous permet de créer des objets mock, de bouchonner leur comportement et de vérifier les interactions."
+        },
+        {
+          "id": "mock-vs-spy",
+          "question": "Expliquez la différence entre @Mock et @Spy dans Mockito.",
+          "answer": "Les annotations `@Mock` et `@Spy` sont toutes deux des annotations Mockito pour créer des doublures de test, mais elles se comportent différemment :\n\n**@Mock** :\n\n- Crée un objet mock complet sans fonctionnalité réelle\n- Toutes les méthodes retournent des valeurs par défaut (null, 0, false) sauf si bouchonnées\n- Vous devez explicitement définir le comportement pour les méthodes que vous voulez faire retourner des valeurs spécifiques\n- Utilisé quand vous voulez complètement remplacer un objet par une doublure de test\n\n**@Spy** :\n\n- Crée un mock partiel qui appelle les méthodes réelles sauf si spécifiquement bouchonnées\n- L'implémentation réelle est invoquée pour les méthodes non bouchonnées\n- Utile quand vous voulez ne remplacer que certains comportements tout en gardant le reste\n- Généralement utilisé avec des objets réels, pas des interfaces\n\nLa différence clé est que `@Mock` crée une coquille sans comportement, tandis que `@Spy` crée un wrapper autour d'un objet réel qui vous permet de remplacer sélectivement des méthodes."
+        },
+        {
+          "id": "junit-lifecycle",
+          "question": "Quel est le but des annotations @BeforeEach et @AfterEach dans JUnit 5 ?",
+          "answer": "Les annotations `@BeforeEach` et `@AfterEach` sont des annotations JUnit 5 qui aident à gérer le cycle de vie des tests :\n\n**@BeforeEach** :\n\n- Les méthodes annotées avec `@BeforeEach` s'exécutent avant chaque méthode de test dans la classe\n- Utilisées pour les opérations de configuration comme l'initialisation d'objets, la préparation des données de test, etc.\n- Chaque test obtient une configuration fraîche, favorisant l'isolation des tests\n- Équivalent à `@Before` dans JUnit 4\n\n**@AfterEach** :\n\n- Les méthodes annotées avec `@AfterEach` s'exécutent après chaque méthode de test dans la classe\n- Utilisées pour les opérations de nettoyage comme la fermeture des ressources, la réinitialisation de l'état, etc.\n- Assure un nettoyage approprié indépendamment du succès ou de l'échec du test\n- Équivalent à `@After` dans JUnit 4\n\nCes annotations garantissent que chaque test commence avec un état propre et nettoie correctement après lui, ce qui est crucial pour l'isolation et la fiabilité des tests."
+        },
+        {
+          "id": "exceptions-testing",
+          "question": "Comment testez-vous les exceptions dans JUnit 5 ?",
+          "answer": "JUnit 5 fournit plusieurs façons de tester les exceptions :\n\n**assertThrows** :\n\n- L'approche la plus courante\n- Vérifie que le type d'exception correct est lancé\n- Renvoie l'exception pour des assertions supplémentaires\n\n```java\nUserNotFoundException exception = assertThrows(UserNotFoundException.class, () -> {\n    userService.getUser(1L);\n});\n\n// Assertions supplémentaires sur l'exception\nassertEquals(\"User not found with id: 1\", exception.getMessage());\n```\n\n**expectThrows** :\n\n- Similaire à assertThrows mais avec une syntaxe différente\n- Utilisé moins fréquemment\n\n**try-catch avec fail** :\n\n- L'approche traditionnelle (moins préférée dans JUnit 5)\n- Plus verbeux mais offre plus de contrôle"
+        },
+        {
+          "id": "tdd-benefits",
+          "question": "Qu'est-ce que le développement piloté par les tests (TDD) et quels sont ses avantages ?",
+          "answer": "Le développement piloté par les tests est une approche de développement où les tests sont écrits avant le code d'implémentation. Il suit un processus cyclique :\n\n1. **Red** (Rouge) : Écrire un test qui échoue qui définit la fonctionnalité désirée\n2. **Green** (Vert) : Écrire le minimum de code nécessaire pour faire passer le test\n3. **Refactor** (Restructurer) : Améliorer le code tout en s'assurant que les tests continuent de passer\n\nAvantages du TDD :\n\n- **Meilleure conception** : Écrire les tests d'abord vous oblige à réfléchir à l'interface et aux responsabilités avant l'implémentation\n- **Code de meilleure qualité** : TDD tend à produire un code plus modulaire, faiblement couplé avec des responsabilités plus claires\n- **Tests de régression intégrés** : Les changements qui cassent les fonctionnalités existantes sont immédiatement détectés\n- **Documentation par l'exemple** : Les tests servent de documentation exécutable de la façon dont le code doit se comporter\n- **Développement ciblé** : Aide à prévenir l'élargissement du périmètre en se concentrant uniquement sur ce qui doit être implémenté\n- **Confiance dans la refactorisation** : Avec une couverture de test complète, vous pouvez refactoriser en toute confiance"
+        },
+        {
+          "id": "async-testing",
+          "question": "Comment testeriez-vous du code asynchrone dans JUnit ?",
+          "answer": "Tester du code asynchrone nécessite une gestion spéciale pour s'assurer que les tests attendent la fin des opérations asynchrones. JUnit 5 propose plusieurs approches :\n\n**assertTimeout** :\n\n- Vérifie qu'une opération se termine dans un délai spécifique\n- Exécute le code dans le même thread que le test\n\n**assertTimeoutPreemptively** :\n\n- Similaire à assertTimeout mais annule l'exécution si elle dépasse le délai\n- Exécute le code dans un thread séparé\n\n**Méthodes CompletableFuture** :\n\n- Utiliser des méthodes comme join(), get(), ou get(timeout) pour attendre la fin\n\n**Bibliothèque Awaitility** :\n\n- Une bibliothèque tierce spécialement conçue pour tester du code asynchrone\n\n```java\n@Test\nvoid testAsyncWithAwaitility() {\n    asyncService.startAsyncProcess();\n    \n    await().atMost(2, TimeUnit.SECONDS)\n           .until(() -> asyncService.isProcessComplete());\n    \n    verify(dependency).processCompleted();\n}\n```"
+        },
+        {
+          "id": "mockbean-annotation",
+          "question": "Qu'est-ce que l'annotation @MockBean dans les tests Spring Boot et quand l'utiliseriez-vous ?",
+          "answer": "`@MockBean` est une annotation de test Spring Boot qui crée un mock Mockito d'un bean et l'ajoute au contexte d'application Spring. Cela remplace tout bean existant du même type dans le contexte ou l'ajoute si aucun bean de ce type n'existe.\n\nQuand l'utiliser :\n\n- Dans des tests intégrés où vous voulez simuler des beans spécifiques tout en utilisant des dépendances réelles pour d'autres\n- Lors du test de contrôleurs ou de services qui dépendent d'autres composants que vous voulez simuler\n- Quand vous devez simuler des comportements spécifiques de dépendances dans un contexte Spring\n\nLa différence clé entre `@MockBean` et le standard Mockito `@Mock` est que `@MockBean` s'intègre au contexte Spring, remplaçant ou ajoutant des beans au contexte d'application, tandis que `@Mock` crée simplement un objet mock sans aucune intégration Spring."
+        },
+        {
+          "id": "database-testing",
+          "question": "Comment gérez-vous les tests de base de données dans Spring Boot ?",
+          "answer": "Spring Boot offre plusieurs approches pour les tests de base de données :\n\n**@DataJpaTest** :\n\n- Configure une base de données en mémoire\n- Met en place les repositories Spring Data JPA\n- Auto-configure Hibernate, Spring Data et le DataSource\n- Chaque transaction de test est annulée par défaut\n\n**TestEntityManager** :\n\n- Utilitaire pour les opérations d'entité JPA dans les tests\n- Utile pour préparer les données de test\n\n**@JdbcTest** :\n\n- Pour tester les composants JDBC\n- Auto-configure une base de données en mémoire et JdbcTemplate\n\n**TestContainers** :\n\n- Bibliothèque tierce qui fournit des instances de bases de données réelles dans des conteneurs Docker\n- Utile pour tester avec la même base de données utilisée en production\n\nLes tests de base de données devraient généralement utiliser une base de données séparée du développement/production, configurer via des profils Spring, et inclure un nettoyage approprié entre les tests."
+        },
+        {
+          "id": "test-data-strategies",
+          "question": "Quelles sont les stratégies pour maintenir les données de test dans une application basée sur une base de données ?",
+          "answer": "Maintenir des données de test est crucial pour des tests de base de données fiables. Voici plusieurs stratégies :\n\n**Base de données spécifique aux tests** :\n\n- Utiliser une base de données séparée pour les tests\n- Configurer via des profils Spring\n- S'assure que les tests n'interfèrent pas avec les données de développement ou de production\n\n**Base de données en mémoire** :\n\n- Utiliser H2, HSQLDB, ou Derby pour les tests\n- Rapide et isolée\n- Automatiquement créée et détruite\n\n**Nettoyage de la base de données** :\n\n- Effacer ou réinitialiser les données avant/après les tests\n- Utiliser `@Transactional` pour l'annulation automatique\n- Implémenter des méthodes de nettoyage personnalisées\n\n**TestContainers** :\n\n- Utiliser des conteneurs Docker pour les tests\n- Fournit des instances de bases de données fraîches pour chaque suite de tests\n- Supporte divers types de bases de données (MySQL, PostgreSQL, etc.)\n\n**Ensemencement de base de données** :\n\n- Pré-remplir la base de données avec des données de test connues\n- Utiliser des scripts SQL, Flyway, ou un ensemencement programmatique\n\n**Classes de fixtures** :\n\n- Créer des méthodes réutilisables pour générer des entités de test\n- Favorise la cohérence entre les tests"
+        }
+      ]
+    },
+    {
+      "id": "advanced-testing-topics",
+      "title": "Sujets de test avancés",
+      "topics": [
+        {
+          "name": "Tests basés sur les propriétés",
+          "description": "Les tests basés sur les propriétés se concentrent sur la vérification des propriétés (invariants) du système plutôt que des exemples spécifiques. Au lieu d'affirmer que des entrées spécifiques produisent des sorties spécifiques, vous affirmez que certaines propriétés sont vraies pour une large gamme d'entrées.",
+          "code": {
+            "language": "java",
+            "snippet": "// Utilisant la bibliothèque jqwik\n@Property\nvoid concatenationLength(@ForAll String s1, @ForAll String s2) {\n    assertEquals(s1.length() + s2.length(), (s1 + s2).length());\n}\n\n// Utilisant junit-quickcheck\n@Property\nvoid absoluteValueIsAlwaysPositive(@InRange(min = \"-1000\", max = \"1000\") int value) {\n    assertTrue(Math.abs(value) >= 0);\n}"
+          }
+        },
+        {
+          "name": "Tests de mutation",
+          "description": "Les tests de mutation évaluent la qualité de vos tests en introduisant de petits changements (mutations) dans votre code et en vérifiant si vos tests détectent ces changements. Si les tests passent malgré la mutation, cela suggère que vos tests pourraient ne pas être assez approfondis.",
+          "tool": "PIT (Pitest) pour Java",
+          "benefits": [
+            "Aide à identifier le code mort (jamais exécuté)",
+            "Identifie les assertions inefficaces",
+            "Révèle les cas de test manquants"
+          ],
+          "configuration": {
+            "language": "xml",
+            "snippet": "<!-- Configuration Maven pour PIT -->\n<plugin>\n    <groupId>org.pitest</groupId>\n    <artifactId>pitest-maven</artifactId>\n    <version>1.9.0</version>\n    <dependencies>\n        <dependency>\n            <groupId>org.pitest</groupId>\n            <artifactId>pitest-junit5-plugin</artifactId>\n            <version>1.0.0</version>\n        </dependency>\n    </dependencies>\n</plugin>"
+          }
+        },
+        {
+          "name": "Tests de contrat",
+          "description": "Les tests de contrat assurent que les services adhèrent à un contrat prédéfini, particulièrement utile dans les architectures de microservices. Ils vérifient que les fournisseurs de services et les consommateurs maintiennent des interfaces compatibles.",
+          "implementation": "Spring Cloud Contract",
+          "code": {
+            "language": "groovy",
+            "snippet": "// Définition de contrat (en DSL Groovy)\nContract.make {\n    description \"should return a user when it exists\"\n    request {\n        method GET()\n        url \"/users/1\"\n    }\n    response {\n        status 200\n        headers {\n            contentType applicationJson()\n        }\n        body(\n            id: 1,\n            name: \"John\"\n        )\n    }\n}"
+          },
+          "benefits": [
+            "Détection précoce des changements d'API affectant les consommateurs",
+            "Réduction du besoin de tests end-to-end",
+            "Meilleure documentation du comportement attendu"
+          ]
+        },
+        {
+          "name": "Tests de performance",
+          "description": "Tester les performances d'une application garantit qu'elle répond aux exigences de réactivité, de débit et d'évolutivité.",
+          "tools": ["JMeter", "Gatling"],
+          "code": {
+            "language": "java",
+            "snippet": "// Exemple de simulation Gatling\npublic class UserApiSimulation extends Simulation {\n    HttpProtocolBuilder httpProtocol = http\n        .baseUrl(\"http://localhost:8080\")\n        .acceptHeader(\"application/json\");\n        \n    ScenarioBuilder scn = scenario(\"User API Load Test\")\n        .exec(http(\"Get All Users\")\n            .get(\"/api/users\")\n            .check(status().is(200)))\n        .pause(1)\n        .exec(http(\"Get Specific User\")\n            .get(\"/api/users/1\")\n            .check(status().is(200)));\n            \n    {\n        setUp(\n            scn.injectOpen(rampUsers(100).during(30))\n        ).protocols(httpProtocol);\n    }\n}"
+          }
+        },
+        {
+          "name": "Tests de chaos",
+          "description": "Les tests de chaos introduisent délibérément des défaillances pour vérifier la résilience du système. Ils aident à s'assurer que les systèmes peuvent résister à des problèmes inattendus.",
+          "tool": "Chaos Monkey pour Spring Boot",
+          "implementation": {
+            "language": "java",
+            "snippet": "@SpringBootApplication\n@EnableChaos\npublic class Application {\n    public static void main(String[] args) {\n        SpringApplication.run(Application.class, args);\n    }\n}"
+          },
+          "configuration": {
+            "language": "yaml",
+            "snippet": "# application.yml\nchaos:\n  monkey:\n    enabled: true\n    watcher:\n      service: true\n    assaults:\n      latency:\n        enabled: true\n        level: 3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "interview-coding-challenges",
+      "title": "Défis de codage courants en entretien",
+      "challenges": [
+        {
+          "title": "Test de méthode de division d'une calculatrice",
+          "description": "Écrire un test pour une méthode de division d'une calculatrice qui gère la division par zéro",
+          "code": {
+            "language": "java",
+            "snippet": "@Test\nvoid divideByZero_ShouldThrowArithmeticException() {\n    // Arrange\n    Calculator calculator = new Calculator();\n    \n    // Act & Assert\n    assertThrows(ArithmeticException.class, () -> {\n        calculator.divide(10, 0);\n    });\n}\n\n@Test\nvoid divide_ShouldReturnCorrectResult_WhenInputsAreValid() {\n    // Arrange\n    Calculator calculator = new Calculator();\n    \n    // Act\n    double result = calculator.divide(10, 2);\n    \n    // Assert\n    assertEquals(5, result);\n}"
+          }
+        },
+        {
+          "title": "Test d'un service d'enregistrement d'utilisateur",
+          "description": "Écrire des tests pour un service d'enregistrement d'utilisateur",
+          "code": {
+            "language": "java",
+            "snippet": "@ExtendWith(MockitoExtension.class)\nclass UserRegistrationServiceTest {\n    @Mock\n    private UserRepository userRepository;\n    \n    @Mock\n    private EmailService emailService;\n    \n    @InjectMocks\n    private UserRegistrationService registrationService;\n    \n    @Test\n    void registerUser_ShouldSaveUser_WhenUserIsValid() {\n        // Arrange\n        User user = new User(null, \"john@example.com\", \"password123\");\n        when(userRepository.findByEmail(\"john@example.com\")).thenReturn(Optional.empty());\n        when(userRepository.save(any(User.class))).thenReturn(new User(1L, \"john@example.com\", \"encodedPassword\"));\n        \n        // Act\n        User result = registrationService.registerUser(user);\n        \n        // Assert\n        assertNotNull(result.getId());\n        verify(userRepository).save(any(User.class));\n        verify(emailService).sendWelcomeEmail(user.getEmail());\n    }\n    \n    @Test\n    void registerUser_ShouldThrowException_WhenEmailAlreadyExists() {\n        // Arrange\n        User user = new User(null, \"john@example.com\", \"password123\");\n        when(userRepository.findByEmail(\"john@example.com\")).thenReturn(Optional.of(new User()));\n        \n        // Act & Assert\n        assertThrows(UserAlreadyExistsException.class, () -> {\n            registrationService.registerUser(user);\n        });\n        \n        verify(userRepository, never()).save(any(User.class));\n        verify(emailService, never()).sendWelcomeEmail(anyString());\n    }\n}"
+          }
+        },
+        {
+          "title": "Test d'un contrôleur REST",
+          "description": "Écrire des tests pour un contrôleur REST en utilisant MockMvc",
+          "code": {
+            "language": "java",
+            "snippet": "@WebMvcTest(UserController.class)\nclass UserControllerTest {\n    @Autowired\n    private MockMvc mockMvc;\n    \n    @MockBean\n    private UserService userService;\n    \n    @Test\n    void getUserById_ShouldReturnUser_WhenUserExists() throws Exception {\n        // Arrange\n        User user = new User(1L, \"John\", \"john@example.com\");\n        when(userService.getUserById(1L)).thenReturn(user);\n        \n        // Act & Assert\n        mockMvc.perform(get(\"/api/users/1\")\n                .contentType(MediaType.APPLICATION_JSON))\n                .andExpect(status().isOk())\n                .andExpect(jsonPath(\"$.id\").value(1))\n                .andExpect(jsonPath(\"$.name\").value(\"John\"))\n                .andExpect(jsonPath(\"$.email\").value(\"john@example.com\"));\n    }\n    \n    @Test\n    void createUser_ShouldReturnCreatedUser() throws Exception {\n        // Arrange\n        User user = new User(null, \"John\", \"john@example.com\");\n        User savedUser = new User(1L, \"John\", \"john@example.com\");\n        when(userService.createUser(any(User.class))).thenReturn(savedUser);\n        \n        // Act & Assert\n        mockMvc.perform(post(\"/api/users\")\n                .contentType(MediaType.APPLICATION_JSON)\n                .content(\"{\\\"name\\\":\\\"John\\\",\\\"email\\\":\\\"john@example.com\\\"}\"))\n                .andExpect(status().isCreated())\n                .andExpect(jsonPath(\"$.id\").value(1))\n                .andExpect(jsonPath(\"$.name\").value(\"John\"));\n    }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "Ressources",
+      "categories": [
+        {
+          "name": "Livres",
+          "items": [
+            "\"Test-Driven Development: By Example\" par Kent Beck",
+            "\"Growing Object-Oriented Software, Guided by Tests\" par Steve Freeman et Nat Pryce",
+            "\"Effective Unit Testing\" par Lasse Koskela",
+            "\"Unit Testing Principles, Practices, and Patterns\" par Vladimir Khorikov"
+          ]
+        },
+        {
+          "name": "Ressources en ligne",
+          "items": [
+            {"name": "Guide utilisateur JUnit 5", "url": "https://junit.org/junit5/docs/current/user-guide/"},
+            {"name": "Documentation Mockito", "url": "https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html"},
+            {"name": "Documentation de test Spring Boot", "url": "https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing"},
+            {"name": "Tutoriels de test Baeldung", "url": "https://www.baeldung.com/category/testing/"},
+            {"name": "Article de Martin Fowler sur les Test Double", "url": "https://martinfowler.com/bliki/TestDouble.html"}
+          ]
+        }
+      ]
+    }
+  ],
+  "relatedTopics": [
+    "java-fundamentals",
+    "spring-boot",
+    "test-driven-development",
+    "continuous-integration",
+    "design-patterns"
+  ],
+  "additionalTags": ["tests-unitaires", "mocking", "junit5", "mockito", "doublures-de-test", "tdd"]
+}

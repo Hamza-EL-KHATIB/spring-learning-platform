@@ -9,6 +9,7 @@ import CollectionsPage from './pages/topics/java/CollectionsPage';
 import ConcurrencyPage from './pages/topics/java/ConcurrencyPage';
 import ExceptionsPage from './pages/topics/java/ExceptionsPage';
 import FeaturesPage from './pages/topics/java/FeaturesPage';
+import UnitTestingPage from './pages/topics/java/UnitTestingPage';
 
 // Spring imports
 import SpringBootPage from './pages/topics/spring/BootPage';
@@ -48,6 +49,7 @@ import ArticlesPage from "./pages/topics/german/ArticlesPage";
 import AdjectivesPage from "./pages/topics/german/AdjectivesPage";
 import CasesPage from "./pages/topics/german/CasesPage";
 import JavaFundamentalsPage from "./pages/topics/java/JavaFundamentalsPage";
+import FunctionalProgrammingPage from "./pages/topics/java/FunctionalProgrammingPage";
 
 
 const App = () => {
@@ -73,6 +75,8 @@ const App = () => {
                     <Route path="/java/exceptions" element={<ExceptionsPage />} />
                     <Route path="/java/features" element={<FeaturesPage />} />
                     <Route path="/java/fundamentals" element={<JavaFundamentalsPage />} />
+                    <Route path="/java/testing" element={<UnitTestingPage />} />
+                    <Route path="/java/functional-programming" element={<FunctionalProgrammingPage />} />
 
                     {/* Spring Routes */}
                     <Route path="/spring/boot" element={<SpringBootPage />} />
