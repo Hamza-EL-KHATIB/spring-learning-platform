@@ -1,0 +1,1028 @@
+{
+  "id": "api-rest",
+  "title": "API REST",
+  "topics": [
+    {
+      "title": "Concepts Fondamentaux",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "REST (Representational State Transfer) est un style d'architecture pour la conception d'applications en réseau. C'est un ensemble de directives pour créer des API qui se concentrent sur la communication sans état, les méthodes standard et la conception basée sur les ressources."
+        },
+        {
+          "title": "Qu'est-ce que REST?",
+          "simple-content": "REST (Representational State Transfer) est un style d'architecture pour la conception d'applications en réseau. C'est un ensemble de directives pour créer des API qui se concentrent sur:\n\n- Communication sans état\n- Méthodes standard\n- Conception basée sur les ressources"
+        },
+        {
+          "title": "API RESTful",
+          "simple-content": "Une API RESTful est un service web qui suit les principes/directives REST. Les API REST utilisent les protocoles HTTP pour effectuer des opérations CRUD (Créer, Lire, Mettre à jour, Supprimer) sur des ressources en utilisant des méthodes HTTP standard."
+        },
+        {
+          "title": "Principes REST Clés",
+          "multi-content": [
+            {
+              "title": "Séparation du Client et du Serveur",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Implémentation indépendante du client et du serveur"
+                },
+                {
+                  "title": "Avantage",
+                  "simple-content": "L'indépendance permet une maintenance, une évolutivité et une évolution plus faciles"
+                }
+              ]
+            },
+            {
+              "title": "Sans État",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Le serveur ne stocke pas le contexte du client entre les requêtes"
+                },
+                {
+                  "title": "Avantage",
+                  "simple-content": "Simplifie l'implémentation du serveur en ne le surchargeant pas avec la gestion d'état"
+                }
+              ]
+            },
+            {
+              "title": "Interface Uniforme",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Ressources identifiées par des URL (par ex., www.abc.com/api/questions)"
+                },
+                {
+                  "title": "Avantage",
+                  "simple-content": "Les URL standardisées facilitent la compréhension et l'utilisation de l'API"
+                }
+              ]
+            },
+            {
+              "title": "Mise en Cache",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Les réponses de l'API doivent pouvoir être mises en cache pour améliorer les performances"
+                },
+                {
+                  "title": "Avantage",
+                  "simple-content": "Réduit le besoin de requêtes répétées au serveur"
+                }
+              ]
+            },
+            {
+              "title": "Système en Couches",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Le système doit suivre un modèle en couches"
+                },
+                {
+                  "title": "Avantage",
+                  "simple-content": "Favorise une conception modulaire et une séparation des préoccupations (comme le modèle MVC)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Méthodes HTTP",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "Les méthodes HTTP (aussi appelées verbes) définissent le type d'opération à effectuer sur une ressource."
+        },
+        {
+          "title": "Méthodes HTTP Courantes",
+          "multi-content": [
+            {
+              "title": "GET",
+              "multi-content": [
+                {
+                  "title": "Action",
+                  "simple-content": "Récupérer des données d'une ressource"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "www.example.com/users (récupérer la liste des utilisateurs)"
+                },
+                {
+                  "title": "Idempotent",
+                  "simple-content": "Oui"
+                },
+                {
+                  "title": "Annotation Spring",
+                  "simple-content": "@GetMapping"
+                }
+              ]
+            },
+            {
+              "title": "POST",
+              "multi-content": [
+                {
+                  "title": "Action",
+                  "simple-content": "Soumettre des données pour créer une ressource"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "www.example.com/users (créer un nouvel utilisateur)"
+                },
+                {
+                  "title": "Idempotent",
+                  "simple-content": "Non"
+                },
+                {
+                  "title": "Annotation Spring",
+                  "simple-content": "@PostMapping"
+                }
+              ]
+            },
+            {
+              "title": "PUT",
+              "multi-content": [
+                {
+                  "title": "Action",
+                  "simple-content": "Mettre à jour une ressource ou la créer si elle n'existe pas"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "www.example.com/users/123 (mettre à jour l'utilisateur 123)"
+                },
+                {
+                  "title": "Idempotent",
+                  "simple-content": "Oui"
+                },
+                {
+                  "title": "Annotation Spring",
+                  "simple-content": "@PutMapping"
+                }
+              ]
+            },
+            {
+              "title": "DELETE",
+              "multi-content": [
+                {
+                  "title": "Action",
+                  "simple-content": "Supprimer une ressource"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "www.example.com/users/123 (supprimer l'utilisateur 123)"
+                },
+                {
+                  "title": "Idempotent",
+                  "simple-content": "Oui"
+                },
+                {
+                  "title": "Annotation Spring",
+                  "simple-content": "@DeleteMapping"
+                }
+              ]
+            },
+            {
+              "title": "PATCH",
+              "multi-content": [
+                {
+                  "title": "Action",
+                  "simple-content": "Mettre à jour partiellement une ressource"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "www.example.com/users/123 (mettre à jour des champs spécifiques)"
+                },
+                {
+                  "title": "Idempotent",
+                  "simple-content": "Non"
+                },
+                {
+                  "title": "Annotation Spring",
+                  "simple-content": "@PatchMapping"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "PUT vs PATCH",
+          "multi-content": [
+            "PUT: Remplacement complet de la ressource - le client envoie la ressource mise à jour complète",
+            "PATCH: Mise à jour partielle - le client n'envoie que les modifications spécifiques ou les champs à modifier"
+          ]
+        },
+        {
+          "title": "Idempotence",
+          "multi-content": [
+            {
+              "title": "Définition",
+              "simple-content": "L'idempotence signifie que l'exécution d'une opération plusieurs fois doit avoir le même résultat que son exécution une seule fois."
+            },
+            {
+              "title": "Méthodes Idempotentes",
+              "multi-content": [
+                "GET",
+                "PUT",
+                "DELETE"
+              ]
+            },
+            {
+              "title": "Méthodes Non-idempotentes",
+              "multi-content": [
+                "POST",
+                "PATCH"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Structure des Requêtes et Réponses HTTP",
+      "multi-content": [
+        {
+          "title": "Requête HTTP",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Une requête HTTP envoyée par un client contient:\n\n- Méthode HTTP (GET, POST, etc.)\n- URL (point de terminaison)\n- En-têtes (métadonnées sur la requête)\n- Corps (données, généralement au format JSON ou XML)"
+            },
+            {
+              "title": "Exemple",
+              "simple-content": "POST /api/user/create HTTP/1.1\nHost: api-server.example.com\nContent-Type: application/json\n\n{\n  \"uid\": \"john\",\n  \"password\": \"123\"\n}"
+            }
+          ]
+        },
+        {
+          "title": "Réponse HTTP",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Une réponse HTTP envoyée par le serveur contient:\n\n- Code d'état (indiquant le succès, l'échec, etc.)\n- En-têtes (métadonnées sur la réponse)\n- Corps (données demandées ou message de confirmation)"
+            },
+            {
+              "title": "Exemple",
+              "simple-content": "HTTP/1.1 201 Created\nContent-Type: application/json\n\n{\n  \"userId\": 123,\n  \"message\": \"Utilisateur créé\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Codes d'État",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "Les codes d'état indiquent le résultat de la requête HTTP."
+        },
+        {
+          "title": "1xx - Informatif",
+          "multi-content": [
+            "100 Continue"
+          ]
+        },
+        {
+          "title": "2xx - Succès",
+          "multi-content": [
+            {
+              "title": "Codes Courants",
+              "multi-content": [
+                "200 OK: Requête réussie",
+                "201 Created: Ressource créée avec succès",
+                "202 Accepted: Requête acceptée pour traitement",
+                "204 No Content: Requête réussie sans contenu à retourner"
+              ]
+            },
+            {
+              "title": "Utilisation Courante",
+              "multi-content": [
+                "200 OK: GET, PUT, PATCH réussis",
+                "201 Created: POST réussi",
+                "204 No Content: DELETE réussi"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "3xx - Redirection",
+          "multi-content": [
+            "300 Multiple Choices",
+            "301 Moved Permanently",
+            "302 Found"
+          ]
+        },
+        {
+          "title": "4xx - Erreur Client",
+          "multi-content": [
+            {
+              "title": "Codes Courants",
+              "multi-content": [
+                "400 Bad Request: Syntaxe invalide",
+                "401 Unauthorized: Authentification requise",
+                "403 Forbidden: Le client n'a pas les droits d'accès",
+                "404 Not Found: La ressource n'existe pas",
+                "405 Method Not Allowed: Méthode non supportée pour la ressource"
+              ]
+            },
+            {
+              "title": "Utilisation Courante",
+              "multi-content": [
+                "400 Bad Request: Requête invalide",
+                "404 Not Found: Ressource non trouvée"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "5xx - Erreur Serveur",
+          "multi-content": [
+            {
+              "title": "Codes Courants",
+              "multi-content": [
+                "500 Internal Server Error: Erreur générique du serveur",
+                "501 Not Implemented: Le serveur ne prend pas en charge la fonctionnalité",
+                "502 Bad Gateway: Le serveur agissant comme passerelle a reçu une réponse invalide",
+                "503 Service Unavailable: Serveur temporairement indisponible"
+              ]
+            },
+            {
+              "title": "Utilisation Courante",
+              "multi-content": [
+                "500 Internal Server Error: Erreur serveur"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Négociation de Contenu",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "La négociation de contenu permet aux clients et aux serveurs de s'accorder sur le format des données échangées."
+        },
+        {
+          "title": "Types de Contenu",
+          "multi-content": [
+            {
+              "title": "application/json",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Format JSON"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)"
+                }
+              ]
+            },
+            {
+              "title": "application/xml",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Format XML"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "@GetMapping(produces = MediaType.APPLICATION_XML_VALUE)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "En-têtes de Requête",
+          "multi-content": [
+            {
+              "title": "Accept",
+              "simple-content": "Spécifie le format de réponse souhaité"
+            },
+            {
+              "title": "Content-Type",
+              "simple-content": "Spécifie le format du corps de la requête"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Concepts REST Avancés",
+      "multi-content": [
+        {
+          "title": "Versionnement des API REST",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Le versionnement permet de maintenir la compatibilité ascendante lors de modifications des API."
+            },
+            {
+              "title": "Stratégies",
+              "multi-content": [
+                {
+                  "title": "Versionnement par URL",
+                  "simple-content": "/api/v1/users"
+                },
+                {
+                  "title": "Versionnement par En-tête",
+                  "simple-content": "X-API-Version: 1"
+                },
+                {
+                  "title": "Versionnement par En-tête Accept",
+                  "simple-content": "Accept: application/vnd.company.app-v1+json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "CORS",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "CORS (Cross-Origin Resource Sharing) est une fonctionnalité de sécurité implémentée dans les navigateurs web qui restreint les pages web de faire des requêtes vers un domaine différent de celui qui a servi la page web."
+            },
+            {
+              "title": "Les requêtes sont restreintes quand elles diffèrent en",
+              "multi-content": [
+                "Domaine (example.com vs. xyz.com)",
+                "Sous-domaine (example.com vs. api.example.com)",
+                "Protocole (http vs. https)",
+                "Port (example.com vs. example.com:3000)"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Sérialisation & Désérialisation",
+          "multi-content": [
+            {
+              "title": "Sérialisation",
+              "simple-content": "Conversion d'un objet en un format (JSON, XML) qui peut être stocké ou transmis"
+            },
+            {
+              "title": "Désérialisation",
+              "simple-content": "Conversion de données sérialisées en un objet"
+            },
+            {
+              "title": "Types",
+              "multi-content": [
+                "Sérialisation JSON",
+                "Sérialisation XML",
+                "Sérialisation Binaire"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Authentification & Autorisation",
+          "multi-content": [
+            {
+              "title": "Authentification",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Vérifie l'identité de l'utilisateur à travers des identifiants comme nom d'utilisateur/mot de passe"
+                },
+                {
+                  "title": "Méthodes",
+                  "multi-content": [
+                    "Auth basique",
+                    "JWT",
+                    "OAuth2"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Autorisation",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Détermine quelles ressources un utilisateur authentifié peut accéder"
+                },
+                {
+                  "title": "Annotations",
+                  "multi-content": [
+                    {
+                      "title": "@PreAuthorize",
+                      "simple-content": "@PreAuthorize(\"hasRole('ADMIN')\")"
+                    },
+                    {
+                      "title": "@Secured",
+                      "simple-content": "@Secured(\"ROLE_ADMIN\")"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Authentification par Token avec JWT",
+              "multi-content": [
+                "Le client envoie ses identifiants (nom d'utilisateur/mot de passe)",
+                "Le serveur authentifie et crée un token JWT",
+                "Le serveur retourne le token au client",
+                "Le client stocke le token dans le stockage local",
+                "Le client inclut le token dans l'en-tête Authorization pour les requêtes suivantes",
+                "Le serveur valide le token avant de traiter les requêtes"
+              ]
+            },
+            {
+              "title": "Structure JWT",
+              "multi-content": [
+                "En-tête: Type de token et algorithme (ex., HS256)",
+                "Payload: Contient les revendications (données)",
+                "Signature: Utilisée pour vérifier l'intégrité du token"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Implémentation Spring MVC",
+      "multi-content": [
+        {
+          "title": "RestController",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Combine @Controller et @ResponseBody"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "RestController Basique",
+                  "simple-content": "@RestController\n@RequestMapping(\"/api/users\")\npublic class UserController {\n    @GetMapping(\"/{id}\")\n    public User getUser(@PathVariable Long id) {\n        return userService.findById(id);\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Mappages de Requêtes",
+          "multi-content": [
+            {
+              "title": "@RequestMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Mappage à usage général"
+                },
+                {
+                  "title": "Attributs",
+                  "multi-content": [
+                    "method",
+                    "path",
+                    "params",
+                    "headers",
+                    "consumes",
+                    "produces"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "@GetMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Raccourci pour @RequestMapping(method = GET)"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "@GetMapping(\"/users\")"
+                }
+              ]
+            },
+            {
+              "title": "@PostMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Raccourci pour @RequestMapping(method = POST)"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "@PostMapping(\"/users\")"
+                }
+              ]
+            },
+            {
+              "title": "@PutMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Raccourci pour @RequestMapping(method = PUT)"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "@PutMapping(\"/users/{id}\")"
+                }
+              ]
+            },
+            {
+              "title": "@DeleteMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Raccourci pour @RequestMapping(method = DELETE)"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "@DeleteMapping(\"/users/{id}\")"
+                }
+              ]
+            },
+            {
+              "title": "@PatchMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Raccourci pour @RequestMapping(method = PATCH)"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "@PatchMapping(\"/users/{id}\")"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Paramètres de Requête",
+          "multi-content": [
+            {
+              "title": "@PathVariable",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Variable de modèle d'URL"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "@GetMapping(\"/{id}\")\npublic User get(@PathVariable Long id)"
+                }
+              ]
+            },
+            {
+              "title": "@RequestParam",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Paramètre de requête"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "@GetMapping\npublic List<User> search(@RequestParam String name)"
+                }
+              ]
+            },
+            {
+              "title": "@RequestBody",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Corps de la requête HTTP"
+                },
+                {
+                  "title": "Exemple",
+                  "simple-content": "@PostMapping\npublic User create(@RequestBody User user)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Gestion des Réponses",
+          "multi-content": [
+            {
+              "title": "ResponseEntity",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Représente une réponse HTTP incluant le statut, les en-têtes et le corps"
+                },
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "Exemple ResponseEntity",
+                      "simple-content": "@GetMapping(\"/{id}\")\npublic ResponseEntity<User> getUser(@PathVariable Long id) {\n    User user = userService.findById(id);\n    return ResponseEntity.ok(user);\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gestion des Erreurs",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "Gestion des exceptions et des erreurs dans les API REST"
+        },
+        {
+          "title": "@ControllerAdvice",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Gestion globale des exceptions"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Gestionnaire d'Exceptions Global",
+                  "simple-content": "@ControllerAdvice\npublic class GlobalExceptionHandler {\n    @ExceptionHandler(ResourceNotFoundException.class)\n    public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex) {\n        return ResponseEntity.status(HttpStatus.NOT_FOUND)\n                           .body(new ErrorResponse(ex.getMessage()));\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "@ExceptionHandler",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Gestion des exceptions au niveau de la méthode"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Gestionnaire d'Exception de Validation",
+                  "simple-content": "@ExceptionHandler(ValidationException.class)\npublic ResponseEntity<ErrorResponse> handleValidation(ValidationException ex) {\n    return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Tests d'API REST",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "Test des points de terminaison REST"
+        },
+        {
+          "title": "@WebMvcTest",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Tester les contrôleurs Spring MVC"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Exemple de Test MVC",
+                  "simple-content": "@WebMvcTest(UserController.class)\nclass UserControllerTest {\n    @Autowired\n    private MockMvc mockMvc;\n\n    @Test\n    void testGetUser() {\n        mockMvc.perform(get(\"/api/users/1\"))\n               .andExpect(status().isOk());\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "RestTemplate",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Tester les clients REST"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Exemple RestTemplate",
+                  "simple-content": "@Test\nvoid testRestClient() {\n    RestTemplate restTemplate = new RestTemplate();\n    User user = restTemplate.getForObject(\"/api/users/1\", User.class);\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bonnes Pratiques pour les API REST",
+      "multi-content": [
+        {
+          "title": "Conception d'URL",
+          "multi-content": [
+            "Utiliser des noms pour les ressources, pas des verbes",
+            "Utiliser des noms pluriels pour les collections (`/users` au lieu de `/user`)",
+            "Garder les URL simples et intuitives",
+            "Utiliser des sous-ressources pour les relations (`/users/123/orders`)"
+          ]
+        },
+        {
+          "title": "Sécurité",
+          "multi-content": [
+            "Implémenter une authentification appropriée",
+            "Utiliser HTTPS",
+            "Valider les entrées",
+            "Implémenter une limitation de débit",
+            "Envisager d'utiliser OAuth2 pour l'autorisation"
+          ]
+        },
+        {
+          "title": "Documentation",
+          "multi-content": [
+            {
+              "title": "Bonnes Pratiques",
+              "multi-content": [
+                "Documenter votre API avec des outils comme Swagger/OpenAPI",
+                "Inclure des exemples et des explications pour les endpoints",
+                "Documenter les réponses d'erreur et les codes d'état"
+              ]
+            },
+            {
+              "title": "Outils",
+              "multi-content": [
+                {
+                  "title": "Swagger/OpenAPI",
+                  "simple-content": "Documentation et test d'API"
+                },
+                {
+                  "title": "Spring REST Docs",
+                  "simple-content": "Documentation pilotée par les tests"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Gestion des Erreurs",
+          "multi-content": [
+            "Utiliser des codes d'état appropriés",
+            "Fournir des messages d'erreur significatifs",
+            "Inclure des codes d'erreur pour l'identification côté client"
+          ]
+        },
+        {
+          "title": "Performance",
+          "multi-content": [
+            "Implémenter une mise en cache appropriée",
+            "Utiliser la pagination pour les grands ensembles de données",
+            "Envisager un traitement asynchrone pour les opérations chronophages"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Différences Entre REST et Autres API",
+      "multi-content": [
+        {
+          "title": "REST vs SOAP",
+          "multi-content": [
+            {
+              "title": "Architecture",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Style d'architecture"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Protocole"
+                }
+              ]
+            },
+            {
+              "title": "Protocole",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Utilise HTTP/HTTPS"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Peut utiliser divers protocoles (HTTP, SMTP, etc.)"
+                }
+              ]
+            },
+            {
+              "title": "Format de Message",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Formats légers (JSON, XML)"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Typiquement XML"
+                }
+              ]
+            },
+            {
+              "title": "État",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Sans état"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Peut être avec ou sans état"
+                }
+              ]
+            },
+            {
+              "title": "Gestion des Erreurs",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Codes d'état HTTP"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Définit son propre mécanisme d'erreur"
+                }
+              ]
+            },
+            {
+              "title": "Performance",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Généralement plus rapide"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Peut être plus lent en raison du traitement XML"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "REST vs GraphQL",
+          "multi-content": [
+            {
+              "title": "Points de Terminaison",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Plusieurs points de terminaison pour différentes ressources"
+                },
+                {
+                  "title": "GraphQL",
+                  "simple-content": "Point de terminaison unique pour toutes les opérations"
+                }
+              ]
+            },
+            {
+              "title": "Récupération de Données",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Structure de réponse fixe par point de terminaison"
+                },
+                {
+                  "title": "GraphQL",
+                  "simple-content": "Le client spécifie exactement les données dont il a besoin"
+                }
+              ]
+            },
+            {
+              "title": "Sur-récupération",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Problème courant (renvoie tous les champs)"
+                },
+                {
+                  "title": "GraphQL",
+                  "simple-content": "Éliminée (le client ne demande que les champs nécessaires)"
+                }
+              ]
+            },
+            {
+              "title": "Versionnement",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Nécessite un versionnement explicite"
+                },
+                {
+                  "title": "GraphQL",
+                  "simple-content": "Fait évoluer le schéma sans versionnement"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
