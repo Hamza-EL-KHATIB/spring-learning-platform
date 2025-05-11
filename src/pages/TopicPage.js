@@ -8,9 +8,6 @@ import concurrencyJson from '../data/java/concurrency.json';
 import exceptionsJson from '../data/java/exceptions.json';
 import javaFundamentalsJson from '../data/java/java-fundamentals.json';
 
-// Spring imports
-import restJson from '../data/spring/rest.json';
-//import securityJson from '../data/spring/security.json';
 
 // Database imports
 import sqlJson from '../data/databases/sql.json';
@@ -37,8 +34,6 @@ const jsonData = {
         fundamentals: javaFundamentalsJson,
     },
     spring: {
-        rest: restJson,
-        //security: securityJson
     },
     databases: {
         sql: sqlJson,
