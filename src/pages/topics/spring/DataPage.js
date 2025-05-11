@@ -363,6 +363,27 @@ const DataPage = () => {
     const renderTopicSections = (topic) => {
         if (!topic || !topic['multi-content']) return null;
 
+        // Special handling for Interview FAQs
+        if (topic.title === 'Interview FAQs') {
+            return (
+                <div className="space-y-4">
+                    {topic['multi-content'].map((faq, idx) => (
+                        <div key={idx} className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg p-4 border border-purple-500/20 shadow-md">
+                            <div className="flex items-center gap-2 mb-3">
+                                <div className="p-1.5 bg-gray-800/70 rounded-md">
+                                    <BookOpen className="w-4 h-4 text-purple-400" />
+                                </div>
+                                <h3 className="text-base font-semibold text-purple-300">{faq.title}</h3>
+                            </div>
+                            <div className="ml-8 text-gray-300 text-sm">
+                                {faq['simple-content'] && renderContent(faq['simple-content'])}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+
         // Extract descriptions and definitions for introduction
         const introSections = topic['multi-content'].filter(content =>
             content.title === 'description' || content.title === 'definition' || content.title === 'définition'
