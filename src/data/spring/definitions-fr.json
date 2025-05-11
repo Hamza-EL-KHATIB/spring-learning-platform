@@ -1,49 +1,118 @@
 {
+  "id": "spring-definitions-fr",
   "title": "Définitions pour les entretiens sur Spring",
-  "definitions": [
+  "topics": [
     {
-      "term": "Inversion of Control (IoC)",
-      "definition": "Un principe de conception où le contrôle de la création des objets et de la gestion des dépendances est délégué à un conteneur externe, améliorant ainsi la modularité et la testabilité."
+      "title": "Inversion of Control (IoC)",
+      "multi-content": [
+        {
+          "title": "Définition",
+          "simple-content": "Un principe de conception où le contrôle de la création des objets et de la gestion des dépendances est délégué à un conteneur externe, améliorant ainsi la modularité et la testabilité."
+        }
+      ]
     },
     {
-      "term": "Dependency Injection (DI)",
-      "definition": "Un modèle dans lequel les dépendances d'un objet sont fournies par une source externe (généralement le conteneur IoC) plutôt que par l'objet lui-même, favorisant un couplage faible."
+      "title": "Dependency Injection (DI)",
+      "multi-content": [
+        {
+          "title": "Définition",
+          "simple-content": "Un modèle dans lequel les dépendances d'un objet sont fournies par une source externe (généralement le conteneur IoC) plutôt que par l'objet lui-même, favorisant un couplage faible."
+        }
+      ]
     },
     {
-      "term": "IoC Container",
-      "definition": "Le composant central du framework Spring qui gère le cycle de vie, la configuration et l'injection des dépendances des beans. Il instancie et assemble les objets de l'application en se basant sur des métadonnées de configuration."
+      "title": "IoC Container",
+      "multi-content": [
+        {
+          "title": "Définition",
+          "simple-content": "Le composant central du framework Spring qui gère le cycle de vie, la configuration et l'injection des dépendances des beans. Il instancie et assemble les objets de l'application en se basant sur des métadonnées de configuration."
+        }
+      ]
     },
     {
-      "term": "Bean",
-      "definition": "Un objet qui est instancié, configuré et géré par le conteneur IoC de Spring. Les beans peuvent être définis à l'aide de XML, d'annotations ou de configurations Java."
+      "title": "Bean",
+      "multi-content": [
+        {
+          "title": "Définition",
+          "simple-content": "Un objet qui est instancié, configuré et géré par le conteneur IoC de Spring. Les beans peuvent être définis à l'aide de XML, d'annotations ou de configurations Java."
+        }
+      ]
     },
     {
-      "term": "Bean Lifecycle",
-      "definition": "Le processus complet par lequel un bean Spring passe — de son instanciation et de l'injection de ses dépendances à son initialisation et sa destruction finale — avec des opportunités pour un comportement personnalisé à chaque étape."
+      "title": "Bean Lifecycle",
+      "multi-content": [
+        {
+          "title": "Définition",
+          "simple-content": "Le processus complet par lequel un bean Spring passe — de son instanciation et de l'injection de ses dépendances à son initialisation et sa destruction finale — avec des opportunités pour un comportement personnalisé à chaque étape."
+        }
+      ]
     },
     {
-      "term": "ApplicationContext vs BeanFactory",
-      "definition": "BeanFactory fournit les capacités de base pour l'injection de dépendances, tandis que ApplicationContext ajoute des fonctionnalités d'entreprise comme la propagation d'événements, l'internationalisation et la gestion des ressources."
+      "title": "ApplicationContext vs BeanFactory",
+      "multi-content": [
+        {
+          "title": "Définition",
+          "simple-content": "BeanFactory fournit les capacités de base pour l'injection de dépendances, tandis que ApplicationContext ajoute des fonctionnalités d'entreprise comme la propagation d'événements, l'internationalisation et la gestion des ressources."
+        }
+      ]
     },
     {
-      "term": "Autowiring",
-      "definition": "Une fonctionnalité de Spring qui résout et injecte automatiquement les dépendances des beans par type, nom ou constructeur, réduisant ainsi le besoin d'une configuration explicite."
+      "title": "Autowiring",
+      "multi-content": [
+        {
+          "title": "Définition",
+          "simple-content": "Une fonctionnalité de Spring qui résout et injecte automatiquement les dépendances des beans par type, nom ou constructeur, réduisant ainsi le besoin d'une configuration explicite."
+        }
+      ]
     },
     {
-      "term": "Bean Scopes",
-      "definition": "Définit le cycle de vie et la visibilité d'un bean dans le conteneur. Les scopes courants incluent singleton, prototype, request, session et application."
+      "title": "Bean Scopes",
+      "multi-content": [
+        {
+          "title": "Définition",
+          "simple-content": "Définit le cycle de vie et la visibilité d'un bean dans le conteneur. Les scopes courants incluent singleton, prototype, request, session et application."
+        }
+      ]
     },
     {
-      "term": "Aspect-Oriented Programming (AOP)",
-      "definition": "Un paradigme de programmation qui permet de séparer les préoccupations transversales (comme la journalisation, la sécurité ou la gestion des transactions) de la logique métier en utilisant des aspects, des conseils, des points de jonction et des pointcuts."
+      "title": "Aspect-Oriented Programming (AOP)",
+      "multi-content": [
+        {
+          "title": "Définition",
+          "simple-content": "Un paradigme de programmation qui permet de séparer les préoccupations transversales (comme la journalisation, la sécurité ou la gestion des transactions) de la logique métier en utilisant des aspects, des conseils, des points de jonction et des pointcuts."
+        }
+      ]
     },
     {
-      "term": "Spring Boot",
-      "definition": "Un framework orienté opinion construit sur Spring qui simplifie le développement d'applications en fournissant une auto-configuration, des dépendances de démarrage et des serveurs embarqués, réduisant ainsi considérablement la configuration répétitive."
+      "title": "Spring Boot",
+      "multi-content": [
+        {
+          "title": "Définition",
+          "simple-content": "Un framework orienté opinion construit sur Spring qui simplifie le développement d'applications en fournissant une auto-configuration, des dépendances de démarrage et des serveurs embarqués, réduisant ainsi considérablement la configuration répétitive."
+        }
+      ]
     },
     {
-      "term": "Transaction Management in Spring",
-      "definition": "Un mécanisme pour gérer les transactions de manière déclarative ou programmatique afin d'assurer la cohérence et l'intégrité des données, en s'intégrant avec divers gestionnaires de transactions tels que JTA, JDBC ou Hibernate."
+      "title": "Transaction Management in Spring",
+      "multi-content": [
+        {
+          "title": "Définition",
+          "simple-content": "Un mécanisme pour gérer les transactions de manière déclarative ou programmatique afin d'assurer la cohérence et l'intégrité des données, en s'intégrant avec divers gestionnaires de transactions tels que JTA, JDBC ou Hibernate."
+        }
+      ]
+    },
+    {
+      "title": "code_examples",
+      "multi-content": [
+        {
+          "title": "Injection de Dépendances",
+          "simple-content": "@Service\npublic class ServiceUtilisateur {\n    private final RepositoryUtilisateur repositoryUtilisateur;\n    \n    @Autowired\n    public ServiceUtilisateur(RepositoryUtilisateur repositoryUtilisateur) {\n        this.repositoryUtilisateur = repositoryUtilisateur;\n    }\n    \n    public Utilisateur trouverUtilisateurParId(Long id) {\n        return repositoryUtilisateur.findById(id).orElseThrow();\n    }\n}"
+        },
+        {
+          "title": "Définition de Bean",
+          "simple-content": "@Configuration\npublic class ConfigApp {\n    \n    @Bean\n    public ServiceUtilisateur serviceUtilisateur(RepositoryUtilisateur repositoryUtilisateur) {\n        return new ServiceUtilisateur(repositoryUtilisateur);\n    }\n    \n    @Bean\n    public GestionnaireTransaction gestionnaireTransaction(SourceDonnees sourceDonnees) {\n        GestionnaireTransactionSourceDonnees gestTx = new GestionnaireTransactionSourceDonnees();\n        gestTx.setSourceDonnees(sourceDonnees);\n        return gestTx;\n    }\n}"
+        }
+      ]
     }
   ]
 }
