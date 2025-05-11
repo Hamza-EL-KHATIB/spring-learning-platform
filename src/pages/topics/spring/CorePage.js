@@ -2,22 +2,22 @@ import React, { useState, useEffect } from 'react';
 import {
     Box, Database, GitMerge, Settings, Shield, Code, Layers, Globe,
     BookOpen, FileText, CheckCircle, List, AlertTriangle, Terminal,
-    Code2, Cpu, ArrowRight
+    Code2, Cpu
 } from 'lucide-react';
 import coreConceptsEn from '../../../data/spring/core-concepts.json';
 import coreConceptsFr from '../../../data/spring/core-concepts-fr.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-// Language Selector Component
+// Language Selector Component (more compact)
 const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
     return (
-        <div className="flex items-center gap-3 mb-6">
-            <Globe className="w-5 h-5 text-purple-400" />
+        <div className="flex items-center gap-2 mb-4">
+            <Globe className="w-4 h-4 text-purple-400" />
             <div className="flex rounded-lg overflow-hidden border border-gray-700">
                 <button
                     onClick={() => onLanguageChange('en')}
-                    className={`px-3 py-1.5 text-sm ${
+                    className={`px-2 py-1 text-xs ${
                         currentLanguage === 'en'
                             ? 'bg-purple-500/30 text-purple-300'
                             : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
@@ -27,7 +27,7 @@ const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
                 </button>
                 <button
                     onClick={() => onLanguageChange('fr')}
-                    className={`px-3 py-1.5 text-sm ${
+                    className={`px-2 py-1 text-xs ${
                         currentLanguage === 'fr'
                             ? 'bg-purple-500/30 text-purple-300'
                             : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
@@ -76,59 +76,59 @@ const CorePage = () => {
         switch (topicTitle) {
             case 'IoC':
             case 'DependencyInjection':
-                return <Box className="w-5 h-5" />;
+                return <Box className="w-4 h-4" />;
             case 'BeanLifecycle':
-                return <GitMerge className="w-5 h-5" />;
+                return <GitMerge className="w-4 h-4" />;
             case 'BeanScopes':
-                return <Layers className="w-5 h-5" />;
+                return <Layers className="w-4 h-4" />;
             case 'SpringConfiguration':
             case 'ComponentScanning':
-                return <Settings className="w-5 h-5" />;
+                return <Settings className="w-4 h-4" />;
             case 'AOP':
-                return <Shield className="w-5 h-5" />;
+                return <Shield className="w-4 h-4" />;
             case 'ApplicationContext':
             case 'SpringBootVsFramework':
-                return <Database className="w-5 h-5" />;
+                return <Database className="w-4 h-4" />;
             case 'DependencyResolution':
             case 'CircularDependencies':
-                return <Code className="w-5 h-5" />;
+                return <Code className="w-4 h-4" />;
             case 'SpringExceptions':
-                return <AlertTriangle className="w-5 h-5" />;
+                return <AlertTriangle className="w-4 h-4" />;
             default:
-                return <Code className="w-5 h-5" />;
+                return <Code className="w-4 h-4" />;
         }
     };
 
-    // Navigation tabs component with enhanced styling
+    // Navigation tabs component with more compact styling
     const TopicNavigation = () => (
-        <div className="mb-8 flex flex-wrap gap-3 p-1 bg-gray-800/50 rounded-xl border border-gray-700/50">
+        <div className="mb-4 flex flex-wrap gap-2 p-1 bg-gray-800/50 rounded-lg border border-gray-700/50">
             {coreConcepts.topics?.map((topic) => (
                 <button
                     key={topic.title}
                     onClick={() => setActiveTopic(topic.title)}
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all duration-300 ${
+                    className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
                         activeTopic === topic.title
-                            ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border border-purple-500/30 shadow-lg shadow-purple-900/20 transform scale-105'
+                            ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border border-purple-500/30'
                             : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50 hover:text-gray-300'
                     }`}
                 >
                     {getTopicIcon(topic.title)}
-                    {topic.title}
+                    <span className="ml-1">{topic.title}</span>
                 </button>
             ))}
         </div>
     );
 
-    // Component to render code blocks with enhanced styling
+    // Component to render code blocks with more compact styling
     const CodeBlock = ({ code, title }) => {
         if (!code) return null;
 
         return (
-            <div className="bg-gray-900/70 rounded-lg border border-gray-700/70 overflow-hidden">
+            <div className="bg-gray-900/70 rounded-md border border-gray-700/70 overflow-hidden text-sm">
                 {title && (
-                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-800 border-b border-gray-700/70">
-                        <Code2 className="w-4 h-4 text-pink-400" />
-                        <span className="text-sm font-medium text-gray-300">{title}</span>
+                    <div className="flex items-center gap-1 px-3 py-1 bg-gray-800 border-b border-gray-700/70">
+                        <Code2 className="w-3 h-3 text-pink-400" />
+                        <span className="text-xs font-medium text-gray-300">{title}</span>
                     </div>
                 )}
                 <SyntaxHighlighter
@@ -136,8 +136,9 @@ const CorePage = () => {
                     style={oneDark}
                     customStyle={{
                         margin: 0,
-                        borderRadius: title ? '0 0 0.5rem 0.5rem' : '0.5rem',
-                        padding: '1rem',
+                        borderRadius: title ? '0 0 0.25rem 0.25rem' : '0.25rem',
+                        padding: '0.75rem',
+                        fontSize: '0.8rem',
                         backgroundColor: '#1e1e2f',
                     }}
                 >
@@ -151,19 +152,19 @@ const CorePage = () => {
     const getSectionIcon = (title) => {
         const lowerTitle = title?.toLowerCase() || '';
 
-        if (lowerTitle.includes('definition')) return <BookOpen className="w-5 h-5 text-purple-400" />;
-        if (lowerTitle.includes('description')) return <FileText className="w-5 h-5 text-cyan-400" />;
-        if (lowerTitle.includes('benefit')) return <CheckCircle className="w-5 h-5 text-green-400" />;
-        if (lowerTitle.includes('example')) return <Terminal className="w-5 h-5 text-pink-400" />;
-        if (lowerTitle.includes('code')) return <Code2 className="w-5 h-5 text-pink-400" />;
-        if (lowerTitle.includes('types') || lowerTitle.includes('type')) return <Layers className="w-5 h-5 text-yellow-400" />;
-        if (lowerTitle.includes('phase') || lowerTitle.includes('lifecycle')) return <GitMerge className="w-5 h-5 text-blue-400" />;
-        if (lowerTitle.includes('keys') || lowerTitle.includes('features')) return <Cpu className="w-5 h-5 text-teal-400" />;
+        if (lowerTitle.includes('definition')) return <BookOpen className="w-4 h-4 text-purple-400" />;
+        if (lowerTitle.includes('description')) return <FileText className="w-4 h-4 text-cyan-400" />;
+        if (lowerTitle.includes('benefit')) return <CheckCircle className="w-4 h-4 text-green-400" />;
+        if (lowerTitle.includes('example')) return <Terminal className="w-4 h-4 text-pink-400" />;
+        if (lowerTitle.includes('code')) return <Code2 className="w-4 h-4 text-pink-400" />;
+        if (lowerTitle.includes('types') || lowerTitle.includes('type')) return <Layers className="w-4 h-4 text-yellow-400" />;
+        if (lowerTitle.includes('phase') || lowerTitle.includes('lifecycle')) return <GitMerge className="w-4 h-4 text-blue-400" />;
+        if (lowerTitle.includes('keys') || lowerTitle.includes('features')) return <Cpu className="w-4 h-4 text-teal-400" />;
 
-        return <List className="w-5 h-5 text-gray-400" />;
+        return <List className="w-4 h-4 text-gray-400" />;
     };
 
-    // Styled content card
+    // Styled content card - more compact version
     const ContentCard = ({ title, children, className = "", contentType = "default" }) => {
         // Get color scheme based on content type
         let colorClasses = "bg-gray-800/70 border-gray-700/50";
@@ -196,31 +197,23 @@ const CorePage = () => {
         if (!title && !children) return null;
 
         const icon = getSectionIcon(title);
-        const derivedContentType =
-            title?.toLowerCase().includes('definition') ? 'definition' :
-                title?.toLowerCase().includes('benefit') || title?.toLowerCase().includes('advantages') ? 'benefits' :
-                    title?.toLowerCase().includes('example') || title?.toLowerCase().includes('code') ? 'example' :
-                        title?.toLowerCase().includes('type') ? 'types' :
-                            title?.toLowerCase().includes('feature') || title?.toLowerCase().includes('properties') ? 'features' :
-                                title?.toLowerCase().includes('drawback') || title?.toLowerCase().includes('disadvantages') ? 'drawbacks' :
-                                    contentType;
 
         return (
-            <div className={`rounded-lg p-5 border backdrop-blur-sm transition-all ${colorClasses} ${className} hover:shadow-lg`}>
+            <div className={`rounded-md p-3 border backdrop-blur-sm transition-all ${colorClasses} ${className} hover:shadow-md text-sm`}>
                 {title && (
-                    <div className="flex items-center gap-3 mb-3">
-                        <div className="p-2 bg-gray-800/70 rounded-lg">
+                    <div className="flex items-center gap-2 mb-2">
+                        <div className="p-1.5 bg-gray-800/70 rounded-md">
                             {icon}
                         </div>
-                        <h4 className="text-lg font-semibold text-white">{title}</h4>
+                        <h4 className="text-base font-semibold text-white">{title}</h4>
                     </div>
                 )}
-                <div className={title ? "ml-11" : ""}>{children}</div>
+                <div className={title ? "ml-8" : ""}>{children}</div>
             </div>
         );
     };
 
-    // Renders a list item with a styled bullet
+    // Renders a list item with a styled bullet - more compact
     const StyledListItem = ({ children, type = "default" }) => {
         let bulletColor = "bg-gray-400";
 
@@ -242,8 +235,8 @@ const CorePage = () => {
         }
 
         return (
-            <li className="flex items-start gap-2 text-gray-300 mb-2">
-                <div className={`w-1.5 h-1.5 ${bulletColor} rounded-full mt-2`}></div>
+            <li className="flex items-start gap-1.5 text-gray-300 mb-1 text-sm">
+                <div className={`w-1 h-1 ${bulletColor} rounded-full mt-1.5`}></div>
                 <span>{children}</span>
             </li>
         );
@@ -254,9 +247,9 @@ const CorePage = () => {
         if (!codeExamples || !codeExamples['multi-content']) return null;
 
         return (
-            <div className="space-y-4">
+            <div className="space-y-3">
                 {codeExamples['multi-content'].map((example, idx) => (
-                    <div key={idx} className="mb-4">
+                    <div key={idx} className="mb-3">
                         <CodeBlock
                             code={example['simple-content']}
                             title={example.title}
@@ -267,13 +260,13 @@ const CorePage = () => {
         );
     };
 
-    // Recursive content rendering function - enhanced with better visual separation
+    // Recursive content rendering function - enhanced for compact view
     const renderContent = (content, contentType = "default") => {
         if (!content) return null;
 
         // String content
         if (typeof content === 'string') {
-            return <p className="text-gray-300">{content}</p>;
+            return <p className="text-gray-300 text-sm">{content}</p>;
         }
 
         // Array content
@@ -291,7 +284,7 @@ const CorePage = () => {
 
             // Mixed array content
             return (
-                <div className="space-y-4">
+                <div className="space-y-3">
                     {content.map((item, idx) => (
                         <div key={idx}>{renderContent(item, contentType)}</div>
                     ))}
@@ -304,7 +297,7 @@ const CorePage = () => {
             // Special case for code_examples
             if (content.title === 'code_examples' && content['multi-content']) {
                 return (
-                    <div className="mb-4">
+                    <div className="mb-3">
                         <ContentCard title={language === 'en' ? 'Code Examples' : 'Exemples de Code'} contentType="code">
                             {renderCodeExamples(content)}
                         </ContentCard>
@@ -317,7 +310,7 @@ const CorePage = () => {
                 // Special handling for code examples
                 if (content.title.includes('code') || content.title.includes('example')) {
                     return (
-                        <div className="mb-4">
+                        <div className="mb-3">
                             <CodeBlock code={content['simple-content']} title={content.title} />
                         </div>
                     );
@@ -335,8 +328,8 @@ const CorePage = () => {
 
                 // Regular content
                 return (
-                    <ContentCard title={content.title} contentType={derivedType} className="mb-4">
-                        <p className="text-gray-300">{content['simple-content']}</p>
+                    <ContentCard title={content.title} contentType={derivedType} className="mb-3">
+                        <p className="text-gray-300 text-sm">{content['simple-content']}</p>
                     </ContentCard>
                 );
             }
@@ -354,7 +347,7 @@ const CorePage = () => {
                                             contentType;
 
                 return (
-                    <ContentCard title={content.title} contentType={derivedType} className="mb-4">
+                    <ContentCard title={content.title} contentType={derivedType} className="mb-3">
                         {renderContent(content['multi-content'], derivedType)}
                     </ContentCard>
                 );
@@ -364,7 +357,7 @@ const CorePage = () => {
             const entries = Object.entries(content).filter(([key]) => key !== 'title');
             if (entries.length > 0) {
                 return (
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                         {entries.map(([key, value], idx) => {
                             // Skip rendering title
                             if (key === 'title') return null;
@@ -399,7 +392,7 @@ const CorePage = () => {
         return null;
     };
 
-    // Handle the special structure of topic sections with enhanced styling
+    // Handle the special structure of topic sections with more compact styling
     const renderTopicSections = (topic) => {
         if (!topic || !topic['multi-content']) return null;
 
@@ -415,36 +408,36 @@ const CorePage = () => {
 
         return (
             <>
-                {/* Introduction with enhanced styling */}
+                {/* Introduction with more compact styling */}
                 {introSections.length > 0 && (
-                    <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-xl p-6 border border-purple-500/30 mb-8 shadow-lg">
+                    <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-4 border border-purple-500/30 mb-4 shadow-md">
                         {introSections.map((section, idx) => {
                             const isDefinition = section.title === 'definition';
                             const icon = isDefinition ?
-                                <BookOpen className="w-5 h-5 text-purple-400" /> :
-                                <FileText className="w-5 h-5 text-cyan-400" />;
+                                <BookOpen className="w-4 h-4 text-purple-400" /> :
+                                <FileText className="w-4 h-4 text-cyan-400" />;
 
                             return (
-                                <div key={idx} className={`mb-4 ${idx > 0 ? 'mt-4' : ''}`}>
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <div className="p-2 bg-gray-800/70 rounded-lg">
+                                <div key={idx} className={`mb-2 ${idx > 0 ? 'mt-2' : ''}`}>
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <div className="p-1.5 bg-gray-800/70 rounded-md">
                                             {icon}
                                         </div>
-                                        <h3 className="text-lg font-semibold text-white">
+                                        <h3 className="text-base font-semibold text-white">
                                             {isDefinition ?
                                                 (language === 'en' ? 'Definition' : 'Définition') :
                                                 (language === 'en' ? 'Description' : 'Description')}
                                         </h3>
                                     </div>
-                                    <p className="text-gray-300 ml-11">{section['simple-content']}</p>
+                                    <p className="text-gray-300 ml-8 text-sm">{section['simple-content']}</p>
                                 </div>
                             );
                         })}
                     </div>
                 )}
 
-                {/* Main content sections with improved grid layout for multiple items */}
-                <div className="grid grid-cols-1 gap-6">
+                {/* Main content sections with simplified layout - no grid to avoid empty spaces */}
+                <div className="space-y-3">
                     {contentSections.map((section, idx) => {
                         // Determine content type for styling
                         let contentType =
@@ -459,20 +452,20 @@ const CorePage = () => {
                         // Special case for code_examples section
                         if (section.title === 'code_examples') {
                             return (
-                                <div key={idx} className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl p-6 border border-pink-500/30 shadow-lg">
-                                    <div className="flex items-center gap-3 mb-6">
-                                        <div className="p-2 bg-gray-800/70 rounded-lg">
-                                            <Code2 className="w-5 h-5 text-pink-400" />
+                                <div key={idx} className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg p-4 border border-pink-500/30 shadow-md">
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <div className="p-1.5 bg-gray-800/70 rounded-md">
+                                            <Code2 className="w-4 h-4 text-pink-400" />
                                         </div>
-                                        <h3 className="text-xl font-semibold text-pink-300">
+                                        <h3 className="text-lg font-semibold text-pink-300">
                                             {language === 'en' ? 'Code Examples' : 'Exemples de Code'}
                                         </h3>
                                     </div>
 
-                                    <div className="space-y-6">
+                                    <div className="space-y-3">
                                         {section['multi-content'].map((example, exIdx) => (
-                                            <div key={exIdx} className="bg-gray-800/70 rounded-lg p-4 border border-gray-700/50">
-                                                <h4 className="text-lg font-medium text-pink-300 mb-3">
+                                            <div key={exIdx} className="bg-gray-800/70 rounded-md p-3 border border-gray-700/50">
+                                                <h4 className="text-sm font-medium text-pink-300 mb-2">
                                                     {example.title}
                                                 </h4>
                                                 <CodeBlock code={example['simple-content']} />
@@ -484,12 +477,15 @@ const CorePage = () => {
                         }
 
                         return (
-                            <div key={idx} className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl p-6 border border-gray-700/50 shadow-lg">
-                                <div className="flex items-center gap-3 mb-6">
-                                    <div className="p-2 bg-gray-800/70 rounded-lg">
+                            <div
+                                key={idx}
+                                className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg p-4 border border-gray-700/50 shadow-md"
+                            >
+                                <div className="flex items-center gap-2 mb-3">
+                                    <div className="p-1.5 bg-gray-800/70 rounded-md">
                                         {getSectionIcon(section.title)}
                                     </div>
-                                    <h3 className="text-xl font-semibold text-purple-300">{section.title}</h3>
+                                    <h3 className="text-base font-semibold text-purple-300">{section.title}</h3>
                                 </div>
                                 {renderContent(section['multi-content'], contentType)}
                             </div>
@@ -513,9 +509,9 @@ const CorePage = () => {
                 onLanguageChange={handleLanguageChange}
             />
 
-            {/* Header with enhanced styling */}
-            <div className="mb-8 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 border border-purple-500/30 shadow-lg">
-                <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+            {/* Header with more compact styling */}
+            <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
+                <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                     {coreConcepts.title}
                 </h1>
             </div>
@@ -523,14 +519,14 @@ const CorePage = () => {
             {/* Navigation Tabs */}
             <TopicNavigation />
 
-            {/* Content with improved styling */}
-            <div className="space-y-8">
-                <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl p-6 border border-purple-500/20 shadow-lg">
-                    <div className="flex items-center gap-3 mb-6">
-                        <div className="p-2 bg-gray-800/70 rounded-lg">
+            {/* Content with more compact styling */}
+            <div className="space-y-4">
+                <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg p-4 border border-purple-500/20 shadow-md">
+                    <div className="flex items-center gap-2 mb-4">
+                        <div className="p-1.5 bg-gray-800/70 rounded-md">
                             {getTopicIcon(activeTopic)}
                         </div>
-                        <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                        <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                             {activeTopic}
                         </h2>
                     </div>
