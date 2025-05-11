@@ -115,7 +115,7 @@ const CorePage = () => {
     const getSectionIcon = (title) => {
         const lowerTitle = title?.toLowerCase() || '';
 
-        if (lowerTitle.includes('definition')) return <BookOpen className="w-4 h-4 text-purple-400" />;
+        if (lowerTitle.includes('definition') || lowerTitle.includes('définition')) return <BookOpen className="w-4 h-4 text-purple-400" />;
         if (lowerTitle.includes('description')) return <FileText className="w-4 h-4 text-cyan-400" />;
         if (lowerTitle.includes('benefit')) return <CheckCircle className="w-4 h-4 text-green-400" />;
         if (lowerTitle.includes('example')) return <Terminal className="w-4 h-4 text-pink-400" />;
@@ -134,6 +134,7 @@ const CorePage = () => {
 
         switch(contentType) {
             case "definition":
+            case "définition":
                 colorClasses = "bg-gradient-to-br from-purple-900/20 to-purple-800/10 border-purple-500/30";
                 break;
             case "example":
@@ -286,7 +287,7 @@ const CorePage = () => {
                             content.title.toLowerCase().includes('example') || content.title.toLowerCase().includes('code') ? 'example' :
                                 content.title.toLowerCase().includes('type') ? 'types' :
                                     content.title.toLowerCase().includes('feature') ? 'features' :
-                                        content.title.toLowerCase().includes('definition') ? 'definition' :
+                                        content.title.toLowerCase().includes('definition') || content.title.toLowerCase().includes('définition') ? 'definition' :
                                             contentType;
 
                 // Regular content
@@ -306,7 +307,7 @@ const CorePage = () => {
                             content.title.toLowerCase().includes('example') || content.title.toLowerCase().includes('code') ? 'example' :
                                 content.title.toLowerCase().includes('type') ? 'types' :
                                     content.title.toLowerCase().includes('feature') ? 'features' :
-                                        content.title.toLowerCase().includes('definition') ? 'definition' :
+                                        content.title.toLowerCase().includes('definition') || content.title.toLowerCase().includes('définition') ? 'definition' :
                                             contentType;
 
                 return (
@@ -332,7 +333,7 @@ const CorePage = () => {
                                         key.toLowerCase().includes('example') || key.toLowerCase().includes('code') ? 'example' :
                                             key.toLowerCase().includes('type') ? 'types' :
                                                 key.toLowerCase().includes('feature') ? 'features' :
-                                                    key.toLowerCase().includes('definition') ? 'definition' :
+                                                    key.toLowerCase().includes('definition') || key.toLowerCase().includes('définition') ? 'definition' :
                                                         contentType;
 
                             // For nested objects with no simple/multi content
@@ -361,12 +362,12 @@ const CorePage = () => {
 
         // Extract descriptions and definitions for introduction
         const introSections = topic['multi-content'].filter(content =>
-            content.title === 'description' || content.title === 'definition'
+            content.title === 'description' || content.title === 'definition' || content.title === 'définition'
         );
 
         // Get remaining sections
         const contentSections = topic['multi-content'].filter(content =>
-            content.title !== 'description' && content.title !== 'definition'
+            content.title !== 'description' && content.title !== 'definition' && content.title !== 'définition'
         );
 
         return (
@@ -375,7 +376,7 @@ const CorePage = () => {
                 {introSections.length > 0 && (
                     <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-4 border border-purple-500/30 mb-4 shadow-md">
                         {introSections.map((section, idx) => {
-                            const isDefinition = section.title === 'definition';
+                            const isDefinition = section.title === 'definition' || section.title === 'définition';
                             const icon = isDefinition ?
                                 <BookOpen className="w-4 h-4 text-purple-400" /> :
                                 <FileText className="w-4 h-4 text-cyan-400" />;
@@ -409,7 +410,7 @@ const CorePage = () => {
                                     section.title.toLowerCase().includes('example') || section.title.toLowerCase().includes('code') ? 'example' :
                                         section.title.toLowerCase().includes('type') ? 'types' :
                                             section.title.toLowerCase().includes('feature') ? 'features' :
-                                                section.title.toLowerCase().includes('definition') ? 'definition' :
+                                                section.title.toLowerCase().includes('definition') || section.title.toLowerCase().includes('définition') ? 'definition' :
                                                     'default';
 
                         // Special case for code_examples section
