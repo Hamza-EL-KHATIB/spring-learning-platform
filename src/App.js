@@ -16,6 +16,7 @@ import UnitTestingPage from './pages/topics/java/UnitTestingPage';
 import SpringBootPage from './pages/topics/spring/BootPage';
 import SpringCorePage from './pages/topics/spring/CorePage';
 import SpringDataPage from './pages/topics/spring/DataPage';
+import SecurityPage from './pages/topics/spring/SecurityPage';
 import SpringRestPage from './pages/topics/spring/RestPage';
 import SpringGraphQLPage from './pages/topics/spring/GraphQLPage';
 import SpringDefinitionsPage from './pages/topics/spring/DefinitionsPage';
@@ -52,7 +53,6 @@ import CasesPage from "./pages/topics/german/CasesPage";
 import JavaFundamentalsPage from "./pages/topics/java/JavaFundamentalsPage";
 import FunctionalProgrammingPage from "./pages/topics/java/FunctionalProgrammingPage";
 
-
 const App = () => {
     return (
         <LanguageProvider>
@@ -84,6 +84,7 @@ const App = () => {
                         <Route path="/spring/boot" element={<SpringBootPage/>}/>
                         <Route path="/spring/core" element={<SpringCorePage/>}/>
                         <Route path="/spring/data" element={<SpringDataPage/>}/>
+                        <Route path="/spring/security" element={<SecurityPage/>}/>
                         <Route path="/spring/rest" element={<SpringRestPage/>}/>
                         <Route path="/spring/graphql" element={<SpringGraphQLPage/>}/>
                         <Route path="/spring/definitions" element={<SpringDefinitionsPage/>}/>

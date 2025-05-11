@@ -45,6 +45,7 @@ const Sidebar = () => {
                 {path: '/spring/core', title: 'Spring Core'},
                 {path: '/spring/boot', title: 'Spring Boot'},
                 {path: '/spring/data', title: 'Spring Data'},
+                {path: '/spring/security', title: 'Spring Security'},
                 {path: '/spring/rest', title: 'REST APIs'},
                 {path: '/spring/graphql', title: 'GraphQL'},
                 {path: '/spring/definitions', title: 'Spring Definitions'}
