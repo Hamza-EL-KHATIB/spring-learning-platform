@@ -1,8 +1,9 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
 import TopicPage from './pages/TopicPage';
+import {LanguageProvider} from './components/LanguageContext';
 
 // Java imports
 import CollectionsPage from './pages/topics/java/CollectionsPage';
@@ -54,71 +55,73 @@ import FunctionalProgrammingPage from "./pages/topics/java/FunctionalProgramming
 
 const App = () => {
     return (
-        <Router>
-            <Layout>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
+        <LanguageProvider>
+            <Router>
+                <Layout>
+                    <Routes>
+                        <Route path="/" element={<HomePage/>}/>
 
-                    {/*German Routes*/}
-                    <Route path="/learn/vocabulary" element={<VocabularyPage />} />
-                    <Route path="/learn/konjugation" element={<KonjugationPage />} />
-                    <Route path="/learn/german" element={<LearningPortal />} />
-                    <Route path="/learn/german-cases" element={<GermanCasesPage />} />
-                    <Route path="/german/articles" element={<ArticlesPage />} />
-                    <Route path="/german/adjectives" element={<AdjectivesPage />} />
-                    <Route path="/german/cases" element={<CasesPage />} />
+                        {/*German Routes*/}
+                        <Route path="/learn/vocabulary" element={<VocabularyPage/>}/>
+                        <Route path="/learn/konjugation" element={<KonjugationPage/>}/>
+                        <Route path="/learn/german" element={<LearningPortal/>}/>
+                        <Route path="/learn/german-cases" element={<GermanCasesPage/>}/>
+                        <Route path="/german/articles" element={<ArticlesPage/>}/>
+                        <Route path="/german/adjectives" element={<AdjectivesPage/>}/>
+                        <Route path="/german/cases" element={<CasesPage/>}/>
 
 
-                    {/* Java Routes */}
-                    <Route path="/java/collections" element={<CollectionsPage />} />
-                    <Route path="/java/concurrency" element={<ConcurrencyPage />} />
-                    <Route path="/java/exceptions" element={<ExceptionsPage />} />
-                    <Route path="/java/features" element={<FeaturesPage />} />
-                    <Route path="/java/fundamentals" element={<JavaFundamentalsPage />} />
-                    <Route path="/java/testing" element={<UnitTestingPage />} />
-                    <Route path="/java/functional-programming" element={<FunctionalProgrammingPage />} />
+                        {/* Java Routes */}
+                        <Route path="/java/collections" element={<CollectionsPage/>}/>
+                        <Route path="/java/concurrency" element={<ConcurrencyPage/>}/>
+                        <Route path="/java/exceptions" element={<ExceptionsPage/>}/>
+                        <Route path="/java/features" element={<FeaturesPage/>}/>
+                        <Route path="/java/fundamentals" element={<JavaFundamentalsPage/>}/>
+                        <Route path="/java/testing" element={<UnitTestingPage/>}/>
+                        <Route path="/java/functional-programming" element={<FunctionalProgrammingPage/>}/>
 
-                    {/* Spring Routes */}
-                    <Route path="/spring/boot" element={<SpringBootPage />} />
-                    <Route path="/spring/core" element={<SpringCorePage />} />
-                    <Route path="/spring/data" element={<SpringDataPage />} />
-                    <Route path="/spring/rest" element={<SpringRestPage />} />
-                    <Route path="/spring/graphql" element={<SpringGraphQLPage />} />
-                    <Route path="/spring/definitions" element={<SpringDefinitionsPage />} />
+                        {/* Spring Routes */}
+                        <Route path="/spring/boot" element={<SpringBootPage/>}/>
+                        <Route path="/spring/core" element={<SpringCorePage/>}/>
+                        <Route path="/spring/data" element={<SpringDataPage/>}/>
+                        <Route path="/spring/rest" element={<SpringRestPage/>}/>
+                        <Route path="/spring/graphql" element={<SpringGraphQLPage/>}/>
+                        <Route path="/spring/definitions" element={<SpringDefinitionsPage/>}/>
 
-                    {/* Database Routes */}
-                    <Route path="/databases/sql" element={<SQLPage />} />
-                    <Route path="/databases/hibernate" element={<HibernatePage />} />
-                    <Route path="/databases/transactions" element={<TransactionsPage />} />
-                    <Route path="/databases/redis" element={<RedisPage />} />
+                        {/* Database Routes */}
+                        <Route path="/databases/sql" element={<SQLPage/>}/>
+                        <Route path="/databases/hibernate" element={<HibernatePage/>}/>
+                        <Route path="/databases/transactions" element={<TransactionsPage/>}/>
+                        <Route path="/databases/redis" element={<RedisPage/>}/>
 
-                    {/* Architecture Routes */}
-                    <Route path="/architecture/design-patterns" element={<DesignPatternsPage />} />
-                    <Route path="/architecture/solid" element={<SolidPage />} />
-                    <Route path="/architecture/principles" element={<PrinciplesPage />} />
+                        {/* Architecture Routes */}
+                        <Route path="/architecture/design-patterns" element={<DesignPatternsPage/>}/>
+                        <Route path="/architecture/solid" element={<SolidPage/>}/>
+                        <Route path="/architecture/principles" element={<PrinciplesPage/>}/>
 
-                    {/* DevOps Routes */}
-                    <Route path="/devops/git" element={<GitPage />} />
+                        {/* DevOps Routes */}
+                        <Route path="/devops/git" element={<GitPage/>}/>
 
-                    {/* Agile Routes */}
-                    <Route path="/agile/scrum" element={<ScrumPage />} />
+                        {/* Agile Routes */}
+                        <Route path="/agile/scrum" element={<ScrumPage/>}/>
 
-                    {/* Best Practices Routes */}
-                    <Route path="/best-practices/code-reviews" element={<CodeReviewsPage />} />
+                        {/* Best Practices Routes */}
+                        <Route path="/best-practices/code-reviews" element={<CodeReviewsPage/>}/>
 
-                    {/* Fallback Route for any topic that doesn't need special handling */}
-                    <Route path="/:section/:topic" element={<TopicPage />} />
+                        {/* Fallback Route for any topic that doesn't need special handling */}
+                        <Route path="/:section/:topic" element={<TopicPage/>}/>
 
-                    {/* 404 Route */}
-                    <Route path="*" element={
-                        <div className="text-center py-16">
-                            <h1 className="text-4xl font-bold text-white mb-4">404 - Page Not Found</h1>
-                            <p className="text-gray-400">The page you're looking for doesn't exist.</p>
-                        </div>
-                    } />
-                </Routes>
-            </Layout>
-        </Router>
+                        {/* 404 Route */}
+                        <Route path="*" element={
+                            <div className="text-center py-16">
+                                <h1 className="text-4xl font-bold text-white mb-4">404 - Page Not Found</h1>
+                                <p className="text-gray-400">The page you're looking for doesn't exist.</p>
+                            </div>
+                        }/>
+                    </Routes>
+                </Layout>
+            </Router>
+        </LanguageProvider>
     );
 };
 

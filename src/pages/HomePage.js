@@ -1,3 +1,4 @@
+// src/pages/HomePage.js with translations
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -15,8 +16,10 @@ import {
     FileCode,
     XSquare,
     BookOpenCheck,
-    LayoutGrid, FileCheck
+    LayoutGrid,
+    FileCheck
 } from 'lucide-react';
+import useTranslation from '../components/i18n/useTranslation';
 
 const CategorySection = ({ title, items }) => (
     <div className="bg-gray-800/40 rounded-lg p-6 border border-gray-700/50">
@@ -44,9 +47,11 @@ const CategorySection = ({ title, items }) => (
 );
 
 const HomePage = () => {
+    const { t } = useTranslation();
+
     const categories = {
         java: {
-            title: "Java Core",
+            title: t('home.javaCore'),
             items: [
                 { title: "Java Fundamentals", path: "/java/fundamentals", icon: BookOpen, description: "Fundamentals of Java" },
                 { title: "Collections Framework", path: "/java/collections", icon: Folder, description: "Lists, Sets, Maps, and more" },
@@ -58,7 +63,7 @@ const HomePage = () => {
             ]
         },
         spring: {
-            title: "Spring Framework",
+            title: t('home.springFramework'),
             items: [
                 { title: "Spring Core", path: "/spring/core", icon: Server, description: "IoC, DI, and core concepts" },
                 { title: "Spring Boot", path: "/spring/boot", icon: XSquare, description: "Auto-configuration and features" },
@@ -69,7 +74,7 @@ const HomePage = () => {
             ]
         },
         databases: {
-            title: "Database Technologies",
+            title: t('home.databaseTech'),
             items: [
                 { title: "SQL Fundamentals", path: "/databases/sql", icon: Database, description: "SQL basics and advanced queries" },
                 { title: "Hibernate", path: "/databases/hibernate", icon: FolderTree, description: "ORM and entity management" },
@@ -78,7 +83,7 @@ const HomePage = () => {
             ]
         },
         architecture: {
-            title: "Software Architecture",
+            title: t('home.softwareArch'),
             items: [
                 { title: "Design Patterns", path: "/architecture/design-patterns", icon: LayoutGrid, description: "Common software patterns" },
                 { title: "SOLID Principles", path: "/architecture/solid", icon: BookOpenCheck, description: "Design principles" },
@@ -86,13 +91,13 @@ const HomePage = () => {
             ]
         },
         processes: {
-            title: "Processes & Methodologies",
+            title: t('home.processes'),
             items: [
                 { title: "Scrum Framework", path: "/agile/scrum", icon: Users, description: "Agile project management with Scrum" }
             ]
         },
         bestPractices: {
-            title: "Best Practices",
+            title: t('home.bestPractices'),
             items: [
                 { title: "Code Review", path: "/best-practices/code-reviews", icon: FileCheck, description: "Code review guidelines" }
             ]
@@ -101,7 +106,6 @@ const HomePage = () => {
 
     return (
         <div className="space-y-8">
-
             {/* All Categories */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {Object.values(categories).map((category, index) => (

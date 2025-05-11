@@ -1,6 +1,8 @@
+// src/components/layout/Header.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Github, Menu, X, GraduationCap } from "lucide-react";
+import GlobalLanguageSelector from "../GlobalLanguageSelector";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,6 +34,9 @@ const Header = () => {
                             Architecture
                         </Link>
 
+                        {/* Language Selector */}
+                        <GlobalLanguageSelector />
+
                         {/* Utility Links */}
                         <div className="flex items-center space-x-4 pl-2 border-l border-gray-700">
                             <Link
@@ -42,8 +47,8 @@ const Header = () => {
                                 <div className="relative">
                                     <GraduationCap className="w-6 h-6" />
                                     <span className="absolute -top-2 -right-2 bg-purple-500/80 text-white text-[10px] font-medium px-1 rounded">
-      DE
-    </span>
+                                      DE
+                                    </span>
                                 </div>
                             </Link>
 
@@ -102,6 +107,11 @@ const Header = () => {
                         >
                             Architecture
                         </Link>
+
+                        {/* Mobile Language Selector */}
+                        <div className="py-2">
+                            <GlobalLanguageSelector />
+                        </div>
 
                         {/* Utility Links for Mobile */}
                         <div className="pt-2 mt-2 border-t border-gray-700">
