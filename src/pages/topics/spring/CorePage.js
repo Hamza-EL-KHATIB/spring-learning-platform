@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
     Box, Database, GitMerge, Settings, Shield, Code, Layers,
     BookOpen, FileText, CheckCircle, List, AlertTriangle, Terminal,
-    Code2, Cpu
+    Code2, Cpu, Zap, ArrowRight
 } from 'lucide-react';
 import coreConceptsEn from '../../../data/spring/core-concepts.json';
 import coreConceptsFr from '../../../data/spring/core-concepts-fr.json';
@@ -39,6 +39,8 @@ const CorePage = () => {
         switch (topicTitle) {
             case 'IoC':
             case 'DependencyInjection':
+                return <Box className="w-4 h-4" />;
+            case 'IoC vs DI vs Spring IoC Container':
                 return <Box className="w-4 h-4" />;
             case 'BeanLifecycle':
                 return <GitMerge className="w-4 h-4" />;
@@ -123,6 +125,8 @@ const CorePage = () => {
         if (lowerTitle.includes('types') || lowerTitle.includes('type')) return <Layers className="w-4 h-4 text-yellow-400" />;
         if (lowerTitle.includes('phase') || lowerTitle.includes('lifecycle')) return <GitMerge className="w-4 h-4 text-blue-400" />;
         if (lowerTitle.includes('keys') || lowerTitle.includes('features')) return <Cpu className="w-4 h-4 text-teal-400" />;
+        if (lowerTitle.includes('boot_specific') || lowerTitle.includes('spring_boot')) return <Zap className="w-4 h-4 text-green-500" />;
+        if (lowerTitle.includes('fundamental') || lowerTitle.includes('explanation')) return <ArrowRight className="w-4 h-4 text-blue-400" />;
 
         return <List className="w-4 h-4 text-gray-400" />;
     };
@@ -156,6 +160,21 @@ const CorePage = () => {
             case "disadvantages":
                 colorClasses = "bg-gradient-to-br from-red-900/20 to-red-800/10 border-red-500/30";
                 break;
+            case "boot_specific":
+                colorClasses = "bg-gradient-to-br from-green-900/30 to-emerald-800/20 border-green-500/40";
+                break;
+        }
+
+        // Check if this is a Spring Boot specific section
+        const lowerTitle = title?.toLowerCase() || '';
+        const isBootSpecific = lowerTitle.includes('boot_specific') ||
+            lowerTitle.includes('spring_boot') ||
+            lowerTitle.includes('boot_usage') ||
+            lowerTitle.includes('boot_feature');
+
+        if (isBootSpecific) {
+            contentType = "boot_specific";
+            colorClasses = "bg-gradient-to-br from-green-900/30 to-emerald-800/20 border-green-500/40";
         }
 
         if (!title && !children) return null;
@@ -169,7 +188,14 @@ const CorePage = () => {
                         <div className="p-1.5 bg-gray-800/70 rounded-md">
                             {icon}
                         </div>
-                        <h4 className="text-base font-semibold text-white">{title}</h4>
+                        <h4 className="text-base font-semibold text-white">
+                            {title}
+                            {isBootSpecific && (
+                                <span className="ml-2 text-xs bg-green-500/20 text-green-300 px-2 py-0.5 rounded">
+                                    Spring Boot
+                                </span>
+                            )}
+                        </h4>
                     </div>
                 )}
                 <div className={title ? "ml-8" : ""}>{children}</div>
@@ -195,6 +221,9 @@ const CorePage = () => {
                 break;
             case "examples":
                 bulletColor = "bg-pink-400";
+                break;
+            case "boot_specific":
+                bulletColor = "bg-emerald-400";
                 break;
         }
 
@@ -269,6 +298,17 @@ const CorePage = () => {
                 );
             }
 
+            // Special case for boot_specific_examples
+            if (content.title === 'boot_specific_examples' && content['multi-content']) {
+                return (
+                    <div className="mb-3">
+                        <ContentCard title="Spring Boot Examples" contentType="boot_specific">
+                            {renderCodeExamples(content)}
+                        </ContentCard>
+                    </div>
+                );
+            }
+
             // Simple content with title
             if (content.title && content['simple-content']) {
                 // Special handling for code examples
@@ -280,15 +320,28 @@ const CorePage = () => {
                     );
                 }
 
-                // Determine content type for styling
-                let derivedType =
-                    content.title.toLowerCase().includes('benefit') || content.title.toLowerCase().includes('advantage') ? 'benefits' :
-                        content.title.toLowerCase().includes('drawback') || content.title.toLowerCase().includes('disadvantage') ? 'drawbacks' :
-                            content.title.toLowerCase().includes('example') || content.title.toLowerCase().includes('code') ? 'example' :
-                                content.title.toLowerCase().includes('type') ? 'types' :
-                                    content.title.toLowerCase().includes('feature') ? 'features' :
-                                        content.title.toLowerCase().includes('definition') || content.title.toLowerCase().includes('définition') ? 'definition' :
-                                            contentType;
+                // Determine content type for styling based on the title
+                let derivedType = contentType;
+                const lowerTitle = content.title.toLowerCase();
+
+                // Check for specific section types based on title
+                if (lowerTitle.includes('benefit') || lowerTitle.includes('advantage')) {
+                    derivedType = 'benefits';
+                } else if (lowerTitle.includes('drawback') || lowerTitle.includes('disadvantage')) {
+                    derivedType = 'drawbacks';
+                } else if (lowerTitle.includes('example') || lowerTitle.includes('code')) {
+                    derivedType = 'example';
+                } else if (lowerTitle.includes('type')) {
+                    derivedType = 'types';
+                } else if (lowerTitle.includes('feature')) {
+                    derivedType = 'features';
+                } else if (lowerTitle.includes('definition') || lowerTitle.includes('définition')) {
+                    derivedType = 'definition';
+                } else if (lowerTitle.includes('boot_specific') || lowerTitle.includes('spring_boot') || lowerTitle.includes('boot_usage') || lowerTitle.includes('boot_feature')) {
+                    derivedType = 'boot_specific';
+                } else if (lowerTitle === 'ioc_explanation' || lowerTitle === 'di_explanation' || lowerTitle === 'detection') {
+                    derivedType = 'explanation';
+                }
 
                 // Regular content
                 return (
@@ -308,7 +361,8 @@ const CorePage = () => {
                                 content.title.toLowerCase().includes('type') ? 'types' :
                                     content.title.toLowerCase().includes('feature') ? 'features' :
                                         content.title.toLowerCase().includes('definition') || content.title.toLowerCase().includes('définition') ? 'definition' :
-                                            contentType;
+                                            content.title.toLowerCase().includes('boot_specific') || content.title.toLowerCase().includes('spring_boot') ? 'boot_specific' :
+                                                contentType;
 
                 return (
                     <ContentCard title={content.title} contentType={derivedType} className="mb-3">
@@ -334,7 +388,8 @@ const CorePage = () => {
                                             key.toLowerCase().includes('type') ? 'types' :
                                                 key.toLowerCase().includes('feature') ? 'features' :
                                                     key.toLowerCase().includes('definition') || key.toLowerCase().includes('définition') ? 'definition' :
-                                                        contentType;
+                                                        key.toLowerCase().includes('boot_specific') || key.toLowerCase().includes('spring_boot') ? 'boot_specific' :
+                                                            contentType;
 
                             // For nested objects with no simple/multi content
                             if (typeof value === 'object' && value !== null && !Array.isArray(value) &&
@@ -411,7 +466,8 @@ const CorePage = () => {
                                         section.title.toLowerCase().includes('type') ? 'types' :
                                             section.title.toLowerCase().includes('feature') ? 'features' :
                                                 section.title.toLowerCase().includes('definition') || section.title.toLowerCase().includes('définition') ? 'definition' :
-                                                    'default';
+                                                    section.title.toLowerCase().includes('boot_specific') || section.title.toLowerCase().includes('spring_boot') ? 'boot_specific' :
+                                                        'default';
 
                         // Special case for code_examples section
                         if (section.title === 'code_examples') {
@@ -440,16 +496,57 @@ const CorePage = () => {
                             );
                         }
 
+                        // Special case for boot_specific_examples section
+                        if (section.title === 'boot_specific_examples') {
+                            return (
+                                <div key={idx} className="bg-gradient-to-br from-green-900/20 to-emerald-800/20 rounded-lg p-4 border border-green-500/30 shadow-md">
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <div className="p-1.5 bg-gray-800/70 rounded-md">
+                                            <Zap className="w-4 h-4 text-green-400" />
+                                        </div>
+                                        <h3 className="text-lg font-semibold text-green-300">
+                                            Spring Boot Examples
+                                            <span className="ml-2 text-xs bg-green-500/20 text-green-300 px-2 py-0.5 rounded">Boot</span>
+                                        </h3>
+                                    </div>
+
+                                    <div className="space-y-3">
+                                        {section['multi-content'].map((example, exIdx) => (
+                                            <div key={exIdx} className="bg-gray-800/70 rounded-md p-3 border border-gray-700/50">
+                                                <h4 className="text-sm font-medium text-green-300 mb-2">
+                                                    {example.title}
+                                                </h4>
+                                                <CodeBlock code={example['simple-content']} />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            );
+                        }
+
+                        // Get color classes based on content type
+                        let colorClasses = "bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-gray-700/50";
+                        if (contentType === 'boot_specific') {
+                            colorClasses = "bg-gradient-to-br from-green-900/20 to-emerald-800/20 border-green-500/30";
+                        }
+
                         return (
                             <div
                                 key={idx}
-                                className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg p-4 border border-gray-700/50 shadow-md"
+                                className={`rounded-lg p-4 ${colorClasses} shadow-md`}
                             >
                                 <div className="flex items-center gap-2 mb-3">
                                     <div className="p-1.5 bg-gray-800/70 rounded-md">
                                         {getSectionIcon(section.title)}
                                     </div>
-                                    <h3 className="text-base font-semibold text-purple-300">{section.title}</h3>
+                                    <h3 className="text-base font-semibold text-purple-300">
+                                        {section.title}
+                                        {contentType === 'boot_specific' && (
+                                            <span className="ml-2 text-xs bg-green-500/20 text-green-300 px-2 py-0.5 rounded">
+                                                Boot
+                                            </span>
+                                        )}
+                                    </h3>
                                 </div>
                                 {renderContent(section['multi-content'], contentType)}
                             </div>
