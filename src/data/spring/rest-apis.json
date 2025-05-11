@@ -1,0 +1,1028 @@
+{
+  "id": "rest-apis",
+  "title": "REST APIs",
+  "topics": [
+    {
+      "title": "Core Concepts",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "REST (Representational State Transfer) is an architectural style for designing networked applications. It's a set of guidelines for creating APIs that focus on stateless communication, standard methods, and resource-based design."
+        },
+        {
+          "title": "What is REST?",
+          "simple-content": "REST (Representational State Transfer) is an architectural style for designing networked applications. It's a set of guidelines for creating APIs that focus on:\n\n- Stateless communication\n- Standard methods\n- Resource-based design"
+        },
+        {
+          "title": "RESTful APIs",
+          "simple-content": "A RESTful API is a web service that follows REST principles/guidelines. REST APIs use HTTP protocols to perform CRUD operations (Create, Read, Update, Delete) on resources using standard HTTP methods."
+        },
+        {
+          "title": "Key REST Principles",
+          "multi-content": [
+            {
+              "title": "Separation of Client and Server",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Independent implementation of client and server"
+                },
+                {
+                  "title": "Advantage",
+                  "simple-content": "Independence allows easier maintenance, scalability, and evolution"
+                }
+              ]
+            },
+            {
+              "title": "Stateless",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "The server doesn't store client context between requests"
+                },
+                {
+                  "title": "Advantage",
+                  "simple-content": "Simplifies server implementation by not overloading it with state management"
+                }
+              ]
+            },
+            {
+              "title": "Uniform Interface",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Resources identified by URLs (e.g., www.abc.com/api/questions)"
+                },
+                {
+                  "title": "Advantage",
+                  "simple-content": "Standardized URLs make it easy to understand and use the API"
+                }
+              ]
+            },
+            {
+              "title": "Cacheable",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "API responses should be cacheable to improve performance"
+                },
+                {
+                  "title": "Advantage",
+                  "simple-content": "Reduces the need for repeated requests to the server"
+                }
+              ]
+            },
+            {
+              "title": "Layered System",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "The system should follow a layered pattern"
+                },
+                {
+                  "title": "Advantage",
+                  "simple-content": "Promotes modular design and separation of concerns (like MVC pattern)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "HTTP Methods",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "HTTP methods (also called verbs) define the type of operation to be performed on a resource."
+        },
+        {
+          "title": "Common HTTP Methods",
+          "multi-content": [
+            {
+              "title": "GET",
+              "multi-content": [
+                {
+                  "title": "Action",
+                  "simple-content": "Retrieve data from a resource"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "www.example.com/users (retrieve users list)"
+                },
+                {
+                  "title": "Idempotent",
+                  "simple-content": "Yes"
+                },
+                {
+                  "title": "Spring Annotation",
+                  "simple-content": "@GetMapping"
+                }
+              ]
+            },
+            {
+              "title": "POST",
+              "multi-content": [
+                {
+                  "title": "Action",
+                  "simple-content": "Submit data to create a resource"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "www.example.com/users (create a new user)"
+                },
+                {
+                  "title": "Idempotent",
+                  "simple-content": "No"
+                },
+                {
+                  "title": "Spring Annotation",
+                  "simple-content": "@PostMapping"
+                }
+              ]
+            },
+            {
+              "title": "PUT",
+              "multi-content": [
+                {
+                  "title": "Action",
+                  "simple-content": "Update a resource or create it if it doesn't exist"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "www.example.com/users/123 (update user 123)"
+                },
+                {
+                  "title": "Idempotent",
+                  "simple-content": "Yes"
+                },
+                {
+                  "title": "Spring Annotation",
+                  "simple-content": "@PutMapping"
+                }
+              ]
+            },
+            {
+              "title": "DELETE",
+              "multi-content": [
+                {
+                  "title": "Action",
+                  "simple-content": "Remove a resource"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "www.example.com/users/123 (delete user 123)"
+                },
+                {
+                  "title": "Idempotent",
+                  "simple-content": "Yes"
+                },
+                {
+                  "title": "Spring Annotation",
+                  "simple-content": "@DeleteMapping"
+                }
+              ]
+            },
+            {
+              "title": "PATCH",
+              "multi-content": [
+                {
+                  "title": "Action",
+                  "simple-content": "Partially update a resource"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "www.example.com/users/123 (update specific fields)"
+                },
+                {
+                  "title": "Idempotent",
+                  "simple-content": "No"
+                },
+                {
+                  "title": "Spring Annotation",
+                  "simple-content": "@PatchMapping"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "PUT vs PATCH",
+          "multi-content": [
+            "PUT: Full resource replacement - client sends the complete updated resource",
+            "PATCH: Partial update - client sends only the specific changes or fields to modify"
+          ]
+        },
+        {
+          "title": "Idempotence",
+          "multi-content": [
+            {
+              "title": "Definition",
+              "simple-content": "Idempotence means performing an operation multiple times should have the same outcome as performing it once."
+            },
+            {
+              "title": "Idempotent Methods",
+              "multi-content": [
+                "GET",
+                "PUT",
+                "DELETE"
+              ]
+            },
+            {
+              "title": "Non-idempotent Methods",
+              "multi-content": [
+                "POST",
+                "PATCH"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "HTTP Request & Response Structure",
+      "multi-content": [
+        {
+          "title": "HTTP Request",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "An HTTP request sent by a client contains:\n\n- HTTP method (GET, POST, etc.)\n- URL (endpoint)\n- Headers (metadata about the request)\n- Body (data, usually in JSON or XML format)"
+            },
+            {
+              "title": "Example",
+              "simple-content": "POST /api/user/create HTTP/1.1\nHost: api-server.example.com\nContent-Type: application/json\n\n{\n  \"uid\": \"john\",\n  \"password\": \"123\"\n}"
+            }
+          ]
+        },
+        {
+          "title": "HTTP Response",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "An HTTP response sent by the server contains:\n\n- Status code (indicating success, failure, etc.)\n- Headers (metadata about the response)\n- Body (requested data or confirmation message)"
+            },
+            {
+              "title": "Example",
+              "simple-content": "HTTP/1.1 201 Created\nContent-Type: application/json\n\n{\n  \"userId\": 123,\n  \"message\": \"User created\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Status Codes",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "Status codes indicate the result of the HTTP request."
+        },
+        {
+          "title": "1xx - Informational",
+          "multi-content": [
+            "100 Continue"
+          ]
+        },
+        {
+          "title": "2xx - Success",
+          "multi-content": [
+            {
+              "title": "Common Codes",
+              "multi-content": [
+                "200 OK: Request succeeded",
+                "201 Created: Resource created successfully",
+                "202 Accepted: Request accepted for processing",
+                "204 No Content: Request succeeded with no content to return"
+              ]
+            },
+            {
+              "title": "Common Usage",
+              "multi-content": [
+                "200 OK: Successful GET, PUT, PATCH",
+                "201 Created: Successful POST",
+                "204 No Content: Successful DELETE"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "3xx - Redirection",
+          "multi-content": [
+            "300 Multiple Choices",
+            "301 Moved Permanently",
+            "302 Found"
+          ]
+        },
+        {
+          "title": "4xx - Client Error",
+          "multi-content": [
+            {
+              "title": "Common Codes",
+              "multi-content": [
+                "400 Bad Request: Invalid syntax",
+                "401 Unauthorized: Authentication required",
+                "403 Forbidden: Client doesn't have access rights",
+                "404 Not Found: Resource doesn't exist",
+                "405 Method Not Allowed: Method not supported for the resource"
+              ]
+            },
+            {
+              "title": "Common Usage",
+              "multi-content": [
+                "400 Bad Request: Invalid request",
+                "404 Not Found: Resource not found"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "5xx - Server Error",
+          "multi-content": [
+            {
+              "title": "Common Codes",
+              "multi-content": [
+                "500 Internal Server Error: Generic server error",
+                "501 Not Implemented: Server doesn't support the functionality",
+                "502 Bad Gateway: Server acting as gateway received invalid response",
+                "503 Service Unavailable: Server temporarily unavailable"
+              ]
+            },
+            {
+              "title": "Common Usage",
+              "multi-content": [
+                "500 Internal Server Error: Server error"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Content Negotiation",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "Content negotiation allows clients and servers to agree on the format of the data being exchanged."
+        },
+        {
+          "title": "Content Types",
+          "multi-content": [
+            {
+              "title": "application/json",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "JSON format"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)"
+                }
+              ]
+            },
+            {
+              "title": "application/xml",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "XML format"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@GetMapping(produces = MediaType.APPLICATION_XML_VALUE)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Request Headers",
+          "multi-content": [
+            {
+              "title": "Accept",
+              "simple-content": "Specifies desired response format"
+            },
+            {
+              "title": "Content-Type",
+              "simple-content": "Specifies request body format"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Advanced REST Concepts",
+      "multi-content": [
+        {
+          "title": "REST API Versioning",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Versioning helps maintain backward compatibility when making changes to APIs."
+            },
+            {
+              "title": "Strategies",
+              "multi-content": [
+                {
+                  "title": "URL Versioning",
+                  "simple-content": "/api/v1/users"
+                },
+                {
+                  "title": "Header Versioning",
+                  "simple-content": "X-API-Version: 1"
+                },
+                {
+                  "title": "Accept Header Versioning",
+                  "simple-content": "Accept: application/vnd.company.app-v1+json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "CORS",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "CORS (Cross-Origin Resource Sharing) is a security feature implemented in web browsers that restricts web pages from making requests to a different domain than the one that served the web page."
+            },
+            {
+              "title": "Requests are restricted when they differ in",
+              "multi-content": [
+                "Domain (example.com vs. xyz.com)",
+                "Subdomain (example.com vs. api.example.com)",
+                "Protocol (http vs. https)",
+                "Port (example.com vs. example.com:3000)"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Serialization & Deserialization",
+          "multi-content": [
+            {
+              "title": "Serialization",
+              "simple-content": "Converting an object into a format (JSON, XML) that can be stored or transmitted"
+            },
+            {
+              "title": "Deserialization",
+              "simple-content": "Converting serialized data back into an object"
+            },
+            {
+              "title": "Types",
+              "multi-content": [
+                "JSON Serialization",
+                "XML Serialization",
+                "Binary Serialization"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Authentication & Authorization",
+          "multi-content": [
+            {
+              "title": "Authentication",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Verifies user identity through credentials like username/password"
+                },
+                {
+                  "title": "Methods",
+                  "multi-content": [
+                    "Basic Auth",
+                    "JWT",
+                    "OAuth2"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Authorization",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Determines what resources an authenticated user can access"
+                },
+                {
+                  "title": "Annotations",
+                  "multi-content": [
+                    {
+                      "title": "@PreAuthorize",
+                      "simple-content": "@PreAuthorize(\"hasRole('ADMIN')\")"
+                    },
+                    {
+                      "title": "@Secured",
+                      "simple-content": "@Secured(\"ROLE_ADMIN\")"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Token-Based Authentication with JWT",
+              "multi-content": [
+                "Client sends credentials (username/password)",
+                "Server authenticates and creates a JWT token",
+                "Server returns token to client",
+                "Client stores token in local storage",
+                "Client includes token in the Authorization header for subsequent requests",
+                "Server validates token before processing requests"
+              ]
+            },
+            {
+              "title": "JWT Structure",
+              "multi-content": [
+                "Header: Token type and algorithm (e.g., HS256)",
+                "Payload: Contains claims (data)",
+                "Signature: Used to verify token integrity"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Spring MVC Implementation",
+      "multi-content": [
+        {
+          "title": "RestController",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Combines @Controller and @ResponseBody"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Basic RestController",
+                  "simple-content": "@RestController\n@RequestMapping(\"/api/users\")\npublic class UserController {\n    @GetMapping(\"/{id}\")\n    public User getUser(@PathVariable Long id) {\n        return userService.findById(id);\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Request Mappings",
+          "multi-content": [
+            {
+              "title": "@RequestMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "General purpose mapping"
+                },
+                {
+                  "title": "Attributes",
+                  "multi-content": [
+                    "method",
+                    "path",
+                    "params",
+                    "headers",
+                    "consumes",
+                    "produces"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "@GetMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Shortcut for @RequestMapping(method = GET)"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@GetMapping(\"/users\")"
+                }
+              ]
+            },
+            {
+              "title": "@PostMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Shortcut for @RequestMapping(method = POST)"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@PostMapping(\"/users\")"
+                }
+              ]
+            },
+            {
+              "title": "@PutMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Shortcut for @RequestMapping(method = PUT)"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@PutMapping(\"/users/{id}\")"
+                }
+              ]
+            },
+            {
+              "title": "@DeleteMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Shortcut for @RequestMapping(method = DELETE)"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@DeleteMapping(\"/users/{id}\")"
+                }
+              ]
+            },
+            {
+              "title": "@PatchMapping",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Shortcut for @RequestMapping(method = PATCH)"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@PatchMapping(\"/users/{id}\")"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Request Parameters",
+          "multi-content": [
+            {
+              "title": "@PathVariable",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "URL template variable"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@GetMapping(\"/{id}\")\npublic User get(@PathVariable Long id)"
+                }
+              ]
+            },
+            {
+              "title": "@RequestParam",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Query parameter"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@GetMapping\npublic List<User> search(@RequestParam String name)"
+                }
+              ]
+            },
+            {
+              "title": "@RequestBody",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "HTTP request body"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@PostMapping\npublic User create(@RequestBody User user)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Response Handling",
+          "multi-content": [
+            {
+              "title": "ResponseEntity",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Represents HTTP response including status, headers, and body"
+                },
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "ResponseEntity Example",
+                      "simple-content": "@GetMapping(\"/{id}\")\npublic ResponseEntity<User> getUser(@PathVariable Long id) {\n    User user = userService.findById(id);\n    return ResponseEntity.ok(user);\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Error Handling",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "Managing exceptions and errors in REST APIs"
+        },
+        {
+          "title": "@ControllerAdvice",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Global exception handling"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Global Exception Handler",
+                  "simple-content": "@ControllerAdvice\npublic class GlobalExceptionHandler {\n    @ExceptionHandler(ResourceNotFoundException.class)\n    public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex) {\n        return ResponseEntity.status(HttpStatus.NOT_FOUND)\n                           .body(new ErrorResponse(ex.getMessage()));\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "@ExceptionHandler",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Method-level exception handling"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Validation Exception Handler",
+                  "simple-content": "@ExceptionHandler(ValidationException.class)\npublic ResponseEntity<ErrorResponse> handleValidation(ValidationException ex) {\n    return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "REST API Testing",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "Testing REST endpoints"
+        },
+        {
+          "title": "@WebMvcTest",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Test Spring MVC controllers"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "MVC Test Example",
+                  "simple-content": "@WebMvcTest(UserController.class)\nclass UserControllerTest {\n    @Autowired\n    private MockMvc mockMvc;\n\n    @Test\n    void testGetUser() {\n        mockMvc.perform(get(\"/api/users/1\"))\n               .andExpect(status().isOk());\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "RestTemplate",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Test REST clients"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "RestTemplate Example",
+                  "simple-content": "@Test\nvoid testRestClient() {\n    RestTemplate restTemplate = new RestTemplate();\n    User user = restTemplate.getForObject(\"/api/users/1\", User.class);\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "REST API Best Practices",
+      "multi-content": [
+        {
+          "title": "URL Design",
+          "multi-content": [
+            "Use nouns for resources, not verbs",
+            "Use plural nouns for collections (`/users` instead of `/user`)",
+            "Keep URLs simple and intuitive",
+            "Use sub-resources for relationships (`/users/123/orders`)"
+          ]
+        },
+        {
+          "title": "Security",
+          "multi-content": [
+            "Implement proper authentication",
+            "Use HTTPS",
+            "Validate input",
+            "Implement rate limiting",
+            "Consider using OAuth2 for authorization"
+          ]
+        },
+        {
+          "title": "Documentation",
+          "multi-content": [
+            {
+              "title": "Best Practices",
+              "multi-content": [
+                "Document your API with tools like Swagger/OpenAPI",
+                "Include examples and explanations for endpoints",
+                "Document error responses and status codes"
+              ]
+            },
+            {
+              "title": "Tools",
+              "multi-content": [
+                {
+                  "title": "Swagger/OpenAPI",
+                  "simple-content": "API documentation and testing"
+                },
+                {
+                  "title": "Spring REST Docs",
+                  "simple-content": "Test-driven documentation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Error Handling",
+          "multi-content": [
+            "Use appropriate status codes",
+            "Provide meaningful error messages",
+            "Include error codes for client identification"
+          ]
+        },
+        {
+          "title": "Performance",
+          "multi-content": [
+            "Implement proper caching",
+            "Use pagination for large data sets",
+            "Consider asynchronous processing for time-consuming operations"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Differences Between REST and Other APIs",
+      "multi-content": [
+        {
+          "title": "REST vs SOAP",
+          "multi-content": [
+            {
+              "title": "Architecture",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Architectural style"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Protocol"
+                }
+              ]
+            },
+            {
+              "title": "Protocol",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Uses HTTP/HTTPS"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Can use various protocols (HTTP, SMTP, etc.)"
+                }
+              ]
+            },
+            {
+              "title": "Message Format",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Lightweight formats (JSON, XML)"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Typically XML"
+                }
+              ]
+            },
+            {
+              "title": "State",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Stateless"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Can be stateful or stateless"
+                }
+              ]
+            },
+            {
+              "title": "Error Handling",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "HTTP status codes"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Defines its own fault mechanism"
+                }
+              ]
+            },
+            {
+              "title": "Performance",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Generally faster"
+                },
+                {
+                  "title": "SOAP",
+                  "simple-content": "Can be slower due to XML processing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "REST vs GraphQL",
+          "multi-content": [
+            {
+              "title": "Endpoints",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Multiple endpoints for different resources"
+                },
+                {
+                  "title": "GraphQL",
+                  "simple-content": "Single endpoint for all operations"
+                }
+              ]
+            },
+            {
+              "title": "Data Fetching",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Fixed response structure per endpoint"
+                },
+                {
+                  "title": "GraphQL",
+                  "simple-content": "Client specifies exactly what data it needs"
+                }
+              ]
+            },
+            {
+              "title": "Overfetching",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Common issue (returns all fields)"
+                },
+                {
+                  "title": "GraphQL",
+                  "simple-content": "Eliminated (client requests only needed fields)"
+                }
+              ]
+            },
+            {
+              "title": "Versioning",
+              "multi-content": [
+                {
+                  "title": "REST",
+                  "simple-content": "Requires explicit versioning"
+                },
+                {
+                  "title": "GraphQL",
+                  "simple-content": "Evolves schema without versioning"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
