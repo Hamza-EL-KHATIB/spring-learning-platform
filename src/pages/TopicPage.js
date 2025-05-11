@@ -9,7 +9,6 @@ import exceptionsJson from '../data/java/exceptions.json';
 import javaFundamentalsJson from '../data/java/java-fundamentals.json';
 
 // Spring imports
-import dataJson from '../data/spring/data.json';
 import restJson from '../data/spring/rest.json';
 //import securityJson from '../data/spring/security.json';
 
@@ -38,7 +37,6 @@ const jsonData = {
         fundamentals: javaFundamentalsJson,
     },
     spring: {
-        data: dataJson,
         rest: restJson,
         //security: securityJson
     },
