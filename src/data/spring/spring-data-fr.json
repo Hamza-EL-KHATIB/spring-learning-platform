@@ -1,0 +1,865 @@
+{
+  "id": "spring-data-guide",
+  "title": "Spring Data: Un Guide Complet",
+  "topics": [
+    {
+      "title": "Évolution de l'Accès aux Bases de Données en Java",
+      "multi-content": [
+        {
+          "title": "JDBC",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "L'API fondamentale pour la connectivité aux bases de données en Java"
+            },
+            {
+              "title": "Caractéristiques",
+              "multi-content": [
+                "Nécessite une gestion manuelle des connexions, l'écriture SQL et le traitement des résultats",
+                "Verbeux et sujet aux erreurs avec beaucoup de code répétitif"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Implémentation",
+                  "simple-content": "Connection conn = DriverManager.getConnection(url, username, password);\nPreparedStatement stmt = conn.prepareStatement(\"SELECT * FROM users WHERE id = ?\");\nstmt.setLong(1, userId);\nResultSet rs = stmt.executeQuery();\n// Traiter les résultats manuellement, gérer les exceptions, fermer les ressources..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "ORM",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Approche pour combler le fossé entre la programmation orientée objet et les bases de données relationnelles"
+            },
+            {
+              "title": "Caractéristiques",
+              "multi-content": [
+                "Fait correspondre les objets Java aux tables de base de données et vice versa",
+                "Réduit le code répétitif et l'écriture manuelle de SQL",
+                "Acteurs principaux: Hibernate, EclipseLink, OpenJPA"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "JPA",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Spécification standard (JSR 338) pour l'ORM en Java"
+            },
+            {
+              "title": "Caractéristiques",
+              "multi-content": [
+                "Définit comment les objets persistants doivent être mappés, stockés et récupérés",
+                "Fournit des opérations de persistance indépendantes du fournisseur à travers des annotations et des interfaces"
+              ]
+            },
+            {
+              "title": "Composants",
+              "multi-content": [
+                "EntityManagerFactory - Crée des instances d'EntityManager",
+                "EntityManager - Interface principale pour les opérations de persistance",
+                "Annotations comme @Entity, @Id, @Column, etc."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Hibernate",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "L'implémentation JPA la plus populaire"
+            },
+            {
+              "title": "Caractéristiques",
+              "multi-content": [
+                "Existe depuis avant JPA et offre des fonctionnalités au-delà de la spécification JPA"
+              ]
+            },
+            {
+              "title": "Composants",
+              "multi-content": [
+                "SessionFactory (implémente EntityManagerFactory)",
+                "Session (implémente EntityManager)",
+                "Fonctionnalités spécifiques à Hibernate comme les types personnalisés, les filtres, etc."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Spring Data JPA",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Module Spring qui simplifie l'implémentation des repositories basés sur JPA"
+            },
+            {
+              "title": "Caractéristiques",
+              "multi-content": [
+                "Élimine les implémentations répétitives de DAO",
+                "Construit sur JPA mais ajoute des fonctionnalités de commodité significatives",
+                "Fournit une abstraction de repository avec des opérations CRUD prêtes à l'emploi",
+                "Permet la création de requêtes à partir des noms de méthodes"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "code_examples",
+          "multi-content": [
+            {
+              "title": "Hiérarchie de la Pile Technologique",
+              "simple-content": "Spring Data\n    │\n    ├── Spring Data Commons (abstractions partagées)\n    │\n    ├── Spring Data JPA ──────┐\n    │                         │\n    │                         ▼\n    │                     JPA (Spécification)\n    │                         │\n    └── Spring Data MongoDB   │\n    └── Spring Data Redis     │\n    └── Spring Data Cassandra │\n    └── ...                   │\n                              ▼\n                        Hibernate/EclipseLink/OpenJPA\n                              │\n                              ▼\n                            JDBC\n                              │\n                              ▼\n                          Base de données"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Composants de Spring Data JPA",
+      "multi-content": [
+        {
+          "title": "Interfaces Repository",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Spring Data fournit une hiérarchie d'interfaces repository"
+            },
+            {
+              "title": "Types",
+              "multi-content": [
+                {
+                  "title": "Repository",
+                  "simple-content": "Interface marqueur"
+                },
+                {
+                  "title": "CrudRepository",
+                  "simple-content": "Opérations CRUD basiques"
+                },
+                {
+                  "title": "PagingAndSortingRepository",
+                  "simple-content": "Ajoute la pagination et le tri"
+                },
+                {
+                  "title": "JpaRepository",
+                  "simple-content": "Fonctionnalités spécifiques à JPA comme flush, opérations par lots"
+                }
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Définition de Repository Basique",
+                  "simple-content": "// Définition de repository basique\n@Repository\npublic interface UserRepository extends JpaRepository<User, Long> {\n    // Méthodes personnalisées définies ici\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "EntityManager vs Session Hibernate",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Comparaison entre l'EntityManager de JPA et la Session de Hibernate"
+            },
+            {
+              "title": "Comparaison",
+              "multi-content": [
+                "EntityManager: Interface JPA standard | Session: Interface spécifique à Hibernate",
+                "EntityManager: persist(), merge(), remove(), find() | Session: save(), update(), delete(), get()",
+                "EntityManager: getTransaction() | Session: beginTransaction()",
+                "EntityManager: createQuery() | Session: createQuery() avec des fonctionnalités spécifiques à Hibernate"
+              ]
+            },
+            {
+              "title": "Description d'Utilisation",
+              "simple-content": "Spring Data JPA utilise généralement EntityManager en interne, mais vous pouvez accéder à la Session Hibernate sous-jacente si nécessaire"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Accès à la Session Hibernate",
+                  "simple-content": "EntityManager entityManager = // injecté ou obtenu\nSession session = entityManager.unwrap(Session.class);"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Méthodes de Requête",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Capacité de Spring Data à dériver des requêtes à partir des noms de méthodes"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Recherche par propriété unique",
+                  "simple-content": "User findByEmail(String email);"
+                },
+                {
+                  "title": "Conditions multiples avec opérateurs logiques",
+                  "simple-content": "List<User> findByLastNameAndFirstName(String lastName, String firstName);"
+                },
+                {
+                  "title": "Requêtes avec opérateurs de comparaison",
+                  "simple-content": "List<User> findByAgeLessThan(int age);"
+                },
+                {
+                  "title": "Vérifications d'existence",
+                  "simple-content": "boolean existsByEmail(String email);"
+                },
+                {
+                  "title": "Méthodes de comptage",
+                  "simple-content": "long countByStatus(String status);"
+                },
+                {
+                  "title": "Limiter les résultats",
+                  "simple-content": "List<User> findTop3ByOrderByCreatedAtDesc();"
+                }
+              ]
+            },
+            {
+              "title": "Opérateurs",
+              "multi-content": [
+                {
+                  "title": "And",
+                  "simple-content": "findByLastNameAndFirstName"
+                },
+                {
+                  "title": "Or",
+                  "simple-content": "findByEmailOrPhone"
+                },
+                {
+                  "title": "Between",
+                  "simple-content": "findByAgeBetween"
+                },
+                {
+                  "title": "LessThan",
+                  "simple-content": "findByAgeLessThan"
+                },
+                {
+                  "title": "GreaterThan",
+                  "simple-content": "findByAgeGreaterThan"
+                },
+                {
+                  "title": "Like",
+                  "simple-content": "findByNameLike"
+                },
+                {
+                  "title": "OrderBy",
+                  "simple-content": "findByAgeOrderByNameDesc"
+                },
+                {
+                  "title": "True/False",
+                  "simple-content": "findByActiveTrue"
+                },
+                {
+                  "title": "IgnoreCase",
+                  "simple-content": "findByNameIgnoreCase"
+                },
+                {
+                  "title": "In",
+                  "simple-content": "findByStatusIn(List<String> statuses)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Types de Requêtes",
+      "multi-content": [
+        {
+          "title": "JPQL",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Langage de requête orienté objet de JPA"
+            },
+            {
+              "title": "Caractéristiques",
+              "multi-content": [
+                "Basé sur les entités et les propriétés (non pas sur les tables et les colonnes)",
+                "Portable à travers les implémentations JPA"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Exemple",
+                  "simple-content": "@Query(\"SELECT u FROM User u WHERE u.email = ?1\")\nUser findUserByEmail(String email);"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "SQL Natif",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "SQL spécifique à la base de données"
+            },
+            {
+              "title": "Caractéristiques",
+              "multi-content": [
+                "Moins portable mais permet d'utiliser des fonctionnalités spécifiques à la base de données"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Exemple",
+                  "simple-content": "@Query(value = \"SELECT * FROM users WHERE email = ?1\", nativeQuery = true)\nUser findUserByEmailNative(String email);"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "API Criteria",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Façon programmatique et typée de construire des requêtes"
+            },
+            {
+              "title": "Caractéristiques",
+              "multi-content": [
+                "Plus verbeux mais permet la construction dynamique de requêtes"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Exemple",
+                  "simple-content": "public List<User> findUsersByStatusAndAgeCriteria(String status, int minAge) {\n    CriteriaBuilder cb = entityManager.getCriteriaBuilder();\n    CriteriaQuery<User> query = cb.createQuery(User.class);\n    Root<User> root = query.from(User.class);\n    \n    Predicate statusPredicate = cb.equal(root.get(\"status\"), status);\n    Predicate agePredicate = cb.greaterThan(root.get(\"age\"), minAge);\n    \n    query.where(cb.and(statusPredicate, agePredicate));\n    return entityManager.createQuery(query).getResultList();\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Relations entre Entités et Types de Chargement",
+      "multi-content": [
+        {
+          "title": "Annotations de Relation",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Annotations JPA pour définir les relations entre entités"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Exemple de Relation entre Entités",
+                  "simple-content": "@Entity\npublic class Department {\n    @Id\n    private Long id;\n    \n    @OneToMany(mappedBy = \"department\")\n    private List<Employee> employees;\n}\n\n@Entity\npublic class Employee {\n    @Id\n    private Long id;\n    \n    @ManyToOne\n    @JoinColumn(name = \"department_id\")\n    private Department department;\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Types de Chargement",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Contrôle quand les entités liées sont chargées"
+            },
+            {
+              "title": "Types",
+              "multi-content": [
+                {
+                  "title": "EAGER",
+                  "multi-content": [
+                    {
+                      "title": "Description",
+                      "simple-content": "Les entités liées sont chargées immédiatement"
+                    },
+                    {
+                      "title": "Par Défaut Pour",
+                      "simple-content": "@ManyToOne, @OneToOne"
+                    }
+                  ]
+                },
+                {
+                  "title": "LAZY",
+                  "multi-content": [
+                    {
+                      "title": "Description",
+                      "simple-content": "Les entités liées sont chargées uniquement lorsqu'elles sont accédées"
+                    },
+                    {
+                      "title": "Par Défaut Pour",
+                      "simple-content": "@OneToMany, @ManyToMany"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Modification du Type de Chargement par Défaut",
+                  "simple-content": "// Changer le type de chargement par défaut\n@OneToMany(mappedBy = \"department\", fetch = FetchType.EAGER)\nprivate List<Employee> employees;"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Session Hibernate et Types de Chargement",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "La Session Hibernate affecte le comportement des types de chargement"
+            },
+            {
+              "title": "Principes",
+              "multi-content": [
+                "Le chargement LAZY fonctionne uniquement lorsque la Session Hibernate est encore ouverte",
+                "Si vous essayez d'accéder à des associations chargées paresseusement après la fermeture de la session, vous obtiendrez une LazyInitializationException"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Service avec transaction - La session reste ouverte",
+                  "simple-content": "@Service\n@Transactional\npublic class DepartmentService {\n    @Autowired\n    private DepartmentRepository departmentRepository;\n    \n    public void processData() {\n        Department dept = departmentRepository.findById(1L).orElseThrow();\n        // Fonctionne bien même avec LAZY car la session est encore ouverte\n        dept.getEmployees().forEach(e -> System.out.println(e.getName()));\n    }\n}"
+                },
+                {
+                  "title": "Service sans transaction - La session se ferme après findById",
+                  "simple-content": "@Service\npublic class DepartmentService {\n    @Autowired\n    private DepartmentRepository departmentRepository;\n    \n    public void processData() {\n        Department dept = departmentRepository.findById(1L).orElseThrow();\n        // LazyInitializationException car la session est fermée\n        dept.getEmployees().forEach(e -> System.out.println(e.getName()));\n    }\n}"
+                }
+              ]
+            },
+            {
+              "title": "Solutions",
+              "multi-content": [
+                "Utiliser @Transactional pour garder la session ouverte",
+                "Utiliser le chargement eager",
+                "Utiliser les join fetch: @Query(\"SELECT d FROM Department d JOIN FETCH d.employees\")",
+                "Utiliser les entity graphs: @EntityGraph(attributePaths = {\"employees\"})",
+                "Initialiser les collections dans une session ouverte"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cycle de Vie des Entités",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "Comprendre le cycle de vie des entités est crucial pour une bonne gestion de la persistance"
+        },
+        {
+          "title": "États des Entités JPA",
+          "multi-content": [
+            {
+              "title": "Transient",
+              "simple-content": "Nouvel objet, non associé au contexte de persistance"
+            },
+            {
+              "title": "Managed",
+              "simple-content": "Attaché au contexte de persistance, changements suivis"
+            },
+            {
+              "title": "Detached",
+              "simple-content": "Précédemment géré, n'est plus dans le contexte de persistance"
+            },
+            {
+              "title": "Removed",
+              "simple-content": "Marqué pour suppression"
+            }
+          ]
+        },
+        {
+          "title": "Transitions d'État",
+          "multi-content": [
+            {
+              "title": "persist()",
+              "simple-content": "Transient → Managed"
+            },
+            {
+              "title": "merge()",
+              "simple-content": "Detached → Managed (en créant une nouvelle instance gérée)"
+            },
+            {
+              "title": "remove()",
+              "simple-content": "Managed → Removed"
+            },
+            {
+              "title": "detach(), clear(), close()",
+              "simple-content": "Managed → Detached"
+            },
+            {
+              "title": "flush()",
+              "simple-content": "Synchronise le contexte de persistance avec la base de données"
+            }
+          ]
+        },
+        {
+          "title": "États Spécifiques à Hibernate",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Hibernate ajoute plus de nuance aux états d'entité JPA"
+            },
+            {
+              "title": "États",
+              "multi-content": [
+                {
+                  "title": "Transient",
+                  "simple-content": "Objet non associé à une Session"
+                },
+                {
+                  "title": "Persistent",
+                  "simple-content": "Objet associé à une Session (équivalent à Managed de JPA)"
+                },
+                {
+                  "title": "Detached",
+                  "simple-content": "Objet était persistant mais maintenant détaché de la Session"
+                },
+                {
+                  "title": "Removed",
+                  "simple-content": "Objet marqué pour suppression"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gestion des Transactions",
+      "multi-content": [
+        {
+          "title": "Annotation @Transactional",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Gestion déclarative des transactions dans Spring"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Exemple",
+                  "simple-content": "@Service\npublic class UserService {\n    private final UserRepository userRepository;\n    \n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n    \n    @Transactional\n    public void transferCredits(User from, User to, int amount) {\n        from.setCredits(from.getCredits() - amount);\n        to.setCredits(to.getCredits() + amount);\n        userRepository.save(from);\n        userRepository.save(to);\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Niveaux de Propagation",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Contrôle le comportement des transactions lorsque les méthodes s'appellent entre elles"
+            },
+            {
+              "title": "Niveaux",
+              "multi-content": [
+                {
+                  "title": "REQUIRED",
+                  "simple-content": "Utilise la transaction courante ou en crée une nouvelle (par défaut)"
+                },
+                {
+                  "title": "REQUIRES_NEW",
+                  "simple-content": "Crée toujours une nouvelle transaction"
+                },
+                {
+                  "title": "SUPPORTS",
+                  "simple-content": "Utilise la transaction courante ou s'exécute sans transaction"
+                },
+                {
+                  "title": "MANDATORY",
+                  "simple-content": "Doit s'exécuter dans une transaction existante"
+                },
+                {
+                  "title": "NEVER",
+                  "simple-content": "Doit s'exécuter sans transaction"
+                },
+                {
+                  "title": "NOT_SUPPORTED",
+                  "simple-content": "S'exécute sans transaction, suspend la transaction courante"
+                },
+                {
+                  "title": "NESTED",
+                  "simple-content": "Exécute une transaction imbriquée si possible"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Niveaux d'Isolation",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Détermine la visibilité des changements entre les transactions concurrentes"
+            },
+            {
+              "title": "Niveaux",
+              "multi-content": [
+                {
+                  "title": "DEFAULT",
+                  "simple-content": "Niveau d'isolation par défaut de la base de données"
+                },
+                {
+                  "title": "READ_UNCOMMITTED",
+                  "simple-content": "Isolation la plus basse; lectures sales, non-répétables, fantômes possibles"
+                },
+                {
+                  "title": "READ_COMMITTED",
+                  "simple-content": "Empêche les lectures sales; lectures non-répétables, fantômes possibles"
+                },
+                {
+                  "title": "REPEATABLE_READ",
+                  "simple-content": "Empêche les lectures sales, non-répétables; lectures fantômes possibles"
+                },
+                {
+                  "title": "SERIALIZABLE",
+                  "simple-content": "Isolation la plus élevée; empêche les lectures sales, non-répétables, fantômes"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Problèmes Courants et Optimisations",
+      "multi-content": [
+        {
+          "title": "Problème de Requêtes N+1",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Le problème de requêtes N+1 se produit lorsque vous récupérez N entités, puis exécutez une requête supplémentaire pour chaque entité afin de récupérer ses associations"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Exemple de Problème",
+                  "simple-content": "List<Department> departments = departmentRepository.findAll();\n// Ceci déclenche N requêtes supplémentaires pour les employés\nfor (Department dept : departments) {\n    List<Employee> employees = dept.getEmployees(); // Chargement lazy\n    // Faire quelque chose avec les employés\n}"
+                }
+              ]
+            },
+            {
+              "title": "Solutions",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "JOIN FETCH",
+                      "simple-content": "@Query(\"SELECT d FROM Department d LEFT JOIN FETCH d.employees\")\nList<Department> findAllWithEmployees();"
+                    },
+                    {
+                      "title": "Entity Graphs",
+                      "simple-content": "@EntityGraph(attributePaths = {\"employees\"})\nList<Department> findAll();"
+                    },
+                    {
+                      "title": "Batch Fetching",
+                      "simple-content": "@Entity\npublic class Department {\n    @OneToMany(mappedBy = \"department\")\n    @BatchSize(size = 20)\n    private List<Employee> employees;\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Optimisations de Performance",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Techniques pour améliorer les performances JPA"
+            },
+            {
+              "title": "Techniques",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                {
+                  "title": "DTOs pour des besoins de données spécifiques",
+                  "simple-content": "@Query(\"SELECT new com.example.dto.UserSummaryDTO(u.id, u.username, u.email) FROM User u\")\nList<UserSummaryDTO> findAllUserSummaries();"
+                },
+                {
+                  "title": "Projections",
+                  "simple-content": "public interface UserProjection {\n    String getUsername();\n    String getEmail();\n}\n\npublic interface UserRepository extends JpaRepository<User, Long> {\n    List<UserProjection> findByStatus(String status);\n}"
+                },
+                {
+                  "title": "Pagination",
+                  "simple-content": "Pageable pageable = PageRequest.of(0, 20, Sort.by(\"lastName\"));\nPage<User> userPage = userRepository.findAll(pageable);"
+                }]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Test des Applications Spring Data",
+      "multi-content": [
+        {
+          "title": "@DataJpaTest",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Annotation pour tester les repositories avec une base de données en mémoire"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Exemple",
+                  "simple-content": "@DataJpaTest\nclass UserRepositoryTest {\n    @Autowired\n    private UserRepository userRepository;\n    \n    @Test\n    void shouldFindUserByEmail() {\n        // Étant donné\n        User user = new User(\"test@example.com\", \"Test User\");\n        userRepository.save(user);\n        \n        // Quand\n        Optional<User> result = userRepository.findByEmail(\"test@example.com\");\n        \n        // Alors\n        assertTrue(result.isPresent());\n        assertEquals(\"Test User\", result.get().getName());\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "TestEntityManager",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Utilitaire pour les opérations d'entité spécifiques aux tests"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Exemple",
+                  "simple-content": "@DataJpaTest\nclass UserRepositoryTest {\n    @Autowired\n    private TestEntityManager entityManager;\n    \n    @Autowired\n    private UserRepository userRepository;\n    \n    @Test\n    void shouldFindByStatus() {\n        // Étant donné\n        User user = new User(\"active@example.com\", \"Active User\");\n        user.setStatus(\"ACTIVE\");\n        entityManager.persist(user);\n        entityManager.flush();\n        \n        // Quand\n        List<User> activeUsers = userRepository.findByStatus(\"ACTIVE\");\n        \n        // Alors\n        assertEquals(1, activeUsers.size());\n        assertEquals(\"Active User\", activeUsers.get(0).getName());\n    }\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bonnes Pratiques",
+      "multi-content": [
+        {
+          "title": "Conception de Repository",
+          "multi-content": [
+            {
+              "title": "Pratiques",
+              "multi-content": [
+                "Gardez les repositories ciblés et spécifiques aux types d'entités",
+                "Utilisez la bonne interface de repository selon vos besoins",
+                "Exploitez la dérivation de requêtes à partir des noms de méthodes pour les requêtes simples",
+                "Utilisez @Query pour les requêtes complexes",
+                "Évitez les repositories fourre-tout avec trop de méthodes"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Relations entre Entités",
+          "multi-content": [
+            {
+              "title": "Pratiques",
+              "multi-content": [
+                "Par défaut, utilisez le chargement LAZY pour les collections",
+                "Utilisez le chargement EAGER uniquement lorsque vous savez que vous aurez toujours besoin des données liées",
+                "Considérez la direction des relations et quel côté possède la relation",
+                "Soyez attentif aux relations bidirectionnelles et au potentiel de récursion infinie"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Gestion des Transactions",
+          "multi-content": [
+            {
+              "title": "Pratiques",
+              "multi-content": [
+                "Appliquez @Transactional au niveau du service, pas au niveau du repository",
+                "Choisissez des limites de transaction appropriées",
+                "Définissez les niveaux d'isolation corrects",
+                "Envisagez des transactions en lecture seule pour la performance lorsque c'est applicable"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Optimisation des Requêtes",
+          "multi-content": [
+            {
+              "title": "Pratiques",
+              "multi-content": [
+                "Utilisez les fetch joins pour les entités liées qui sont toujours nécessaires ensemble",
+                "Utilisez des projections ou des DTOs lorsque vous n'avez pas besoin de l'entité entière",
+                "Utilisez la pagination pour les grands ensembles de résultats",
+                "Préférez JPQL au SQL natif quand c'est possible pour la portabilité",
+                "Utilisez des paramètres nommés (@Param) pour une meilleure lisibilité"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "FAQ d'Entretien",
+      "multi-content": [
+        {
+          "title": "Quelle est la différence entre JPA et Hibernate?",
+          "simple-content": "JPA est une spécification qui définit une API standard pour l'ORM en Java. Hibernate est une implémentation de la spécification JPA. Alors que JPA fournit les interfaces standard comme EntityManager, Hibernate implémente ces interfaces (Session implémente EntityManager) et ajoute des fonctionnalités supplémentaires au-delà du standard JPA."
+        },
+        {
+          "title": "Comment Spring Data JPA diffère-t-il de JPA simple?",
+          "simple-content": "Spring Data JPA est construit sur JPA et ajoute une couche d'abstraction. Il élimine le code répétitif en fournissant des interfaces de repository avec des opérations CRUD pré-implémentées, la génération automatique de requêtes à partir des noms de méthodes, et l'intégration avec la gestion des transactions de Spring. JPA simple vous obligerait à implémenter manuellement les classes de repository, écrire des méthodes de requête, et gérer les transactions."
+        },
+        {
+          "title": "Expliquez les différents types de chargement et quand utiliser chacun.",
+          "simple-content": "- **EAGER**: Les entités liées sont chargées immédiatement avec l'entité parente. Utilisez quand les données liées sont presque toujours nécessaires avec le parent et que la collection liée est petite.\n- **LAZY**: Les entités liées sont chargées uniquement lorsqu'elles sont explicitement accédées. Utilisez pour la plupart des relations de collection pour éviter de charger des données inutiles.\n\nLe choix dépend des schémas d'accès de votre application. Les paramètres par défaut (EAGER pour @ManyToOne/@OneToOne, LAZY pour @OneToMany/@ManyToMany) fonctionnent bien dans la plupart des cas."
+        },
+        {
+          "title": "Qu'est-ce que le problème de requête N+1 et comment le résoudre?",
+          "simple-content": "Le problème de requête N+1 se produit lorsque vous chargez N entités puis exécutez une requête supplémentaire pour chaque entité afin de charger ses associations. Cela peut avoir un impact significatif sur les performances.\n\nSolutions:\n\n1. Utiliser JOIN FETCH dans les requêtes JPQL\n2. Utiliser des entity graphs pour spécifier quelles associations charger avidement\n3. Configurer le batch fetching pour les collections\n4. Utiliser des DTOs ou des projections pour récupérer uniquement les données requises en une seule requête"
+        },
+        {
+          "title": "Comment implémentez-vous la pagination dans Spring Data JPA?",
+          "simple-content": "```java\n// Méthode de repository\nPage<Product> findByCategory(String category, Pageable pageable);\n\n// Méthode de service\nPageable pageable = PageRequest.of(0, 10, Sort.by(\"name\").ascending());\nPage<Product> productPage = productRepository.findByCategory(\"Electronics\", pageable);\n\n// Accès aux résultats\nList<Product> products = productPage.getContent();\nint totalPages = productPage.getTotalPages();\nlong totalElements = productPage.getTotalElements();\n```"
+        },
+        {
+          "title": "Décrivez la différence entre CrudRepository et JpaRepository.",
+          "simple-content": "Les deux sont des interfaces de repository dans Spring Data JPA, mais JpaRepository étend PagingAndSortingRepository qui étend CrudRepository:\n\n- **CrudRepository**: Fournit des opérations CRUD de base (save, findById, etc.)\n- **PagingAndSortingRepository**: Ajoute des capacités de pagination et de tri\n- **JpaRepository**: Ajoute des fonctionnalités spécifiques à JPA comme flush(), saveAndFlush(), et deleteInBatch()\n\nChoisissez en fonction des fonctionnalités dont vous avez besoin. Pour les opérations CRUD simples, CrudRepository est suffisant. Pour la pagination, utilisez PagingAndSortingRepository. Pour les opérations spécifiques à JPA, utilisez JpaRepository."
+        }
+      ]
+    }
+  ]
+}

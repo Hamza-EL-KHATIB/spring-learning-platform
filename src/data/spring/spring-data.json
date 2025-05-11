@@ -1,0 +1,861 @@
+{
+  "id": "spring-data-guide",
+  "title": "Spring Data: A Comprehensive Guide",
+  "topics": [
+    {
+      "title": "Database Access Evolution in Java",
+      "multi-content": [
+        {
+          "title": "JDBC",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "The foundational API for database connectivity in Java"
+            },
+            {
+              "title": "Characteristics",
+              "multi-content": [
+                "Requires manual connection management, SQL writing, and result processing",
+                "Verbose and error-prone with significant boilerplate code"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Implementation",
+                  "simple-content": "Connection conn = DriverManager.getConnection(url, username, password);\nPreparedStatement stmt = conn.prepareStatement(\"SELECT * FROM users WHERE id = ?\");\nstmt.setLong(1, userId);\nResultSet rs = stmt.executeQuery();\n// Process results manually, handle exceptions, close resources..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "ORM",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Approach to bridge the gap between object-oriented programming and relational databases"
+            },
+            {
+              "title": "Characteristics",
+              "multi-content": [
+                "Maps Java objects to database tables and vice versa",
+                "Reduces boilerplate code and manual SQL writing",
+                "Key players: Hibernate, EclipseLink, OpenJPA"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "JPA",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Standard specification (JSR 338) for ORM in Java"
+            },
+            {
+              "title": "Characteristics",
+              "multi-content": [
+                "Defines how persistent objects should be mapped, stored, and retrieved",
+                "Provides vendor-neutral persistence operations through annotations and interfaces"
+              ]
+            },
+            {
+              "title": "Components",
+              "multi-content": [
+                "EntityManagerFactory - Creates EntityManager instances",
+                "EntityManager - Main interface for persistence operations",
+                "Annotations like @Entity, @Id, @Column, etc."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Hibernate",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Most popular JPA implementation"
+            },
+            {
+              "title": "Characteristics",
+              "multi-content": [
+                "Predates JPA and offers features beyond the JPA specification"
+              ]
+            },
+            {
+              "title": "Components",
+              "multi-content": [
+                "SessionFactory (implements EntityManagerFactory)",
+                "Session (implements EntityManager)",
+                "Hibernate-specific features like custom types, filters, etc."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Spring Data JPA",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Spring module that simplifies the implementation of JPA-based repositories"
+            },
+            {
+              "title": "Characteristics",
+              "multi-content": [
+                "Eliminates repetitive DAO implementations",
+                "Built on top of JPA but adds significant convenience features",
+                "Provides repository abstraction with ready-to-use CRUD operations",
+                "Enables query creation from method names"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "code_examples",
+          "multi-content": [
+        {
+          "title": "Technology Stack Hierarchy",
+          "simple-content": "Spring Data\n    │\n    ├── Spring Data Commons (shared abstractions)\n    │\n    ├── Spring Data JPA ──────┐\n    │                         │\n    │                         ▼\n    │                     JPA (Specification)\n    │                         │\n    └── Spring Data MongoDB   │\n    └── Spring Data Redis     │\n    └── Spring Data Cassandra │\n    └── ...                   │\n                              ▼\n                        Hibernate/EclipseLink/OpenJPA\n                              │\n                              ▼\n                            JDBC\n                              │\n                              ▼\n                          Database"
+        }]}
+      ]
+    },
+    {
+      "title": "Spring Data JPA Components",
+      "multi-content": [
+        {
+          "title": "Repository Interfaces",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Spring Data provides a hierarchy of repository interfaces"
+            },
+            {
+              "title": "Types",
+              "multi-content": [
+                {
+                  "title": "Repository",
+                  "simple-content": "Marker interface"
+                },
+                {
+                  "title": "CrudRepository",
+                  "simple-content": "Basic CRUD operations"
+                },
+                {
+                  "title": "PagingAndSortingRepository",
+                  "simple-content": "Adds pagination and sorting"
+                },
+                {
+                  "title": "JpaRepository",
+                  "simple-content": "JPA-specific features like flush, batch operations"
+                }
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Basic Repository Definition",
+                  "simple-content": "// Basic repository definition\n@Repository\npublic interface UserRepository extends JpaRepository<User, Long> {\n    // Custom methods defined here\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "EntityManager vs Hibernate Session",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Comparison between JPA's EntityManager and Hibernate's Session"
+            },
+            {
+              "title": "Comparison",
+              "multi-content": [
+                "EntityManager: Standard JPA interface | Session: Hibernate-specific interface",
+                "EntityManager: persist(), merge(), remove(), find() | Session: save(), update(), delete(), get()",
+                "EntityManager: getTransaction() | Session: beginTransaction()",
+                "EntityManager: createQuery() | Session: createQuery() with Hibernate-specific features"
+              ]
+            },
+            {
+              "title": "Usage Description",
+              "simple-content": "Spring Data JPA typically uses EntityManager internally, but you can access the underlying Hibernate Session when needed"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Accessing Hibernate Session",
+                  "simple-content": "EntityManager entityManager = // injected or obtained\nSession session = entityManager.unwrap(Session.class);"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Query Methods",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Spring Data's ability to derive queries from method names"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Finds by single property",
+                  "simple-content": "User findByEmail(String email);"
+                },
+                {
+                  "title": "Multiple conditions with logical operators",
+                  "simple-content": "List<User> findByLastNameAndFirstName(String lastName, String firstName);"
+                },
+                {
+                  "title": "Queries with comparison operators",
+                  "simple-content": "List<User> findByAgeLessThan(int age);"
+                },
+                {
+                  "title": "Existence checks",
+                  "simple-content": "boolean existsByEmail(String email);"
+                },
+                {
+                  "title": "Counting methods",
+                  "simple-content": "long countByStatus(String status);"
+                },
+                {
+                  "title": "Limit results",
+                  "simple-content": "List<User> findTop3ByOrderByCreatedAtDesc();"
+                }
+              ]
+            },
+            {
+              "title": "Operators",
+              "multi-content": [
+                {
+                  "title": "And",
+                  "simple-content": "findByLastNameAndFirstName"
+                },
+                {
+                  "title": "Or",
+                  "simple-content": "findByEmailOrPhone"
+                },
+                {
+                  "title": "Between",
+                  "simple-content": "findByAgeBetween"
+                },
+                {
+                  "title": "LessThan",
+                  "simple-content": "findByAgeLessThan"
+                },
+                {
+                  "title": "GreaterThan",
+                  "simple-content": "findByAgeGreaterThan"
+                },
+                {
+                  "title": "Like",
+                  "simple-content": "findByNameLike"
+                },
+                {
+                  "title": "OrderBy",
+                  "simple-content": "findByAgeOrderByNameDesc"
+                },
+                {
+                  "title": "True/False",
+                  "simple-content": "findByActiveTrue"
+                },
+                {
+                  "title": "IgnoreCase",
+                  "simple-content": "findByNameIgnoreCase"
+                },
+                {
+                  "title": "In",
+                  "simple-content": "findByStatusIn(List<String> statuses)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Query Types",
+      "multi-content": [
+        {
+          "title": "JPQL",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "JPA's object-oriented query language"
+            },
+            {
+              "title": "Characteristics",
+              "multi-content": [
+                "Entity and property-based (not table and column-based)",
+                "Portable across JPA implementations"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Example",
+                  "simple-content": "@Query(\"SELECT u FROM User u WHERE u.email = ?1\")\nUser findUserByEmail(String email);"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Native SQL",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Database-specific SQL"
+            },
+            {
+              "title": "Characteristics",
+              "multi-content": [
+                "Less portable but allows using database-specific features"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Example",
+                  "simple-content": "@Query(value = \"SELECT * FROM users WHERE email = ?1\", nativeQuery = true)\nUser findUserByEmailNative(String email);"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Criteria API",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Type-safe, programmatic way to build queries"
+            },
+            {
+              "title": "Characteristics",
+              "multi-content": [
+                "More verbose but allows dynamic query building"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Example",
+                  "simple-content": "public List<User> findUsersByStatusAndAgeCriteria(String status, int minAge) {\n    CriteriaBuilder cb = entityManager.getCriteriaBuilder();\n    CriteriaQuery<User> query = cb.createQuery(User.class);\n    Root<User> root = query.from(User.class);\n    \n    Predicate statusPredicate = cb.equal(root.get(\"status\"), status);\n    Predicate agePredicate = cb.greaterThan(root.get(\"age\"), minAge);\n    \n    query.where(cb.and(statusPredicate, agePredicate));\n    return entityManager.createQuery(query).getResultList();\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Entity Relationships and Fetch Types",
+      "multi-content": [
+        {
+          "title": "Relationship Annotations",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "JPA annotations for defining entity relationships"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Entity Relationship Example",
+                  "simple-content": "@Entity\npublic class Department {\n    @Id\n    private Long id;\n    \n    @OneToMany(mappedBy = \"department\")\n    private List<Employee> employees;\n}\n\n@Entity\npublic class Employee {\n    @Id\n    private Long id;\n    \n    @ManyToOne\n    @JoinColumn(name = \"department_id\")\n    private Department department;\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Fetch Types",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Controls when related entities are loaded"
+            },
+            {
+              "title": "Types",
+              "multi-content": [
+                {
+                  "title": "EAGER",
+                  "multi-content": [
+                    {
+                      "title": "Description",
+                      "simple-content": "Related entities loaded immediately"
+                    },
+                    {
+                      "title": "Default For",
+                      "simple-content": "@ManyToOne, @OneToOne"
+                    }
+                  ]
+                },
+                {
+                  "title": "LAZY",
+                  "multi-content": [
+                    {
+                      "title": "Description",
+                      "simple-content": "Related entities loaded only when accessed"
+                    },
+                    {
+                      "title": "Default For",
+                      "simple-content": "@OneToMany, @ManyToMany"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Changing Default Fetch Type",
+                  "simple-content": "// Change the default fetch type\n@OneToMany(mappedBy = \"department\", fetch = FetchType.EAGER)\nprivate List<Employee> employees;"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Hibernate Session and Fetch Types",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "The Hibernate Session affects how fetch types behave"
+            },
+            {
+              "title": "Principles",
+              "multi-content": [
+                "LAZY loading only works when the Hibernate Session is still open",
+                "If you try to access lazily loaded associations after the session is closed, you'll get a LazyInitializationException"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Service with transaction - Session stays open throughout",
+                  "simple-content": "@Service\n@Transactional\npublic class DepartmentService {\n    @Autowired\n    private DepartmentRepository departmentRepository;\n    \n    public void processData() {\n        Department dept = departmentRepository.findById(1L).orElseThrow();\n        // Works fine even with LAZY because session is still open\n        dept.getEmployees().forEach(e -> System.out.println(e.getName()));\n    }\n}"
+                },
+                {
+                  "title": "Service without transaction - Session closes after findById",
+                  "simple-content": "@Service\npublic class DepartmentService {\n    @Autowired\n    private DepartmentRepository departmentRepository;\n    \n    public void processData() {\n        Department dept = departmentRepository.findById(1L).orElseThrow();\n        // LazyInitializationException because session is closed\n        dept.getEmployees().forEach(e -> System.out.println(e.getName()));\n    }\n}"
+                }
+              ]
+            },
+            {
+              "title": "Solutions",
+              "multi-content": [
+                "Use @Transactional to keep session open",
+                "Use eager fetching",
+                "Use fetch joins: @Query(\"SELECT d FROM Department d JOIN FETCH d.employees\")",
+                "Use entity graphs: @EntityGraph(attributePaths = {\"employees\"})",
+                "Initialize collections within an open session"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Entity Lifecycle",
+      "multi-content": [
+        {
+          "title": "Description",
+          "simple-content": "Understanding the entity lifecycle is crucial for proper persistence management"
+        },
+        {
+          "title": "JPA Entity States",
+          "multi-content": [
+            {
+              "title": "Transient",
+              "simple-content": "New object, not associated with persistence context"
+            },
+            {
+              "title": "Managed",
+              "simple-content": "Attached to persistence context, changes tracked"
+            },
+            {
+              "title": "Detached",
+              "simple-content": "Previously managed, no longer in persistence context"
+            },
+            {
+              "title": "Removed",
+              "simple-content": "Marked for deletion"
+            }
+          ]
+        },
+        {
+          "title": "State Transitions",
+          "multi-content": [
+            {
+              "title": "persist()",
+              "simple-content": "Transient → Managed"
+            },
+            {
+              "title": "merge()",
+              "simple-content": "Detached → Managed (by creating a new managed instance)"
+            },
+            {
+              "title": "remove()",
+              "simple-content": "Managed → Removed"
+            },
+            {
+              "title": "detach(), clear(), close()",
+              "simple-content": "Managed → Detached"
+            },
+            {
+              "title": "flush()",
+              "simple-content": "Synchronizes persistence context with database"
+            }
+          ]
+        },
+        {
+          "title": "Hibernate-specific States",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Hibernate adds more nuance to the JPA entity states"
+            },
+            {
+              "title": "States",
+              "multi-content": [
+                {
+                  "title": "Transient",
+                  "simple-content": "Object not associated with Session"
+                },
+                {
+                  "title": "Persistent",
+                  "simple-content": "Object associated with Session (equivalent to JPA's Managed)"
+                },
+                {
+                  "title": "Detached",
+                  "simple-content": "Object was persistent but now detached from Session"
+                },
+                {
+                  "title": "Removed",
+                  "simple-content": "Object marked for removal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Transaction Management",
+      "multi-content": [
+        {
+          "title": "@Transactional Annotation",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Declarative transaction management in Spring"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Example",
+                  "simple-content": "@Service\npublic class UserService {\n    private final UserRepository userRepository;\n    \n    @Autowired\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n    \n    @Transactional\n    public void transferCredits(User from, User to, int amount) {\n        from.setCredits(from.getCredits() - amount);\n        to.setCredits(to.getCredits() + amount);\n        userRepository.save(from);\n        userRepository.save(to);\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Propagation Levels",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Controls how transactions behave when methods call each other"
+            },
+            {
+              "title": "Levels",
+              "multi-content": [
+                {
+                  "title": "REQUIRED",
+                  "simple-content": "Uses current transaction or creates new one (default)"
+                },
+                {
+                  "title": "REQUIRES_NEW",
+                  "simple-content": "Always creates new transaction"
+                },
+                {
+                  "title": "SUPPORTS",
+                  "simple-content": "Uses current transaction or runs non-transactional"
+                },
+                {
+                  "title": "MANDATORY",
+                  "simple-content": "Must run within existing transaction"
+                },
+                {
+                  "title": "NEVER",
+                  "simple-content": "Must run non-transactional"
+                },
+                {
+                  "title": "NOT_SUPPORTED",
+                  "simple-content": "Runs non-transactional, suspends current transaction"
+                },
+                {
+                  "title": "NESTED",
+                  "simple-content": "Runs nested transaction if possible"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Isolation Levels",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Determines visibility of changes between concurrent transactions"
+            },
+            {
+              "title": "Levels",
+              "multi-content": [
+                {
+                  "title": "DEFAULT",
+                  "simple-content": "Default database isolation level"
+                },
+                {
+                  "title": "READ_UNCOMMITTED",
+                  "simple-content": "Lowest isolation; dirty, non-repeatable, phantom reads possible"
+                },
+                {
+                  "title": "READ_COMMITTED",
+                  "simple-content": "Prevents dirty reads; non-repeatable, phantom reads possible"
+                },
+                {
+                  "title": "REPEATABLE_READ",
+                  "simple-content": "Prevents dirty, non-repeatable reads; phantom reads possible"
+                },
+                {
+                  "title": "SERIALIZABLE",
+                  "simple-content": "Highest isolation; prevents dirty, non-repeatable, phantom reads"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Common Problems and Optimizations",
+      "multi-content": [
+        {
+          "title": "N+1 Query Problem",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "The N+1 query problem occurs when you fetch N entities, and then execute an additional query for each entity to fetch its associations"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Problem Example",
+                  "simple-content": "List<Department> departments = departmentRepository.findAll();\n// This triggers N additional queries for employees\nfor (Department dept : departments) {\n    List<Employee> employees = dept.getEmployees(); // Lazy loading\n    // Do something with employees\n}"
+                }
+              ]
+            },
+            {
+              "title": "Solutions",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                {
+                  "title": "JOIN FETCH",
+                  "simple-content": "@Query(\"SELECT d FROM Department d LEFT JOIN FETCH d.employees\")\nList<Department> findAllWithEmployees();"
+                },
+                {
+                  "title": "Entity Graphs",
+                  "simple-content": "@EntityGraph(attributePaths = {\"employees\"})\nList<Department> findAll();"
+                },
+                {
+                  "title": "Batch Fetching",
+                  "simple-content": "@Entity\npublic class Department {\n    @OneToMany(mappedBy = \"department\")\n    @BatchSize(size = 20)\n    private List<Employee> employees;\n}"
+                }]}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Performance Optimizations",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Techniques to improve JPA performance"
+            },
+            {
+              "title": "Techniques",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                {
+                  "title": "DTOs for specific data needs",
+                  "simple-content": "@Query(\"SELECT new com.example.dto.UserSummaryDTO(u.id, u.username, u.email) FROM User u\")\nList<UserSummaryDTO> findAllUserSummaries();"
+                },
+                {
+                  "title": "Projections",
+                  "simple-content": "public interface UserProjection {\n    String getUsername();\n    String getEmail();\n}\n\npublic interface UserRepository extends JpaRepository<User, Long> {\n    List<UserProjection> findByStatus(String status);\n}"
+                },
+                {
+                  "title": "Pagination",
+                  "simple-content": "Pageable pageable = PageRequest.of(0, 20, Sort.by(\"lastName\"));\nPage<User> userPage = userRepository.findAll(pageable);"
+                }]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Testing Spring Data Applications",
+      "multi-content": [
+        {
+          "title": "@DataJpaTest",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Annotation for repository testing with in-memory database"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Example",
+                  "simple-content": "@DataJpaTest\nclass UserRepositoryTest {\n    @Autowired\n    private UserRepository userRepository;\n    \n    @Test\n    void shouldFindUserByEmail() {\n        // Given\n        User user = new User(\"test@example.com\", \"Test User\");\n        userRepository.save(user);\n        \n        // When\n        Optional<User> result = userRepository.findByEmail(\"test@example.com\");\n        \n        // Then\n        assertTrue(result.isPresent());\n        assertEquals(\"Test User\", result.get().getName());\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "TestEntityManager",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Utility for test-specific entity operations"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Example",
+                  "simple-content": "@DataJpaTest\nclass UserRepositoryTest {\n    @Autowired\n    private TestEntityManager entityManager;\n    \n    @Autowired\n    private UserRepository userRepository;\n    \n    @Test\n    void shouldFindByStatus() {\n        // Given\n        User user = new User(\"active@example.com\", \"Active User\");\n        user.setStatus(\"ACTIVE\");\n        entityManager.persist(user);\n        entityManager.flush();\n        \n        // When\n        List<User> activeUsers = userRepository.findByStatus(\"ACTIVE\");\n        \n        // Then\n        assertEquals(1, activeUsers.size());\n        assertEquals(\"Active User\", activeUsers.get(0).getName());\n    }\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Best Practices",
+      "multi-content": [
+        {
+          "title": "Repository Design",
+          "multi-content": [
+            {
+              "title": "Practices",
+              "multi-content": [
+                "Keep repositories focused and specific to entity types",
+                "Use the right repository interface for your needs",
+                "Leverage method name query derivation for simple queries",
+                "Use @Query for complex queries",
+                "Avoid catch-all repositories with too many methods"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Entity Relationships",
+          "multi-content": [
+            {
+              "title": "Practices",
+              "multi-content": [
+                "Default to LAZY loading for collections",
+                "Use EAGER loading only when you know you'll always need the related data",
+                "Consider the direction of relationships and which side owns the relationship",
+                "Be mindful of bidirectional relationships and the potential for infinite recursion"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Transaction Management",
+          "multi-content": [
+            {
+              "title": "Practices",
+              "multi-content": [
+                "Apply @Transactional at the service layer, not repository layer",
+                "Choose appropriate transaction boundaries",
+                "Set correct isolation levels",
+                "Consider read-only transactions for performance when applicable"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Query Optimization",
+          "multi-content": [
+            {
+              "title": "Practices",
+              "multi-content": [
+                "Use fetch joins for related entities that are always needed together",
+                "Use projections or DTOs when you don't need the entire entity",
+                "Use pagination for large result sets",
+                "Prefer JPQL over native SQL when possible for portability",
+                "Use named parameters (@Param) for better readability"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Interview FAQs",
+      "multi-content": [
+        {
+          "title": "What is the difference between JPA and Hibernate?",
+          "simple-content": "JPA is a specification that defines a standard API for ORM in Java. Hibernate is an implementation of the JPA specification. While JPA provides the standard interfaces like EntityManager, Hibernate implements these interfaces (Session implements EntityManager) and adds additional features beyond the JPA standard."
+        },
+        {
+          "title": "How does Spring Data JPA differ from plain JPA?",
+          "simple-content": "Spring Data JPA is built on top of JPA and adds a layer of abstraction. It eliminates boilerplate code by providing repository interfaces with pre-implemented CRUD operations, automatic query generation from method names, and integration with Spring's transaction management. Plain JPA would require you to manually implement repository classes, write query methods, and handle transactions."
+        },
+        {
+          "title": "Explain the different fetch types and when to use each.",
+          "simple-content": "- **EAGER**: Related entities are loaded immediately with the parent entity. Use when the related data is almost always needed with the parent and the related collection is small.\n- **LAZY**: Related entities are loaded only when explicitly accessed. Use for most collection relationships to prevent loading unnecessary data.\n\nThe choice depends on the access patterns of your application. Default settings (EAGER for @ManyToOne/@OneToOne, LAZY for @OneToMany/@ManyToMany) work well for most cases."
+        },
+        {
+          "title": "What is the N+1 query problem and how do you solve it?",
+          "simple-content": "The N+1 query problem occurs when you load N entities and then execute an additional query for each entity to load its associations. This can significantly impact performance.\n\nSolutions:\n\n1. Use JOIN FETCH in JPQL queries\n2. Use entity graphs to specify which associations to eagerly load\n3. Configure batch fetching for collections\n4. Use DTOs or projections to fetch only required data in a single query"
+        },
+        {
+          "title": "How do you implement pagination in Spring Data JPA?",
+          "simple-content": "```java\n// Repository method\nPage<Product> findByCategory(String category, Pageable pageable);\n\n// Service method\nPageable pageable = PageRequest.of(0, 10, Sort.by(\"name\").ascending());\nPage<Product> productPage = productRepository.findByCategory(\"Electronics\", pageable);\n\n// Accessing results\nList<Product> products = productPage.getContent();\nint totalPages = productPage.getTotalPages();\nlong totalElements = productPage.getTotalElements();\n```"
+        },
+        {
+          "title": "Describe the difference between CrudRepository and JpaRepository.",
+          "simple-content": "Both are repository interfaces in Spring Data JPA, but JpaRepository extends PagingAndSortingRepository which extends CrudRepository:\n\n- **CrudRepository**: Provides basic CRUD operations (save, findById, etc.)\n- **PagingAndSortingRepository**: Adds pagination and sorting capabilities\n- **JpaRepository**: Adds JPA-specific functionality like flush(), saveAndFlush(), and deleteInBatch()\n\nChoose based on the features you need. For simple CRUD operations, CrudRepository is sufficient. For pagination, use PagingAndSortingRepository. For JPA-specific operations, use JpaRepository."
+        }
+      ]
+    }
+  ]
+}
