@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-    Box, Database, GitMerge, Settings, Shield, Code, Layers, Globe,
+    Box, Database, GitMerge, Settings, Shield, Code, Layers,
     BookOpen, FileText, CheckCircle, List, AlertTriangle, Terminal,
     Code2, Cpu
 } from 'lucide-react';
@@ -8,43 +8,12 @@ import coreConceptsEn from '../../../data/spring/core-concepts.json';
 import coreConceptsFr from '../../../data/spring/core-concepts-fr.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-// Language Selector Component (more compact)
-const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
-    return (
-        <div className="flex items-center gap-2 mb-4">
-            <Globe className="w-4 h-4 text-purple-400" />
-            <div className="flex rounded-lg overflow-hidden border border-gray-700">
-                <button
-                    onClick={() => onLanguageChange('en')}
-                    className={`px-2 py-1 text-xs ${
-                        currentLanguage === 'en'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    English
-                </button>
-                <button
-                    onClick={() => onLanguageChange('fr')}
-                    className={`px-2 py-1 text-xs ${
-                        currentLanguage === 'fr'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    Français
-                </button>
-            </div>
-        </div>
-    );
-};
+import { useLanguage } from '../../../components/LanguageContext';
+import GlobalLanguageSelector from '../../../components/GlobalLanguageSelector';
 
 const CorePage = () => {
-    // Get the language preference from localStorage or default to English
-    const [language, setLanguage] = useState(() => {
-        return localStorage.getItem('corePageLanguage') || 'en';
-    });
+    // Use the global language context instead of local state
+    const { language } = useLanguage();
 
     // State for the content based on language
     const [coreConcepts, setCoreConcepts] = useState(language === 'en' ? coreConceptsEn : coreConceptsFr);
@@ -53,12 +22,6 @@ const CorePage = () => {
     const [activeTopic, setActiveTopic] = useState(() => {
         return coreConcepts.topics?.[0]?.title || '';
     });
-
-    // Change the language and save the preference
-    const handleLanguageChange = (lang) => {
-        setLanguage(lang);
-        localStorage.setItem('corePageLanguage', lang);
-    };
 
     useEffect(() => {
         // Update content based on selected language
@@ -69,7 +32,7 @@ const CorePage = () => {
         if (!newContent.topics.some(t => t.title === activeTopic)) {
             setActiveTopic(newContent.topics?.[0]?.title || '');
         }
-    }, [language]);
+    }, [language, activeTopic]);
 
     // Helper function to get icon for a topic
     const getTopicIcon = (topicTitle) => {
@@ -503,11 +466,10 @@ const CorePage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Language Selector */}
-            <LanguageSelector
-                currentLanguage={language}
-                onLanguageChange={handleLanguageChange}
-            />
+            {/* Use the global language selector */}
+            <div className="mb-4">
+                <GlobalLanguageSelector />
+            </div>
 
             {/* Header with more compact styling */}
             <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
