@@ -1,0 +1,1463 @@
+{
+  "id": "spring-boot-concepts",
+  "title": "Concepts Spring Boot",
+  "topics": [
+    {
+      "title": "Aperçu",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring Boot est un framework qui simplifie le développement d'applications Spring en fournissant une auto-configuration, des serveurs embarqués et des fonctionnalités prêtes pour la production. Il maintient la flexibilité de Spring tout en réduisant le code de configuration redondant."
+        },
+        {
+          "title": "fonctionnalités_clés",
+          "multi-content": [
+            {
+              "title": "Auto-Configuration",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Configurer automatiquement les beans en fonction du classpath"
+                },
+                {
+                  "title": "pertinence",
+                  "simple-content": "★★★★★"
+                }
+              ]
+            },
+            {
+              "title": "Dépendances Starter",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Gestion simplifiée des dépendances"
+                },
+                {
+                  "title": "pertinence",
+                  "simple-content": "★★★★★"
+                }
+              ]
+            },
+            {
+              "title": "Serveurs Embarqués",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Exécuter des applications sans déploiement sur un serveur externe"
+                },
+                {
+                  "title": "pertinence",
+                  "simple-content": "★★★★☆"
+                }
+              ]
+            },
+            {
+              "title": "Configuration Externalisée",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Gérer facilement différents environnements"
+                },
+                {
+                  "title": "pertinence",
+                  "simple-content": "★★★★☆"
+                }
+              ]
+            },
+            {
+              "title": "Spring Boot Actuator",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Surveillance et métriques"
+                },
+                {
+                  "title": "pertinence",
+                  "simple-content": "★★★☆☆"
+                }
+              ]
+            },
+            {
+              "title": "Outils de Développement",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Améliorer l'expérience de développement"
+                },
+                {
+                  "title": "pertinence",
+                  "simple-content": "★★☆☆☆"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Auto-Configuration",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "L'auto-configuration est l'approche de Spring Boot pour configurer automatiquement les composants en fonction de ce qui est disponible dans le classpath, réduisant ainsi la configuration manuelle."
+        },
+        {
+          "title": "mécanismes_clés",
+          "multi-content": [
+            "Configuration Conditionnelle : Spring Boot évalue les conditions avant d'appliquer les configurations",
+            "Scan des Composants : Découvre automatiquement les beans à partir de packages prédéfinis",
+            "Résolution de Propriétés : Utilise des conventions et des valeurs par défaut sensées"
+          ]
+        },
+        {
+          "title": "annotations_conditionnelles",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "conditional_on_class",
+                  "simple-content": "// Only configure if DataSource class is in the classpath\n@ConditionalOnClass(DataSource.class)"
+                },
+                {
+                  "title": "conditional_on_missing_bean",
+                  "simple-content": "// Only configure if no existing bean of this type exists\n@ConditionalOnMissingBean(DataSource.class)"
+                },
+                {
+                  "title": "conditional_on_property",
+                  "simple-content": "// Only configure if a specific property exists with a given value\n@ConditionalOnProperty(prefix=\"app\", name=\"feature\", havingValue=\"true\")"
+                },
+                {
+                  "title": "conditional_on_web_application",
+                  "simple-content": "// Only configure for web applications\n@ConditionalOnWebApplication(type = Type.SERVLET)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "comment_ça_fonctionne",
+          "multi-content": [
+            "Spring Boot charge tous les fichiers META-INF/spring.factories ou META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports",
+            "Ces fichiers répertorient les classes d'auto-configuration",
+            "Chaque classe d'auto-configuration est appliquée conditionnellement en fonction des conditions",
+            "La configuration est appliquée dans un ordre spécifique respectant les dépendances"
+          ]
+        },
+        {
+          "title": "désactiver_auto_configuration",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "via_annotation",
+                  "simple-content": "// Exclude specific auto-configuration classes\n@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})"
+                },
+                {
+                  "title": "via_properties",
+                  "simple-content": "// Using properties file\nspring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dépendances Starter",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Les starters Spring Boot sont des descripteurs de dépendances qui regroupent des dépendances connexes, facilitant l'ajout de fonctionnalités communes."
+        },
+        {
+          "title": "starters_principaux",
+          "multi-content": [
+            {
+              "title": "spring-boot-starter-web",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Applications web"
+                },
+                {
+                  "title": "composants_clés",
+                  "simple-content": "Spring MVC, Tomcat, Jackson"
+                }
+              ]
+            },
+            {
+              "title": "spring-boot-starter-data-jpa",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Persistance JPA"
+                },
+                {
+                  "title": "composants_clés",
+                  "simple-content": "Hibernate, Spring Data JPA"
+                }
+              ]
+            },
+            {
+              "title": "spring-boot-starter-security",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Authentification & Autorisation"
+                },
+                {
+                  "title": "composants_clés",
+                  "simple-content": "Spring Security"
+                }
+              ]
+            },
+            {
+              "title": "spring-boot-starter-test",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Tests"
+                },
+                {
+                  "title": "composants_clés",
+                  "simple-content": "JUnit, Mockito, Spring Test"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "création_de_starters_personnalisés",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Les starters personnalisés suivent une convention de nommage et une structure : 'your-starter' contient la gestion des dépendances et 'your-starter-autoconfigure' contient le code d'auto-configuration."
+            },
+            {
+              "title": "exemple",
+              "simple-content": "// Example auto-configuration class\n@Configuration\n@ConditionalOnClass(YourService.class)\n@EnableConfigurationProperties(YourProperties.class)\npublic class YourAutoConfiguration {\n    \n    @Bean\n    @ConditionalOnMissingBean\n    public YourService yourService(YourProperties properties) {\n        return new YourServiceImpl(properties.getConfig());\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ConfigurationSpringApplication",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "La configuration d'une application Spring Boot, centrée autour de l'annotation @SpringBootApplication."
+        },
+        {
+          "title": "annotation_springboot_application",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "C'est une annotation pratique qui combine @Configuration (marque la classe comme source de définitions de beans), @EnableAutoConfiguration (active l'auto-configuration de Spring Boot) et @ComponentScan (recherche des composants dans le package actuel et en dessous)."
+            },
+            {
+              "title": "exemple",
+              "simple-content": "@SpringBootApplication\npublic class MyApplication {\n    public static void main(String[] args) {\n        SpringApplication.run(MyApplication.class, args);\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "DémarrageSpringApplication",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Le processus détaillé de ce qui se passe lorsqu'une application Spring Boot démarre, depuis le chargement de la classe principale par la JVM jusqu'à ce que l'application soit prête à traiter les requêtes."
+        },
+        {
+          "title": "phases_de_démarrage",
+          "multi-content": [
+            {
+              "title": "Bootstrap & Préparation de l'Environnement",
+              "multi-content": [
+                "Chargement de la Classe Principale : La JVM charge la classe avec @SpringBootApplication",
+                "SpringApplication.run : Crée et configure l'application Spring",
+                "Chargement des Propriétés d'Environnement : Charge à partir de diverses sources (propriétés système, variables d'environnement, application.properties)",
+                "Création de l'ApplicationContext : Crée l'implémentation appropriée d'ApplicationContext",
+                "Préparation de l'ApplicationContext : Définit l'environnement, enregistre les post-processeurs"
+              ]
+            },
+            {
+              "title": "Chargement des Définitions de Beans",
+              "multi-content": [
+                "Chargement des Définitions de Beans : À partir du scan du classpath, XML, ou classes Java @Configuration",
+                "Traitement des Classes @Configuration : Traite les méthodes @Bean et enregistre les définitions de beans",
+                "Enregistrement des BeanFactoryPostProcessors : Pour des modifications supplémentaires aux définitions de beans"
+              ]
+            },
+            {
+              "title": "Post-traitement de BeanFactory",
+              "multi-content": [
+                "Exécution des BeanFactoryPostProcessors : Des processeurs personnalisés peuvent modifier les définitions de beans avant l'instanciation",
+                "Enregistrement des BeanPostProcessors : Pour le traitement des beans après l'instanciation"
+              ]
+            },
+            {
+              "title": "Instanciation des Beans",
+              "multi-content": [
+                "Instanciation des Beans Singleton Non-Lazy : Crée tous les beans singleton avec empressement",
+                "Injection des Dépendances : Résout les dépendances et les injecte",
+                "Application des BeanPostProcessors Avant Init : Exécute postProcessBeforeInitialization",
+                "Exécution des méthodes @PostConstruct : Code d'initialisation personnalisé",
+                "Exécution de InitializingBean.afterPropertiesSet() : Mécanisme d'initialisation alternatif",
+                "Application des BeanPostProcessors Après Init : Exécute postProcessAfterInitialization (les proxies sont souvent créés ici)"
+              ]
+            },
+            {
+              "title": "Initialisation Finale",
+              "multi-content": [
+                "Exécution des Callbacks de Rafraîchissement ApplicationContext : Étapes finales d'initialisation",
+                "Démarrage du Serveur Embarqué : Si applicable (pour les applications web)",
+                "Publication de ApplicationStartedEvent : L'application est complètement démarrée mais pas prête",
+                "Exécution des ApplicationRunners & CommandLineRunners : Code de démarrage personnalisé",
+                "Publication de ApplicationReadyEvent : L'application est prête à servir les requêtes"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "FonctionnementInterneConteneurIoCSpring",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Les composants internes et la conception du conteneur IoC Spring qui permettent l'injection de dépendances et la gestion des beans."
+        },
+        {
+          "title": "composants_principaux",
+          "multi-content": [
+            {
+              "title": "BeanFactory",
+              "multi-content": [
+                {
+                  "title": "description",
+                  "simple-content": "L'interface centrale du conteneur Spring, fournissant un support DI de base"
+                },
+                {
+                  "title": "caractéristiques",
+                  "multi-content": [
+                    "Implémentation du pattern Factory pour la gestion des beans",
+                    "Chargement paresseux des beans (initialisés à la demande)",
+                    "Fonctionnalité de base du conteneur sans fonctionnalités d'entreprise"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "ApplicationContext",
+              "multi-content": [
+                {
+                  "title": "description",
+                  "simple-content": "Conteneur amélioré avec des fonctionnalités d'entreprise"
+                },
+                {
+                  "title": "caractéristiques",
+                  "multi-content": [
+                    "Étend BeanFactory avec des fonctionnalités supplémentaires",
+                    "Publication d'événements",
+                    "Accès aux ressources",
+                    "Support de l'internationalisation",
+                    "Initialisation empressée des beans singleton"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "BeanDefinition",
+              "multi-content": [
+                {
+                  "title": "description",
+                  "simple-content": "Un modèle pour créer des beans"
+                },
+                {
+                  "title": "caractéristiques",
+                  "multi-content": [
+                    "Contient des métadonnées de bean (classe, portée, dépendances)",
+                    "Utilisé par le conteneur pour créer et configurer des beans",
+                    "Peut être modifié par les BeanFactoryPostProcessors"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "BeanPostProcessor",
+              "multi-content": [
+                {
+                  "title": "description",
+                  "simple-content": "Interface pour personnaliser les instances de beans"
+                },
+                {
+                  "title": "caractéristiques",
+                  "multi-content": [
+                    "Intercepte le processus de création de bean",
+                    "Modifie les beans avant et après l'initialisation",
+                    "Composant clé pour l'implémentation AOP"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "BeanFactoryPostProcessor",
+              "multi-content": [
+                {
+                  "title": "description",
+                  "simple-content": "Interface pour personnaliser les définitions de beans"
+                },
+                {
+                  "title": "caractéristiques",
+                  "multi-content": [
+                    "Modifie les définitions de beans avant l'instanciation des beans",
+                    "Utilisé pour modifier les métadonnées des beans",
+                    "Exemple : PropertyPlaceholderConfigurer"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Environment",
+              "multi-content": [
+                {
+                  "title": "description",
+                  "simple-content": "Abstraction pour l'environnement de l'application"
+                },
+                {
+                  "title": "caractéristiques",
+                  "multi-content": [
+                    "Représente les profils et les propriétés",
+                    "Centralise l'accès à la configuration",
+                    "Source de données de configuration externe"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "patterns_de_conception",
+          "multi-content": [
+            "Pattern Factory : BeanFactory crée des beans",
+            "Pattern Singleton : Portée par défaut pour les beans",
+            "Pattern Prototype : Nouvelle instance à chaque demande",
+            "Pattern Observer : Mécanisme de publication d'événements",
+            "Pattern Template Method : Gestion du cycle de vie des composants"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ConfigurationExternalisée",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring Boot fournit plusieurs options pour configurer les applications en dehors du code, permettant des changements de configuration sans recompilation."
+        },
+        {
+          "title": "sources_de_configuration",
+          "multi-content": [
+            "Arguments de ligne de commande (priorité la plus élevée)",
+            "Variables d'environnement du système d'exploitation",
+            "application-{profile}.properties ou YAML",
+            "application.properties ou YAML (à l'intérieur ou à l'extérieur de l'application)",
+            "Annotations @PropertySource",
+            "Propriétés par défaut (priorité la plus basse)"
+          ]
+        },
+        {
+          "title": "fichiers_de_propriétés",
+          "multi-content": [
+            {
+              "title": "exemple_properties",
+              "simple-content": "# application.properties example\nserver.port=8080\nspring.datasource.url=jdbc:mysql://localhost/db\nspring.datasource.username=root\nspring.datasource.password=password\napp.feature.enabled=true"
+            },
+            {
+              "title": "exemple_yaml",
+              "simple-content": "# equivalent application.yml\nserver:\n  port: 8080\nspring:\n  datasource:\n    url: jdbc:mysql://localhost/db\n    username: root\n    password: password\napp:\n  feature:\n    enabled: true"
+            }
+          ]
+        },
+        {
+          "title": "propriétés_de_configuration",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Liaison de configuration typée avec des objets Java"
+            },
+            {
+              "title": "exemple",
+              "simple-content": "@ConfigurationProperties(prefix = \"app.feature\")\n@Component\npublic class FeatureProperties {\n    private boolean enabled = false;\n    private String name;\n    private List<String> options = new ArrayList<>();\n    \n    // Getters and setters\n}"
+            }
+          ]
+        },
+        {
+          "title": "profils_d_environnement",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Les profils permettent une configuration spécifique à l'environnement"
+            },
+            {
+              "title": "activation_de_profil",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "via_annotation",
+                      "simple-content": "// Activating profiles\n@Profile(\"dev\")\n@Configuration\npublic class DevConfig {\n    // Dev-specific beans\n}"
+                    },
+                    {
+                      "title": "via_properties",
+                      "simple-content": "// In properties file\nspring.profiles.active=dev"
+                    },
+                    {
+                      "title": "via_command_line",
+                      "simple-content": "// Via command line\n--spring.profiles.active=dev,local"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "fichiers_spécifiques_aux_profils",
+              "multi-content": [
+                "application-dev.properties",
+                "application-prod.properties"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ApplicationsWeb",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring Boot simplifie le développement d'applications web avec l'auto-configuration pour les environnements web et la création facile de points d'extrémité REST."
+        },
+        {
+          "title": "contrôleurs_rest",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Les contrôleurs REST dans Spring Boot gèrent les requêtes HTTP et renvoient des réponses, souvent au format JSON."
+            },
+            {
+              "title": "exemple",
+              "simple-content": "@RestController\n@RequestMapping(\"/api/users\")\npublic class UserController {\n    \n    private final UserService userService;\n    \n    public UserController(UserService userService) {\n        this.userService = userService;\n    }\n    \n    @GetMapping\n    public List<User> getAllUsers() {\n        return userService.findAll();\n    }\n    \n    @GetMapping(\"/{id}\")\n    public User getUser(@PathVariable Long id) {\n        return userService.findById(id)\n            .orElseThrow(() -> new ResourceNotFoundException(\"User not found\"));\n    }\n    \n    @PostMapping\n    @ResponseStatus(HttpStatus.CREATED)\n    public User createUser(@Valid @RequestBody UserDto userDto) {\n        return userService.create(userDto);\n    }\n    \n    @PutMapping(\"/{id}\")\n    public User updateUser(@PathVariable Long id, @Valid @RequestBody UserDto userDto) {\n        return userService.update(id, userDto);\n    }\n    \n    @DeleteMapping(\"/{id}\")\n    @ResponseStatus(HttpStatus.NO_CONTENT)\n    public void deleteUser(@PathVariable Long id) {\n        userService.delete(id);\n    }\n}"
+            }
+          ]
+        },
+        {
+          "title": "gestion_des_requêtes",
+          "multi-content": [
+            {
+              "title": "GetMapping",
+              "simple-content": "Gère les requêtes HTTP GET"
+            },
+            {
+              "title": "PostMapping",
+              "simple-content": "Gère les requêtes HTTP POST"
+            },
+            {
+              "title": "PutMapping",
+              "simple-content": "Gère les requêtes HTTP PUT"
+            },
+            {
+              "title": "DeleteMapping",
+              "simple-content": "Gère les requêtes HTTP DELETE"
+            },
+            {
+              "title": "PatchMapping",
+              "simple-content": "Gère les requêtes HTTP PATCH"
+            },
+            {
+              "title": "RequestMapping",
+              "simple-content": "Mapping de requête générique"
+            }
+          ]
+        },
+        {
+          "title": "liaison_de_paramètres",
+          "multi-content": [
+            {
+              "title": "PathVariable",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Extraire des valeurs du chemin URI"
+                },
+                {
+                  "title": "exemple",
+                  "simple-content": "@GetMapping(\"/{id}\")"
+                }
+              ]
+            },
+            {
+              "title": "RequestParam",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Extraire des paramètres de requête"
+                },
+                {
+                  "title": "exemple",
+                  "simple-content": "@RequestParam String sort"
+                }
+              ]
+            },
+            {
+              "title": "RequestBody",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Extraire et convertir le corps de la requête"
+                },
+                {
+                  "title": "exemple",
+                  "simple-content": "@RequestBody UserDto user"
+                }
+              ]
+            },
+            {
+              "title": "RequestHeader",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Extraire des valeurs d'en-tête"
+                },
+                {
+                  "title": "exemple",
+                  "simple-content": "@RequestHeader String authorization"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "gestion_des_exceptions",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Gestion centralisée des exceptions avec @ControllerAdvice"
+            },
+            {
+              "title": "exemple",
+              "simple-content": "@RestControllerAdvice\npublic class GlobalExceptionHandler {\n    \n    @ExceptionHandler(ResourceNotFoundException.class)\n    @ResponseStatus(HttpStatus.NOT_FOUND)\n    public ErrorResponse handleResourceNotFound(ResourceNotFoundException ex) {\n        return new ErrorResponse(ex.getMessage());\n    }\n    \n    @ExceptionHandler(MethodArgumentNotValidException.class)\n    @ResponseStatus(HttpStatus.BAD_REQUEST)\n    public ErrorResponse handleValidationErrors(MethodArgumentNotValidException ex) {\n        List<String> errors = ex.getBindingResult()\n            .getFieldErrors()\n            .stream()\n            .map(error -> error.getField() + \": \" + error.getDefaultMessage())\n            .collect(Collectors.toList());\n            \n        return new ErrorResponse(\"Validation failed\", errors);\n    }\n    \n    @ExceptionHandler(Exception.class)\n    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)\n    public ErrorResponse handleGenericException(Exception ex) {\n        return new ErrorResponse(\"An unexpected error occurred\");\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "GraphQLAvecSpringBoot",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring Boot prend en charge le développement d'API GraphQL avec la dépendance spring-boot-starter-graphql, permettant la création d'API déclarative basée sur des schémas."
+        },
+        {
+          "title": "configuration_de_base",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "schéma",
+                  "simple-content": "// GraphQL Schema (.graphqls file)\ntype Query {\n  userById(id: ID!): User\n  allUsers: [User]\n}\n\ntype User {\n  id: ID!\n  name: String!\n  email: String!\n}"
+                },
+                {
+                  "title": "contrôleur",
+                  "simple-content": "// Controller Implementation\n@Controller\npublic class UserGraphQLController {\n    private final UserService userService;\n    \n    public UserGraphQLController(UserService userService) {\n        this.userService = userService;\n    }\n    \n    @QueryMapping\n    public User userById(@Argument Long id) {\n        return userService.findById(id)\n            .orElseThrow(() -> new ResourceNotFoundException(\"User not found\"));\n    }\n    \n    @QueryMapping\n    public List<User> allUsers() {\n        return userService.findAll();\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "problème_n_plus_1",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Le problème N+1 se produit lors de la récupération d'une liste d'entités et de leurs relations : 1 requête pour récupérer tous les utilisateurs + N requêtes pour récupérer les commandes de chaque utilisateur"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "solution",
+                  "simple-content": "// Solution using DataLoader\n@Component\npublic class OrdersDataLoader {\n    private final DataLoader<Long, List<Order>> dataLoader;\n    \n    public OrdersDataLoader(OrderRepository orderRepository) {\n        this.dataLoader = DataLoader.newMappedDataLoader(userIds -> {\n            Map<Long, List<Order>> ordersByUserId = orderRepository.findAllByUserIdIn(userIds)\n                .stream()\n                .collect(Collectors.groupingBy(Order::getUserId));\n            \n            return CompletableFuture.supplyAsync(() -> userIds.stream()\n                .collect(Collectors.toMap(\n                    id -> id,\n                    id -> ordersByUserId.getOrDefault(id, Collections.emptyList())\n                )));\n        });\n    }\n    \n    public DataLoader<Long, List<Order>> getDataLoader() {\n        return dataLoader;\n    }\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "AccèsAuxDonnéesAvecSpringBoot",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring Boot simplifie l'accès aux données avec les repositories Spring Data, fournissant des opérations CRUD automatiques et la possibilité de créer des requêtes personnalisées avec un minimum de code répétitif."
+        },
+        {
+          "title": "repositories_spring_data",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "description",
+                  "simple-content": "Spring Boot configure automatiquement les repositories Spring Data en fonction des dépendances du classpath."
+                },
+                {
+                  "title": "exemple",
+                  "simple-content": "// Simple repository interface\npublic interface UserRepository extends JpaRepository<User, Long> {\n    \n    // Derived query methods\n    Optional<User> findByEmail(String email);\n    \n    List<User> findByLastNameOrderByFirstNameAsc(String lastName);\n    \n    // Custom query\n    @Query(\"SELECT u FROM User u WHERE u.status = :status\")\n    List<User> findAllByStatus(@Param(\"status\") UserStatus status);\n    \n    // Native query\n    @Query(value = \"SELECT * FROM users WHERE created_date > :date\", \n           nativeQuery = true)\n    List<User> findRecentUsers(@Param(\"date\") LocalDate date);\n    \n    // Modifying query\n    @Modifying\n    @Transactional\n    @Query(\"UPDATE User u SET u.status = :status WHERE u.id = :id\")\n    int updateUserStatus(@Param(\"id\") Long id, @Param(\"status\") UserStatus status);\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "gestion_des_transactions",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Spring Boot fournit une gestion déclarative des transactions avec @Transactional."
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "exemple",
+                  "simple-content": "@Service\npublic class UserService {\n    \n    private final UserRepository userRepository;\n    \n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n    \n    @Transactional\n    public User updateUserProfile(Long userId, ProfileUpdate update) {\n        User user = userRepository.findById(userId)\n            .orElseThrow(() -> new ResourceNotFoundException(\"User not found\"));\n            \n        user.setFirstName(update.getFirstName());\n        user.setLastName(update.getLastName());\n        user.setEmail(update.getEmail());\n        \n        // No need for explicit save() call with managed entities\n        return user;\n    }\n    \n    @Transactional(readOnly = true)\n    public List<User> findAllActiveUsers() {\n        return userRepository.findAllByStatus(UserStatus.ACTIVE);\n    }\n    \n    @Transactional(propagation = Propagation.REQUIRES_NEW)\n    public void processImportantTask() {\n        // This executes in a new transaction\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "configuration_jpa",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Spring Boot configure automatiquement la plupart des paramètres JPA lorsque spring-boot-starter-data-jpa est présent."
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "propriétés",
+                  "simple-content": "# Database connection settings\nspring.datasource.url=jdbc:mysql://localhost:3306/mydb\nspring.datasource.username=root\nspring.datasource.password=password\nspring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver\n\n# JPA/Hibernate properties\nspring.jpa.hibernate.ddl-auto=update\nspring.jpa.show-sql=true\nspring.jpa.properties.hibernate.format_sql=true\nspring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "AuthentificationAvecKeycloak",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring Boot s'intègre avec Keycloak pour fournir une authentification OAuth2 et OpenID Connect pour les applications, permettant des capacités d'authentification unique (SSO)."
+        },
+        {
+          "title": "configuration",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "config_sécurité",
+                  "simple-content": "// Keycloak Configuration\n@Configuration\n@EnableWebSecurity\npublic class SecurityConfig extends WebSecurityConfigurerAdapter {\n\n    @Override\n    protected void configure(HttpSecurity http) throws Exception {\n        http.authorizeRequests()\n            .antMatchers(\"/public/**\").permitAll()\n            .anyRequest().authenticated()\n            .and()\n            .oauth2Login()\n            .and()\n            .oauth2ResourceServer().jwt();\n    }\n}"
+                },
+                {
+                  "title": "propriétés",
+                  "simple-content": "// application.properties\nspring.security.oauth2.client.registration.keycloak.client-id=my-client\nspring.security.oauth2.client.registration.keycloak.client-secret=my-secret\nspring.security.oauth2.client.registration.keycloak.scope=openid,profile,email\nspring.security.oauth2.client.provider.keycloak.issuer-uri=https://keycloak-server/auth/realms/my-realm\nspring.security.oauth2.resourceserver.jwt.issuer-uri=https://keycloak-server/auth/realms/my-realm"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ClientFeign",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Feign est un client HTTP déclaratif utilisé dans Spring Cloud pour simplifier les appels API HTTP entre microservices."
+        },
+        {
+          "title": "configuration_de_base",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "config_application",
+                  "simple-content": "// Enable Feign Clients in your application\n@SpringBootApplication\n@EnableFeignClients\npublic class MyServiceApplication {\n    public static void main(String[] args) {\n        SpringApplication.run(MyServiceApplication.class, args);\n    }\n}"
+                },
+                {
+                  "title": "interface_client",
+                  "simple-content": "// Define a Feign client interface\n@FeignClient(name = \"user-service\", url = \"${user-service.url}\")\npublic interface UserClient {\n    \n    @GetMapping(\"/users/{id}\")\n    User getUserById(@PathVariable(\"id\") Long id);\n    \n    @PostMapping(\"/users\")\n    User createUser(@RequestBody UserDto userDto);\n    \n    @GetMapping(\"/users\")\n    List<User> getAllUsers();\n}"
+                },
+                {
+                  "title": "utilisation",
+                  "simple-content": "// Use the client in a service\n@Service\npublic class UserServiceClient {\n    \n    private final UserClient userClient;\n    \n    public UserServiceClient(UserClient userClient) {\n        this.userClient = userClient;\n    }\n    \n    public User getUserDetails(Long userId) {\n        return userClient.getUserById(userId);\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "fonctionnalités_avancées",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "disjoncteur",
+                  "simple-content": "@FeignClient(name = \"user-service\", fallback = UserClientFallback.class)\npublic interface UserClient {\n    // methods\n}\n\n@Component\npublic class UserClientFallback implements UserClient {\n    \n    @Override\n    public User getUserById(Long id) {\n        // Return default or cached user when service is unavailable\n        return new User(id, \"Default User\", \"default@example.com\");\n    }\n    \n    // Implement other methods with fallbacks\n}\n\n// In application.properties\nfeign.circuitbreaker.enabled=true"
+                },
+                {
+                  "title": "configuration_personnalisée",
+                  "simple-content": "@FeignClient(name = \"user-service\", configuration = UserClientConfiguration.class)\npublic interface UserClient {\n    // methods\n}\n\n@Configuration\npublic class UserClientConfiguration {\n    \n    @Bean\n    public RequestInterceptor requestInterceptor() {\n        return requestTemplate -> {\n            requestTemplate.header(\"Authorization\", \"Bearer \" + getToken());\n            requestTemplate.header(\"Accept\", \"application/json\");\n        };\n    }\n    \n    @Bean\n    public ErrorDecoder errorDecoder() {\n        return new UserServiceErrorDecoder();\n    }\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ServicesAvecEtatVsSansEtat",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Une distinction architecturale fondamentale dans la conception de microservices et le développement d'API RESTful entre les services qui maintiennent l'état du client et ceux qui ne le font pas."
+        },
+        {
+          "title": "services_sans_état",
+          "multi-content": [
+            {
+              "title": "caractéristiques",
+              "multi-content": [
+                "Chaque requête contient toutes les informations nécessaires pour la traiter",
+                "Aucune donnée de session client n'est stockée sur le serveur entre les requêtes",
+                "N'importe quelle instance de service peut traiter n'importe quelle requête",
+                "Plus facile à dimensionner horizontalement",
+                "Plus résistant aux défaillances"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "exemple",
+                  "simple-content": "// Example of a stateless REST controller\n@RestController\n@RequestMapping(\"/api/products\")\npublic class ProductController {\n    \n    private final ProductService productService;\n    \n    public ProductController(ProductService productService) {\n        this.productService = productService;\n    }\n    \n    @GetMapping(\"/{id}\")\n    public Product getProduct(@PathVariable Long id) {\n        // Each request is independent and contains all necessary info (id)\n        return productService.findById(id);\n    }\n    \n    @PostMapping\n    public Product createProduct(@RequestBody ProductDto productDto) {\n        // Request contains all information needed to create the product\n        return productService.create(productDto);\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "services_avec_état",
+          "multi-content": [
+            {
+              "title": "caractéristiques",
+              "multi-content": [
+                "Le serveur maintient les informations de session client entre les requêtes",
+                "Les clients doivent interagir avec la même instance de serveur ou l'état doit être partagé",
+                "Plus complexe à dimensionner horizontalement",
+                "Plus vulnérable aux défaillances de service"
+              ]
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "exemple",
+                  "simple-content": "// Example of a stateful controller (generally avoided in microservices)\n@RestController\n@RequestMapping(\"/api/cart\")\npublic class ShoppingCartController {\n    \n    // This map stores state per session - making this service stateful\n    private final Map<String, ShoppingCart> sessionCarts = new ConcurrentHashMap<>();\n    \n    @PostMapping(\"/items\")\n    public void addItem(@RequestBody CartItem item, HttpSession session) {\n        String sessionId = session.getId();\n        ShoppingCart cart = sessionCarts.computeIfAbsent(sessionId, k -> new ShoppingCart());\n        cart.addItem(item);\n        // State is stored on the server\n    }\n    \n    @GetMapping\n    public ShoppingCart getCart(HttpSession session) {\n        String sessionId = session.getId();\n        // This depends on previous state\n        return sessionCarts.getOrDefault(sessionId, new ShoppingCart());\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "rendre_les_services_avec_état_scalables",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "externaliser_l_état",
+                  "simple-content": "@RestController\n@RequestMapping(\"/api/cart\")\npublic class ShoppingCartController {\n    \n    private final CartRepository cartRepository;\n    \n    public ShoppingCartController(CartRepository cartRepository) {\n        this.cartRepository = cartRepository;\n    }\n    \n    @PostMapping(\"/items\")\n    public void addItem(@RequestBody CartItem item, @RequestHeader(\"Authorization\") String token) {\n        // Extract user ID from token\n        String userId = getUserIdFromToken(token);\n        // Get cart from external datastore\n        ShoppingCart cart = cartRepository.findByUserId(userId)\n            .orElseGet(() -> new ShoppingCart(userId));\n        cart.addItem(item);\n        cartRepository.save(cart);\n    }\n}"
+                },
+                {
+                  "title": "utiliser_des_sessions_collantes",
+                  "simple-content": "# Spring Session configuration for Redis\nspring.session.store-type=redis\nspring.redis.host=redis-server\nspring.redis.port=6379"
+                },
+                {
+                  "title": "utiliser_la_mise_en_cache_distribuée",
+                  "simple-content": "@Configuration\n@EnableCaching\npublic class CacheConfig {\n    \n    @Bean\n    public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {\n        RedisCacheManager cacheManager = RedisCacheManager.builder(connectionFactory)\n            .cacheDefaults(RedisCacheConfiguration.defaultCacheConfig()\n                .entryTtl(Duration.ofMinutes(10)))\n            .build();\n        return cacheManager;\n    }\n}\n\n@Service\npublic class ProductService {\n    \n    @Cacheable(value = \"products\", key = \"#id\")\n    public Product findById(Long id) {\n        // This result will be cached in Redis\n        return productRepository.findById(id).orElseThrow();\n    }\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "TestsDansSpringBoot",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring Boot offre un support de test étendu avec une auto-configuration pour les environnements de test, facilitant le test des différentes couches d'application."
+        },
+        {
+          "title": "tests_unitaires_de_service",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Tester les classes de service isolément en utilisant des mocks"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "exemple",
+                  "simple-content": "@ExtendWith(MockitoExtension.class)\nclass UserServiceTest {\n    \n    @Mock\n    private UserRepository userRepository;\n    \n    @InjectMocks\n    private UserService userService;\n    \n    @Test\n    void shouldReturnUserWhenFindById() {\n        // Given\n        Long userId = 1L;\n        User expectedUser = new User(userId, \"john@example.com\");\n        when(userRepository.findById(userId)).thenReturn(Optional.of(expectedUser));\n        \n        // When\n        User actualUser = userService.findById(userId).orElse(null);\n        \n        // Then\n        assertNotNull(actualUser);\n        assertEquals(expectedUser.getEmail(), actualUser.getEmail());\n        verify(userRepository).findById(userId);\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "tests_d_intégration_de_contrôleur",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Tester les contrôleurs avec un environnement MVC simulé"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "exemple",
+                  "simple-content": "@SpringBootTest\n@AutoConfigureMockMvc\nclass UserControllerTest {\n    \n    @Autowired\n    private MockMvc mockMvc;\n    \n    @MockBean\n    private UserService userService;\n    \n    @Test\n    void shouldReturnUserWhenGetWithValidId() throws Exception {\n        // Given\n        Long userId = 1L;\n        User user = new User(userId, \"john@example.com\");\n        when(userService.findById(userId)).thenReturn(Optional.of(user));\n        \n        // When/Then\n        mockMvc.perform(get(\"/api/users/{id}\", userId)\n            .contentType(MediaType.APPLICATION_JSON))\n            .andExpect(status().isOk())\n            .andExpect(jsonPath(\"$.id\").value(userId))\n            .andExpect(jsonPath(\"$.email\").value(\"john@example.com\"));\n    }\n    \n    @Test\n    void shouldReturnNotFoundWhenUserDoesNotExist() throws Exception {\n        // Given\n        Long userId = 999L;\n        when(userService.findById(userId)).thenReturn(Optional.empty());\n        \n        // When/Then\n        mockMvc.perform(get(\"/api/users/{id}\", userId)\n            .contentType(MediaType.APPLICATION_JSON))\n            .andExpect(status().isNotFound());\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "tests_par_tranches",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Spring Boot fournit des tranches de test pour des tests plus rapides et ciblés"
+            },
+            {
+              "title": "tranches_de_test",
+              "multi-content": [
+                {
+                  "title": "@WebMvcTest",
+                  "multi-content": [
+                    {
+                      "title": "portée",
+                      "simple-content": "Contrôleurs"
+                    },
+                    {
+                      "title": "objectif",
+                      "simple-content": "Tester les contrôleurs MVC sans démarrer le contexte complet"
+                    }
+                  ]
+                },
+                {
+                  "title": "@DataJpaTest",
+                  "multi-content": [
+                    {
+                      "title": "portée",
+                      "simple-content": "Repositories JPA"
+                    },
+                    {
+                      "title": "objectif",
+                      "simple-content": "Tester les repositories JPA avec une base de données en mémoire"
+                    }
+                  ]
+                },
+                {
+                  "title": "@JsonTest",
+                  "multi-content": [
+                    {
+                      "title": "portée",
+                      "simple-content": "Sérialisation JSON"
+                    },
+                    {
+                      "title": "objectif",
+                      "simple-content": "Tester la sérialisation/désérialisation JSON"
+                    }
+                  ]
+                },
+                {
+                  "title": "@RestClientTest",
+                  "multi-content": [
+                    {
+                      "title": "portée",
+                      "simple-content": "Clients REST"
+                    },
+                    {
+                      "title": "objectif",
+                      "simple-content": "Tester le code client REST"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "exemples",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "web_mvc_test",
+                      "simple-content": "@WebMvcTest(UserController.class)\nclass UserControllerWebMvcTest {\n    \n    @Autowired\n    private MockMvc mockMvc;\n    \n    @MockBean\n    private UserService userService;\n    \n    // Tests similar to above example\n}"
+                    },
+                    {
+                      "title": "data_jpa_test",
+                      "simple-content": "@DataJpaTest\nclass UserRepositoryTest {\n    \n    @Autowired\n    private UserRepository userRepository;\n    \n    @Test\n    void shouldFindUserByEmail() {\n        // Given\n        String email = \"test@example.com\";\n        User user = new User();\n        user.setEmail(email);\n        userRepository.save(user);\n        \n        // When\n        Optional<User> result = userRepository.findByEmail(email);\n        \n        // Then\n        assertTrue(result.isPresent());\n        assertEquals(email, result.get().getEmail());\n    }\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SpringBootActuator",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring Boot Actuator fournit des fonctionnalités prêtes pour la production pour surveiller et gérer les applications."
+        },
+        {
+          "title": "points_terminaux_clés",
+          "multi-content": [
+            {
+              "title": "/actuator/health",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Vérifications de santé"
+                },
+                {
+                  "title": "utilisation",
+                  "simple-content": "Surveiller la santé de l'application"
+                }
+              ]
+            },
+            {
+              "title": "/actuator/info",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Informations sur l'application"
+                },
+                {
+                  "title": "utilisation",
+                  "simple-content": "Informations personnalisées sur l'application"
+                }
+              ]
+            },
+            {
+              "title": "/actuator/metrics",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Métriques"
+                },
+                {
+                  "title": "utilisation",
+                  "simple-content": "Diverses métriques sur l'application"
+                }
+              ]
+            },
+            {
+              "title": "/actuator/env",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Environnement"
+                },
+                {
+                  "title": "utilisation",
+                  "simple-content": "Propriétés de l'environnement actuel"
+                }
+              ]
+            },
+            {
+              "title": "/actuator/loggers",
+              "multi-content": [
+                {
+                  "title": "objectif",
+                  "simple-content": "Journalisation"
+                },
+                {
+                  "title": "utilisation",
+                  "simple-content": "Voir et modifier les niveaux de journalisation à l'exécution"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "code_examples",
+          "multi-content": [
+            {
+              "title": "configuration",
+              "simple-content": "# Enable all endpoints over HTTP\nmanagement.endpoints.web.exposure.include=*\n\n# Expose only specific endpoints\nmanagement.endpoints.web.exposure.include=health,info,metrics\n\n# Health details visibility\nmanagement.endpoint.health.show-details=always\n\n# Custom information\ninfo.app.name=${spring.application.name}\ninfo.app.version=1.0.0\ninfo.app.description=My Spring Boot Application"
+            },
+            {
+              "title": "indicateurs_de_santé_personnalisés",
+              "simple-content": "@Component\npublic class DatabaseHealthIndicator implements HealthIndicator {\n    \n    private final DataSource dataSource;\n    \n    public DatabaseHealthIndicator(DataSource dataSource) {\n        this.dataSource = dataSource;\n    }\n    \n    @Override\n    public Health health() {\n        try (Connection conn = dataSource.getConnection()) {\n            PreparedStatement ps = conn.prepareStatement(\"SELECT 1\");\n            ps.executeQuery();\n            return Health.up()\n                .withDetail(\"database\", \"Available\")\n                .build();\n        } catch (SQLException e) {\n            return Health.down()\n                .withDetail(\"database\", \"Unavailable\")\n                .withException(e)\n                .build();\n        }\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SpringBatch",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring Batch est un framework de traitement par lots léger et complet conçu pour permettre le développement d'applications par lots robustes pour les systèmes d'entreprise."
+        },
+        {
+          "title": "code_examples",
+          "multi-content": [
+            {
+              "title": "configuration_de_base",
+              "simple-content": "@Configuration\n@EnableBatchProcessing\npublic class BatchConfig {\n    \n    @Autowired\n    private JobBuilderFactory jobBuilderFactory;\n    \n    @Autowired\n    private StepBuilderFactory stepBuilderFactory;\n    \n    @Bean\n    public Step processUsersStep(ItemReader<User> reader, ItemProcessor<User, User> processor, \n                               ItemWriter<User> writer) {\n        return stepBuilderFactory.get(\"processUsersStep\")\n            .<User, User>chunk(10)\n            .reader(reader)\n            .processor(processor)\n            .writer(writer)\n            .build();\n    }\n    \n    @Bean\n    public Job importUserJob(Step processUsersStep) {\n        return jobBuilderFactory.get(\"importUserJob\")\n            .start(processUsersStep)\n            .build();\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ArchitectureOrientéeÉvénements",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring fournit un support pour l'architecture orientée événements, permettant aux composants de communiquer par le biais d'événements plutôt que par des appels de méthode directs."
+        },
+        {
+          "title": "code_examples",
+          "multi-content": [
+            {
+              "title": "exemple_d_événement",
+              "simple-content": "// Event\n@Getter\npublic class UserCreatedEvent {\n    private final Long userId;\n    private final String email;\n    \n    public UserCreatedEvent(Long userId, String email) {\n        this.userId = userId;\n        this.email = email;\n    }\n}"
+            },
+            {
+              "title": "exemple_de_publieur",
+              "simple-content": "// Publisher\n@Service\npublic class UserService {\n    \n    private final ApplicationEventPublisher eventPublisher;\n    private final UserRepository userRepository;\n    \n    public UserService(ApplicationEventPublisher eventPublisher, UserRepository userRepository) {\n        this.eventPublisher = eventPublisher;\n        this.userRepository = userRepository;\n    }\n    \n    @Transactional\n    public User createUser(UserDto userDto) {\n        User user = new User();\n        user.setEmail(userDto.getEmail());\n        user.setName(userDto.getName());\n        \n        user = userRepository.save(user);\n        \n        // Publish the event\n        eventPublisher.publishEvent(new UserCreatedEvent(user.getId(), user.getEmail()));\n        \n        return user;\n    }\n}"
+            },
+            {
+              "title": "exemple_d_écouteur",
+              "simple-content": "// Listener\n@Component\npublic class UserEventListener {\n    \n    private final EmailService emailService;\n    \n    public UserEventListener(EmailService emailService) {\n        this.emailService = emailService;\n    }\n    \n    @EventListener\n    public void handleUserCreated(UserCreatedEvent event) {\n        emailService.sendWelcomeEmail(event.getEmail());\n    }\n    \n    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)\n    public void handleUserCreatedAfterCommit(UserCreatedEvent event) {\n        // Executed only after successful transaction commit\n        // Good for non-critical operations that shouldn't affect the transaction\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SpringWebFlux",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring WebFlux est un framework web réactif qui est entièrement non bloquant, prend en charge les Reactive Streams et fonctionne sur des serveurs comme Netty, Undertow et les conteneurs Servlet."
+        },
+        {
+          "title": "code_examples",
+          "multi-content": [
+            {
+              "title": "repository_réactif",
+              "simple-content": "// Reactive repository\npublic interface ReactiveUserRepository extends ReactiveCrudRepository<User, Long> {\n    Flux<User> findByLastName(String lastName);\n    Mono<User> findByEmail(String email);\n}"
+            },
+            {
+              "title": "contrôleur_réactif",
+              "simple-content": "// Reactive controller with server-sent events\n@RestController\npublic class ReactiveUserController {\n    \n    private final ReactiveUserRepository userRepository;\n    \n    public ReactiveUserController(ReactiveUserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n    \n    @GetMapping(value = \"/users/updates\", produces = MediaType.TEXT_EVENT_STREAM_VALUE)\n    public Flux<User> streamUsers() {\n        return userRepository.findAll().delayElements(Duration.ofSeconds(1));\n    }\n    \n    @GetMapping(\"/users/{id}\")\n    public Mono<ResponseEntity<User>> getUser(@PathVariable Long id) {\n        return userRepository.findById(id)\n            .map(user -> ResponseEntity.ok(user))\n            .defaultIfEmpty(ResponseEntity.notFound().build());\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "DéploiementEtProduction",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Les applications Spring Boot peuvent être déployées de différentes manières et incluent des fonctionnalités prêtes pour la production pour la surveillance, la gestion et les opérations."
+        },
+        {
+          "title": "serveurs_embarqués",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Spring Boot inclut des serveurs embarqués (Tomcat par défaut) qui vous permettent d'exécuter votre application en tant que JAR autonome."
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "personnalisation",
+                  "simple-content": "// To customize the embedded server\n@Bean\npublic WebServerFactoryCustomizer<TomcatServletWebServerFactory> tomcatCustomizer() {\n    return (factory) -> {\n        factory.addConnectorCustomizers(connector -> {\n            Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();\n            protocol.setMaxThreads(200);\n            protocol.setConnectionTimeout(20000);\n        });\n    };\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "emballage_pour_production",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "construire_jar",
+                  "simple-content": "# Build a JAR\n./mvnw clean package"
+                },
+                {
+                  "title": "exécuter_jar",
+                  "simple-content": "# Run the JAR\njava -jar target/myapp-0.0.1-SNAPSHOT.jar"
+                },
+                {
+                  "title": "remplacer_propriétés",
+                  "simple-content": "# Override properties at runtime\njava -jar target/myapp-0.0.1-SNAPSHOT.jar --server.port=8081"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "fonctionnalités_adaptées_au_cloud",
+          "multi-content": [
+            "Configuration externalisée : Variables d'environnement, serveurs de configuration cloud",
+            "Vérifications de santé : Pour les systèmes d'orchestration de conteneurs",
+            "Métriques : Pour les systèmes de surveillance",
+            "Résilience : Avec les composants Spring Cloud"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SpringBootVsFramework",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Comprendre les différences entre Spring Boot et le framework Spring de base aide à clarifier leur relation et leurs cas d'utilisation."
+        },
+        {
+          "title": "différences_clés",
+          "multi-content": [
+            {
+              "title": "Configuration",
+              "multi-content": [
+                {
+                  "title": "spring_framework",
+                  "simple-content": "Configuration explicite et manuelle requise"
+                },
+                {
+                  "title": "spring_boot",
+                  "simple-content": "Auto-configuration avec des valeurs par défaut sensées"
+                }
+              ]
+            },
+            {
+              "title": "Configuration",
+              "multi-content": [
+                {
+                  "title": "spring_framework",
+                  "simple-content": "Plus de code standard, plusieurs fichiers de configuration"
+                },
+                {
+                  "title": "spring_boot",
+                  "simple-content": "Code de configuration minimal, convention plutôt que configuration"
+                }
+              ]
+            },
+            {
+              "title": "Déploiement",
+              "multi-content": [
+                {
+                  "title": "spring_framework",
+                  "simple-content": "Déploiement WAR traditionnel ou application autonome"
+                },
+                {
+                  "title": "spring_boot",
+                  "simple-content": "Serveur embarqué, JAR autonome avec tout inclus"
+                }
+              ]
+            },
+            {
+              "title": "Dépendances",
+              "multi-content": [
+                {
+                  "title": "spring_framework",
+                  "simple-content": "Gestion manuelle des dépendances et coordination des versions"
+                },
+                {
+                  "title": "spring_boot",
+                  "simple-content": "Dépendances starter avec des ensembles de versions compatibles et testées"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Exemples",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "config_spring_framework",
+                  "simple-content": "// Spring Framework - explicit ViewResolver configuration\n@Configuration\npublic class WebConfig implements WebMvcConfigurer {\n    @Bean\n    public ViewResolver viewResolver() {\n        InternalResourceViewResolver resolver = new InternalResourceViewResolver();\n        resolver.setPrefix(\"/WEB-INF/views/\");\n        resolver.setSuffix(\".jsp\");\n        return resolver;\n    }\n    // Many more beans...\n}"
+                },
+                {
+                  "title": "config_spring_boot",
+                  "simple-content": "// Spring Boot - auto-configuration handles it\n@SpringBootApplication\npublic class Application {\n    public static void main(String[] args) {\n        SpringApplication.run(Application.class, args);\n    }\n    // That's it! Configuration via application.properties\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "QuestionsFrequentesEntretien",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Questions courantes sur Spring Boot fréquemment posées lors d'entretiens techniques."
+        },
+        {
+          "title": "qu_est_ce_que_spring_boot",
+          "multi-content": [
+            {
+              "title": "question",
+              "simple-content": "Qu'est-ce que Spring Boot et en quoi diffère-t-il du framework Spring traditionnel ?"
+            },
+            {
+              "title": "réponse",
+              "multi-content": [
+                "Spring Boot est une extension du framework Spring basée sur la convention plutôt que la configuration qui simplifie la configuration des applications Spring.",
+                "Différences principales :",
+                "Auto-configuration : Spring Boot configure automatiquement les beans en fonction des dépendances du classpath, tandis que Spring traditionnel nécessite une configuration explicite.",
+                "Autonome : Les applications Spring Boot peuvent s'exécuter en tant que JAR autonomes avec des serveurs embarqués, tandis que les applications Spring traditionnelles nécessitent généralement des serveurs externes.",
+                "Dépendances Starter : Spring Boot fournit des POMs starter qui regroupent des dépendances compatibles, tandis que Spring traditionnel nécessite une gestion manuelle des dépendances.",
+                "Prêt pour la production : Spring Boot inclut des métriques intégrées, des vérifications de santé et une configuration externalisée."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "comment_fonctionne_l_auto_configuration",
+          "multi-content": [
+            {
+              "title": "question",
+              "simple-content": "Comment fonctionne l'auto-configuration de Spring Boot ?"
+            },
+            {
+              "title": "réponse",
+              "multi-content": [
+                "L'auto-configuration de Spring Boot fonctionne par :",
+                "1. Chargement des classes de configuration répertoriées dans META-INF/spring.factories sous la clé EnableAutoConfiguration",
+                "2. Évaluation des conditions sur ces classes à l'aide d'annotations comme @ConditionalOnClass, @ConditionalOnMissingBean, etc.",
+                "3. Application uniquement des configurations qui remplissent leurs conditions",
+                "4. Respect des beans définis par l'utilisateur par rapport aux beans auto-configurés",
+                "5. Utilisation d'un ordre spécifique pour garantir le respect des dépendances"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "façons_d_externaliser_la_configuration",
+          "multi-content": [
+            {
+              "title": "question",
+              "simple-content": "Quelles sont les différentes façons d'externaliser la configuration dans Spring Boot ?"
+            },
+            {
+              "title": "réponse",
+              "multi-content": [
+                "Spring Boot offre plusieurs façons d'externaliser la configuration :",
+                "Fichiers de propriétés (application.properties ou application.yml)",
+                "Fichiers de propriétés spécifiques à l'environnement (application-{env}.properties)",
+                "Arguments de ligne de commande",
+                "Variables d'environnement",
+                "@ConfigurationProperties pour lier des propriétés à des objets structurés",
+                "Spring Cloud Config Server pour une configuration centralisée"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "différence_component_service_repository",
+          "multi-content": [
+            {
+              "title": "question",
+              "simple-content": "Quelle est la différence entre les annotations @Component, @Service et @Repository ?"
+            },
+            {
+              "title": "réponse",
+              "multi-content": [
+                "Fonctionnellement, ce sont toutes des versions spécialisées de @Component qui marquent les classes pour le scan de composants :",
+                "@Component : Stéréotype générique pour les composants gérés par Spring",
+                "@Service : Indique que la classe appartient à la couche de service (logique métier)",
+                "@Repository : Indique que la classe est un objet d'accès aux données, avec des avantages supplémentaires comme la traduction d'exceptions",
+                "@Controller/@RestController : Indique que la classe définit des points d'extrémité web",
+                "Spring les traite de manière identique en termes d'enregistrement de beans, mais les spécialisations améliorent la sémantique et peuvent activer des comportements supplémentaires."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "gestion_des_exceptions",
+          "multi-content": [
+            {
+              "title": "question",
+              "simple-content": "Comment gérez-vous les exceptions dans une application REST Spring Boot ?"
+            },
+            {
+              "title": "réponse",
+              "multi-content": [
+                "La gestion des exceptions dans les applications REST Spring Boot implique généralement :",
+                "1. Création de classes d'exception personnalisées pour différents scénarios d'erreur",
+                "2. Implémentation d'un gestionnaire d'exceptions global avec @RestControllerAdvice",
+                "3. Utilisation de méthodes @ExceptionHandler pour gérer des types d'exception spécifiques",
+                "4. Renvoi de codes d'état HTTP appropriés et de réponses d'erreur structurées",
+                "5. Utilisation facultative de ResponseStatusException de Spring pour des cas plus simples"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

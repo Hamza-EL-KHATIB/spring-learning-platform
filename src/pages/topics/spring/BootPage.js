@@ -1,387 +1,522 @@
-import React, { useState } from 'react';
-import { Wrench, Settings, Database, Server, Code, Package, Clock, Layout } from 'lucide-react';
-import bootJson from '../../../data/spring/boot.json';
+import React, { useState, useEffect } from 'react';
+import {
+    Box, Database, GitMerge, Settings, Shield, Code, Layers, Globe,
+    BookOpen, FileText, CheckCircle, List, AlertTriangle, Terminal,
+    Code2, Cpu, ArrowRight, Package, Server, Activity, Wrench, Clock
+} from 'lucide-react';
+import bootConceptsEn from '../../../data/spring/spring-boot.json';
+import bootConceptsFr from '../../../data/spring/spring-boot-fr.json'; // Assuming this exists
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useLanguage } from '../../../components/LanguageContext';
+import GlobalLanguageSelector from '../../../components/GlobalLanguageSelector';
 
 const BootPage = () => {
-    const [activeTab, setActiveTab] = useState('auto-configuration');
+    // Use the global language context
+    const { language } = useLanguage();
 
-    const TabNavigation = () => (
-        <div className="mb-8 flex flex-wrap gap-4">
-            {bootJson.topics.map((topic) => (
+    // State for the content based on language
+    const [bootConcepts, setBootConcepts] = useState(language === 'en' ? bootConceptsEn : bootConceptsFr);
+
+    // Active tab state - default to first topic
+    const [activeTopic, setActiveTopic] = useState(() => {
+        return bootConcepts.topics?.[0]?.title || '';
+    });
+
+    useEffect(() => {
+        // Update content based on selected language
+        const newContent = language === 'en' ? bootConceptsEn : bootConceptsFr;
+        setBootConcepts(newContent);
+
+        // Ensure active topic exists in the new content
+        if (!newContent.topics.some(t => t.title === activeTopic)) {
+            setActiveTopic(newContent.topics?.[0]?.title || '');
+        }
+    }, [language, activeTopic]);
+
+    // Helper function to get icon for a topic
+    const getTopicIcon = (topicTitle) => {
+        switch (topicTitle) {
+            case 'Overview':
+                return <Box className="w-4 h-4" />;
+            case 'Auto-Configuration':
+                return <Wrench className="w-4 h-4" />;
+            case 'Starter Dependencies':
+                return <Package className="w-4 h-4" />;
+            case 'SpringApplicationConfiguration':
+                return <Settings className="w-4 h-4" />;
+            case 'SpringApplicationStartup':
+                return <Activity className="w-4 h-4" />;
+            case 'SpringIoCContainerInternals':
+                return <Database className="w-4 h-4" />;
+            case 'ExternalizedConfiguration':
+                return <Code className="w-4 h-4" />;
+            case 'WebApplications':
+                return <Globe className="w-4 h-4" />;
+            case 'GraphQLWithSpringBoot':
+                return <Code2 className="w-4 h-4" />;
+            case 'DataAccessWithSpringBoot':
+                return <Database className="w-4 h-4" />;
+            case 'AuthenticationWithKeycloak':
+                return <Shield className="w-4 h-4" />;
+            case 'FeignClient':
+                return <Server className="w-4 h-4" />;
+            case 'StatefulVsStatelessServices':
+                return <GitMerge className="w-4 h-4" />;
+            case 'TestingInSpringBoot':
+                return <CheckCircle className="w-4 h-4" />;
+            case 'SpringBootActuator':
+                return <Cpu className="w-4 h-4" />;
+            case 'SpringBatch':
+                return <Layers className="w-4 h-4" />;
+            case 'EventDrivenArchitecture':
+                return <ArrowRight className="w-4 h-4" />;
+            case 'SpringWebFlux':
+                return <Activity className="w-4 h-4" />;
+            case 'DeploymentAndProduction':
+                return <Server className="w-4 h-4" />;
+            case 'SpringBootVsFramework':
+                return <Database className="w-4 h-4" />;
+            case 'CommonInterviewQuestions':
+                return <FileText className="w-4 h-4" />;
+            default:
+                return <Code className="w-4 h-4" />;
+        }
+    };
+
+    // Navigation tabs component with more compact styling
+    const TopicNavigation = () => (
+        <div className="mb-4 flex flex-wrap gap-2 p-1 bg-gray-800/50 rounded-lg border border-gray-700/50">
+            {bootConcepts.topics?.map((topic) => (
                 <button
-                    key={topic.id}
-                    onClick={() => setActiveTab(topic.id)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-                        activeTab === topic.id
-                            ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
-                            : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
+                    key={topic.title}
+                    onClick={() => setActiveTopic(topic.title)}
+                    className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
+                        activeTopic === topic.title
+                            ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border border-purple-500/30'
+                            : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50 hover:text-gray-300'
                     }`}
                 >
-                    {renderTabIcon(topic.id)}
-                    {topic.title}
+                    {getTopicIcon(topic.title)}
+                    <span className="ml-1">{topic.title}</span>
                 </button>
             ))}
         </div>
     );
 
-    const renderTabIcon = (id) => {
-        switch (id) {
-            case 'auto-configuration':
-                return <Wrench className="w-4 h-4" />;
-            case 'properties':
-                return <Settings className="w-4 h-4" />;
-            case 'starters':
-                return <Package className="w-4 h-4" />;
-            case 'actuator':
-                return <Code className="w-4 h-4" />;
-            case 'embedded-servers':
-                return <Server className="w-4 h-4" />;
-            case 'scheduling':
-                return <Clock className="w-4 h-4" />;
-            case 'components':
-                return <Layout className="w-4 h-4" />;
-            default:
-                return <Database className="w-4 h-4" />;
-        }
+    // Component to render code blocks with more compact styling
+    const CodeBlock = ({ code, title }) => {
+        if (!code) return null;
+
+        return (
+            <div className="bg-gray-900/70 rounded-md border border-gray-700/70 overflow-hidden text-sm">
+                {title && (
+                    <div className="flex items-center gap-1 px-3 py-1 bg-gray-800 border-b border-gray-700/70">
+                        <Code2 className="w-3 h-3 text-pink-400" />
+                        <span className="text-xs font-medium text-gray-300">{title}</span>
+                    </div>
+                )}
+                <SyntaxHighlighter
+                    language="java"
+                    style={oneDark}
+                    customStyle={{
+                        margin: 0,
+                        borderRadius: title ? '0 0 0.25rem 0.25rem' : '0.25rem',
+                        padding: '0.75rem',
+                        fontSize: '0.8rem',
+                        backgroundColor: '#1e1e2f',
+                    }}
+                >
+                    {code}
+                </SyntaxHighlighter>
+            </div>
+        );
     };
 
-    const renderAutoConfigurationConcepts = (concepts) => (
-        <div className="space-y-6">
-            {concepts.map((concept, idx) => (
-                <div key={idx} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                    <h3 className="text-xl font-semibold text-purple-400 mb-4">{concept.name}</h3>
+    // Get section icon based on title
+    const getSectionIcon = (title) => {
+        const lowerTitle = title?.toLowerCase() || '';
 
-                    {concept.annotations && (
-                        <div className="grid grid-cols-1 gap-4">
-                            {concept.annotations.map((annotation, index) => (
-                                <div key={index} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                    <h4 className="text-lg font-medium text-purple-300 mb-2">{annotation.name}</h4>
-                                    <p className="text-gray-300 mb-3">{annotation.description}</p>
-                                    {annotation.example && (
-                                        <SyntaxHighlighter
-                                            language="java"
-                                            style={oneDark}
-                                            customStyle={{
-                                                borderRadius: '0.5rem',
-                                                padding: '1rem',
-                                                backgroundColor: '#282c34',
-                                            }}
-                                        >
-                                            {annotation.example}
-                                        </SyntaxHighlighter>
-                                    )}
-                                </div>
-                            ))}
+        if (lowerTitle.includes('definition') || lowerTitle.includes('définition')) return <BookOpen className="w-4 h-4 text-purple-400" />;
+        if (lowerTitle.includes('description')) return <FileText className="w-4 h-4 text-cyan-400" />;
+        if (lowerTitle.includes('benefit')) return <CheckCircle className="w-4 h-4 text-green-400" />;
+        if (lowerTitle.includes('example')) return <Terminal className="w-4 h-4 text-pink-400" />;
+        if (lowerTitle.includes('code')) return <Code2 className="w-4 h-4 text-pink-400" />;
+        if (lowerTitle.includes('types') || lowerTitle.includes('type')) return <Layers className="w-4 h-4 text-yellow-400" />;
+        if (lowerTitle.includes('phase') || lowerTitle.includes('lifecycle')) return <GitMerge className="w-4 h-4 text-blue-400" />;
+        if (lowerTitle.includes('keys') || lowerTitle.includes('features')) return <Cpu className="w-4 h-4 text-teal-400" />;
+
+        return <List className="w-4 h-4 text-gray-400" />;
+    };
+
+    // Styled content card - more compact version
+    const ContentCard = ({ title, children, className = "", contentType = "default" }) => {
+        // Get color scheme based on content type
+        let colorClasses = "bg-gray-800/70 border-gray-700/50";
+
+        switch(contentType) {
+            case "definition":
+            case "définition":
+                colorClasses = "bg-gradient-to-br from-purple-900/20 to-purple-800/10 border-purple-500/30";
+                break;
+            case "example":
+            case "code":
+                colorClasses = "bg-gradient-to-br from-pink-900/20 to-pink-800/10 border-pink-500/30";
+                break;
+            case "benefits":
+            case "advantages":
+                colorClasses = "bg-gradient-to-br from-green-900/20 to-green-800/10 border-green-500/30";
+                break;
+            case "types":
+                colorClasses = "bg-gradient-to-br from-yellow-900/20 to-yellow-800/10 border-yellow-500/30";
+                break;
+            case "features":
+            case "properties":
+                colorClasses = "bg-gradient-to-br from-blue-900/20 to-blue-800/10 border-blue-500/30";
+                break;
+            case "drawbacks":
+            case "disadvantages":
+                colorClasses = "bg-gradient-to-br from-red-900/20 to-red-800/10 border-red-500/30";
+                break;
+        }
+
+        if (!title && !children) return null;
+
+        const icon = getSectionIcon(title);
+
+        return (
+            <div className={`rounded-md p-3 border backdrop-blur-sm transition-all ${colorClasses} ${className} hover:shadow-md text-sm`}>
+                {title && (
+                    <div className="flex items-center gap-2 mb-2">
+                        <div className="p-1.5 bg-gray-800/70 rounded-md">
+                            {icon}
                         </div>
-                    )}
-
-                    {concept.description && <p className="text-gray-300 mb-4">{concept.description}</p>}
-
-                    {concept.example && (
-                        <div className="mt-4">
-                            {concept.example.path && (
-                                <div className="mb-2 text-gray-300">
-                                    <strong>File Path:</strong> {concept.example.path}
-                                </div>
-                            )}
-                            <SyntaxHighlighter
-                                language="properties"
-                                style={oneDark}
-                                customStyle={{
-                                    borderRadius: '0.5rem',
-                                    padding: '1rem',
-                                    backgroundColor: '#282c34',
-                                }}
-                            >
-                                {concept.example.content}
-                            </SyntaxHighlighter>
-                        </div>
-                    )}
-                </div>
-            ))}
-        </div>
-    );
-
-    const renderExternalConfiguration = (types) => (
-        <div className="space-y-6">
-            {types.map((type, idx) => (
-                <div key={idx} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                    <h3 className="text-xl font-semibold text-purple-400 mb-3">{type.name}</h3>
-                    {type.description && <p className="text-gray-300 mb-4">{type.description}</p>}
-
-                    {type.locations && (
-                        <div className="mb-4">
-                            <h4 className="text-lg font-medium text-gray-200 mb-2">Available Locations</h4>
-                            <ul className="list-disc list-inside text-gray-300 space-y-1">
-                                {type.locations.map((location, locIdx) => (
-                                    <li key={locIdx}>{location}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-
-                    {type.example && (
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                            {type.example.properties && (
-                                <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                    <h4 className="text-lg font-medium text-purple-300 mb-2">Properties Format</h4>
-                                    <SyntaxHighlighter
-                                        language="properties"
-                                        style={oneDark}
-                                        customStyle={{
-                                            borderRadius: '0.5rem',
-                                            padding: '1rem',
-                                            backgroundColor: '#282c34',
-                                        }}
-                                    >
-                                        {type.example.properties}
-                                    </SyntaxHighlighter>
-                                </div>
-                            )}
-                            {type.example.yaml && (
-                                <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                    <h4 className="text-lg font-medium text-purple-300 mb-2">YAML Format</h4>
-                                    <SyntaxHighlighter
-                                        language="yaml"
-                                        style={oneDark}
-                                        customStyle={{
-                                            borderRadius: '0.5rem',
-                                            padding: '1rem',
-                                            backgroundColor: '#282c34',
-                                        }}
-                                    >
-                                        {type.example.yaml}
-                                    </SyntaxHighlighter>
-                                </div>
-                            )}
-                            {type.example.code && (
-                                <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                    <h4 className="text-lg font-medium text-purple-300 mb-2">Example Code</h4>
-                                    <SyntaxHighlighter
-                                        language="java"
-                                        style={oneDark}
-                                        customStyle={{
-                                            borderRadius: '0.5rem',
-                                            padding: '1rem',
-                                            backgroundColor: '#282c34',
-                                        }}
-                                    >
-                                        {type.example.code}
-                                    </SyntaxHighlighter>
-                                </div>
-                            )}
-                        </div>
-                    )}
-                </div>
-            ))}
-        </div>
-    );
-
-    const renderAnnotations = (annotations) => (
-        <div className="grid grid-cols-1 gap-4">
-            {annotations.map((annotation, index) => (
-                <div key={index} className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                    <h4 className="text-lg font-medium text-purple-300 mb-2">{annotation.name}</h4>
-                    <p className="text-gray-300 mb-3">{annotation.description}</p>
-                    {annotation.example && (
-                        <SyntaxHighlighter
-                            language="java"
-                            style={oneDark}
-                            customStyle={{
-                                borderRadius: '0.5rem',
-                                padding: '1rem',
-                                backgroundColor: '#282c34',
-                            }}
-                        >
-                            {annotation.example}
-                        </SyntaxHighlighter>
-                    )}
-                </div>
-            ))}
-        </div>
-    );
-
-    const renderStarters = (starters) => (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {starters.map((starter, idx) => (
-                <div key={idx} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                    <h3 className="text-xl font-semibold text-purple-400 mb-3">{starter.name}</h3>
-                    <p className="text-gray-300 mb-4">{starter.description}</p>
-
-                    <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50 mb-4">
-                        <h4 className="text-lg font-medium text-gray-200 mb-2">Includes</h4>
-                        <ul className="list-disc list-inside text-gray-300 space-y-1">
-                            {starter.includes.map((include, includeIdx) => (
-                                <li key={includeIdx}>{include}</li>
-                            ))}
-                        </ul>
+                        <h4 className="text-base font-semibold text-white">{title}</h4>
                     </div>
+                )}
+                <div className={title ? "ml-8" : ""}>{children}</div>
+            </div>
+        );
+    };
 
-                    {starter.annotations && (
-                        <div className="mt-4">
-                            <h4 className="text-lg font-medium text-gray-200 mb-2">Annotations</h4>
-                            {renderAnnotations(starter.annotations)}
-                        </div>
-                    )}
-                </div>
-            ))}
-        </div>
-    );
+    // Renders a list item with a styled bullet - more compact
+    const StyledListItem = ({ children, type = "default" }) => {
+        let bulletColor = "bg-gray-400";
 
-    const renderScheduling = (topic) => (
-        <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <h3 className="text-xl font-semibold text-purple-400 mb-4">{topic.title}</h3>
-            <p className="text-gray-300 mb-6">{topic.description}</p>
-            {topic.annotations && renderAnnotations(topic.annotations)}
-        </div>
-    );
+        switch(type) {
+            case "benefits":
+            case "advantages":
+                bulletColor = "bg-green-400";
+                break;
+            case "drawbacks":
+            case "disadvantages":
+                bulletColor = "bg-red-400";
+                break;
+            case "features":
+                bulletColor = "bg-blue-400";
+                break;
+            case "examples":
+                bulletColor = "bg-pink-400";
+                break;
+        }
 
-    const renderComponents = (topic) => (
-        <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <h3 className="text-xl font-semibold text-purple-400 mb-4">{topic.title}</h3>
-            <p className="text-gray-300 mb-6">{topic.description}</p>
-            {topic.annotations && renderAnnotations(topic.annotations)}
-        </div>
-    );
+        return (
+            <li className="flex items-start gap-1.5 text-gray-300 mb-1 text-sm">
+                <div className={`w-1 h-1 ${bulletColor} rounded-full mt-1.5`}></div>
+                <span>{children}</span>
+            </li>
+        );
+    };
 
-    const renderActuator = (endpoints, configuration) => (
-        <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {endpoints.map((endpoint, idx) => (
-                    <div key={idx} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                        <h3 className="text-xl font-semibold text-purple-400 mb-3">{endpoint.path}</h3>
-                        <p className="text-gray-300 mb-4">{endpoint.description}</p>
-                        <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                            <h4 className="text-lg font-medium text-gray-200 mb-2">Usage</h4>
-                            <p className="text-gray-300">{endpoint.usage}</p>
-                        </div>
+    // Special handler for code examples
+    const renderCodeExamples = (codeExamples) => {
+        if (!codeExamples || !codeExamples['multi-content']) return null;
+
+        return (
+            <div className="space-y-3">
+                {codeExamples['multi-content'].map((example, idx) => (
+                    <div key={idx} className="mb-3">
+                        <CodeBlock
+                            code={example['simple-content']}
+                            title={example.title}
+                        />
                     </div>
                 ))}
             </div>
+        );
+    };
 
-            {configuration?.exposure && (
-                <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                    <h3 className="text-xl font-semibold text-purple-400 mb-3">Configuration</h3>
-                    <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                        <SyntaxHighlighter
-                            language="properties"
-                            style={oneDark}
-                            customStyle={{
-                                borderRadius: '0.5rem',
-                                padding: '1rem',
-                                backgroundColor: '#282c34',
-                            }}
-                        >
-                            {configuration.exposure.example}
-                        </SyntaxHighlighter>
-                        <p className="text-yellow-300 mt-4">
-                            <strong>Security Note:</strong> {configuration.exposure.security}
-                        </p>
-                    </div>
-                </div>
-            )}
-        </div>
-    );
+    // Recursive content rendering function - enhanced for compact view
+    const renderContent = (content, contentType = "default") => {
+        if (!content) return null;
 
-    const renderEmbeddedServers = (servers) => (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {servers.map((server, idx) => (
-                <div key={idx} className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                    <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-xl font-semibold text-purple-400">{server.name}</h3>
-                        {server.default && (
-                            <span className="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full">
-                                Default Server
-                            </span>
-                        )}
-                    </div>
-
-                    {server.configuration && (
-                        <div className="space-y-4">
-                            {server.configuration.properties && (
-                                <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                    <h4 className="text-lg font-medium text-gray-200 mb-2">Properties</h4>
-                                    <ul className="list-disc list-inside text-gray-300 space-y-1">
-                                        {server.configuration.properties.map((prop, propIdx) => (
-                                            <li key={propIdx}>{prop}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-
-                            {server.configuration.dependency && (
-                                <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                    <h4 className="text-lg font-medium text-gray-200 mb-2">Dependencies</h4>
-                                    <SyntaxHighlighter
-                                        language="xml"
-                                        style={oneDark}
-                                        customStyle={{
-                                            borderRadius: '0.5rem',
-                                            padding: '1rem',
-                                            backgroundColor: '#282c34',
-                                        }}
-                                    >
-                                        {server.configuration.dependency}
-                                    </SyntaxHighlighter>
-                                </div>
-                            )}
-
-                            {server.configuration.exclusions && (
-                                <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/50">
-                                    <h4 className="text-lg font-medium text-gray-200 mb-2">Exclusions</h4>
-                                    <ul className="list-disc list-inside text-gray-300 space-y-1">
-                                        {server.configuration.exclusions.map((exclusion, exIdx) => (
-                                            <li key={exIdx}>{exclusion}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-                        </div>
-                    )}
-                </div>
-            ))}
-        </div>
-    );
-
-    const renderContent = () => {
-        const topic = bootJson.topics.find(t => t.id === activeTab);
-        if (!topic) return null;
-
-        switch (activeTab) {
-            case 'auto-configuration':
-                return renderAutoConfigurationConcepts(topic.concepts);
-            case 'properties':
-                return renderExternalConfiguration(topic.types);
-            case 'starters':
-                return renderStarters(topic.commonStarters);
-            case 'actuator':
-                return renderActuator(topic.endpoints, topic.configuration);
-            case 'embedded-servers':
-                return renderEmbeddedServers(topic.servers);
-            case 'scheduling':
-                return renderScheduling(topic);
-            case 'components':
-                return renderComponents(topic);
-            default:
-                return null;
+        // String content
+        if (typeof content === 'string') {
+            return <p className="text-gray-300 text-sm">{content}</p>;
         }
+
+        // Array content
+        if (Array.isArray(content)) {
+            // Array of strings becomes a list
+            if (content.every(item => typeof item === 'string')) {
+                return (
+                    <ul className="space-y-1">
+                        {content.map((item, idx) => (
+                            <StyledListItem key={idx} type={contentType}>{item}</StyledListItem>
+                        ))}
+                    </ul>
+                );
+            }
+
+            // Mixed array content
+            return (
+                <div className="space-y-3">
+                    {content.map((item, idx) => (
+                        <div key={idx}>{renderContent(item, contentType)}</div>
+                    ))}
+                </div>
+            );
+        }
+
+        // Object content
+        if (typeof content === 'object' && content !== null) {
+            // Special case for code_examples
+            if (content.title === 'code_examples' && content['multi-content']) {
+                return (
+                    <div className="mb-3">
+                        <ContentCard title={language === 'en' ? 'Code Examples' : 'Exemples de Code'} contentType="code">
+                            {renderCodeExamples(content)}
+                        </ContentCard>
+                    </div>
+                );
+            }
+
+            // Simple content with title
+            if (content.title && content['simple-content']) {
+                // Special handling for code examples
+                if (content.title.includes('code') || content.title.includes('example')) {
+                    return (
+                        <div className="mb-3">
+                            <CodeBlock code={content['simple-content']} title={content.title} />
+                        </div>
+                    );
+                }
+
+                // Determine content type for styling
+                let derivedType =
+                    content.title.toLowerCase().includes('benefit') || content.title.toLowerCase().includes('advantage') ? 'benefits' :
+                        content.title.toLowerCase().includes('drawback') || content.title.toLowerCase().includes('disadvantage') ? 'drawbacks' :
+                            content.title.toLowerCase().includes('example') || content.title.toLowerCase().includes('code') ? 'example' :
+                                content.title.toLowerCase().includes('type') ? 'types' :
+                                    content.title.toLowerCase().includes('feature') ? 'features' :
+                                        content.title.toLowerCase().includes('definition') || content.title.toLowerCase().includes('définition') ? 'definition' :
+                                            contentType;
+
+                // Regular content
+                return (
+                    <ContentCard title={content.title} contentType={derivedType} className="mb-3">
+                        <p className="text-gray-300 text-sm">{content['simple-content']}</p>
+                    </ContentCard>
+                );
+            }
+
+            // Multi-content with title
+            if (content.title && content['multi-content']) {
+                // Determine content type for styling
+                let derivedType =
+                    content.title.toLowerCase().includes('benefit') || content.title.toLowerCase().includes('advantage') ? 'benefits' :
+                        content.title.toLowerCase().includes('drawback') || content.title.toLowerCase().includes('disadvantage') ? 'drawbacks' :
+                            content.title.toLowerCase().includes('example') || content.title.toLowerCase().includes('code') ? 'example' :
+                                content.title.toLowerCase().includes('type') ? 'types' :
+                                    content.title.toLowerCase().includes('feature') ? 'features' :
+                                        content.title.toLowerCase().includes('definition') || content.title.toLowerCase().includes('définition') ? 'definition' :
+                                            contentType;
+
+                return (
+                    <ContentCard title={content.title} contentType={derivedType} className="mb-3">
+                        {renderContent(content['multi-content'], derivedType)}
+                    </ContentCard>
+                );
+            }
+
+            // Generic object content
+            const entries = Object.entries(content).filter(([key]) => key !== 'title');
+            if (entries.length > 0) {
+                return (
+                    <div className="space-y-3">
+                        {entries.map(([key, value], idx) => {
+                            // Skip rendering title
+                            if (key === 'title') return null;
+
+                            // Determine content type for nested content
+                            let nestedType =
+                                key.toLowerCase().includes('benefit') || key.toLowerCase().includes('advantage') ? 'benefits' :
+                                    key.toLowerCase().includes('drawback') || key.toLowerCase().includes('disadvantage') ? 'drawbacks' :
+                                        key.toLowerCase().includes('example') || key.toLowerCase().includes('code') ? 'example' :
+                                            key.toLowerCase().includes('type') ? 'types' :
+                                                key.toLowerCase().includes('feature') ? 'features' :
+                                                    key.toLowerCase().includes('definition') || key.toLowerCase().includes('définition') ? 'definition' :
+                                                        contentType;
+
+                            // For nested objects with no simple/multi content
+                            if (typeof value === 'object' && value !== null && !Array.isArray(value) &&
+                                !value['simple-content'] && !value['multi-content']) {
+                                return (
+                                    <ContentCard key={idx} title={key} contentType={nestedType}>
+                                        {renderContent(value, nestedType)}
+                                    </ContentCard>
+                                );
+                            }
+
+                            return <div key={idx}>{renderContent(value, nestedType)}</div>;
+                        })}
+                    </div>
+                );
+            }
+        }
+
+        return null;
+    };
+
+    // Handle the special structure of topic sections
+    const renderTopicSections = (topic) => {
+        if (!topic || !topic['multi-content']) return null;
+
+        // Extract descriptions and definitions for introduction
+        const introSections = topic['multi-content'].filter(content =>
+            content.title === 'description' || content.title === 'definition' || content.title === 'définition'
+        );
+
+        // Get remaining sections
+        const contentSections = topic['multi-content'].filter(content =>
+            content.title !== 'description' && content.title !== 'definition' && content.title !== 'définition'
+        );
+
+        return (
+            <>
+                {/* Introduction with more compact styling */}
+                {introSections.length > 0 && (
+                    <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-4 border border-purple-500/30 mb-4 shadow-md">
+                        {introSections.map((section, idx) => {
+                            const isDefinition = section.title === 'definition' || section.title === 'définition';
+                            const icon = isDefinition ?
+                                <BookOpen className="w-4 h-4 text-purple-400" /> :
+                                <FileText className="w-4 h-4 text-cyan-400" />;
+
+                            return (
+                                <div key={idx} className={`mb-2 ${idx > 0 ? 'mt-2' : ''}`}>
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <div className="p-1.5 bg-gray-800/70 rounded-md">
+                                            {icon}
+                                        </div>
+                                        <h3 className="text-base font-semibold text-white">
+                                            {isDefinition ?
+                                                (language === 'en' ? 'Definition' : 'Définition') :
+                                                (language === 'en' ? 'Description' : 'Description')}
+                                        </h3>
+                                    </div>
+                                    <p className="text-gray-300 ml-8 text-sm">{section['simple-content']}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
+
+                {/* Main content sections with simplified layout */}
+                <div className="space-y-3">
+                    {contentSections.map((section, idx) => {
+                        // Determine content type for styling
+                        let contentType =
+                            section.title.toLowerCase().includes('benefit') || section.title.toLowerCase().includes('advantage') ? 'benefits' :
+                                section.title.toLowerCase().includes('drawback') || section.title.toLowerCase().includes('disadvantage') ? 'drawbacks' :
+                                    section.title.toLowerCase().includes('example') || section.title.toLowerCase().includes('code') ? 'example' :
+                                        section.title.toLowerCase().includes('type') ? 'types' :
+                                            section.title.toLowerCase().includes('feature') ? 'features' :
+                                                section.title.toLowerCase().includes('definition') || section.title.toLowerCase().includes('définition') ? 'definition' :
+                                                    'default';
+
+                        // Special case for code_examples section
+                        if (section.title === 'code_examples') {
+                            return (
+                                <div key={idx} className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg p-4 border border-pink-500/30 shadow-md">
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <div className="p-1.5 bg-gray-800/70 rounded-md">
+                                            <Code2 className="w-4 h-4 text-pink-400" />
+                                        </div>
+                                        <h3 className="text-lg font-semibold text-pink-300">
+                                            {language === 'en' ? 'Code Examples' : 'Exemples de Code'}
+                                        </h3>
+                                    </div>
+
+                                    <div className="space-y-3">
+                                        {section['multi-content'].map((example, exIdx) => (
+                                            <div key={exIdx} className="bg-gray-800/70 rounded-md p-3 border border-gray-700/50">
+                                                <h4 className="text-sm font-medium text-pink-300 mb-2">
+                                                    {example.title}
+                                                </h4>
+                                                <CodeBlock code={example['simple-content']} />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            );
+                        }
+
+                        return (
+                            <div
+                                key={idx}
+                                className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg p-4 border border-gray-700/50 shadow-md"
+                            >
+                                <div className="flex items-center gap-2 mb-3">
+                                    <div className="p-1.5 bg-gray-800/70 rounded-md">
+                                        {getSectionIcon(section.title)}
+                                    </div>
+                                    <h3 className="text-base font-semibold text-purple-300">{section.title}</h3>
+                                </div>
+                                {renderContent(section['multi-content'], contentType)}
+                            </div>
+                        );
+                    })}
+                </div>
+            </>
+        );
+    };
+
+    // Get the active topic
+    const getActiveTopic = () => {
+        return bootConcepts.topics?.find(topic => topic.title === activeTopic);
     };
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Header */}
-            <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
-                <h1 className="text-3xl font-bold text-white mb-2">{bootJson.title}</h1>
+            {/* Use the global language selector */}
+            <div className="mb-4">
+                <GlobalLanguageSelector />
             </div>
 
-            {/* Navigation */}
-            <TabNavigation />
+            {/* Header with more compact styling */}
+            <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
+                <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                    {bootConcepts.title}
+                </h1>
+            </div>
 
-            {/* Content */}
-            <div className="space-y-8">
-                {renderContent()}
+            {/* Navigation Tabs */}
+            <TopicNavigation />
+
+            {/* Content with more compact styling */}
+            <div className="space-y-4">
+                <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg p-4 border border-purple-500/20 shadow-md">
+                    <div className="flex items-center gap-2 mb-4">
+                        <div className="p-1.5 bg-gray-800/70 rounded-md">
+                            {getTopicIcon(activeTopic)}
+                        </div>
+                        <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                            {activeTopic}
+                        </h2>
+                    </div>
+                    {renderTopicSections(getActiveTopic())}
+                </div>
             </div>
         </div>
     );
