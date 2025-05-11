@@ -160,15 +160,154 @@
       ]
     },
     {
+      "title": "IoC vs DI vs Spring IoC Container",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Understanding the differences between Inversion of Control (IoC) as a design principle, Dependency Injection (DI) as a design pattern, and Spring IoC Container as a specific implementation."
+        },
+        {
+          "title": "fundamental_definitions",
+          "multi-content": [
+            {
+              "title": "Inversion of Control (IoC)",
+              "multi-content": [
+                {
+                  "title": "definition",
+                  "simple-content": "IoC is a broad design principle where control of object creation, object lifecycle, and object dependencies is transferred to a container or framework. The main idea is to invert the traditional flow of control: in the traditional approach, your code calls a library when needed; in the IoC approach, the framework calls your code at the appropriate time."
+                },
+                {
+                  "title": "purpose",
+                  "simple-content": "Decouple execution from implementation"
+                },
+                {
+                  "title": "level",
+                  "simple-content": "Design principle"
+                }
+              ]
+            },
+            {
+              "title": "Dependency Injection (DI)",
+              "multi-content": [
+                {
+                  "title": "definition",
+                  "simple-content": "DI is a specific pattern for implementing IoC where dependencies are 'injected' into objects rather than having objects create or find them themselves."
+                },
+                {
+                  "title": "purpose",
+                  "simple-content": "Decouple component creation from their usage"
+                },
+                {
+                  "title": "level",
+                  "simple-content": "Design pattern"
+                }
+              ]
+            },
+            {
+              "title": "Spring IoC Container",
+              "multi-content": [
+                {
+                  "title": "definition",
+                  "simple-content": "The specific implementation in Spring that manages beans and injects dependencies"
+                },
+                {
+                  "title": "purpose",
+                  "simple-content": "Automate DI and manage lifecycle"
+                },
+                {
+                  "title": "level",
+                  "simple-content": "Implementation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "code_examples",
+          "multi-content": [
+            {
+              "title": "without_ioc",
+              "simple-content": "public class UserService {\n    // UserService directly creates its dependency\n    private UserRepository userRepository = new UserRepositoryImpl();\n    \n    public User getUser(Long id) {\n        return userRepository.findById(id);\n    }\n}"
+            },
+            {
+              "title": "with_di",
+              "simple-content": "public class UserService {\n    // UserRepository is injected, not created\n    private final UserRepository userRepository;\n    \n    // Constructor injection\n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n    \n    public User getUser(Long id) {\n        return userRepository.findById(id);\n    }\n}"
+            }
+          ]
+        },
+        {
+          "title": "di_types",
+          "multi-content": [
+            {
+              "title": "Constructor Injection",
+              "multi-content": [
+                {
+                  "title": "description",
+                  "simple-content": "Dependencies are provided via constructor (preferred method)"
+                },
+                {
+                  "title": "example",
+                  "simple-content": "public UserService(UserRepository userRepository) {\n    this.userRepository = userRepository;\n}"
+                }
+              ]
+            },
+            {
+              "title": "Setter Injection",
+              "multi-content": [
+                {
+                  "title": "description",
+                  "simple-content": "Dependencies are provided via setter methods"
+                },
+                {
+                  "title": "example",
+                  "simple-content": "@Autowired\npublic void setUserRepository(UserRepository userRepository) {\n    this.userRepository = userRepository;\n}"
+                }
+              ]
+            },
+            {
+              "title": "Field Injection",
+              "multi-content": [
+                {
+                  "title": "description",
+                  "simple-content": "Dependencies are injected directly into fields (not recommended)"
+                },
+                {
+                  "title": "example",
+                  "simple-content": "@Autowired\nprivate UserRepository userRepository;"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "spring_ioc_container",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "The Spring IoC Container is the concrete implementation of IoC in Spring, consisting of BeanFactory (base interface providing basic IoC functionality) and ApplicationContext (enhanced container with enterprise features, extending BeanFactory)."
+            },
+            {
+              "title": "example",
+              "simple-content": "// Spring IoC Container in action\nApplicationContext context = new ClassPathXmlApplicationContext(\"beans.xml\");\n// or\nApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);\n\n// Retrieve a bean from the container\nUserService userService = context.getBean(UserService.class);"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "title": "BeanLifecycle",
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "The journey of a Spring bean from initialization to destruction, with opportunities for customization at each stage."
+          "simple-content": "The lifecycle of a Spring bean in a Spring Boot application follows a specific sequence from initialization to destruction, with opportunities for customization at each stage."
         },
         {
           "title": "definition",
           "simple-content": "The complete process a Spring bean undergoes—from instantiation and dependency injection to initialization and eventual destruction—with opportunities for custom behavior at various stages."
+        },
+        {
+          "title": "boot_specific_considerations",
+          "simple-content": "Spring Boot follows the same bean lifecycle as Spring Framework, but adds auto-configuration, which influences how beans are created and initialized. Boot also initializes beans in a specific order to ensure dependencies are satisfied correctly."
         },
         {
           "title": "lifecycle_phases",
@@ -184,7 +323,8 @@
                   "title": "events",
                   "multi-content": [
                     "Configuration metadata is loaded (annotations, XML, Java config)",
-                    "BeanDefinition objects are created and registered with container"
+                    "BeanDefinition objects are created and registered with container",
+                    "In Spring Boot, auto-configuration classes contribute additional bean definitions"
                   ]
                 }
               ]
@@ -216,7 +356,8 @@
                   "title": "events",
                   "multi-content": [
                     "Properties are set",
-                    "Dependencies are resolved and injected"
+                    "Dependencies are resolved and injected",
+                    "In Spring Boot, properties from application.properties/yml are bound"
                   ]
                 }
               ]
@@ -249,6 +390,10 @@
                 {
                   "title": "description",
                   "simple-content": "Bean is ready for use by the application"
+                },
+                {
+                  "title": "boot_feature",
+                  "simple-content": "Spring Boot completes initialization of all beans before application is considered ready"
                 }
               ]
             },
@@ -272,47 +417,17 @@
           ]
         },
         {
-          "title": "callback_methods",
+          "title": "boot_specific_examples",
           "multi-content": [
             {
-              "title": "initialization",
-              "multi-content": [
-                {
-                  "title": "annotation_based",
-                  "simple-content": "@PostConstruct"
-                },
-                {
-                  "title": "interface_based",
-                  "simple-content": "InitializingBean.afterPropertiesSet()"
-                },
-                {
-                  "title": "xml_based",
-                  "simple-content": "init-method attribute"
-                }
-              ]
+              "title": "using_application_events",
+              "simple-content": "@Component\npublic class BootLifecycleBean {\n    private final Logger logger = LoggerFactory.getLogger(BootLifecycleBean.class);\n    \n    @EventListener(ApplicationReadyEvent.class)\n    public void onApplicationReady() {\n        logger.info(\"Application is fully started and ready to accept requests\");\n        // Do post-startup initialization\n    }\n    \n    @EventListener(ApplicationFailedEvent.class)\n    public void onApplicationFailed() {\n        logger.error(\"Application failed to start\");\n        // Perform cleanup or notification\n    }\n}"
             },
             {
-              "title": "destruction",
-              "multi-content": [
-                {
-                  "title": "annotation_based",
-                  "simple-content": "@PreDestroy"
-                },
-                {
-                  "title": "interface_based",
-                  "simple-content": "DisposableBean.destroy()"
-                },
-                {
-                  "title": "xml_based",
-                  "simple-content": "destroy-method attribute"
-                }
-              ]
+              "title": "using_commandlinerunner",
+              "simple-content": "@Component\npublic class StartupTaskRunner implements CommandLineRunner {\n    private final UserService userService;\n    \n    public StartupTaskRunner(UserService userService) {\n        this.userService = userService;\n    }\n    \n    @Override\n    public void run(String... args) throws Exception {\n        // Executed after the application context is loaded but before\n        // the application is fully started\n        System.out.println(\"Running startup tasks...\");\n        userService.performStartupChecks();\n    }\n}"
             }
           ]
-        },
-        {
-          "title": "example",
-          "simple-content": "@Component\npublic class LifecycleBean implements InitializingBean, DisposableBean {\n    \n    // Constructor\n    public LifecycleBean() {\n        System.out.println(\"1. Constructor called\");\n    }\n    \n    // Setter injection\n    @Autowired\n    public void setDependency(SomeDependency dependency) {\n        System.out.println(\"2. Dependencies injected\");\n    }\n    \n    // Annotation-based initialization\n    @PostConstruct\n    public void postConstruct() {\n        System.out.println(\"3. @PostConstruct called\");\n    }\n    \n    // Interface-based initialization\n    @Override\n    public void afterPropertiesSet() throws Exception {\n        System.out.println(\"4. afterPropertiesSet() called\");\n    }\n    \n    // Custom initialization method\n    public void customInit() {\n        System.out.println(\"5. Custom init method called\");\n    }\n    \n    // Annotation-based destruction\n    @PreDestroy\n    public void preDestroy() {\n        System.out.println(\"6. @PreDestroy called\");\n    }\n    \n    // Interface-based destruction\n    @Override\n    public void destroy() throws Exception {\n        System.out.println(\"7. DisposableBean.destroy() called\");\n    }\n}"
         }
       ]
     },
@@ -321,7 +436,7 @@
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "Bean scopes define a bean's lifecycle, visibility, and the number of instances created."
+          "simple-content": "Bean scopes define a bean's lifecycle, visibility, and the number of instances created in a Spring Boot application."
         },
         {
           "title": "definition",
@@ -348,6 +463,10 @@
                 {
                   "title": "best_for",
                   "simple-content": "Stateless services and repositories"
+                },
+                {
+                  "title": "boot_usage",
+                  "simple-content": "In Spring Boot, most auto-configured beans are singleton scope by default"
                 }
               ]
             },
@@ -390,6 +509,10 @@
                 {
                   "title": "best_for",
                   "simple-content": "HTTP request-specific data"
+                },
+                {
+                  "title": "boot_usage",
+                  "simple-content": "Available automatically in Spring Boot web applications"
                 }
               ]
             },
@@ -477,6 +600,14 @@
               "title": "mixing_scopes",
               "simple-content": "// Problem: Injecting prototype into singleton\n@Component\npublic class SingletonBean {\n    @Autowired\n    private PrototypeBean prototypeBean; // Will always be the same instance!\n}\n\n// Solution 1: Scoped Proxy\n@Component\n@Scope(value = \"prototype\", proxyMode = ScopedProxyMode.TARGET_CLASS)\npublic class PrototypeBean { /* ... */ }\n\n// Solution 2: ObjectFactory\n@Component\npublic class SingletonBean {\n    @Autowired\n    private ObjectFactory<PrototypeBean> prototypeBeanFactory;\n    \n    public void doSomething() {\n        PrototypeBean prototypeBean = prototypeBeanFactory.getObject(); // New instance\n        // Use prototypeBean\n    }\n}"
             }
+          ]
+        },
+        {
+          "title": "boot_specific_features",
+          "multi-content": [
+            "Spring Boot automatically configures the necessary infrastructure for web-aware scopes",
+            "The @RequestScope, @SessionScope, and @ApplicationScope annotations simplify scope configuration",
+            "Spring Boot's DevTools module handles bean refreshing correctly across different scopes during development"
           ]
         }
       ]
@@ -917,11 +1048,38 @@
       "multi-content": [
         {
           "title": "description",
-          "simple-content": "AOP addresses cross-cutting concerns by separating them from the main business logic, promoting cleaner and more maintainable code."
+          "simple-content": "Aspect-Oriented Programming (AOP) addresses cross-cutting concerns by separating them from the main business logic, promoting cleaner and more maintainable code. In Spring Boot, AOP is commonly used for logging, transaction management, security, and performance monitoring."
         },
         {
           "title": "definition",
           "simple-content": "A programming paradigm that separates cross-cutting concerns (like logging, security, or transaction management) from business logic using aspects, advices, join points, and pointcuts."
+        },
+        {
+          "title": "spring_boot_implementation",
+          "simple-content": "Spring Boot simplifies AOP by auto-configuring necessary dependencies when you include spring-boot-starter-aop in your project. This allows you to focus on writing your aspects rather than configuration details."
+        },
+        {
+          "title": "code_examples",
+          "multi-content": [
+            {
+              "title": "logging_aspect",
+              "simple-content": "// Common Spring Boot logging aspect example\n@Aspect\n@Component\npublic class LoggingAspect {\n    private static final Logger log = LoggerFactory.getLogger(LoggingAspect.class);\n    \n    @Around(\"execution(* com.example.service.*.*(..))\")\n    public Object logMethodExecution(ProceedingJoinPoint joinPoint) throws Throwable {\n        String methodName = joinPoint.getSignature().getName();\n        log.info(\"Beginning execution of {}\", methodName);\n        \n        long start = System.currentTimeMillis();\n        Object result = joinPoint.proceed();\n        long executionTime = System.currentTimeMillis() - start;\n        \n        log.info(\"{} executed in {}ms\", methodName, executionTime);\n        return result;\n    }\n    \n    @AfterThrowing(pointcut = \"execution(* com.example.service.*.*(..))\" , throwing = \"exception\")\n    public void logException(JoinPoint joinPoint, Exception exception) {\n        log.error(\"Exception in {}.{}: {}\",\n            joinPoint.getSignature().getDeclaringTypeName(),\n            joinPoint.getSignature().getName(),\n            exception.getMessage());\n    }\n}"
+            },
+            {
+              "title": "transaction_monitoring",
+              "simple-content": "// Performance monitoring aspect for transactions\n@Aspect\n@Component\npublic class TransactionMonitoringAspect {\n    private static final Logger log = LoggerFactory.getLogger(TransactionMonitoringAspect.class);\n    \n    @Around(\"@annotation(org.springframework.transaction.annotation.Transactional)\")\n    public Object monitorTransactionPerformance(ProceedingJoinPoint joinPoint) throws Throwable {\n        String methodName = joinPoint.getSignature().getName();\n        log.info(\"Beginning transaction in method: {}\", methodName);\n        \n        long start = System.currentTimeMillis();\n        Object result = joinPoint.proceed();\n        long duration = System.currentTimeMillis() - start;\n        \n        log.info(\"Transaction completed in {}ms for method: {}\", duration, methodName);\n        return result;\n    }\n}"
+            }
+          ]
+        },
+        {
+          "title": "boot_specific_considerations",
+          "multi-content": [
+            "Spring Boot's auto-configuration automatically detects @Aspect beans and registers them",
+            "For comprehensive AOP, the spring-boot-starter-aop dependency must be included",
+            "AspectJ weaving can be enabled through configuration properties",
+            "AOP proxies are created at runtime using Spring's proxy creation mechanism",
+            "Spring Boot's AOP implementation serves most common use cases, but for advanced scenarios, consider full AspectJ integration"
+          ]
         },
         {
           "title": "key_concepts",
@@ -1165,110 +1323,6 @@
             {
               "title": "getting_beans",
               "simple-content": "// By type\nUserService userService = context.getBean(UserService.class);\n\n// By name\nUserRepository userRepository = (UserRepository) context.getBean(\"userRepository\");\n\n// By name and type\nDataSource dataSource = context.getBean(\"primaryDataSource\", DataSource.class);"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "SpringBootVsFramework",
-      "multi-content": [
-        {
-          "title": "description",
-          "simple-content": "Understanding the differences between Spring Boot and the core Spring Framework helps clarify their relationship and use cases."
-        },
-        {
-          "title": "definition",
-          "simple-content": "Spring Boot is an opinionated framework built on top of Spring that simplifies application development by providing auto-configuration, starter dependencies, and embedded servers, significantly reducing boilerplate configuration."
-        },
-        {
-          "title": "key_differences",
-          "multi-content": [
-            {
-              "title": "Configuration",
-              "multi-content": [
-                {
-                  "title": "spring_framework",
-                  "simple-content": "Explicit, manual configuration required"
-                },
-                {
-                  "title": "spring_boot",
-                  "simple-content": "Auto-configuration with sensible defaults"
-                }
-              ]
-            },
-            {
-              "title": "Setup",
-              "multi-content": [
-                {
-                  "title": "spring_framework",
-                  "simple-content": "More boilerplate code, multiple configuration files"
-                },
-                {
-                  "title": "spring_boot",
-                  "simple-content": "Minimal setup code, convention over configuration"
-                }
-              ]
-            },
-            {
-              "title": "Deployment",
-              "multi-content": [
-                {
-                  "title": "spring_framework",
-                  "simple-content": "Traditional WAR deployment or standalone application"
-                },
-                {
-                  "title": "spring_boot",
-                  "simple-content": "Embedded server, standalone JAR with everything included"
-                }
-              ]
-            },
-            {
-              "title": "Dependencies",
-              "multi-content": [
-                {
-                  "title": "spring_framework",
-                  "simple-content": "Manual dependency management and version coordination"
-                },
-                {
-                  "title": "spring_boot",
-                  "simple-content": "Starter dependencies with compatible, tested version sets"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "spring_boot_features",
-          "multi-content": [
-            {
-              "title": "Auto-configuration",
-              "simple-content": "Automatically configures beans based on classpath dependencies"
-            },
-            {
-              "title": "Starter Dependencies",
-              "simple-content": "Curated sets of dependencies for common use cases"
-            },
-            {
-              "title": "Embedded Servers",
-              "simple-content": "Built-in application servers for simple deployment"
-            },
-            {
-              "title": "Actuator",
-              "simple-content": "Production-ready features for monitoring and managing applications"
-            }
-          ]
-        },
-        {
-          "title": "code_examples",
-          "multi-content": [
-            {
-              "title": "spring_framework_config",
-              "simple-content": "// Spring Framework - explicit ViewResolver configuration\n@Configuration\npublic class WebConfig implements WebMvcConfigurer {\n    @Bean\n    public ViewResolver viewResolver() {\n        InternalResourceViewResolver resolver = new InternalResourceViewResolver();\n        resolver.setPrefix(\"/WEB-INF/views/\");\n        resolver.setSuffix(\".jsp\");\n        return resolver;\n    }\n    // Many more beans...\n}"
-            },
-            {
-              "title": "spring_boot_config",
-              "simple-content": "// Spring Boot - auto-configuration handles it\n@SpringBootApplication\npublic class Application {\n    public static void main(String[] args) {\n        SpringApplication.run(Application.class, args);\n    }\n    // That's it! Configuration via application.properties\n}"
             }
           ]
         }
