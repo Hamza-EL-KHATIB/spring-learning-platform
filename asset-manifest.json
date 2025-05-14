@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/spring-learning-platform/static/css/main.2967f4f2.css",
+    "main.js": "/spring-learning-platform/static/js/main.726cc3cf.js",
+    "static/media/Untitled diagram-2025-03-24-233855.png": "/spring-learning-platform/static/media/Untitled diagram-2025-03-24-233855.0b65fec3a1c43b2c090a.png",
+    "static/media/Builder.png": "/spring-learning-platform/static/media/Builder.8c84be25231734a545c0.png",
+    "static/media/Abstract Factory.png": "/spring-learning-platform/static/media/Abstract Factory.1270e2322f6c828a4ee8.png",
+    "static/media/State.png": "/spring-learning-platform/static/media/State.2156cd182fd964adee3e.png",
+    "static/media/Visitor.png": "/spring-learning-platform/static/media/Visitor.233b616dbdd68513cc1e.png",
+    "static/media/Flyweight.png": "/spring-learning-platform/static/media/Flyweight.ea94005d3ac68e7d4aa9.png",
+    "static/media/Decorator.png": "/spring-learning-platform/static/media/Decorator.fb99efc2f285a633a57f.png",
+    "static/media/Prototype.png": "/spring-learning-platform/static/media/Prototype.8d820c99ab9f15e0ea3c.png",
+    "static/media/Facade.png": "/spring-learning-platform/static/media/Facade.4eacddca29fd9a5d5651.png",
+    "static/media/Bridge.png": "/spring-learning-platform/static/media/Bridge.9a815e9c902f00e13a1a.png",
+    "static/media/Observer.png": "/spring-learning-platform/static/media/Observer.d62b78c6bc3d5594c77b.png",
+    "static/media/Strategy.png": "/spring-learning-platform/static/media/Strategy.b98ad62709e16e5384dc.png",
+    "static/media/Factory Method.png": "/spring-learning-platform/static/media/Factory Method.2d796c4e956986dd1e77.png",
+    "static/media/Composite.png": "/spring-learning-platform/static/media/Composite.d87d001bc1f4c586df2c.png",
+    "static/media/Adapter.png": "/spring-learning-platform/static/media/Adapter.334193caefc7690dde71.png",
+    "static/media/Proxy.png": "/spring-learning-platform/static/media/Proxy.7ef7c4583ee4659b4aad.png",
+    "static/media/Template Method.png": "/spring-learning-platform/static/media/Template Method.59d409a95702f97c6d84.png",
+    "static/media/Singleton.png": "/spring-learning-platform/static/media/Singleton.1e42af49ba9fd20aaf53.png",
+    "index.html": "/spring-learning-platform/index.html",
+    "main.2967f4f2.css.map": "/spring-learning-platform/static/css/main.2967f4f2.css.map",
+    "main.726cc3cf.js.map": "/spring-learning-platform/static/js/main.726cc3cf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2967f4f2.css",
+    "static/js/main.726cc3cf.js"
+  ]
+}
