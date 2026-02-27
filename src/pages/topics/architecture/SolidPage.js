@@ -135,12 +135,12 @@ const SolidPage = () => {
     const [activePrinciple, setActivePrinciple] = useState('s');
 
     const TabNavigation = () => (
-        <div className="mb-8 flex flex-wrap gap-4">
+        <div className="mb-4 flex flex-wrap gap-2 p-1 bg-gray-800/50 rounded-lg border border-gray-700/50">
             {solidJson.principles.map((principle) => (
                 <button
                     key={principle.acronym}
                     onClick={() => setActivePrinciple(principle.acronym.toLowerCase())}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+                    className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
                         activePrinciple === principle.acronym.toLowerCase()
                             ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
                             : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
@@ -156,8 +156,8 @@ const SolidPage = () => {
     return (
         <div className="min-h-screen bg-gray-900">
             {/* Header */}
-            <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
-                <h1 className="text-3xl font-bold text-white mb-2">{solidJson.title}</h1>
+            <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
+                <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{solidJson.title}</h1>
                 <p className="text-gray-300">{solidJson.description}</p>
             </div>
 
