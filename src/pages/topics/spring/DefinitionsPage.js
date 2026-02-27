@@ -1,28 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
-    BookOpen, FileText, CheckCircle, List, Code2,
+    BookOpen, Code2,
     Layers, GitMerge, Settings, Shield, Code,
-    Database, Terminal, Package, Server, Box
+    Database, Package, Server, Box
 } from 'lucide-react';
 import definitionsEn from '../../../data/spring/definitions.json';
-import definitionsFr from '../../../data/spring/definitions-fr.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useLanguage } from '../../../components/LanguageContext';
-import GlobalLanguageSelector from '../../../components/GlobalLanguageSelector';
 
 const DefinitionsPage = () => {
-    // Use the global language context
-    const { language } = useLanguage();
-
-    // State for the content based on language
-    const [definitions, setDefinitions] = useState(language === 'en' ? definitionsEn : definitionsFr);
-
-    useEffect(() => {
-        // Update content based on selected language
-        const newContent = language === 'en' ? definitionsEn : definitionsFr;
-        setDefinitions(newContent);
-    }, [language]);
+    const definitions = definitionsEn;
 
     // Helper function to get icon for a definition
     const getDefinitionIcon = (topicTitle) => {
@@ -112,7 +99,7 @@ const DefinitionsPage = () => {
         return (
             <div className="mt-8 bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg p-6 border border-pink-500/20 shadow-lg">
                 <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-6">
-                    {language === 'en' ? 'Code Examples' : 'Exemples de Code'}
+                    Code Examples
                 </h2>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {codeExamples['multi-content'].map((example, idx) => (
@@ -138,20 +125,13 @@ const DefinitionsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Use the global language selector */}
-            <div className="mb-4">
-                <GlobalLanguageSelector />
-            </div>
-
-            {/* Header with more compact styling */}
+                {/* Header with more compact styling */}
             <div className="mb-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-5 border border-purple-500/30 shadow-md">
                 <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                     {definitions.title}
                 </h1>
                 <p className="text-gray-400 mt-2">
-                    {language === 'en'
-                        ? 'Essential Spring concepts for quick reference and interview preparation'
-                        : 'Concepts essentiels de Spring pour référence rapide et préparation aux entretiens'}
+                    Essential Spring concepts for quick reference and interview preparation
                 </p>
             </div>
 

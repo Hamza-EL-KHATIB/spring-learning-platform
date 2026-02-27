@@ -1,63 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-    Box, Database, GitMerge, Settings, Shield, Code, Layers,
+    Box, Database, GitMerge, Shield, Code, Layers,
     BookOpen, FileText, CheckCircle, List, AlertTriangle, Terminal,
     Code2, Cpu, Globe, Server, ArrowRight, FileJson, TestTube, CheckSquare
 } from 'lucide-react';
 import restApisEn from '../../../data/spring/rest-apis.json';
-import restApisFr from '../../../data/spring/rest-apis-fr.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useLanguage } from '../../../components/LanguageContext';
-import GlobalLanguageSelector from '../../../components/GlobalLanguageSelector';
 
 const RestPage = () => {
-    // Use the global language context
-    const { language } = useLanguage();
-
-    // State for the content based on language
-    const [restApis, setRestApis] = useState(language === 'en' ? restApisEn : restApisFr);
+    const restApis = restApisEn;
 
     // Active tab state - default to first topic
     const [activeTopic, setActiveTopic] = useState(() => {
         return restApis.topics?.[0]?.title || '';
     });
 
-    useEffect(() => {
-        // Update content based on selected language
-        const newContent = language === 'en' ? restApisEn : restApisFr;
-        setRestApis(newContent);
-
-        // Ensure active topic exists in the new content
-        if (!newContent.topics.some(t => t.title === activeTopic)) {
-            setActiveTopic(newContent.topics?.[0]?.title || '');
-        }
-    }, [language, activeTopic]);
-
     // Helper function to get icon for a topic
     const getTopicIcon = (topicTitle) => {
-        // English titles
-        if (topicTitle === 'Core Concepts' || topicTitle === 'Concepts Fondamentaux')
+        if (topicTitle === 'Core Concepts')
             return <Globe className="w-4 h-4" />;
-        if (topicTitle === 'HTTP Methods' || topicTitle === 'Méthodes HTTP')
+        if (topicTitle === 'HTTP Methods')
             return <ArrowRight className="w-4 h-4" />;
-        if (topicTitle === 'HTTP Request & Response Structure' || topicTitle === 'Structure des Requêtes et Réponses HTTP')
+        if (topicTitle === 'HTTP Request & Response Structure')
             return <Box className="w-4 h-4" />;
-        if (topicTitle === 'Status Codes' || topicTitle === 'Codes d\'État')
+        if (topicTitle === 'Status Codes')
             return <CheckSquare className="w-4 h-4" />;
-        if (topicTitle === 'Content Negotiation' || topicTitle === 'Négociation de Contenu')
+        if (topicTitle === 'Content Negotiation')
             return <FileJson className="w-4 h-4" />;
-        if (topicTitle === 'Advanced REST Concepts' || topicTitle === 'Concepts REST Avancés')
+        if (topicTitle === 'Advanced REST Concepts')
             return <Cpu className="w-4 h-4" />;
-        if (topicTitle === 'Spring MVC Implementation' || topicTitle === 'Implémentation Spring MVC')
+        if (topicTitle === 'Spring MVC Implementation')
             return <Server className="w-4 h-4" />;
-        if (topicTitle === 'Error Handling' || topicTitle === 'Gestion des Erreurs')
+        if (topicTitle === 'Error Handling')
             return <AlertTriangle className="w-4 h-4" />;
-        if (topicTitle === 'REST API Testing' || topicTitle === 'Tests d\'API REST')
+        if (topicTitle === 'REST API Testing')
             return <TestTube className="w-4 h-4" />;
-        if (topicTitle === 'REST API Best Practices' || topicTitle === 'Bonnes Pratiques pour les API REST')
+        if (topicTitle === 'REST API Best Practices')
             return <CheckCircle className="w-4 h-4" />;
-        if (topicTitle === 'Differences Between REST and Other APIs' || topicTitle === 'Différences Entre REST et Autres API')
+        if (topicTitle === 'Differences Between REST and Other APIs')
             return <Database className="w-4 h-4" />;
 
         // Default icon
@@ -117,36 +98,29 @@ const RestPage = () => {
     const getSectionIcon = (title) => {
         const lowerTitle = title?.toLowerCase() || '';
 
-        // English and French terminology
-        if (lowerTitle.includes('definition') || lowerTitle.includes('what is') || lowerTitle.includes('qu\'est-ce') || lowerTitle.includes('définition'))
+        if (lowerTitle.includes('definition') || lowerTitle.includes('what is'))
             return <BookOpen className="w-4 h-4 text-purple-400" />;
         if (lowerTitle.includes('description'))
             return <FileText className="w-4 h-4 text-cyan-400" />;
-        if (lowerTitle.includes('benefit') || lowerTitle.includes('advantage') || lowerTitle.includes('avantage'))
+        if (lowerTitle.includes('benefit') || lowerTitle.includes('advantage'))
             return <CheckCircle className="w-4 h-4 text-green-400" />;
-        if (lowerTitle.includes('example') || lowerTitle.includes('exemple'))
+        if (lowerTitle.includes('example'))
             return <Terminal className="w-4 h-4 text-pink-400" />;
         if (lowerTitle.includes('code'))
             return <Code2 className="w-4 h-4 text-pink-400" />;
         if (lowerTitle.includes('types') || lowerTitle.includes('type'))
             return <Layers className="w-4 h-4 text-yellow-400" />;
-        if (lowerTitle.includes('key') || lowerTitle.includes('principles') || lowerTitle.includes('clés') || lowerTitle.includes('principe'))
+        if (lowerTitle.includes('key') || lowerTitle.includes('principles'))
             return <CheckSquare className="w-4 h-4 text-blue-400" />;
-        if (lowerTitle.includes('vs') || lowerTitle.includes('comparison') || lowerTitle.includes('entre'))
+        if (lowerTitle.includes('vs') || lowerTitle.includes('comparison'))
             return <GitMerge className="w-4 h-4 text-orange-400" />;
-        if (lowerTitle.includes('authentication') || lowerTitle.includes('security') || lowerTitle.includes('authentification') || lowerTitle.includes('sécurité'))
+        if (lowerTitle.includes('authentication') || lowerTitle.includes('security'))
             return <Shield className="w-4 h-4 text-red-400" />;
-        if (lowerTitle.includes('http') || lowerTitle.includes('requête') || lowerTitle.includes('réponse'))
+        if (lowerTitle.includes('http'))
             return <ArrowRight className="w-4 h-4 text-indigo-400" />;
-        if (lowerTitle.includes('practice') || lowerTitle.includes('best') || lowerTitle.includes('pratique') || lowerTitle.includes('bonne'))
+        if (lowerTitle.includes('practice') || lowerTitle.includes('best'))
             return <CheckCircle className="w-4 h-4 text-green-400" />;
-        if (lowerTitle.includes('méthode'))
-            return <ArrowRight className="w-4 h-4 text-indigo-400" />;
-        if (lowerTitle.includes('stratégie') || lowerTitle.includes('strategie'))
-            return <Cpu className="w-4 h-4 text-blue-400" />;
-        if (lowerTitle.includes('test') || lowerTitle.includes('essai'))
-            return <TestTube className="w-4 h-4 text-purple-400" />;
-        if (lowerTitle.includes('gestion') || lowerTitle.includes('handling'))
+        if (lowerTitle.includes('test') || lowerTitle.includes('handling'))
             return <AlertTriangle className="w-4 h-4 text-orange-400" />;
 
         return <List className="w-4 h-4 text-gray-400" />;
@@ -179,6 +153,8 @@ const RestPage = () => {
             case "drawbacks":
             case "disadvantages":
                 colorClasses = "bg-gradient-to-br from-red-900/20 to-red-800/10 border-red-500/30";
+                break;
+            default:
                 break;
         }
 
@@ -219,6 +195,8 @@ const RestPage = () => {
                 break;
             case "examples":
                 bulletColor = "bg-pink-400";
+                break;
+            default:
                 break;
         }
 
@@ -293,7 +271,7 @@ const RestPage = () => {
             if (content.title === 'code_examples' && content['multi-content']) {
                 return (
                     <div className="mb-3">
-                        <ContentCard title={language === 'en' ? 'Code Examples' : 'Exemples de Code'} contentType="code">
+                        <ContentCard title="Code Examples" contentType="code">
                             {renderCodeExamples(content)}
                         </ContentCard>
                     </div>
@@ -394,17 +372,17 @@ const RestPage = () => {
         // Extract descriptions and definitions for introduction
         const introSections = topic['multi-content'].filter(content =>
             content.title === 'description' || content.title === 'Description' ||
-            content.title === 'definition' || content.title === 'définition' ||
-            content.title === 'What is REST?' || content.title === 'Qu\'est-ce que REST?' ||
-            content.title === 'RESTful APIs' || content.title === 'API RESTful'
+            content.title === 'definition' ||
+            content.title === 'What is REST?' ||
+            content.title === 'RESTful APIs'
         );
 
         // Get remaining sections
         const contentSections = topic['multi-content'].filter(content =>
             content.title !== 'description' && content.title !== 'Description' &&
-            content.title !== 'definition' && content.title !== 'définition' &&
-            content.title !== 'What is REST?' && content.title !== 'Qu\'est-ce que REST?' &&
-            content.title !== 'RESTful APIs' && content.title !== 'API RESTful'
+            content.title !== 'definition' &&
+            content.title !== 'What is REST?' &&
+            content.title !== 'RESTful APIs'
         );
 
         return (
@@ -414,9 +392,7 @@ const RestPage = () => {
                     <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-4 border border-purple-500/30 mb-4 shadow-md">
                         {introSections.map((section, idx) => {
                             const isDefinition = section.title === 'definition' ||
-                                section.title === 'définition' ||
-                                section.title === 'What is REST?' ||
-                                section.title === 'Qu\'est-ce que REST?';
+                                section.title === 'What is REST?';
 
                             const icon = isDefinition ?
                                 <BookOpen className="w-4 h-4 text-purple-400" /> :
@@ -469,7 +445,7 @@ const RestPage = () => {
                                             <Code2 className="w-4 h-4 text-pink-400" />
                                         </div>
                                         <h3 className="text-lg font-semibold text-pink-300">
-                                            {language === 'en' ? 'Code Examples' : 'Exemples de Code'}
+                                            Code Examples
                                         </h3>
                                     </div>
 
@@ -514,12 +490,7 @@ const RestPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Use the global language selector */}
-            <div className="mb-4">
-                <GlobalLanguageSelector />
-            </div>
-
-            {/* Header with more compact styling */}
+                {/* Header with more compact styling */}
             <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
                 <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                     {restApis.title}

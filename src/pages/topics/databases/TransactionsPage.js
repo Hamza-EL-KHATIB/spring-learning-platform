@@ -1,74 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     Lock, Database, GitBranch, AlertTriangle, BookOpen, Layers, Shield, Settings,
-    Box, GitMerge, Code, List, Terminal, Code2, Cpu, Table, Edit, Package, Filter,
+    GitMerge, Code, List, Terminal, Code2, Cpu, Table, Edit, Package, Filter,
     FileText, CheckCircle
 } from 'lucide-react';
 import transactionsEn from '../../../data/databases/transactions.json';
-import transactionsFr from '../../../data/databases/transactions-fr.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useLanguage } from '../../../components/LanguageContext';
-import GlobalLanguageSelector from '../../../components/GlobalLanguageSelector';
 
 const TransactionsPage = () => {
-    // Use the global language context
-    const { language } = useLanguage();
-
-    // State for the content based on language
-    const [transactionsData, setTransactionsData] = useState(language === 'en' ? transactionsEn : transactionsFr);
+    const transactionsData = transactionsEn;
 
     // Active tab state - default to first topic
     const [activeTopic, setActiveTopic] = useState(() => {
         return transactionsData.topics?.[0]?.title || '';
     });
 
-    useEffect(() => {
-        // Update content based on selected language
-        const newContent = language === 'en' ? transactionsEn : transactionsFr;
-        setTransactionsData(newContent);
-
-        // Ensure active topic exists in the new content
-        if (!newContent.topics.some(t => t.title === activeTopic)) {
-            setActiveTopic(newContent.topics?.[0]?.title || '');
-        }
-    }, [language, activeTopic]);
-
     // Helper function to get icon for a topic
     const getTopicIcon = (topicTitle) => {
         switch (topicTitle) {
             case 'Core Concepts':
-            case 'Concepts Fondamentaux':
                 return <Database className="w-4 h-4" />;
             case 'ACID Properties':
-            case 'Propriétés ACID':
                 return <Shield className="w-4 h-4" />;
             case 'Transaction Isolation Levels':
-            case 'Niveaux d\'Isolation des Transactions':
                 return <Layers className="w-4 h-4" />;
             case 'Spring Transaction Management':
-            case 'Gestion des Transactions avec Spring':
                 return <Settings className="w-4 h-4" />;
             case 'Transaction Propagation':
-            case 'Propagation des Transactions':
                 return <GitMerge className="w-4 h-4" />;
             case 'Transaction Patterns':
-            case 'Patterns de Transaction':
                 return <Code className="w-4 h-4" />;
             case 'JPA/Hibernate Transactions':
-            case 'Transactions JPA/Hibernate':
                 return <Database className="w-4 h-4" />;
             case 'Distributed Transactions':
-            case 'Transactions Distribuées':
                 return <GitBranch className="w-4 h-4" />;
             case 'Transaction Best Practices':
-            case 'Bonnes Pratiques de Transaction':
                 return <CheckCircle className="w-4 h-4" />;
             case 'Common Transaction Pitfalls':
-            case 'Pièges Courants des Transactions':
                 return <AlertTriangle className="w-4 h-4" />;
             case 'Interview Questions':
-            case 'Questions d\'Entretien':
                 return <BookOpen className="w-4 h-4" />;
             default:
                 return <Lock className="w-4 h-4" />;
@@ -173,6 +144,8 @@ const TransactionsPage = () => {
             case "disadvantages":
                 colorClasses = "bg-gradient-to-br from-red-900/20 to-red-800/10 border-red-500/30";
                 break;
+            default:
+                break;
         }
 
         if (!title && !children) return null;
@@ -212,6 +185,8 @@ const TransactionsPage = () => {
                 break;
             case "examples":
                 bulletColor = "bg-pink-400";
+                break;
+            default:
                 break;
         }
 
@@ -279,7 +254,7 @@ const TransactionsPage = () => {
             if (content.title === 'code_examples' && content['multi-content']) {
                 return (
                     <div className="mb-3">
-                        <ContentCard title={language === 'en' ? 'Code Examples' : 'Exemples de Code'} contentType="code">
+                        <ContentCard title="Code Examples" contentType="code">
                             {renderCodeExamples(content)}
                         </ContentCard>
                     </div>
@@ -378,7 +353,7 @@ const TransactionsPage = () => {
         if (!topic || !topic['multi-content']) return null;
 
         // Special handling for Interview FAQs
-        if (topic.title === 'Interview Questions' || topic.title === 'Questions d\'Entretien') {
+        if (topic.title === 'Interview Questions') {
             return (
                 <div className="space-y-4">
                     {topic['multi-content'].map((faq, idx) => (
@@ -402,15 +377,13 @@ const TransactionsPage = () => {
         // Extract descriptions and definitions for introduction
         const introSections = topic['multi-content'].filter(content =>
             content.title === 'description' || content.title === 'Description' ||
-            content.title === 'definition' || content.title === 'Definition' ||
-            content.title === 'définition' || content.title === 'Définition'
+            content.title === 'definition' || content.title === 'Definition'
         );
 
         // Get remaining sections
         const contentSections = topic['multi-content'].filter(content =>
             content.title !== 'description' && content.title !== 'Description' &&
-            content.title !== 'definition' && content.title !== 'Definition' &&
-            content.title !== 'définition' && content.title !== 'Définition'
+            content.title !== 'definition' && content.title !== 'Definition'
         );
 
         return (
@@ -419,8 +392,7 @@ const TransactionsPage = () => {
                 {introSections.length > 0 && (
                     <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-4 border border-purple-500/30 mb-4 shadow-md">
                         {introSections.map((section, idx) => {
-                            const isDefinition = section.title.toLowerCase() === 'definition' ||
-                                section.title.toLowerCase() === 'définition';
+                            const isDefinition = section.title.toLowerCase() === 'definition';
                             const icon = isDefinition ?
                                 <BookOpen className="w-4 h-4 text-purple-400" /> :
                                 <FileText className="w-4 h-4 text-cyan-400" />;
@@ -432,9 +404,7 @@ const TransactionsPage = () => {
                                             {icon}
                                         </div>
                                         <h3 className="text-base font-semibold text-white">
-                                            {isDefinition ?
-                                                (language === 'en' ? 'Definition' : 'Définition') :
-                                                (language === 'en' ? 'Description' : 'Description')}
+                                            {isDefinition ? 'Definition' : 'Description'}
                                         </h3>
                                     </div>
                                     <p className="text-gray-300 ml-8 text-sm">{section['simple-content']}</p>
@@ -466,7 +436,7 @@ const TransactionsPage = () => {
                                             <Code2 className="w-4 h-4 text-pink-400" />
                                         </div>
                                         <h3 className="text-lg font-semibold text-pink-300">
-                                            {language === 'en' ? 'Code Examples' : 'Exemples de Code'}
+                                            Code Examples
                                         </h3>
                                     </div>
 
@@ -511,12 +481,7 @@ const TransactionsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Use the global language selector */}
-            <div className="mb-4">
-                <GlobalLanguageSelector />
-            </div>
-
-            {/* Header with more compact styling */}
+                {/* Header with more compact styling */}
             <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
                 <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                     {transactionsData.title}

@@ -1,79 +1,34 @@
-import React, { useState, useEffect, memo, useCallback } from 'react';
+import React, { useState, memo, useCallback } from 'react';
 import exceptionsJsonEn from '../../../data/java/exceptions.json';
-import exceptionsJsonFr from '../../../data/java/exceptions-fr.json';
 // Import the diagram image for visual representation
 import exceptionsDiagram from '../../../data/images/Untitled diagram-2025-03-24-233855.png';
 
 import {
     AlertTriangle, FileWarning, Layers, Info, HelpCircle,
-    GitBranch, Box, List, Globe, ChevronDown, Zap,
+    GitBranch, Box, List, ChevronDown, Zap,
     CheckCircle2, XCircle
 } from 'lucide-react';
 import CodeBlock from '../../../components/CodeBlock';
 
 const ExceptionsPage = () => {
-    // Get language preference from localStorage with fallback to 'en'
-    const [language, setLanguage] = useState(() =>
-        localStorage.getItem('exceptionsLanguage') || 'en'
-    );
-
-    // Get the appropriate content based on language
-    const [content, setContent] = useState(() =>
-        language === 'en' ? exceptionsJsonEn : exceptionsJsonFr
-    );
+    const content = exceptionsJsonEn;
 
     // Define tab structure based on the content sections
     const tabs = [
-        { id: 'overview', title: language === 'en' ? 'Overview' : 'Vue d\'ensemble', icon: <Info className="w-4 h-4"/> },
-        { id: 'hierarchy', title: language === 'en' ? 'Hierarchy' : 'Hiérarchie', icon: <GitBranch className="w-4 h-4"/> },
-        { id: 'types', title: language === 'en' ? 'Exception Types' : 'Types d\'Exceptions', icon: <Layers className="w-4 h-4"/> },
-        { id: 'handling', title: language === 'en' ? 'Handling' : 'Gestion', icon: <FileWarning className="w-4 h-4"/> },
-        { id: 'custom', title: language === 'en' ? 'Custom Exceptions' : 'Exceptions Personnalisées', icon: <Box className="w-4 h-4"/> },
-        { id: 'best-practices', title: language === 'en' ? 'Best Practices' : 'Bonnes Pratiques', icon: <CheckCircle2 className="w-4 h-4"/> },
-        { id: 'multi-threaded', title: language === 'en' ? 'Multi-Threaded' : 'Multi-Thread', icon: <Zap className="w-4 h-4"/> },
-        { id: 'try-catch-order', title: language === 'en' ? 'try-catch Order' : 'Ordre try-catch', icon: <List className="w-4 h-4"/> },
-        { id: 'interview', title: language === 'en' ? 'Interview Q&A' : 'Questions d\'entretien', icon: <HelpCircle className="w-4 h-4"/> }
+        { id: 'overview', title: 'Overview', icon: <Info className="w-4 h-4"/> },
+        { id: 'hierarchy', title: 'Hierarchy', icon: <GitBranch className="w-4 h-4"/> },
+        { id: 'types', title: 'Exception Types', icon: <Layers className="w-4 h-4"/> },
+        { id: 'handling', title: 'Handling', icon: <FileWarning className="w-4 h-4"/> },
+        { id: 'custom', title: 'Custom Exceptions', icon: <Box className="w-4 h-4"/> },
+        { id: 'best-practices', title: 'Best Practices', icon: <CheckCircle2 className="w-4 h-4"/> },
+        { id: 'multi-threaded', title: 'Multi-Threaded', icon: <Zap className="w-4 h-4"/> },
+        { id: 'try-catch-order', title: 'try-catch Order', icon: <List className="w-4 h-4"/> },
+        { id: 'interview', title: 'Interview Q&A', icon: <HelpCircle className="w-4 h-4"/> }
     ];
 
     // Active tab state
     const [activeTab, setActiveTab] = useState('overview');
 
-    // Update content when language changes
-    useEffect(() => {
-        setContent(language === 'en' ? exceptionsJsonEn : exceptionsJsonFr);
-        localStorage.setItem('exceptionsLanguage', language);
-    }, [language]);
-
-    // Language selector component - memoized for performance
-    const LanguageSelector = memo(() => (
-        <div className="flex items-center gap-3 mb-6">
-            <Globe className="w-5 h-5 text-purple-400"/>
-            <div className="flex rounded-lg overflow-hidden border border-gray-700">
-                <button
-                    onClick={() => setLanguage('en')}
-                    className={`px-3 py-1.5 text-sm ${
-                        language === 'en'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    English
-                </button>
-                <button
-                    onClick={() => setLanguage('fr')}
-                    className={`px-3 py-1.5 text-sm ${
-                        language === 'fr'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    Français
-                </button>
-            </div>
-        </div>
-    ));
-
-    LanguageSelector.displayName = 'LanguageSelector';
 
     // Tab navigation component - memoized for performance
     const TabNavigation = memo(() => (
@@ -123,7 +78,7 @@ const ExceptionsPage = () => {
                                         <div className="mt-2 pt-2 border-t border-gray-700/50">
                                             <div className="flex items-center gap-2">
                                                 <span className="text-xs text-gray-400">
-                                                    {language === 'en' ? 'Interview Relevance:' : 'Pertinence en entretien:'}
+                                                    {'Interview Relevance:'}
                                                 </span>
                                                 <div className="flex">
                                                     {[...Array(5)].map((_, i) => (
@@ -143,7 +98,7 @@ const ExceptionsPage = () => {
                 </div>
             </div>
         );
-    }, [content, language]);
+    }, [content]);
 
     // Render exception hierarchy section with diagram image
     const renderHierarchy = useCallback(() => {
@@ -158,7 +113,7 @@ const ExceptionsPage = () => {
                     {/* Visual diagram */}
                     <div className="bg-gray-800/70 p-5 rounded-lg mb-6 border border-gray-700/30">
                         <h4 className="text-lg font-medium text-cyan-300 mb-3">
-                            {language === 'en' ? 'Exception Class Hierarchy' : 'Hiérarchie des Classes d\'Exception'}
+                            Exception Class Hierarchy
                         </h4>
                         <div className="flex justify-center mb-4">
                             <img
@@ -173,7 +128,7 @@ const ExceptionsPage = () => {
                     {section.classes && (
                         <div className="space-y-4">
                             <h4 className="text-lg font-medium text-cyan-300 mb-2">
-                                {language === 'en' ? 'Key Exception Classes' : 'Classes d\'Exception Principales'}
+                                Key Exception Classes
                             </h4>
                             {section.classes.map((exClass, idx) => (
                                 <div key={idx} className="bg-gray-800/70 p-4 rounded-lg border border-gray-700/30">
@@ -183,7 +138,7 @@ const ExceptionsPage = () => {
                                     {exClass.subclasses && (
                                         <div className="mt-3 pl-4 border-l-2 border-gray-700">
                                             <h6 className="text-md font-medium text-cyan-300 mb-2">
-                                                {language === 'en' ? 'Subclasses' : 'Sous-classes'}
+                                                {'Subclasses'}
                                             </h6>
                                             <div className="space-y-2">
                                                 {exClass.subclasses.map((subclass, subIdx) => (
@@ -202,7 +157,7 @@ const ExceptionsPage = () => {
                 </div>
             </div>
         );
-    }, [content, language, exceptionsDiagram]);
+    }, [content]);
 
     // Render exception types section
     const renderExceptionTypes = useCallback(() => {
@@ -222,7 +177,7 @@ const ExceptionsPage = () => {
                             {type.properties && (
                                 <div className="mb-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Properties' : 'Propriétés'}
+                                        {'Properties'}
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {type.properties.map((prop, propIdx) => (
@@ -236,7 +191,7 @@ const ExceptionsPage = () => {
                             {type.examples && (
                                 <div className="mb-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Common Examples' : 'Exemples Courants'}
+                                        {'Common Examples'}
                                     </h5>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                         {type.examples.map((example, exIdx) => (
@@ -255,7 +210,7 @@ const ExceptionsPage = () => {
                             {type.code && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Code Examples' : 'Exemples de Code'}
+                                        {'Code Examples'}
                                     </h5>
                                     <div className="space-y-4">
                                         {type.code.map((codeExample, codeIdx) => (
@@ -271,7 +226,7 @@ const ExceptionsPage = () => {
                 </div>
             </div>
         );
-    }, [content, language]);
+    }, [content]);
 
     // Render exception handling mechanisms
     const renderHandlingMechanisms = useCallback(() => {
@@ -303,7 +258,7 @@ const ExceptionsPage = () => {
                             {method.properties && (
                                 <div className="mb-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Key Points' : 'Points Clés'}
+                                        {'Key Points'}
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {method.properties.map((prop, propIdx) => (
@@ -316,7 +271,7 @@ const ExceptionsPage = () => {
                             {method.code && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Example' : 'Exemple'}
+                                        {'Example'}
                                     </h5>
                                     <CodeBlock code={method.code.snippet} />
                                 </div>
@@ -326,7 +281,7 @@ const ExceptionsPage = () => {
                 </div>
             </div>
         );
-    }, [content, language]);
+    }, [content]);
 
     // Render custom exceptions section
     const renderCustomExceptions = useCallback(() => {
@@ -343,7 +298,7 @@ const ExceptionsPage = () => {
                     {section.steps && (
                         <div className="bg-gray-800/70 p-5 rounded-lg mb-6 border border-gray-700/30">
                             <h4 className="text-lg font-medium text-cyan-300 mb-3">
-                                {language === 'en' ? 'Steps to Create' : 'Étapes pour Créer'}
+                                {'Steps to Create'}
                             </h4>
                             <ul className="list-decimal list-inside space-y-2">
                                 {section.steps.map((step, stepIdx) => (
@@ -357,7 +312,7 @@ const ExceptionsPage = () => {
                     {section.bestPractices && (
                         <div className="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-6">
                             <h4 className="text-lg font-medium text-cyan-300 mb-2">
-                                {language === 'en' ? 'Best Practices' : 'Bonnes Pratiques'}
+                                {'Best Practices'}
                             </h4>
                             <ul className="list-disc list-inside space-y-1">
                                 {section.bestPractices.map((practice, practiceIdx) => (
@@ -371,7 +326,7 @@ const ExceptionsPage = () => {
                     {section.examples && (
                         <div className="space-y-6">
                             <h4 className="text-lg font-medium text-cyan-300 mb-3">
-                                {language === 'en' ? 'Example Implementations' : 'Exemples d\'Implémentations'}
+                                Example Implementations
                             </h4>
                             {section.examples.map((example, exIdx) => (
                                 <div key={exIdx} className="bg-gray-800/70 p-5 rounded-lg border border-gray-700/30">
@@ -389,7 +344,7 @@ const ExceptionsPage = () => {
                 </div>
             </div>
         );
-    }, [content, language]);
+    }, [content]);
 
     // Render best practices section
     const renderBestPractices = useCallback(() => {
@@ -418,7 +373,7 @@ const ExceptionsPage = () => {
                                                     <h5 className="flex items-center gap-2 mb-2">
                                                         <XCircle className="w-4 h-4 text-red-400" />
                                                         <span className="text-red-400 font-medium">
-                                                            {language === 'en' ? 'Bad Practice' : 'Mauvaise Pratique'}
+                                                            {'Bad Practice'}
                                                         </span>
                                                     </h5>
                                                     <div className="bg-red-900/10 border border-red-500/20 rounded-lg">
@@ -432,7 +387,7 @@ const ExceptionsPage = () => {
                                                     <h5 className="flex items-center gap-2 mb-2">
                                                         <CheckCircle2 className="w-4 h-4 text-green-400" />
                                                         <span className="text-green-400 font-medium">
-                                                            {language === 'en' ? 'Good Practice' : 'Bonne Pratique'}
+                                                            {'Good Practice'}
                                                         </span>
                                                     </h5>
                                                     <div className="bg-green-900/10 border border-green-500/20 rounded-lg">
@@ -455,7 +410,7 @@ const ExceptionsPage = () => {
                 </div>
             </div>
         );
-    }, [content, language]);
+    }, [content]);
 
     // Render multithreaded exceptions section
     const renderMultiThreadedExceptions = useCallback(() => {
@@ -491,7 +446,7 @@ const ExceptionsPage = () => {
                 </div>
             </div>
         );
-    }, [content, language]);
+    }, [content]);
 
     // Render try-catch order section
     const renderTryCatchOrder = useCallback(() => {
@@ -508,7 +463,7 @@ const ExceptionsPage = () => {
                         <div className="flex items-center gap-2 mb-2">
                             <AlertTriangle className="w-5 h-5 text-yellow-400" />
                             <h4 className="text-lg font-medium text-yellow-400">
-                                {language === 'en' ? 'Important Rule' : 'Règle Importante'}
+                                {'Important Rule'}
                             </h4>
                         </div>
                         <p className="text-gray-300">{section.rule}</p>
@@ -517,7 +472,7 @@ const ExceptionsPage = () => {
                     {section.code && (
                         <div className="bg-gray-800/70 p-5 rounded-lg border border-gray-700/30">
                             <h4 className="text-lg font-medium text-cyan-300 mb-3">
-                                {language === 'en' ? 'Example' : 'Exemple'}
+                                {'Example'}
                             </h4>
                             <CodeBlock code={section.code} />
                         </div>
@@ -525,7 +480,7 @@ const ExceptionsPage = () => {
                 </div>
             </div>
         );
-    }, [content, language]);
+    }, [content]);
 
     // Optimized QuestionCard component with memo
     const QuestionCard = memo(({ question, answer, code }) => {
@@ -629,9 +584,7 @@ const ExceptionsPage = () => {
                         {section.title}
                     </h3>
                     <p className="text-gray-300">
-                        {language === 'en'
-                            ? 'Common Java exception-related questions in technical interviews.'
-                            : 'Questions courantes sur les exceptions Java lors d\'entretiens techniques.'}
+                        Common Java exception-related questions in technical interviews.
                     </p>
                 </div>
 
@@ -647,7 +600,7 @@ const ExceptionsPage = () => {
                 </div>
             </div>
         );
-    }, [content, language]);
+    }, [content]);
 
     // Optimized content rendering with memoized section getter
     const getContent = useCallback(() => {
@@ -671,17 +624,11 @@ const ExceptionsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Language Selector */}
-            <LanguageSelector />
-
             {/* Header */}
             <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
                 <h1 className="text-3xl font-bold text-white mb-2">{content.title}</h1>
                 <p className="text-gray-300">
-                    {language === 'en'
-                        ? "A comprehensive guide to Java exceptions and error handling"
-                        : "Un guide complet sur les exceptions et la gestion des erreurs en Java"
-                    }
+                    A comprehensive guide to Java exceptions and error handling
                 </p>
             </div>
 

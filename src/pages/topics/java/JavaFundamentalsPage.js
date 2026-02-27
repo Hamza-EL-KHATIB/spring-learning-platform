@@ -1,4 +1,4 @@
-import React, {useState, useEffect, memo, useMemo} from 'react';
+import React, {useState, memo, useMemo} from 'react';
 import {
     Book,
     Code,
@@ -12,7 +12,6 @@ import {
     Clock,
     HelpCircle,
     GitBranch,
-    Globe,
     Shield,
     CheckCircle2,
     XCircle,
@@ -20,68 +19,26 @@ import {
     Lock,
 } from 'lucide-react';
 import javaFundamentalsJsonEn from '../../../data/java/java-fundamentals.json';
-import javaFundamentalsJsonFr from '../../../data/java/java-fundamentals-fr.json';
 import CodeBlock from '../../../components/CodeBlock';
 import EnhancedInterviewFAQs from "./EnhancedInterviewFAQs";
 
 const JavaFundamentalsPage = () => {
 
-    // Language state with localStorage persistence
-    const [language, setLanguage] = useState(() =>
-        localStorage.getItem('javaFundamentalsLanguage') || 'en'
-    );
-
-    // Content based on language - memoized to prevent unnecessary recalculations
-    const content = useMemo(() =>
-            language === 'en' ? javaFundamentalsJsonEn : javaFundamentalsJsonFr,
-        [language]
-    );
+    const content = javaFundamentalsJsonEn;
 
     const tabs = [
-        {
-            id: 'core-concepts',
-            title: language === 'en' ? 'Core Concepts' : 'Concepts de Base',
-            icon: <Cpu className="w-4 h-4"/>
-        },
-        {
-            id: 'data-types',
-            title: language === 'en' ? 'Data Types' : 'Types de Données',
-            icon: <Database className="w-4 h-4"/>
-        },
-        {id: 'oop', title: language === 'en' ? 'OOP' : 'POO', icon: <Box className="w-4 h-4"/>},
-        {id: 'memory', title: language === 'en' ? 'Memory' : 'Mémoire', icon: <MemoryStick className="w-4 h-4"/>},
-        {
-            id: 'constructors',
-            title: language === 'en' ? 'Constructors' : 'Constructeurs',
-            icon: <Layout className="w-4 h-4"/>
-        },
-        {id: 'keywords', title: language === 'en' ? 'Keywords' : 'Mots-clés', icon: <Code className="w-4 h-4"/>},
-        {
-            id: 'classes',
-            title: language === 'en' ? 'Classes & Interfaces' : 'Classes & Interfaces',
-            icon: <Server className="w-4 h-4"/>
-        },
-        {
-            id: 'strings',
-            title: language === 'en' ? 'String Handling' : 'Manipulation de Chaînes',
-            icon: <Book className="w-4 h-4"/>
-        },
-        {id: 'packages', title: language === 'en' ? 'Packages' : 'Packages', icon: <GitBranch className="w-4 h-4"/>},
-        {
-            id: 'best-practices',
-            title: language === 'en' ? 'Best Practices' : 'Bonnes Pratiques',
-            icon: <Clock className="w-4 h-4"/>
-        },
-        {
-            id: 'interview-focus',
-            title: language === 'en' ? 'Interview Focus' : 'Focus d\'Entretien',
-            icon: <Target className="w-4 h-4"/>
-        },
-        {
-            id: 'interview-faqs',
-            title: language === 'en' ? 'Interview FAQs' : 'FAQ d\'Entretien',
-            icon: <HelpCircle className="w-4 h-4"/>
-        }
+        {id: 'core-concepts', title: 'Core Concepts', icon: <Cpu className="w-4 h-4"/>},
+        {id: 'data-types', title: 'Data Types', icon: <Database className="w-4 h-4"/>},
+        {id: 'oop', title: 'OOP', icon: <Box className="w-4 h-4"/>},
+        {id: 'memory', title: 'Memory', icon: <MemoryStick className="w-4 h-4"/>},
+        {id: 'constructors', title: 'Constructors', icon: <Layout className="w-4 h-4"/>},
+        {id: 'keywords', title: 'Keywords', icon: <Code className="w-4 h-4"/>},
+        {id: 'classes', title: 'Classes & Interfaces', icon: <Server className="w-4 h-4"/>},
+        {id: 'strings', title: 'String Handling', icon: <Book className="w-4 h-4"/>},
+        {id: 'packages', title: 'Packages', icon: <GitBranch className="w-4 h-4"/>},
+        {id: 'best-practices', title: 'Best Practices', icon: <Clock className="w-4 h-4"/>},
+        {id: 'interview-focus', title: 'Interview Focus', icon: <Target className="w-4 h-4"/>},
+        {id: 'interview-faqs', title: 'Interview FAQs', icon: <HelpCircle className="w-4 h-4"/>}
     ];
 
     // Active section index
@@ -148,11 +105,6 @@ const JavaFundamentalsPage = () => {
         );
     });
 
-    // Update localStorage when language changes
-    useEffect(() => {
-        localStorage.setItem('javaFundamentalsLanguage', language);
-    }, [language]);
-
     // Icons mapping for sections - memoized to avoid recreation
     const sectionIcons = useMemo(() => ({
         'Core Concepts': <Cpu className="w-5 h-5"/>,
@@ -170,45 +122,11 @@ const JavaFundamentalsPage = () => {
         'Classes and Interfaces': <Server className="w-5 h-5"/>,
         'Classes et Interfaces': <Server className="w-5 h-5"/>,
         'String Handling': <Book className="w-5 h-5"/>,
-        'Gestion des Chaînes': <Book className="w-5 h-5"/>,
         'Packages and Access Control': <GitBranch className="w-5 h-5"/>,
-        'Packages et Contrôle d\'Accès': <GitBranch className="w-5 h-5"/>,
         'Best Practices': <Clock className="w-5 h-5"/>,
-        'Meilleures Pratiques': <Clock className="w-5 h-5"/>,
         'Interview Focus Areas': <Box className="w-5 h-5"/>,
-        'Domaines d\'intérêt pour les Entretiens': <Box className="w-5 h-5"/>,
-        'Interview FAQs': <Book className="w-5 h-5"/>,
-        'FAQ d\'Entretien': <Book className="w-5 h-5"/>
+        'Interview FAQs': <Book className="w-5 h-5"/>
     }), []);
-
-    // Language Selector Component
-    const LanguageSelector = () => (
-        <div className="flex items-center gap-3 mb-6">
-            <Globe className="w-5 h-5 text-purple-400"/>
-            <div className="flex rounded-lg overflow-hidden border border-gray-700">
-                <button
-                    onClick={() => setLanguage('en')}
-                    className={`px-3 py-1.5 text-sm ${
-                        language === 'en'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    English
-                </button>
-                <button
-                    onClick={() => setLanguage('fr')}
-                    className={`px-3 py-1.5 text-sm ${
-                        language === 'fr'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    Français
-                </button>
-            </div>
-        </div>
-    );
 
     // Tab Navigation component
     const TabNavigation = () => (
@@ -281,7 +199,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.keyFeatures && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Key Features' : 'Caractéristiques Clés'}
+                            {'Key Features'}
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {subsection.keyFeatures.map((feature, idx) => (
@@ -298,7 +216,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.components && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Components' : 'Composants'}
+                            {'Components'}
                         </h4>
                         <div className="space-y-4">
                             {subsection.components.map((component, idx) => (
@@ -309,7 +227,7 @@ const JavaFundamentalsPage = () => {
                                     {component.tools && (
                                         <div className="mt-2">
                                             <h6 className="text-sm font-medium text-gray-400 mb-2">
-                                                {language === 'en' ? "Tools:" : "Outils:"}
+                                                {'Tools:'}
                                             </h6>
                                             <ul className="list-disc list-inside space-y-1">
                                                 {component.tools.map((tool, toolIdx) => (
@@ -322,7 +240,7 @@ const JavaFundamentalsPage = () => {
                                     {component.includes && (
                                         <div className="mt-2">
                                             <h6 className="text-sm font-medium text-gray-400 mb-2">
-                                                {language === 'en' ? "Includes:" : "Inclut:"}
+                                                {'Includes:'}
                                             </h6>
                                             <ul className="list-disc list-inside space-y-1">
                                                 {component.includes.map((item, itemIdx) => (
@@ -335,7 +253,7 @@ const JavaFundamentalsPage = () => {
                                     {component.features && (
                                         <div className="mt-2">
                                             <h6 className="text-sm font-medium text-gray-400 mb-2">
-                                                {language === 'en' ? "Features:" : "Fonctionnalités:"}
+                                                {'Features:'}
                                             </h6>
                                             <ul className="list-disc list-inside space-y-1">
                                                 {component.features.map((feature, featureIdx) => (
@@ -354,7 +272,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.steps && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? "Process Steps" : "Étapes du Processus"}
+                            {'Process Steps'}
                         </h4>
                         <div className="space-y-3">
                             {subsection.steps.map((step, idx) => (
@@ -374,14 +292,14 @@ const JavaFundamentalsPage = () => {
                 {subsection.code && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? "Code Example" : "Exemple de Code"}
+                            {'Code Example'}
                         </h4>
                         <CodeBlock code={subsection.code}/>
 
                         {subsection.keywords && (
                             <div className="mt-3">
                                 <h6 className="text-sm font-medium text-gray-400 mb-2">
-                                    {language === 'en' ? "Keywords:" : "Mots-clés:"}
+                                    {'Keywords:'}
                                 </h6>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                                     {subsection.keywords.map((keyword, idx) => (
@@ -400,7 +318,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.diagram && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? "Component Diagram" : "Diagramme des Composants"}
+                            {'Component Diagram'}
                         </h4>
                         <pre
                             className="text-gray-300 text-sm font-mono overflow-x-auto whitespace-pre bg-gray-800/70 p-3 rounded-lg">
@@ -413,17 +331,17 @@ const JavaFundamentalsPage = () => {
                 {subsection.types && subsection.types[0]?.dataType && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Primitive Types' : 'Types Primitifs'}
+                            {'Primitive Types'}
                         </h4>
                         <div className="overflow-x-auto">
                             <table className="min-w-full bg-gray-800/50 rounded-lg">
                                 <thead>
                                 <tr className="border-b border-gray-700">
-                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{language === 'en' ? 'Type' : 'Type'}</th>
-                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{language === 'en' ? 'Size' : 'Taille'}</th>
-                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{language === 'en' ? 'Range' : 'Intervalle'}</th>
-                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{language === 'en' ? 'Default' : 'Défaut'}</th>
-                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{language === 'en' ? 'Usage' : 'Utilisation'}</th>
+                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{'Type'}</th>
+                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{'Size'}</th>
+                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{'Range'}</th>
+                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{'Default'}</th>
+                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{'Usage'}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -446,7 +364,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.types && !subsection.types[0]?.dataType && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Types' : 'Types'}
+                            {'Types'}
                         </h4>
                         <div className="grid grid-cols-1 gap-3">
                             {subsection.types.map((type, idx) => (
@@ -464,16 +382,16 @@ const JavaFundamentalsPage = () => {
                 {subsection.variables && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? "Variable Types" : "Types de Variables"}
+                            {'Variable Types'}
                         </h4>
                         <div className="overflow-x-auto">
                             <table className="min-w-full bg-gray-800/50 rounded-lg">
                                 <thead>
                                 <tr className="border-b border-gray-700">
-                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{language === 'en' ? 'Type' : 'Type'}</th>
-                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{language === 'en' ? 'Storage' : 'Stockage'}</th>
-                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{language === 'en' ? 'Lifecycle' : 'Cycle de vie'}</th>
-                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{language === 'en' ? 'Scope' : 'Portée'}</th>
+                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{'Type'}</th>
+                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{'Storage'}</th>
+                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{'Lifecycle'}</th>
+                                    <th className="py-2 px-3 text-left text-sm text-gray-400">{'Scope'}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -495,7 +413,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.conversions && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? "Type Conversions" : "Conversions de Type"}
+                            {'Type Conversions'}
                         </h4>
                         <div className="space-y-4">
                             {subsection.conversions.map((conversion, idx) => (
@@ -513,7 +431,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.examples && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? "Examples" : "Exemples"}
+                            {'Examples'}
                         </h4>
                         <div className="space-y-2 bg-gray-800/70 p-3 rounded-lg">
                             {subsection.examples.map((example, idx) => (
@@ -589,7 +507,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-6">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example Code' : 'Exemple de Code'}
+                            {'Example Code'}
                         </h4>
                         <CodeBlock code={subsection.example}/>
                     </div>
@@ -625,7 +543,7 @@ const JavaFundamentalsPage = () => {
                                 {pillar.implementation && (
                                     <div className="bg-gray-800/30 p-3 rounded">
                                         <h5 className="text-md font-medium text-cyan-300 mb-2">
-                                            {language === 'en' ? 'Implementation' : 'Implémentation'}
+                                            {'Implementation'}
                                         </h5>
                                         <ul className="list-disc list-inside space-y-1">
                                             {pillar.implementation.map((item, itemIdx) => (
@@ -642,7 +560,7 @@ const JavaFundamentalsPage = () => {
                                 {pillar.benefits && (
                                     <div className="bg-gray-800/30 p-3 rounded">
                                         <h5 className="text-md font-medium text-cyan-300 mb-2">
-                                            {language === 'en' ? 'Benefits' : 'Avantages'}
+                                            {'Benefits'}
                                         </h5>
                                         <ul className="list-disc list-inside space-y-1">
                                             {pillar.benefits.map((item, itemIdx) => (
@@ -655,7 +573,7 @@ const JavaFundamentalsPage = () => {
                                 {pillar.types && (
                                     <div className="bg-gray-800/30 p-3 rounded md:col-span-2">
                                         <h5 className="text-md font-medium text-cyan-300 mb-2">
-                                            {language === 'en' ? 'Types' : 'Types'}
+                                            {'Types'}
                                         </h5>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                             {pillar.types.map((type, typeIdx) => (
@@ -671,20 +589,20 @@ const JavaFundamentalsPage = () => {
                                 {pillar.comparison && (
                                     <div className="bg-gray-800/30 p-3 rounded md:col-span-2">
                                         <h5 className="text-md font-medium text-cyan-300 mb-2">
-                                            {language === 'en' ? 'Comparison' : 'Comparaison'}
+                                            {'Comparison'}
                                         </h5>
                                         <div className="overflow-x-auto">
                                             <table className="min-w-full bg-gray-800/50 rounded-lg">
                                                 <thead>
                                                 <tr className="border-b border-gray-700">
                                                     <th className="py-2 px-3 text-left text-sm text-gray-400">
-                                                        {language === 'en' ? 'Aspect' : 'Aspect'}
+                                                        {'Aspect'}
                                                     </th>
                                                     <th className="py-2 px-3 text-left text-sm text-gray-400">
-                                                        {language === 'en' ? 'Method Overloading' : 'Surcharge de Méthode'}
+                                                        {'Method Overloading'}
                                                     </th>
                                                     <th className="py-2 px-3 text-left text-sm text-gray-400">
-                                                        {language === 'en' ? 'Method Overriding' : 'Redéfinition de Méthode'}
+                                                        {'Method Overriding'}
                                                     </th>
                                                 </tr>
                                                 </thead>
@@ -707,7 +625,7 @@ const JavaFundamentalsPage = () => {
                             {pillar.example && (
                                 <div className="mt-4">
                                     <h5 className="text-md font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Example' : 'Exemple'}
+                                        {'Example'}
                                     </h5>
                                     <CodeBlock code={pillar.example}/>
                                 </div>
@@ -735,19 +653,19 @@ const JavaFundamentalsPage = () => {
                         <thead>
                         <tr className="border-b border-gray-700">
                             <th className="py-2 px-3 text-left text-sm text-gray-400">
-                                {language === 'en' ? 'Modifier' : 'Modificateur'}
+                                {'Modifier'}
                             </th>
                             <th className="py-2 px-3 text-center text-sm text-gray-400">
-                                {language === 'en' ? 'Same Class' : 'Même Classe'}
+                                {'Same Class'}
                             </th>
                             <th className="py-2 px-3 text-center text-sm text-gray-400">
-                                {language === 'en' ? 'Same Package' : 'Même Package'}
+                                {'Same Package'}
                             </th>
                             <th className="py-2 px-3 text-center text-sm text-gray-400">
-                                {language === 'en' ? 'Subclass' : 'Sous-classe'}
+                                {'Subclass'}
                             </th>
                             <th className="py-2 px-3 text-center text-sm text-gray-400">
-                                {language === 'en' ? 'World' : 'Monde'}
+                                {'World'}
                             </th>
                         </tr>
                         </thead>
@@ -809,7 +727,7 @@ const JavaFundamentalsPage = () => {
                             {mod.useCases && (
                                 <div className="ml-4">
                                     <h5 className="text-sm font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Use Cases:' : 'Cas d\'utilisation:'}
+                                        Use Cases:
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {mod.useCases.map((useCase, caseIdx) => (
@@ -860,7 +778,7 @@ const JavaFundamentalsPage = () => {
 
                             <div className="flex-grow">
                                 <h5 className="text-sm font-medium text-cyan-300 mb-2">
-                                    {language === 'en' ? 'Characteristics:' : 'Caractéristiques:'}
+                                    {'Characteristics:'}
                                 </h5>
                                 <ul className="list-disc list-inside space-y-1 mb-4">
                                     {memory.characteristics.map((char, charIdx) => (
@@ -871,7 +789,7 @@ const JavaFundamentalsPage = () => {
 
                             <div className="mt-3">
                                 <h5 className="text-sm font-medium text-cyan-300 mb-2">
-                                    {language === 'en' ? 'Example:' : 'Exemple:'}
+                                    {'Example:'}
                                 </h5>
                                 <CodeBlock code={memory.example}/>
                             </div>
@@ -882,7 +800,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.diagram && (
                     <div className="mt-6 bg-gray-800/70 p-4 rounded-lg">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Memory Diagram:' : 'Diagramme de Mémoire:'}
+                            {'Memory Diagram:'}
                         </h4>
                         <pre className="text-gray-300 text-sm font-mono overflow-x-auto whitespace-pre">
                             {subsection.diagram}
@@ -908,10 +826,10 @@ const JavaFundamentalsPage = () => {
                     <table className="min-w-full bg-gray-800/50 rounded-lg">
                         <thead>
                         <tr className="border-b border-gray-700">
-                            <th className="py-2 px-4 text-left text-sm text-gray-400">{language === 'en' ? 'Type' : 'Type'}</th>
-                            <th className="py-2 px-4 text-left text-sm text-gray-400">{language === 'en' ? 'Storage' : 'Stockage'}</th>
-                            <th className="py-2 px-4 text-left text-sm text-gray-400">{language === 'en' ? 'Lifecycle' : 'Cycle de vie'}</th>
-                            <th className="py-2 px-4 text-left text-sm text-gray-400">{language === 'en' ? 'Scope' : 'Portée'}</th>
+                            <th className="py-2 px-4 text-left text-sm text-gray-400">{'Type'}</th>
+                            <th className="py-2 px-4 text-left text-sm text-gray-400">{'Storage'}</th>
+                            <th className="py-2 px-4 text-left text-sm text-gray-400">{'Lifecycle'}</th>
+                            <th className="py-2 px-4 text-left text-sm text-gray-400">{'Scope'}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -956,7 +874,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.process && (
                     <div className="mt-6">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Garbage Collection Process:' : 'Processus de Garbage Collection:'}
+                            {'Garbage Collection Process:'}
                         </h4>
                         <div className="flex flex-col sm:flex-row gap-4 mb-6">
                             {subsection.process.map((step, idx) => (
@@ -974,7 +892,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.collectors && (
                     <div className="mt-6">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Garbage Collectors:' : 'Collecteurs de Garbage:'}
+                            {'Garbage Collectors:'}
                         </h4>
                         <div className="space-y-3">
                             {subsection.collectors.map((collector, idx) => (
@@ -998,7 +916,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.tuning && (
                     <div className="mt-6">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Tuning Tips:' : 'Conseils d\'optimisation:'}
+                            Tuning Tips:
                         </h4>
                         <div className="bg-gray-800/70 p-4 rounded-lg">
                             <ul className="list-disc list-inside space-y-2">
@@ -1055,7 +973,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example Code' : 'Exemple de Code'}
+                            {'Example Code'}
                         </h4>
                         <CodeBlock code={subsection.example}/>
                     </div>
@@ -1079,12 +997,10 @@ const JavaFundamentalsPage = () => {
                     <div className="bg-gray-800/70 p-4 rounded-lg border-l-4 border-cyan-500">
                         <div className="mb-3">
                             <h4 className="text-md font-semibold text-cyan-300 mb-2">
-                                {language === 'en' ? 'Constructor Chaining Pattern' : 'Modèle de Chaînage de Constructeurs'}
+                                Constructor Chaining Pattern
                             </h4>
                             <p className="text-gray-300">
-                                {language === 'en'
-                                    ? 'Constructor chaining allows for code reuse across constructors using this() calls:'
-                                    : 'Le chaînage de constructeurs permet la réutilisation de code entre constructeurs en utilisant des appels this():'}
+                                Constructor chaining allows for code reuse across constructors using this() calls:
                             </p>
                         </div>
                         <CodeBlock code={subsection.example}/>
@@ -1121,7 +1037,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.uses && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Common Uses:' : 'Utilisations Courantes:'}
+                            {'Common Uses:'}
                         </h4>
                         <ul className="list-disc list-inside space-y-2 bg-gray-800/70 p-3 rounded-lg">
                             {subsection.uses.map((use, idx) => (
@@ -1134,7 +1050,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example:' : 'Exemple:'}
+                            {'Example:'}
                         </h4>
                         <CodeBlock code={subsection.example}/>
                     </div>
@@ -1157,7 +1073,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.uses && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Primary Uses:' : 'Utilisations Principales:'}
+                            {'Primary Uses:'}
                         </h4>
                         <ul className="list-disc list-inside space-y-2 bg-gray-800/70 p-3 rounded-lg">
                             {subsection.uses.map((use, idx) => (
@@ -1170,7 +1086,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example:' : 'Exemple:'}
+                            {'Example:'}
                         </h4>
                         <CodeBlock code={subsection.example}/>
                     </div>
@@ -1193,7 +1109,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.applications && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Applications:' : 'Applications:'}
+                            {'Applications:'}
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                             {subsection.applications.map((app, idx) => (
@@ -1209,7 +1125,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Examples:' : 'Exemples:'}
+                            {'Examples:'}
                         </h4>
                         <CodeBlock code={subsection.example}/>
                     </div>
@@ -1232,7 +1148,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.applications && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Applications:' : 'Applications:'}
+                            {'Applications:'}
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {subsection.applications.map((app, idx) => (
@@ -1248,7 +1164,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example:' : 'Exemple:'}
+                            {'Example:'}
                         </h4>
                         <CodeBlock code={subsection.example}/>
                     </div>
@@ -1308,7 +1224,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-6">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example' : 'Exemple'}
+                            {'Example'}
                         </h4>
                         <CodeBlock code={subsection.example}/>
                     </div>
@@ -1341,7 +1257,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example' : 'Exemple'}
+                            {'Example'}
                         </h4>
                         <CodeBlock code={subsection.example}/>
                     </div>
@@ -1415,7 +1331,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example' : 'Exemple'}
+                            {'Example'}
                         </h4>
                         <CodeBlock code={subsection.example}/>
                     </div>
@@ -1454,7 +1370,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example' : 'Exemple'}
+                            {'Example'}
                         </h4>
 
                         {/* String immutability visualization */}
@@ -1466,7 +1382,7 @@ const JavaFundamentalsPage = () => {
                             <div className="flex-1 bg-gray-800/70 p-4 rounded-lg flex items-center">
                                 <div className="w-full">
                                     <div className="text-center mb-4 text-gray-300">
-                                        {language === 'en' ? 'Result Visualization' : 'Visualisation du Résultat'}
+                                        {'Result Visualization'}
                                     </div>
                                     <div className="flex items-center justify-center gap-3 mb-3">
                                         <div
@@ -1478,13 +1394,11 @@ const JavaFundamentalsPage = () => {
                                         <div className="text-2xl text-gray-500 mr-3">→</div>
                                         <div
                                             className="text-gray-400 font-mono p-2 border border-dashed border-gray-700 rounded">
-                                            {language === 'en' ? 'Output: "Hello"' : 'Sortie: "Hello"'}
+                                            {'Output: "Hello"'}
                                         </div>
                                     </div>
                                     <div className="mt-4 text-center text-gray-400 text-sm">
-                                        {language === 'en'
-                                            ? 'String object remains unchanged'
-                                            : 'L\'objet String reste inchangé'}
+                                        String object remains unchanged
                                     </div>
                                 </div>
                             </div>
@@ -1509,7 +1423,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example' : 'Exemple'}
+                            {'Example'}
                         </h4>
 
                         <div className="flex flex-col lg:flex-row gap-6">
@@ -1521,23 +1435,23 @@ const JavaFundamentalsPage = () => {
                                 {/* String Pool Visualization */}
                                 <div className="bg-gray-800/70 p-4 rounded-lg">
                                     <h5 className="text-center text-gray-300 mb-3">
-                                        {language === 'en' ? 'String Pool Visualization' : 'Visualisation du Pool de String'}
+                                        {'String Pool Visualization'}
                                     </h5>
 
                                     <div className="relative bg-gray-900 p-4 rounded-lg border border-gray-700">
                                         <div className="text-gray-400 text-sm mb-4 border-b border-gray-700 pb-2">
-                                            {language === 'en' ? 'Heap Memory' : 'Mémoire Heap'}
+                                            {'Heap Memory'}
                                         </div>
 
                                         {/* String Pool */}
                                         <div className="absolute right-2 top-2 text-xs text-cyan-400">
-                                            {language === 'en' ? 'String Pool' : 'Pool de String'}
+                                            {'String Pool'}
                                         </div>
                                         <div
                                             className="border border-dashed border-cyan-600/40 rounded-lg p-3 mb-3 bg-cyan-900/10">
                                             <div className="px-3 py-2 bg-gray-800 rounded mb-2 text-center">
                                                 <div
-                                                    className="text-xs text-gray-500 mb-1">{language === 'en' ? 'Reference' : 'Référence'}</div>
+                                                    className="text-xs text-gray-500 mb-1">{'Reference'}</div>
                                                 <div className="font-mono text-gray-300">s1, s2 → "Hello"</div>
                                             </div>
                                         </div>
@@ -1545,7 +1459,7 @@ const JavaFundamentalsPage = () => {
                                         {/* Outside pool */}
                                         <div className="px-3 py-2 bg-gray-800 rounded text-center">
                                             <div
-                                                className="text-xs text-gray-500 mb-1">{language === 'en' ? 'Outside Pool' : 'Hors du Pool'}</div>
+                                                className="text-xs text-gray-500 mb-1">{'Outside Pool'}</div>
                                             <div className="font-mono text-gray-300">s3 → new String("Hello")</div>
                                         </div>
                                     </div>
@@ -1582,19 +1496,19 @@ const JavaFundamentalsPage = () => {
                             <thead>
                             <tr className="border-b border-gray-700">
                                 <th className="py-2 px-3 text-left text-sm text-gray-400">
-                                    {language === 'en' ? 'Class' : 'Classe'}
+                                    {'Class'}
                                 </th>
                                 <th className="py-2 px-3 text-center text-sm text-gray-400">
-                                    {language === 'en' ? 'Thread Safe' : 'Thread Safe'}
+                                    {'Thread Safe'}
                                 </th>
                                 <th className="py-2 px-3 text-center text-sm text-gray-400">
-                                    {language === 'en' ? 'Mutable' : 'Mutable'}
+                                    {'Mutable'}
                                 </th>
                                 <th className="py-2 px-3 text-left text-sm text-gray-400">
-                                    {language === 'en' ? 'Performance' : 'Performance'}
+                                    {'Performance'}
                                 </th>
                                 <th className="py-2 px-3 text-left text-sm text-gray-400">
-                                    {language === 'en' ? 'Use Case' : 'Cas d\'utilisation'}
+                                    Use Case
                                 </th>
                             </tr>
                             </thead>
@@ -1635,18 +1549,18 @@ const JavaFundamentalsPage = () => {
                 {subsection.example && (
                     <div className="mt-4">
                         <h4 className="text-md font-semibold text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example' : 'Exemple'}
+                            {'Example'}
                         </h4>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             <div>
                                 <h5 className="text-pink-300 mb-2">
-                                    {language === 'en' ? 'Inefficient String Concatenation' : 'Concaténation de String Inefficace'}
+                                    {'Inefficient String Concatenation'}
                                 </h5>
                                 <CodeBlock code={subsection.example.split("// StringBuilder")[0]}/>
                             </div>
                             <div>
                                 <h5 className="text-green-300 mb-2">
-                                    {language === 'en' ? 'Efficient with StringBuilder' : 'Efficace avec StringBuilder'}
+                                    {'Efficient with StringBuilder'}
                                 </h5>
                                 <CodeBlock code={"// StringBuilder" + subsection.example.split("// StringBuilder")[1]}/>
                             </div>
@@ -1707,9 +1621,7 @@ const JavaFundamentalsPage = () => {
                             </code>
                         </div>
                         <p className="text-gray-400 text-sm mt-2">
-                            {language === 'en'
-                                ? 'Package declaration must be the first statement in a Java file (excluding comments).'
-                                : 'La déclaration de package doit être la première instruction dans un fichier Java (à l\'exception des commentaires).'}
+                            Package declaration must be the first statement in a Java file (excluding comments).
                         </p>
                     </div>
                 )}
@@ -1745,18 +1657,12 @@ const JavaFundamentalsPage = () => {
 
                 <div className="bg-gray-700/30 p-3 rounded-lg mt-4">
                     <h4 className="text-sm font-medium text-cyan-300 mb-2">
-                        {language === 'en' ? 'Best Practices' : 'Meilleures Pratiques'}
+                        {'Best Practices'}
                     </h4>
                     <ul className="list-disc list-inside space-y-1 text-gray-300">
-                        <li>{language === 'en'
-                            ? 'Avoid using wildcard imports (import java.util.*) in production code'
-                            : 'Évitez d\'utiliser des importations génériques (import java.util.*) dans le code de production'}</li>
-                        <li>{language === 'en'
-                            ? 'Organize imports to improve code readability'
-                            : 'Organisez les importations pour améliorer la lisibilité du code'}</li>
-                        <li>{language === 'en'
-                            ? 'Use static imports sparingly to avoid confusion'
-                            : 'Utilisez les importations statiques avec parcimonie pour éviter toute confusion'}</li>
+                        <li>Avoid using wildcard imports (import java.util.*) in production code</li>
+                        <li>Organize imports to improve code readability</li>
+                        <li>Use static imports sparingly to avoid confusion</li>
                     </ul>
                 </div>
             </div>
@@ -1793,19 +1699,19 @@ const JavaFundamentalsPage = () => {
                         <thead>
                         <tr className="border-b border-gray-700">
                             <th className="py-2 px-3 text-left text-sm text-gray-400">
-                                {language === 'en' ? 'Access Level' : 'Niveau d\'Accès'}
+                                {'Access Level'}
                             </th>
                             <th className="py-2 px-3 text-center text-sm text-gray-400">
-                                {language === 'en' ? 'Same Class' : 'Même Classe'}
+                                {'Same Class'}
                             </th>
                             <th className="py-2 px-3 text-center text-sm text-gray-400">
-                                {language === 'en' ? 'Same Package' : 'Même Package'}
+                                {'Same Package'}
                             </th>
                             <th className="py-2 px-3 text-center text-sm text-gray-400">
-                                {language === 'en' ? 'Subclass' : 'Sous-classe'}
+                                {'Subclass'}
                             </th>
                             <th className="py-2 px-3 text-center text-sm text-gray-400">
-                                {language === 'en' ? 'World' : 'Monde'}
+                                {'World'}
                             </th>
                         </tr>
                         </thead>
@@ -1833,7 +1739,7 @@ const JavaFundamentalsPage = () => {
                             </td>
                         </tr>
                         <tr className="bg-gray-800/30">
-                            <td className="py-2 px-3 text-pink-300 font-medium">{language === 'en' ? 'default (no modifier)' : 'default (sans modificateur)'}</td>
+                            <td className="py-2 px-3 text-pink-300 font-medium">default (no modifier)</td>
                             <td className="py-2 px-3 text-center"><CheckCircle2
                                 className="w-5 h-5 text-green-400 mx-auto"/></td>
                             <td className="py-2 px-3 text-center"><CheckCircle2
@@ -1882,7 +1788,7 @@ const JavaFundamentalsPage = () => {
                 {subsection.reasons && (
                     <div className="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30 mt-4">
                         <h4 className="text-md font-semibold text-yellow-300 mb-3">
-                            {language === 'en' ? 'Why Avoid the Default Package?' : 'Pourquoi Éviter le Package par Défaut?'}
+                            Why Avoid the Default Package?
                         </h4>
                         <ul className="list-disc list-inside space-y-2">
                             {subsection.reasons.map((reason, idx) => (
@@ -1896,15 +1802,15 @@ const JavaFundamentalsPage = () => {
                     <div className="flex items-center gap-2 mb-2">
                         <Code className="w-4 h-4 text-cyan-400"/>
                         <h4 className="text-sm font-medium text-cyan-300">
-                            {language === 'en' ? 'Example of a Default Package Class:' : 'Exemple d\'une Classe dans le Package par Défaut:'}
+                            Example of a Default Package Class:
                         </h4>
                     </div>
                     <div className="bg-gray-900/50 p-3 rounded">
                         <code
-                            className="text-gray-300 font-mono text-sm"> {language === 'en' ? 'No package declaration' : 'Pas de déclaration de package'}<br/>
+                            className="text-gray-300 font-mono text-sm"> No package declaration<br/>
                             <br/>
                             public class DefaultPackageClass &#123;<br/>
-                            &nbsp;&nbsp;&nbsp;&nbsp;// {language === 'en' ? 'Class implementation' : 'Implémentation de la classe'}<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;// Class implementation<br/>
                             &#125;
                         </code>
                     </div>
@@ -1991,22 +1897,16 @@ const JavaFundamentalsPage = () => {
         const section = content.sections[11]; // FAQ section
         if (!section || !section.categories) return null;
 
-        return <EnhancedInterviewFAQs section={section} language={language}/>;
+        return <EnhancedInterviewFAQs section={section}/>;
     };
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Language Selector */}
-            <LanguageSelector/>
-
             {/* Header */}
             <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
                 <h1 className="text-3xl font-bold text-white mb-2">{content.title}</h1>
                 <p className="text-gray-300">
-                    {language === 'en'
-                        ? "Comprehensive guide to Java programming fundamentals"
-                        : "Guide complet des fondamentaux de programmation Java"
-                    }
+                    Comprehensive guide to Java programming fundamentals
                 </p>
             </div>
 

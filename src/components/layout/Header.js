@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Github, Menu, X, GraduationCap } from "lucide-react";
-import GlobalLanguageSelector from "../GlobalLanguageSelector";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,9 +32,6 @@ const Header = () => {
                         <Link to="/architecture/design-patterns" className="text-gray-300 hover:text-white transition-colors">
                             Architecture
                         </Link>
-
-                        {/* Language Selector */}
-                        <GlobalLanguageSelector />
 
                         {/* Utility Links */}
                         <div className="flex items-center space-x-4 pl-2 border-l border-gray-700">
@@ -107,11 +103,6 @@ const Header = () => {
                         >
                             Architecture
                         </Link>
-
-                        {/* Mobile Language Selector */}
-                        <div className="py-2">
-                            <GlobalLanguageSelector />
-                        </div>
 
                         {/* Utility Links for Mobile */}
                         <div className="pt-2 mt-2 border-t border-gray-700">

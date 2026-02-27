@@ -1,53 +1,15 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
     Code, Hash, Filter, Terminal, GitBranch, Box, Sigma,
-    ArrowUpDown, Lightbulb, List, Server, Package, Globe,
+    ArrowUpDown, Lightbulb, List, Server, Package,
     FileCode, FileText, Layers, Lock
 } from 'lucide-react';
 import functionalProgrammingJsonEn from '../../../data/java/functional-programming.json';
-import functionalProgrammingJsonFr from '../../../data/java/functional-programming-fr.json';
 import CodeBlock from '../../../components/CodeBlock';
 import FloatingMenu from '../../../components/layout/FloatingMenu';
 
-// Language Selector Component
-const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
-    return (
-        <div className="flex items-center gap-3 mb-6">
-            <Globe className="w-5 h-5 text-purple-400" />
-            <div className="flex rounded-lg overflow-hidden border border-gray-700">
-                <button
-                    onClick={() => onLanguageChange('en')}
-                    className={`px-3 py-1.5 text-sm ${
-                        currentLanguage === 'en'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    English
-                </button>
-                <button
-                    onClick={() => onLanguageChange('fr')}
-                    className={`px-3 py-1.5 text-sm ${
-                        currentLanguage === 'fr'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    Français
-                </button>
-            </div>
-        </div>
-    );
-};
-
 const FunctionalProgrammingPage = () => {
-    // Get the language preference from localStorage if available, otherwise default to English
-    const [language, setLanguage] = useState(() => {
-        return localStorage.getItem('functionalProgrammingLanguage') || 'en';
-    });
-
-    // Set content data based on language
-    const [content, setContent] = useState(language === 'en' ? functionalProgrammingJsonEn : functionalProgrammingJsonFr);
+    const content = functionalProgrammingJsonEn;
 
     // Get active topic from the first section ID or from localStorage
     const defaultTopicId = content.topics[0]?.id || 'introduction';
@@ -75,22 +37,11 @@ const FunctionalProgrammingPage = () => {
         'learning-resources': <Package />
     }), []);
 
-    // Change the language and save the preference
-    const handleLanguageChange = (lang) => {
-        setLanguage(lang);
-        localStorage.setItem('functionalProgrammingLanguage', lang);
-    };
-
     // Save active topic to localStorage
     const handleTopicChange = (topicId) => {
         setActiveTopic(topicId);
         localStorage.setItem('functionalProgrammingActiveTopic', topicId);
     };
-
-    // Update content based on selected language
-    useEffect(() => {
-        setContent(language === 'en' ? functionalProgrammingJsonEn : functionalProgrammingJsonFr);
-    }, [language]);
 
     // Generate tabs based on topics
     const tabs = useMemo(() =>
@@ -320,12 +271,6 @@ const FunctionalProgrammingPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Language Selector */}
-            <LanguageSelector
-                currentLanguage={language}
-                onLanguageChange={handleLanguageChange}
-            />
-
             {/* Header */}
             <div className="mb-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50
                       rounded-xl p-6 border border-purple-500/20 shadow-lg">
@@ -370,7 +315,7 @@ const FunctionalProgrammingPage = () => {
             {content.relatedTopics && (
                 <div className="mt-12 bg-gray-800/30 rounded-xl p-6 border border-gray-700/50">
                     <h3 className="text-xl font-semibold text-white mb-4">
-                        {language === 'en' ? 'Related Topics' : 'Sujets Connexes'}
+                        Related Topics
                     </h3>
                     <div className="flex flex-wrap gap-2">
                         {content.relatedTopics.map((topic, idx) => (

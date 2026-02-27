@@ -1,38 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     Box, Database, GitMerge, Settings, Shield, Code, Layers,
     BookOpen, FileText, CheckCircle, List, AlertTriangle, Terminal,
     Code2, Cpu, Zap, ArrowRight
 } from 'lucide-react';
 import coreConceptsEn from '../../../data/spring/core-concepts.json';
-import coreConceptsFr from '../../../data/spring/core-concepts-fr.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useLanguage } from '../../../components/LanguageContext';
-import GlobalLanguageSelector from '../../../components/GlobalLanguageSelector';
 
 const CorePage = () => {
-    // Use the global language context instead of local state
-    const { language } = useLanguage();
-
-    // State for the content based on language
-    const [coreConcepts, setCoreConcepts] = useState(language === 'en' ? coreConceptsEn : coreConceptsFr);
+    const coreConcepts = coreConceptsEn;
 
     // Active tab state - default to first topic
     const [activeTopic, setActiveTopic] = useState(() => {
         return coreConcepts.topics?.[0]?.title || '';
     });
-
-    useEffect(() => {
-        // Update content based on selected language
-        const newContent = language === 'en' ? coreConceptsEn : coreConceptsFr;
-        setCoreConcepts(newContent);
-
-        // Ensure active topic exists in the new content
-        if (!newContent.topics.some(t => t.title === activeTopic)) {
-            setActiveTopic(newContent.topics?.[0]?.title || '');
-        }
-    }, [language, activeTopic]);
 
     // Helper function to get icon for a topic
     const getTopicIcon = (topicTitle) => {
@@ -163,6 +145,8 @@ const CorePage = () => {
             case "boot_specific":
                 colorClasses = "bg-gradient-to-br from-green-900/30 to-emerald-800/20 border-green-500/40";
                 break;
+            default:
+                break;
         }
 
         // Check if this is a Spring Boot specific section
@@ -224,6 +208,8 @@ const CorePage = () => {
                 break;
             case "boot_specific":
                 bulletColor = "bg-emerald-400";
+                break;
+            default:
                 break;
         }
 
@@ -291,7 +277,7 @@ const CorePage = () => {
             if (content.title === 'code_examples' && content['multi-content']) {
                 return (
                     <div className="mb-3">
-                        <ContentCard title={language === 'en' ? 'Code Examples' : 'Exemples de Code'} contentType="code">
+                        <ContentCard title="Code Examples" contentType="code">
                             {renderCodeExamples(content)}
                         </ContentCard>
                     </div>
@@ -417,12 +403,12 @@ const CorePage = () => {
 
         // Extract descriptions and definitions for introduction
         const introSections = topic['multi-content'].filter(content =>
-            content.title === 'description' || content.title === 'definition' || content.title === 'définition'
+            content.title === 'description' || content.title === 'definition'
         );
 
         // Get remaining sections
         const contentSections = topic['multi-content'].filter(content =>
-            content.title !== 'description' && content.title !== 'definition' && content.title !== 'définition'
+            content.title !== 'description' && content.title !== 'definition'
         );
 
         return (
@@ -431,7 +417,7 @@ const CorePage = () => {
                 {introSections.length > 0 && (
                     <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-4 border border-purple-500/30 mb-4 shadow-md">
                         {introSections.map((section, idx) => {
-                            const isDefinition = section.title === 'definition' || section.title === 'définition';
+                            const isDefinition = section.title === 'definition';
                             const icon = isDefinition ?
                                 <BookOpen className="w-4 h-4 text-purple-400" /> :
                                 <FileText className="w-4 h-4 text-cyan-400" />;
@@ -443,9 +429,7 @@ const CorePage = () => {
                                             {icon}
                                         </div>
                                         <h3 className="text-base font-semibold text-white">
-                                            {isDefinition ?
-                                                (language === 'en' ? 'Definition' : 'Définition') :
-                                                (language === 'en' ? 'Description' : 'Description')}
+                                            {isDefinition ? 'Definition' : 'Description'}
                                         </h3>
                                     </div>
                                     <p className="text-gray-300 ml-8 text-sm">{section['simple-content']}</p>
@@ -478,7 +462,7 @@ const CorePage = () => {
                                             <Code2 className="w-4 h-4 text-pink-400" />
                                         </div>
                                         <h3 className="text-lg font-semibold text-pink-300">
-                                            {language === 'en' ? 'Code Examples' : 'Exemples de Code'}
+                                            Code Examples
                                         </h3>
                                     </div>
 
@@ -564,12 +548,7 @@ const CorePage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Use the global language selector */}
-            <div className="mb-4">
-                <GlobalLanguageSelector />
-            </div>
-
-            {/* Header with more compact styling */}
+                {/* Header with more compact styling */}
             <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
                 <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                     {coreConcepts.title}

@@ -3,8 +3,6 @@ import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
 import TopicPage from './pages/TopicPage';
-import {LanguageProvider} from './components/LanguageContext';
-
 // Java imports
 import CollectionsPage from './pages/topics/java/CollectionsPage';
 import ConcurrencyPage from './pages/topics/java/ConcurrencyPage';
@@ -55,10 +53,9 @@ import FunctionalProgrammingPage from "./pages/topics/java/FunctionalProgramming
 
 const App = () => {
     return (
-        <LanguageProvider>
-            <Router>
-                <Layout>
-                    <Routes>
+        <Router>
+            <Layout>
+                <Routes>
                         <Route path="/" element={<HomePage/>}/>
 
                         {/*German Routes*/}
@@ -120,9 +117,8 @@ const App = () => {
                             </div>
                         }/>
                     </Routes>
-                </Layout>
-            </Router>
-        </LanguageProvider>
+            </Layout>
+        </Router>
     );
 };
 

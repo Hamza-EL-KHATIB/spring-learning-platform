@@ -1,77 +1,32 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, memo } from 'react';
 import concurrencyJsonEn from '../../../data/java/concurrency.json';
-// For a real implementation, we would import the French version:
-// import concurrencyJsonFr from '../../../data/java/concurrency-fr.json';
 import {
     ArrowDownUp, Lock, Database, GitBranch,
-    Info, Cpu, Zap, HelpCircle, Globe, ChevronDown, Code, AlertTriangle, Box, Target
+    Info, Cpu, Zap, HelpCircle, ChevronDown, Code, AlertTriangle, Box, Target
 } from 'lucide-react';
 import CodeBlock from '../../../components/CodeBlock';
 
 const ConcurrencyPage = () => {
-    // Get language preference from localStorage or default to 'en'
-    const [language, setLanguage] = useState(() =>
-        localStorage.getItem('concurrencyLanguage') || 'en'
-    );
-
-    // For demo purposes, we'll just use English content for both languages
-    // In a real implementation, you would choose the correct JSON based on language
-    const [content] = useState(concurrencyJsonEn);
+    const content = concurrencyJsonEn;
 
     // Define tab structure based on the sections in the JSON
     const tabs = [
-        { id: 'overview', title: language === 'en' ? 'Overview' : 'Vue d\'ensemble', icon: <Info className="w-4 h-4"/> },
-        { id: 'threads', title: language === 'en' ? 'Thread Basics' : 'Bases des Threads', icon: <ArrowDownUp className="w-4 h-4"/> },
-        { id: 'synchronization', title: language === 'en' ? 'Synchronization' : 'Synchronisation', icon: <Lock className="w-4 h-4"/> },
-        { id: 'coordination', title: language === 'en' ? 'Thread Coordination' : 'Coordination de Threads', icon: <GitBranch className="w-4 h-4"/> },
-        { id: 'executors', title: language === 'en' ? 'Executors' : 'Exécuteurs', icon: <Cpu className="w-4 h-4"/> },
-        { id: 'futures', title: language === 'en' ? 'CompletableFuture' : 'CompletableFuture', icon: <Zap className="w-4 h-4"/> },
-        { id: 'collections', title: language === 'en' ? 'Concurrent Collections' : 'Collections Concurrentes', icon: <Database className="w-4 h-4"/> },
-        { id: 'patterns', title: language === 'en' ? 'Patterns' : 'Modèles', icon: <Box className="w-4 h-4"/> },
-        { id: 'issues', title: language === 'en' ? 'Issues & Solutions' : 'Problèmes & Solutions', icon: <AlertTriangle className="w-4 h-4"/> },
-        { id: 'advanced', title: language === 'en' ? 'Advanced Topics' : 'Sujets Avancés', icon: <Code className="w-4 h-4"/> },
-        { id: 'interview', title: language === 'en' ? 'Interview Q&A' : 'Questions d\'entretien', icon: <HelpCircle className="w-4 h-4"/> },
-        { id: 'best-practices', title: language === 'en' ? 'Best Practices' : 'Bonnes Pratiques', icon: <Target className="w-4 h-4"/> },
+        { id: 'overview', title: 'Overview', icon: <Info className="w-4 h-4"/> },
+        { id: 'threads', title: 'Thread Basics', icon: <ArrowDownUp className="w-4 h-4"/> },
+        { id: 'synchronization', title: 'Synchronization', icon: <Lock className="w-4 h-4"/> },
+        { id: 'coordination', title: 'Thread Coordination', icon: <GitBranch className="w-4 h-4"/> },
+        { id: 'executors', title: 'Executors', icon: <Cpu className="w-4 h-4"/> },
+        { id: 'futures', title: 'CompletableFuture', icon: <Zap className="w-4 h-4"/> },
+        { id: 'collections', title: 'Concurrent Collections', icon: <Database className="w-4 h-4"/> },
+        { id: 'patterns', title: 'Patterns', icon: <Box className="w-4 h-4"/> },
+        { id: 'issues', title: 'Issues & Solutions', icon: <AlertTriangle className="w-4 h-4"/> },
+        { id: 'advanced', title: 'Advanced Topics', icon: <Code className="w-4 h-4"/> },
+        { id: 'interview', title: 'Interview Q&A', icon: <HelpCircle className="w-4 h-4"/> },
+        { id: 'best-practices', title: 'Best Practices', icon: <Target className="w-4 h-4"/> },
     ];
 
     // Active tab state
     const [activeTab, setActiveTab] = useState('overview');
-
-    // Update localStorage when language changes
-    useEffect(() => {
-        localStorage.setItem('concurrencyLanguage', language);
-        // In a real implementation, you would set the content based on language
-        // setContent(language === 'en' ? concurrencyJsonEn : concurrencyJsonFr);
-    }, [language]);
-
-    // Language selector component
-    const LanguageSelector = () => (
-        <div className="flex items-center gap-3 mb-6">
-            <Globe className="w-5 h-5 text-purple-400"/>
-            <div className="flex rounded-lg overflow-hidden border border-gray-700">
-                <button
-                    onClick={() => setLanguage('en')}
-                    className={`px-3 py-1.5 text-sm ${
-                        language === 'en'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    English
-                </button>
-                <button
-                    onClick={() => setLanguage('fr')}
-                    className={`px-3 py-1.5 text-sm ${
-                        language === 'fr'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    Français
-                </button>
-            </div>
-        </div>
-    );
 
     // Tab navigation component
     const TabNavigation = () => (
@@ -190,8 +145,8 @@ const ConcurrencyPage = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <h5 className="text-sm font-medium text-green-400 mb-2">
-                                                {language === 'en' ? 'Pros' : 'Avantages'}
-                                            </h5>
+                                        Pros
+                                    </h5>
                                             <ul className="list-disc list-inside space-y-1">
                                                 {method.pros.map((pro, proIdx) => (
                                                     <li key={proIdx} className="text-gray-300 text-sm">{pro}</li>
@@ -200,8 +155,8 @@ const ConcurrencyPage = () => {
                                         </div>
                                         <div>
                                             <h5 className="text-sm font-medium text-red-400 mb-2">
-                                                {language === 'en' ? 'Cons' : 'Inconvénients'}
-                                            </h5>
+                                        Cons
+                                    </h5>
                                             <ul className="list-disc list-inside space-y-1">
                                                 {method.cons.map((con, conIdx) => (
                                                     <li key={conIdx} className="text-gray-300 text-sm">{con}</li>
@@ -278,7 +233,7 @@ const ConcurrencyPage = () => {
                             {mechanism.methods && (
                                 <div className="mt-4 space-y-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Methods' : 'Méthodes'}
+                                        Methods
                                     </h5>
                                     {mechanism.methods.map((method, methodIdx) => (
                                         <div key={methodIdx} className="bg-gray-800/50 p-4 rounded-lg">
@@ -293,7 +248,7 @@ const ConcurrencyPage = () => {
                             {mechanism.example && !mechanism.methods && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Example' : 'Exemple'}
+                                        Example
                                     </h5>
                                     <CodeBlock code={mechanism.example} />
                                 </div>
@@ -302,7 +257,7 @@ const ConcurrencyPage = () => {
                             {mechanism.properties && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Properties' : 'Propriétés'}
+                                        Properties
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {mechanism.properties.map((prop, propIdx) => (
@@ -315,7 +270,7 @@ const ConcurrencyPage = () => {
                             {mechanism.classes && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Available Classes' : 'Classes Disponibles'}
+                                        Available Classes
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {mechanism.classes.map((cls, clsIdx) => (
@@ -328,7 +283,7 @@ const ConcurrencyPage = () => {
                             {mechanism.lockTypes && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Lock Types' : 'Types de Verrous'}
+                                        Lock Types
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {mechanism.lockTypes.map((lock, lockIdx) => (
@@ -341,7 +296,7 @@ const ConcurrencyPage = () => {
                             {mechanism.whenToUse && (
                                 <div className="mt-4 bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'When to Use' : 'Quand Utiliser'}
+                                        When to Use
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {mechanism.whenToUse.map((use, useIdx) => (
@@ -375,7 +330,7 @@ const ConcurrencyPage = () => {
                             {subsection.example && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Example' : 'Exemple'}
+                                        Example
                                     </h5>
                                     <CodeBlock code={subsection.example} />
                                 </div>
@@ -383,7 +338,7 @@ const ConcurrencyPage = () => {
 
                             {subsection.important && (
                                 <div className="mt-4 bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
-                                    <p className="text-yellow-300 font-medium">⚠️ {language === 'en' ? 'Important' : 'Important'}</p>
+                                    <p className="text-yellow-300 font-medium">⚠️ Important</p>
                                     <p className="text-gray-300">{subsection.important}</p>
                                 </div>
                             )}
@@ -391,7 +346,7 @@ const ConcurrencyPage = () => {
                             {subsection.useCases && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Use Cases' : 'Cas d\'Utilisation'}
+                                        Use Cases
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {subsection.useCases.map((useCase, useCaseIdx) => (
@@ -404,7 +359,7 @@ const ConcurrencyPage = () => {
                             {subsection.differences && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Key Differences' : 'Différences Clés'}
+                                        Key Differences
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {subsection.differences.map((diff, diffIdx) => (
@@ -451,7 +406,7 @@ const ConcurrencyPage = () => {
                                             {type.description && (
                                                 <div className="mb-3">
                                                     <h6 className="text-sm font-medium text-gray-400 mb-1">
-                                                        {language === 'en' ? 'Description' : 'Description'}
+                                                        Description
                                                     </h6>
                                                     <ul className="list-disc list-inside space-y-1">
                                                         {type.description.map((desc, descIdx) => (
@@ -464,8 +419,8 @@ const ConcurrencyPage = () => {
                                             {type.bestPractices && (
                                                 <div>
                                                     <h6 className="text-sm font-medium text-gray-400 mb-1">
-                                                        {language === 'en' ? 'Best Practices' : 'Bonnes Pratiques'}
-                                                    </h6>
+                                        Best Practices
+                                    </h6>
                                                     <ul className="list-disc list-inside space-y-1">
                                                         {type.bestPractices.map((practice, practiceIdx) => (
                                                             <li key={practiceIdx} className="text-gray-300">{practice}</li>
@@ -481,7 +436,7 @@ const ConcurrencyPage = () => {
                             {subsection.table && (
                                 <div className="mt-6">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-3">
-                                        {language === 'en' ? 'Comparison' : 'Comparaison'}
+                                        Comparison
                                     </h5>
                                     <div className="overflow-x-auto">
                                         <table className="min-w-full bg-gray-800/50 rounded-lg">
@@ -528,16 +483,16 @@ const ConcurrencyPage = () => {
 
                     <div className="bg-gray-800/70 p-5 rounded-lg mb-6 border border-gray-700/30">
                         <h4 className="text-lg font-medium text-cyan-300 mb-3">
-                            {language === 'en' ? 'Example' : 'Exemple'}
-                        </h4>
+                                        Example
+                                    </h4>
                         <CodeBlock code={section.example} />
                     </div>
 
                     {section.features && (
                         <div className="mt-6">
                             <h4 className="text-lg font-medium text-cyan-300 mb-3">
-                                {language === 'en' ? 'Key Features' : 'Fonctionnalités Clés'}
-                            </h4>
+                                        Key Features
+                                    </h4>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {section.features.map((feature, featureIdx) => (
                                     <div key={featureIdx} className="bg-gray-800/70 p-3 rounded-lg border border-gray-700/30">
@@ -575,7 +530,7 @@ const ConcurrencyPage = () => {
                             {collection.characteristics && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Characteristics' : 'Caractéristiques'}
+                                        Characteristics
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {collection.characteristics.map((char, charIdx) => (
@@ -588,7 +543,7 @@ const ConcurrencyPage = () => {
                             {collection.implementations && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Implementations' : 'Implémentations'}
+                                        Implementations
                                     </h5>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                         {collection.implementations.map((impl, implIdx) => (
@@ -604,7 +559,7 @@ const ConcurrencyPage = () => {
                             {collection.applications && (
                                 <div className="mt-4 bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Applications' : 'Applications'}
+                                        Applications
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {collection.applications.map((app, appIdx) => (
@@ -638,7 +593,7 @@ const ConcurrencyPage = () => {
                             {pattern.example && (
                                 <div className="mb-6">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Implementation' : 'Implémentation'}
+                                        Implementation
                                     </h5>
                                     <CodeBlock code={pattern.example} />
                                 </div>
@@ -648,16 +603,16 @@ const ConcurrencyPage = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                            {language === 'en' ? 'Using' : 'Utilisant'}
-                                        </h5>
+                                        Using
+                                    </h5>
                                         <div className="bg-gray-800/50 p-3 rounded-lg">
                                             <p className="text-gray-300 font-medium">{pattern.implementation.using}</p>
                                         </div>
                                     </div>
                                     <div>
                                         <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                            {language === 'en' ? 'Advantages' : 'Avantages'}
-                                        </h5>
+                                        Advantages
+                                    </h5>
                                         <ul className="list-disc list-inside space-y-1">
                                             {pattern.implementation.advantages.map((adv, advIdx) => (
                                                 <li key={advIdx} className="text-gray-300">{adv}</li>
@@ -670,7 +625,7 @@ const ConcurrencyPage = () => {
                             {pattern.useCases && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Use Cases' : 'Cas d\'Utilisation'}
+                                        Use Cases
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {pattern.useCases.map((useCase, useCaseIdx) => (
@@ -682,7 +637,7 @@ const ConcurrencyPage = () => {
 
                             {pattern.warning && (
                                 <div className="mt-4 bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
-                                    <p className="text-yellow-300 font-medium">⚠️ {language === 'en' ? 'Warning' : 'Avertissement'}</p>
+                                    <p className="text-yellow-300 font-medium">⚠️ Warning</p>
                                     <p className="text-gray-300">{pattern.warning}</p>
                                 </div>
                             )}
@@ -714,7 +669,7 @@ const ConcurrencyPage = () => {
                             {subsection.example && (
                                 <div className="mb-6">
                                     <h5 className="text-lg font-medium text-red-400 mb-2">
-                                        {language === 'en' ? 'Problematic Code' : 'Code Problématique'}
+                                        Problematic Code
                                     </h5>
                                     <CodeBlock code={subsection.example} />
                                 </div>
@@ -723,7 +678,7 @@ const ConcurrencyPage = () => {
                             {subsection.solutions && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-green-400 mb-2">
-                                        {language === 'en' ? 'Solutions' : 'Solutions'}
+                                        Solutions
                                     </h5>
                                     <div className="space-y-3">
                                         {subsection.solutions.map((solution, solIdx) => (
@@ -770,7 +725,7 @@ const ConcurrencyPage = () => {
                             {subsection.example && (
                                 <div className="mb-6">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Example' : 'Exemple'}
+                                        Example
                                     </h5>
                                     <CodeBlock code={subsection.example} />
                                 </div>
@@ -779,7 +734,7 @@ const ConcurrencyPage = () => {
                             {subsection.considerations && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Considerations' : 'Considérations'}
+                                        Considerations
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {subsection.considerations.map((item, itemIdx) => (
@@ -792,7 +747,7 @@ const ConcurrencyPage = () => {
                             {subsection.advantages && (
                                 <div className="mt-4">
                                     <h5 className="text-lg font-medium text-cyan-300 mb-2">
-                                        {language === 'en' ? 'Advantages' : 'Avantages'}
+                                        Advantages
                                     </h5>
                                     <ul className="list-disc list-inside space-y-1">
                                         {subsection.advantages.map((item, itemIdx) => (
@@ -883,12 +838,10 @@ const ConcurrencyPage = () => {
             <div className="space-y-6">
                 <div className="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-lg p-6 border border-cyan-500/20 shadow-lg">
                     <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300 mb-3">
-                        {language === 'en' ? 'Interview Questions & Answers' : 'Questions & Réponses d\'Entretien'}
+                        Interview Questions & Answers
                     </h3>
                     <p className="text-gray-300">
-                        {language === 'en'
-                            ? 'Common Java concurrency questions you might encounter in technical interviews.'
-                            : 'Questions courantes sur la concurrence en Java que vous pourriez rencontrer lors d\'entretiens techniques.'}
+                        Common Java concurrency questions you might encounter in technical interviews.
                     </p>
                 </div>
 
@@ -966,17 +919,10 @@ const ConcurrencyPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Language Selector */}
-            <LanguageSelector />
-
-            {/* Header */}
             <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
                 <h1 className="text-3xl font-bold text-white mb-2">{content.title}</h1>
                 <p className="text-gray-300">
-                    {language === 'en'
-                        ? "A comprehensive guide to Java Concurrency and Multithreading"
-                        : "Un guide complet de la Concurrence et du Multithreading en Java"
-                    }
+                    A comprehensive guide to Java Concurrency and Multithreading
                 </p>
             </div>
 
