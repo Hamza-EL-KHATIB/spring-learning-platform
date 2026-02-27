@@ -49,25 +49,20 @@ const UnitTestingPage = () => {
         })) || [], [unitTestingJson.topics, iconMap]);
 
     const TopicNavigation = useCallback(({ activeTopic, onTopicChange, topics }) => (
-        <div className="hidden lg:block bg-gray-800/30 rounded-xl border border-gray-700/50 p-6 mb-8">
-            <div className="grid grid-cols-3 xl:grid-cols-4 gap-3">
+        <div className="mb-4 flex flex-wrap gap-2 p-1 bg-gray-800/50 rounded-lg border border-gray-700/50">
                 {topics.map((topic) => (
                     <button
                         key={topic.id}
                         onClick={() => onTopicChange(topic.id)}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium 
-                        transition-all duration-300 text-left
-                        ${activeTopic === topic.id
-                            ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border-purple-500/30'
-                            : 'bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-gray-300'
-                        }
-                        border border-gray-700/50 hover:border-purple-500/30`}
+                        className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${activeTopic === topic.id
+                            ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border border-purple-500/30'
+                            : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50 hover:text-gray-300'
+                        }`}
                     >
                         {topic.icon && <span>{topic.icon}</span>}
                         <span>{topic.title}</span>
                     </button>
                 ))}
-            </div>
         </div>
     ), []);
     useCallback(({ title, children, className = "" }) => (
@@ -752,10 +747,8 @@ const UnitTestingPage = () => {
     return (
         <div className="min-h-screen bg-gray-900">
             {/* Header */}
-            <div className="mb-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50
-                      rounded-xl p-6 border border-purple-500/20 shadow-lg">
-                <h1 className="text-3xl font-bold text-transparent bg-clip-text
-                         bg-gradient-to-r from-purple-400 to-pink-500">
+            <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
+                <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                     {unitTestingJson.title || 'Unit Testing in Java'}
                 </h1>
                 {unitTestingJson.tags && unitTestingJson.tags.length > 0 && (
