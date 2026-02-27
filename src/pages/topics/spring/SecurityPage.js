@@ -1,117 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-    Box, Database, GitMerge, Settings, Shield, Code, Layers, Globe,
-    BookOpen, FileText, CheckCircle, List, AlertTriangle, Terminal,
+    Box, GitMerge, Settings, Shield, Code, Layers,
+    BookOpen, FileText, CheckCircle, List, Terminal,
     Code2, Cpu, Lock, Key, User, Users, FileCheck, Hash, Check
 } from 'lucide-react';
 import securityConceptsEn from '../../../data/spring/spring-security.json';
-import securityConceptsFr from '../../../data/spring/spring-security-fr.json'; // Assuming this exists
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useLanguage } from '../../../components/LanguageContext';
-import GlobalLanguageSelector from '../../../components/GlobalLanguageSelector';
 
 const SecurityPage = () => {
-    // Use the global language context
-    const { language } = useLanguage();
-
-    // State for the content based on language
-    const [securityConcepts, setSecurityConcepts] = useState(language === 'en' ? securityConceptsEn : securityConceptsFr);
+    const securityConcepts = securityConceptsEn;
 
     // Active tab state - default to first topic
     const [activeTopic, setActiveTopic] = useState(() => {
         return securityConcepts.topics?.[0]?.title || '';
     });
 
-    useEffect(() => {
-        // Update content based on selected language
-        const newContent = language === 'en' ? securityConceptsEn : securityConceptsFr;
-        setSecurityConcepts(newContent);
-
-        // Ensure active topic exists in the new content or select the first topic
-        const topicExists = newContent.topics.some(t => t.title === activeTopic);
-        if (!topicExists) {
-            // Try to find a corresponding topic when switching languages
-            let newActiveTopic = newContent.topics[0]?.title || '';
-
-            // Map from English to French topics and vice versa
-            const topicMap = {
-                // English to French
-                'Core Concepts': 'Concepts Fondamentaux',
-                'Method Security': 'Sécurité au Niveau des Méthodes',
-                'JWT Implementation': 'Implémentation JWT',
-                'OAuth2 and OpenID Connect': 'OAuth2 et OpenID Connect',
-                'Common Security Patterns': 'Modèles de Sécurité Courants',
-                'Testing Security': 'Tests de Sécurité',
-                'Best Practices': 'Bonnes Pratiques',
-                'Common Interview Questions': 'Questions Courantes d\'Entretien',
-                'Authentication & Authorization Basics': 'Bases d\'Authentification & d\'Autorisation',
-                'Configuration & Implementation': 'Configuration & Implémentation',
-                'Token-Based Authentication': 'Authentification Basée sur les Jetons',
-                'OAuth2 & Identity Management': 'OAuth2 & Gestion d\'Identité',
-                'Cross-Cutting Security Concerns': 'Préoccupations de Sécurité Transversales',
-                'Advanced Topics': 'Sujets Avancés',
-
-                // French to English
-                'Concepts Fondamentaux': 'Core Concepts',
-                'Sécurité au Niveau des Méthodes': 'Method Security',
-                'Implémentation JWT': 'JWT Implementation',
-                'OAuth2 et OpenID Connect': 'OAuth2 and OpenID Connect',
-                'Modèles de Sécurité Courants': 'Common Security Patterns',
-                'Tests de Sécurité': 'Testing Security',
-                'Bonnes Pratiques': 'Best Practices',
-                'Questions Courantes d\'Entretien': 'Common Interview Questions',
-                'Bases d\'Authentification & d\'Autorisation': 'Authentication & Authorization Basics',
-                'Configuration & Implémentation': 'Configuration & Implementation',
-                'Authentification Basée sur les Jetons': 'Token-Based Authentication',
-                'OAuth2 & Gestion d\'Identité': 'OAuth2 & Identity Management',
-                'Préoccupations de Sécurité Transversales': 'Cross-Cutting Security Concerns',
-                'Sujets Avancés': 'Advanced Topics'
-            };
-
-            // If we have a mapping for the current active topic, use it
-            if (topicMap[activeTopic]) {
-                const mappedTopic = topicMap[activeTopic];
-                // Check if the mapped topic exists in the new content
-                if (newContent.topics.some(t => t.title === mappedTopic)) {
-                    newActiveTopic = mappedTopic;
-                }
-            }
-
-            setActiveTopic(newActiveTopic);
-        }
-    }, [language, activeTopic]);
-
     // Helper function to get icon for a topic
     const getTopicIcon = (topicTitle) => {
-        // For English topics
-        if (topicTitle === 'Core Concepts' || topicTitle === 'Concepts Fondamentaux')
+        if (topicTitle === 'Core Concepts')
             return <Shield className="w-4 h-4" />;
-        if (topicTitle === 'Method Security' || topicTitle === 'Sécurité au Niveau des Méthodes')
+        if (topicTitle === 'Method Security')
             return <Lock className="w-4 h-4" />;
-        if (topicTitle === 'JWT Implementation' || topicTitle === 'Implémentation JWT')
+        if (topicTitle === 'JWT Implementation')
             return <Key className="w-4 h-4" />;
-        if (topicTitle === 'OAuth2 and OpenID Connect' || topicTitle === 'OAuth2 et OpenID Connect')
+        if (topicTitle === 'OAuth2 and OpenID Connect')
             return <Users className="w-4 h-4" />;
-        if (topicTitle === 'Common Security Patterns' || topicTitle === 'Modèles de Sécurité Courants')
+        if (topicTitle === 'Common Security Patterns')
             return <Shield className="w-4 h-4" />;
-        if (topicTitle === 'Testing Security' || topicTitle === 'Tests de Sécurité')
+        if (topicTitle === 'Testing Security')
             return <FileCheck className="w-4 h-4" />;
-        if (topicTitle === 'Best Practices' || topicTitle === 'Bonnes Pratiques')
+        if (topicTitle === 'Best Practices')
             return <CheckCircle className="w-4 h-4" />;
-        if (topicTitle === 'Common Interview Questions' || topicTitle === 'Questions Courantes d\'Entretien')
+        if (topicTitle === 'Common Interview Questions')
             return <FileText className="w-4 h-4" />;
-        if (topicTitle === 'Authentication & Authorization Basics' || topicTitle === 'Bases d\'Authentification & d\'Autorisation')
+        if (topicTitle === 'Authentication & Authorization Basics')
             return <User className="w-4 h-4" />;
-        if (topicTitle === 'Configuration & Implementation' || topicTitle === 'Configuration & Implémentation')
+        if (topicTitle === 'Configuration & Implementation')
             return <Settings className="w-4 h-4" />;
-        if (topicTitle === 'Token-Based Authentication' || topicTitle === 'Authentification Basée sur les Jetons')
+        if (topicTitle === 'Token-Based Authentication')
             return <Hash className="w-4 h-4" />;
-        if (topicTitle === 'OAuth2 & Identity Management' || topicTitle === 'OAuth2 & Gestion d\'Identité')
+        if (topicTitle === 'OAuth2 & Identity Management')
             return <Users className="w-4 h-4" />;
-        if (topicTitle === 'Cross-Cutting Security Concerns' || topicTitle === 'Préoccupations de Sécurité Transversales')
+        if (topicTitle === 'Cross-Cutting Security Concerns')
             return <Shield className="w-4 h-4" />;
-        if (topicTitle === 'Advanced Topics' || topicTitle === 'Sujets Avancés')
+        if (topicTitle === 'Advanced Topics')
             return <Cpu className="w-4 h-4" />;
 
         // Default
@@ -239,6 +172,8 @@ const SecurityPage = () => {
             case "disadvantages":
                 colorClasses = "bg-gradient-to-br from-red-900/20 to-red-800/10 border-red-500/30";
                 break;
+            default:
+                break;
         }
 
         if (!title && !children) return null;
@@ -278,6 +213,8 @@ const SecurityPage = () => {
                 break;
             case "examples":
                 bulletColor = "bg-pink-400";
+                break;
+            default:
                 break;
         }
 
@@ -359,7 +296,7 @@ const SecurityPage = () => {
             if (content.title === 'code_examples' && content['multi-content']) {
                 return (
                     <div className="mb-3">
-                        <ContentCard title={language === 'en' ? 'Code Examples' : 'Exemples de Code'} contentType="code">
+                        <ContentCard title="Code Examples" contentType="code">
                             {renderCodeExamples(content)}
                         </ContentCard>
                     </div>
@@ -466,15 +403,6 @@ const SecurityPage = () => {
             topic.title === 'OAuth2 & Identity Management' ||
             topic.title === 'Cross-Cutting Security Concerns' ||
             topic.title === 'Advanced Topics' ||
-            // French equivalents
-            topic.title === 'Questions Courantes d\'Entretien' ||
-            topic.title === 'Bonnes Pratiques' ||
-            topic.title === 'Bases d\'Authentification & d\'Autorisation' ||
-            topic.title === 'Configuration & Implémentation' ||
-            topic.title === 'Authentification Basée sur les Jetons' ||
-            topic.title === 'OAuth2 & Gestion d\'Identité' ||
-            topic.title === 'Préoccupations de Sécurité Transversales' ||
-            topic.title === 'Sujets Avancés' ||
             (topic['multi-content'].length === 1 && topic['multi-content'][0]['multi-content'] &&
                 Array.isArray(topic['multi-content'][0]['multi-content']))) {
             return (
@@ -494,12 +422,12 @@ const SecurityPage = () => {
 
         // Extract descriptions and definitions for introduction
         const introSections = topic['multi-content'].filter(content =>
-            content.title === 'description' || content.title === 'definition' || content.title === 'définition'
+            content.title === 'description' || content.title === 'definition'
         );
 
         // Get remaining sections
         const contentSections = topic['multi-content'].filter(content =>
-            content.title !== 'description' && content.title !== 'definition' && content.title !== 'définition'
+            content.title !== 'description' && content.title !== 'definition'
         );
 
         return (
@@ -508,7 +436,7 @@ const SecurityPage = () => {
                 {introSections.length > 0 && (
                     <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-4 border border-purple-500/30 mb-4 shadow-md">
                         {introSections.map((section, idx) => {
-                            const isDefinition = section.title === 'definition' || section.title === 'définition';
+                            const isDefinition = section.title === 'definition';
                             const icon = isDefinition ?
                                 <BookOpen className="w-4 h-4 text-purple-400" /> :
                                 <FileText className="w-4 h-4 text-cyan-400" />;
@@ -520,9 +448,7 @@ const SecurityPage = () => {
                                             {icon}
                                         </div>
                                         <h3 className="text-base font-semibold text-white">
-                                            {isDefinition ?
-                                                (language === 'en' ? 'Definition' : 'Définition') :
-                                                (language === 'en' ? 'Description' : 'Description')}
+                                            {isDefinition ? 'Definition' : 'Description'}
                                         </h3>
                                     </div>
                                     <p className="text-gray-300 ml-8 text-sm">{section['simple-content']}</p>
@@ -554,7 +480,7 @@ const SecurityPage = () => {
                                             <Code2 className="w-4 h-4 text-pink-400" />
                                         </div>
                                         <h3 className="text-lg font-semibold text-pink-300">
-                                            {language === 'en' ? 'Code Examples' : 'Exemples de Code'}
+                                            Code Examples
                                         </h3>
                                     </div>
 
@@ -599,12 +525,7 @@ const SecurityPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Use the global language selector */}
-            <div className="mb-4">
-                <GlobalLanguageSelector />
-            </div>
-
-            {/* Header with more compact styling */}
+                {/* Header with more compact styling */}
             <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
                 <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                     {securityConcepts.title}

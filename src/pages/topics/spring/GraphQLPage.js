@@ -1,38 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-    Box, Database, GitMerge, Settings, Shield, Code, Layers, Globe,
+    Box, Database, GitMerge, Settings, Shield, Code, Layers,
     BookOpen, FileText, CheckCircle, List, AlertTriangle, Terminal,
     Code2, Cpu, ArrowRight, Server, FileJson
 } from 'lucide-react';
 import graphqlJsonEn from '../../../data/spring/graphql.json';
-import graphqlJsonFr from '../../../data/spring/graphql-fr.json'; // Assuming the French file exists
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useLanguage } from '../../../components/LanguageContext';
-import GlobalLanguageSelector from '../../../components/GlobalLanguageSelector';
 
 const GraphQLPage = () => {
-    // Use the global language context
-    const { language } = useLanguage();
-
-    // State for the content based on language
-    const [graphqlData, setGraphqlData] = useState(language === 'en' ? graphqlJsonEn : graphqlJsonFr);
+    const graphqlData = graphqlJsonEn;
 
     // Active tab state - default to first topic
     const [activeTopic, setActiveTopic] = useState(() => {
         return graphqlData.topics?.[0]?.title || '';
     });
-
-    useEffect(() => {
-        // Update content based on selected language
-        const newContent = language === 'en' ? graphqlJsonEn : graphqlJsonFr;
-        setGraphqlData(newContent);
-
-        // Ensure active topic exists in the new content
-        if (!newContent.topics.some(t => t.title === activeTopic)) {
-            setActiveTopic(newContent.topics?.[0]?.title || '');
-        }
-    }, [language, activeTopic]);
 
     // Helper function to get icon for a topic
     const getTopicIcon = (topicTitle) => {
@@ -164,6 +146,8 @@ const GraphQLPage = () => {
             case "disadvantages":
                 colorClasses = "bg-gradient-to-br from-red-900/20 to-red-800/10 border-red-500/30";
                 break;
+            default:
+                break;
         }
 
         if (!title && !children) return null;
@@ -203,6 +187,8 @@ const GraphQLPage = () => {
                 break;
             case "examples":
                 bulletColor = "bg-pink-400";
+                break;
+            default:
                 break;
         }
 
@@ -270,7 +256,7 @@ const GraphQLPage = () => {
             if (content.title === 'code_examples' && content['multi-content']) {
                 return (
                     <div className="mb-3">
-                        <ContentCard title={language === 'en' ? 'Code Examples' : 'Exemples de Code'} contentType="code">
+                        <ContentCard title="Code Examples" contentType="code">
                             {renderCodeExamples(content)}
                         </ContentCard>
                     </div>
@@ -415,7 +401,7 @@ const GraphQLPage = () => {
                                             {icon}
                                         </div>
                                         <h3 className="text-base font-semibold text-white">
-                                            {language === 'en' ? 'Description' : 'Description'}
+                                            Description
                                         </h3>
                                     </div>
                                     <p className="text-gray-300 ml-8 text-sm">{section['simple-content']}</p>
@@ -447,7 +433,7 @@ const GraphQLPage = () => {
                                             <Code2 className="w-4 h-4 text-pink-400" />
                                         </div>
                                         <h3 className="text-lg font-semibold text-pink-300">
-                                            {language === 'en' ? 'Code Examples' : 'Exemples de Code'}
+                                            Code Examples
                                         </h3>
                                     </div>
 
@@ -507,12 +493,7 @@ const GraphQLPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Use the global language selector */}
-            <div className="mb-4">
-                <GlobalLanguageSelector />
-            </div>
-
-            {/* Header with more compact styling */}
+                {/* Header with more compact styling */}
             <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
                 <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                     {graphqlData.title}

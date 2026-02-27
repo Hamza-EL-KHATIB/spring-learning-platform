@@ -1,53 +1,15 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import {
-    Cpu, Code, FileText, Book, Globe, GitBranch,
+    Cpu, Code, FileText, Book, GitBranch,
     AlertTriangle, CheckCircle, Shield, Target, Zap,
     Server, Terminal, Package
 } from 'lucide-react';
 import unitTestingJsonEn from '../../../data/java/unit-testing.json';
-import unitTestingJsonFr from '../../../data/java/unit-testing-fr.json';
 import CodeBlock from '../../../components/CodeBlock';
 import FloatingMenu from '../../../components/layout/FloatingMenu';
 
-// Language Selector Component
-const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
-    return (
-        <div className="flex items-center gap-3 mb-6">
-            <Globe className="w-5 h-5 text-purple-400" />
-            <div className="flex rounded-lg overflow-hidden border border-gray-700">
-                <button
-                    onClick={() => onLanguageChange('en')}
-                    className={`px-3 py-1.5 text-sm ${
-                        currentLanguage === 'en'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    English
-                </button>
-                <button
-                    onClick={() => onLanguageChange('fr')}
-                    className={`px-3 py-1.5 text-sm ${
-                        currentLanguage === 'fr'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    Français
-                </button>
-            </div>
-        </div>
-    );
-};
-
 const UnitTestingPage = () => {
-    // Get the language preference from localStorage if available, otherwise default to English
-    const [language, setLanguage] = useState(() => {
-        return localStorage.getItem('unitTestingPageLanguage') || 'en';
-    });
-
-    // Set unit testing data based on language
-    const [unitTestingJson, setUnitTestingJson] = useState(language === 'en' ? unitTestingJsonEn : unitTestingJsonFr);
+    const unitTestingJson = unitTestingJsonEn;
 
     // Get active topic from the first topic ID or from localStorage
     const defaultTopicId = unitTestingJson.topics?.[0]?.id || 'core-concepts';
@@ -72,22 +34,11 @@ const UnitTestingPage = () => {
         'resources': <FileText />
     }), []);
 
-    // Change the language and save the preference
-    const handleLanguageChange = useCallback((lang) => {
-        setLanguage(lang);
-        localStorage.setItem('unitTestingPageLanguage', lang);
-    }, []);
-
     // Save active topic to localStorage
     const handleTopicChange = useCallback((topicId) => {
         setActiveTopic(topicId);
         localStorage.setItem('unitTestingActiveTopic', topicId);
     }, []);
-
-    // Update content based on selected language
-    useEffect(() => {
-        setUnitTestingJson(language === 'en' ? unitTestingJsonEn : unitTestingJsonFr);
-    }, [language]);
 
     // Generate tabs based on JSON topics
     const tabs = useMemo(() =>
@@ -234,7 +185,7 @@ const UnitTestingPage = () => {
                             <div className="mt-2 pt-2 border-t border-gray-700/50">
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs text-gray-400">
-                                        {language === 'en' ? 'Interview Relevance:' : 'Pertinence en entretien:'}
+                                        {'Interview Relevance:'}
                                     </span>
                                     <div className="flex">
                                         {[...Array(5)].map((_, i) => (
@@ -251,7 +202,7 @@ const UnitTestingPage = () => {
                 ))}
             </div>
         );
-    }, [language]);
+    }, []);
 
     const renderPatterns = useCallback((patterns) => {
         if (!patterns || !patterns.length) return null;
@@ -265,7 +216,7 @@ const UnitTestingPage = () => {
                         {pattern?.steps && pattern.steps.length > 0 && (
                             <div className="mb-4">
                                 <h5 className="text-md font-medium text-cyan-300 mb-2">
-                                    {language === 'en' ? 'Steps:' : 'Étapes:'}
+                                    {'Steps:'}
                                 </h5>
                                 <ul className="list-disc list-inside space-y-1 text-gray-300">
                                     {pattern.steps.map((step, stepIdx) => (
@@ -279,7 +230,7 @@ const UnitTestingPage = () => {
                 ))}
             </div>
         );
-    }, [language, getCodeString]);
+    }, [getCodeString]);
 
     const renderExamples = useCallback((examples) => {
         if (!examples) return null;
@@ -605,7 +556,7 @@ const UnitTestingPage = () => {
                         {topic.characteristics && (
                             <div className="mb-6">
                                 <h3 className="text-xl font-semibold text-white mb-4">
-                                    {language === 'en' ? 'Characteristics' : 'Caractéristiques'}
+                                    {'Characteristics'}
                                 </h3>
                                 {renderListItems(topic.characteristics)}
                             </div>
@@ -628,7 +579,7 @@ const UnitTestingPage = () => {
                         {topic.process && (
                             <div className="mb-6">
                                 <h3 className="text-xl font-semibold text-white mb-4">
-                                    {language === 'en' ? 'TDD Process' : 'Processus TDD'}
+                                    {'TDD Process'}
                                 </h3>
                                 {renderListItems(topic.process)}
                             </div>
@@ -636,7 +587,7 @@ const UnitTestingPage = () => {
                         {topic.benefits && (
                             <div className="mb-6">
                                 <h3 className="text-xl font-semibold text-white mb-4">
-                                    {language === 'en' ? 'Benefits' : 'Avantages'}
+                                    {'Benefits'}
                                 </h3>
                                 {renderListItems(topic.benefits)}
                             </div>
@@ -644,7 +595,7 @@ const UnitTestingPage = () => {
                         {topic.example && (
                             <div className="mb-6">
                                 <h3 className="text-xl font-semibold text-white mb-4">
-                                    {language === 'en' ? 'Example' : 'Exemple'}
+                                    {'Example'}
                                 </h3>
                                 {renderExamples(topic.example)}
                             </div>
@@ -658,7 +609,7 @@ const UnitTestingPage = () => {
                         {topic.concepts && (
                             <div className="mb-6">
                                 <h3 className="text-xl font-semibold text-white mb-4">
-                                    {language === 'en' ? 'Key Concepts' : 'Concepts Clés'}
+                                    {'Key Concepts'}
                                 </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {topic.concepts.map((concept, idx) => (
@@ -692,7 +643,7 @@ const UnitTestingPage = () => {
                         {topic.testSlices && (
                             <div className="mb-6">
                                 <h3 className="text-xl font-semibold text-white mb-4">
-                                    {language === 'en' ? 'Test Slices' : 'Tranches de Test'}
+                                    {'Test Slices'}
                                 </h3>
                                 {renderTestSlices(topic.testSlices)}
                             </div>
@@ -719,7 +670,7 @@ const UnitTestingPage = () => {
                         {topic.coverageTypes && (
                             <div className="mb-6">
                                 <h3 className="text-xl font-semibold text-white mb-4">
-                                    {language === 'en' ? 'Coverage Types' : 'Types de Couverture'}
+                                    {'Coverage Types'}
                                 </h3>
                                 {renderListItems(topic.coverageTypes)}
                             </div>
@@ -727,7 +678,7 @@ const UnitTestingPage = () => {
                         {topic.tools && (
                             <div className="mb-6">
                                 <h3 className="text-xl font-semibold text-white mb-4">
-                                    {language === 'en' ? 'Tools' : 'Outils'}
+                                    {'Tools'}
                                 </h3>
                                 {renderListItems(topic.tools)}
                             </div>
@@ -735,7 +686,7 @@ const UnitTestingPage = () => {
                         {topic.configuration && (
                             <div className="mb-6">
                                 <h3 className="text-xl font-semibold text-white mb-4">
-                                    {language === 'en' ? 'Configuration Example' : 'Exemple de Configuration'}
+                                    {'Configuration Example'}
                                 </h3>
                                 <CodeBlock code={getCodeString(topic.configuration)} />
                             </div>
@@ -743,7 +694,7 @@ const UnitTestingPage = () => {
                         {topic.bestPractices && (
                             <div className="mb-6">
                                 <h3 className="text-xl font-semibold text-white mb-4">
-                                    {language === 'en' ? 'Best Practices' : 'Bonnes Pratiques'}
+                                    {'Best Practices'}
                                 </h3>
                                 {renderListItems(topic.bestPractices)}
                             </div>
@@ -783,7 +734,6 @@ const UnitTestingPage = () => {
     }, [
         unitTestingJson.topics,
         activeTopic,
-        language,
         renderFeatures,
         renderListItems,
         renderPatterns,
@@ -801,12 +751,6 @@ const UnitTestingPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Language Selector */}
-            <LanguageSelector
-                currentLanguage={language}
-                onLanguageChange={handleLanguageChange}
-            />
-
             {/* Header */}
             <div className="mb-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50
                       rounded-xl p-6 border border-purple-500/20 shadow-lg">

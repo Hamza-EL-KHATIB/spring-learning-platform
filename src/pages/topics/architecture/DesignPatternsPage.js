@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import designPatternsJsonEn from '../../../data/architecture/design-patterns.json';
-import designPatternsJsonFr from '../../../data/architecture/design-patterns-fr.json';
 import {
     Box,
     Code,
@@ -10,8 +9,7 @@ import {
     Settings,
     CheckCircle2,
     XCircle,
-    Combine,
-    Globe
+    Combine,
 } from 'lucide-react';
 import CodeBlock from '../../../components/CodeBlock';
 import visitorImg from '../../../data/images/Visitor.png'
@@ -52,38 +50,7 @@ const patternImages = {
     'State': stateImg
 };
 
-// Simple Language Selector Component
-const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
-    return (
-        <div className="flex items-center gap-3 mb-6">
-            <Globe className="w-5 h-5 text-purple-400" />
-            <div className="flex rounded-lg overflow-hidden border border-gray-700">
-                <button
-                    onClick={() => onLanguageChange('en')}
-                    className={`px-3 py-1.5 text-sm ${
-                        currentLanguage === 'en'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    English
-                </button>
-                <button
-                    onClick={() => onLanguageChange('fr')}
-                    className={`px-3 py-1.5 text-sm ${
-                        currentLanguage === 'fr'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    Français
-                </button>
-            </div>
-        </div>
-    );
-};
-
-const PatternCard = ({ pattern, language }) => {
+const PatternCard = ({ pattern }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -123,7 +90,7 @@ const PatternCard = ({ pattern, language }) => {
                     {/* Use Cases */}
                     <div className="mb-4">
                         <h4 className="text-sm font-medium text-gray-400 mb-2">
-                            {language === 'en' ? 'Use Cases' : 'Cas d\'utilisation'}
+                            Use Cases
                         </h4>
                         <ul className="list-disc list-inside space-y-1">
                             {pattern.use_cases.map((useCase, idx) => (
@@ -140,9 +107,7 @@ const PatternCard = ({ pattern, language }) => {
                                 className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
                             >
                                 <Code className="w-4 h-4" />
-                                {isExpanded
-                                    ? (language === 'en' ? 'Hide Implementation' : 'Masquer l\'implémentation')
-                                    : (language === 'en' ? 'View Implementation' : 'Voir l\'implémentation')}
+                                {isExpanded ? 'Hide Implementation' : 'View Implementation'}
                             </button>
                         </div>
                     )}
@@ -157,7 +122,7 @@ const PatternCard = ({ pattern, language }) => {
                             {pattern.considerations && (
                                 <div className="mt-4">
                                     <h4 className="text-sm font-medium text-gray-400 mb-2">
-                                        {language === 'en' ? 'Considerations' : 'Considérations'}
+                                        Considerations
                                     </h4>
                                     <ul className="list-disc list-inside space-y-1">
                                         {pattern.considerations && pattern.considerations.map((consideration, idx) => (
@@ -176,13 +141,12 @@ const PatternCard = ({ pattern, language }) => {
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 image={patternImages[pattern.name]}
-                language={language}
             />
         </>
     );
 };
 
-const PatternModal = ({ pattern, isOpen, onClose, image, language }) => {
+const PatternModal = ({ pattern, isOpen, onClose, image }) => {
     // Move useEffect outside of the conditional
     React.useEffect(() => {
         if (isOpen) {
@@ -240,7 +204,7 @@ const PatternModal = ({ pattern, isOpen, onClose, image, language }) => {
                                 {/* Description */}
                                 <div>
                                     <h3 className="text-lg font-medium text-gray-300 mb-2">
-                                        {language === 'en' ? 'Description' : 'Description'}
+                                        Description
                                     </h3>
                                     <p className="text-gray-400">{pattern.description}</p>
                                 </div>
@@ -248,7 +212,7 @@ const PatternModal = ({ pattern, isOpen, onClose, image, language }) => {
                                 {/* Use Cases */}
                                 <div>
                                     <h3 className="text-lg font-medium text-gray-300 mb-2">
-                                        {language === 'en' ? 'Use Cases' : 'Cas d\'utilisation'}
+                                        Use Cases
                                     </h3>
                                     <ul className="list-disc list-inside space-y-1">
                                         {pattern.use_cases.map((useCase, idx) => (
@@ -261,7 +225,7 @@ const PatternModal = ({ pattern, isOpen, onClose, image, language }) => {
                                 {pattern.considerations && (
                                     <div>
                                         <h3 className="text-lg font-medium text-gray-300 mb-2">
-                                            {language === 'en' ? 'Considerations' : 'Considérations'}
+                                            Considerations
                                         </h3>
                                         <ul className="list-disc list-inside space-y-1">
                                             {pattern.considerations.map((consideration, idx) => (
@@ -277,7 +241,7 @@ const PatternModal = ({ pattern, isOpen, onClose, image, language }) => {
                         {pattern.implementation && (
                             <div className="mt-6">
                                 <h3 className="text-lg font-medium text-gray-300 mb-2">
-                                    {language === 'en' ? 'Implementation' : 'Implémentation'}
+                                    Implementation
                                 </h3>
                                 <CodeBlock code={pattern.implementation.code} />
                             </div>
@@ -289,14 +253,14 @@ const PatternModal = ({ pattern, isOpen, onClose, image, language }) => {
     );
 };
 
-const BestPracticesSection = ({ bestPractices, language }) => (
+const BestPracticesSection = ({ bestPractices }) => (
     <div className="bg-gray-800/40 rounded-lg border border-gray-700/50 p-6 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
                 <div className="flex items-center gap-2 mb-4">
                     <CheckCircle2 className="w-5 h-5 text-green-400" />
                     <h3 className="text-lg font-medium text-white">
-                        {language === 'en' ? 'Selection Criteria' : 'Critères de sélection'}
+                        Selection Criteria
                     </h3>
                 </div>
                 <ul className="space-y-2">
@@ -313,7 +277,7 @@ const BestPracticesSection = ({ bestPractices, language }) => (
                 <div className="flex items-center gap-2 mb-4">
                     <Settings className="w-5 h-5 text-cyan-400" />
                     <h3 className="text-lg font-medium text-white">
-                        {language === 'en' ? 'Implementation Guidelines' : 'Directives d\'implémentation'}
+                        Implementation Guidelines
                     </h3>
                 </div>
                 <ul className="space-y-2">
@@ -330,7 +294,7 @@ const BestPracticesSection = ({ bestPractices, language }) => (
                 <div className="flex items-center gap-2 mb-4">
                     <XCircle className="w-5 h-5 text-red-400" />
                     <h3 className="text-lg font-medium text-white">
-                        {language === 'en' ? 'Common Pitfalls' : 'Pièges courants'}
+                        Common Pitfalls
                     </h3>
                 </div>
                 <ul className="space-y-2">
@@ -346,11 +310,11 @@ const BestPracticesSection = ({ bestPractices, language }) => (
     </div>
 );
 
-const PatternRelationships = ({ relationships, language }) => (
+const PatternRelationships = ({ relationships }) => (
     <div className="bg-gray-800/40 rounded-lg border border-gray-700/50 p-6">
         <h3 className="text-lg font-medium text-white mb-4 flex items-center gap-2">
             <Combine className="w-5 h-5 text-purple-400" />
-            {language === 'en' ? 'Commonly Combined Patterns' : 'Patrons fréquemment combinés'}
+            Commonly Combined Patterns
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {relationships.commonly_combined.map((combo, idx) => (
@@ -367,37 +331,18 @@ const PatternRelationships = ({ relationships, language }) => (
 );
 
 const DesignPatternsPage = () => {
-    // Get the language preference from localStorage if available, otherwise default to English
-    const [language, setLanguage] = useState(() => {
-        return localStorage.getItem('designPatternsLanguage') || 'en';
-    });
-
-    const [designPatternsJson, setDesignPatternsJson] = useState(
-        language === 'en' ? designPatternsJsonEn : designPatternsJsonFr
-    );
+    const designPatternsJson = designPatternsJsonEn;
 
     const [selectedCategory, setSelectedCategory] = useState('all');
     const categories = designPatternsJson.categories;
 
-    // Change the language and save the preference
-    const handleLanguageChange = (lang) => {
-        setLanguage(lang);
-        localStorage.setItem('designPatternsLanguage', lang);
-    };
-
-    useEffect(() => {
-        // Update content based on selected language
-        setDesignPatternsJson(language === 'en' ? designPatternsJsonEn : designPatternsJsonFr);
-    }, [language]);
-
     const getCategoryIcon = (categoryName) => {
         const lowerName = categoryName.toLowerCase();
-        // Handle both English and French category names
-        if (lowerName.includes('creational') || lowerName.includes('création')) {
+        if (lowerName.includes('creational')) {
             return <PackageOpen className="w-5 h-5" />;
-        } else if (lowerName.includes('structural') || lowerName.includes('structur')) {
+        } else if (lowerName.includes('structural')) {
             return <Layers className="w-5 h-5" />;
-        } else if (lowerName.includes('behavioral') || lowerName.includes('comportement')) {
+        } else if (lowerName.includes('behavioral')) {
             return <Network className="w-5 h-5" />;
         } else {
             return <Box className="w-5 h-5" />;
@@ -406,11 +351,6 @@ const DesignPatternsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Language Selector */}
-            <LanguageSelector
-                currentLanguage={language}
-                onLanguageChange={handleLanguageChange}
-            />
 
             {/* Header Section */}
             <div className="mb-8 bg-gray-800 rounded-lg p-6 border border-purple-500/20">
@@ -428,7 +368,7 @@ const DesignPatternsPage = () => {
                             : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50'
                     }`}
                 >
-                    {language === 'en' ? 'All Patterns' : 'Tous les patrons'}
+                    All Patterns
                 </button>
                 {categories.map((category, idx) => (
                     <button
@@ -460,7 +400,6 @@ const DesignPatternsPage = () => {
                                     <PatternCard
                                         key={patternIdx}
                                         pattern={pattern}
-                                        language={language}
                                     />
                                 ))}
                             </div>
@@ -472,17 +411,13 @@ const DesignPatternsPage = () => {
             {/* Best Practices Section */}
             <div className="space-y-8">
                 <h2 className="text-2xl font-bold text-white mb-6">
-                    {language === 'en'
-                        ? 'Best Practices & Relationships'
-                        : 'Bonnes pratiques & Relations'}
+                    Best Practices & Relationships
                 </h2>
                 <BestPracticesSection
                     bestPractices={designPatternsJson.best_practices}
-                    language={language}
                 />
                 <PatternRelationships
                     relationships={designPatternsJson.relationships}
-                    language={language}
                 />
             </div>
         </div>

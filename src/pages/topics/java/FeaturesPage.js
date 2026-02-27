@@ -1,53 +1,15 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
     List, Zap, Calendar, Code, GitMerge, KeyRound, Box,
-    Terminal, Database, Hash, BookOpen, Globe, Cpu, FileText,
+    Terminal, Database, Hash, BookOpen, Cpu, FileText,
     ArrowDownUp, Lock, Server, Package
 } from 'lucide-react';
 import featuresJsonEn from '../../../data/java/java-8-plus-features.json';
-import featuresJsonFr from '../../../data/java/java-8-plus-features-fr.json';
 import CodeBlock from '../../../components/CodeBlock';
 import FloatingMenu from '../../../components/layout/FloatingMenu';
 
-// Language Selector Component
-const LanguageSelector = ({ currentLanguage, onLanguageChange }) => {
-    return (
-        <div className="flex items-center gap-3 mb-6">
-            <Globe className="w-5 h-5 text-purple-400" />
-            <div className="flex rounded-lg overflow-hidden border border-gray-700">
-                <button
-                    onClick={() => onLanguageChange('en')}
-                    className={`px-3 py-1.5 text-sm ${
-                        currentLanguage === 'en'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    English
-                </button>
-                <button
-                    onClick={() => onLanguageChange('fr')}
-                    className={`px-3 py-1.5 text-sm ${
-                        currentLanguage === 'fr'
-                            ? 'bg-purple-500/30 text-purple-300'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    Français
-                </button>
-            </div>
-        </div>
-    );
-};
-
 const FeaturesPage = () => {
-    // Get the language preference from localStorage if available, otherwise default to English
-    const [language, setLanguage] = useState(() => {
-        return localStorage.getItem('featuresPageLanguage') || 'en';
-    });
-
-    // Set features data based on language
-    const [featuresJson, setFeaturesJson] = useState(language === 'en' ? featuresJsonEn : featuresJsonFr);
+    const featuresJson = featuresJsonEn;
 
     // Get active section from the first section ID or from localStorage
     const defaultSectionId = featuresJson.sections[0]?.id || 'lambdaExpressions';
@@ -76,22 +38,11 @@ const FeaturesPage = () => {
         advancedTopics: <Database />
     }), []);
 
-    // Change the language and save the preference
-    const handleLanguageChange = (lang) => {
-        setLanguage(lang);
-        localStorage.setItem('featuresPageLanguage', lang);
-    };
-
     // Save active section to localStorage
     const handleSectionChange = (sectionId) => {
         setActiveSection(sectionId);
         localStorage.setItem('featuresActiveSection', sectionId);
     };
-
-    // Update content based on selected language
-    useEffect(() => {
-        setFeaturesJson(language === 'en' ? featuresJsonEn : featuresJsonFr);
-    }, [language]);
 
     // Generate tabs based on JSON sections
     const tabs = useMemo(() =>
@@ -121,17 +72,6 @@ const FeaturesPage = () => {
                     </button>
                 ))}
             </div>
-        </div>
-    );
-
-    const ContentCard = ({ title, children, className = "" }) => (
-        <div className={`bg-gray-800/50 rounded-xl p-6 border border-gray-700/50 ${className}`}>
-            {title && (
-                <h3 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-4">
-                    {title}
-                </h3>
-            )}
-            {children}
         </div>
     );
 
@@ -253,7 +193,7 @@ const FeaturesPage = () => {
 
                 {subsection.syntax && (
                     <div className="text-gray-400 mb-6 text-lg">
-                        {language === 'fr' ? 'Syntaxe' : 'Syntax'}:
+                        Syntax:
                         <code className="text-pink-400 bg-gray-800/50 px-2 py-1 rounded ml-2">{subsection.syntax}</code>
                     </div>
                 )}
@@ -325,12 +265,6 @@ const FeaturesPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Language Selector */}
-            <LanguageSelector
-                currentLanguage={language}
-                onLanguageChange={handleLanguageChange}
-            />
-
             {/* Header */}
             <div className="mb-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50
                       rounded-xl p-6 border border-purple-500/20 shadow-lg">

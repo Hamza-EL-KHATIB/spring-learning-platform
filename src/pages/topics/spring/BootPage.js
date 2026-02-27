@@ -1,38 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     Box, Database, GitMerge, Settings, Shield, Code, Layers, Globe,
-    BookOpen, FileText, CheckCircle, List, AlertTriangle, Terminal,
-    Code2, Cpu, ArrowRight, Package, Server, Activity, Wrench, Clock
+    BookOpen, FileText, CheckCircle, List, Terminal,
+    Code2, Cpu, ArrowRight, Package, Server, Activity, Wrench
 } from 'lucide-react';
 import bootConceptsEn from '../../../data/spring/spring-boot.json';
-import bootConceptsFr from '../../../data/spring/spring-boot-fr.json'; // Assuming this exists
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useLanguage } from '../../../components/LanguageContext';
-import GlobalLanguageSelector from '../../../components/GlobalLanguageSelector';
 
 const BootPage = () => {
-    // Use the global language context
-    const { language } = useLanguage();
-
-    // State for the content based on language
-    const [bootConcepts, setBootConcepts] = useState(language === 'en' ? bootConceptsEn : bootConceptsFr);
+    const bootConcepts = bootConceptsEn;
 
     // Active tab state - default to first topic
     const [activeTopic, setActiveTopic] = useState(() => {
         return bootConcepts.topics?.[0]?.title || '';
     });
-
-    useEffect(() => {
-        // Update content based on selected language
-        const newContent = language === 'en' ? bootConceptsEn : bootConceptsFr;
-        setBootConcepts(newContent);
-
-        // Ensure active topic exists in the new content
-        if (!newContent.topics.some(t => t.title === activeTopic)) {
-            setActiveTopic(newContent.topics?.[0]?.title || '');
-        }
-    }, [language, activeTopic]);
 
     // Helper function to get icon for a topic
     const getTopicIcon = (topicTitle) => {
@@ -178,6 +160,8 @@ const BootPage = () => {
             case "disadvantages":
                 colorClasses = "bg-gradient-to-br from-red-900/20 to-red-800/10 border-red-500/30";
                 break;
+            default:
+                break;
         }
 
         if (!title && !children) return null;
@@ -217,6 +201,8 @@ const BootPage = () => {
                 break;
             case "examples":
                 bulletColor = "bg-pink-400";
+                break;
+            default:
                 break;
         }
 
@@ -284,7 +270,7 @@ const BootPage = () => {
             if (content.title === 'code_examples' && content['multi-content']) {
                 return (
                     <div className="mb-3">
-                        <ContentCard title={language === 'en' ? 'Code Examples' : 'Exemples de Code'} contentType="code">
+                        <ContentCard title="Code Examples" contentType="code">
                             {renderCodeExamples(content)}
                         </ContentCard>
                     </div>
@@ -384,12 +370,12 @@ const BootPage = () => {
 
         // Extract descriptions and definitions for introduction
         const introSections = topic['multi-content'].filter(content =>
-            content.title === 'description' || content.title === 'definition' || content.title === 'définition'
+            content.title === 'description' || content.title === 'definition'
         );
 
         // Get remaining sections
         const contentSections = topic['multi-content'].filter(content =>
-            content.title !== 'description' && content.title !== 'definition' && content.title !== 'définition'
+            content.title !== 'description' && content.title !== 'definition'
         );
 
         return (
@@ -398,7 +384,7 @@ const BootPage = () => {
                 {introSections.length > 0 && (
                     <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-4 border border-purple-500/30 mb-4 shadow-md">
                         {introSections.map((section, idx) => {
-                            const isDefinition = section.title === 'definition' || section.title === 'définition';
+                            const isDefinition = section.title === 'definition';
                             const icon = isDefinition ?
                                 <BookOpen className="w-4 h-4 text-purple-400" /> :
                                 <FileText className="w-4 h-4 text-cyan-400" />;
@@ -410,9 +396,7 @@ const BootPage = () => {
                                             {icon}
                                         </div>
                                         <h3 className="text-base font-semibold text-white">
-                                            {isDefinition ?
-                                                (language === 'en' ? 'Definition' : 'Définition') :
-                                                (language === 'en' ? 'Description' : 'Description')}
+                                            {isDefinition ? 'Definition' : 'Description'}
                                         </h3>
                                     </div>
                                     <p className="text-gray-300 ml-8 text-sm">{section['simple-content']}</p>
@@ -444,7 +428,7 @@ const BootPage = () => {
                                             <Code2 className="w-4 h-4 text-pink-400" />
                                         </div>
                                         <h3 className="text-lg font-semibold text-pink-300">
-                                            {language === 'en' ? 'Code Examples' : 'Exemples de Code'}
+                                            Code Examples
                                         </h3>
                                     </div>
 
@@ -489,12 +473,7 @@ const BootPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Use the global language selector */}
-            <div className="mb-4">
-                <GlobalLanguageSelector />
-            </div>
-
-            {/* Header with more compact styling */}
+                {/* Header with more compact styling */}
             <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
                 <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                     {bootConcepts.title}
