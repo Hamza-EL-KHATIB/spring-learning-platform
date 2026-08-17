@@ -1,0 +1,327 @@
+{
+  "title": "Git Version Control",
+  "topics": [
+    {
+      "id": "basic-concepts",
+      "title": "Basic Concepts",
+      "concepts": [
+        {
+          "name": "Repository",
+          "description": "Storage location for your project and its history",
+          "types": [
+            {
+              "name": "Local Repository",
+              "description": "Copy of the project on your local machine"
+            },
+            {
+              "name": "Remote Repository",
+              "description": "Hosted version of the project (e.g., GitHub, GitLab)"
+            }
+          ]
+        },
+        {
+          "name": "Working Directory",
+          "description": "Local directory where you modify files"
+        },
+        {
+          "name": "Staging Area (Index)",
+          "description": "Preparation area for commits"
+        },
+        {
+          "name": "Commit",
+          "description": "Snapshot of your project at a specific point in time"
+        },
+        {
+          "name": "Branch",
+          "description": "Independent line of development"
+        }
+      ]
+    },
+    {
+      "id": "basic-commands",
+      "title": "Essential Commands",
+      "commands": [
+        {
+          "name": "git init",
+          "description": "Initialize a new Git repository",
+          "usage": "git init",
+          "options": []
+        },
+        {
+          "name": "git clone",
+          "description": "Create a copy of a remote repository",
+          "usage": "git clone <repository-url>",
+          "options": [
+            "--depth=1 (shallow clone)",
+            "--branch <branch-name>"
+          ]
+        },
+        {
+          "name": "git add",
+          "description": "Add files to staging area",
+          "usage": [
+            "git add <file>",
+            "git add .",
+            "git add -A"
+          ]
+        },
+        {
+          "name": "git commit",
+          "description": "Create a new commit with staged changes",
+          "usage": [
+            "git commit -m \"message\"",
+            "git commit -am \"message\""
+          ]
+        },
+        {
+          "name": "git push",
+          "description": "Upload local commits to remote repository",
+          "usage": "git push origin <branch-name>"
+        },
+        {
+          "name": "git pull",
+          "description": "Download and integrate remote changes",
+          "usage": "git pull origin <branch-name>"
+        }
+      ]
+    },
+    {
+      "id": "branching",
+      "title": "Branching and Merging",
+      "commands": [
+        {
+          "name": "git branch",
+          "description": "List, create, or delete branches",
+          "usage": [
+            "git branch",
+            "git branch <branch-name>",
+            "git branch -d <branch-name>"
+          ]
+        },
+        {
+          "name": "git checkout",
+          "description": "Switch branches or restore files",
+          "usage": [
+            "git checkout <branch-name>",
+            "git checkout -b <new-branch>"
+          ]
+        },
+        {
+          "name": "git merge",
+          "description": "Combine branches",
+          "usage": "git merge <branch-name>"
+        },
+        {
+          "name": "git rebase",
+          "description": "Reapply commits on top of another branch",
+          "usage": "git rebase <branch-name>",
+          "warning": "Don't rebase public branches"
+        }
+      ]
+    },
+    {
+      "id": "workflow-strategies",
+      "title": "Git Workflows",
+      "workflows": [
+        {
+          "name": "Git Flow",
+          "description": "A strict branching model for larger projects",
+          "branches": [
+            {
+              "name": "main/master",
+              "purpose": "Production-ready code"
+            },
+            {
+              "name": "develop",
+              "purpose": "Integration branch for features"
+            },
+            {
+              "name": "feature/*",
+              "purpose": "New features development"
+            },
+            {
+              "name": "release/*",
+              "purpose": "Release preparation"
+            },
+            {
+              "name": "hotfix/*",
+              "purpose": "Production fixes"
+            }
+          ]
+        },
+        {
+          "name": "Trunk-Based Development",
+          "description": "Single main branch with short-lived feature branches",
+          "principles": [
+            "Small, frequent commits",
+            "Feature flags for incomplete features",
+            "Continuous integration"
+          ]
+        },
+        {
+          "name": "GitHub Flow",
+          "description": "Simplified workflow for continuous delivery",
+          "steps": [
+            "Branch from main",
+            "Add commits",
+            "Open pull request",
+            "Review and discuss",
+            "Deploy and test",
+            "Merge"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced-concepts",
+      "title": "Advanced Operations",
+      "operations": [
+        {
+          "name": "Interactive Rebase",
+          "description": "Modify commit history",
+          "usage": "git rebase -i HEAD~n",
+          "operations": [
+            "pick",
+            "squash",
+            "edit",
+            "drop"
+          ]
+        },
+        {
+          "name": "Cherry Pick",
+          "description": "Apply specific commits to current branch",
+          "usage": "git cherry-pick <commit-hash>"
+        },
+        {
+          "name": "Stashing",
+          "description": "Temporarily store uncommitted changes",
+          "commands": [
+            {
+              "command": "git stash",
+              "description": "Save changes to stash"
+            },
+            {
+              "command": "git stash pop",
+              "description": "Apply and remove stashed changes"
+            },
+            {
+              "command": "git stash list",
+              "description": "List stashed changes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-practices",
+      "title": "Best Practices",
+      "categories": [
+        {
+          "name": "Commit Messages",
+          "guidelines": [
+            "Use present tense",
+            "Keep first line under 50 characters",
+            "Provide detailed description if needed",
+            "Reference issue numbers",
+            "Be clear and descriptive"
+          ],
+          "format": {
+            "structure": [
+              "<type>(<scope>): <subject>",
+              "",
+              "<body>",
+              "",
+              "<footer>"
+            ],
+            "types": [
+              "feat",
+              "fix",
+              "docs",
+              "style",
+              "refactor",
+              "test",
+              "chore"
+            ]
+          }
+        },
+        {
+          "name": "Branch Management",
+          "practices": [
+            "Use descriptive branch names",
+            "Delete merged branches",
+            "Keep branches up to date",
+            "Use feature branches for development"
+          ]
+        },
+        {
+          "name": "Code Review",
+          "practices": [
+            "Review before merge",
+            "Keep pull requests small",
+            "Use meaningful descriptions",
+            "Address all comments"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "title": "Common Issues and Solutions",
+      "issues": [
+        {
+          "problem": "Merge Conflicts",
+          "solution": [
+            "git status to identify conflicting files",
+            "Resolve conflicts in editor",
+            "git add resolved files",
+            "Complete merge with git commit"
+          ]
+        },
+        {
+          "problem": "Undo Last Commit",
+          "solution": [
+            "git reset --soft HEAD~1 (preserve changes)",
+            "git reset --hard HEAD~1 (discard changes)"
+          ]
+        },
+        {
+          "problem": "Wrong Branch Commit",
+          "solution": [
+            "git cherry-pick to correct branch",
+            "Remove from wrong branch"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tools-and-integration",
+      "title": "Tools and Integration",
+      "categories": [
+        {
+          "name": "GUI Clients",
+          "tools": [
+            "GitKraken",
+            "SourceTree",
+            "GitHub Desktop"
+          ]
+        },
+        {
+          "name": "IDE Integration",
+          "tools": [
+            "IntelliJ IDEA Git integration",
+            "VS Code Git integration",
+            "Eclipse EGit"
+          ]
+        },
+        {
+          "name": "CI/CD Integration",
+          "tools": [
+            "GitHub Actions",
+            "GitLab CI",
+            "Jenkins"
+          ]
+        }
+      ]
+    }
+  ]
+}
