@@ -4,6 +4,7 @@ import {
     GitMerge, Shield, ArrowRight, AlertTriangle, List, Code, Database,
     Globe, Server, Cpu, Box, Activity, Zap, Settings, HelpCircle, Star,
     GitBranch, Table, Puzzle, Workflow, Wrench, TestTube, Users, BarChart,
+    Cloud, Container, Rocket, Timer, MessageSquare, Network, Scale, Sparkles,
 } from 'lucide-react';
 
 // Keyword → icon for section headings (colored, small)
@@ -59,6 +60,15 @@ export const getTopicIcon = (title) => {
     if (t.includes('metric') || t.includes('monitor')) return <BarChart className="w-4 h-4" />;
     if (t.includes('component') || t.includes('module')) return <Box className="w-4 h-4" />;
     if (t.includes('solid') || t.includes('design')) return <Puzzle className="w-4 h-4" />;
+    if (t.includes('cloud') || t.includes('aws') || t.includes('azure')) return <Cloud className="w-4 h-4" />;
+    if (t.includes('container') || t.includes('docker') || t.includes('kubernetes') || t.includes('k8s')) return <Container className="w-4 h-4" />;
+    if (t.includes('pipeline') || t.includes('ci/cd') || t.includes('cicd') || t.includes('release')) return <Rocket className="w-4 h-4" />;
+    if (t.includes('complexity') || t.includes('big-o') || t.includes('big o')) return <Timer className="w-4 h-4" />;
+    if (t.includes('behavio') || t.includes('star method') || t.includes('hr')) return <MessageSquare className="w-4 h-4" />;
+    if (t.includes('scenario') || t.includes('challenge')) return <Sparkles className="w-4 h-4" />;
+    if (t.includes('queue') || t.includes('messag') || t.includes('event') || t.includes('kafka')) return <Network className="w-4 h-4" />;
+    if (t.includes('scaling') || t.includes('scale') || t.includes('balanc') || t.includes('trade')) return <Scale className="w-4 h-4" />;
+    if (t.includes('junior') || t.includes('intermediate') || t.includes('senior') || t.includes('level')) return <BarChart className="w-4 h-4" />;
 
     return <Code className="w-4 h-4" />;
 };
