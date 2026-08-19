@@ -1,0 +1,203 @@
+{
+  "title": "Kafka & Messaging",
+  "tags": ["kafka", "messaging", "event-driven", "microservices", "interview"],
+  "topics": [
+    {
+      "title": "Why Messaging",
+      "description": "The 30-second answer for why you reach for messaging at all.",
+      "interviewRelevance": 4,
+      "benefits": [
+        "Decouple producers from consumers in time and in availability",
+        "Absorb traffic spikes",
+        "Retry without losing work",
+        "Let multiple systems react to one event",
+        "Split monoliths without distributed transactions"
+      ],
+      "related_topics": [
+        "Microservices: communication patterns, resilience",
+        "System Design: queues as a building block",
+        "Transactions: why distributed transactions push you toward sagas"
+      ]
+    },
+    {
+      "title": "Core Concepts",
+      "description": "The Kafka vocabulary. Topic, partition, offset and consumer group are what everything else is built on.",
+      "interviewRelevance": 5,
+      "concepts": {
+        "headers": ["Concept", "Definition"],
+        "rows": [
+          ["Topic", "Named, append-only log of events"],
+          ["Partition", "Unit of parallelism and ordering. A topic is split into N partitions, and ordering is guaranteed only within a partition."],
+          ["Offset", "Position of a record in a partition; consumers track their own offsets"],
+          ["Producer", "Writes records. A key routes the record to a partition via hash(key) % partitions, so the same key always lands on the same partition and stays ordered."],
+          ["Consumer group", "Set of consumers sharing the work; each partition is assigned to exactly one consumer in the group"],
+          ["Broker / Cluster", "Kafka server. Partitions are replicated across brokers (leader plus followers, replication.factor=3 typical)."],
+          ["Retention", "Events are kept for a time or size limit (for example 7 days) regardless of consumption, so consumers can replay"]
+        ]
+      },
+      "diagram": "Topic \"orders\" (3 partitions)          Consumer group \"billing\"\nP0: ─e1──e4──e7─▶                       C1 ← P0\nP1: ─e2──e5─────▶                       C2 ← P1, P2\nP2: ─e3──e6──e8─▶\n(another group \"analytics\" reads the same events independently)"
+    },
+    {
+      "title": "Kafka vs Queues",
+      "description": "How Kafka differs from RabbitMQ, SQS and JMS, and how to justify picking one.",
+      "interviewRelevance": 5,
+      "traditional_queue": [
+        "Message consumed means message gone",
+        "The broker pushes to consumers",
+        "Smart broker, dumb consumer",
+        "Great for task distribution"
+      ],
+      "kafka": [
+        "The log is retained, so events are replayable",
+        "Consumers pull and track their own offsets",
+        "Multiple independent groups read the same events",
+        "Ordering per partition",
+        "Massive throughput"
+      ],
+      "choosing": [
+        "RabbitMQ for complex routing: header and topic exchanges, per-message TTL, priorities",
+        "Kafka for event streaming, audit, high volume, and multiple readers"
+      ]
+    },
+    {
+      "title": "Delivery Semantics",
+      "description": "The number one Kafka interview topic. Know the three options and which one you actually design for.",
+      "interviewRelevance": 5,
+      "semantics": {
+        "headers": ["Semantics", "How", "Cost"],
+        "rows": [
+          ["At-most-once", "Commit the offset before processing", "Can lose messages"],
+          ["At-least-once (default choice)", "Commit the offset after processing", "Duplicates on retry, so consumers must be idempotent"],
+          ["Exactly-once", "Kafka transactions plus an idempotent producer (enable.idempotence=true); practical within Kafka Streams pipelines", "Complex, and it ends at external systems"]
+        ]
+      },
+      "the_line_to_say": "I design for at-least-once delivery with idempotent consumers, deduping on a unique business key or a processed-events table. True exactly-once across arbitrary systems does not exist; idempotency is how you get its effect.",
+      "producer_acks": [
+        "acks=0 is fire-and-forget",
+        "acks=1 waits for the leader only",
+        "acks=all with min.insync.replicas=2 is durable. Say this one for money-related events."
+      ]
+    },
+    {
+      "title": "Consumer Groups",
+      "description": "Scaling consumers, what a rebalance costs you, and the one metric to alert on.",
+      "interviewRelevance": 5,
+      "key_points": [
+        {
+          "term": "Scaling",
+          "description": "Scale consumers up to the partition count. Beyond that, the extra consumers sit idle."
+        },
+        {
+          "term": "Rebalance",
+          "description": "Partitions are reassigned when members join or leave, causing a brief pause. Long processing plus missed heartbeats causes rebalance storms (max.poll.interval.ms)."
+        },
+        {
+          "term": "Consumer lag",
+          "description": "Newest offset minus committed offset. This is the key health metric; alert on growing lag."
+        },
+        {
+          "term": "Poison messages",
+          "description": "Retry N times, then send the record to a Dead Letter Topic with error metadata. Never block the partition forever."
+        }
+      ]
+    },
+    {
+      "title": "Spring Kafka",
+      "description": "A producer keyed for ordering, an idempotent consumer with manual acknowledgment, and the config that makes it at-least-once.",
+      "interviewRelevance": 5,
+      "code": "// Producer\n@Autowired KafkaTemplate<String, OrderEvent> kafka;\nkafka.send(\"orders\", order.getId(), new OrderEvent(order));   // key = order id -> ordering per order\n\n// Consumer\n@KafkaListener(topics = \"orders\", groupId = \"billing\")\npublic void onOrder(OrderEvent event, Acknowledgment ack) {\n    if (processedRepo.existsByEventId(event.id())) { ack.acknowledge(); return; } // idempotency\n    billingService.charge(event);\n    processedRepo.save(new ProcessedEvent(event.id()));\n    ack.acknowledge();                       // manual commit after success\n}",
+      "configuration": [
+        {
+          "title": "application.yml",
+          "code": "spring.kafka:\n  consumer:\n    enable-auto-commit: false     # manual ack = at-least-once\n    auto-offset-reset: earliest\n  listener:\n    ack-mode: manual"
+        }
+      ],
+      "extras_worth_naming": [
+        "DefaultErrorHandler with backoff plus DeadLetterPublishingRecoverer",
+        "@RetryableTopic for non-blocking retries",
+        "ConcurrentKafkaListenerContainerFactory concurrency, which is partition-level parallelism",
+        "JSON serde with type headers"
+      ]
+    },
+    {
+      "title": "Outbox Pattern",
+      "description": "The transactional outbox, asked constantly alongside microservices.",
+      "interviewRelevance": 5,
+      "problem": "Saving to the database and publishing to Kafka cannot be made atomic.",
+      "solution": "Write the event into an outbox table in the same database transaction as the business change. A relay, either Debezium CDC or a poller, then publishes it to Kafka. No lost events and no phantom events."
+    },
+    {
+      "title": "Saga Pattern",
+      "description": "How distributed transactions actually get done across services.",
+      "interviewRelevance": 5,
+      "how_it_works": "A sequence of local transactions coordinated by events. Failures trigger compensating actions such as issuing a refund or releasing stock.",
+      "approaches": [
+        {
+          "name": "Choreography",
+          "description": "Services react to each other's events. Loosely coupled, but hard to follow end to end."
+        },
+        {
+          "name": "Orchestration",
+          "description": "A central coordinator drives the flow, for example the order service or a state machine. Visible and traceable, but adds a coordinator."
+        }
+      ]
+    },
+    {
+      "title": "Other Patterns",
+      "description": "Worth name-dropping, with the honest caveat attached.",
+      "interviewRelevance": 4,
+      "patterns": [
+        {
+          "name": "Event sourcing",
+          "description": "State is the replay of events. Rarely needed, and saying so is part of a good answer."
+        },
+        {
+          "name": "CQRS",
+          "description": "Separate the write model from read projections built off the event stream."
+        },
+        {
+          "name": "Idempotent consumer",
+          "description": "The pattern underlying everything above."
+        }
+      ]
+    },
+    {
+      "title": "System Design",
+      "description": "How to bring Kafka into a system design answer.",
+      "interviewRelevance": 5,
+      "points": [
+        "Partition count is your maximum parallelism. Pick a key that distributes well but still preserves the ordering you need, such as user_id or order_id.",
+        "Hot partition problem: a celebrity key overloads one partition. Add a salt or bucket suffix and aggregate downstream.",
+        "Backpressure: consumers pull at their own pace, so spikes buffer in the log instead of killing services.",
+        "Retention as a feature: rebuild a new service's state by replaying from offset 0."
+      ]
+    },
+    {
+      "title": "Interview Q&A",
+      "description": "The five questions that come up most, with the answers to give.",
+      "interviewRelevance": 5,
+      "questions": [
+        {
+          "question": "How does Kafka guarantee ordering?",
+          "answer": "Only within a partition. The same key goes to the same partition and is FIFO there. Global ordering requires a single partition, which caps throughput, so usually you restructure the problem so that per-key ordering suffices."
+        },
+        {
+          "question": "What happens when a consumer crashes mid-processing?",
+          "answer": "Offsets stay uncommitted, so after the rebalance another consumer reprocesses from the last commit. That produces duplicates, which is exactly why consumers must be idempotent under at-least-once delivery."
+        },
+        {
+          "question": "Kafka vs RabbitMQ, when each?",
+          "answer": "RabbitMQ for task queues, complex routing, per-message acknowledgment and priority, and lower latency at low volume. Kafka for event streaming, replay, multiple consumer groups, ordering per key, very high throughput, and audit or event sourcing."
+        },
+        {
+          "question": "How do you avoid losing messages end-to-end?",
+          "answer": "Producer: acks=all, idempotent producer, retries. Broker: replication of at least 3 with min.insync.replicas=2. Consumer: commit after processing, a Dead Letter Topic for poison messages, and monitoring on lag. Plus the outbox pattern so the database and the topic never diverge."
+        },
+        {
+          "question": "How would you migrate a synchronous REST call between services to events?",
+          "answer": "First establish that the caller does not need the response synchronously. Then publish a domain event through the outbox, have the consumer process it with retries, and expose a read model or callback for status. Keep the REST path during migration behind a feature flag."
+        }
+      ]
+    }
+  ]
+}

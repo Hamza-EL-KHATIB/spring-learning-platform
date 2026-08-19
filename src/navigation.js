@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Code, Server, Database, Box, GitBranch, Users, FileCheck, GraduationCap,
+    Code, Server, Database, Box, GitBranch, Users, FileCheck, GraduationCap, HelpCircle,
 } from 'lucide-react';
 
 // Single source of truth for site navigation. Sidebar, HomePage and the
@@ -69,6 +69,14 @@ export const navigationGroups = [
         icon: <Users className="w-5 h-5" />,
         items: [
             { path: '/agile/scrum', title: 'Scrum', description: 'Roles, events, artifacts' },
+        ],
+    },
+    {
+        key: 'practice',
+        title: 'Practice',
+        icon: <HelpCircle className="w-5 h-5" />,
+        items: [
+            { path: '/practice/questions', title: 'Question Bank', description: '200+ questions by area' },
         ],
     },
     {

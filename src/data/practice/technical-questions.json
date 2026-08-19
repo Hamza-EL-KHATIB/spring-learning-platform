@@ -1,0 +1,2274 @@
+{
+  "title": "Interview Question Bank",
+  "tags": [
+    "interview",
+    "practice",
+    "q&a"
+  ],
+  "topics": [
+    {
+      "title": "Java Core",
+      "description": "50 questions across 9 areas.",
+      "categories": [
+        {
+          "name": "Java Fundamentals",
+          "questions": [
+            {
+              "question": "What is Java? What are its main features?",
+              "answer": [
+                "Platform independence (\"write once, run anywhere\")",
+                "Object-oriented programming support",
+                "Strong memory management with garbage collection",
+                "Rich standard library",
+                "Multi-threading capabilities",
+                "Security features"
+              ]
+            },
+            {
+              "question": "What are JDK, JRE & JVM? How is Java code compiled and executed?",
+              "answer": [
+                "JDK (Java Development Kit): Contains tools for development including compiler (javac), debugger, and other utilities",
+                "JRE (Java Runtime Environment): Contains class libraries and other resources needed to run Java applications",
+                "JVM (Java Virtual Machine): Executes Java bytecode, translating it to machine-specific instructions",
+                "Execution Flow: Java source code → javac compiler → bytecode (.class) → JVM → machine code"
+              ]
+            },
+            {
+              "question": "What is the difference between primitive and reference data types?",
+              "answer": [
+                "Primitive types: Store actual values directly in stack memory (int, boolean, char, etc.)",
+                "Reference types: Store addresses pointing to objects in heap memory (classes, arrays, interfaces)",
+                "Primitives have fixed size while reference types have variable size",
+                "Primitives have default values (0, false, etc.) while reference types default to null"
+              ]
+            },
+            {
+              "question": "What happens when you run a Java program?",
+              "answer": [
+                "Class loading: Classes loaded by ClassLoader",
+                "Bytecode verification: JVM ensures bytecode is valid",
+                "Execution: JVM executes bytecode through interpretation or JIT compilation",
+                "Garbage collection: Automatic memory management during execution"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "OOP Concepts",
+          "questions": [
+            {
+              "question": "What are the four pillars of OOP?",
+              "answer": [
+                "Encapsulation: Bundling data (attributes) and methods that operate on that data",
+                "Inheritance: Ability to create new classes based on existing ones",
+                "Polymorphism: Ability of objects to take on multiple forms (method overloading/overriding)",
+                "Abstraction: Hiding complex implementation details and showing only essential features"
+              ]
+            },
+            {
+              "question": "What is the difference between method overloading and method overriding?",
+              "answer": [
+                "Overloading: Multiple methods with same name but different parameters in same class (compile-time/static polymorphism)",
+                "Overriding: Subclass provides specific implementation for a method already defined in parent class (runtime/dynamic polymorphism)"
+              ]
+            },
+            {
+              "question": "What is the 'this' keyword used for in Java?",
+              "answer": [
+                "References the current object instance",
+                "Differentiates between instance variables and parameters with the same name",
+                "Invokes current class constructor or methods",
+                "Passes the current object as a parameter to other methods"
+              ]
+            },
+            {
+              "question": "What is the difference between abstract class and interface?",
+              "answer": {
+                "table": [
+                  {
+                    "Abstract Class": "Can have both abstract and concrete methods",
+                    "Interface": "Until Java 8, could only have abstract methods (now can have default and static methods)"
+                  },
+                  {
+                    "Abstract Class": "Can have constructors",
+                    "Interface": "Cannot have constructors"
+                  },
+                  {
+                    "Abstract Class": "Supports single inheritance",
+                    "Interface": "Supports multiple inheritance"
+                  },
+                  {
+                    "Abstract Class": "Can have instance variables",
+                    "Interface": "Can only have static and final variables"
+                  },
+                  {
+                    "Abstract Class": "Can have any access modifier",
+                    "Interface": "Methods are implicitly public"
+                  },
+                  {
+                    "Abstract Class": "Extends keyword for implementation",
+                    "Interface": "Implements keyword for implementation"
+                  }
+                ]
+              }
+            },
+            {
+              "question": "How does encapsulation improve code security?",
+              "answer": [
+                "Restricts direct access to data members",
+                "Forces use of getter/setter methods that can include validation",
+                "Allows implementation changes without affecting clients",
+                "Provides control over how data can be accessed and modified"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Collections Framework",
+          "questions": [
+            {
+              "question": "Explain the Java Collections Framework hierarchy",
+              "answer": [
+                "Collection interface (root)",
+                "List: Ordered, allows duplicates (ArrayList, LinkedList, Vector)",
+                "Set: No duplicates (HashSet, TreeSet, LinkedHashSet)",
+                "Queue: FIFO order (PriorityQueue, LinkedList)",
+                "Deque: Double-ended queue (ArrayDeque, LinkedList)",
+                "Map interface (separate hierarchy)",
+                "Key-value pairs (HashMap, TreeMap, LinkedHashMap, Hashtable)"
+              ]
+            },
+            {
+              "question": "What is the difference between ArrayList and LinkedList?",
+              "answer": [
+                "ArrayList:",
+                "- Backed by dynamic array",
+                "- Fast random access (O(1))",
+                "- Slow insertions/deletions in middle (O(n))",
+                "- Better memory locality",
+                "LinkedList:",
+                "- Backed by doubly-linked list",
+                "- Slow random access (O(n))",
+                "- Fast insertions/deletions (O(1) once position is known)",
+                "- More memory overhead per element"
+              ]
+            },
+            {
+              "question": "What is the difference between Vector and ArrayList?",
+              "answer": [
+                "Vector is synchronized (thread-safe) while ArrayList is not",
+                "Vector increases capacity by 100% while ArrayList increases by 50%",
+                "ArrayList generally has better performance in single-threaded applications"
+              ]
+            },
+            {
+              "question": "How does HashMap work internally?",
+              "answer": [
+                "Uses buckets based on hash codes",
+                "Elements with same hash go into same bucket",
+                "Uses equals() method to resolve collisions",
+                "Since Java 8, uses a tree structure (balanced tree) for buckets with many collisions",
+                "Default initial capacity is 16 with a load factor of 0.75"
+              ]
+            },
+            {
+              "question": "What is the difference between HashMap and ConcurrentHashMap?",
+              "answer": [
+                "HashMap: Not thread-safe, faster in single-threaded environments",
+                "ConcurrentHashMap: Thread-safe, uses segment locking for better concurrency, suitable for multi-threaded environments",
+                "ConcurrentHashMap doesn't allow null keys or values"
+              ]
+            },
+            {
+              "question": "What is the difference between HashSet and TreeSet?",
+              "answer": [
+                "HashSet:",
+                "- Implemented using HashMap",
+                "- No guaranteed order",
+                "- O(1) performance for add/remove/contains",
+                "TreeSet:",
+                "- Implemented using TreeMap",
+                "- Keeps elements sorted",
+                "- O(log n) performance for add/remove/contains",
+                "- Implements NavigableSet interface"
+              ]
+            },
+            {
+              "question": "Why must you override hashCode() when overriding equals()?",
+              "answer": [
+                "Contract requires objects that are equal must have same hash code",
+                "Failing to do so breaks hash-based collections (HashMap, HashSet)",
+                "Can cause objects to be lost in collections or duplicated",
+                "Required for proper functionality in collections that use hashing"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "String Management",
+          "questions": [
+            {
+              "question": "What is the difference between String, StringBuffer, and StringBuilder?",
+              "answer": [
+                "String: Immutable, thread-safe, creates new object when modified",
+                "StringBuffer: Mutable, thread-safe (synchronized), slower than StringBuilder",
+                "StringBuilder: Mutable, not thread-safe, faster than StringBuffer",
+                "Use StringBuilder for single-threaded string manipulations"
+              ]
+            },
+            {
+              "question": "What is the String pool in Java?",
+              "answer": [
+                "Special memory area in heap where string literals are stored",
+                "Improves memory efficiency through string interning",
+                "String literals with same content share same reference",
+                "String created with `new` operator doesn't use pool unless explicitly interned"
+              ]
+            },
+            {
+              "question": "What is the difference between == and equals() for string comparison?",
+              "answer": [
+                "`==` compares object references (memory addresses)",
+                "`equals()` compares the content of strings",
+                "Always use equals() for string content comparison"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Exception Handling",
+          "questions": [
+            {
+              "question": "What is the difference between checked and unchecked exceptions?",
+              "answer": [
+                "Checked: Must be explicitly declared or caught (IOException, SQLException)",
+                "Unchecked: Runtime exceptions, don't need to be declared (NullPointerException, ArrayIndexOutOfBoundsException)",
+                "Checked exceptions enforce error handling at compile time",
+                "Unchecked exceptions represent programming errors that shouldn't be caught in most cases"
+              ]
+            },
+            {
+              "question": "What is the purpose of the 'finally' block?",
+              "answer": [
+                "Always executes whether exception occurs or not",
+                "Used for cleanup operations (closing connections, files)",
+                "Executed even if try or catch has a return statement",
+                "Not executed if System.exit() is called or JVM crashes"
+              ]
+            },
+            {
+              "question": "What is the difference between throw and throws?",
+              "answer": [
+                "throw: Used to explicitly throw an exception within a method",
+                "throws: Used in method signature to declare exceptions that might be thrown",
+                "throw followed by exception instance, throws followed by exception class(es)"
+              ]
+            },
+            {
+              "question": "How would you create a custom exception?",
+              "answer": [
+                "Extend Exception class for checked exceptions",
+                "Extend RuntimeException for unchecked exceptions",
+                "Implement constructors that call parent constructors",
+                "Add custom fields/methods as needed for specific context"
+              ]
+            },
+            {
+              "question": "What happens if an exception occurs in a finally block?",
+              "answer": [
+                "If an exception occurs in a finally block, it will override any previous exception from try/catch",
+                "The original exception is lost unless specifically handled in the finally block",
+                "Best practice is to avoid throwing exceptions from finally blocks"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "I/O and Serialization",
+          "questions": [
+            {
+              "question": "How does serialization work in Java?",
+              "answer": [
+                "Converts object state to a byte stream for storage or transmission",
+                "Class must implement Serializable interface",
+                "transient keyword excludes fields from serialization",
+                "serialVersionUID helps with version compatibility"
+              ]
+            },
+            {
+              "question": "What is the difference between FileInputStream and FileReader?",
+              "answer": [
+                "FileInputStream reads bytes, suitable for binary files",
+                "FileReader reads characters, suitable for text files and handles character encoding"
+              ]
+            },
+            {
+              "question": "Explain the use of ObjectOutputStream",
+              "answer": [
+                "Used for serializing objects to an output stream",
+                "writeObject() method for writing serialized objects",
+                "Must be used with a stream like FileOutputStream",
+                "Paired with ObjectInputStream for deserialization"
+              ]
+            },
+            {
+              "question": "What is MappedByteBuffer and when would you use it?",
+              "answer": [
+                "Memory-mapped file for high-performance I/O operations",
+                "Maps a file directly to memory for faster access",
+                "Used for large files that need frequent, random access",
+                "Can be significantly faster than traditional I/O for certain operations"
+              ]
+            },
+            {
+              "question": "How do you handle file operations in Java?",
+              "answer": [
+                "Traditional approach: FileInputStream/FileOutputStream, FileReader/FileWriter",
+                "NIO approach: Channels, Buffers, and Selectors for non-blocking I/O",
+                "Java 7+ approach: Try-with-resources and Path/Files API for simpler, safer I/O",
+                "Java 8+ approach: Stream API integration with Files.lines()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Concurrency & Multithreading",
+          "questions": [
+            {
+              "question": "What is the difference between a process and a thread?",
+              "answer": [
+                "Process: Self-contained execution environment with own memory space",
+                "Thread: Lightweight subprocess, shares memory space with other threads in same process",
+                "Processes are isolated, threads share resources",
+                "Thread creation is less resource-intensive than process creation"
+              ]
+            },
+            {
+              "question": "How can you create a thread in Java?",
+              "answer": [
+                "Extend Thread class and override run() method",
+                "Implement Runnable interface and pass to Thread constructor",
+                "Java 8+: Use lambda expressions with Runnable",
+                "Java 5+: Use ExecutorService and thread pools"
+              ]
+            },
+            {
+              "question": "What is the difference between start() and run() methods?",
+              "answer": [
+                "start(): Creates a new thread and calls run() method in that thread",
+                "run(): Executes in the current thread if called directly",
+                "Calling run() directly doesn't create a new thread",
+                "start() can only be called once per Thread instance"
+              ]
+            },
+            {
+              "question": "What is thread synchronization? How is it achieved in Java?",
+              "answer": [
+                "Mechanism to control thread access to shared resources",
+                "Achieved using:",
+                "- synchronized keyword (methods or blocks)",
+                "- Lock interface and implementations (ReentrantLock, ReadWriteLock)",
+                "- Atomic variables (AtomicInteger, AtomicReference)",
+                "- Concurrent collections (ConcurrentHashMap, CopyOnWriteArrayList)"
+              ]
+            },
+            {
+              "question": "What is the difference between wait() and sleep()?",
+              "answer": [
+                "wait(): Releases lock, puts thread in wait state until notify()/notifyAll()",
+                "sleep(): Doesn't release lock, pauses thread execution for specified time",
+                "wait() must be called from synchronized context",
+                "sleep() throws InterruptedException if thread is interrupted while sleeping"
+              ]
+            },
+            {
+              "question": "What is a race condition?",
+              "answer": [
+                "Occurs when multiple threads access shared data simultaneously",
+                "Result depends on the relative timing of operations",
+                "Can lead to unpredictable behavior and difficult-to-reproduce bugs",
+                "Prevented through proper synchronization"
+              ]
+            },
+            {
+              "question": "Explain the executor framework",
+              "answer": [
+                "High-level replacement for working directly with threads",
+                "Provides thread pools, scheduling, and task management",
+                "Main interfaces: Executor, ExecutorService, ScheduledExecutorService",
+                "Implementations: ThreadPoolExecutor, ScheduledThreadPoolExecutor, ForkJoinPool"
+              ]
+            },
+            {
+              "question": "What is CompletableFuture and how is it used?",
+              "answer": [
+                "Extension of Future with support for asynchronous programming",
+                "Allows chaining operations, combining futures, and handling exceptions",
+                "Supports both asynchronous and reactive programming styles",
+                "Methods like thenApply(), thenCompose(), thenCombine() for chaining operations"
+              ]
+            },
+            {
+              "question": "What is the difference between Runnable and Callable?",
+              "answer": [
+                "Runnable's run() method returns void and cannot throw checked exceptions",
+                "Callable's call() method returns a result and can throw checked exceptions",
+                "Callable used with ExecutorService.submit() when result needed"
+              ]
+            },
+            {
+              "question": "What is ThreadLocal and when would you use it?",
+              "answer": [
+                "Provides thread-confined variables that are unique to each thread",
+                "Each thread has its own, independently initialized copy of the variable",
+                "Used for context storage, transaction managers, session information",
+                "Can cause memory leaks if not properly managed, especially in thread pools"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Java 8+ Features",
+          "questions": [
+            {
+              "question": "What are the major features introduced in Java 8?",
+              "answer": [
+                "Lambda expressions and functional interfaces",
+                "Stream API for processing collections",
+                "Optional class for null handling",
+                "Default methods in interfaces",
+                "New Date/Time API",
+                "Method references",
+                "CompletableFuture for asynchronous programming"
+              ]
+            },
+            {
+              "question": "Explain lambda expressions and their benefits",
+              "answer": [
+                "Concise syntax for anonymous functions",
+                "Enables functional programming style",
+                "Improves readability of code dealing with collections",
+                "Works with functional interfaces (interfaces with single abstract method)",
+                "Enables more efficient collection operations with streams"
+              ]
+            },
+            {
+              "question": "What is a functional interface?",
+              "answer": [
+                "Interface with exactly one abstract method",
+                "Can be annotated with @FunctionalInterface",
+                "Can be used as target for lambda expressions",
+                "Examples: Runnable, Comparator, Consumer, Supplier, Function, Predicate"
+              ]
+            },
+            {
+              "question": "How does the Stream API differ from collections?",
+              "answer": [
+                "Doesn't store elements (processes data from a source)",
+                "Designed for functional-style operations (filter, map, reduce)",
+                "Often lazy (computations performed only when needed)",
+                "Can be parallel with minimal code changes",
+                "Terminal operations are required to get results"
+              ]
+            },
+            {
+              "question": "What are the key features introduced in Java 11?",
+              "answer": [
+                "Local variable syntax for lambda parameters",
+                "HTTP Client API (standardized)",
+                "New string methods (isBlank, lines, strip)",
+                "Files readString and writeString methods",
+                "Running single-file source code without compilation"
+              ]
+            },
+            {
+              "question": "What are the key features introduced in Java 17?",
+              "answer": [
+                "Sealed classes and interfaces (restricting which classes can implement/extend)",
+                "Pattern matching for switch (preview)",
+                "Strong encapsulation of JDK internals",
+                "Foreign function and memory API (incubator)",
+                "Vector API for SIMD operations (incubator)"
+              ]
+            },
+            {
+              "question": "What is the var keyword in Java 10?",
+              "answer": [
+                "Local variable type inference",
+                "Reduces verbosity for local variable declarations",
+                "Type is inferred at compile time, not runtime",
+                "Cannot be used for class fields, method parameters, or return types"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Generics",
+          "questions": [
+            {
+              "question": "What are generics and why are they used?",
+              "answer": [
+                "Provide compile-time type safety for collections",
+                "Eliminate need for explicit casting",
+                "Allow implementation of algorithms independent of specific types",
+                "Enable creation of reusable code",
+                "Help catch type errors at compile time rather than runtime"
+              ]
+            },
+            {
+              "question": "What is type erasure in generics?",
+              "answer": [
+                "Process by which generic type information is removed at compile time",
+                "Type parameters are replaced with their bounds (usually Object)",
+                "Enables backward compatibility with pre-generic code",
+                "Reason why you can't do certain operations like `new T()` or `instanceof T`"
+              ]
+            },
+            {
+              "question": "Explain wildcard types in generics",
+              "answer": [
+                "Unbounded wildcard: `List<?>` - can be any type",
+                "Upper bounded wildcard: `List<? extends Number>` - can be Number or its subtype",
+                "Lower bounded wildcard: `List<? super Integer>` - can be Integer or its supertype",
+                "Used for flexibility in method parameters"
+              ]
+            },
+            {
+              "question": "What's the difference between `List<Object>` and `List<?>`?",
+              "answer": [
+                "`List<Object>` can add any object type but only accepts List of Objects",
+                "`List<?>` is more flexible in what it accepts but restricts adding (except null)",
+                "`List<?>` is used for read-only scenarios where type doesn't matter",
+                "`List<Object>` is used when you need to work with heterogeneous elements"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Spring",
+      "description": "50 questions across 6 areas.",
+      "categories": [
+        {
+          "name": "Spring Core Concepts",
+          "questions": [
+            {
+              "question": "What is Inversion of Control (IoC) and how does Spring implement it?",
+              "answer": [
+                "Design principle where control of objects is transferred to a container",
+                "Spring implements IoC through Dependency Injection",
+                "Container manages object creation, lifecycle, and dependencies",
+                "Reduces coupling between components"
+              ]
+            },
+            {
+              "question": "What is Dependency Injection and what are its benefits?",
+              "answer": [
+                "Pattern where components receive dependencies rather than creating them",
+                "Improves testability by allowing mock dependencies",
+                "Reduces coupling between components",
+                "Makes code more modular and maintainable",
+                "Spring supports constructor, setter, and field injection"
+              ]
+            },
+            {
+              "question": "What are the different types of DI in Spring?",
+              "answer": [
+                "Constructor injection: Dependencies provided via constructor",
+                "- Preferred approach, supports immutability, clearly shows dependencies",
+                "Setter injection: Dependencies provided via setter methods",
+                "- Good for optional dependencies, allows reconfiguration",
+                "Field injection: Dependencies injected directly into fields using @Autowired",
+                "- Compact but less testable, hides dependencies"
+              ]
+            },
+            {
+              "question": "What is the Spring container?",
+              "answer": [
+                "Core of Spring framework that creates, configures, and manages beans",
+                "Two types: BeanFactory (basic) and ApplicationContext (more features)",
+                "Reads configuration, instantiates beans, injects dependencies",
+                "Manages bean lifecycle from creation to destruction"
+              ]
+            },
+            {
+              "question": "What is the difference between BeanFactory and ApplicationContext?",
+              "answer": [
+                "BeanFactory is the basic container, providing minimal functionality and lazy initialization",
+                "ApplicationContext is more advanced, offering features like:",
+                "- Event publication",
+                "- Internationalization support",
+                "- Integration with AOP",
+                "- Enterprise services like JNDI and EJB",
+                "ApplicationContext eagerly initializes singletons by default",
+                "In most applications, ApplicationContext is preferred"
+              ]
+            },
+            {
+              "question": "What are Spring beans?",
+              "answer": [
+                "Objects managed by Spring IoC container",
+                "Created from bean definitions (XML, annotations, or Java configuration)",
+                "Have lifecycle managed by the container",
+                "Can be accessed through dependency injection"
+              ]
+            },
+            {
+              "question": "What are the scopes of Spring beans?",
+              "answer": [
+                "singleton: One instance per container (default)",
+                "prototype: New instance each time requested",
+                "request: One instance per HTTP request",
+                "session: One instance per HTTP session",
+                "application: One instance per ServletContext",
+                "websocket: One instance per WebSocket session"
+              ]
+            },
+            {
+              "question": "What is the bean lifecycle in Spring?",
+              "answer": [
+                "1. Instantiation",
+                "2. Populating properties",
+                "3. BeanNameAware, BeanFactoryAware, ApplicationContextAware",
+                "4. PreInitialization (BeanPostProcessor)",
+                "5. InitializingBean's afterPropertiesSet",
+                "6. Custom init-method",
+                "7. PostInitialization (BeanPostProcessor)",
+                "8. Bean is ready for use",
+                "9. DisposableBean's destroy",
+                "10. Custom destroy-method"
+              ]
+            },
+            {
+              "question": "What is the difference between @Component, @Service, @Repository, and @Controller?",
+              "answer": [
+                "@Component: Generic stereotype for any Spring-managed component",
+                "@Service: Indicates the class is a service layer component (business logic)",
+                "@Repository: Indicates the class is a data access component, provides exception translation",
+                "@Controller: Indicates the class is a web controller",
+                "All three specialized annotations are meta-annotated with @Component"
+              ]
+            },
+            {
+              "question": "What is the purpose of the @Qualifier annotation?",
+              "answer": [
+                "Resolves ambiguity when multiple beans of same type exist",
+                "Works with @Autowired to specify which bean to inject",
+                "Can be used with constructor, setter, or field injection",
+                "Alternative to @Primary, which marks a preferred bean"
+              ]
+            },
+            {
+              "question": "What is the difference between @Value and @Autowired?",
+              "answer": [
+                "@Autowired injects bean dependencies",
+                "@Value injects property values, including SpEL expressions",
+                "@Value typically used for configuration properties"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spring Aspect-Oriented Programming (AOP)",
+          "questions": [
+            {
+              "question": "What is AOP in Spring?",
+              "answer": [
+                "Programming paradigm that separates cross-cutting concerns",
+                "Centralizes concerns like logging, transaction management, security",
+                "Reduces code duplication and improves modularity",
+                "Implemented in Spring using proxies"
+              ]
+            },
+            {
+              "question": "What are the key components of Spring AOP?",
+              "answer": [
+                "Aspect: Modularization of a cross-cutting concern",
+                "Join point: Point in program execution (method execution in Spring AOP)",
+                "Advice: Action taken at a join point (before, after, around)",
+                "Pointcut: Expression that matches join points",
+                "Introduction: Declaring additional methods/fields on behalf of a type",
+                "Target object: Object being advised",
+                "AOP proxy: Object created by the AOP framework to implement aspects"
+              ]
+            },
+            {
+              "question": "What are the different types of advice in Spring AOP?",
+              "answer": [
+                "Before: Executes before the join point",
+                "After returning: Executes after successful completion",
+                "After throwing: Executes if method throws exception",
+                "After (finally): Executes regardless of outcome",
+                "Around: Surrounds the join point, most powerful advice type"
+              ]
+            },
+            {
+              "question": "What is the role of pjp.proceed() in @Around advice?",
+              "answer": [
+                "Continues execution to the actual method (join point)",
+                "Must be called to execute the target method",
+                "Can be called conditionally for advanced control flow",
+                "Can be called multiple times for repetition"
+              ]
+            },
+            {
+              "question": "What is the difference between XML-based and annotation-based AOP configuration?",
+              "answer": [
+                "XML-based is more verbose but centralizes configuration",
+                "Annotation-based is concise but scatters configuration across classes",
+                "Annotation-based is generally preferred in modern applications",
+                "XML might be preferred for applying aspects to third-party classes"
+              ]
+            },
+            {
+              "question": "What is AspectJ and how does it relate to Spring AOP?",
+              "answer": [
+                "AspectJ is a full-featured AOP framework",
+                "Spring AOP uses subset of AspectJ's pointcut expression language",
+                "Spring AOP is proxy-based, AspectJ uses bytecode weaving",
+                "AspectJ is more powerful but more complex",
+                "Spring AOP supports AspectJ annotations for defining aspects"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spring Boot",
+          "questions": [
+            {
+              "question": "What is Spring Boot and how does it differ from Spring?",
+              "answer": [
+                "Framework that simplifies Spring application development",
+                "Provides auto-configuration, embedded servers, and production-ready features",
+                "Eliminates much of the boilerplate configuration required with traditional Spring",
+                "Opinionated defaults (\"convention over configuration\")"
+              ]
+            },
+            {
+              "question": "What is auto-configuration in Spring Boot?",
+              "answer": [
+                "Automatically configures application based on dependencies in classpath",
+                "Reduces need for XML configuration or @Configuration classes",
+                "Can be customized or disabled as needed",
+                "Conditional configuration based on presence of classes, beans, properties"
+              ]
+            },
+            {
+              "question": "What is the role of @SpringBootApplication annotation?",
+              "answer": [
+                "Combination of @Configuration, @EnableAutoConfiguration, and @ComponentScan",
+                "Entry point for Spring Boot applications",
+                "Defines main configuration class",
+                "Enables component scanning in its package and subpackages"
+              ]
+            },
+            {
+              "question": "How do you configure a Spring Boot application?",
+              "answer": [
+                "application.properties or application.yml files",
+                "Environment variables",
+                "Command-line arguments",
+                "@Configuration classes with @Bean methods",
+                "External configuration (config server)"
+              ]
+            },
+            {
+              "question": "What is the difference between application.properties and application.yml?",
+              "answer": [
+                "Both serve same purpose but use different formats",
+                "application.properties uses key-value pairs format",
+                "application.yml uses hierarchical YAML format",
+                "YAML is often more readable for nested configurations",
+                "Properties file is simpler for flat configurations"
+              ]
+            },
+            {
+              "question": "What are Spring Boot Actuator endpoints?",
+              "answer": [
+                "Production-ready features to help monitor and manage application",
+                "Provides health checks, metrics, info, env, loggers, etc.",
+                "Can be secured and customized",
+                "Accessible over HTTP or JMX",
+                "Extensible through custom endpoints"
+              ]
+            },
+            {
+              "question": "How do you create a custom Spring Boot starter?",
+              "answer": [
+                "Create auto-configuration class with @Configuration",
+                "Create auto-configuration metadata resource",
+                "Create starter POM with dependencies",
+                "Follow Spring Boot starter naming conventions",
+                "Package components together in a cohesive way"
+              ]
+            },
+            {
+              "question": "What are embedded servers in Spring Boot?",
+              "answer": [
+                "Servers (Tomcat, Jetty, Undertow) packaged within application",
+                "No need for external server installation",
+                "Application can run as standalone JAR",
+                "Can be replaced or customized",
+                "Production-ready with reasonable defaults"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spring MVC & REST",
+          "questions": [
+            {
+              "question": "What is Spring MVC and how does it work?",
+              "answer": [
+                "Model-View-Controller implementation for web applications",
+                "DispatcherServlet receives requests and delegates to appropriate handlers",
+                "Controllers process requests and return models/views",
+                "Views render the response",
+                "Provides separation of concerns"
+              ]
+            },
+            {
+              "question": "Explain the DispatcherServlet workflow",
+              "answer": [
+                "1. Request received by DispatcherServlet",
+                "2. Handler mapped based on URL",
+                "3. Handler executes with support of HandlerAdapter",
+                "4. Model and view name returned",
+                "5. ViewResolver resolves view name to actual View",
+                "6. View rendered with model data"
+              ]
+            },
+            {
+              "question": "What is the difference between @Controller and @RestController?",
+              "answer": [
+                "@Controller: Returns a view name, used in traditional web applications",
+                "@RestController: Returns object data directly (converted to JSON/XML), used for RESTful services",
+                "@RestController combines @Controller and @ResponseBody"
+              ]
+            },
+            {
+              "question": "Explain the request mapping annotations in Spring MVC",
+              "answer": [
+                "@RequestMapping: General-purpose request handling",
+                "@GetMapping: Handles HTTP GET requests",
+                "@PostMapping: Handles HTTP POST requests",
+                "@PutMapping: Handles HTTP PUT requests",
+                "@DeleteMapping: Handles HTTP DELETE requests",
+                "@PatchMapping: Handles HTTP PATCH requests"
+              ]
+            },
+            {
+              "question": "What is the difference between @RequestParam and @PathVariable?",
+              "answer": [
+                "@RequestParam: Extracts query parameters from URL or form data",
+                "- Example: /users?id=123 with @RequestParam(\"id\")",
+                "@PathVariable: Extracts values from URI path",
+                "- Example: /users/123 with @PathVariable(\"id\")"
+              ]
+            },
+            {
+              "question": "What is the @ModelAttribute annotation and when is it used?",
+              "answer": [
+                "Binds request parameters to model object",
+                "Can be used on method parameter or method level",
+                "Method-level: Adds attributes to all models in controller",
+                "Parameter-level: Binds form data to object",
+                "Handles data binding and validation"
+              ]
+            },
+            {
+              "question": "How do you handle exceptions in Spring MVC?",
+              "answer": [
+                "@ExceptionHandler: Method-level annotation for handling exceptions in controllers",
+                "@ControllerAdvice/@RestControllerAdvice: Global exception handling",
+                "HandlerExceptionResolver: Interface for custom exception resolution",
+                "ResponseEntityExceptionHandler: Base class for exception handling"
+              ]
+            },
+            {
+              "question": "What is content negotiation and how does Spring support it?",
+              "answer": [
+                "Process of selecting best representation of a resource based on client preferences",
+                "Spring supports through Accept headers, URL extensions, or request parameters",
+                "Configured using ContentNegotiationManager",
+                "Supported formats include JSON, XML, HTML, etc."
+              ]
+            },
+            {
+              "question": "How do you handle form submissions in Spring MVC?",
+              "answer": [
+                "Use @ModelAttribute to bind form data to object",
+                "Use @Valid to trigger validation",
+                "Check BindingResult for validation errors",
+                "Return appropriate view based on validation result",
+                "Can use redirect-after-post pattern to prevent duplicate submissions"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spring Data & Hibernate",
+          "questions": [
+            {
+              "question": "What is Spring Data JPA?",
+              "answer": [
+                "Part of Spring Data family that simplifies data access with JPA",
+                "Reduces boilerplate code through repository interfaces",
+                "Provides query methods, custom queries, and pagination support",
+                "Integrates with Hibernate, EclipseLink, or other JPA providers"
+              ]
+            },
+            {
+              "question": "What are the different types of Spring Data repositories?",
+              "answer": [
+                "CrudRepository: Basic CRUD operations",
+                "PagingAndSortingRepository: Adds pagination and sorting",
+                "JpaRepository: JPA-specific methods like flush() and deleteInBatch()",
+                "MongoRepository, CassandraRepository, etc.: Database-specific repositories",
+                "Custom repositories: Interfaces with additional methods"
+              ]
+            },
+            {
+              "question": "How do you define query methods in Spring Data?",
+              "answer": [
+                "Method naming conventions: findByLastName, countByAge",
+                "@Query annotation: With JPQL or native SQL",
+                "QueryDSL: For type-safe queries",
+                "Specification API: For dynamic queries",
+                "Example queries: For query-by-example"
+              ]
+            },
+            {
+              "question": "What is the @Transactional annotation and how does it work?",
+              "answer": [
+                "Declarative transaction management",
+                "Defines transaction boundaries and attributes",
+                "Propagation, isolation, timeout, and rollback rules can be specified",
+                "Typically used at service layer",
+                "Uses AOP proxies to apply transaction management"
+              ]
+            },
+            {
+              "question": "What are the different types of fetch strategies in Hibernate?",
+              "answer": [
+                "Lazy loading: Load associated entities only when accessed",
+                "Eager loading: Load associated entities immediately",
+                "Controlled by fetch attribute in mapping annotations",
+                "Default varies by relationship type (@OneToOne and @ManyToOne are eager by default)"
+              ]
+            },
+            {
+              "question": "What is the N+1 query problem and how do you solve it?",
+              "answer": [
+                "Issue where one query fetches N entities, then N queries fetch related entities",
+                "Solutions:",
+                "- Join fetch in JPQL/HQL",
+                "- EntityGraph in Spring Data",
+                "- Batch fetching in Hibernate",
+                "- Query optimization with select fetch"
+              ]
+            },
+            {
+              "question": "What is the difference between get() and load() methods in Hibernate?",
+              "answer": [
+                "get(): Hits database immediately, returns null if not found",
+                "load(): Returns proxy initially, hits database when actually needed, throws exception if not found",
+                "get() is for non-guaranteed existence, load() for guaranteed existence"
+              ]
+            },
+            {
+              "question": "What are the states of a Hibernate entity?",
+              "answer": [
+                "Transient: Not associated with session",
+                "Persistent: Associated with session, changes tracked",
+                "Detached: Was persistent, no longer associated with session",
+                "Removed: Scheduled for removal"
+              ]
+            },
+            {
+              "question": "What is the difference between first-level and second-level cache in Hibernate?",
+              "answer": [
+                "First-level cache: Session-scope cache, mandatory, cannot be disabled",
+                "Second-level cache: SessionFactory-scope cache, optional, shared across sessions",
+                "First-level improves performance within a session",
+                "Second-level improves performance across sessions"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spring Security",
+          "questions": [
+            {
+              "question": "How does Spring Security work?",
+              "answer": [
+                "Based on servlet filters",
+                "Authentication: Verifies user identity",
+                "Authorization: Determines access rights",
+                "Security context holds authenticated user information",
+                "Chain of filters processes requests"
+              ]
+            },
+            {
+              "question": "What are the different authentication mechanisms supported by Spring Security?",
+              "answer": [
+                "Form-based authentication",
+                "Basic authentication",
+                "OAuth 2.0 / OpenID Connect",
+                "LDAP authentication",
+                "JWT authentication",
+                "Custom authentication providers"
+              ]
+            },
+            {
+              "question": "How do you configure method-level security in Spring?",
+              "answer": [
+                "@EnableGlobalMethodSecurity at configuration level",
+                "Method-level annotations: @Secured, @PreAuthorize, @PostAuthorize, @RolesAllowed",
+                "SpEL expressions for complex authorization rules",
+                "Security context propagation for asynchronous methods"
+              ]
+            },
+            {
+              "question": "What is the difference between @PreAuthorize and @Secured?",
+              "answer": [
+                "@Secured: Simple role-based security, static expressions",
+                "@PreAuthorize: Supports Spring Expression Language (SpEL), more dynamic and flexible",
+                "@PreAuthorize evaluates before method execution",
+                "@Secured is simpler but less powerful"
+              ]
+            },
+            {
+              "question": "What is @PostAuthorize and when would you use it?",
+              "answer": [
+                "Evaluates access after method execution",
+                "Can reference method return value in expression",
+                "Used when authorization depends on result",
+                "Less common than @PreAuthorize"
+              ]
+            },
+            {
+              "question": "How do you handle CORS in Spring applications?",
+              "answer": [
+                "@CrossOrigin at controller/method level",
+                "Global configuration with WebMvcConfigurer",
+                "CorsFilter in security configuration",
+                "Customizable properties (allowed origins, methods, headers)"
+              ]
+            },
+            {
+              "question": "What is CSRF protection and how does Spring implement it?",
+              "answer": [
+                "Cross-Site Request Forgery: Attack that forces users to execute unwanted actions",
+                "Spring provides CSRF tokens that must be included in state-changing requests",
+                "Can be enabled/disabled in security configuration",
+                "Default enabled for web applications, disabled for stateless REST services"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "GraphQL",
+      "description": "9 questions across 1 area.",
+      "categories": [
+        {
+          "name": "GraphQL Basics",
+          "questions": [
+            {
+              "question": "What is GraphQL and how does it differ from REST?",
+              "answer": [
+                "Query language and runtime for APIs developed by Facebook",
+                "Client specifies exactly what data they need (no over/under-fetching)",
+                "Single endpoint for all resources vs. multiple endpoints in REST",
+                "Strongly typed schema that serves as a contract between client and server",
+                "Enables more efficient data retrieval in a single request"
+              ]
+            },
+            {
+              "question": "How do you implement GraphQL in a Spring Boot application?",
+              "answer": [
+                "Use libraries like GraphQL Java or Spring GraphQL",
+                "Define schema using Schema Definition Language (SDL)",
+                "Implement resolvers to fetch data",
+                "Configure data fetchers and type resolvers",
+                "Set up GraphQL endpoint and playground/explorer"
+              ]
+            },
+            {
+              "question": "What are the core components of a GraphQL API?",
+              "answer": [
+                "Schema: Defines available types, queries, mutations, and subscriptions",
+                "Resolvers: Functions that determine how fields are retrieved",
+                "Types: Object types, scalar types, input types, etc.",
+                "Queries: Operations to fetch data",
+                "Mutations: Operations to modify data",
+                "Subscriptions: Real-time operations using WebSockets"
+              ]
+            },
+            {
+              "question": "How do you handle the N+1 query problem in GraphQL?",
+              "answer": [
+                "Use DataLoader pattern to batch and cache requests",
+                "Implement query complexity analysis to prevent abusive queries",
+                "Use entity graph or custom fetching strategies at the resolver level",
+                "Consider specialized GraphQL-optimized ORM tools"
+              ]
+            },
+            {
+              "question": "What is the difference between queries, mutations, and subscriptions?",
+              "answer": [
+                "Queries: Read operations, can be executed in parallel, idempotent",
+                "Mutations: Write operations, executed sequentially, modify data",
+                "Subscriptions: Long-lived operations that deliver updates over time (WebSockets)"
+              ]
+            },
+            {
+              "question": "How do you handle errors in GraphQL?",
+              "answer": [
+                "GraphQL provides a standardized error format",
+                "Errors can be included alongside successful data",
+                "Can add custom error codes and extension data",
+                "Field-level errors vs. operation-level errors"
+              ]
+            },
+            {
+              "question": "What are fragments in GraphQL and how are they used?",
+              "answer": [
+                "Reusable units of types and fields",
+                "Help avoid duplication in queries",
+                "Can be used across multiple queries and mutations",
+                "Enable more modular and maintainable client queries"
+              ]
+            },
+            {
+              "question": "How do you implement authentication and authorization in GraphQL?",
+              "answer": [
+                "Similar principles to REST: tokens, sessions, OAuth",
+                "Can be implemented at different levels:",
+                "- Endpoint level (HTTP layer)",
+                "- Resolver level (field-specific permissions)",
+                "- Directive-based approach (@authorized directive)",
+                "Context object for passing authentication information to resolvers"
+              ]
+            },
+            {
+              "question": "What are the advantages and disadvantages of GraphQL?",
+              "answer": [
+                "Advantages:",
+                "- Precise data fetching (no over/under-fetching)",
+                "- Strong typing and schema validation",
+                "- Introspection and self-documentation",
+                "- Version-free API evolution",
+                "Disadvantages:",
+                "- Potential complexity for simple APIs",
+                "- Caching more complicated than REST",
+                "- Potential performance issues with complex queries",
+                "- Learning curve for teams familiar with REST"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Databases",
+      "description": "20 questions across 4 areas.",
+      "categories": [
+        {
+          "name": "SQL Fundamentals",
+          "questions": [
+            {
+              "question": "What is the difference between DDL, DML, and DCL?",
+              "answer": [
+                "DDL (Data Definition Language): CREATE, ALTER, DROP, TRUNCATE",
+                "DML (Data Manipulation Language): SELECT, INSERT, UPDATE, DELETE",
+                "DCL (Data Control Language): GRANT, REVOKE",
+                "TCL (Transaction Control Language): COMMIT, ROLLBACK, SAVEPOINT"
+              ]
+            },
+            {
+              "question": "What are the different types of joins in SQL?",
+              "answer": [
+                "INNER JOIN: Matches records with matching values in both tables",
+                "LEFT JOIN: All records from left table, matching records from right table",
+                "RIGHT JOIN: All records from right table, matching records from left table",
+                "FULL JOIN: All records when there's a match in either table",
+                "CROSS JOIN: Cartesian product of both tables"
+              ]
+            },
+            {
+              "question": "What is normalization and what are the normal forms?",
+              "answer": [
+                "Process of organizing databases to reduce redundancy and improve integrity",
+                "1NF: No repeating groups, atomic values",
+                "2NF: 1NF + no partial dependencies",
+                "3NF: 2NF + no transitive dependencies",
+                "BCNF: 3NF + no non-trivial functional dependencies",
+                "Higher normal forms exist (4NF, 5NF, 6NF)"
+              ]
+            },
+            {
+              "question": "What are indexes and how do they improve query performance?",
+              "answer": [
+                "Data structures that improve the speed of data retrieval operations",
+                "Types: B-tree, hash, bitmap, clustered, non-clustered",
+                "Trade-off: Faster reads, slower writes, more storage",
+                "Best used on: Foreign keys, primary keys, frequently queried columns",
+                "Considerations: Column selectivity, query patterns, update frequency"
+              ]
+            },
+            {
+              "question": "What is the ACID property in databases?",
+              "answer": [
+                "Atomicity: Transactions are all-or-nothing",
+                "Consistency: Transactions bring DB from one valid state to another",
+                "Isolation: Concurrent transactions don't interfere with each other",
+                "Durability: Committed transactions persist even after system failures"
+              ]
+            },
+            {
+              "question": "What are transaction isolation levels in databases?",
+              "answer": [
+                "READ UNCOMMITTED: Lowest isolation, allows dirty reads",
+                "READ COMMITTED: Prevents dirty reads",
+                "REPEATABLE READ: Prevents dirty reads and non-repeatable reads",
+                "SERIALIZABLE: Highest isolation, prevents all concurrency issues",
+                "Each level provides trade-offs between consistency and performance"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "JPA & Hibernate",
+          "questions": [
+            {
+              "question": "What is ORM and how does Hibernate implement it?",
+              "answer": [
+                "Object-Relational Mapping: Technique of mapping between objects and database tables",
+                "Hibernate provides mapping configurations (annotations or XML)",
+                "Handles CRUD operations, caching, lazy loading, etc.",
+                "Bridges the gap between object-oriented programming and relational databases"
+              ]
+            },
+            {
+              "question": "What are the core components of Hibernate?",
+              "answer": [
+                "SessionFactory: Creates and manages Session instances",
+                "Session: Primary interface for persistence operations",
+                "Transaction: Represents a unit of work",
+                "Query: Interface for executing queries",
+                "Criteria: API for building queries programmatically"
+              ]
+            },
+            {
+              "question": "What are the different types of mapping in Hibernate?",
+              "answer": [
+                "One-to-One: @OneToOne",
+                "One-to-Many: @OneToMany",
+                "Many-to-One: @ManyToOne",
+                "Many-to-Many: @ManyToMany",
+                "Can be unidirectional or bidirectional"
+              ]
+            },
+            {
+              "question": "What is the difference between JPA and Hibernate?",
+              "answer": [
+                "JPA is a specification (interface) for ORM",
+                "Hibernate is an implementation of JPA",
+                "JPA provides standardization, Hibernate provides additional features",
+                "Other JPA implementations include EclipseLink, OpenJPA"
+              ]
+            },
+            {
+              "question": "How do you optimize Hibernate performance?",
+              "answer": [
+                "Use appropriate fetch strategies",
+                "Implement caching (first-level, second-level)",
+                "Use batch processing for bulk operations",
+                "Optimize queries with fetch joins",
+                "Use pagination for large result sets",
+                "Understand and resolve N+1 query issues"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "NoSQL Databases",
+          "questions": [
+            {
+              "question": "What are the different types of NoSQL databases?",
+              "answer": [
+                "Document stores: MongoDB, CouchDB",
+                "Key-value stores: Redis, DynamoDB",
+                "Column-family stores: Cassandra, HBase",
+                "Graph databases: Neo4j, JanusGraph"
+              ]
+            },
+            {
+              "question": "What is the CAP theorem?",
+              "answer": [
+                "Consistency: All clients see the same data at the same time",
+                "Availability: Every request receives a response",
+                "Partition tolerance: System continues to operate despite network failures",
+                "Can only guarantee two of these properties simultaneously",
+                "NoSQL databases make different trade-offs among these properties"
+              ]
+            },
+            {
+              "question": "What is the BASE model in NoSQL databases?",
+              "answer": [
+                "Basically Available: System guarantees availability",
+                "Soft state: State may change without input",
+                "Eventually consistent: System becomes consistent over time",
+                "Alternative to ACID for distributed systems",
+                "Prioritizes availability over consistency"
+              ]
+            },
+            {
+              "question": "When would you choose NoSQL over a relational database?",
+              "answer": [
+                "Need for horizontal scalability",
+                "Schema flexibility required",
+                "High write/read throughput needed",
+                "Large volumes of unstructured/semi-structured data",
+                "Specific data models that fit NoSQL types (documents, graphs)"
+              ]
+            },
+            {
+              "question": "What is sharding and how does it work?",
+              "answer": [
+                "Technique for distributing data across multiple machines",
+                "Horizontal partitioning based on shard key",
+                "Improves performance and scalability",
+                "Challenges: Complex queries, maintaining shard balance, joins across shards"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Caching and Redis",
+          "questions": [
+            {
+              "question": "What is Redis and what are its use cases?",
+              "answer": [
+                "In-memory data structure store",
+                "Used as database, cache, message broker",
+                "Supports various data structures (strings, hashes, lists, sets)",
+                "Common uses: Caching, session storage, real-time analytics, queues"
+              ]
+            },
+            {
+              "question": "What caching strategies can be implemented with Redis?",
+              "answer": [
+                "Cache-aside: Application checks cache first, then database",
+                "Write-through: Updates cache and database simultaneously",
+                "Write-behind: Updates cache, asynchronously updates database",
+                "Refresh-ahead: Proactively refreshes cache before expiry"
+              ]
+            },
+            {
+              "question": "How do you implement Redis as a cache in Spring Boot?",
+              "answer": [
+                "Add spring-boot-starter-data-redis dependency",
+                "Configure Redis connection properties",
+                "Use @EnableCaching annotation",
+                "Apply @Cacheable, @CachePut, @CacheEvict annotations",
+                "Configure RedisCacheManager for custom settings"
+              ]
+            },
+            {
+              "question": "What is the difference between Redis and Memcached?",
+              "answer": [
+                "Redis supports more data structures",
+                "Redis supports persistence",
+                "Redis has built-in replication and clustering",
+                "Memcached is simpler, focusing purely on caching",
+                "Redis has more features but slightly more complex"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Architecture",
+      "description": "27 questions across 4 areas.",
+      "categories": [
+        {
+          "name": "Design Patterns",
+          "questions": [
+            {
+              "question": "What are design patterns and why are they important?",
+              "answer": [
+                "Reusable solutions to common problems in software design",
+                "Improve code readability, maintainability, and reusability",
+                "Provide common vocabulary for discussing design solutions",
+                "Based on proven experience and best practices"
+              ]
+            },
+            {
+              "question": "What is the Singleton pattern and when would you use it?",
+              "answer": [
+                "Ensures a class has only one instance with global access point",
+                "Use cases: Configuration managers, connection pools, caches",
+                "Implementation challenges: Thread safety, serialization",
+                "Example in Spring: ApplicationContext, beans with singleton scope"
+              ]
+            },
+            {
+              "question": "What is the Factory pattern and what problem does it solve?",
+              "answer": [
+                "Creates objects without exposing instantiation logic",
+                "Client code works with interfaces, not concrete classes",
+                "Facilitates adding new types without changing client code",
+                "Example in Spring: BeanFactory"
+              ]
+            },
+            {
+              "question": "What is the Observer pattern?",
+              "answer": [
+                "Defines one-to-many dependency between objects",
+                "When one object changes state, all dependents are notified automatically",
+                "Implements publish-subscribe model",
+                "Examples: Event handling systems, MVC architecture, Spring's ApplicationEvent system"
+              ]
+            },
+            {
+              "question": "What is the Strategy pattern?",
+              "answer": [
+                "Defines family of algorithms, encapsulates each one, makes them interchangeable",
+                "Algorithms can vary independently from clients that use them",
+                "Example: Different sorting algorithms selectable at runtime",
+                "Used in Spring security for authentication strategies"
+              ]
+            },
+            {
+              "question": "What is the Decorator pattern?",
+              "answer": [
+                "Dynamically adds responsibility to objects",
+                "Alternative to subclassing for extending functionality",
+                "Follows open-closed principle",
+                "Example in Java: I/O streams (FileInputStream, BufferedInputStream)"
+              ]
+            },
+            {
+              "question": "What is the Proxy pattern?",
+              "answer": [
+                "Surrogate or placeholder for another object",
+                "Controls access to the original object",
+                "Used for lazy loading, access control, logging",
+                "Example in Spring: AOP proxies, JPA lazy loading"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SOLID Principles",
+          "questions": [
+            {
+              "question": "What are the SOLID principles?",
+              "answer": [
+                "S: Single Responsibility Principle - A class should have only one reason to change",
+                "O: Open/Closed Principle - Open for extension, closed for modification",
+                "L: Liskov Substitution Principle - Subtypes must be substitutable for their base types",
+                "I: Interface Segregation Principle - Clients shouldn't depend on interfaces they don't use",
+                "D: Dependency Inversion Principle - Depend on abstractions, not concretions"
+              ]
+            },
+            {
+              "question": "How does the Single Responsibility Principle improve code design?",
+              "answer": [
+                "Improves cohesion within classes",
+                "Makes code more maintainable and understandable",
+                "Reduces impact of changes",
+                "Classes become smaller and more focused",
+                "Easier to test and debug"
+              ]
+            },
+            {
+              "question": "How does the Open/Closed Principle affect system extensibility?",
+              "answer": [
+                "Allows adding new functionality without changing existing code",
+                "Reduces risk of regression when extending",
+                "Often implemented through abstractions and polymorphism",
+                "Makes code more modular and pluggable"
+              ]
+            },
+            {
+              "question": "What is the Liskov Substitution Principle?",
+              "answer": [
+                "Subtypes must be substitutable for their base types without altering program correctness",
+                "Ensures behavioral compatibility in inheritance hierarchies",
+                "Violations lead to unexpected behavior and bugs",
+                "Related to design by contract (preconditions, postconditions, invariants)"
+              ]
+            },
+            {
+              "question": "How does the Interface Segregation Principle improve API design?",
+              "answer": [
+                "Prevents clients from depending on methods they don't use",
+                "Leads to smaller, more focused interfaces",
+                "Makes system more decoupled and easier to change",
+                "Reduces impact of changes on clients"
+              ]
+            },
+            {
+              "question": "What is the relationship between Dependency Inversion and Dependency Injection?",
+              "answer": [
+                "DIP is a principle (high-level modules shouldn't depend on low-level modules)",
+                "DI is a pattern that implements DIP",
+                "Spring's IoC container implements Dependency Injection",
+                "Both aim to reduce coupling and improve testability"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Microservices Architecture",
+          "questions": [
+            {
+              "question": "What are microservices and how do they differ from monolithic architecture?",
+              "answer": [
+                "Architecture style where application is composed of loosely coupled services",
+                "Each service focused on single business capability",
+                "Independent deployment, scalability, and technology stack",
+                "Contrasts with monolithic architecture where all components are part of a single unit"
+              ]
+            },
+            {
+              "question": "What are the benefits and challenges of microservices?",
+              "answer": [
+                "Benefits: Scalability, technology diversity, resilience, independent deployment",
+                "Challenges: Distributed system complexity, eventual consistency, operational overhead",
+                "Benefits are most apparent for large, complex applications",
+                "Requires mature DevOps practices"
+              ]
+            },
+            {
+              "question": "How do microservices communicate with each other?",
+              "answer": [
+                "Synchronous: REST, gRPC, GraphQL",
+                "Asynchronous: Message queues (RabbitMQ, Kafka), event streaming",
+                "Service discovery: Mechanisms for locating services",
+                "Trade-offs between coupling, latency, and complexity"
+              ]
+            },
+            {
+              "question": "What is the API Gateway pattern?",
+              "answer": [
+                "Single entry point for all clients",
+                "Routes requests to appropriate microservices",
+                "May handle cross-cutting concerns: authentication, rate limiting, monitoring",
+                "Examples: Spring Cloud Gateway, Netflix Zuul, Kong"
+              ]
+            },
+            {
+              "question": "What is the Circuit Breaker pattern?",
+              "answer": [
+                "Prevents cascading failures in distributed systems",
+                "Stops calling failing service when error threshold reached",
+                "Provides fallback behavior during failure",
+                "Allows periodic checks to see if service has recovered",
+                "Implementation: Netflix Hystrix, Resilience4j"
+              ]
+            },
+            {
+              "question": "What is the Event Sourcing pattern?",
+              "answer": [
+                "Stores state changes as a sequence of events",
+                "Current state reconstructed by replaying events",
+                "Provides complete audit trail and time-travel debugging",
+                "Often used with CQRS pattern",
+                "Challenges: Event schema evolution, eventual consistency"
+              ]
+            },
+            {
+              "question": "What is the CQRS (Command Query Responsibility Segregation) pattern?",
+              "answer": [
+                "Separates read and write operations into different models",
+                "Commands change state, queries return state",
+                "Can optimize each model separately",
+                "Allows scaling read and write operations independently",
+                "Can increase complexity, often used with Event Sourcing"
+              ]
+            },
+            {
+              "question": "What is the Saga pattern?",
+              "answer": [
+                "Manages transactions spanning multiple services",
+                "Sequence of local transactions with compensating actions",
+                "Two implementation approaches:",
+                "- Choreography: Services publish events, others listen and react",
+                "- Orchestration: Central coordinator manages the process",
+                "Ensures eventual consistency in distributed systems"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "REST API Design",
+          "questions": [
+            {
+              "question": "What is REST and what are its key principles?",
+              "answer": [
+                "Representational State Transfer, architectural style for distributed systems",
+                "Statelessness, uniform interface, client-server separation, layered system, cacheability",
+                "Resources identified by URIs, manipulated through representations",
+                "Uses standard HTTP methods (GET, POST, PUT, DELETE)"
+              ]
+            },
+            {
+              "question": "What is the Richardson Maturity Model for RESTful services?",
+              "answer": [
+                "Level 0: Single URI, single method (typically POST)",
+                "Level 1: Multiple URIs, single method",
+                "Level 2: Multiple URIs, HTTP methods",
+                "Level 3: HATEOAS (Hypermedia as the Engine of Application State)",
+                "Higher levels indicate more RESTful design"
+              ]
+            },
+            {
+              "question": "What are the best practices for designing RESTful APIs?",
+              "answer": [
+                "Use nouns for resource names (not verbs)",
+                "Use plural nouns for collections",
+                "Use HTTP methods appropriately (GET, POST, PUT, DELETE)",
+                "Use sub-resources for relationships",
+                "Implement proper error handling and status codes",
+                "Include pagination for large collections",
+                "Consider versioning strategy"
+              ]
+            },
+            {
+              "question": "What is the difference between PUT and PATCH methods?",
+              "answer": [
+                "PUT: Replaces entire resource with supplied representation",
+                "PATCH: Applies partial modifications to a resource",
+                "PUT is idempotent, PATCH may not be",
+                "Choose based on update semantics and payload size"
+              ]
+            },
+            {
+              "question": "What is HATEOAS and why is it important?",
+              "answer": [
+                "Hypermedia as the Engine of Application State",
+                "Clients interact with application through hypermedia provided by server",
+                "Reduces coupling between client and server",
+                "Allows API to evolve without breaking clients",
+                "Example: Spring HATEOAS for implementing in Spring Boot"
+              ]
+            },
+            {
+              "question": "How do you version a REST API?",
+              "answer": [
+                "URI path: /api/v1/users",
+                "Query parameter: /api/users?version=1",
+                "Custom request header: X-API-Version: 1",
+                "Accept header: Accept: application/vnd.company.v1+json",
+                "Each approach has trade-offs in terms of visibility, caching, client support"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Testing",
+      "description": "8 questions across 1 area.",
+      "categories": [
+        {
+          "name": "Testing Fundamentals",
+          "questions": [
+            {
+              "question": "What is unit testing and what frameworks are used in Java?",
+              "answer": [
+                "Testing individual components in isolation",
+                "Frameworks: JUnit, TestNG",
+                "Mocking frameworks: Mockito, EasyMock",
+                "Focuses on small units of functionality"
+              ]
+            },
+            {
+              "question": "What is the difference between mocks, stubs, and spies?",
+              "answer": [
+                "Mocks: Objects pre-programmed with expectations and responses",
+                "Stubs: Provide canned answers to calls",
+                "Spies: Partial mocks that record actual behavior",
+                "All are test doubles that simulate dependencies"
+              ]
+            },
+            {
+              "question": "What is Test-Driven Development (TDD)?",
+              "answer": [
+                "Write test first, then implement code to pass test",
+                "Red-Green-Refactor cycle",
+                "Ensures code is testable and meets requirements",
+                "Leads to better design and more thorough testing"
+              ]
+            },
+            {
+              "question": "What is Behavior-Driven Development (BDD)?",
+              "answer": [
+                "Extension of TDD focusing on behavior from user perspective",
+                "Uses natural language constructs to express tests",
+                "Promotes collaboration between developers, QA, and business stakeholders",
+                "Tools: Cucumber, JBehave, Spock"
+              ]
+            },
+            {
+              "question": "What is integration testing and how does it differ from unit testing?",
+              "answer": [
+                "Tests interaction between components or with external systems",
+                "Wider scope than unit tests",
+                "May require special setup (test containers, in-memory databases)",
+                "Ensures components work together correctly"
+              ]
+            },
+            {
+              "question": "How does Spring support testing?",
+              "answer": [
+                "Spring Test module provides testing utilities",
+                "@SpringBootTest for integration tests",
+                "@WebMvcTest for controller layer tests",
+                "@DataJpaTest for repository layer tests",
+                "TestRestTemplate and MockMvc for testing REST endpoints",
+                "@MockBean for replacing beans with mocks"
+              ]
+            },
+            {
+              "question": "What are test containers and when would you use them?",
+              "answer": [
+                "Library that provides lightweight, throwaway instances of databases, message brokers, etc.",
+                "Used for integration testing with real dependencies",
+                "Ensures tests run against actual implementations",
+                "Provides consistent environment across development and CI",
+                "Examples: database containers, Kafka containers, Redis containers"
+              ]
+            },
+            {
+              "question": "What is the difference between @Mock and @MockBean?",
+              "answer": [
+                "@Mock is from Mockito, creates a mock object",
+                "@MockBean is from Spring, creates a mock bean in the Spring context",
+                "@MockBean replaces existing bean in application context",
+                "@Mock requires manual injection, @MockBean is auto-injected"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "DevOps",
+      "description": "10 questions across 3 areas.",
+      "categories": [
+        {
+          "name": "Containerization and Orchestration",
+          "questions": [
+            {
+              "question": "What is Docker and how is it used in Spring Boot applications?",
+              "answer": [
+                "Platform for developing, shipping, and running applications in containers",
+                "Containers package application with dependencies",
+                "Spring Boot apps can be containerized with Dockerfile, Buildpacks, or Jib",
+                "Provides consistency across environments"
+              ]
+            },
+            {
+              "question": "What are the benefits of containers?",
+              "answer": [
+                "Consistency across environments",
+                "Isolation from system dependencies",
+                "Lightweight compared to VMs",
+                "Fast startup and shutdown",
+                "Efficient resource utilization"
+              ]
+            },
+            {
+              "question": "What is Kubernetes and what problems does it solve?",
+              "answer": [
+                "Container orchestration platform",
+                "Manages deployment, scaling, and operation of application containers",
+                "Provides service discovery, load balancing, self-healing, config management",
+                "Abstracts underlying infrastructure",
+                "Enables declarative configuration"
+              ]
+            },
+            {
+              "question": "What are the key components of Kubernetes?",
+              "answer": [
+                "Pods: Smallest deployable units",
+                "Services: Expose pods to network",
+                "Deployments: Manage pod lifecycle",
+                "ConfigMaps/Secrets: Configuration and sensitive data",
+                "Ingress: External access to services",
+                "Namespaces: Logical partitioning of resources"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CI/CD",
+          "questions": [
+            {
+              "question": "What is Continuous Integration and Continuous Deployment?",
+              "answer": [
+                "CI: Practice of frequently integrating code changes",
+                "CD: Automatically deploying code changes to production",
+                "Improves development velocity and quality",
+                "Reduces integration problems",
+                "Provides faster feedback loops"
+              ]
+            },
+            {
+              "question": "What are common CI/CD tools for Java applications?",
+              "answer": [
+                "Jenkins, GitLab CI, GitHub Actions, CircleCI, Azure DevOps",
+                "Each has different strengths, integration capabilities, hosting options",
+                "Choose based on team familiarity, GitHub/GitLab integration, hosting needs"
+              ]
+            },
+            {
+              "question": "What are the typical stages in a CI/CD pipeline?",
+              "answer": [
+                "Build: Compile code, create artifacts",
+                "Test: Run unit, integration, and other tests",
+                "Analyze: Static code analysis, security scanning",
+                "Package: Create deployment packages",
+                "Deploy: Deliver to target environments",
+                "Verify: Post-deployment testing"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Monitoring and Observability",
+          "questions": [
+            {
+              "question": "What is the difference between metrics, logs, and traces?",
+              "answer": [
+                "Metrics: Numerical measurements over time (CPU, memory, request count)",
+                "Logs: Discrete events with details about what happened",
+                "Traces: Record of request path through distributed system",
+                "Together form the three pillars of observability"
+              ]
+            },
+            {
+              "question": "What tools are used for monitoring Spring Boot applications?",
+              "answer": [
+                "Prometheus: Metrics collection",
+                "Grafana: Metrics visualization",
+                "ELK stack: Elasticsearch, Logstash, Kibana for log management",
+                "Zipkin/Jaeger: Distributed tracing",
+                "Spring Boot Actuator: Exposes application metrics and information"
+              ]
+            },
+            {
+              "question": "How do you implement distributed tracing?",
+              "answer": [
+                "Use frameworks like Spring Cloud Sleuth",
+                "Integrate with tracing systems like Zipkin or Jaeger",
+                "Assign trace and span IDs to requests",
+                "Propagate context across service boundaries",
+                "Visualize and analyze trace data"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Security",
+      "description": "7 questions across 1 area.",
+      "categories": [
+        {
+          "name": "Security Fundamentals",
+          "questions": [
+            {
+              "question": "What is OAuth 2.0 and how does it work?",
+              "answer": [
+                "Authorization framework that enables third-party applications to obtain limited access to a user's account",
+                "Different grant types: Authorization Code, Implicit, Resource Owner Password Credentials, Client Credentials",
+                "Roles: Resource Owner, Client, Authorization Server, Resource Server",
+                "Flow varies based on grant type and security requirements"
+              ]
+            },
+            {
+              "question": "What is OpenID Connect and how does it extend OAuth 2.0?",
+              "answer": [
+                "Identity layer on top of OAuth 2.0",
+                "Provides authentication in addition to authorization",
+                "Introduces ID tokens (JWT) containing user identity information",
+                "Standardizes user information with UserInfo endpoint",
+                "Common for single sign-on implementations"
+              ]
+            },
+            {
+              "question": "What is JWT and how is it used in authentication?",
+              "answer": [
+                "JSON Web Token: Compact, self-contained way for secure transmission of information",
+                "Structure: Header, Payload, Signature",
+                "Used for stateless authentication and information exchange",
+                "Often used with OAuth 2.0 for bearer token authentication",
+                "Benefits: Stateless, can contain claims, works across domains"
+              ]
+            },
+            {
+              "question": "What are the security concerns with JWT?",
+              "answer": [
+                "Token size (payload can grow large)",
+                "Storage of sensitive information (tokens can be decoded)",
+                "Token revocation (stateless tokens are harder to invalidate)",
+                "Algorithm vulnerabilities (like \"none\" algorithm)",
+                "Need for proper validation of all parts"
+              ]
+            },
+            {
+              "question": "What are common web application security vulnerabilities?",
+              "answer": [
+                "Injection attacks: SQL, NoSQL, OS command",
+                "Broken authentication and session management",
+                "Cross-Site Scripting (XSS)",
+                "Cross-Site Request Forgery (CSRF)",
+                "Security misconfiguration",
+                "Sensitive data exposure",
+                "Based on OWASP Top 10"
+              ]
+            },
+            {
+              "question": "How do you secure a REST API?",
+              "answer": [
+                "Authentication mechanisms (Basic, OAuth 2.0, JWT)",
+                "Authorization checks",
+                "HTTPS/TLS",
+                "Request validation",
+                "Rate limiting",
+                "CORS configuration",
+                "Security headers",
+                "Regular security audits and updates"
+              ]
+            },
+            {
+              "question": "What is CORS and how does it work?",
+              "answer": [
+                "Cross-Origin Resource Sharing",
+                "Security feature restricting web page access to resources from different origins",
+                "Browser enforces same-origin policy by default",
+                "Server can explicitly allow cross-origin requests through headers",
+                "Configured in Spring using @CrossOrigin or CorsConfigurer"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Performance",
+      "description": "5 questions across 1 area.",
+      "categories": [
+        {
+          "name": "Performance Optimization Techniques",
+          "questions": [
+            {
+              "question": "What are common performance bottlenecks in Spring applications?",
+              "answer": [
+                "Database queries (N+1 problem, missing indexes)",
+                "External service calls",
+                "Inefficient algorithms or data structures",
+                "Memory leaks",
+                "Inappropriate caching strategies",
+                "Blocking operations in request processing"
+              ]
+            },
+            {
+              "question": "How do you improve database performance in Spring applications?",
+              "answer": [
+                "Optimize queries (indexes, join strategies)",
+                "Use appropriate fetch strategies (lazy vs eager)",
+                "Implement caching",
+                "Use connection pooling",
+                "Consider database-specific optimizations",
+                "Batch processing for bulk operations"
+              ]
+            },
+            {
+              "question": "What is caching and how is it implemented in Spring?",
+              "answer": [
+                "Storing frequently accessed data in memory",
+                "Spring provides abstraction through Cache and CacheManager interfaces",
+                "@Cacheable, @CachePut, @CacheEvict annotations",
+                "Multiple providers supported (EhCache, Redis, Caffeine)",
+                "Different caching strategies for different scenarios"
+              ]
+            },
+            {
+              "question": "What is the role of JVM tuning in performance optimization?",
+              "answer": [
+                "Heap size configuration",
+                "Garbage collector selection and tuning",
+                "JIT compiler optimizations",
+                "Thread pool sizing",
+                "Native memory management",
+                "Understanding memory leaks and how to prevent them"
+              ]
+            },
+            {
+              "question": "What are some tools for performance profiling and monitoring?",
+              "answer": [
+                "JProfiler, YourKit for profiling",
+                "VisualVM for monitoring and profiling",
+                "Micrometer for metrics collection",
+                "JMeter for load testing",
+                "Spring Boot Actuator for application metrics"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Modern Java",
+      "description": "9 questions across 2 areas.",
+      "categories": [
+        {
+          "name": "Java Features",
+          "questions": [
+            {
+              "question": "What are Java Records and when would you use them?",
+              "answer": [
+                "Compact class form for immutable data holders (Java 14+)",
+                "Automatic implementation of equals(), hashCode(), toString()",
+                "Great for DTOs, value objects, and immutable domain objects",
+                "Reduce boilerplate for simple data carriers"
+              ]
+            },
+            {
+              "question": "What are sealed classes in Java?",
+              "answer": [
+                "Classes that restrict which other classes can extend them (Java 17+)",
+                "Defined with `sealed` keyword and `permits` clause",
+                "Subclasses must be declared as `final`, `sealed`, or `non-sealed`",
+                "Helps control class hierarchies and enables pattern matching"
+              ]
+            },
+            {
+              "question": "What is pattern matching for instanceof in Java?",
+              "answer": [
+                "Simplifies casting after instanceof checks (Java 16+)",
+                "Combines type checking and variable declaration",
+                "Example: `if (obj instanceof String s) { /* use s */ }`",
+                "Reduces boilerplate and potential errors"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spring Features",
+          "questions": [
+            {
+              "question": "What is Spring WebFlux and how does it differ from Spring MVC?",
+              "answer": [
+                "Reactive web framework alternative to Spring MVC",
+                "Non-blocking, event-driven architecture",
+                "Uses Project Reactor's Mono and Flux types",
+                "Suitable for applications with high concurrency and low thread count",
+                "Different programming model (reactive vs imperative)"
+              ]
+            },
+            {
+              "question": "What is Project Reactor?",
+              "answer": [
+                "Reactive programming library used by Spring WebFlux",
+                "Provides Mono (0 or 1 item) and Flux (0 to N items) types",
+                "Implements Reactive Streams specification",
+                "Offers rich set of operators for composing asynchronous operations",
+                "Supports backpressure for flow control"
+              ]
+            },
+            {
+              "question": "What is backpressure in reactive programming?",
+              "answer": [
+                "Mechanism for handling fast producers and slow consumers",
+                "Allows consumer to signal how much data it can process",
+                "Prevents overwhelming consumers with too much data",
+                "Implementations: push, pull, or hybrid strategies",
+                "Essential for stable reactive systems"
+              ]
+            },
+            {
+              "question": "What is Spring Cloud and what problems does it solve?",
+              "answer": [
+                "Provides tools for building cloud-native applications",
+                "Service discovery, configuration management, circuit breakers, intelligent routing",
+                "Integration with cloud platforms and patterns for distributed systems",
+                "Simplifies implementation of common microservices patterns"
+              ]
+            },
+            {
+              "question": "What is Spring Cloud Config?",
+              "answer": [
+                "Externalized configuration for distributed systems",
+                "Central server for managing configuration properties",
+                "Client support for consuming configuration",
+                "Environment and profile-specific properties",
+                "Runtime configuration changes"
+              ]
+            },
+            {
+              "question": "What is GraalVM native image support in Spring Boot?",
+              "answer": [
+                "Compiles Spring Boot apps to native executables",
+                "Benefits: Faster startup, lower memory footprint",
+                "Challenges: Reflection limitations, build-time initialization requirements",
+                "Suitable for cloud-native and serverless deployments",
+                "Trade-offs between development experience and runtime performance"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Coding & Tips",
+      "description": "12 questions across 3 areas.",
+      "categories": [
+        {
+          "name": "Common Types of Coding Problems",
+          "questions": [
+            {
+              "question": "Basic Algorithm Implementation",
+              "answer": [
+                "String manipulation (reverse, find patterns, check palindromes)",
+                "Array processing (sorting, searching, manipulating)",
+                "Basic data structures (stacks, queues, trees, graphs)",
+                "Sorting and searching algorithms (binary search, quicksort)"
+              ]
+            },
+            {
+              "question": "Design Pattern Implementation",
+              "answer": [
+                "Implement a Singleton, Factory, Builder, etc.",
+                "Design a simple system using appropriate patterns",
+                "Apply SOLID principles to a given problem",
+                "Refactor code to improve design"
+              ]
+            },
+            {
+              "question": "Spring Boot Application Development",
+              "answer": [
+                "Create REST API endpoints",
+                "Implement entity relationships",
+                "Add validation and error handling",
+                "Secure endpoints with Spring Security",
+                "Implement data access with Spring Data"
+              ]
+            },
+            {
+              "question": "Database and Data Access",
+              "answer": [
+                "Design database schema",
+                "Implement JPA repositories",
+                "Write complex queries",
+                "Handle transactions correctly",
+                "Optimize database access"
+              ]
+            },
+            {
+              "question": "Concurrency Programming",
+              "answer": [
+                "Implement thread-safe class",
+                "Use CompletableFuture for asynchronous operations",
+                "Handle race conditions",
+                "Design concurrent collections",
+                "Apply proper synchronization"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Tips for Coding Interviews",
+          "questions": [
+            {
+              "question": "Before writing code",
+              "answer": [
+                "Understand the problem completely",
+                "Ask clarifying questions",
+                "Consider edge cases",
+                "Think about time and space complexity",
+                "Discuss your approach before coding"
+              ]
+            },
+            {
+              "question": "While coding",
+              "answer": [
+                "Think aloud and explain your reasoning",
+                "Start with a simple solution, then optimize",
+                "Use meaningful variable and method names",
+                "Comment your code where necessary",
+                "Test your solution with different inputs"
+              ]
+            },
+            {
+              "question": "After coding",
+              "answer": [
+                "Review your code for bugs",
+                "Consider edge cases again",
+                "Analyze time and space complexity",
+                "Discuss potential optimizations",
+                "Be open to feedback and suggestions"
+              ]
+            },
+            {
+              "question": "Problem-solving strategies",
+              "answer": [
+                "Break down complex problems into smaller parts",
+                "Consider multiple approaches before deciding",
+                "Draw diagrams or visualize the problem",
+                "Use examples to validate your understanding",
+                "Apply known patterns and algorithms when appropriate"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Additional Interview Preparation Tips",
+          "questions": [
+            {
+              "question": "Technical preparation",
+              "answer": [
+                "Review core concepts regularly",
+                "Practice coding problems on platforms like LeetCode",
+                "Implement small projects to reinforce learning",
+                "Read documentation and stay updated on new features",
+                "Join community discussions and forums"
+              ]
+            },
+            {
+              "question": "Behavioral preparation",
+              "answer": [
+                "Prepare stories about past projects and challenges",
+                "Practice explaining technical concepts clearly",
+                "Develop concise explanations of your experience",
+                "Prepare questions to ask interviewers",
+                "Research companies and their technologies"
+              ]
+            },
+            {
+              "question": "During the interview",
+              "answer": [
+                "Listen carefully to questions",
+                "Ask for clarification when needed",
+                "Admit when you don't know something",
+                "Show enthusiasm and a willingness to learn",
+                "Demonstrate problem-solving process, not just solutions"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
