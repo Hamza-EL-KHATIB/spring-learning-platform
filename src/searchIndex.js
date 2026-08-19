@@ -137,14 +137,25 @@ export const searchTopics = (query, limit = 12) => {
         return searchEntries.filter((entry) => entry.kind === 'page').slice(0, limit);
     }
 
-    return searchEntries
+    const scored = searchEntries
         .map((entry) => {
             const titleScore = fuzzyScore(entry.title.toLowerCase(), needle);
             const keywordScore = fuzzyScore(entry.keywords, needle);
-            const score = Math.max(titleScore, keywordScore === -1 ? -1 : keywordScore * 0.5);
-            return { entry, score };
+            return {
+                entry,
+                score: Math.max(titleScore, keywordScore === -1 ? -1 : keywordScore * 0.5),
+                direct: entry.keywords.includes(needle),
+            };
         })
-        .filter(({ score }) => score > 0)
+        .filter(({ score }) => score > 0);
+
+    // Subsequence matching is a fallback for abbreviations ("sprsec"), not a
+    // way to pad results: once anything contains the query outright, scattered
+    // letter matches are noise — "saga" shouldn't surface "String Handling".
+    const direct = scored.filter((r) => r.direct);
+    const pool = direct.length ? direct : scored;
+
+    return pool
         .sort((a, b) => b.score - a.score)
         .slice(0, limit)
         .map(({ entry }) => entry);
