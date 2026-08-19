@@ -10,6 +10,38 @@ Create React App (react-scripts) project — no custom lint script; ESLint runs 
 - `npm run build` — production build
 - `npm test` — Jest in watch mode; run a single file with `npm test -- TopicPage` (matches test path pattern), non-interactive with `npm test -- --watchAll=false`
 - `npm run deploy` — builds and publishes `build/` to GitHub Pages via gh-pages (homepage: hamza-el-khatib.github.io/spring-learning-platform)
+- `docker compose up dev` — dev server with hot reload in a container, on :3000
+- `docker compose up --build web` — the production image (nginx serving the static build) on :8080
+
+`prestart` and `prebuild` run `scripts/build-search-index.js`, which regenerates
+`src/generated/search-index.json`. That file is gitignored and derived from `src/data`,
+so run `npm run build:search-index` after adding content if you are not going through
+`npm start`/`npm run build`.
+
+### Bundle: keep it split
+
+Routes are `React.lazy` in `App.js` so each page's component **and its JSON** land in a
+separate chunk. Two things will silently undo that, so avoid both:
+
+- **Importing a data file from anything that always loads** (Layout, Header, the search
+  palette). That pins the content into the main chunk. The Ctrl+K index deliberately
+  reads only the generated titles file for this reason.
+- **Converting a route back to a static import** in `App.js`.
+
+Initial load is ~72 KB gzipped; it was 638 KB when everything sat in one chunk.
+
+### Docker
+
+`Dockerfile` is a multi-stage build: node builds the static site, nginx serves it (~85 MB).
+`Dockerfile.dev` is the hot-reload image. `docker/nginx.conf` sets caching (immutable for
+hashed assets, no-cache for `index.html`) and gzip.
+
+Two things there are load-bearing and easy to break:
+- `ENV PUBLIC_URL="/"` in the Dockerfile. It must not be `""` — CRA treats an empty string
+  as unset and falls back to the `homepage` field, which makes every asset 404 and renders
+  a blank page.
+- `package-lock.json` is committed on purpose; `npm ci` in the build needs it. If it drifts
+  out of sync with `package.json`, the Docker build fails while local builds keep working.
 
 ## Critical: the data directory and .gitignore
 
