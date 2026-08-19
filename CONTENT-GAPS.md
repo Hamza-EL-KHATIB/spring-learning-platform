@@ -61,11 +61,16 @@ Nothing in the vault is unconverted. Remaining ideas, in rough value order:
   `design-patterns.json`; its `advanced_patterns`, `network_proxy_types` and
   `pattern_decision_guide` sections remain unused and could justify their own page.
 
-## Known vault errors
+## Vault errors — fixed
 
-Two claims in `Java Core/Concurrency.md` are wrong and were corrected in the repo
-against the vault. Fix them in Obsidian so a future sync doesn't reintroduce them:
+Two wrong claims were corrected in **both** the repo and the Obsidian vault, so a future
+sync won't reintroduce them:
 
-- ConcurrentHashMap described with segment locking — that is the Java 7 design.
-- An `AutoCloseable` `ExecutorService` wrapper presented as necessary — `ExecutorService`
-  has extended `AutoCloseable` since Java 19.
+- **ConcurrentHashMap segment locking.** That is the Java 7 design; Java 8 replaced it
+  with per-bin locking (CAS on an empty bin, `synchronized` on the bin head otherwise).
+  It appeared in seven places: `Java Core/Concurrency.md` (×2), `Collections.md` (×2),
+  `Practice/Technical Questions.md`, and the three mirroring `json/` files.
+- **`AutoCloseable` `ExecutorService` wrapper presented as necessary.** `ExecutorService`
+  has extended `AutoCloseable` since Java 19, so try-with-resources works directly — and
+  `close()` also *waits* for tasks, unlike `shutdown()` alone. In `Concurrency.md` and its
+  companion JSON.
