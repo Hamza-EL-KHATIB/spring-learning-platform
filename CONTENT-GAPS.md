@@ -60,7 +60,6 @@ Nothing in the vault is unconverted. Remaining ideas, in rough value order:
 - `Architecture/Design Patterns in Spring Boot & Java.md` was partially harvested into
   `design-patterns.json`; its `advanced_patterns`, `network_proxy_types` and
   `pattern_decision_guide` sections remain unused and could justify their own page.
-- `src/data/topics.json` is dead — nothing imports it. Safe to delete.
 
 ## Known vault errors
 
