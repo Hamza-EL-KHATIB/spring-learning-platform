@@ -41,6 +41,7 @@ import VocabularyPage from './pages/topics/german/VocabularyPage';
 import KonjugationPage from "./pages/topics/german/KonjugationPage";
 
 import CodeReviewsPage from "./pages/topics/bestPractices/CodeReviewsPage";
+import QuestionBankPage from "./pages/topics/practice/QuestionBankPage";
 
 import LearningPortal from './pages/LearningPortal';
 
@@ -102,6 +103,9 @@ const App = () => {
 
                         {/* Agile Routes */}
                         <Route path="/agile/scrum" element={<ScrumPage/>}/>
+
+                        {/* Practice Routes */}
+                        <Route path="/practice/questions" element={<QuestionBankPage/>}/>
 
                         {/* Best Practices Routes */}
                         <Route path="/best-practices/code-reviews" element={<CodeReviewsPage/>}/>

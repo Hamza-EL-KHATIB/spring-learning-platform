@@ -1,0 +1,458 @@
+{
+  "title": "Microservices",
+  "tags": ["architecture", "microservices", "distributed-systems", "spring", "interview"],
+  "topics": [
+    {
+      "title": "Fundamentals",
+      "description": "Microservices is an architectural style that structures an application as a collection of small, independent services that communicate over well-defined APIs. Each service focuses on a specific business capability, is independently deployable, loosely coupled, and owned by a small team. Unlike a monolith where all functionality lives in a single codebase, microservices decompose the application into smaller pieces that can be developed, deployed and scaled independently.",
+      "interviewRelevance": 5,
+      "key_characteristics": [
+        {
+          "name": "Service Independence",
+          "description": "Each service can be developed, deployed and scaled independently."
+        },
+        {
+          "name": "Decentralized Data Management",
+          "description": "Each service manages its own database."
+        },
+        {
+          "name": "Resilience",
+          "description": "Failure in one service does not cascade to others."
+        },
+        {
+          "name": "Scalability",
+          "description": "Individual services can be scaled based on demand."
+        },
+        {
+          "name": "Technology Heterogeneity",
+          "description": "Different services can use different technologies."
+        },
+        {
+          "name": "Evolutionary Design",
+          "description": "Services can evolve separately."
+        }
+      ]
+    },
+    {
+      "title": "Communication",
+      "description": "How services talk to each other: blocking request/response, or events that decouple sender from receiver.",
+      "interviewRelevance": 5,
+      "synchronous": [
+        {
+          "name": "REST APIs",
+          "description": "HTTP-based communication using JSON or XML."
+        },
+        {
+          "name": "gRPC",
+          "description": "High-performance RPC framework using Protocol Buffers."
+        },
+        {
+          "name": "GraphQL",
+          "description": "Query language for APIs providing clients with exactly the data they need."
+        }
+      ],
+      "asynchronous": [
+        {
+          "name": "Message Queues",
+          "description": "RabbitMQ, ActiveMQ."
+        },
+        {
+          "name": "Event Streaming",
+          "description": "Apache Kafka."
+        },
+        {
+          "name": "Event-Driven Architecture",
+          "description": "Services communicate through events."
+        }
+      ]
+    },
+    {
+      "title": "Decomposition",
+      "description": "How to split a system into services. Boundaries follow the business domain, not technical layers.",
+      "interviewRelevance": 4,
+      "domain_driven_design": [
+        {
+          "name": "Bounded Contexts",
+          "description": "Define clear boundaries between different parts of the domain."
+        },
+        {
+          "name": "Aggregates",
+          "description": "Cluster of domain objects treated as a single unit."
+        },
+        {
+          "name": "Ubiquitous Language",
+          "description": "Common language used by all team members."
+        }
+      ],
+      "decomposition_patterns": [
+        {
+          "name": "By Business Capability",
+          "description": "Align services with business functions."
+        },
+        {
+          "name": "By Subdomain",
+          "description": "Based on domain-driven design concepts."
+        },
+        {
+          "name": "Strangler Pattern",
+          "description": "Gradually migrate a monolithic application to microservices."
+        }
+      ]
+    },
+    {
+      "title": "Resilience",
+      "description": "Patterns that stop one failing service from taking down the whole system.",
+      "interviewRelevance": 5,
+      "patterns": [
+        {
+          "name": "Circuit Breaker",
+          "description": "Prevents cascading failures by breaking the circuit when a service is unresponsive.",
+          "code": "@CircuitBreaker(name = \"paymentService\", fallbackMethod = \"paymentFallback\")\npublic Payment processPayment(PaymentRequest request) {\n    return paymentServiceClient.process(request);\n}\n\npublic Payment paymentFallback(PaymentRequest request, Exception e) {\n    return new Payment(PaymentStatus.PENDING);\n}"
+        },
+        {
+          "name": "Bulkhead",
+          "description": "Isolates failures to prevent them from cascading across the system."
+        },
+        {
+          "name": "Retry",
+          "description": "Automatically retries failed operations with configurable backoff strategies."
+        },
+        {
+          "name": "Timeout",
+          "description": "Sets a maximum duration for service calls to prevent indefinite waiting."
+        },
+        {
+          "name": "Rate Limiter",
+          "description": "Controls the rate at which clients can access a service."
+        }
+      ]
+    },
+    {
+      "title": "API Gateway",
+      "description": "Acts as a single entry point for all clients.",
+      "interviewRelevance": 4,
+      "responsibilities": [
+        {
+          "name": "Routing",
+          "description": "Directs requests to the appropriate services."
+        },
+        {
+          "name": "Authentication",
+          "description": "Centralizes security."
+        },
+        {
+          "name": "Rate Limiting",
+          "description": "Controls request volume."
+        },
+        {
+          "name": "Monitoring",
+          "description": "Tracks API usage."
+        },
+        {
+          "name": "Transformation",
+          "description": "Modifies requests and responses."
+        }
+      ],
+      "implementations": [
+        "Spring Cloud Gateway",
+        "Netflix Zuul",
+        "Kong",
+        "AWS API Gateway"
+      ]
+    },
+    {
+      "title": "Service Discovery",
+      "description": "Enables services to find and communicate with each other without hardcoded endpoints.",
+      "interviewRelevance": 4,
+      "approaches": [
+        {
+          "name": "Client-Side Discovery",
+          "description": "Clients query a service registry and load balance requests themselves."
+        },
+        {
+          "name": "Server-Side Discovery",
+          "description": "A router or load balancer queries the service registry on the client's behalf."
+        }
+      ],
+      "technologies": [
+        "Eureka (Netflix)",
+        "Consul (HashiCorp)",
+        "Kubernetes Service Discovery"
+      ]
+    },
+    {
+      "title": "Config & Deployment",
+      "description": "Centralizing configuration across services and environments, and shipping each service independently.",
+      "interviewRelevance": 4,
+      "configuration_management": [
+        "Spring Cloud Config Server",
+        "HashiCorp Consul",
+        "Kubernetes ConfigMaps and Secrets"
+      ],
+      "containers": [
+        {
+          "name": "Docker",
+          "description": "For packaging applications."
+        },
+        {
+          "name": "Kubernetes",
+          "description": "For orchestration."
+        }
+      ],
+      "continuous_deployment": [
+        "CI/CD pipelines for automated testing and deployment",
+        "Blue/Green deployments",
+        "Canary releases"
+      ]
+    },
+    {
+      "title": "Observability",
+      "description": "You cannot debug a distributed system without tracing, aggregated logs and metrics in place from day one.",
+      "interviewRelevance": 4,
+      "pillars": [
+        {
+          "name": "Distributed Tracing",
+          "description": "Tracks requests as they flow through microservices.",
+          "technologies": ["Zipkin", "Jaeger", "Spring Cloud Sleuth"]
+        },
+        {
+          "name": "Centralized Logging",
+          "description": "Aggregates logs from all services.",
+          "technologies": ["ELK Stack (Elasticsearch, Logstash, Kibana)", "Graylog", "Fluentd"]
+        },
+        {
+          "name": "Metrics and Monitoring",
+          "description": "Collects performance data.",
+          "technologies": ["Prometheus", "Grafana", "Micrometer"]
+        }
+      ]
+    },
+    {
+      "title": "Advanced Patterns",
+      "description": "The patterns that come up once the basic decomposition is settled.",
+      "interviewRelevance": 5,
+      "patterns": [
+        {
+          "name": "CQRS (Command Query Responsibility Segregation)",
+          "description": "Separates read and write operations into different models."
+        },
+        {
+          "name": "Event Sourcing",
+          "description": "Stores changes to application state as a sequence of events."
+        },
+        {
+          "name": "Saga Pattern",
+          "description": "Manages distributed transactions across multiple services through a sequence of local transactions."
+        },
+        {
+          "name": "Backend for Frontend (BFF)",
+          "description": "Creates dedicated backend services for specific frontend applications."
+        },
+        {
+          "name": "Sidecar Pattern",
+          "description": "Deploys helper services alongside the main application container."
+        }
+      ]
+    },
+    {
+      "title": "Vs Monolith",
+      "description": "The comparison interviewers ask for, plus the costs microservices add on top.",
+      "interviewRelevance": 5,
+      "comparison": {
+        "headers": ["Aspect", "Microservices", "Monolith"],
+        "rows": [
+          ["Development", "Independent, parallel", "Unified codebase"],
+          ["Scaling", "Granular, per-service", "Entire application"],
+          ["Deployment", "Independent, frequent", "Complete application"],
+          ["Resilience", "Isolated failures", "Potential system-wide failures"],
+          ["Technology", "Heterogeneous", "Homogeneous"],
+          ["Complexity", "Distributed system challenges", "Simpler architecture, complex codebase"],
+          ["Team Organization", "Small, autonomous teams", "Larger, function-based teams"]
+        ]
+      },
+      "challenges": [
+        {
+          "name": "Distributed Transactions",
+          "description": "Maintaining data consistency across services."
+        },
+        {
+          "name": "Network Latency",
+          "description": "Inter-service communication adds overhead."
+        },
+        {
+          "name": "Testing Complexity",
+          "description": "Testing service interactions becomes more complex."
+        },
+        {
+          "name": "Deployment Complexity",
+          "description": "Managing multiple services requires automation."
+        },
+        {
+          "name": "Monitoring Overhead",
+          "description": "Need for comprehensive monitoring solutions."
+        },
+        {
+          "name": "Team Organization",
+          "description": "Requires cross-functional teams aligned with services."
+        }
+      ],
+      "when_a_monolith_wins": "Microservices architecture introduces complexity that should be justified by the scale and organizational requirements of your application. For smaller applications, a well-designed monolith may be more appropriate."
+    },
+    {
+      "title": "Spring Cloud",
+      "description": "Spring Cloud provides tools for common microservices patterns.",
+      "interviewRelevance": 4,
+      "components": [
+        {
+          "name": "Spring Cloud Config",
+          "description": "Centralized configuration."
+        },
+        {
+          "name": "Spring Cloud Netflix",
+          "description": "Integration with Netflix OSS (Eureka, Hystrix)."
+        },
+        {
+          "name": "Spring Cloud Gateway",
+          "description": "API Gateway."
+        },
+        {
+          "name": "Spring Cloud Circuit Breaker",
+          "description": "Resilience patterns."
+        },
+        {
+          "name": "Spring Cloud Stream",
+          "description": "Messaging abstraction."
+        }
+      ]
+    },
+    {
+      "title": "Best Practices",
+      "description": "The short list to fall back on when asked how you would do it properly.",
+      "best_practices": [
+        "Design services around business capabilities, not technical functions",
+        "Choose the right size for services - not too big, not too small",
+        "Implement proper monitoring and observability from the start",
+        "Use lightweight communication protocols",
+        "Design for failure and implement resilience patterns",
+        "Automate deployment and infrastructure management",
+        "Maintain API compatibility and versioning",
+        "Implement proper distributed logging strategy",
+        "Create independent, cross-functional teams"
+      ],
+      "related_topics": [
+        "Docker and Containerization",
+        "Kubernetes",
+        "Domain-Driven Design",
+        "Spring Cloud",
+        "API Design",
+        "Event-Driven Architecture",
+        "DevOps Practices",
+        "Cloud-Native Development"
+      ]
+    },
+    {
+      "title": "Interview Q&A",
+      "description": "How to frame the topic, and the seven questions that come up most.",
+      "interviewRelevance": 5,
+      "tips": [
+        {
+          "title": "Emphasize Trade-offs",
+          "description": "Acknowledge that microservices are not a silver bullet."
+        },
+        {
+          "title": "Real-world Experience",
+          "description": "Discuss practical challenges you have faced."
+        },
+        {
+          "title": "Migration Strategy",
+          "description": "Explain how to transition from monolith to microservices."
+        },
+        {
+          "title": "Performance Considerations",
+          "description": "Address concerns about inter-service communication."
+        },
+        {
+          "title": "Team Organization",
+          "description": "Discuss Conway's Law and team structures."
+        },
+        {
+          "title": "Specific Tools",
+          "description": "Demonstrate knowledge of specific implementation technologies."
+        },
+        {
+          "title": "Monitoring and Debugging",
+          "description": "Explain strategies for troubleshooting distributed systems."
+        }
+      ],
+      "common_questions": [
+        {
+          "question": "How would you break down a monolithic application into microservices?",
+          "keyPoints": [
+            "Identify business domains using DDD",
+            "Start with the most independent components",
+            "Use strangler pattern for gradual migration",
+            "Consider data dependencies carefully"
+          ]
+        },
+        {
+          "question": "How do you handle distributed transactions in microservices?",
+          "keyPoints": [
+            "Saga pattern for coordinating transactions",
+            "Eventual consistency where possible",
+            "Compensating transactions for rollbacks",
+            "Event sourcing for state tracking"
+          ]
+        },
+        {
+          "question": "What strategies do you use for service-to-service communication?",
+          "keyPoints": [
+            "Synchronous REST/gRPC for critical paths",
+            "Asynchronous messaging for resilience",
+            "Event-driven for loose coupling",
+            "Consider latency and failure scenarios"
+          ]
+        },
+        {
+          "question": "How do you ensure resilience in a microservice architecture?",
+          "keyPoints": [
+            "Circuit breakers prevent cascading failures",
+            "Retry with backoff for transient issues",
+            "Timeouts to avoid hung operations",
+            "Graceful degradation when dependencies fail",
+            "Chaos engineering to test resilience"
+          ]
+        },
+        {
+          "question": "What tools have you used for monitoring microservices?",
+          "keyPoints": [
+            "Distributed tracing with Zipkin/Jaeger",
+            "Metrics collection with Prometheus",
+            "Centralized logging with ELK stack",
+            "Health checks and dashboards",
+            "Alerts based on business SLAs"
+          ]
+        },
+        {
+          "question": "How do you manage configuration across multiple services and environments?",
+          "keyPoints": [
+            "Centralized config server",
+            "Environment-specific configurations",
+            "Runtime configuration updates",
+            "Secrets management",
+            "Configuration as code"
+          ]
+        },
+        {
+          "question": "Explain how you would implement authentication and authorization across microservices",
+          "keyPoints": [
+            "API Gateway for authentication",
+            "JWT/OAuth tokens for service-to-service auth",
+            "Role-based access control",
+            "Token validation at service boundaries",
+            "Principle of least privilege"
+          ]
+        }
+      ]
+    }
+  ]
+}

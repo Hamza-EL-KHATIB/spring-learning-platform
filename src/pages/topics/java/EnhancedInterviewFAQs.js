@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, useState, memo } from 'react';
 import { Search, ChevronDown, X, HelpCircle } from 'lucide-react';
 import CodeBlock from '../../../components/template/CodeBlock';
 import { TabBar } from '../../../components/template/shell';
+import { DataTable, StyledListItem } from '../../../components/template/primitives';
 
 // Q&A needs its own layout — searchable accordion rather than the standard
 // section cards — but uses the app's shared tab bar, cards and code blocks.
@@ -9,6 +10,14 @@ import { TabBar } from '../../../components/template/shell';
 const CATEGORY_EMOJI = ['💡', '🧠', '🔑', '⚡', '📦', '🔮', '🛠️', '🔄', '🏗️', '📝'];
 
 const categoryName = (category) => category.name || category.category || 'Questions';
+
+// Answers may be prose, a list, or a table object — flatten for searching
+const answerText = (answer) => {
+    if (!answer) return '';
+    if (typeof answer === 'string') return answer.toLowerCase();
+    if (Array.isArray(answer)) return answer.map(answerText).join(' ');
+    return Object.values(answer).map(answerText).join(' ');
+};
 
 const highlight = (text, term) => {
     if (!term) return text;
@@ -24,8 +33,48 @@ const highlight = (text, term) => {
     }
 };
 
-// Answers are markdown-ish: ``` fences and `inline` code
+// Answers come in three shapes across the data files: prose, a bullet list, or
+// { table: [ {col: cell} ] }. Normalise before rendering.
 const Answer = memo(({ answer, searchTerm }) => {
+    if (Array.isArray(answer)) {
+        return (
+            <ul className="space-y-1">
+                {answer.map((item, idx) => (
+                    <StyledListItem key={idx}>{highlight(item, searchTerm)}</StyledListItem>
+                ))}
+            </ul>
+        );
+    }
+
+    if (answer && typeof answer === 'object') {
+        const rows = answer.table;
+        if (Array.isArray(rows) && rows.length) {
+            const headers = Object.keys(rows[0]);
+            return (
+                <DataTable
+                    headers={headers}
+                    rows={rows.map((row) => headers.map((h) => row[h] ?? ''))}
+                />
+            );
+        }
+        // Some answers pair prose with a table or a list
+        return (
+            <div className="space-y-2">
+                {Object.entries(answer).map(([key, value], idx) => (
+                    <div key={idx}>
+                        <Answer answer={value} searchTerm={searchTerm} />
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
+    return <TextAnswer answer={answer} searchTerm={searchTerm} />;
+});
+Answer.displayName = 'Answer';
+
+// Prose answers are markdown-ish: ``` fences and `inline` code
+const TextAnswer = memo(({ answer, searchTerm }) => {
     const blocks = useMemo(() => String(answer).split(/(```[\s\S]*?```)/g), [answer]);
 
     return (
@@ -55,7 +104,7 @@ const Answer = memo(({ answer, searchTerm }) => {
         </div>
     );
 });
-Answer.displayName = 'Answer';
+TextAnswer.displayName = 'TextAnswer';
 
 const QuestionCard = memo(({ qa, isExpanded, onToggle, searchTerm }) => (
     <div
@@ -118,7 +167,7 @@ const EnhancedInterviewFAQs = ({ section }) => {
                 questions: (category.questions || []).filter(
                     (q) =>
                         q.question?.toLowerCase().includes(term) ||
-                        q.answer?.toLowerCase().includes(term)
+                        answerText(q.answer).includes(term)
                 ),
             }))
             .filter((category) => category.questions.length > 0);

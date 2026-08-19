@@ -24,6 +24,7 @@ import principles from './data/architecture/principles.json';
 import git from './data/devops/git.json';
 import scrum from './data/scrum/scrum.json';
 import codeReviews from './data/bestPractices/codeReviews.json';
+import questionBank from './data/practice/technical-questions.json';
 
 const dataByPath = {
     '/java/fundamentals': javaFundamentals,
@@ -50,6 +51,7 @@ const dataByPath = {
     '/devops/git': git,
     '/agile/scrum': scrum,
     '/best-practices/code-reviews': codeReviews,
+    '/practice/questions': questionBank,
 };
 
 // Searchable entries for a page, as { label, tab } — `label` is what the user
