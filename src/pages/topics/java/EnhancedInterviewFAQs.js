@@ -1,447 +1,212 @@
-import React, {useState, useRef, useEffect, useCallback, memo} from 'react';
-import {Search, ChevronDown, X, ChevronLeft, ChevronRight} from 'lucide-react';
+import React, { useCallback, useMemo, useState, memo } from 'react';
+import { Search, ChevronDown, X, HelpCircle } from 'lucide-react';
+import CodeBlock from '../../../components/template/CodeBlock';
+import { TabBar } from '../../../components/template/shell';
 
-// Main component that enhances the Interview FAQs experience
-const EnhancedInterviewFAQs = ({section, language}) => {
-    if (!section?.categories?.length) return null;
+// Q&A needs its own layout — searchable accordion rather than the standard
+// section cards — but uses the app's shared tab bar, cards and code blocks.
 
-    return (
-        <div className="space-y-8">
-            {/* Visually engaging header */}
-            <div
-                className="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-lg p-6 border border-cyan-500/20 shadow-lg"
-            >
-                <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300 mb-3">
-                    {language === 'en' ? 'Interview Roadmap 🗺️' : 'Guide d\'entretien 🗺️'}
-                </h2>
-                <p className="text-gray-300">{section.description}</p>
-            </div>
+const CATEGORY_EMOJI = ['💡', '🧠', '🔑', '⚡', '📦', '🔮', '🛠️', '🔄', '🏗️', '📝'];
 
-            {/* Interactive FAQ experience */}
-            <FAQExperience categories={section.categories} language={language}/>
-        </div>
-    );
+const categoryName = (category) => category.name || category.category || 'Questions';
+
+const highlight = (text, term) => {
+    if (!term) return text;
+    try {
+        const parts = String(text).split(new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'));
+        return parts.map((part, i) =>
+            part.toLowerCase() === term.toLowerCase()
+                ? <mark key={i} className="bg-purple-500/30 text-purple-200 rounded px-0.5">{part}</mark>
+                : <React.Fragment key={i}>{part}</React.Fragment>
+        );
+    } catch {
+        return text;
+    }
 };
 
-// The searchable, interactive FAQ component
-const FAQExperience = memo(({categories, language}) => {
-    const [searchText, setSearchText] = useState('');
-    const [activeCategory, setActiveCategory] = useState(0);
-    const [expandedId, setExpandedId] = useState(null);
-
-    // Filter function for search
-    const searchFilter = useCallback((q, a) => {
-        if (!searchText) return true;
-        const text = searchText.toLowerCase();
-        return q.toLowerCase().includes(text) || a.toLowerCase().includes(text);
-    }, [searchText]);
-
-    // Toggle question expansion
-    const toggleQuestion = useCallback(id => {
-        setExpandedId(current => current === id ? null : id);
-    }, []);
-
-    // Category icons to make navigation more visual
-    const categoryIcons = ["💡", "🧠", "🔑", "⚡", "📦", "🔮", "🛠️", "🔄", "🏗️", "📝"];
-
-    // Check if there are any search results
-    const hasSearchResults = categories.some(c =>
-        c.questions.some(q => searchFilter(q.question, q.answer))
-    );
+// Answers are markdown-ish: ``` fences and `inline` code
+const Answer = memo(({ answer, searchTerm }) => {
+    const blocks = useMemo(() => String(answer).split(/(```[\s\S]*?```)/g), [answer]);
 
     return (
-        <>
-            {/* Search bar */}
-            <div className="relative mb-8">
-                <div
-                    className="flex items-center bg-gray-800/70 rounded-full border border-gray-700 focus-within:border-cyan-500 transition-all shadow-md overflow-hidden">
-                    <div className="pl-5">
-                        <Search className="w-5 h-5 text-gray-400"/>
+        <div className="space-y-3">
+            {blocks.map((part, idx) => {
+                if (part.startsWith('```')) {
+                    const language = part.match(/^```(\w+)/)?.[1] || 'java';
+                    const code = part.replace(/^```(?:\w+)?\n?/, '').replace(/```$/, '');
+                    return <CodeBlock key={idx} code={code} language={language} />;
+                }
+                if (!part.trim()) return null;
+
+                return (
+                    <p key={idx} className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
+                        {part.split(/`([^`]+)`/).map((text, i) =>
+                            i % 2 === 0 ? (
+                                <React.Fragment key={i}>{highlight(text, searchTerm)}</React.Fragment>
+                            ) : (
+                                <code key={i} className="bg-gray-900/70 px-1 py-0.5 rounded text-pink-300 font-mono text-xs">
+                                    {text}
+                                </code>
+                            )
+                        )}
+                    </p>
+                );
+            })}
+        </div>
+    );
+});
+Answer.displayName = 'Answer';
+
+const QuestionCard = memo(({ qa, isExpanded, onToggle, searchTerm }) => (
+    <div
+        className={`rounded-md border overflow-hidden transition-all ${
+            isExpanded
+                ? 'bg-gray-800/80 border-purple-500/30 shadow-md'
+                : 'bg-gray-800/60 border-gray-700/50 hover:border-gray-600'
+        }`}
+    >
+        <button onClick={onToggle} className="w-full text-left p-3 flex justify-between items-start gap-3">
+            <h4 className="text-sm font-medium text-purple-300">
+                {highlight(qa.question, searchTerm)}
+            </h4>
+            <ChevronDown
+                className={`w-4 h-4 shrink-0 mt-0.5 transition-transform ${
+                    isExpanded ? 'rotate-180 text-purple-300' : 'text-gray-500'
+                }`}
+            />
+        </button>
+        {isExpanded && (
+            <div className="px-3 pb-3 pt-2 border-t border-gray-700/40">
+                <Answer answer={qa.answer} searchTerm={searchTerm} />
+            </div>
+        )}
+    </div>
+));
+QuestionCard.displayName = 'QuestionCard';
+
+const EnhancedInterviewFAQs = ({ section }) => {
+    // Memoized so the fallback [] doesn't create a new array each render and
+    // invalidate the memos below
+    const categories = useMemo(() => section?.categories || [], [section]);
+    const [searchText, setSearchText] = useState('');
+    const [activeId, setActiveId] = useState('0');
+    const [expandedId, setExpandedId] = useState(null);
+
+    const toggle = useCallback(
+        (id) => setExpandedId((current) => (current === id ? null : id)),
+        []
+    );
+
+    const tabs = useMemo(
+        () => categories.map((category, i) => ({
+            id: String(i),
+            title: categoryName(category),
+            icon: <span>{CATEGORY_EMOJI[i % CATEGORY_EMOJI.length]}</span>,
+        })),
+        [categories]
+    );
+
+    // When searching, show matches across every category rather than one tab
+    const matches = useMemo(() => {
+        const term = searchText.trim().toLowerCase();
+        if (!term) return null;
+        return categories
+            .map((category, i) => ({
+                name: categoryName(category),
+                emoji: CATEGORY_EMOJI[i % CATEGORY_EMOJI.length],
+                index: i,
+                questions: (category.questions || []).filter(
+                    (q) =>
+                        q.question?.toLowerCase().includes(term) ||
+                        q.answer?.toLowerCase().includes(term)
+                ),
+            }))
+            .filter((category) => category.questions.length > 0);
+    }, [categories, searchText]);
+
+    if (!categories.length) return null;
+
+    const activeCategory = categories[Number(activeId)] || categories[0];
+
+    return (
+        <div className="space-y-4">
+            {section.description && (
+                <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 rounded-lg p-4 border border-purple-500/30">
+                    <div className="flex items-center gap-2 mb-1">
+                        <div className="p-1.5 bg-gray-800/70 rounded-md">
+                            <HelpCircle className="w-4 h-4 text-purple-400" />
+                        </div>
+                        <h3 className="text-base font-semibold text-white">Interview Roadmap</h3>
                     </div>
-                    <input
-                        type="text"
-                        placeholder={language === 'en'
-                            ? "What Java concept are you curious about?"
-                            : "Quel concept Java vous intéresse ?"}
-                        value={searchText}
-                        onChange={e => setSearchText(e.target.value)}
-                        className="w-full px-4 py-3 bg-transparent text-white focus:outline-none placeholder-gray-400"
-                    />
-                    {searchText && (
-                        <button
-                            className="pr-5 text-gray-400 hover:text-white transition-colors"
-                            onClick={() => setSearchText('')}
-                        >
-                            <X className="w-4 h-4"/>
-                        </button>
-                    )}
+                    <p className="text-gray-300 text-sm ml-8">{section.description}</p>
                 </div>
+            )}
+
+            {/* Search */}
+            <div className="flex items-center gap-2 px-3 py-2 bg-gray-800/70 rounded-md border border-gray-700 focus-within:border-purple-500/50 transition-colors">
+                <Search className="w-4 h-4 text-gray-400 shrink-0" />
+                <input
+                    type="text"
+                    value={searchText}
+                    onChange={(event) => setSearchText(event.target.value)}
+                    placeholder="Search these questions…"
+                    className="flex-1 bg-transparent text-gray-100 text-sm placeholder-gray-500 focus:outline-none"
+                />
+                {searchText && (
+                    <button onClick={() => setSearchText('')} className="text-gray-500 hover:text-white">
+                        <X className="w-4 h-4" />
+                    </button>
+                )}
             </div>
 
-            {!searchText ? (
-                // Standard category view when not searching
+            {matches === null ? (
                 <>
-                    {/* Visual category tabs */}
-                    <CategoryTabs
-                        categories={categories}
-                        activeCategory={activeCategory}
-                        setActiveCategory={setActiveCategory}
-                        categoryIcons={categoryIcons}
-                        language={language}
-                    />
-
-                    {/* Questions for the active category */}
-                    <div className="space-y-4">
-                        {categories[activeCategory].questions.map((qa, j) => {
-                            const questionId = `q-${activeCategory}-${j}`;
-                            const isExpanded = expandedId === questionId;
-
+                    <TabBar tabs={tabs} activeId={activeId} onChange={setActiveId} />
+                    <div className="space-y-2">
+                        {(activeCategory.questions || []).map((qa, j) => {
+                            const id = `q-${activeId}-${j}`;
                             return (
                                 <QuestionCard
-                                    key={j}
+                                    key={id}
                                     qa={qa}
-                                    isExpanded={isExpanded}
-                                    toggleQuestion={() => toggleQuestion(questionId)}
+                                    isExpanded={expandedId === id}
+                                    onToggle={() => toggle(id)}
                                     searchTerm=""
                                 />
                             );
                         })}
                     </div>
                 </>
+            ) : matches.length === 0 ? (
+                <p className="px-3 py-8 text-center text-sm text-gray-500">
+                    No questions match “{searchText}”.
+                </p>
             ) : (
-                // Search results view
-                <>
-                    <div className="mb-4 px-1">
-                        <h3 className="text-lg font-medium text-white">
-                            {hasSearchResults
-                                ? (language === 'en' ? 'Search Results' : 'Résultats de recherche')
-                                : (language === 'en' ? 'No results found' : 'Aucun résultat trouvé')}
-                        </h3>
-                    </div>
-
-                    {hasSearchResults ? (
-                        <div className="space-y-6">
-                            {categories.map((category, i) => {
-                                const filteredQuestions = category.questions.filter(q =>
-                                    searchFilter(q.question, q.answer)
-                                );
-
-                                if (filteredQuestions.length === 0) return null;
-
+                <div className="space-y-4">
+                    {matches.map((category) => (
+                        <div key={category.index} className="space-y-2">
+                            <h3 className="text-sm font-medium text-purple-300">
+                                <span className="mr-1.5">{category.emoji}</span>
+                                {category.name}
+                            </h3>
+                            {category.questions.map((qa, j) => {
+                                const id = `s-${category.index}-${j}`;
                                 return (
-                                    <div key={i} className="space-y-3">
-                                        <div className="flex items-center mb-2">
-                                            <span
-                                                className="text-xl mr-2">{categoryIcons[i % categoryIcons.length]}</span>
-                                            <h3 className="text-md font-medium text-cyan-300">{category.category}</h3>
-                                        </div>
-
-                                        {filteredQuestions.map((qa, j) => {
-                                            const questionId = `sq-${i}-${j}`;
-                                            const isExpanded = expandedId === questionId;
-
-                                            return (
-                                                <QuestionCard
-                                                    key={j}
-                                                    qa={qa}
-                                                    isExpanded={isExpanded}
-                                                    toggleQuestion={() => toggleQuestion(questionId)}
-                                                    searchTerm={searchText}
-                                                />
-                                            );
-                                        })}
-                                    </div>
+                                    <QuestionCard
+                                        key={id}
+                                        qa={qa}
+                                        isExpanded={expandedId === id}
+                                        onToggle={() => toggle(id)}
+                                        searchTerm={searchText}
+                                    />
                                 );
                             })}
                         </div>
-                    ) : (
-                        <div className="bg-gray-800/40 rounded-xl p-8 text-center border border-gray-700/50">
-                            <span className="text-4xl mb-4 block">🔍</span>
-                            <p className="text-gray-300 mb-2">
-                                {language === 'en' ? 'No matching questions found' : 'Aucune question correspondante trouvée'}
-                            </p>
-                            <p className="text-gray-400 text-sm">
-                                {language === 'en'
-                                    ? 'Try different keywords or browse by category'
-                                    : 'Essayez d\'autres mots-clés ou parcourez par catégorie'}
-                            </p>
-                        </div>
-                    )}
-                </>
-            )}
-        </>
-    );
-});
-
-FAQExperience.displayName = 'FAQExperience';
-
-// Component for rendering question cards with highlight capability
-const QuestionCard = memo(({qa, isExpanded, toggleQuestion, searchTerm}) => {
-    return (
-        <div
-            className={`bg-gray-800/60 rounded-xl overflow-hidden transition-all duration-300 border border-gray-700/50 ${
-                isExpanded ? 'shadow-lg border-cyan-500/30' : 'hover:border-gray-600'
-            }`}
-        >
-            <button
-                onClick={toggleQuestion}
-                className="w-full text-left p-5 flex justify-between items-start"
-            >
-                <h4 className="text-md font-medium text-cyan-300 pr-6">
-                    {searchTerm ? highlightSearchTerm(qa.question, searchTerm) : qa.question}
-                </h4>
-                <div
-                    className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all ${
-                        isExpanded ? 'bg-cyan-500 text-white' : 'bg-gray-700 text-gray-300'
-                    }`}
-                >
-                    <ChevronDown
-                        className={`w-4 h-4 transition-transform ${isExpanded ? 'transform rotate-180' : ''}`}
-                    />
-                </div>
-            </button>
-
-            {isExpanded && (
-                <div className="p-5 pt-1 border-t border-gray-700/30 bg-gray-800/80">
-                    <AnswerContent
-                        answer={qa.answer}
-                        searchTerm={searchTerm}
-                    />
+                    ))}
                 </div>
             )}
         </div>
     );
-});
-
-QuestionCard.displayName = 'QuestionCard';
-
-// Component for formatting answers with code blocks and highlighting
-const AnswerContent = memo(({answer, searchTerm}) => {
-    // Process the answer for code blocks and formatting
-    if (!answer.includes('```') && !answer.includes('`')) {
-        return (
-            <p className="text-gray-300 whitespace-pre-line leading-relaxed">
-                {searchTerm ? highlightSearchTerm(answer, searchTerm) : answer}
-            </p>
-        );
-    }
-
-    // Handle answers with code blocks and inline code
-    if (answer.includes('```')) {
-        return (
-            <div className="space-y-3">
-                {answer.split(/(```[\s\S]*?```)/g).map((part, idx) => {
-                    if (part.startsWith('```')) {
-                        // Extract clean code without backticks and language marker
-                        const code = part.replace(/```(?:\w+)?\n|```/g, '');
-                        return (
-                            <div key={idx}
-                                 className="bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-300 overflow-x-auto">
-                                {code}
-                            </div>
-                        );
-                    }
-
-                    // Skip empty parts
-                    if (!part.trim()) return null;
-
-                    // Format plain text with possible inline code
-                    return (
-                        <p key={idx} className="text-gray-300 leading-relaxed">
-                            {part.split(/`([^`]+)`/).map((text, textIdx) => (
-                                textIdx % 2 === 0 ? (
-                                    <span key={textIdx}>
-                    {searchTerm ? highlightSearchTerm(text, searchTerm) : text}
-                  </span>
-                                ) : (
-                                    <code key={textIdx}
-                                          className="bg-gray-800/70 px-1 py-0.5 rounded text-pink-300 font-mono">
-                                        {text}
-                                    </code>
-                                )
-                            ))}
-                        </p>
-                    );
-                })}
-            </div>
-        );
-    }
-
-    // Handle answers with only inline code
-    return (
-        <p className="text-gray-300 leading-relaxed">
-            {answer.split(/`([^`]+)`/).map((part, idx) => (
-                idx % 2 === 0 ? (
-                    <span key={idx}>{searchTerm ? highlightSearchTerm(part, searchTerm) : part}</span>
-                ) : (
-                    <code key={idx} className="bg-gray-800/70 px-1 py-0.5 rounded text-pink-300 font-mono">
-                        {part}
-                    </code>
-                )
-            ))}
-        </p>
-    );
-});
-
-AnswerContent.displayName = 'AnswerContent';
-
-// Highlights search terms in text
-const highlightSearchTerm = (text, searchTerm) => {
-    if (!searchTerm) return text;
-
-    try {
-        const parts = text.split(new RegExp(`(${searchTerm})`, 'gi'));
-        return (
-            <>
-                {parts.map((part, i) =>
-                    part.toLowerCase() === searchTerm.toLowerCase() ?
-                        <span key={i} className="bg-cyan-500/20 text-cyan-300 px-1 rounded">{part}</span> :
-                        part
-                )}
-            </>
-        );
-    } catch (e) {
-        // Fallback if regex fails
-        return text;
-    }
 };
-
-// Scrollable category tabs with visual indicators
-const CategoryTabs = memo(({categories, activeCategory, setActiveCategory, categoryIcons, language}) => {
-    const scrollRef = useRef(null);
-    const [scrollState, setScrollState] = useState({canScrollLeft: false, canScrollRight: false});
-
-    // Update scroll shadows based on scroll position
-    const updateScrollShadows = useCallback(() => {
-        if (!scrollRef.current) return;
-
-        const {scrollLeft, scrollWidth, clientWidth} = scrollRef.current;
-        setScrollState({
-            canScrollLeft: scrollLeft > 10,
-            canScrollRight: scrollLeft < scrollWidth - clientWidth - 10
-        });
-    }, []);
-
-    // Initialize and attach scroll event listener
-    useEffect(() => {
-        const scrollElement = scrollRef.current;
-        if (scrollElement) {
-            updateScrollShadows();
-            scrollElement.addEventListener('scroll', updateScrollShadows);
-            window.addEventListener('resize', updateScrollShadows);
-
-            return () => {
-                scrollElement.removeEventListener('scroll', updateScrollShadows);
-                window.removeEventListener('resize', updateScrollShadows);
-            };
-        }
-    }, [updateScrollShadows]);
-
-    // Scroll category into view when selected
-    useEffect(() => {
-        if (scrollRef.current) {
-            const container = scrollRef.current;
-            // The active button is inside the child div that contains all buttons
-            const buttonsContainer = container.firstChild;
-            const activeButton = buttonsContainer?.children?.[activeCategory];
-
-            if (activeButton) {
-                // Get visible area width
-                const containerWidth = container.offsetWidth;
-                // Get position of the button relative to the container
-                const buttonLeft = activeButton.offsetLeft;
-                const buttonWidth = activeButton.offsetWidth;
-
-                // Calculate the ideal scroll position to center the button
-                const idealScrollLeft = buttonLeft - (containerWidth / 2) + (buttonWidth / 2);
-
-                // Apply smooth scrolling
-                container.scrollTo({
-                    left: idealScrollLeft,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    }, [activeCategory]);
-
-    // Scroll handlers
-    const scrollLeft = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({left: -200, behavior: 'smooth'});
-        }
-    };
-
-    const scrollRight = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({left: 200, behavior: 'smooth'});
-        }
-    };
-
-    return (
-        <div className="relative mb-8">
-            {/* Navigation buttons */}
-            {scrollState.canScrollLeft && (
-                <button
-                    onClick={scrollLeft}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-gray-800/80 rounded-full flex items-center justify-center text-cyan-300 shadow-lg hover:bg-gray-700 transition-all"
-                    aria-label={language === 'en' ? "Scroll categories left" : "Faire défiler les catégories vers la gauche"}
-                >
-                    <ChevronLeft className="w-5 h-5"/>
-                </button>
-            )}
-
-            {scrollState.canScrollRight && (
-                <button
-                    onClick={scrollRight}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-gray-800/80 rounded-full flex items-center justify-center text-cyan-300 shadow-lg hover:bg-gray-700 transition-all"
-                    aria-label={language === 'en' ? "Scroll categories right" : "Faire défiler les catégories vers la droite"}
-                >
-                    <ChevronRight className="w-5 h-5"/>
-                </button>
-            )}
-
-            {/* Scroll container with gradient indicators */}
-            <div className="relative">
-                {/* Left shadow gradient */}
-                {scrollState.canScrollLeft && (
-                    <div
-                        className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none"></div>
-                )}
-
-                {/* Right shadow gradient */}
-                {scrollState.canScrollRight && (
-                    <div
-                        className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none"></div>
-                )}
-
-                {/* Scrollable tabs */}
-                <div
-                    ref={scrollRef}
-                    className="flex overflow-x-auto py-2 px-2 no-scrollbar"
-                    style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}
-                >
-                    <div className="flex space-x-3 px-4">
-                        {categories.map((category, i) => (
-                            <button
-                                key={i}
-                                onClick={() => setActiveCategory(i)}
-                                className={`px-4 py-2.5 rounded-full transition-all whitespace-nowrap flex items-center ${
-                                    activeCategory === i
-                                        ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg scale-105 font-medium'
-                                        : 'bg-gray-800/80 text-gray-300 hover:bg-gray-700 hover:text-white'
-                                }`}
-                            >
-                                <span className="mr-2">{categoryIcons[i % categoryIcons.length]}</span>
-                                {category.category}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-});
-
-CategoryTabs.displayName = 'CategoryTabs';
 
 export default EnhancedInterviewFAQs;
