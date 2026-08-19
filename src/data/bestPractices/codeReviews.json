@@ -1,188 +1,271 @@
 {
-  "sections": [
+  "title": "Code Review Best Practices",
+  "topics": [
     {
-      "number": 1,
       "title": "Code Review Protocol",
-      "content": {
-        "Additions and Corrections": {
-          "Roles": {
-            "Observers": {
-              "description": "Allow junior developers to observe reviews to learn best practices."
+      "multi-content": [
+        {
+          "title": "Roles",
+          "multi-content": [
+            {
+              "title": "Observers",
+              "simple-content": "Allow junior developers to observe reviews to learn best practices."
             },
-            "Secondary Reviewers": {
-              "description": "In critical code areas, have multiple reviewers for added scrutiny."
+            {
+              "title": "Secondary Reviewers",
+              "simple-content": "In critical code areas, have multiple reviewers for added scrutiny."
             }
-          },
-          "Submission Guidelines": {
-            "Up-to-date Branches": {
-              "description": "Ensure the feature branch is synced with the main branch to prevent merge conflicts."
+          ]
+        },
+        {
+          "title": "Submission Guidelines",
+          "multi-content": [
+            {
+              "title": "Up-to-date Branches",
+              "simple-content": "Ensure the feature branch is synced with the main branch to prevent merge conflicts."
             },
-            "PR Size": {
-              "description": "Encourage small, manageable pull requests focusing on a single feature or bug fix."
+            {
+              "title": "PR Size",
+              "simple-content": "Encourage small, manageable pull requests focusing on a single feature or bug fix."
             },
-            "Automated Checklists": {
-              "description": "Use PR templates with checklists to ensure all submission criteria are met."
+            {
+              "title": "Automated Checklists",
+              "simple-content": "Use PR templates with checklists to ensure all submission criteria are met."
             }
-          },
-          "Review Timeline": {
-            "Prioritization": {
-              "points": [
+          ]
+        },
+        {
+          "title": "Review Timeline",
+          "multi-content": [
+            {
+              "title": "Prioritization",
+              "multi-content": [
                 "Define how urgent fixes are prioritized over feature enhancements.",
                 "Set expectations for response times during different project phases."
               ]
             }
-          }
+          ]
         }
-      }
+      ]
     },
     {
-      "number": 2,
       "title": "Steps for Reviewing Code",
-      "content": {
-        "Additions and Corrections": {
-          "Understand the Context": {
-            "Business Requirements": {
-              "description": "Ensure the code changes align with business needs and requirements."
+      "multi-content": [
+        {
+          "title": "Understand the Context",
+          "multi-content": [
+            {
+              "title": "Business Requirements",
+              "simple-content": "Ensure the code changes align with business needs and requirements."
             },
-            "Related Modules": {
-              "description": "Check how changes affect other parts of the system."
+            {
+              "title": "Related Modules",
+              "simple-content": "Check how changes affect other parts of the system."
             }
-          },
-          "Check for Breaking Changes": {
-            "Backward Compatibility": {
-              "description": "Confirm that changes do not break existing APIs or functionalities."
+          ]
+        },
+        {
+          "title": "Check for Breaking Changes",
+          "multi-content": [
+            {
+              "title": "Backward Compatibility",
+              "simple-content": "Confirm that changes do not break existing APIs or functionalities."
             },
-            "Deprecation Notices": {
-              "description": "If removing or altering functionality, ensure proper deprecation warnings are in place."
+            {
+              "title": "Deprecation Notices",
+              "simple-content": "If removing or altering functionality, ensure proper deprecation warnings are in place."
             }
-          },
-          "Test Coverage": {
-            "Quality of Tests": {
-              "description": "Evaluate whether tests effectively cover edge cases and potential failure points."
+          ]
+        },
+        {
+          "title": "Test Coverage",
+          "multi-content": [
+            {
+              "title": "Quality of Tests",
+              "simple-content": "Evaluate whether tests effectively cover edge cases and potential failure points."
             },
-            "Integration Tests": {
-              "description": "Ensure integration tests are updated or added when necessary."
+            {
+              "title": "Integration Tests",
+              "simple-content": "Ensure integration tests are updated or added when necessary."
             }
-          },
-          "API Changes": {
-            "Documentation": {
-              "points": [
+          ]
+        },
+        {
+          "title": "API Changes",
+          "multi-content": [
+            {
+              "title": "Documentation",
+              "multi-content": [
                 "Update API documentation to reflect changes.",
                 "Ensure versioning is handled correctly for public APIs."
               ]
             }
-          },
-          "Logic and Performance": {
-            "Algorithm Efficiency": {
-              "description": "Assess whether the most efficient algorithms are used."
+          ]
+        },
+        {
+          "title": "Logic and Performance",
+          "multi-content": [
+            {
+              "title": "Algorithm Efficiency",
+              "simple-content": "Assess whether the most efficient algorithms are used."
             },
-            "Resource Utilization": {
-              "description": "Check for unnecessary resource consumption (memory, CPU)."
+            {
+              "title": "Resource Utilization",
+              "simple-content": "Check for unnecessary resource consumption (memory, CPU)."
             }
-          },
-          "Code Modularity and Readability": {
-            "Design Patterns": {
-              "description": "Ensure appropriate design patterns are applied where beneficial."
+          ]
+        },
+        {
+          "title": "Code Modularity and Readability",
+          "multi-content": [
+            {
+              "title": "Design Patterns",
+              "simple-content": "Ensure appropriate design patterns are applied where beneficial."
             },
-            "Comments and Documentation": {
-              "description": "Verify that complex code segments are well-documented."
+            {
+              "title": "Comments and Documentation",
+              "simple-content": "Verify that complex code segments are well-documented."
             }
-          },
-          "Git and CI/CD Checks": {
-            "Commit Messages": {
-              "description": "Ensure they are descriptive and follow the team's conventions (e.g., Conventional Commits)."
+          ]
+        },
+        {
+          "title": "Git and CI/CD Checks",
+          "multi-content": [
+            {
+              "title": "Commit Messages",
+              "simple-content": "Ensure they are descriptive and follow the team's conventions (e.g., Conventional Commits)."
             },
-            "No Sensitive Data": {
-              "description": "Verify that no sensitive information (like API keys) is included."
+            {
+              "title": "No Sensitive Data",
+              "simple-content": "Verify that no sensitive information (like API keys) is included."
             }
-          },
-          "Tools and Automation": {
-            "GitHub Actions": {
-              "Automated Code Reviews": {
-                "description": "Integrate tools like CodeGuru or ReviewNB for automated code analysis."
-              },
-              "Security Scans": {
-                "description": "Automate security scanning using tools like Snyk or Dependabot."
-              }
+          ]
+        },
+        {
+          "title": "Tools and Automation",
+          "multi-content": [
+            {
+              "title": "GitHub Actions",
+              "multi-content": []
             },
-            "Code Quality Tools": {
-              "IDE Integration": {
-                "description": "Encourage the use of plugins like SonarLint for immediate feedback during development."
-              },
-              "Custom Rulesets": {
-                "description": "Develop custom rules specific to your project's needs."
-              }
+            {
+              "title": "Code Quality Tools",
+              "multi-content": []
             },
-            "Static Code Analysis": {
-              "Performance Profiling": {
-                "description": "Use tools to analyze the performance impact of code changes."
-              },
-              "Thread Safety Checks": {
-                "description": "For concurrent applications, ensure thread safety is maintained."
-              }
+            {
+              "title": "Static Code Analysis",
+              "multi-content": []
             }
-          },
-          "Security Considerations": {
-            "Input Validation": {
-              "description": "Check for proper validation and sanitization of user inputs to prevent injection attacks."
+          ]
+        },
+        {
+          "title": "Security Considerations",
+          "multi-content": [
+            {
+              "title": "Input Validation",
+              "simple-content": "Check for proper validation and sanitization of user inputs to prevent injection attacks."
             },
-            "Authentication and Authorization": {
-              "description": "Ensure that secure authentication mechanisms are used and sensitive endpoints are protected."
+            {
+              "title": "Authentication and Authorization",
+              "simple-content": "Ensure that secure authentication mechanisms are used and sensitive endpoints are protected."
             },
-            "Data Privacy": {
-              "description": "Verify that personal or sensitive data is handled in compliance with regulations like GDPR."
+            {
+              "title": "Data Privacy",
+              "simple-content": "Verify that personal or sensitive data is handled in compliance with regulations like GDPR."
             },
-            "Dependency Management": {
-              "description": "Check for known vulnerabilities in dependencies and ensure they are updated to secure versions."
+            {
+              "title": "Dependency Management",
+              "simple-content": "Check for known vulnerabilities in dependencies and ensure they are updated to secure versions."
             }
-          },
-          "Legal and Compliance": {
-            "Licensing": {
-              "description": "Ensure that all third-party code and libraries comply with the company's licensing policies."
+          ]
+        },
+        {
+          "title": "Legal and Compliance",
+          "multi-content": [
+            {
+              "title": "Licensing",
+              "simple-content": "Ensure that all third-party code and libraries comply with the company's licensing policies."
             },
-            "Regulatory Compliance": {
-              "description": "Verify that the code adheres to industry-specific regulations (e.g., HIPAA, PCI DSS)."
+            {
+              "title": "Regulatory Compliance",
+              "simple-content": "Verify that the code adheres to industry-specific regulations (e.g., HIPAA, PCI DSS)."
             }
-          }
+          ]
         }
-      }
+      ]
     },
     {
-      "number": 3,
       "title": "Things to Look For",
-      "content": {
-        "New Section": {
-          "Small, Focused Commits": {
-            "description": "Encourage commits that are small and focused on a single issue or feature for easier review."
-          },
-          "Consistent Coding Style": {
-            "description": "Use code formatters (like Prettier) to maintain a consistent style across the codebase."
-          },
-          "Documentation": {
-            "description": "Emphasize the importance of updating documentation alongside code changes."
-          },
-          "Error Handling": {
-            "description": "Ensure proper error handling and logging mechanisms are in place."
-          }
+      "multi-content": [
+        {
+          "title": "Small, Focused Commits",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Encourage commits that are small and focused on a single issue or feature for easier review."
+            }
+          ]
+        },
+        {
+          "title": "Consistent Coding Style",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Use code formatters (like Prettier) to maintain a consistent style across the codebase."
+            }
+          ]
+        },
+        {
+          "title": "Documentation",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Emphasize the importance of updating documentation alongside code changes."
+            }
+          ]
+        },
+        {
+          "title": "Error Handling",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Ensure proper error handling and logging mechanisms are in place."
+            }
+          ]
         }
-      }
+      ]
     },
     {
-      "number": 4,
       "title": "Things to Avoid",
-      "content": {
-        "Additions": {
-          "Nitpicking": {
-            "description": "Avoid focusing on minor issues that could be automatically corrected by linters or formatters."
-          },
-          "Bias": {
-            "description": "Be aware of personal biases towards certain coding styles or practices that are not part of the team's standards."
-          },
-          "Approval Without Review": {
-            "description": "Discourage approving pull requests without a thorough review, even for small changes."
-          }
+      "multi-content": [
+        {
+          "title": "Nitpicking",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Avoid focusing on minor issues that could be automatically corrected by linters or formatters."
+            }
+          ]
+        },
+        {
+          "title": "Bias",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Be aware of personal biases towards certain coding styles or practices that are not part of the team's standards."
+            }
+          ]
+        },
+        {
+          "title": "Approval Without Review",
+          "multi-content": [
+            {
+              "title": "description",
+              "simple-content": "Discourage approving pull requests without a thorough review, even for small changes."
+            }
+          ]
         }
-      }
+      ]
     }
   ]
 }

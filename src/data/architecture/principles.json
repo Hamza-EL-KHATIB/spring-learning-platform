@@ -1,17 +1,106 @@
 {
   "title": "Essential Software Principles: YAGNI, KISS, and DRY",
-  "definitions": [
+  "topics": [
     {
-      "term": "YAGNI",
-      "definition": "You Ain't Gonna Need It. Only implement functionality when it is necessary, avoiding overengineering by not adding features that may never be used."
+      "title": "YAGNI",
+      "multi-content": [
+        {
+          "title": "definition",
+          "simple-content": "You Ain't Gonna Need It. Only implement functionality when it is necessary, avoiding overengineering by not adding features that may never be used."
+        },
+        {
+          "title": "Practical Application",
+          "multi-content": [
+            "Avoid implementing complex user permission systems before they're required.",
+            "Don't add configuration options until a second use case actually exists.",
+            "Skip generic abstraction layers until you have two or more concrete implementations."
+          ]
+        },
+        {
+          "title": "Common Pitfalls",
+          "multi-content": [
+            "Don't use it as an excuse to skip proper design and planning.",
+            "Ignoring genuinely known requirements is not YAGNI — it is under-engineering.",
+            "Applying it to non-functional needs like security or observability, which are needed from day one."
+          ]
+        }
+      ]
     },
     {
-      "term": "KISS",
-      "definition": "Keep It Simple, Stupid. Design and implement solutions in a straightforward manner, minimizing complexity and unnecessary complications."
+      "title": "KISS",
+      "multi-content": [
+        {
+          "title": "definition",
+          "simple-content": "Keep It Simple, Stupid. Design and implement solutions in a straightforward manner, minimizing complexity and unnecessary complications."
+        },
+        {
+          "title": "Practical Application",
+          "multi-content": [
+            "Choose a straightforward authentication approach before considering OAuth federation.",
+            "Prefer a readable loop over a dense one-liner that needs a comment to explain it.",
+            "Reach for a library or framework feature only when hand-rolled code has become the harder option."
+          ]
+        },
+        {
+          "title": "Common Pitfalls",
+          "multi-content": [
+            "Simple doesn't mean incomplete or poorly designed.",
+            "Over-simplifying can push complexity onto the caller instead of removing it.",
+            "Confusing 'few lines of code' with 'easy to understand'."
+          ]
+        }
+      ]
     },
     {
-      "term": "DRY",
-      "definition": "Don't Repeat Yourself. Avoid duplication in code by abstracting common logic into reusable components, ensuring maintainability and reducing errors."
+      "title": "DRY",
+      "multi-content": [
+        {
+          "title": "definition",
+          "simple-content": "Don't Repeat Yourself. Avoid duplication in code by abstracting common logic into reusable components, ensuring maintainability and reducing errors."
+        },
+        {
+          "title": "Practical Application",
+          "multi-content": [
+            "Create utility classes for common validation logic used across controllers.",
+            "Centralize configuration values rather than repeating literals across modules.",
+            "Extract shared test setup into fixtures or builders."
+          ]
+        },
+        {
+          "title": "Common Pitfalls",
+          "multi-content": [
+            "Don't over-abstract code to the point of confusion.",
+            "Coincidental duplication is not real duplication — two pieces of code that look alike today may change for different reasons tomorrow.",
+            "Coupling unrelated modules through a shared helper just to remove a few repeated lines."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "When to Apply",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "These principles are guidelines for judgement, not rules to apply mechanically. They earn their keep at specific decision points."
+        },
+        {
+          "title": "Moments That Call for Them",
+          "multi-content": [
+            "When starting a new feature or component.",
+            "During code refactoring sessions.",
+            "When reviewing pull requests.",
+            "When making architectural decisions."
+          ]
+        },
+        {
+          "title": "Holding Them in Tension",
+          "multi-content": [
+            "DRY and KISS can conflict: removing duplication sometimes adds indirection. Favour the option a new reader would understand faster.",
+            "YAGNI and DRY can conflict: don't build a shared abstraction for a second use case that doesn't exist yet.",
+            "When two principles disagree, the tiebreaker is the cost of changing the code later."
+          ]
+        }
+      ]
     }
   ]
 }

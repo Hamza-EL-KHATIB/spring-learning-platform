@@ -487,6 +487,14 @@
               ]
             }
           ]
+        },
+        {
+          "title": "How do you test GraphQL APIs?",
+          "simple-content": "Spring provides `GraphQlTester` for testing GraphQL APIs:\n\n- Use `@SpringBootTest` and `@AutoConfigureGraphQlTester`\n- Write document queries/mutations as strings\n- Execute and verify paths in the response\n- Test error cases and edge conditions\n- Mock dependencies as needed"
+        },
+        {
+          "title": "What are the common pitfalls when implementing GraphQL?",
+          "simple-content": "- **Performance issues**: N+1 problem, inefficient resolvers\n- **Over-complicated schema**: Trying to expose everything\n- **Security vulnerabilities**: Not validating query complexity\n- **Poor error handling**: Inconsistent or unclear errors\n- **Tight coupling**: Exposing database structure directly\n- **Versioning challenges**: Making breaking changes"
         }
       ]
     },

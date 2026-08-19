@@ -184,6 +184,16 @@
                 {
                   "title": "key_components",
                   "simple-content": "Spring MVC, Tomcat, Jackson"
+                },
+                {
+                  "title": "key_annotations",
+                  "multi-content": [
+                    "@Controller: Defines a Spring MVC controller",
+                    "@RestController: Defines a RESTful controller; combines @Controller and @ResponseBody",
+                    "@ResponseBody: Indicates a method return value should be bound to the web response body",
+                    "@PathVariable: Binds a method parameter to a URI template variable",
+                    "@RequestParam: Binds a method parameter to a web request parameter"
+                  ]
                 }
               ]
             },
@@ -197,6 +207,15 @@
                 {
                   "title": "key_components",
                   "simple-content": "Hibernate, Spring Data JPA"
+                },
+                {
+                  "title": "key_annotations",
+                  "multi-content": [
+                    "@Repository: Indicates a DAO component that interacts with the database",
+                    "@Autowired: Allows Spring to resolve and inject collaborating beans",
+                    "@Qualifier: Specifies which bean should be autowired when multiple candidates are available",
+                    "@Primary: Indicates that a bean should be given preference when multiple beans are candidates"
+                  ]
                 }
               ]
             },
@@ -223,6 +242,14 @@
                 {
                   "title": "key_components",
                   "simple-content": "JUnit, Mockito, Spring Test"
+                },
+                {
+                  "title": "key_annotations",
+                  "multi-content": [
+                    "@SpringBootTest: Used for integration testing of Spring Boot applications",
+                    "@DataJpaTest: Used for testing JPA repositories",
+                    "@WebMvcTest: Used for testing Spring MVC controllers"
+                  ]
                 }
               ]
             }
@@ -1417,6 +1444,219 @@
                 "3. Using @ExceptionHandler methods to handle specific exception types",
                 "4. Returning appropriate HTTP status codes and structured error responses",
                 "5. Optionally using Spring's ResponseStatusException for simpler cases"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "What is the difference between application.properties and bootstrap.properties?",
+          "simple-content": "- `application.properties` is the standard configuration file read by Spring Boot applications.\n- `bootstrap.properties` is used by Spring Cloud applications and is loaded before `application.properties`, typically for configuring the application's connection to a configuration server.\n\nNote: In newer versions of Spring Cloud (2020.0.0+), `bootstrap.properties` is no longer used by default and requires explicit enablement."
+        },
+        {
+          "title": "How do you secure a Spring Boot application?",
+          "simple-content": "Spring Boot security can be implemented by:\n\n1. Adding Spring Security starter (`spring-boot-starter-security`)\n2. Configuring authentication (in-memory, JDBC, LDAP, OAuth, etc.)\n3. Defining authorization rules for URLs, methods, or objects\n4. Customizing login/logout behavior\n5. Securing against common vulnerabilities (CSRF, XSS, etc.)\n\nExample basic configuration:\n\n```java\n@Configuration\n@EnableWebSecurity\npublic class SecurityConfig extends WebSecurityConfigurerAdapter {\n    \n    @Override\n    protected void configure(HttpSecurity http) throws Exception {\n        http\n            .authorizeRequests()\n                .antMatchers(\"/public/**\").permitAll()\n                .antMatchers(\"/api/**\").authenticated()\n            .and()\n            .formLogin()\n            .and()\n            .csrf().disable();\n    }\n    \n    @Override\n    protected void configure(AuthenticationManagerBuilder auth) throws Exception {\n        auth.inMemoryAuthentication()\n            .withUser(\"user\").password(\"{noop}password\").roles(\"USER\")\n            .and()\n            .withUser(\"admin\").password(\"{noop}admin\").roles(\"ADMIN\");\n    }\n}\n```"
+        },
+        {
+          "title": "What happens when you start a Spring Boot application?",
+          "simple-content": "When a Spring Boot application starts:\n\n1. The main class with `@SpringBootApplication` is executed\n2. `SpringApplication.run()` creates an application context\n3. External properties are loaded from various sources\n4. `@ComponentScan` finds and registers beans\n5. `@EnableAutoConfiguration` activates auto-configuration\n6. Special beans (e.g., embedded server) are initialized\n7. Any application runners (`CommandLineRunner` or `ApplicationRunner`) are executed\n8. The application is considered started"
+        },
+        {
+          "title": "How do you handle database migrations in Spring Boot?",
+          "simple-content": "Common approaches to database migrations in Spring Boot:\n\n1. **Flyway**: Add the dependency, place SQL scripts in `db/migration` folder\n    \n    ```properties\n    spring.flyway.baseline-on-migrate=true\n    spring.flyway.locations=classpath:db/migration\n    ```\n    \n2. **Liquibase**: Add the dependency, define changelogs\n    \n    ```properties\n    spring.liquibase.change-log=classpath:db/changelog/db.changelog-master.xml\n    ```\n    \n3. **Hibernate auto schema generation**: For development only\n    \n    ```properties\n    spring.jpa.hibernate.ddl-auto=update\n    ```"
+        },
+        {
+          "title": "What are Spring Profiles and how do you use them?",
+          "simple-content": "Spring Profiles provide a way to segregate parts of application configuration and make it available only in specific environments.\n\n```java\n// Using profiles for beans\n@Profile(\"dev\")\n@Bean\npublic DataSource devDataSource() {\n    // Return development datasource\n}\n\n@Profile(\"prod\")\n@Bean\npublic DataSource prodDataSource() {\n    // Return production datasource\n}\n\n// Activating profiles\n// Via property\nspring.profiles.active=dev,local\n\n// Via programmatic API\nSpringApplication.setAdditionalProfiles(\"dev\");\n\n// Via environment variable\nexport SPRING_PROFILES_ACTIVE=dev\n\n// Profile-specific properties\n// application-dev.properties\n// application-prod.properties\n```"
+        }
+      ]
+    },
+    {
+      "title": "Embedded Servers",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring Boot includes embedded servers that allow you to run your application as a standalone JAR."
+        },
+        {
+          "title": "Servers",
+          "multi-content": [
+            {
+              "title": "Tomcat",
+              "multi-content": [
+                {
+                  "title": "Default",
+                  "simple-content": "True"
+                },
+                {
+                  "title": "Configuration",
+                  "multi-content": [
+                    {
+                      "title": "Properties",
+                      "multi-content": [
+                        "server.port",
+                        "server.servlet.context-path"
+                      ]
+                    },
+                    {
+                      "title": "Example",
+                      "simple-content": "@Bean\npublic WebServerFactoryCustomizer<TomcatServletWebServerFactory> tomcatCustomizer() {\n    return (factory) -> {\n        factory.addConnectorCustomizers(connector -> {\n            Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();\n            protocol.setMaxThreads(200);\n            protocol.setConnectionTimeout(20000);\n        });\n    };\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Jetty",
+              "multi-content": [
+                {
+                  "title": "Configuration",
+                  "multi-content": [
+                    {
+                      "title": "Dependency",
+                      "simple-content": "spring-boot-starter-jetty"
+                    },
+                    {
+                      "title": "Exclusions",
+                      "multi-content": [
+                        "spring-boot-starter-tomcat"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Undertow",
+              "multi-content": [
+                {
+                  "title": "Configuration",
+                  "multi-content": [
+                    {
+                      "title": "Dependency",
+                      "simple-content": "spring-boot-starter-undertow"
+                    },
+                    {
+                      "title": "Exclusions",
+                      "multi-content": [
+                        "spring-boot-starter-tomcat"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Packaging",
+          "multi-content": [
+            {
+              "title": "Commands",
+              "multi-content": [
+                {
+                  "title": "Commands",
+                  "multi-content": [
+                    {
+                      "title": "Purpose",
+                      "simple-content": "Build a JAR"
+                    },
+                    {
+                      "title": "Command",
+                      "simple-content": "./mvnw clean package"
+                    }
+                  ]
+                },
+                {
+                  "title": "Commands",
+                  "multi-content": [
+                    {
+                      "title": "Purpose",
+                      "simple-content": "Run the JAR"
+                    },
+                    {
+                      "title": "Command",
+                      "simple-content": "java -jar target/myapp-0.0.1-SNAPSHOT.jar"
+                    }
+                  ]
+                },
+                {
+                  "title": "Commands",
+                  "multi-content": [
+                    {
+                      "title": "Purpose",
+                      "simple-content": "Override properties at runtime"
+                    },
+                    {
+                      "title": "Command",
+                      "simple-content": "java -jar target/myapp-0.0.1-SNAPSHOT.jar --server.port=8081"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cloud Native Features",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring Boot is designed to work well in cloud environments"
+        },
+        {
+          "title": "Features",
+          "multi-content": [
+            {
+              "title": "Externalized configuration",
+              "multi-content": [
+                {
+                  "title": "Examples",
+                  "multi-content": [
+                    "Environment variables",
+                    "Cloud config servers"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Health checks",
+              "simple-content": "For container orchestration systems"
+            },
+            {
+              "title": "Metrics",
+              "simple-content": "For monitoring systems"
+            },
+            {
+              "title": "Resilience",
+              "simple-content": "With Spring Cloud components"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Task Scheduling",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Scheduling tasks for periodic execution"
+        },
+        {
+          "title": "Annotations",
+          "multi-content": [
+            {
+              "title": "@Scheduled",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Marks a method to be scheduled"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@Scheduled(fixedRate = 5000)\npublic void scheduledTask() { /* ... */ }"
+                }
               ]
             }
           ]

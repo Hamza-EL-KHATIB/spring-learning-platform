@@ -2,9 +2,24 @@
   "title": "Hibernate ORM",
   "topics": [
     {
+      "id": "introduction",
+      "title": "Introduction",
+      "description": "Hibernate is a powerful Object-Relational Mapping (ORM) framework for Java that provides a bridge between relational databases and object-oriented programming. It simplifies data access by mapping Java classes to database tables and Java types to SQL types, allowing developers to work with persistent objects rather than with SQL statements."
+    },
+    {
       "id": "core-concepts",
       "title": "Core Concepts",
       "concepts": [
+        {
+          "name": "Object-Relational Mapping (ORM)",
+          "description": "A programming technique that converts data between incompatible type systems in relational databases and object-oriented programming languages.",
+          "benefits": [
+            "Eliminates boilerplate JDBC code",
+            "Provides transparent persistence",
+            "Enables database-independent development",
+            "Simplifies CRUD operations"
+          ]
+        },
         {
           "name": "EntityManager",
           "description": "Interface used to interact with persistence context",
@@ -167,54 +182,6 @@
       ]
     },
     {
-      "id": "caching",
-      "title": "Hibernate Caching",
-      "levels": [
-        {
-          "name": "First-Level Cache",
-          "description": "Session-scope cache",
-          "characteristics": [
-            "Mandatory",
-            "Session-bound",
-            "Cannot be disabled",
-            "Automatically managed"
-          ]
-        },
-        {
-          "name": "Second-Level Cache",
-          "description": "SessionFactory-scope cache",
-          "characteristics": [
-            "Optional",
-            "Shared across sessions",
-            "Can be configured",
-            "Provider options available"
-          ],
-          "providers": [
-            {
-              "name": "EhCache",
-              "description": "Popular cache provider"
-            },
-            {
-              "name": "Redis",
-              "description": "Distributed cache solution"
-            },
-            {
-              "name": "Infinispan",
-              "description": "JBoss cache provider"
-            }
-          ]
-        },
-        {
-          "name": "Query Cache",
-          "description": "Caches query results",
-          "configuration": {
-            "property": "hibernate.cache.use_query_cache",
-            "usage": "@QueryHint(name = \"org.hibernate.cacheable\", value = \"true\")"
-          }
-        }
-      ]
-    },
-    {
       "id": "fetching-strategies",
       "title": "Fetching Strategies",
       "description": "Strategies for loading related entities and collections",
@@ -314,6 +281,55 @@
       }
     },
     {
+      "id": "caching",
+      "title": "Hibernate Caching",
+      "levels": [
+        {
+          "name": "First-Level Cache",
+          "description": "Session-scope cache",
+          "characteristics": [
+            "Mandatory",
+            "Session-bound",
+            "Cannot be disabled",
+            "Automatically managed",
+            "Improves performance by reducing database hits"
+          ]
+        },
+        {
+          "name": "Second-Level Cache",
+          "description": "SessionFactory-scope cache",
+          "characteristics": [
+            "Optional",
+            "Shared across sessions",
+            "Can be configured",
+            "Provider options available"
+          ],
+          "providers": [
+            {
+              "name": "EhCache",
+              "description": "Popular cache provider"
+            },
+            {
+              "name": "Redis",
+              "description": "Distributed cache solution"
+            },
+            {
+              "name": "Infinispan",
+              "description": "JBoss cache provider"
+            }
+          ]
+        },
+        {
+          "name": "Query Cache",
+          "description": "Caches query results",
+          "configuration": {
+            "property": "hibernate.cache.use_query_cache",
+            "usage": "@QueryHint(name = \"org.hibernate.cacheable\", value = \"true\")"
+          }
+        }
+      ]
+    },
+    {
       "id": "query-methods",
       "title": "Querying Data",
       "methods": [
@@ -341,6 +357,61 @@
       ]
     },
     {
+      "id": "transactions",
+      "title": "Transactions",
+      "description": "Transaction management and ACID properties in Hibernate",
+      "concepts": [
+        {
+          "name": "ACID Properties",
+          "properties": [
+            {
+              "name": "Atomicity",
+              "description": "All operations complete successfully or none do"
+            },
+            {
+              "name": "Consistency",
+              "description": "Database remains in a consistent state"
+            },
+            {
+              "name": "Isolation",
+              "description": "Transactions are isolated from each other"
+            },
+            {
+              "name": "Durability",
+              "description": "Committed changes persist"
+            }
+          ]
+        },
+        {
+          "name": "@Transactional Annotation",
+          "description": "Declarative transaction management",
+          "example": "@Transactional\npublic void saveUser(User user) {\n    userRepository.save(user);\n}",
+          "attributes": [
+            {
+              "name": "propagation",
+              "description": "Defines how transactions relate to each other"
+            },
+            {
+              "name": "isolation",
+              "description": "Defines the data visibility between transactions"
+            },
+            {
+              "name": "timeout",
+              "description": "Specifies transaction timeout"
+            },
+            {
+              "name": "readOnly",
+              "description": "Optimizes read-only operations"
+            },
+            {
+              "name": "rollbackFor/noRollbackFor",
+              "description": "Defines which exceptions cause rollback"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "performance-optimization",
       "title": "Performance Optimization",
       "techniques": [
@@ -354,6 +425,11 @@
             {
               "name": "Batch Size Configuration",
               "property": "hibernate.jdbc.batch_size"
+            },
+            {
+              "name": "Order Operations",
+              "property": "hibernate.order_inserts/hibernate.order_updates",
+              "description": "Groups operations by entity"
             }
           ]
         },
@@ -371,7 +447,7 @@
             "Use fetch joins appropriately",
             "Avoid N+1 queries",
             "Implement pagination",
-            "Use named queries"
+            "Use named queries for frequently executed queries"
           ]
         }
       ]
@@ -384,9 +460,10 @@
           "name": "Entity Design",
           "practices": [
             "Use appropriate fetch types",
-            "Implement equals() and hashCode()",
+            "Implement proper equals() and hashCode()",
             "Make entities serializable",
-            "Use lazy loading by default"
+            "Use lazy loading by default",
+            "Avoid bidirectional relationships unless necessary"
           ]
         },
         {
@@ -401,13 +478,177 @@
         {
           "name": "Performance",
           "practices": [
-            "Use batch processing",
-            "Implement proper caching",
+            "Use batch processing for bulk operations",
+            "Implement proper caching strategy",
             "Optimize queries",
             "Monitor performance metrics"
           ]
         }
       ]
+    },
+    {
+      "id": "interview-questions",
+      "title": "Common Interview Questions",
+      "questions": [
+        {
+          "question": "What is the difference between JPA and Hibernate?",
+          "answer": [
+            "JPA is a specification/standard for ORM in Java",
+            "Hibernate is an implementation of the JPA specification",
+            "JPA provides annotations and interfaces, Hibernate provides the implementation"
+          ]
+        },
+        {
+          "question": "Explain the difference between get() and load() methods in Hibernate.",
+          "answer": [
+            "get(): Returns null if entity not found, always hits the database if not in cache",
+            "load(): Throws exception if entity not found, returns proxy without hitting database"
+          ]
+        },
+        {
+          "question": "What is the difference between merge() and update() in Hibernate?",
+          "answer": [
+            "merge(): Creates a copy of the detached entity and returns the persistent copy",
+            "update(): Reattaches the detached entity to the session"
+          ]
+        },
+        {
+          "question": "How do you handle the LazyInitializationException?",
+          "answer": [
+            "Keep the Hibernate session open",
+            "Fetch data eagerly when needed",
+            "Use join fetch in queries",
+            "Initialize collection before session closes"
+          ]
+        },
+        {
+          "question": "What is dirty checking in Hibernate?",
+          "answer": [
+            "Automatic detection of changes to persistent entities",
+            "Hibernate compares entity state with snapshot taken when loaded",
+            "Changes are synchronized during session flush"
+          ]
+        },
+        {
+          "question": "Explain the N+1 problem and how to solve it.",
+          "answer": [
+            "Problem: For N parent entities, N additional queries are executed to fetch related entities",
+            "Solutions: Use join fetch, batch fetching, or entity graphs"
+          ]
+        },
+        {
+          "question": "What's the difference between CascadeType.REMOVE and orphanRemoval=true?",
+          "answer": [
+            "CascadeType.REMOVE: When parent is deleted, children are deleted",
+            "orphanRemoval=true: When child is removed from parent collection, child is deleted"
+          ]
+        },
+        {
+          "question": "How does Hibernate handle inheritance?",
+          "answer": [
+            "Single Table: All classes in one table with discriminator column",
+            "Joined Table: Each class has its own table with foreign key relationships",
+            "Table Per Class: Each concrete class has its own complete table"
+          ]
+        },
+        {
+          "question": "What is the role of the @GeneratedValue annotation?",
+          "answer": [
+            "Specifies generation strategy for primary keys",
+            "Common strategies: AUTO, IDENTITY, SEQUENCE, TABLE"
+          ]
+        },
+        {
+          "question": "Explain the different states of an entity in Hibernate.",
+          "answer": [
+            "Transient: New object, not associated with session",
+            "Persistent: Associated with session, changes tracked",
+            "Detached: Was persistent, no longer associated with session",
+            "Removed: Marked for deletion in database"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced-topics",
+      "title": "Advanced Topics",
+      "topics": [
+        {
+          "name": "Optimistic Locking",
+          "description": "Mechanism to detect concurrent modifications",
+          "details": [
+            "Uses version/timestamp column to detect concurrent modifications",
+            "Throws OptimisticLockException if conflict detected"
+          ],
+          "configuration": "@Version\nprivate int version;"
+        },
+        {
+          "name": "Pessimistic Locking",
+          "description": "Database-level locking mechanism",
+          "details": [
+            "Locks database records during transaction"
+          ],
+          "types": [
+            {
+              "name": "PESSIMISTIC_READ",
+              "description": "Shared lock"
+            },
+            {
+              "name": "PESSIMISTIC_WRITE",
+              "description": "Exclusive lock"
+            },
+            {
+              "name": "PESSIMISTIC_FORCE_INCREMENT",
+              "description": "Exclusive lock with version increment"
+            }
+          ]
+        },
+        {
+          "name": "Hibernate Envers",
+          "description": "Auditing framework for Hibernate",
+          "details": [
+            "Provides auditing capabilities",
+            "Tracks entity changes over time"
+          ],
+          "configuration": "@Audited\npublic class User { ... }"
+        },
+        {
+          "name": "Hibernate Search",
+          "description": "Integration with full-text search engines",
+          "details": [
+            "Integrates with Lucene/Elasticsearch for full-text search"
+          ],
+          "configuration": "@Indexed\npublic class Book {\n    @Field(index = Index.YES, analyze = Analyze.YES)\n    private String title;\n}"
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "Resources for Further Learning",
+      "resources": [
+        {
+          "name": "Hibernate Documentation",
+          "url": "https://hibernate.org/orm/documentation/",
+          "type": "Official Documentation"
+        },
+        {
+          "name": "Java Persistence with Hibernate",
+          "url": "https://www.manning.com/books/java-persistence-with-hibernate-second-edition",
+          "type": "Book"
+        },
+        {
+          "name": "Spring Data JPA Documentation",
+          "url": "https://docs.spring.io/spring-data/jpa/docs/current/reference/html/",
+          "type": "Related Documentation"
+        },
+        {
+          "name": "Vlad Mihalcea's Blog",
+          "url": "https://vladmihalcea.com/tutorials/hibernate/",
+          "type": "Technical Blog",
+          "description": "In-depth Hibernate tutorials"
+        }
+      ],
+      "conclusion": "Remember to practice these concepts with hands-on examples to solidify your understanding for interviews and real-world applications."
     }
   ]
 }

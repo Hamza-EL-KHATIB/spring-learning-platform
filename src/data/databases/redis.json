@@ -118,13 +118,14 @@
             "pseudocode": "try {\n    value = cache.get(key)\n    if (value == null) {\n        value = db.get(key)\n        cache.set(key, value)\n    }\n    return value\n}",
             "advantages": [
               "Only cache what's needed",
-              "Resilient to cache failures",
-              "Prevents cache stampede"
+              "Resilient to cache failures (cache down means slower, not broken)",
+              "Simple to implement; default choice for most systems"
             ],
             "disadvantages": [
               "Cache misses are expensive",
-              "Data can become stale",
-              "Initial request latency"
+              "Data can become stale (bound staleness with TTL)",
+              "Initial request latency",
+              "Susceptible to cache stampede on hot key expiry"
             ]
           }
         },
@@ -161,6 +162,89 @@
               "Eventually consistent"
             ]
           }
+        },
+        {
+          "name": "Read-Through",
+          "description": "The cache itself loads data from the database on a miss",
+          "implementation": {
+            "advantages": [
+              "Application code stays simple",
+              "Centralized loading logic"
+            ],
+            "disadvantages": [
+              "Requires cache library/provider with loader support"
+            ],
+            "notes": [
+              "Spring @Cacheable provides read-through behavior at the method level"
+            ]
+          }
+        },
+        {
+          "name": "Refresh-Ahead",
+          "description": "Re-load popular keys before TTL expiry",
+          "implementation": {
+            "advantages": [
+              "Hot keys never expire under load",
+              "Predictable latency"
+            ],
+            "disadvantages": [
+              "Wasted refreshes for keys that stop being accessed",
+              "More complex to implement"
+            ],
+            "notes": [
+              "Use for hot keys with predictable access patterns"
+            ]
+          }
+        }
+      ],
+      "write_strategy_note": "Update vs delete on write: prefer delete (invalidate) - recomputing on next read avoids the race where two writers store stale values in the wrong order. TTL remains as the safety net."
+    },
+    {
+      "id": "failure-modes",
+      "title": "Cache Failure Modes",
+      "description": "Classic caching failure modes interviewers expect you to name unprompted",
+      "concepts": [
+        {
+          "name": "Stampede / Thundering Herd",
+          "description": "A hot key expires and thousands of requests hit the database simultaneously",
+          "solutions": [
+            "Per-key lock (single flight - one loader, the rest wait)",
+            "Stale-while-revalidate",
+            "Jittered TTLs",
+            "@Cacheable(sync = true) in Spring"
+          ]
+        },
+        {
+          "name": "Penetration",
+          "description": "Requests for keys that never exist bypass the cache every time",
+          "solutions": [
+            "Cache negative results with a short TTL",
+            "Bloom filter in front of the cache"
+          ]
+        },
+        {
+          "name": "Avalanche",
+          "description": "Many keys expire at once, e.g. after a deploy warmed them together",
+          "solutions": [
+            "Randomize TTL (ttl +/- random(10%))"
+          ]
+        },
+        {
+          "name": "Hot Key",
+          "description": "One celebrity key overloads a single Redis node",
+          "solutions": [
+            "Local L1 cache",
+            "Key replication with random-suffix reads"
+          ]
+        },
+        {
+          "name": "Inconsistency Window",
+          "description": "Between the DB write and the cache delete, a reader can cache stale data",
+          "solutions": [
+            "Bound the window with TTL",
+            "Versioned keys if strictness matters",
+            "Don't cache data where staleness costs money"
+          ]
         }
       ]
     },
@@ -234,6 +318,26 @@
               "code": "@CacheEvict(value = \"users\", key = \"#user.id\")\npublic void updateUser(User user) {\n    userRepository.save(user);\n}"
             }
           ]
+        },
+        {
+          "name": "Cache Annotations - Details",
+          "examples": [
+            {
+              "description": "Conditional caching",
+              "code": "@Cacheable(value = \"search\", key = \"#query\", unless = \"#result.isEmpty()\")\npublic List<Product> search(String query) { ... }"
+            },
+            {
+              "description": "Stampede protection (per-key single flight)",
+              "code": "@Cacheable(value = \"products\", key = \"#id\", sync = true)\npublic Product getProduct(long id) { ... }"
+            },
+            {
+              "description": "Update cache without skipping the method",
+              "code": "@CachePut(value = \"products\", key = \"#product.id\")\npublic Product update(Product product) { ... }"
+            }
+          ],
+          "considerations": [
+            "Same-class self-invocation bypasses the proxy, so the cache annotation is ignored (same trap as @Transactional)"
+          ]
         }
       ]
     },
@@ -267,6 +371,105 @@
             "Implement retry mechanisms",
             "Monitor sync processes"
           ]
+        }
+      ]
+    },
+    {
+      "id": "operations-scaling",
+      "title": "Persistence, Eviction & Scaling",
+      "concepts": [
+        {
+          "name": "Single-Threaded Model",
+          "description": "Redis runs a single-threaded event loop: commands are atomic, no lock contention, I/O multiplexing (epoll), efficient data structures. I/O threads since Redis 6 help with network handling, but command execution stays single-threaded.",
+          "characteristics": [
+            "Sub-millisecond latency",
+            "Around 100k+ ops/s per node",
+            "Every command is atomic for free"
+          ]
+        },
+        {
+          "name": "Eviction Policies (maxmemory-policy)",
+          "description": "What Redis does when memory is full",
+          "policies": [
+            "allkeys-lru: evict least-recently-used keys - best for pure caches",
+            "volatile-lru / volatile-ttl: only evict keys that have a TTL - use when Redis also stores non-evictable data",
+            "allkeys-lfu: frequency-based eviction",
+            "noeviction (default): writes fail when memory is full"
+          ]
+        },
+        {
+          "name": "Persistence",
+          "description": "Optional durability mechanisms",
+          "options": [
+            "RDB snapshots: fast restart, may lose the last minutes of writes",
+            "AOF (append-only file): logs every write, configurable fsync",
+            "Pure cache: turning persistence off entirely is legitimate"
+          ]
+        },
+        {
+          "name": "High Availability & Scaling",
+          "description": "Replication and sharding options",
+          "options": [
+            "Replication: primary to replicas, plus Sentinel for automatic failover",
+            "Redis Cluster: shards data by hash slots (16384 slots)",
+            "Multi-key operations in Cluster must share a slot - use hash tags like {user:42}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beyond-caching",
+      "title": "Redis Beyond Caching",
+      "concepts": [
+        {
+          "name": "Distributed Lock",
+          "description": "SET lock:order:42 token NX PX 30000, released via a Lua compare-and-delete script",
+          "notes": [
+            "Use Redisson RLock for production",
+            "The Redlock algorithm across multiple nodes is debated - mention this in interviews"
+          ]
+        },
+        {
+          "name": "Rate Limiting",
+          "description": "INCR + EXPIRE for a fixed window, or a sorted-set sliding window for accuracy"
+        },
+        {
+          "name": "Session Store",
+          "description": "Spring Session Redis lets application instances stay stateless"
+        },
+        {
+          "name": "Pub/Sub and Streams",
+          "description": "PUBLISH/SUBSCRIBE for fire-and-forget notifications; Streams (XADD) provide a lightweight Kafka-like persistent log"
+        },
+        {
+          "name": "Two-Level Caching",
+          "description": "Caffeine (in-JVM L1, microsecond access) in front of Redis (shared L2). Keep the levels coherent with pub/sub invalidation events."
+        }
+      ]
+    },
+    {
+      "id": "interview-questions",
+      "title": "Interview Questions",
+      "concepts": [
+        {
+          "name": "Walk me through cache-aside and its consistency guarantees.",
+          "description": "Read: cache, then on miss read the DB and populate the cache with a TTL. Write: DB first, then delete the key. Guarantees: eventual consistency bounded by TTL; a small race window exists - acceptable for most reads, not for balances."
+        },
+        {
+          "name": "How do you prevent a cache stampede?",
+          "description": "Per-key mutex/single-flight (@Cacheable(sync=true) or Redis SETNX), serve stale content while one thread refreshes, jittered TTLs so keys do not expire together."
+        },
+        {
+          "name": "Why is Redis fast despite being single-threaded?",
+          "description": "Everything is in memory, there is no lock contention (one command at a time gives atomicity for free), I/O multiplexing (epoll), and efficient data structures. I/O threads since Redis 6 help with network handling; command execution stays single-threaded."
+        },
+        {
+          "name": "What would you cache in a typical e-commerce backend - and what not?",
+          "description": "Cache: product catalog, categories, rendered fragments, sessions, config and feature flags. Do not cache: stock levels at checkout, payment state, anything where staleness costs money - or cache with explicit invalidation and a very short TTL."
+        },
+        {
+          "name": "Local (Caffeine) vs distributed (Redis) cache?",
+          "description": "Local: nanosecond access, no network hop, but per-instance duplication and incoherence across instances. Distributed: shared, consistent view that survives deploys, at the cost of a network hop. Standard answer: use both, layered."
         }
       ]
     }

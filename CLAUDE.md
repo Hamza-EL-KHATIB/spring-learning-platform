@@ -21,26 +21,34 @@ Layout: `src/data/<category>/<name>.json` with categories `spring/`, `java/`, `d
 
 React 18 SPA using **HashRouter** (required for GitHub Pages), Tailwind CSS (dark theme: gray-800/900 backgrounds, purple/pink gradient accents), lucide-react icons, react-syntax-highlighter (Prism + oneDark) for code blocks. Content lives entirely in JSON data files; components are renderers. English only — a former EN/FR i18n system was fully removed, so avoid reintroducing language context/selectors.
 
-### Two-tier page system
+### One shared page template — do not hand-roll page layouts
 
-1. **Dedicated pages** (`src/pages/topics/<category>/<Name>Page.js`) — rich, self-contained components for Spring, Java, Architecture, Transactions, Best Practices, German. Each explicitly routed in `App.js`.
-2. **`src/pages/TopicPage.js` fallback** — the `/:section/:topic` catch-all route. Contains its own `jsonData` registry mapping section/topic params to imported JSON, and renders the *old* JSON structure (`concepts`, `types`, `code` fields) via `src/components/topic/` renderers (ConceptRenderer, TypeRenderer, ListRenderer, CodeExample). Used by SQL, Hibernate, Redis, Git, Scrum.
+Every topic page renders through `src/components/template/TopicPageTemplate.js`. Pages are thin: import JSON, pass it in. A typical page is five lines:
 
-### Dedicated page pattern (follow when creating/modifying pages)
+```js
+const RestPage = () => <TopicPageTemplate data={data} persistKey="spring-rest" />;
+```
 
-Each dedicated page is self-contained — sub-components are defined inline in the page file, not shared:
+Never reintroduce per-page copies of tab bars, cards, or code blocks — that duplication is what this template replaced.
 
-1. Static import of the EN JSON file
-2. `useState` for `activeTopic`, defaulting to the first topic in `data.topics`
-3. `TopicNavigation` — tab bar over `data.topics`
-4. `getTopicIcon(title)` / `getSectionIcon(title)` — map title strings/keywords to lucide icons
-5. `renderTopicSections(topic)` — pulls intro sections (description/definition) out first, renders the rest
-6. `renderContent(content, contentType)` — recursive renderer handling strings, arrays, and objects with `simple-content` / `multi-content`
-7. Inline styled sub-components: `ContentCard`, `CodeBlock`, `StyledListItem`
+`src/components/template/`:
+- **`TopicPageTemplate.js`** — page shell: gradient header, tag pills, tab bar over topics, active-topic panel, `FloatingMenu` mobile nav. Also exports `SectionPanel` for footer sections.
+- **`ContentRenderer.js`** — recursive `renderContent(value, type, opts, key)`. Handles both JSON conventions plus arbitrary nested objects, detecting tables, code, bad/good pairs, diagrams, and star ratings by key name.
+- **`primitives.js`** — `ContentCard`, `StyledListItem`, `DataTable`, `StarRating`, `CodePair`, `TagPills`, `deriveType`, `prettifyKey`.
+- **`CodeBlock.js`** — Prism + oneDark with a copy button. `language="text"` renders a bare `<pre>` for ASCII diagrams and pseudocode (Prism would mangle them). `getCodeString` normalizes string | `{code|snippet}` | array.
+- **`icons.js`** — `getTopicIcon` / `getSectionIcon` keyword→lucide maps.
 
-`RestPage.js` (`src/pages/topics/spring/RestPage.js`) is the reference implementation of this pattern.
+Template props: `persistKey` (localStorage tab memory), `images` (filename→imported module for `diagram` fields), `resolveDiagram` (function form), `language` (default code language), `iconOverrides`, `renderTopic` (full custom rendering for one topic — used by JavaFundamentalsPage to slot in `EnhancedInterviewFAQs`), `header`, `footer` (always-visible sections below the tabs).
 
-### JSON structure for dedicated pages
+Pages whose JSON root isn't `topics[]`/`sections[]` build a `topics[]` array at module level before passing it in — see `ScrumPage`, `SolidPage`, `DesignPatternsPage`.
+
+`src/pages/TopicPage.js` remains the `/:section/:topic` fallback: a registry lookup that renders through the same template, with a "topic not found" state.
+
+Two pages deliberately keep bespoke layouts: `DefinitionsPage` (all-visible glossary grid for interview lookup) and the German pages.
+
+### JSON structures the template understands
+
+Either root convention works — `{ title, topics: [...] }` or `{ title, sections: [...] }`. Within a topic, either the `multi-content` style below or arbitrary old-style payload keys (`concepts`, `types`, `features`, `patterns`, …), which get one `SectionPanel` per key.
 
 ```json
 {
@@ -58,10 +66,11 @@ Each dedicated page is self-contained — sub-components are defined inline in t
 }
 ```
 
-### Adding a new topic page requires touching three places
+### Adding a new topic page requires touching four places
 
-1. Create the page component in `src/pages/topics/<category>/` (plus its JSON in the external data dir)
-2. Add the route in `src/App.js` (dedicated routes must come before the `/:section/:topic` fallback)
-3. Add the sidebar entry in `src/components/layout/Sidebar.js` (`navigationGroups`) — this is the real navigation; `src/components/navigation/NavigationStructure.js` is an unused example, don't edit it expecting UI changes
+1. Add the JSON in `src/data/<category>/`
+2. Create the page component in `src/pages/topics/<category>/` (a `TopicPageTemplate` one-liner)
+3. Add the route in `src/App.js` (dedicated routes must come before the `/:section/:topic` fallback)
+4. Add entries in `src/components/layout/Sidebar.js` (`navigationGroups`) **and** `src/pages/HomePage.js` (`categories`) — both are hand-maintained link lists, and a page missing from either is effectively unreachable
 
 German-language pages (`src/pages/topics/german/`) are a separate feature set with their own routes (`/learn/*`, `/german/*`) and do not follow the topic-page pattern.

@@ -1467,6 +1467,954 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Runtime Value Injection",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Spring provides several mechanisms for injecting external values at runtime."
+        },
+        {
+          "title": "Mechanisms",
+          "multi-content": [
+            {
+              "title": "@Value Annotation",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "The `@Value` annotation injects property values from various sources:"
+                },
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "Code",
+                      "simple-content": "@Component\npublic class DatabaseConfig {\n    @Value(\"${db.url}\")\n    private String dbUrl;\n    \n    @Value(\"${db.username:root}\")\n    private String username; // Default \"root\" if property not found\n    \n    @Value(\"#{systemProperties['user.region']}\")\n    private String region; // From system properties\n    \n    @Value(\"#{new java.text.SimpleDateFormat('yyyy-MM-dd').parse('2023-01-01')}\")\n    private Date startDate; // SpEL expression\n    \n    @Value(\"#{@userRepository.findById(1)?.name}\")\n    private String adminName; // Reference another bean\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "PropertySourcesPlaceholderConfigurer",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "This BeanFactoryPostProcessor resolves ${...} placeholders in bean properties:"
+                },
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "Code",
+                      "simple-content": "@Configuration\n@PropertySource(\"classpath:application.properties\")\npublic class AppConfig {\n    @Bean\n    public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {\n        return new PropertySourcesPlaceholderConfigurer();\n    }\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Environment Abstraction",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "The `Environment` interface provides a unified API for property resolution:"
+                },
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "Code",
+                      "simple-content": "@Component\npublic class EnvironmentConfig {\n    @Autowired\n    private Environment environment;\n    \n    public String getDatabaseUrl() {\n        return environment.getProperty(\"db.url\");\n    }\n    \n    public int getServerPort() {\n        return environment.getProperty(\"server.port\", Integer.class, 8080);\n    }\n    \n    public boolean isProduction() {\n        return environment.acceptsProfiles(Profiles.of(\"production\"));\n    }\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Spring Expression Language (SpEL)",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "SpEL is a powerful expression language supporting querying and manipulating object graphs at runtime."
+        },
+        {
+          "title": "Features",
+          "multi-content": [
+            "Literal expressions",
+            "Boolean and relational operators",
+            "Regular expressions",
+            "Class expressions",
+            "Property access",
+            "Method invocation",
+            "Collection access",
+            "Ternary operator"
+          ]
+        },
+        {
+          "title": "Examples",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Examples",
+                  "simple-content": "// In annotations\n@Value(\"#{systemProperties['user.region']}\")\nprivate String region;\n\n@Value(\"#{userService.findById(1)?.name ?: 'Anonymous'}\")\nprivate String userName;\n\n// In XML configuration\n<bean id=\"exampleBean\" class=\"com.example.ExampleBean\">\n    <property name=\"randomNumber\" value=\"#{T(java.lang.Math).random() * 100.0}\"/>\n    <property name=\"fullName\" value=\"#{userBean.firstName + ' ' + userBean.lastName}\"/>\n</bean>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bean Definition",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Bean definitions contain metadata that instruct the container how to create, configure, and manage beans."
+        },
+        {
+          "title": "Contents",
+          "multi-content": [
+            "Class name",
+            "Bean behavior (scope, lifecycle callbacks, etc.)",
+            "Dependencies required",
+            "Other configuration (e.g., lazy initialization, primary flag)"
+          ]
+        },
+        {
+          "title": "Sources",
+          "multi-content": [
+            "Java Configuration (`@Bean` methods)",
+            "Component scanning (`@Component` and its specializations)",
+            "XML files (`<bean>` definitions)",
+            "Groovy DSL"
+          ]
+        },
+        {
+          "title": "Properties",
+          "multi-content": [
+            "Class name",
+            "Constructor arguments",
+            "Properties",
+            "Dependencies",
+            "Scope",
+            "Lazy initialization flag"
+          ]
+        },
+        {
+          "title": "Registration Example",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Registration Example",
+                  "simple-content": "// Programmatically registering a bean definition\nBeanDefinitionBuilder builder = BeanDefinitionBuilder\n    .genericBeanDefinition(UserService.class)\n    .addPropertyReference(\"userRepository\", \"userRepository\")\n    .setScope(BeanDefinition.SCOPE_SINGLETON)\n    .setLazyInit(true);\n\nBeanDefinition beanDefinition = builder.getBeanDefinition();\nbeanFactory.registerBeanDefinition(\"userService\", beanDefinition);"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bean Post-Processing",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Bean post-processors allow for customizing bean instances during initialization and destruction phases."
+        },
+        {
+          "title": "Interfaces",
+          "multi-content": [
+            {
+              "title": "BeanPostProcessor",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Processes beans before and after initialization"
+                },
+                {
+                  "title": "Methods",
+                  "multi-content": [
+                    {
+                      "title": "postProcessBeforeInitialization",
+                      "simple-content": "Called before a bean's initialization callbacks are invoked"
+                    },
+                    {
+                      "title": "postProcessAfterInitialization",
+                      "simple-content": "Called after a bean has been fully initialized, allowing for further modifications"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "BeanFactoryPostProcessor",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Modifies bean definitions before instantiation"
+                },
+                {
+                  "title": "Usage",
+                  "simple-content": "Programmatically modify bean properties and configurations"
+                }
+              ]
+            },
+            {
+              "title": "InstantiationAwareBeanPostProcessor",
+              "simple-content": "Additional control over bean instantiation and property population"
+            }
+          ]
+        },
+        {
+          "title": "Use Cases",
+          "multi-content": [
+            "Proxy creation (used by Spring AOP)",
+            "Property placeholder resolution",
+            "Method validation",
+            "Bean persistence",
+            "Bean lifecycle management"
+          ]
+        },
+        {
+          "title": "Example",
+          "multi-content": [
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Example",
+                  "simple-content": "@Component\npublic class CustomBeanPostProcessor implements BeanPostProcessor {\n    \n    @Override\n    public Object postProcessBeforeInitialization(Object bean, String beanName) \n            throws BeansException {\n        if (bean instanceof AuditableBean) {\n            System.out.println(\"Before initializing: \" + beanName);\n            // Modify bean properties or add behavior\n        }\n        return bean;\n    }\n    \n    @Override\n    public Object postProcessAfterInitialization(Object bean, String beanName) \n            throws BeansException {\n        if (bean instanceof AuditableBean) {\n            System.out.println(\"After initializing: \" + beanName);\n            // Create proxies or wrap the bean\n        }\n        return bean;\n    }\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Common Spring Annotations",
+      "multi-content": [
+        {
+          "title": "Categories",
+          "multi-content": [
+            {
+              "title": "Component Annotations",
+              "multi-content": [
+                {
+                  "title": "Annotations",
+                  "multi-content": [
+                    {
+                      "title": "@Component",
+                      "simple-content": "Marks a class as Spring component"
+                    },
+                    {
+                      "title": "@Repository",
+                      "simple-content": "Indicates a persistence layer component"
+                    },
+                    {
+                      "title": "@Service",
+                      "simple-content": "Indicates a service layer component"
+                    },
+                    {
+                      "title": "@Controller",
+                      "simple-content": "Indicates a controller component"
+                    },
+                    {
+                      "title": "@RestController",
+                      "simple-content": "Combines `@Controller` and `@ResponseBody`"
+                    },
+                    {
+                      "title": "@Configuration",
+                      "simple-content": "Indicates a configuration class with bean definitions"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Dependency Injection",
+              "multi-content": [
+                {
+                  "title": "Annotations",
+                  "multi-content": [
+                    {
+                      "title": "@Autowired",
+                      "simple-content": "Marks dependency injection point"
+                    },
+                    {
+                      "title": "@Qualifier",
+                      "simple-content": "Specifies which bean to inject when multiple exist"
+                    },
+                    {
+                      "title": "@Primary",
+                      "simple-content": "Designates primary bean when multiple candidates exist"
+                    },
+                    {
+                      "title": "@Required",
+                      "simple-content": "Indicates required property (deprecated in Spring 5)"
+                    },
+                    {
+                      "title": "@Lazy",
+                      "simple-content": "Indicates lazy initialization"
+                    },
+                    {
+                      "title": "@DependsOn",
+                      "simple-content": "Ensures specified beans are created before this bean"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Bean Configuration",
+              "multi-content": [
+                {
+                  "title": "Annotations",
+                  "multi-content": [
+                    {
+                      "title": "@Bean",
+                      "simple-content": "Marks method as producing a bean"
+                    },
+                    {
+                      "title": "@Scope",
+                      "simple-content": "Defines bean scope"
+                    },
+                    {
+                      "title": "@Order",
+                      "simple-content": "Specifies bean ordering"
+                    },
+                    {
+                      "title": "@Profile",
+                      "simple-content": "Restricts beans to specific profiles"
+                    },
+                    {
+                      "title": "@Conditional",
+                      "simple-content": "Controls bean creation based on conditions"
+                    },
+                    {
+                      "title": "@Import",
+                      "simple-content": "Imports additional configuration classes"
+                    },
+                    {
+                      "title": "@PropertySource",
+                      "simple-content": "Indicates location of properties files"
+                    },
+                    {
+                      "title": "@Value",
+                      "simple-content": "Injects values from properties or SpEL"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Lifecycle Annotations",
+              "multi-content": [
+                {
+                  "title": "Annotations",
+                  "multi-content": [
+                    {
+                      "title": "@PostConstruct",
+                      "simple-content": "Marks method to be called after bean initialization"
+                    },
+                    {
+                      "title": "@PreDestroy",
+                      "simple-content": "Marks method to be called before bean destruction"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Spring Boot vs Spring Framework",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "Understanding the differences between Spring Boot and the core Spring Framework helps clarify their relationship and use cases."
+        },
+        {
+          "title": "definition",
+          "simple-content": "Spring Boot is an opinionated framework built on top of Spring that simplifies application development by providing auto-configuration, starter dependencies, and embedded servers, significantly reducing boilerplate configuration."
+        },
+        {
+          "title": "Differences",
+          "multi-content": [
+            {
+              "title": "Configuration",
+              "multi-content": [
+                {
+                  "title": "Spring Framework",
+                  "simple-content": "Explicit configuration required"
+                },
+                {
+                  "title": "Spring Boot",
+                  "simple-content": "Auto-configuration with sensible defaults"
+                }
+              ]
+            },
+            {
+              "title": "Setup",
+              "multi-content": [
+                {
+                  "title": "Spring Framework",
+                  "simple-content": "More boilerplate code"
+                },
+                {
+                  "title": "Spring Boot",
+                  "simple-content": "Minimal setup code"
+                }
+              ]
+            },
+            {
+              "title": "Deployment",
+              "multi-content": [
+                {
+                  "title": "Spring Framework",
+                  "simple-content": "Traditional WAR deployment or standalone"
+                },
+                {
+                  "title": "Spring Boot",
+                  "simple-content": "Embedded server, standalone JAR"
+                }
+              ]
+            },
+            {
+              "title": "Dependencies",
+              "multi-content": [
+                {
+                  "title": "Spring Framework",
+                  "simple-content": "Manual dependency management"
+                },
+                {
+                  "title": "Spring Boot",
+                  "simple-content": "Starter dependencies for common scenarios"
+                }
+              ]
+            },
+            {
+              "title": "External Servers",
+              "multi-content": [
+                {
+                  "title": "Spring Framework",
+                  "simple-content": "Requires external server configuration"
+                },
+                {
+                  "title": "Spring Boot",
+                  "simple-content": "Embedded server (Tomcat, Jetty, Undertow)"
+                }
+              ]
+            },
+            {
+              "title": "Monitoring",
+              "multi-content": [
+                {
+                  "title": "Spring Framework",
+                  "simple-content": "Requires additional setup"
+                },
+                {
+                  "title": "Spring Boot",
+                  "simple-content": "Built-in actuator for monitoring"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Auto Configuration",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Spring Boot automatically configures Spring and third-party libraries based on classpath dependencies, existing beans, and property settings."
+            },
+            {
+              "title": "Example",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "Spring Framework",
+                      "simple-content": "// In Spring Framework\n@Configuration\npublic class WebConfig implements WebMvcConfigurer {\n    @Bean\n    public ViewResolver viewResolver() {\n        InternalResourceViewResolver resolver = new InternalResourceViewResolver();\n        resolver.setPrefix(\"/WEB-INF/views/\");\n        resolver.setSuffix(\".jsp\");\n        return resolver;\n    }\n    \n    // Many more beans...\n}"
+                    },
+                    {
+                      "title": "Spring Boot",
+                      "simple-content": "// In Spring Boot\n@SpringBootApplication\npublic class Application {\n    public static void main(String[] args) {\n        SpringApplication.run(Application.class, args);\n    }\n    // That's it! Auto-configuration handles the rest\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Starter Dependencies",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Spring Boot provides curated dependency sets for common use cases:"
+            },
+            {
+              "title": "Example",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "Spring Framework",
+                      "simple-content": "<!-- Spring Framework approach -->\n<dependencies>\n    <dependency>\n        <groupId>org.springframework</groupId>\n        <artifactId>spring-web</artifactId>\n    </dependency>\n    <dependency>\n        <groupId>org.springframework</groupId>\n        <artifactId>spring-webmvc</artifactId>\n    </dependency>\n    <dependency>\n        <groupId>com.fasterxml.jackson.core</groupId>\n        <artifactId>jackson-databind</artifactId>\n    </dependency>\n    <!-- Many more dependencies... -->\n</dependencies>"
+                    },
+                    {
+                      "title": "Spring Boot",
+                      "simple-content": "<!-- Spring Boot approach -->\n<dependencies>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-web</artifactId>\n    </dependency>\n    <!-- That's it! -->\n</dependencies>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Property Configuration",
+          "multi-content": [
+            {
+              "title": "Description",
+              "simple-content": "Spring Boot simplifies property configuration through application.properties/yml:"
+            },
+            {
+              "title": "code_examples",
+              "multi-content": [
+                {
+                  "title": "Example",
+                  "simple-content": "# Spring Boot automatically configures beans based on these properties\nspring.datasource.url=jdbc:mysql://localhost/mydb\nspring.datasource.username=user\nspring.datasource.password=password\n\n# Automatically configures connection pooling\nspring.datasource.hikari.maximum-pool-size=10\n\n# Automatically configures JPA\nspring.jpa.hibernate.ddl-auto=update\nspring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Spring Core Components",
+      "multi-content": [
+        {
+          "title": "description",
+          "simple-content": "An in-depth overview of the core components in the Spring Framework and how they interact to form a robust, flexible foundation for enterprise applications."
+        },
+        {
+          "title": "Components",
+          "multi-content": [
+            {
+              "title": "BeanFactory",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "The simplest container in Spring, responsible for instantiating, configuring, and managing the lifecycle of beans. It emphasizes lazy initialization by creating beans only when required."
+                },
+                {
+                  "title": "Characteristics",
+                  "multi-content": [
+                    "Lazy initialization",
+                    "Basic IoC container",
+                    "Bean lifecycle management"
+                  ]
+                },
+                {
+                  "title": "Relationships",
+                  "multi-content": [
+                    {
+                      "title": "BeanPostProcessor",
+                      "simple-content": "Provides hooks for modifying beans during their lifecycle."
+                    },
+                    {
+                      "title": "BeanFactoryPostProcessor",
+                      "simple-content": "Allows modification of bean definitions before bean instantiation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "ApplicationContext",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "An advanced container that extends BeanFactory by adding enterprise-specific features such as internationalization, event propagation, and resource management. It eagerly initializes singleton beans, ensuring that all necessary beans are available at startup."
+                },
+                {
+                  "title": "Features",
+                  "multi-content": [
+                    "Event propagation",
+                    "Internationalization",
+                    "Eager initialization",
+                    "Resource management"
+                  ]
+                },
+                {
+                  "title": "Relationships",
+                  "multi-content": [
+                    {
+                      "title": "Environment",
+                      "simple-content": "Manages application properties and configuration profiles."
+                    },
+                    {
+                      "title": "Resource",
+                      "simple-content": "Provides a unified way to access various types of resources."
+                    },
+                    {
+                      "title": "PropertyEditor",
+                      "simple-content": "Handles conversion of property values to the required data types."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "BeanPostProcessor",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "An interface that allows for custom modification of new bean instances, both before and after initialization, such as wrapping them with proxies or altering their properties."
+                },
+                {
+                  "title": "Methods",
+                  "multi-content": [
+                    {
+                      "title": "postProcessBeforeInitialization",
+                      "simple-content": "Called before a bean's initialization callbacks are invoked."
+                    },
+                    {
+                      "title": "postProcessAfterInitialization",
+                      "simple-content": "Called after a bean has been fully initialized, allowing for further modifications."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "BeanFactoryPostProcessor",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "An interface that enables the modification of bean definitions after they have been loaded but before any beans are instantiated, allowing for custom alterations to bean properties and configurations."
+                },
+                {
+                  "title": "Usage",
+                  "simple-content": "Programmatically modify bean properties and configurations"
+                },
+                {
+                  "title": "Example",
+                  "simple-content": "@Component\npublic class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor {\n    @Override\n    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {\n        // Modify bean definitions\n    }\n}"
+                }
+              ]
+            },
+            {
+              "title": "BeanDefinition",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Encapsulates the metadata required for bean creation, including class name, constructor arguments, property values, dependencies, and scope. This metadata guides the container in managing bean instantiation and lifecycle."
+                },
+                {
+                  "title": "Properties",
+                  "multi-content": [
+                    "Class name",
+                    "Constructor arguments",
+                    "Properties",
+                    "Dependencies",
+                    "Scope",
+                    "Lazy initialization flag"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "FactoryBean",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "A special type of bean that encapsulates custom object creation logic. It abstracts complex creation processes, allowing for flexible and reusable bean definitions."
+                },
+                {
+                  "title": "Methods",
+                  "multi-content": [
+                    {
+                      "title": "getObject",
+                      "simple-content": "Returns the object created by this factory bean."
+                    },
+                    {
+                      "title": "getObjectType",
+                      "simple-content": "Returns the type of object that this factory bean creates."
+                    },
+                    {
+                      "title": "isSingleton",
+                      "simple-content": "Indicates whether the created object is a singleton."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Environment",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Represents the application's environment, including active profiles and properties. It is essential for runtime configuration management and property resolution."
+                },
+                {
+                  "title": "Features",
+                  "multi-content": [
+                    "Profile management",
+                    "Property resolution",
+                    "Configuration management"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Resource",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "An abstraction for accessing resources such as files, classpath resources, or URLs, providing a consistent approach to resource management across different environments."
+                },
+                {
+                  "title": "Types",
+                  "multi-content": [
+                    "ClassPathResource",
+                    "FileSystemResource",
+                    "UrlResource",
+                    "ServletContextResource"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "PropertyEditor",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Used to convert string representations of property values into the required Java object types, playing a key role in data binding and type conversion."
+                },
+                {
+                  "title": "Usage",
+                  "simple-content": "Property binding and type conversion"
+                }
+              ]
+            },
+            {
+              "title": "BeanWrapper",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "Provides a way to access and manipulate bean properties, including support for nested properties and automatic type conversion."
+                },
+                {
+                  "title": "Features",
+                  "multi-content": [
+                    "Property access",
+                    "Property type conversion",
+                    "Property nesting"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "ConversionService",
+              "multi-content": [
+                {
+                  "title": "Description",
+                  "simple-content": "A flexible type conversion system that supports conversion between different data types, essential for property binding and formatting in Spring applications."
+                },
+                {
+                  "title": "Features",
+                  "multi-content": [
+                    "Type conversion",
+                    "Property binding",
+                    "Format conversion"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Lifecycle Flow",
+          "multi-content": [
+            {
+              "title": "Bean Creation",
+              "multi-content": [
+                "BeanDefinition loading",
+                "BeanFactoryPostProcessor processing",
+                "Bean instantiation",
+                "Property population",
+                "BeanPostProcessor pre-initialization",
+                "Custom initialization",
+                "BeanPostProcessor post-initialization"
+              ]
+            },
+            {
+              "title": "Context Startup",
+              "multi-content": [
+                "Environment preparation",
+                "Bean definition loading",
+                "Bean factory post-processing",
+                "Bean post-processor registration",
+                "Singleton pre-instantiation",
+                "Context refresh completion"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Advanced Topics",
+      "multi-content": [
+        {
+          "title": "Topics",
+          "multi-content": [
+            {
+              "title": "Bean Definition Inheritance",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "Code",
+                      "simple-content": "@Configuration\npublic class AppConfig {\n    @Bean\n    public AbstractDataSource abstractDataSource() {\n        AbstractDataSource ds = new AbstractDataSource();\n        ds.setDriverClassName(\"com.mysql.jdbc.Driver\");\n        ds.setConnectionTimeout(30000);\n        return ds;\n    }\n    \n    @Bean\n    public DataSource productionDataSource() {\n        DataSource ds = new DataSource();\n        ds.setUrl(\"jdbc:mysql://prod/mydb\");\n        // Inherits properties from abstractDataSource\n        BeanUtils.copyProperties(abstractDataSource(), ds);\n        return ds;\n    }\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Conditional Bean Registration",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "Code",
+                      "simple-content": "@Configuration\npublic class ConditionalConfig {\n    @Bean\n    @Conditional(WindowsCondition.class)\n    public WindowsService windowsService() {\n        return new WindowsServiceImpl();\n    }\n    \n    @Bean\n    @Conditional(LinuxCondition.class)\n    public LinuxService linuxService() {\n        return new LinuxServiceImpl();\n    }\n}\n\npublic class WindowsCondition implements Condition {\n    @Override\n    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {\n        return context.getEnvironment().getProperty(\"os.name\").contains(\"Windows\");\n    }\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Custom Scope Implementation",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "Code",
+                      "simple-content": "@Component\npublic class ThreadScope implements Scope {\n    private final ThreadLocal<Map<String, Object>> threadScope = \n        ThreadLocal.withInitial(HashMap::new);\n    \n    @Override\n    public Object get(String name, ObjectFactory<?> objectFactory) {\n        Map<String, Object> scope = threadScope.get();\n        if (!scope.containsKey(name)) {\n            scope.put(name, objectFactory.getObject());\n        }\n        return scope.get(name);\n    }\n    \n    @Override\n    public Object remove(String name) {\n        Map<String, Object> scope = threadScope.get();\n        return scope.remove(name);\n    }\n    \n    // Other methods...\n}\n\n// Registering the scope\n@Configuration\npublic class ScopeConfig {\n    @Bean\n    public static CustomScopeConfigurer customScopeConfigurer() {\n        CustomScopeConfigurer configurer = new CustomScopeConfigurer();\n        configurer.addScope(\"thread\", new ThreadScope());\n        return configurer;\n    }\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Event-Driven Communication",
+              "multi-content": [
+                {
+                  "title": "code_examples",
+                  "multi-content": [
+                    {
+                      "title": "Code",
+                      "simple-content": "// Creating a custom event\npublic class UserCreatedEvent extends ApplicationEvent {\n    private User user;\n    \n    public UserCreatedEvent(Object source, User user) {\n        super(source);\n        this.user = user;\n    }\n    \n    public User getUser() {\n        return user;\n    }\n}\n\n// Publishing an event\n@Service\npublic class UserService {\n    private final ApplicationEventPublisher eventPublisher;\n    \n    @Autowired\n    public UserService(ApplicationEventPublisher eventPublisher) {\n        this.eventPublisher = eventPublisher;\n    }\n    \n    public void createUser(User user) {\n        // Business logic\n        // ...\n        \n        // Publish event\n        eventPublisher.publishEvent(new UserCreatedEvent(this, user));\n    }\n}\n\n// Handling the event\n@Component\npublic class UserEventListener {\n    @EventListener\n    public void handleUserCreated(UserCreatedEvent event) {\n        User user = event.getUser();\n        // Process event\n    }\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Interview FAQs",
+      "multi-content": [
+        {
+          "title": "What is the difference between IoC and DI?",
+          "simple-content": "Inversion of Control (IoC) is a general principle where control of object creation and lifecycle is transferred from the application code to a container. Dependency Injection (DI) is a specific implementation of IoC where dependencies are provided to a class rather than created by the class itself. DI is one way to achieve IoC; IoC is the broader principle, while DI is a specific mechanism."
+        },
+        {
+          "title": "What are the different types of dependency injection in Spring?",
+          "simple-content": "Spring supports three main types of dependency injection:\n\n1. **Constructor Injection**: Dependencies are provided via constructors; preferred for required dependencies.\n2. **Setter Injection**: Dependencies are provided via setter methods; suitable for optional dependencies.\n3. **Field Injection**: Dependencies are injected directly into fields using reflection; simpler but less recommended due to reduced testability."
+        },
+        {
+          "title": "What is the difference between BeanFactory and ApplicationContext?",
+          "simple-content": "Both are IoC containers, but ApplicationContext extends BeanFactory with enterprise features:\n\n- BeanFactory provides basic IoC features and lazy bean initialization\n- ApplicationContext includes all BeanFactory capabilities plus:\n    - Eager bean initialization\n    - Automatic BeanPostProcessor registration\n    - Application event publication\n    - Internationalization support\n    - Resource access\n    - Integration with AOP\n\nGenerally, ApplicationContext is preferred unless resource constraints or specific lazy loading requirements favor BeanFactory."
+        },
+        {
+          "title": "What are bean scopes in Spring?",
+          "simple-content": "Bean scopes define the lifecycle and visibility of beans:\n\n- **singleton**: Default scope; one instance per container\n- **prototype**: New instance for each request/injection\n- **request**: One instance per HTTP request\n- **session**: One instance per HTTP session\n- **application**: One instance per ServletContext\n- **websocket**: One instance per WebSocket"
+        },
+        {
+          "title": "How do you handle bean dependencies in Spring?",
+          "simple-content": "Spring manages bean dependencies through:\n\n1. Automatic wiring using `@Autowired` annotation\n2. Constructor injection (recommended approach)\n3. Setter method injection\n4. Field-level injection\n5. Explicit wiring in Java configuration or XML\n\nSpring resolves dependencies by type, and when multiple beans of the same type exist, by using qualifiers or primary designations."
+        },
+        {
+          "title": "What happens during Spring bean lifecycle?",
+          "simple-content": "A Spring bean goes through the following phases:\n\n1. Bean definitions are loaded\n2. Bean is instantiated\n3. Dependencies are injected\n4. BeanPostProcessors are applied before initialization\n5. `@PostConstruct` methods, InitializingBean's `afterPropertiesSet()`, or custom init methods are called\n6. BeanPostProcessors are applied after initialization\n7. Bean is ready for use\n8. On container shutdown, `@PreDestroy` methods, DisposableBean's `destroy()`, or custom destroy methods are called"
+        },
+        {
+          "title": "What is component scanning in Spring?",
+          "simple-content": "Component scanning is a Spring feature that automatically detects and registers beans from specified base packages. It looks for classes annotated with stereotype annotations like `@Component`, `@Service`, `@Repository`, and `@Controller`. This reduces the need for explicit bean declarations.\n\n```java\n@Configuration\n@ComponentScan(basePackages = \"com.example\")\npublic class AppConfig {\n    // Configuration\n}\n```"
+        },
+        {
+          "title": "How are exceptions handled in Spring's AOP?",
+          "simple-content": "Spring AOP handles exceptions through:\n\n1. `@AfterThrowing` advice - executes when the targeted method throws an exception\n2. `@Around` advice - can catch exceptions and either rethrow them, wrap them, or handle them\n3. Exception translation - especially in the persistence layer, Spring can translate technology-specific exceptions to more meaningful ones"
+        },
+        {
+          "title": "What is the difference between singleton scope in Spring and the Singleton design pattern?",
+          "simple-content": "The key differences are:\n\n- Spring singleton: One instance per Spring container (application context)\n- Singleton pattern: One instance per JVM\n- Spring singletons are managed by the Spring container, while the Singleton pattern typically manages its own instance\n- Spring singletons can still have prototype dependencies injected using scoped proxies\n- Spring singleton beans can be lazily loaded; traditional Singletons are usually eagerly loaded"
+        },
+        {
+          "title": "What is the preferred way to accomplish dependency injection in Spring?",
+          "simple-content": "Constructor injection is generally preferred because:\n\n- It ensures all required dependencies are provided at initialization time\n- It promotes immutability (fields can be final)\n- It makes dependencies explicit and visible\n- It makes testing easier, as dependencies can be mocked in unit tests\n- It prevents circular dependencies at compile time\n\n```java\n@Service\npublic class UserServiceImpl implements UserService {\n    private final UserRepository userRepository;\n    private final EmailService emailService;\n    \n    public UserServiceImpl(UserRepository userRepository, EmailService emailService) {\n        this.userRepository = userRepository;\n        this.emailService = emailService;\n    }\n    \n    // Methods\n}\n```"
+        },
+        {
+          "title": "How do you resolve circular dependencies in Spring?",
+          "simple-content": "Circular dependencies occur when bean A depends on B and B depends on A. Solutions include:\n\n1. Redesigning the components to remove the circular dependency (best approach)\n2. Using setter injection instead of constructor injection\n3. Using `@Lazy` annotation to defer initialization of one dependency\n4. Using application events to communicate between components\n5. Using a third component to mediate between the two dependent components"
+        },
+        {
+          "title": "How does Spring handle property placeholders?",
+          "simple-content": "Spring resolves property placeholders (like `${property.name}`) using:\n\n1. `PropertySourcesPlaceholderConfigurer` - processes placeholders in bean definitions\n2. `@Value` annotation for injecting property values into beans\n3. `Environment` interface for programmatic property access\n4. Property sources like property files, environment variables, JVM system properties\n\n```java\n@Configuration\n@PropertySource(\"classpath:application.properties\")\npublic class AppConfig {\n    @Value(\"${database.url}\")\n    private String databaseUrl;\n    \n    // Bean definitions\n}\n```"
+        },
+        {
+          "title": "What is Spring AOP and how does it work?",
+          "simple-content": "Spring AOP (Aspect-Oriented Programming) is a technique for separating cross-cutting concerns (like logging, transaction management, security) from business logic. Spring implements AOP using:\n\n- Proxy-based approach (JDK dynamic proxies for interfaces, CGLIB for classes)\n- AspectJ integration for more advanced scenarios\n- Annotation-based or XML-based configuration\n- Support for different advice types (@Before, @After, @Around, etc.)\n\nSpring AOP works by creating proxies around target objects and applying advice at specified join points."
+        },
+        {
+          "title": "What is the role of @Component, @Service, @Repository, and @Controller?",
+          "simple-content": "These are stereotype annotations in Spring:\n\n- `@Component`: Generic annotation for any Spring-managed component\n- `@Service`: Specialization of @Component for service layer with business logic\n- `@Repository`: Specialization of @Component for persistence layer, enables exception translation\n- `@Controller`: Specialization of @Component for presentation layer, typically handling HTTP requests\n\nWhile functionally similar (all mark classes for component scanning), they provide semantic clarity and may receive special treatment (like Repository exception translation)."
+        },
+        {
+          "title": "What is the purpose of @Qualifier annotation?",
+          "simple-content": "The `@Qualifier` annotation is used to disambiguate bean wiring when multiple beans of the same type exist in the container. It helps Spring identify exactly which bean should be injected when there's ambiguity.\n\nFor example, if you have multiple implementations of `PaymentService` interface:\n\n```java\n@Component(\"creditCardPayment\")\npublic class CreditCardPaymentService implements PaymentService { ... }\n\n@Component(\"paypalPayment\")\npublic class PayPalPaymentService implements PaymentService { ... }\n\n// In another component:\n@Autowired\n@Qualifier(\"paypalPayment\")\nprivate PaymentService paymentService; // Specifically injects PayPalPaymentService\n```\n\nWithout `@Qualifier`, Spring would throw a `NoUniqueBeanDefinitionException` since it wouldn't know which implementation to inject."
+        },
+        {
+          "title": "What is the difference between Spring Boot and Spring Framework?",
+          "simple-content": "Spring Boot builds on top of Spring Framework:\n\n- **Spring Framework** provides the fundamental functionality for dependency injection, transaction management, web apps, data access, and more.\n- **Spring Boot** adds auto-configuration, embedded servers, starter dependencies, and production-ready features that simplify Spring application development.\n\nSpring Boot reduces boilerplate configuration through convention-over-configuration, making it faster and easier to create production-ready Spring applications."
+        }
+      ]
     }
   ]
 }

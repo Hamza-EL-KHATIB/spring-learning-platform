@@ -1023,6 +1023,29 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Interview Tips",
+      "multi-content": [
+        {
+          "title": "Tips",
+          "multi-content": [
+            "Be prepared to describe REST principles in your own words",
+            "Understand the difference between different HTTP methods",
+            "Know common status codes and when to use them",
+            "Be able to explain authentication mechanisms like JWT",
+            "Understand CORS and security implications",
+            "Be familiar with Spring's implementation of REST controllers",
+            "Be ready to discuss best practices for designing REST APIs",
+            "Know how to handle errors and exceptions in REST APIs",
+            "Understand content negotiation and different data formats"
+          ]
+        },
+        {
+          "title": "Conclusion",
+          "simple-content": "Remember that in interviews, it's important to demonstrate not just theoretical knowledge but also practical experience with RESTful APIs. Be prepared to discuss real-world examples and challenges you've faced when implementing or consuming RESTful services."
+        }
+      ]
     }
   ]
 }
