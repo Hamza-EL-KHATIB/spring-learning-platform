@@ -27,6 +27,7 @@ To add a page: JSON in `src/data/`, a `TopicPageTemplate` one-liner in
 | DSA Patterns & Big-O | `/practice/dsa` | `Practice/DSA Patterns & Big-O.md` |
 | Technical Scenarios | `/practice/scenarios` | `Practice/Technical Scenarios.md` |
 | Behavioral & HR | `/practice/behavioral` | `HR & Behavioral Preparation/` (3 notes) + `Practice/Behavioral Scenarios.md` |
+| Performance Tuning | `/architecture/performance` | none — written from scratch |
 
 ## Judgement calls worth knowing
 
@@ -52,11 +53,11 @@ were filed under the topic each one is about rather than given a questions tab.
 
 ## What's actually left
 
-Nothing in the vault is unconverted. Remaining ideas, in rough value order:
+Nothing in the vault is unconverted, and the one gap with no vault source
+(performance tuning) has been written. Remaining ideas:
 
-- **Deleted as unusable:** `architecture/best-practices.json` and
-  `architecture/performance.json` were 0 bytes with no vault source. Performance
-  tuning is a real gap, but there is no note to import — it would need writing.
+- `architecture/best-practices.json` was deleted: 0 bytes, no vault source, and its
+  subject is already covered by the SOLID, YAGNI/KISS/DRY and Code Reviews pages.
 - `Architecture/Design Patterns in Spring Boot & Java.md` was partially harvested into
   `design-patterns.json`; its `advanced_patterns`, `network_proxy_types` and
   `pattern_decision_guide` sections remain unused and could justify their own page.

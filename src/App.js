@@ -33,6 +33,7 @@ import PrinciplesPage from './pages/topics/architecture/PrinciplesPage';
 import MicroservicesPage from './pages/topics/architecture/MicroservicesPage';
 import KafkaPage from './pages/topics/architecture/KafkaPage';
 import SystemDesignPage from './pages/topics/architecture/SystemDesignPage';
+import PerformancePage from './pages/topics/architecture/PerformancePage';
 
 // DevOps imports
 import GitPage from './pages/topics/devops/GitPage';
@@ -117,6 +118,7 @@ const App = () => {
                         <Route path="/architecture/microservices" element={<MicroservicesPage/>}/>
                         <Route path="/architecture/kafka" element={<KafkaPage/>}/>
                         <Route path="/architecture/system-design" element={<SystemDesignPage/>}/>
+                        <Route path="/architecture/performance" element={<PerformancePage/>}/>
 
                         {/* DevOps Routes */}
                         <Route path="/devops/git" element={<GitPage/>}/>

@@ -1,0 +1,414 @@
+{
+  "title": "Performance Tuning",
+  "tags": ["performance", "profiling", "spring", "jvm", "interview"],
+  "topics": [
+    {
+      "title": "Method",
+      "description": "How to approach a performance problem so the answer is defensible. Interviewers care far more about the order you do things in than about any individual flag.",
+      "interviewRelevance": 5,
+      "the_rule": "Measure, find the bottleneck, fix that one thing, measure again. Tuning without a measurement is guessing, and guessing is the single thing that marks someone out as inexperienced.",
+      "steps": [
+        {
+          "title": "1. Define the target",
+          "description": "State the goal as a number before touching anything: p99 under 200 ms at 500 requests per second. Without a target you cannot tell when you are finished."
+        },
+        {
+          "title": "2. Reproduce under load",
+          "description": "Measure on a realistic dataset with realistic concurrency. A query that is fast against 100 rows tells you nothing about 10 million."
+        },
+        {
+          "title": "3. Find the bottleneck",
+          "description": "Profile rather than reason. The slow part is very often not where the team assumed it was."
+        },
+        {
+          "title": "4. Fix one thing",
+          "description": "Change a single variable, then re-measure. Changing several at once means you cannot attribute the improvement, and cannot revert the one that hurt."
+        },
+        {
+          "title": "5. Know when to stop",
+          "description": "Once you are inside the target, stop. Further tuning costs complexity that someone has to maintain."
+        }
+      ],
+      "frameworks": {
+        "headers": ["Framework", "What you check", "Best for"],
+        "rows": [
+          ["USE", "Utilization, Saturation, Errors for every resource", "Infrastructure: CPU, memory, disk, network"],
+          ["RED", "Rate, Errors, Duration per endpoint", "Services and APIs"],
+          ["Little's Law", "concurrency = throughput multiplied by latency", "Sanity-checking whether a target is even reachable"]
+        ]
+      },
+      "littles_law_in_practice": "To serve 500 requests per second at 200 ms each you need about 100 requests in flight (500 times 0.2). If your thread pool is 50, the pool is your ceiling no matter what else you tune."
+    },
+    {
+      "title": "Latency Budget",
+      "description": "Averages hide the problem. Tail latency is what users feel and what interviewers probe.",
+      "interviewRelevance": 5,
+      "why_averages_lie": "An endpoint averaging 50 ms can still be timing out for 1 in 100 users. The mean is dragged down by the fast majority, so a slow tail disappears into it. Always quote percentiles.",
+      "percentiles": {
+        "headers": ["Metric", "Reading", "Use it for"],
+        "rows": [
+          ["p50 (median)", "Typical experience", "Is the common path healthy"],
+          ["p95", "The unlucky twentieth", "Capacity planning and alerting"],
+          ["p99", "The bad tail", "SLOs; where GC pauses and lock contention appear"],
+          ["max", "Worst observation", "Finding pathological cases, too noisy to alert on"]
+        ]
+      },
+      "tail_amplification": "If one page makes 10 backend calls in sequence and each has a 1 percent chance of being slow, roughly 1 in 10 page loads hits at least one slow call. Fan-out multiplies tail latency, which is why p99 of a dependency becomes p50 of your page.",
+      "budgeting": [
+        "Give each hop a slice of the total: 200 ms end to end might be 20 ms gateway, 30 ms service, 100 ms database, 50 ms headroom.",
+        "Set timeouts below the budget, not above it. A 30 second default timeout is not a timeout, it is a hang.",
+        "Measure at the edge as well as inside. Server-side timings miss queueing, TLS and network."
+      ]
+    },
+    {
+      "title": "Spring Startup",
+      "description": "Startup time matters for autoscaling, serverless and local development loops. It rarely matters for a long-running service, so know when not to bother.",
+      "interviewRelevance": 3,
+      "what_actually_costs": [
+        "Classpath scanning across broad package roots",
+        "Eagerly initialising beans that most requests never touch",
+        "Auto-configuration evaluating conditions for starters you do not use",
+        "Connection pools and caches warming synchronously at boot"
+      ],
+      "techniques": [
+        {
+          "name": "Lazy initialization",
+          "description": "Beans are created on first use rather than at startup. Big win locally; the cost moves to the first request, so measure before enabling in production.",
+          "code": "spring.main.lazy-initialization=true"
+        },
+        {
+          "name": "Narrow component scanning",
+          "description": "Scan the specific packages you own rather than a root that includes half the classpath."
+        },
+        {
+          "name": "Trim starters",
+          "description": "Every auto-configuration class is evaluated at boot. Removing unused starters removes that work. Run with the condition report to see what is being applied.",
+          "code": "java -jar app.jar --debug   # prints the auto-configuration condition report"
+        },
+        {
+          "name": "AOT and native image",
+          "description": "Spring Boot 3 AOT processing moves work to build time; GraalVM native image cuts startup to milliseconds. The trade-off is build complexity and no runtime reflection, so it pays off for serverless and scale-to-zero, not for a service that starts once a week."
+        }
+      ],
+      "measuring": {
+        "headers": ["Tool", "What it shows"],
+        "rows": [
+          ["Startup actuator endpoint", "Per-bean initialisation timings"],
+          ["ApplicationStartup with BufferingApplicationStartup", "A step-by-step startup trace"],
+          ["--debug condition report", "Which auto-configurations applied and why"]
+        ]
+      }
+    },
+    {
+      "title": "JPA & Queries",
+      "description": "The database is the bottleneck far more often than the JVM. In a Spring interview this is the highest-value area to be fluent in.",
+      "interviewRelevance": 5,
+      "n_plus_one": {
+        "description": "The classic ORM bug: one query loads N parents, then N more queries load each parent's children. It passes tests on 10 rows and falls over on 10,000.",
+        "bad": "// 1 query for the orders, then 1 more per order for its items\nList<Order> orders = orderRepository.findAll();\nfor (Order order : orders) {\n    order.getItems().size();   // triggers a SELECT every iteration\n}",
+        "good": "// One query, children fetched with the parents\n@Query(\"SELECT DISTINCT o FROM Order o LEFT JOIN FETCH o.items\")\nList<Order> findAllWithItems();\n\n// Or declaratively:\n@EntityGraph(attributePaths = \"items\")\nList<Order> findAll();"
+      },
+      "detecting_it": [
+        "Log SQL in development and count the statements for one request.",
+        "Assert on query counts in integration tests so a regression fails the build.",
+        "Watch the Hibernate statistics, or a p6spy or datasource-proxy wrapper, in a load test."
+      ],
+      "techniques": [
+        {
+          "name": "Fetch only what you render",
+          "description": "Projections (an interface or a DTO constructor expression) stop Hibernate from hydrating whole entity graphs you immediately discard.",
+          "code": "public interface OrderSummary {\n    Long getId();\n    String getStatus();\n    BigDecimal getTotal();\n}\n\nList<OrderSummary> findByStatus(String status);"
+        },
+        {
+          "name": "Batch fetching",
+          "description": "When a join fetch is impractical, batching turns N queries into N divided by batch size.",
+          "code": "spring.jpa.properties.hibernate.default_batch_fetch_size=50"
+        },
+        {
+          "name": "Batch writes",
+          "description": "Without batching, saving 1000 rows is 1000 round trips. Note that IDENTITY id generation disables JDBC batching for inserts.",
+          "code": "spring.jpa.properties.hibernate.jdbc.batch_size=50\nspring.jpa.properties.hibernate.order_inserts=true\nspring.jpa.properties.hibernate.order_updates=true"
+        },
+        {
+          "name": "Pagination over unbounded reads",
+          "description": "findAll on a growing table is a future outage. Paginate, and prefer keyset pagination over large OFFSET values, which the database must still scan past."
+        },
+        {
+          "name": "LAZY by default",
+          "description": "ToOne associations default to EAGER in JPA, which quietly pulls in graphs. Set them LAZY and fetch explicitly where needed."
+        }
+      ],
+      "indexing": [
+        "Index the columns you filter, join and sort on, not every column.",
+        "Composite index order matters: the leftmost columns must match your predicates to be usable.",
+        "Read the plan (EXPLAIN ANALYZE) rather than assuming an index is used. A function or an implicit cast on the column will disable it.",
+        "Every index costs write throughput and storage, so unused indexes are pure overhead."
+      ]
+    },
+    {
+      "title": "Connection Pools",
+      "description": "The most common tuning mistake in Spring services: making the pool bigger to fix slowness, which usually makes it worse.",
+      "interviewRelevance": 4,
+      "why_bigger_is_worse": "A connection is only useful while the database has a core to run it on. Beyond that point, extra connections add context switching, lock contention and memory on the database server while queueing on the client anyway. Small pools routinely outperform large ones.",
+      "sizing": {
+        "description": "HikariCP's documented starting point, from the PostgreSQL wiki. Treat it as a hypothesis to load-test, not a law.",
+        "code": "connections = (core_count * 2) + effective_spindle_count\n\n// 4-core database server, SSD-backed:\n// (4 * 2) + 1 = 9 connections"
+      },
+      "settings": {
+        "headers": ["Property", "Meaning", "Guidance"],
+        "rows": [
+          ["maximum-pool-size", "Upper bound on connections", "Start small (about 10) and prove you need more"],
+          ["minimum-idle", "Connections kept warm", "Set equal to max for steady load to avoid churn"],
+          ["connection-timeout", "Wait before failing to get a connection", "A few seconds; failing fast beats hanging"],
+          ["max-lifetime", "Recycle connections before this age", "Keep below any database or proxy idle timeout"],
+          ["leak-detection-threshold", "Warn about connections held too long", "Enable in non-production to catch unclosed sessions"]
+        ]
+      },
+      "the_real_fix": "If the pool is exhausted, the question is why connections are held so long. Usually it is a slow query, a transaction spanning an HTTP call, or a missing index. Fix the holding time, not the pool size.",
+      "transaction_scope": "Keep transactions short and never call a remote service inside one. A REST call inside a transaction pins a database connection for the duration of someone else's latency."
+    },
+    {
+      "title": "Caching",
+      "description": "The highest-leverage optimisation and the easiest to get subtly wrong. Know what you are trading away.",
+      "interviewRelevance": 5,
+      "layers": {
+        "headers": ["Layer", "Latency", "Good for"],
+        "rows": [
+          ["Browser and CDN", "0 ms to the origin", "Static assets, public content"],
+          ["In-process (Caffeine)", "Nanoseconds", "Hot, small, tolerant of per-instance staleness"],
+          ["Distributed (Redis)", "About 1 ms", "Shared across instances, survives restarts"],
+          ["Database buffer pool", "Sub-millisecond", "Free; already caching your hot pages"]
+        ]
+      },
+      "before_you_cache": [
+        "Confirm the read is actually hot. Caching a rarely-read value adds complexity for nothing.",
+        "Decide what staleness is acceptable, in seconds. If the answer is zero, you do not want a cache.",
+        "Know the invalidation path before adding the cache, not after the first stale-data incident."
+      ],
+      "spring_usage": {
+        "description": "Declarative caching. Note that a self-invocation bypasses the proxy, so calling a cached method from within the same bean silently does nothing.",
+        "code": "@Cacheable(value = \"products\", key = \"#id\")\npublic Product findById(Long id) { ... }\n\n@CacheEvict(value = \"products\", key = \"#product.id\")\npublic void update(Product product) { ... }"
+      },
+      "failure_modes": [
+        {
+          "name": "Stampede (cache miss storm)",
+          "description": "A popular key expires and every request rebuilds it at once. Mitigate with a short lock around the rebuild, or by refreshing ahead of expiry."
+        },
+        {
+          "name": "Unbounded growth",
+          "description": "An in-process cache with no size limit is a memory leak with good manners. Always set a maximum size and a TTL."
+        },
+        {
+          "name": "Caching the error",
+          "description": "Storing a null or a failure response turns a transient blip into a sticky one. Decide explicitly whether negative results are cacheable."
+        },
+        {
+          "name": "Per-instance divergence",
+          "description": "Local caches on several instances will disagree after a write. Either accept it, or use a shared cache."
+        }
+      ]
+    },
+    {
+      "title": "Threads & Async",
+      "description": "Where request throughput is actually decided in a Spring MVC service.",
+      "interviewRelevance": 4,
+      "the_model": "Spring MVC is one thread per request. That thread is held for the whole request, including the time it spends blocked waiting on the database or another service. Throughput is therefore bounded by pool size divided by average request duration.",
+      "tomcat_settings": {
+        "headers": ["Property", "Default", "Note"],
+        "rows": [
+          ["server.tomcat.threads.max", "200", "Raising it multiplies memory and downstream pressure"],
+          ["server.tomcat.threads.min-spare", "10", "Warm threads ready for bursts"],
+          ["server.tomcat.accept-count", "100", "Queue length once all threads are busy"],
+          ["server.tomcat.max-connections", "8192", "Connections accepted before refusing"]
+        ]
+      },
+      "raising_max_threads": "Rarely the fix. If threads are all blocked on a slow dependency, more threads means more concurrent pressure on that dependency and more memory used waiting. Make the dependency faster, or stop blocking on it.",
+      "virtual_threads": {
+        "description": "Spring Boot 3.2 on Java 21 can serve each request on a virtual thread, so blocking calls no longer pin a scarce platform thread. This makes the simple blocking style scale like async, without rewriting to reactive.",
+        "code": "spring.threads.virtual.enabled=true"
+      },
+      "caveats": [
+        "Virtual threads help I/O-bound work. CPU-bound work is still limited by cores.",
+        "Pooling virtual threads defeats the point; create one per task.",
+        "They do not remove the need for bounded downstream concurrency. Without a limit you simply overwhelm the database instead of queueing at the web tier."
+      ],
+      "async_offloading": {
+        "description": "Move work out of the request path when the caller does not need the result. The default executor is unbounded unless you configure one, which is its own outage waiting to happen.",
+        "code": "@Async(\"taskExecutor\")\npublic void sendReceipt(Order order) { ... }\n\n@Bean\npublic Executor taskExecutor() {\n    ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();\n    executor.setCorePoolSize(4);\n    executor.setMaxPoolSize(16);\n    executor.setQueueCapacity(100);   // bounded on purpose\n    return executor;\n}"
+      }
+    },
+    {
+      "title": "JVM & Memory",
+      "description": "The application-level view. Collector internals, heap regions and OOM diagnosis live on the JVM Internals page.",
+      "interviewRelevance": 4,
+      "sizing": [
+        "Set -Xms equal to -Xmx so the heap does not resize under load, and so a memory problem shows up immediately rather than after a slow climb.",
+        "In containers, prefer -XX:MaxRAMPercentage over a fixed -Xmx so the limit follows the container. Modern JVMs are container-aware, but be explicit.",
+        "Leave headroom outside the heap: metaspace, thread stacks, code cache, direct buffers and the allocator all live there. A container limit equal to the heap size will be OOM-killed."
+      ],
+      "allocation_pressure": "Most Java performance work is about allocating less, not about collecting faster. Short-lived garbage is cheap, but a high allocation rate still drives frequent young collections and pushes objects into the old generation prematurely. Look for per-request string building, boxing in hot loops and defensive copies.",
+      "common_wins": [
+        "Stream large responses rather than materialising them into a list.",
+        "Reuse expensive objects that are safe to share; some serializers and formatters are costly to construct.",
+        "Avoid logging that concatenates strings even when the level is disabled; use parameterised logging.",
+        "Right-size collections when the final size is known, to avoid repeated resizing."
+      ],
+      "flags_worth_knowing": {
+        "headers": ["Flag", "Effect"],
+        "rows": [
+          ["-Xms and -Xmx", "Initial and maximum heap; set equal in production"],
+          ["-XX:MaxRAMPercentage", "Heap as a share of the container limit"],
+          ["-XX:+HeapDumpOnOutOfMemoryError", "Capture a dump when it fails; you rarely get a second chance"],
+          ["-XX:+ExitOnOutOfMemoryError", "Die and let the orchestrator restart, rather than limping"],
+          ["-XX:StartFlightRecording", "Always-on low-overhead recording"]
+        ]
+      }
+    },
+    {
+      "title": "Profiling",
+      "description": "How to find the bottleneck instead of guessing at it. Being able to name a profiler and say what you looked at is most of the answer.",
+      "interviewRelevance": 5,
+      "tools": [
+        {
+          "name": "Java Flight Recorder (JFR)",
+          "description": "Built into the JDK, overhead low enough to leave on in production. Records allocation, GC, locks, I/O and exceptions.",
+          "code": "java -XX:StartFlightRecording=duration=60s,filename=app.jfr -jar app.jar\n\n# or attach to a running process\njcmd <pid> JFR.start duration=60s filename=app.jfr"
+        },
+        {
+          "name": "async-profiler",
+          "description": "Low-overhead sampling profiler that produces flame graphs and, unlike older tools, does not suffer from safepoint bias. The usual first stop for a CPU question."
+        },
+        {
+          "name": "Actuator and Micrometer",
+          "description": "Application metrics rather than a profiler: request timings, pool usage, cache hit rates, GC counts. This is what tells you a problem exists; the profiler tells you where."
+        },
+        {
+          "name": "Thread dumps",
+          "description": "Free and often decisive. Three dumps a few seconds apart will show whether threads are stuck in the same place.",
+          "code": "jcmd <pid> Thread.print > threads.txt"
+        }
+      ],
+      "reading_a_flame_graph": "Width is time spent, not call count. Look for wide plateaus near the top, which are frames actually consuming CPU. A tall narrow tower is deep call nesting, which is normal and not itself a problem.",
+      "quick_triage": {
+        "headers": ["Symptom", "Look at first"],
+        "rows": [
+          ["High CPU, low throughput", "CPU profile or flame graph; check for a hot loop or regex"],
+          ["Low CPU, high latency", "Thread dump; something is blocking on I/O or a lock"],
+          ["Latency grows with load", "Pool saturation: connections, threads, or downstream limits"],
+          ["Periodic latency spikes", "GC logs, then cache expiry and scheduled jobs"],
+          ["Slow only in production", "Data volume, network hops, cold caches, noisy neighbours"]
+        ]
+      }
+    },
+    {
+      "title": "Load Testing",
+      "description": "The step that turns an opinion about performance into a number you can defend.",
+      "interviewRelevance": 3,
+      "types": {
+        "headers": ["Test", "Question it answers"],
+        "rows": [
+          ["Load", "Does it meet the target at expected traffic"],
+          ["Stress", "Where does it break, and how"],
+          ["Soak", "Does it degrade over hours (leaks, fragmentation, pool exhaustion)"],
+          ["Spike", "Does it survive a sudden surge and recover"]
+        ]
+      },
+      "doing_it_properly": [
+        "Warm up first. The JIT needs to compile hot paths and caches need to fill, so the first minute is not representative.",
+        "Use realistic data volumes and key distributions. Hitting one cached record repeatedly measures nothing.",
+        "Include think time. Zero-delay loops produce a load profile no real user creates.",
+        "Test one instance to find its true capacity before testing the cluster, otherwise the load balancer hides the limit.",
+        "Watch the dependencies too. It is easy to load-test your service and actually measure a shared test database."
+      ],
+      "tools": [
+        {
+          "name": "k6",
+          "description": "Scripted in JavaScript, good in CI, clear percentile output."
+        },
+        {
+          "name": "Gatling",
+          "description": "Scala or Java DSL, strong reporting, popular in JVM shops."
+        },
+        {
+          "name": "JMeter",
+          "description": "Long established and GUI-driven; heavier, but ubiquitous."
+        }
+      ],
+      "what_to_record": "Throughput, p50 and p99 latency, error rate, and resource use on both the service and its dependencies. A result without the error rate is meaningless, since any system is fast if it is failing."
+    },
+    {
+      "title": "Checklist",
+      "description": "A triage order for when something is slow and you need somewhere to start.",
+      "interviewRelevance": 4,
+      "in_order": [
+        {
+          "title": "1. Is it the database",
+          "description": "Count the queries per request and read the slow query log. N+1 and a missing index cover a large share of real cases."
+        },
+        {
+          "title": "2. Is it a dependency",
+          "description": "Check timings of outbound calls. A slow third party inside the request path sets your floor, and without a timeout it sets your ceiling too."
+        },
+        {
+          "title": "3. Is something saturated",
+          "description": "Connection pool, thread pool, or a downstream rate limit. Latency that climbs with load and not with data size points here."
+        },
+        {
+          "title": "4. Is it garbage collection",
+          "description": "Check pause times and frequency in the GC log. Long pauses at p99 with healthy p50 is the signature."
+        },
+        {
+          "title": "5. Is it our code",
+          "description": "Now profile. By this point the obvious causes are eliminated, and the flame graph is worth reading."
+        },
+        {
+          "title": "6. Is it the network or serialization",
+          "description": "Payload size, compression, chatty calls that could be batched, and the cost of serializing large responses."
+        }
+      ],
+      "smells": [
+        "findAll on a table that grows",
+        "A remote call inside a transaction",
+        "A cache with no TTL and no size limit",
+        "Default timeouts left in place (or none at all)",
+        "Logging at debug level in a hot path",
+        "Reading a whole file or result set into memory to return part of it"
+      ]
+    },
+    {
+      "title": "Interview Questions",
+      "description": "Common questions, with the shape of a strong answer.",
+      "interviewRelevance": 5,
+      "questions": [
+        {
+          "question": "An endpoint got slow in production. Walk me through what you do.",
+          "description": "Confirm the symptom with metrics first: is it p50 or only p99, when did it start, does it track a deploy or a traffic change. Then narrow by layer, database and dependencies before application code, because those are both more likely and cheaper to check. Profile last. Say explicitly that you change one thing at a time and re-measure. Interviewers are listening for a method, not for a flag."
+        },
+        {
+          "question": "What is the N+1 problem and how do you fix it?",
+          "description": "One query loads N parents and then one query per parent loads its children. Fix it with a join fetch, an entity graph, or batch fetching; use a projection when you only need a few fields. Add a test asserting the query count so it cannot regress silently."
+        },
+        {
+          "question": "Your connection pool is exhausted. Do you increase it?",
+          "description": "Almost certainly not, at least not first. Exhaustion means connections are being held too long. Find out why: a slow query, a missing index, or a transaction wrapping a remote call. Note that oversized pools often make the database slower through contention. The starting formula is roughly twice the core count."
+        },
+        {
+          "question": "Why do you report p99 rather than the average?",
+          "description": "The average is dominated by the fast majority and hides the tail that users actually complain about. With fan-out, a dependency's p99 becomes a common experience for the page, since one slow call in ten delays the whole response."
+        },
+        {
+          "question": "When would you add a cache, and what breaks?",
+          "description": "When a read is hot, expensive, and tolerant of some staleness. What breaks: invalidation correctness, stampedes when a popular key expires, unbounded growth without a size limit, and divergence between instances with a local cache. Say what staleness you would accept, in seconds, before adding it."
+        },
+        {
+          "question": "How would you tune GC?",
+          "description": "Start by checking whether GC is the problem at all, using pause times and frequency from the log rather than assuming. Most of the time the fix is to allocate less, not to change collector. If it genuinely is GC, choose the collector for the goal, set -Xms equal to -Xmx, and change one flag at a time."
+        },
+        {
+          "question": "How do you know a change actually helped?",
+          "description": "A before-and-after measurement under the same load, on the same data, reported as percentiles with an error rate. If you cannot show that, you have a belief rather than a result."
+        }
+      ]
+    }
+  ]
+}

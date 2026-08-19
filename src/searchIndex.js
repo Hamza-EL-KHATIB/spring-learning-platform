@@ -25,6 +25,7 @@ import principles from './data/architecture/principles.json';
 import microservices from './data/architecture/microservices.json';
 import kafka from './data/architecture/kafka.json';
 import systemDesign from './data/architecture/system-design.json';
+import performance from './data/architecture/performance.json';
 import jvmInternals from './data/java/jvm-internals.json';
 import modernJava from './data/java/modern-java.json';
 import git from './data/devops/git.json';
@@ -66,6 +67,7 @@ const dataByPath = {
     '/architecture/microservices': microservices,
     '/architecture/kafka': kafka,
     '/architecture/system-design': systemDesign,
+    '/architecture/performance': performance,
     '/java/jvm': jvmInternals,
     '/java/modern': modernJava,
     '/devops/git': git,
