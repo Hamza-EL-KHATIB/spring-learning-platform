@@ -1,0 +1,250 @@
+{
+  "title": "System Design",
+  "tags": ["system-design", "scalability", "architecture", "interview"],
+  "topics": [
+    {
+      "title": "Interview Framework",
+      "description": "Five phases to structure any system design interview. For 3-6 YOE backend roles the bar is: structure the conversation, know the building blocks, reason about trade-offs out loud. Nobody expects Google-scale war stories.",
+      "interviewRelevance": 5,
+      "steps": [
+        {
+          "title": "1. Requirements (5 min)",
+          "description": "Functional (what must it do) plus non-functional (scale, latency, availability, consistency). Ask for numbers: DAU, reads/writes ratio, payload sizes."
+        },
+        {
+          "title": "2. Back-of-envelope estimates (3 min)",
+          "description": "Size the system roughly. Do not be precise, be reasonable."
+        },
+        {
+          "title": "3. High-level design (10 min)",
+          "description": "Draw the boxes and walk through the main read path and the main write path."
+        },
+        {
+          "title": "4. Deep dives (15 min)",
+          "description": "The interviewer picks, or you offer: data model, scaling the bottleneck, failure handling."
+        },
+        {
+          "title": "5. Wrap-up",
+          "description": "Bottlenecks, single points of failure, what you would monitor, what you would do next."
+        }
+      ],
+      "estimation_math": {
+        "headers": ["Quantity", "Rule of thumb"],
+        "rows": [
+          ["QPS", "DAU × actions / 86,400"],
+          ["Peak QPS", "Average QPS × 10 peak factor"],
+          ["Storage", "items/day × size × retention"]
+        ]
+      },
+      "diagram": "client → LB → stateless services → cache → DB (+ queue for async work)"
+    },
+    {
+      "title": "Load Balancing",
+      "description": "Spread traffic across interchangeable instances. Health checks plus statelessness are what make horizontal scaling work.",
+      "interviewRelevance": 4,
+      "layers": [
+        {
+          "title": "L4",
+          "description": "TCP level. Fast."
+        },
+        {
+          "title": "L7",
+          "description": "HTTP-aware: routing by path or header, TLS termination."
+        }
+      ],
+      "products": "Nginx, HAProxy, cloud load balancers.",
+      "algorithms": [
+        "Round robin",
+        "Least connections",
+        "Consistent hashing — sticky routing without shared state"
+      ],
+      "health_checks": "Health checks eject bad instances. This plus statelessness equals horizontal scaling.",
+      "stateless_services": "Keep session state out of app servers (JWT, or a session store in Redis) so any instance can serve any request, then scale by adding instances behind the load balancer."
+    },
+    {
+      "title": "Caching",
+      "description": "Cache-aside is the pattern you will be asked about: read, miss, load from the database, put in the cache with a TTL.",
+      "interviewRelevance": 5,
+      "layers": [
+        "Browser / CDN",
+        "API gateway",
+        "Application cache (Caffeine)",
+        "Distributed cache (Redis)",
+        "Database buffer pool"
+      ],
+      "what_to_say": [
+        "Cache hit ratio targets",
+        "TTL versus explicit invalidation",
+        "Stampede protection"
+      ]
+    },
+    {
+      "title": "Database Scaling",
+      "description": "Escalate in this order. Each step is cheaper and less disruptive than the one after it.",
+      "interviewRelevance": 5,
+      "escalation_ladder": [
+        {
+          "title": "1. Indexes and query optimization",
+          "description": "Always first."
+        },
+        {
+          "title": "2. Read replicas",
+          "description": "Offload reads. Mention replication lag: the read-your-own-writes problem, solved by routing a user's reads to the primary briefly after a write."
+        },
+        {
+          "title": "3. Vertical scaling",
+          "description": "Buys time cheaply."
+        },
+        {
+          "title": "4. Partitioning / sharding",
+          "description": "Split by key (user_id hash or range). Costs: cross-shard queries, resharding pain, no global transactions. Consistent hashing limits data movement when adding shards."
+        },
+        {
+          "title": "5. Polyglot persistence",
+          "description": "Move specific workloads to fitting stores: search to Elasticsearch, counters to Redis, events to Kafka."
+        }
+      ]
+    },
+    {
+      "title": "SQL vs NoSQL",
+      "description": "Relational by default: transactions, joins, mature tooling.",
+      "interviewRelevance": 4,
+      "choose_nosql_when": [
+        "Extreme write scale",
+        "Flexible schema",
+        "Simple key-based access patterns"
+      ],
+      "the_line_to_use": "Say \"PostgreSQL until proven otherwise\" — it is a respected answer."
+    },
+    {
+      "title": "Queues & Async",
+      "description": "Decouple producers from consumers, absorb spikes, retry safely.",
+      "interviewRelevance": 4,
+      "queue_vs_log": [
+        {
+          "title": "Queue — SQS, RabbitMQ",
+          "description": "Competing consumers. The message is deleted once handled."
+        },
+        {
+          "title": "Log — Kafka",
+          "description": "Replayable, ordered per partition, multiple consumer groups."
+        }
+      ]
+    },
+    {
+      "title": "CAP & Consistency",
+      "description": "Under a network Partition you choose Consistency (reject writes) or Availability (serve possibly stale data).",
+      "interviewRelevance": 5,
+      "practical_spectrum": [
+        "Strong",
+        "Read-your-writes",
+        "Monotonic reads",
+        "Eventual"
+      ],
+      "how_to_apply_it": "Most web features tolerate eventual consistency; money movement does not. Say which parts of your design need which."
+    },
+    {
+      "title": "Idempotency",
+      "description": "Network retries mean duplicates. Every retry needs an idempotency story.",
+      "interviewRelevance": 4,
+      "techniques": [
+        "Idempotency keys — client-generated UUID, server dedupes",
+        "UPSERTs",
+        "Exactly-once = at-least-once plus idempotent processing"
+      ]
+    },
+    {
+      "title": "Rate Limiting",
+      "description": "Protect downstream capacity and shed abusive traffic at the edge.",
+      "interviewRelevance": 3,
+      "algorithms": [
+        "Token bucket — burst-friendly, the default answer",
+        "Sliding window counters"
+      ],
+      "implementation": "Store counters in Redis: atomic INCR plus EXPIRE, or a Lua script.",
+      "response": "Return 429 with a Retry-After header."
+    },
+    {
+      "title": "Observability",
+      "description": "What you would monitor, named concretely, is a strong wrap-up answer.",
+      "interviewRelevance": 3,
+      "pillars": [
+        "Metrics — Prometheus / Micrometer, RED: rate, errors, duration",
+        "Centralized logs with correlation IDs",
+        "Distributed tracing with OpenTelemetry"
+      ],
+      "slo_example": "99.9% of reads under 200 ms."
+    },
+    {
+      "title": "Classic Designs",
+      "description": "Thirty-second versions of the walkthroughs that come up most often.",
+      "interviewRelevance": 4,
+      "walkthroughs": [
+        {
+          "title": "URL Shortener",
+          "write": "Generate an ID (base62 of a sequence, or snowflake) and store code to long_url, then return the short link.",
+          "read": "Read path dominates 100:1 — cache hot codes in Redis; 301 redirect, or 302 if you want analytics.",
+          "scale": "Read replicas or a DynamoDB-style key-value store; codes are shard-friendly.",
+          "note": "Using a sequence avoids the hashing collision debate."
+        },
+        {
+          "title": "Rate Limiter as a Service",
+          "core": "Token bucket per API key in Redis, with a Lua script for atomic check-and-decrement.",
+          "optimization": "A local in-memory pre-filter cuts Redis load.",
+          "decision": "Fail-open versus fail-closed."
+        },
+        {
+          "title": "Notification Service",
+          "ingest": "API accepts the request, validates it, publishes to a Kafka topic per channel (email, SMS, push).",
+          "workers": "Consume and call providers (SendGrid, Twilio) with retries and a dead-letter queue.",
+          "safeguards": "Idempotency key per notification prevents duplicates; template service; per-user rate caps and preference checks."
+        },
+        {
+          "title": "News Feed",
+          "write": "Fan-out-on-write to followers' feed caches (Redis lists), but fan-out-on-read for celebrities — a hybrid.",
+          "read": "Merge the cached feed with celebrity posts, hydrate post details, paginate by cursor rather than offset."
+        },
+        {
+          "title": "Chat and Presence",
+          "transport": "WebSockets on gateway servers, sticky by user; messages flow through Kafka.",
+          "storage": "Cassandra — write-heavy, partitioned by conversation.",
+          "extras": "Delivery receipts as separate lightweight events; presence via heartbeat plus TTL keys in Redis."
+        }
+      ]
+    },
+    {
+      "title": "Trade-off Phrases",
+      "description": "Lines that score points when you say them out loud.",
+      "interviewRelevance": 3,
+      "phrases": [
+        "I'll start simple and only shard when a single primary can't hold the write load.",
+        "This queue makes the system eventually consistent — acceptable here because the user sees their own write from the cache.",
+        "I'd rather over-provision Redis than add a cache layer I can't invalidate correctly.",
+        "Every retry needs an idempotency story; here it's the unique constraint on (user_id, request_id)."
+      ]
+    },
+    {
+      "title": "Interview Questions",
+      "description": "Rehearsed answers to the questions this note prepares for.",
+      "interviewRelevance": 5,
+      "questions": [
+        {
+          "question": "How would you scale a Spring Boot monolith that's slowing down?",
+          "answer": "Measure first (APM, slow query log). Then: indexes and queries, cache hot reads, read replicas, extract the truly hot module behind an API or a queue. Microservices are the last step, not the first — this ordering signals seniority."
+        },
+        {
+          "question": "How do you keep cache and database consistent?",
+          "answer": "Cache-aside with a TTL as the safety net. On writes, update the database then delete (not update) the cache key; accept a small stale window, or use versioned keys. Mention the classic race and why delete-after-write plus TTL bounds the damage."
+        },
+        {
+          "question": "Strong vs eventual consistency — how do you choose?",
+          "answer": "Ask what breaks if a reader sees data 2 seconds old. Payments and inventory reservation need strong consistency (single primary, transactions). Feeds, counters and analytics are fine with eventual."
+        },
+        {
+          "question": "What's a single point of failure in your design and how do you remove it?",
+          "answer": "Walk each tier: load balancer (managed or an HA pair), services (N instances, multi-AZ), cache (Redis replicas plus sentinel or cluster), database (primary with automated failover), queue (replicated brokers)."
+        }
+      ]
+    }
+  ]
+}

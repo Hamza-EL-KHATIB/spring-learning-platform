@@ -21,6 +21,8 @@ import redis from './data/databases/redis.json';
 import designPatterns from './data/architecture/design-patterns.json';
 import solid from './data/architecture/solid.json';
 import principles from './data/architecture/principles.json';
+import microservices from './data/architecture/microservices.json';
+import kafka from './data/architecture/kafka.json';
 import git from './data/devops/git.json';
 import scrum from './data/scrum/scrum.json';
 import codeReviews from './data/bestPractices/codeReviews.json';
@@ -48,6 +50,8 @@ const dataByPath = {
     '/architecture/design-patterns': designPatterns,
     '/architecture/solid': solid,
     '/architecture/principles': principles,
+    '/architecture/microservices': microservices,
+    '/architecture/kafka': kafka,
     '/devops/git': git,
     '/agile/scrum': scrum,
     '/best-practices/code-reviews': codeReviews,
