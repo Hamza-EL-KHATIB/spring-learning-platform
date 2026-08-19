@@ -44,7 +44,7 @@ Pages whose JSON root isn't `topics[]`/`sections[]` build a `topics[]` array at 
 
 `src/pages/TopicPage.js` remains the `/:section/:topic` fallback: a registry lookup that renders through the same template, with a "topic not found" state.
 
-Two pages deliberately keep bespoke layouts: `DefinitionsPage` (all-visible glossary grid for interview lookup) and the German pages.
+Some pages keep a bespoke **body** because their content isn't topic-shaped — `DefinitionsPage` (all-visible glossary grid), `EnhancedInterviewFAQs` (searchable Q&A accordion), and the German pages (declension tables, vocabulary and conjugation browsers). They still use the shared **chrome** from `shell.js`, so they match everything else. Import `PageHeader`/`PageTabs`/`ActivePanel`/`useTabs` rather than hand-writing a header or tab bar.
 
 ### JSON structures the template understands
 
@@ -78,4 +78,6 @@ Either root convention works — `{ title, topics: [...] }` or `{ title, section
 2. Create the page component in `src/pages/topics/<category>/` (a `TopicPageTemplate` one-liner) and route it in `src/App.js` (dedicated routes must come before the `/:section/:topic` fallback)
 3. Add it to `navigationGroups` in `src/navigation.js`, and to the import map in `src/searchIndex.js` so its topics are searchable
 
-German-language pages (`src/pages/topics/german/`) are a separate feature set with their own routes (`/learn/*`, `/german/*`) and do not follow the topic-page pattern.
+German-language pages (`src/pages/topics/german/`) are a separate content area with their own routes under both `/learn/*` and `/german/*`; `sectionKey()` in `navigation.js` maps `learn` onto the `german` sidebar group. They render their own bodies (declension tables, vocabulary/conjugation browsers) but use the same header, tabs, cards and palette as everything else — keep it that way rather than reintroducing per-page accent colors.
+
+`Layout` hides the sidebar for `/`, `/learn/german`, `/learn/vocabulary` and `/learn/konjugation`: the first two are hubs, and the last two carry their own list sidebar, which leaves too little room beside a second one.
