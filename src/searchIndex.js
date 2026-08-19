@@ -75,7 +75,8 @@ const entriesFor = (path, data) => {
             .map((title) => ({ label: title, tab: title }));
     }
     return (data.topics || data.sections || [])
-        .filter((topic) => topic.title)
+        // `code_examples` is a content bucket, not a topic users look up
+        .filter((topic) => topic.title && topic.title !== 'code_examples')
         .map((topic) => ({ label: topic.title, tab: topic.title }));
 };
 

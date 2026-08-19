@@ -5,7 +5,7 @@ import FloatingMenu from '../layout/FloatingMenu';
 import CodeBlock from './CodeBlock';
 import renderContent from './ContentRenderer';
 import { getSectionIcon, getTopicIcon } from './icons';
-import { TagPills, deriveType, prettifyKey } from './primitives';
+import { TagPills, deriveType, prettifyKey, humanizeTitle } from './primitives';
 
 // Accepts either root convention: { topics: [...] } or { sections: [...] }.
 // Pages with exotic roots build a topics[] array themselves before passing data in.
@@ -58,7 +58,7 @@ export const SectionPanel = ({ title, accent = 'default', children }) => (
                 {accent === 'code' ? <Code2 className="w-4 h-4 text-pink-400" /> : getSectionIcon(title)}
             </div>
             <h3 className={`text-base font-semibold ${accent === 'code' ? 'text-pink-300' : 'text-purple-300'}`}>
-                {title}
+                {humanizeTitle(title)}
             </h3>
         </div>
         {children}

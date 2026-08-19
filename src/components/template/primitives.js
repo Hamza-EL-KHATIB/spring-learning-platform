@@ -28,6 +28,14 @@ export const prettifyKey = (key) => {
         .replace(/\b\w/g, (c) => c.toUpperCase());
 };
 
+// JSON section titles are a mix of raw keys ("benefits", "code_examples") and
+// real prose ("IoC vs DI"). Only clean up the former — title-casing the latter
+// would mangle deliberate capitalisation.
+export const humanizeTitle = (title) => {
+    if (typeof title !== 'string' || !title) return title;
+    return /[A-Z\s]/.test(title) ? title : prettifyKey(title);
+};
+
 const CARD_COLORS = {
     definition: 'bg-gradient-to-br from-purple-900/20 to-purple-800/10 border-purple-500/30',
     example: 'bg-gradient-to-br from-pink-900/20 to-pink-800/10 border-pink-500/30',
@@ -51,7 +59,7 @@ export const ContentCard = ({ title, children, className = '', contentType = 'de
             {title && (
                 <div className="flex items-center gap-2 mb-2">
                     <div className="p-1.5 bg-gray-800/70 rounded-md">{getSectionIcon(title)}</div>
-                    <h4 className="text-base font-semibold text-white">{title}</h4>
+                    <h4 className="text-base font-semibold text-white">{humanizeTitle(title)}</h4>
                 </div>
             )}
             <div className={title ? 'ml-8' : ''}>{children}</div>
