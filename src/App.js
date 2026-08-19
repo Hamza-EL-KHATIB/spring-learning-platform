@@ -31,6 +31,7 @@ import SolidPage from './pages/topics/architecture/SolidPage';
 import PrinciplesPage from './pages/topics/architecture/PrinciplesPage';
 import MicroservicesPage from './pages/topics/architecture/MicroservicesPage';
 import KafkaPage from './pages/topics/architecture/KafkaPage';
+import SystemDesignPage from './pages/topics/architecture/SystemDesignPage';
 
 // DevOps imports
 import GitPage from './pages/topics/devops/GitPage';
@@ -53,6 +54,7 @@ import AdjectivesPage from "./pages/topics/german/AdjectivesPage";
 import CasesPage from "./pages/topics/german/CasesPage";
 import JavaFundamentalsPage from "./pages/topics/java/JavaFundamentalsPage";
 import FunctionalProgrammingPage from "./pages/topics/java/FunctionalProgrammingPage";
+import JvmInternalsPage from "./pages/topics/java/JvmInternalsPage";
 
 const App = () => {
     return (
@@ -79,6 +81,7 @@ const App = () => {
                         <Route path="/java/fundamentals" element={<JavaFundamentalsPage/>}/>
                         <Route path="/java/testing" element={<UnitTestingPage/>}/>
                         <Route path="/java/functional-programming" element={<FunctionalProgrammingPage/>}/>
+                        <Route path="/java/jvm" element={<JvmInternalsPage/>}/>
 
                         {/* Spring Routes */}
                         <Route path="/spring/boot" element={<SpringBootPage/>}/>
@@ -101,6 +104,7 @@ const App = () => {
                         <Route path="/architecture/principles" element={<PrinciplesPage/>}/>
                         <Route path="/architecture/microservices" element={<MicroservicesPage/>}/>
                         <Route path="/architecture/kafka" element={<KafkaPage/>}/>
+                        <Route path="/architecture/system-design" element={<SystemDesignPage/>}/>
 
                         {/* DevOps Routes */}
                         <Route path="/devops/git" element={<GitPage/>}/>

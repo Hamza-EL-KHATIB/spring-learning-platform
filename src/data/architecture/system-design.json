@@ -17,7 +17,7 @@
         },
         {
           "title": "3. High-level design (10 min)",
-          "description": "Draw the boxes and walk through the main read path and the main write path."
+          "description": "Draw: client → LB → stateless services → cache → DB, plus a queue for async work. Then walk through the main read path and the main write path."
         },
         {
           "title": "4. Deep dives (15 min)",
@@ -35,8 +35,7 @@
           ["Peak QPS", "Average QPS × 10 peak factor"],
           ["Storage", "items/day × size × retention"]
         ]
-      },
-      "diagram": "client → LB → stateless services → cache → DB (+ queue for async work)"
+      }
     },
     {
       "title": "Load Balancing",
