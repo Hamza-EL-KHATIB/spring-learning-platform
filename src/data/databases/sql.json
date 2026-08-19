@@ -2,35 +2,44 @@
   "title": "SQL Guide",
   "topics": [
     {
-      "id": "basic-concepts",
-      "title": "Basic Concepts",
+      "id": "core-concepts",
+      "title": "Core Concepts",
       "concepts": [
         {
           "name": "Database",
-          "description": "Organized collection of structured data",
-          "types": [
-            "Relational (SQL)",
-            "Non-relational (NoSQL)"
-          ]
+          "description": "A database is an organized collection of structured data. In the context of SQL (Structured Query Language), we're typically referring to relational databases, which store data in tables with predefined relationships between them."
         },
         {
-          "name": "Table",
-          "description": "Collection of related data entries consisting of rows and columns",
+          "name": "Relational Database Components",
           "components": [
-            "Columns (fields)",
-            "Rows (records)",
-            "Primary Key",
-            "Foreign Key"
-          ]
-        },
-        {
-          "name": "Schema",
-          "description": "Logical container for database objects",
-          "elements": [
-            "Tables",
-            "Views",
-            "Stored Procedures",
-            "Functions"
+            {
+              "name": "Database",
+              "description": "Logical container for organized collection of structured data"
+            },
+            {
+              "name": "Schema",
+              "description": "Logical grouping of database objects (tables, views, stored procedures)"
+            },
+            {
+              "name": "Table",
+              "description": "Collection of related data entries consisting of rows and columns"
+            },
+            {
+              "name": "Column/Field",
+              "description": "Specific attribute within a table (e.g., \"name\", \"age\")"
+            },
+            {
+              "name": "Row/Record",
+              "description": "Single data entry in a table (e.g., information about one person)"
+            },
+            {
+              "name": "Primary Key",
+              "description": "Unique identifier for each record (ensures uniqueness)"
+            },
+            {
+              "name": "Foreign Key",
+              "description": "Field that links to a primary key in another table (creates relationships)"
+            }
           ]
         }
       ]
@@ -44,15 +53,15 @@
           "types": [
             {
               "name": "INT",
-              "description": "Whole numbers"
+              "description": "Whole numbers (e.g., 1, 42, -10)"
             },
             {
               "name": "DECIMAL/NUMERIC",
-              "description": "Exact decimal numbers"
+              "description": "Exact decimal numbers with fixed precision (e.g., 10.5, 3.14159)"
             },
             {
               "name": "FLOAT/DOUBLE",
-              "description": "Approximate decimal numbers"
+              "description": "Approximate decimal numbers (better for calculations where precision isn't critical)"
             }
           ]
         },
@@ -61,7 +70,7 @@
           "types": [
             {
               "name": "CHAR",
-              "description": "Fixed-length string"
+              "description": "Fixed-length string (padded with spaces)"
             },
             {
               "name": "VARCHAR",
@@ -69,7 +78,7 @@
             },
             {
               "name": "TEXT",
-              "description": "Long text string"
+              "description": "Long text string (for larger content)"
             }
           ]
         },
@@ -78,15 +87,15 @@
           "types": [
             {
               "name": "DATE",
-              "description": "Date only"
+              "description": "Date only (YYYY-MM-DD)"
             },
             {
               "name": "TIME",
-              "description": "Time only"
+              "description": "Time only (HH:MM:SS)"
             },
             {
               "name": "TIMESTAMP",
-              "description": "Date and time"
+              "description": "Date and time combined"
             }
           ]
         }
@@ -98,7 +107,7 @@
       "operations": [
         {
           "name": "SELECT",
-          "description": "Retrieve data from database",
+          "description": "Retrieving Data",
           "examples": [
             {
               "description": "Basic select",
@@ -116,7 +125,7 @@
         },
         {
           "name": "INSERT",
-          "description": "Add new records",
+          "description": "Adding Records",
           "examples": [
             {
               "description": "Single row insert",
@@ -124,13 +133,13 @@
             },
             {
               "description": "Multiple row insert",
-              "code": "INSERT INTO table_name (column1, column2) VALUES (value1, value2), (value3, value4);"
+              "code": "INSERT INTO table_name (column1, column2) \nVALUES (value1, value2), (value3, value4);"
             }
           ]
         },
         {
           "name": "UPDATE",
-          "description": "Modify existing records",
+          "description": "Modifying Records",
           "examples": [
             {
               "description": "Basic update",
@@ -140,7 +149,7 @@
         },
         {
           "name": "DELETE",
-          "description": "Remove records",
+          "description": "Removing Records",
           "examples": [
             {
               "description": "Delete with condition",
@@ -156,28 +165,32 @@
       "types": [
         {
           "name": "INNER JOIN",
-          "description": "Returns only matching records from both tables",
+          "description": "Returns records that have matching values in both tables",
           "example": "SELECT * FROM table1 INNER JOIN table2 ON table1.id = table2.id;"
         },
         {
           "name": "LEFT JOIN",
-          "description": "Returns all records from left table and matching from right",
+          "description": "Returns all records from the left table and matched records from the right table",
           "example": "SELECT * FROM table1 LEFT JOIN table2 ON table1.id = table2.id;"
         },
         {
           "name": "RIGHT JOIN",
-          "description": "Returns all records from right table and matching from left",
+          "description": "Returns all records from the right table and matched records from the left table",
           "example": "SELECT * FROM table1 RIGHT JOIN table2 ON table1.id = table2.id;"
         },
         {
           "name": "FULL OUTER JOIN",
-          "description": "Returns all records from both tables",
+          "description": "Returns all records when there is a match in either left or right table",
           "example": "SELECT * FROM table1 FULL OUTER JOIN table2 ON table1.id = table2.id;"
         }
-      ]
+      ],
+      "visualization": {
+        "description": "Visual Representation of Joins",
+        "ascii": "  Table A        Table B         INNER JOIN      LEFT JOIN       RIGHT JOIN      FULL OUTER JOIN\n  +---+---+      +---+---+      +---+---+       +---+---+       +---+---+       +---+---+\n  | A | B |      | B | C |      | A | B | C |   | A | B | C |   | A | B | C |   | A | B | C |\n  +---+---+      +---+---+      +---+---+       +---+---+       +---+---+       +---+---+\n  | 1 | X |      | X | I |      | 1 | X | I |   | 1 | X | I |   | 1 | X | I |   | 1 | X | I |\n  | 2 | Y |      | Y | J |      | 2 | Y | J |   | 2 | Y | J |   | 2 | Y | J |   | 2 | Y | J |\n  | 3 | Z |                     | 3 | Z |   |   | 3 | Z |   |   | 3 | Z |   |   | 3 | Z |   |\n                | W | K |                                       |   | W | K |   |   | W | K |"
+      }
     },
     {
-      "id": "advanced-queries",
+      "id": "advanced-features",
       "title": "Advanced SQL Features",
       "features": [
         {
@@ -185,42 +198,47 @@
           "functions": [
             {
               "name": "COUNT",
+              "description": "Returns the number of rows",
               "example": "SELECT COUNT(*) FROM table_name;"
             },
             {
               "name": "SUM",
+              "description": "Returns the sum of values in a column",
               "example": "SELECT SUM(column_name) FROM table_name;"
             },
             {
               "name": "AVG",
+              "description": "Returns the average of values in a column",
               "example": "SELECT AVG(column_name) FROM table_name;"
             },
             {
               "name": "MAX/MIN",
+              "description": "Returns the maximum or minimum value in a column",
               "example": "SELECT MAX(column_name), MIN(column_name) FROM table_name;"
             }
           ]
         },
         {
           "name": "GROUP BY",
-          "description": "Group rows that have same values",
+          "description": "Groups rows that have the same values into summary rows",
           "example": "SELECT column1, COUNT(*) FROM table_name GROUP BY column1;"
         },
         {
           "name": "HAVING",
-          "description": "Specify conditions for grouped rows",
+          "description": "Specifies conditions for grouped rows (similar to WHERE but for groups)",
           "example": "SELECT column1, COUNT(*) FROM table_name GROUP BY column1 HAVING COUNT(*) > 5;"
         },
         {
           "name": "Subqueries",
+          "description": "A query nested inside another query",
           "types": [
             {
               "name": "Single row subquery",
-              "example": "SELECT * FROM table1 WHERE column1 > (SELECT AVG(column1) FROM table1);"
+              "example": "SELECT * FROM table1 \nWHERE column1 > (SELECT AVG(column1) FROM table1);"
             },
             {
               "name": "Multiple row subquery",
-              "example": "SELECT * FROM table1 WHERE column1 IN (SELECT column1 FROM table2);"
+              "example": "SELECT * FROM table1 \nWHERE column1 IN (SELECT column1 FROM table2);"
             }
           ]
         }
@@ -232,49 +250,63 @@
       "techniques": [
         {
           "name": "Indexing",
+          "description": "Indexes improve query performance by allowing the database to find and retrieve specific rows much faster",
           "types": [
             {
               "name": "Primary Index",
-              "usage": "Automatically created for primary key"
+              "description": "Automatically created for primary key"
             },
             {
               "name": "Secondary Index",
-              "usage": "Created for frequently queried columns"
+              "description": "Created for frequently queried columns"
             },
             {
               "name": "Composite Index",
-              "usage": "Index on multiple columns"
+              "description": "Index on multiple columns"
             }
           ],
           "best_practices": [
-            "Index columns used in WHERE clause",
+            "Index columns used in WHERE clauses",
             "Index foreign key columns",
-            "Avoid over-indexing",
+            "Avoid over-indexing (indexes consume storage and slow down writes)",
             "Monitor index usage"
           ]
         },
         {
           "name": "Query Optimization",
           "techniques": [
-            "Use specific column names instead of SELECT *",
-            "Use appropriate WHERE clauses",
-            "Optimize JOIN operations",
-            "Use EXPLAIN to analyze queries"
-          ]
+            "Use specific column names instead of `SELECT *`",
+            "Use appropriate WHERE clauses to limit data retrieval",
+            "Optimize JOIN operations (join on indexed columns)",
+            "Use EXPLAIN to analyze query performance"
+          ],
+          "example": "EXPLAIN SELECT * FROM users WHERE email = 'user@example.com';"
         }
       ]
     },
     {
       "id": "transactions",
-      "title": "Transactions",
+      "title": "Transactions & Consistency",
       "concepts": [
         {
           "name": "ACID Properties",
           "properties": [
-            "Atomicity",
-            "Consistency",
-            "Isolation",
-            "Durability"
+            {
+              "name": "Atomicity",
+              "description": "Ensures that all operations in a transaction complete successfully; if any operation fails, the entire transaction is rolled back"
+            },
+            {
+              "name": "Consistency",
+              "description": "Ensures that the database properly changes states upon a successfully committed transaction"
+            },
+            {
+              "name": "Isolation",
+              "description": "Ensures that concurrent transactions don't interfere with each other"
+            },
+            {
+              "name": "Durability",
+              "description": "Ensures that once a transaction is committed, it will remain so, even in the event of a system failure"
+            }
           ]
         },
         {
@@ -296,40 +328,264 @@
               "name": "SAVEPOINT",
               "description": "Create points for partial rollbacks"
             }
+          ],
+          "example": "BEGIN TRANSACTION;\nUPDATE accounts SET balance = balance - 100 WHERE account_id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE account_id = 2;\nCOMMIT;"
+        }
+      ]
+    },
+    {
+      "id": "sql-vs-nosql",
+      "title": "SQL vs. NoSQL",
+      "comparison": {
+        "key_differences": [
+          {
+            "feature": "Data Structure",
+            "sql": "Tables with rows & columns",
+            "nosql": "Various (document, key-value, graph, column-family)"
+          },
+          {
+            "feature": "Schema",
+            "sql": "Fixed",
+            "nosql": "Flexible, dynamic"
+          },
+          {
+            "feature": "Scaling",
+            "sql": "Vertical (harder to scale)",
+            "nosql": "Horizontal (easier to scale)"
+          },
+          {
+            "feature": "Transactions",
+            "sql": "ACID compliant",
+            "nosql": "Varies (often BASE compliant)"
+          },
+          {
+            "feature": "Query Language",
+            "sql": "SQL",
+            "nosql": "Varies by database"
+          },
+          {
+            "feature": "Examples",
+            "sql": "MySQL, PostgreSQL, Oracle",
+            "nosql": "MongoDB, Redis, Cassandra"
+          }
+        ],
+        "when_to_use_sql": [
+          "When data structure is consistent and well-defined",
+          "When relationships between data entities are important",
+          "When ACID compliance is required",
+          "For complex queries and transactions"
+        ],
+        "when_to_use_nosql": [
+          "When dealing with large volumes of unstructured data",
+          "When horizontal scaling is needed",
+          "When schema flexibility is important",
+          "For applications where high performance and availability are more important than consistency"
+        ]
+      }
+    },
+    {
+      "id": "database-design",
+      "title": "Database Design Best Practices",
+      "practices": [
+        {
+          "name": "Normalization",
+          "description": "The process of organizing database tables to reduce data redundancy and improve data integrity",
+          "forms": [
+            {
+              "name": "First Normal Form (1NF)",
+              "description": "Eliminate duplicate columns and create separate tables for related data"
+            },
+            {
+              "name": "Second Normal Form (2NF)",
+              "description": "Meet 1NF requirements and ensure all non-key attributes are fully dependent on the primary key"
+            },
+            {
+              "name": "Third Normal Form (3NF)",
+              "description": "Meet 2NF requirements and remove columns not dependent on the key"
+            }
+          ]
+        },
+        {
+          "name": "Entity-Relationship Modeling",
+          "steps": [
+            "Identify entities (objects) in your system",
+            "Define attributes for each entity",
+            "Establish relationships between entities",
+            "Define cardinality of relationships (one-to-one, one-to-many, many-to-many)"
           ]
         }
       ]
     },
     {
-      "id": "best-practices",
-      "title": "SQL Best Practices",
-      "categories": [
+      "id": "interview-questions",
+      "title": "Common Interview Questions",
+      "questions": [
         {
-          "name": "Database Design",
-          "practices": [
-            "Use appropriate data types",
-            "Normalize database structure",
-            "Use meaningful naming conventions",
-            "Create proper relationships"
+          "question": "What is the difference between DELETE and TRUNCATE statements?",
+          "answer": [
+            "DELETE: DML command that removes specified rows, can be rolled back, slower",
+            "TRUNCATE: DDL command that removes all rows, cannot be rolled back, faster"
           ]
         },
         {
-          "name": "Query Writing",
-          "practices": [
-            "Write readable and maintainable queries",
-            "Use appropriate indexes",
-            "Avoid SELECT *",
-            "Use prepared statements"
+          "question": "What are SQL constraints?",
+          "answer": [
+            "NOT NULL: Ensures column cannot have NULL value",
+            "UNIQUE: Ensures all values in column are different",
+            "PRIMARY KEY: Uniquely identifies each record",
+            "FOREIGN KEY: Links tables together",
+            "CHECK: Ensures values meet specified condition",
+            "DEFAULT: Sets default value for column"
           ]
         },
         {
-          "name": "Performance",
-          "practices": [
-            "Optimize queries for performance",
-            "Use appropriate indexing",
-            "Monitor query execution plans",
-            "Regular maintenance and optimization"
+          "question": "Explain the difference between UNION and UNION ALL",
+          "answer": [
+            "UNION: Combines result sets and removes duplicates",
+            "UNION ALL: Combines result sets but keeps duplicates (faster)"
           ]
+        },
+        {
+          "question": "What is a database index and how does it work?",
+          "answer": [
+            "Speeds up data retrieval but slows data modification",
+            "Similar to a book index - points to where data is stored",
+            "Trade-off between read and write performance"
+          ]
+        },
+        {
+          "question": "What is a correlated subquery?",
+          "answer": [
+            "A subquery that references columns from the outer query",
+            "Executed once for each row processed by the outer query"
+          ]
+        },
+        {
+          "question": "How do you eliminate duplicate rows in a query result?",
+          "answer": "Use DISTINCT keyword: `SELECT DISTINCT column FROM table`"
+        },
+        {
+          "question": "What is a self-join?",
+          "answer": [
+            "Joining a table to itself by treating it as two tables",
+            "Used when a table contains hierarchical or related data within itself"
+          ]
+        },
+        {
+          "question": "Explain the difference between WHERE and HAVING clauses",
+          "answer": [
+            "WHERE: Filters rows before grouping",
+            "HAVING: Filters groups after grouping"
+          ]
+        },
+        {
+          "question": "What is a view in SQL?",
+          "answer": [
+            "Virtual table based on result of SELECT query",
+            "Does not store data physically",
+            "Can simplify complex queries"
+          ]
+        },
+        {
+          "question": "What is the purpose of the COALESCE function?",
+          "answer": [
+            "Returns the first non-NULL expression from a list",
+            "Useful for handling NULL values",
+            "Example: `SELECT COALESCE(column1, column2, 'N/A') FROM table`"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cap-theorem",
+      "title": "CAP Theorem and Database Systems",
+      "description": "The CAP theorem states that a distributed database system can only guarantee two of the following three properties simultaneously:",
+      "properties": [
+        {
+          "name": "Consistency",
+          "description": "All nodes see the same data at the same time"
+        },
+        {
+          "name": "Availability",
+          "description": "Every request receives a response, without guarantee that it contains the most recent data"
+        },
+        {
+          "name": "Partition Tolerance",
+          "description": "The system continues to operate despite network partitions"
+        }
+      ],
+      "implementation": "Most SQL databases prioritize Consistency and Availability (CA), while many NoSQL solutions choose Availability and Partition Tolerance (AP) or Consistency and Partition Tolerance (CP)."
+    },
+    {
+      "id": "olap-vs-oltp",
+      "title": "OLAP vs. OLTP",
+      "comparison": {
+        "oltp": {
+          "name": "OLTP (Online Transaction Processing)",
+          "characteristics": [
+            "Handles day-to-day transactions",
+            "Characterized by many short, simple transactions",
+            "Normalized data",
+            "Example: Processing customer orders, banking transactions"
+          ]
+        },
+        "olap": {
+          "name": "OLAP (Online Analytical Processing)",
+          "characteristics": [
+            "Used for business intelligence and data analysis",
+            "Characterized by complex queries on large amounts of data",
+            "Denormalized data (often star schema)",
+            "Example: Sales analysis, financial reporting, forecasting"
+          ]
+        }
+      }
+    },
+    {
+      "id": "advanced-topics",
+      "title": "Advanced Topics",
+      "topics": [
+        {
+          "name": "DDL vs. DML vs. DCL",
+          "types": [
+            {
+              "name": "DDL (Data Definition Language)",
+              "description": "Commands that define the structure of database objects",
+              "examples": [
+                "CREATE",
+                "ALTER",
+                "DROP",
+                "TRUNCATE"
+              ]
+            },
+            {
+              "name": "DML (Data Manipulation Language)",
+              "description": "Commands that manipulate data within objects",
+              "examples": [
+                "SELECT",
+                "INSERT",
+                "UPDATE",
+                "DELETE"
+              ]
+            },
+            {
+              "name": "DCL (Data Control Language)",
+              "description": "Commands that control access to data",
+              "examples": [
+                "GRANT",
+                "REVOKE"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Window Functions",
+          "description": "Window functions perform calculations across a set of rows related to the current row",
+          "example": "SELECT \n    employee_name,\n    department,\n    salary,\n    AVG(salary) OVER (PARTITION BY department) as dept_avg_salary\nFROM employees;"
+        },
+        {
+          "name": "Common Table Expressions (CTEs)",
+          "description": "Temporary named result sets",
+          "example": "WITH employee_stats AS (\n    SELECT department, AVG(salary) as avg_salary\n    FROM employees\n    GROUP BY department\n)\nSELECT e.employee_name, e.department, e.salary, es.avg_salary\nFROM employees e\nJOIN employee_stats es ON e.department = es.department;"
         }
       ]
     }

@@ -17,7 +17,8 @@ import {
     XSquare,
     BookOpenCheck,
     LayoutGrid,
-    FileCheck
+    FileCheck,
+    GitBranch
 } from 'lucide-react';
 const CategorySection = ({ title, items }) => (
     <div className="bg-gray-800/40 rounded-lg p-6 border border-gray-700/50">
@@ -85,6 +86,12 @@ const HomePage = () => {
                 { title: "Design Patterns", path: "/architecture/design-patterns", icon: LayoutGrid, description: "Common software patterns" },
                 { title: "SOLID Principles", path: "/architecture/solid", icon: BookOpenCheck, description: "Design principles" },
                 { title: "YAGNI, KISS, DRY", path: "/architecture/principles", icon: BookOpenCheck, description: "Design principles" },
+            ]
+        },
+        devops: {
+            title: "DevOps & Tools",
+            items: [
+                { title: "Git", path: "/devops/git", icon: GitBranch, description: "Version control workflows and commands" }
             ]
         },
         processes: {

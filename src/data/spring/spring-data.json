@@ -115,10 +115,12 @@
         {
           "title": "code_examples",
           "multi-content": [
-        {
-          "title": "Technology Stack Hierarchy",
-          "simple-content": "Spring Data\n    │\n    ├── Spring Data Commons (shared abstractions)\n    │\n    ├── Spring Data JPA ──────┐\n    │                         │\n    │                         ▼\n    │                     JPA (Specification)\n    │                         │\n    └── Spring Data MongoDB   │\n    └── Spring Data Redis     │\n    └── Spring Data Cassandra │\n    └── ...                   │\n                              ▼\n                        Hibernate/EclipseLink/OpenJPA\n                              │\n                              ▼\n                            JDBC\n                              │\n                              ▼\n                          Database"
-        }]}
+            {
+              "title": "Technology Stack Hierarchy",
+              "simple-content": "Spring Data\n    │\n    ├── Spring Data Commons (shared abstractions)\n    │\n    ├── Spring Data JPA ──────┐\n    │                         │\n    │                         ▼\n    │                     JPA (Specification)\n    │                         │\n    └── Spring Data MongoDB   │\n    └── Spring Data Redis     │\n    └── Spring Data Cassandra │\n    └── ...                   │\n                              ▼\n                        Hibernate/EclipseLink/OpenJPA\n                              │\n                              ▼\n                            JDBC\n                              │\n                              ▼\n                          Database"
+            }
+          ]
+        }
       ]
     },
     {
@@ -677,18 +679,20 @@
                 {
                   "title": "code_examples",
                   "multi-content": [
-                {
-                  "title": "JOIN FETCH",
-                  "simple-content": "@Query(\"SELECT d FROM Department d LEFT JOIN FETCH d.employees\")\nList<Department> findAllWithEmployees();"
-                },
-                {
-                  "title": "Entity Graphs",
-                  "simple-content": "@EntityGraph(attributePaths = {\"employees\"})\nList<Department> findAll();"
-                },
-                {
-                  "title": "Batch Fetching",
-                  "simple-content": "@Entity\npublic class Department {\n    @OneToMany(mappedBy = \"department\")\n    @BatchSize(size = 20)\n    private List<Employee> employees;\n}"
-                }]}
+                    {
+                      "title": "JOIN FETCH",
+                      "simple-content": "@Query(\"SELECT d FROM Department d LEFT JOIN FETCH d.employees\")\nList<Department> findAllWithEmployees();"
+                    },
+                    {
+                      "title": "Entity Graphs",
+                      "simple-content": "@EntityGraph(attributePaths = {\"employees\"})\nList<Department> findAll();"
+                    },
+                    {
+                      "title": "Batch Fetching",
+                      "simple-content": "@Entity\npublic class Department {\n    @OneToMany(mappedBy = \"department\")\n    @BatchSize(size = 20)\n    private List<Employee> employees;\n}"
+                    }
+                  ]
+                }
               ]
             }
           ]
@@ -706,18 +710,20 @@
                 {
                   "title": "code_examples",
                   "multi-content": [
-                {
-                  "title": "DTOs for specific data needs",
-                  "simple-content": "@Query(\"SELECT new com.example.dto.UserSummaryDTO(u.id, u.username, u.email) FROM User u\")\nList<UserSummaryDTO> findAllUserSummaries();"
-                },
-                {
-                  "title": "Projections",
-                  "simple-content": "public interface UserProjection {\n    String getUsername();\n    String getEmail();\n}\n\npublic interface UserRepository extends JpaRepository<User, Long> {\n    List<UserProjection> findByStatus(String status);\n}"
-                },
-                {
-                  "title": "Pagination",
-                  "simple-content": "Pageable pageable = PageRequest.of(0, 20, Sort.by(\"lastName\"));\nPage<User> userPage = userRepository.findAll(pageable);"
-                }]}
+                    {
+                      "title": "DTOs for specific data needs",
+                      "simple-content": "@Query(\"SELECT new com.example.dto.UserSummaryDTO(u.id, u.username, u.email) FROM User u\")\nList<UserSummaryDTO> findAllUserSummaries();"
+                    },
+                    {
+                      "title": "Projections",
+                      "simple-content": "public interface UserProjection {\n    String getUsername();\n    String getEmail();\n}\n\npublic interface UserRepository extends JpaRepository<User, Long> {\n    List<UserProjection> findByStatus(String status);\n}"
+                    },
+                    {
+                      "title": "Pagination",
+                      "simple-content": "Pageable pageable = PageRequest.of(0, 20, Sort.by(\"lastName\"));\nPage<User> userPage = userRepository.findAll(pageable);"
+                    }
+                  ]
+                }
               ]
             }
           ]
@@ -854,6 +860,78 @@
         {
           "title": "Describe the difference between CrudRepository and JpaRepository.",
           "simple-content": "Both are repository interfaces in Spring Data JPA, but JpaRepository extends PagingAndSortingRepository which extends CrudRepository:\n\n- **CrudRepository**: Provides basic CRUD operations (save, findById, etc.)\n- **PagingAndSortingRepository**: Adds pagination and sorting capabilities\n- **JpaRepository**: Adds JPA-specific functionality like flush(), saveAndFlush(), and deleteInBatch()\n\nChoose based on the features you need. For simple CRUD operations, CrudRepository is sufficient. For pagination, use PagingAndSortingRepository. For JPA-specific operations, use JpaRepository."
+        },
+        {
+          "title": "How do you handle LazyInitializationException?",
+          "simple-content": "This exception occurs when trying to access a lazily loaded association after the Hibernate session is closed. Solutions include:\n\n1. Use `@Transactional` to keep the session open during the method execution\n2. Fetch the required associations eagerly using JOIN FETCH or entity graphs\n3. Initialize the collection while the session is still open\n4. Use Open Session In View pattern (cautiously, as it can lead to performance issues)\n5. Use DTOs or projections to fetch only the required data"
+        },
+        {
+          "title": "What is the role of @Transactional in Spring Data JPA?",
+          "simple-content": "`@Transactional` creates a transactional boundary around the annotated method:\n\n1. When the method is called, a transaction is started\n2. If the method completes successfully, the transaction is committed\n3. If an exception occurs, the transaction is rolled back\n\nIt ensures ACID properties (Atomicity, Consistency, Isolation, Durability) for database operations and allows the persistence context to stay open throughout the method execution."
+        },
+        {
+          "title": "What are projections in Spring Data JPA and when would you use them?",
+          "simple-content": "Projections allow you to retrieve only specific fields from entities rather than entire objects. They're useful for reducing data transfer, improving query performance, and avoiding lazy loading issues.\n\nTypes of projections:\n\n- Interface-based projections (with getter methods)\n- Class-based (DTO) projections (with constructor)\n- Dynamic projections\n\n```java\n// Interface projection\npublic interface UserSummary {\n    String getName();\n    String getEmail();\n}\n\n// Repository method\nList<UserSummary> findByStatus(String status);\n```"
+        },
+        {
+          "title": "What is the difference between findById() and getById() (or getOne()) in JpaRepository?",
+          "simple-content": "- **findById()**: Returns an Optional<T> and eagerly loads the entity, executing a query immediately\n- **getById()** (or getOne() in older versions): Returns a proxy reference without executing a query until the entity's properties are accessed (lazy loading)"
+        },
+        {
+          "title": "How do you create custom queries in Spring Data JPA?",
+          "simple-content": "Spring Data JPA offers several ways to define custom queries:\n\n1. **Method name derivation**:\n\n```java\nList<User> findByEmailContainingOrderByNameAsc(String email);\n```\n\n2. **@Query annotation with JPQL**:\n\n```java\n@Query(\"SELECT u FROM User u WHERE u.email LIKE %:email%\")\nList<User> findByEmailPattern(@Param(\"email\") String email);\n```\n\n3. **@Query annotation with native SQL**:\n\n```java\n@Query(value = \"SELECT * FROM users WHERE email LIKE %:email%\", nativeQuery = true)\nList<User> findByEmailPatternNative(@Param(\"email\") String email);\n```\n\n4. **Specifications API** for dynamic queries:\n\n```java\nSpecification<User> spec = (root, query, cb) -> cb.like(root.get(\"email\"), \"%gmail%\");\nList<User> users = userRepository.findAll(spec);\n```"
+        },
+        {
+          "title": "What is the difference between JPQL and native SQL queries in Spring Data?",
+          "simple-content": "- **JPQL** (Java Persistence Query Language):\n  - Entity-oriented query language (uses entity and property names)\n  - Database-independent (portable across different databases)\n  - Supports entity relationships directly\n  - Cannot use database-specific features\n\n- **Native SQL**:\n  - Uses actual database table and column names\n  - Database-specific (not portable)\n  - Can leverage database-specific features and optimizations\n  - Requires mapping results back to entities or DTOs"
+        },
+        {
+          "title": "How does Spring Data handle database transactions?",
+          "simple-content": "Spring Data leverages Spring's declarative transaction management, primarily using the `@Transactional` annotation. Key aspects:\n\n1. **Transaction boundaries**: Defined by annotated methods\n2. **Propagation behavior**: Controls how transactions behave when methods call each other\n3. **Isolation levels**: Determines visibility of changes between concurrent transactions\n4. **Rollback rules**: Defines which exceptions trigger automatic rollback\n5. **Read-only optimization**: Hints for database optimization on read-only operations\n\nSpring also supports programmatic transaction management using `TransactionTemplate` for complex scenarios."
+        },
+        {
+          "title": "What is auditing in Spring Data JPA and how do you implement it?",
+          "simple-content": "Auditing in Spring Data JPA automatically tracks who created or modified entities and when. Implementation:\n\n1. Enable auditing:\n\n```java\n@EnableJpaAuditing\n@Configuration\npublic class JpaConfig {\n    @Bean\n    public AuditorAware<String> auditorProvider() {\n        // Return current user, typically from security context\n    }\n}\n```\n\n2. Create an auditable base class:\n\n```java\n@EntityListeners(AuditingEntityListener.class)\n@MappedSuperclass\npublic abstract class Auditable {\n    @CreatedDate\n    private Instant createdDate;\n\n    @LastModifiedDate\n    private Instant lastModifiedDate;\n\n    @CreatedBy\n    private String createdBy;\n\n    @LastModifiedBy\n    private String lastModifiedBy;\n}\n```\n\n3. Extend this base class in your entities."
+        },
+        {
+          "title": "What is optimistic locking in JPA and how do you implement it?",
+          "simple-content": "Optimistic locking is a concurrency control mechanism that assumes conflicts are rare and verifies at commit time that no other transaction has modified the data.\n\nImplementation in JPA:\n\n```java\n@Entity\npublic class User {\n    @Id\n    private Long id;\n    \n    private String name;\n    \n    @Version\n    private Long version;\n}\n```\n\nThe `@Version` field is automatically incremented on each update. If two transactions try to update the same entity concurrently, the second one will fail with an `OptimisticLockingFailureException` if the version doesn't match."
+        },
+        {
+          "title": "What are entity lifecycle callbacks in JPA?",
+          "simple-content": "Lifecycle callbacks are methods triggered at specific points in an entity's lifecycle. They're marked with annotations:\n\n```java\n@Entity\npublic class User {\n    @Id\n    private Long id;\n    \n    @PrePersist\n    void prePersist() {\n        // Called before the entity is saved\n    }\n    \n    @PostPersist\n    void postPersist() {\n        // Called after the entity is saved\n    }\n    \n    @PreUpdate\n    @PostUpdate\n    @PreRemove\n    @PostRemove\n    @PostLoad\n    // Other lifecycle methods...\n}\n```\n\nThese callbacks are useful for validation, logging, auditing, or setting default values."
+        },
+        {
+          "title": "How do you configure database connection pooling in Spring Data JPA?",
+          "simple-content": "Spring Boot automatically configures a connection pool (HikariCP by default) when you include a database driver. You can configure it in application.properties:\n\n```properties\n# HikariCP specific settings\nspring.datasource.hikari.maximum-pool-size=10\nspring.datasource.hikari.minimum-idle=5\nspring.datasource.hikari.idle-timeout=30000\nspring.datasource.hikari.connection-timeout=20000\n\n# General datasource properties\nspring.datasource.url=jdbc:mysql://localhost:3306/mydb\nspring.datasource.username=user\nspring.datasource.password=password\n```\n\nFor other connection pools like Tomcat JDBC or DBCP2, add their dependency and Spring Boot will configure them."
+        },
+        {
+          "title": "How can you handle database migrations in a Spring Boot application?",
+          "simple-content": "Two popular options are:\n\n1. **Flyway**:\n\n```properties\nspring.flyway.enabled=true\nspring.flyway.locations=classpath:db/migration\n```\n\nMigration files follow a naming convention like `V1__Create_users_table.sql`\n\n2. **Liquibase**:\n\n```properties\nspring.liquibase.change-log=classpath:db/changelog/db.changelog-master.xml\n```\n\nBoth tools provide versioned, repeatable database migrations that can be applied consistently across environments."
+        },
+        {
+          "title": "What is the difference between Spring Data's @Modifying and JPA's @EntityListeners?",
+          "simple-content": "- **@Modifying**: Used with @Query to indicate that the query modifies the database (INSERT, UPDATE, DELETE operations). It's required for non-SELECT queries.\n\n```java\n@Modifying\n@Query(\"UPDATE User u SET u.status = :status WHERE u.id = :id\")\nint updateUserStatus(@Param(\"id\") Long id, @Param(\"status\") String status);\n```\n\n- **@EntityListeners**: Specifies callback listener classes for entity lifecycle events. These listeners contain methods annotated with lifecycle callback annotations.\n\n```java\n@Entity\n@EntityListeners(AuditingEntityListener.class)\npublic class User { ... }\n```"
+        },
+        {
+          "title": "How would you implement a custom repository in Spring Data JPA?",
+          "simple-content": "Custom repositories allow you to add functionality beyond what Spring Data provides:\n\n1. Define custom interface:\n\n```java\npublic interface CustomUserRepository {\n    List<User> findActiveUsersWithRole(String role);\n}\n```\n\n2. Create implementation:\n\n```java\npublic class CustomUserRepositoryImpl implements CustomUserRepository {\n    @PersistenceContext\n    private EntityManager entityManager;\n    \n    @Override\n    public List<User> findActiveUsersWithRole(String role) {\n        // Custom implementation using EntityManager\n    }\n}\n```\n\n3. Extend both interfaces in your repository:\n\n```java\npublic interface UserRepository extends JpaRepository<User, Long>, \n                                          CustomUserRepository {\n}\n```"
+        },
+        {
+          "title": "How does Spring Data handle inheritance in entity mapping?",
+          "simple-content": "JPA offers three strategies for entity inheritance mapping:\n\n1. **SINGLE_TABLE** (default): One table for all entities in the hierarchy, with a discriminator column\n\n```java\n@Entity\n@Inheritance(strategy = InheritanceType.SINGLE_TABLE)\n@DiscriminatorColumn(name = \"type\")\npublic abstract class Payment { ... }\n\n@Entity\n@DiscriminatorValue(\"CC\")\npublic class CreditCardPayment extends Payment { ... }\n```\n\n2. **JOINED**: Separate tables for each class, joined when querying\n\n```java\n@Entity\n@Inheritance(strategy = InheritanceType.JOINED)\npublic abstract class Payment { ... }\n```\n\n3. **TABLE_PER_CLASS**: Separate tables for each concrete class with all fields\n\n```java\n@Entity\n@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)\npublic abstract class Payment { ... }\n```"
+        },
+        {
+          "title": "How do you test Spring Data repositories?",
+          "simple-content": "Spring provides several testing tools:\n\n1. **@DataJpaTest**: For repository testing with an in-memory database\n\n```java\n@DataJpaTest\nclass UserRepositoryTest {\n    @Autowired\n    private UserRepository userRepository;\n    \n    @Test\n    void shouldFindByEmail() {\n        // Test code\n    }\n}\n```\n\n2. **TestEntityManager**: For test-specific entity operations\n\n```java\n@Autowired\nprivate TestEntityManager entityManager;\n```\n\n3. **@SpringBootTest**: For integration testing with the full application context\n\n```java\n@SpringBootTest\nclass UserServiceIntegrationTest { ... }\n```\n\n4. **TestContainers**: For testing with real databases in containers\n\n```java\n@Testcontainers\n@DataJpaTest\nclass UserRepositoryPostgresTest {\n    @Container\n    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>(\"postgres:13\");\n    \n    // Tests\n}\n```"
+        },
+        {
+          "title": "What's the difference between Spring's @Transactional and JPA's EntityTransaction?",
+          "simple-content": "- **Spring's @Transactional**:\n  - Declarative transaction management\n  - Works with multiple transaction managers\n  - Supports propagation, isolation, timeout, and read-only settings\n  - Can be applied at class or method level\n  - Integrates with Spring's exception handling for rollback\n\n- **JPA's EntityTransaction**:\n  - Programmatic transaction management\n  - Specific to JPA\n  - More verbose, requiring explicit begin(), commit(), rollback()\n  - Limited to JPA-specific operations\n  - No built-in propagation or isolation configuration"
+        },
+        {
+          "title": "How do you use stored procedures with Spring Data JPA?",
+          "simple-content": "```java\n// Using @NamedStoredProcedureQuery at entity level\n@Entity\n@NamedStoredProcedureQuery(\n    name = \"User.getAllByRole\",\n    procedureName = \"get_users_by_role\",\n    parameters = {\n        @StoredProcedureParameter(mode = ParameterMode.IN, name = \"role_name\", type = String.class),\n        @StoredProcedureParameter(mode = ParameterMode.OUT, name = \"count\", type = Integer.class)\n    }\n)\npublic class User { ... }\n\n// In repository\n@Procedure(\"User.getAllByRole\")\nList<User> getUsersByRole(String roleName, Integer count);\n\n// Alternative using @Query\n@Query(value = \"{call get_users_by_role(:role)}\", nativeQuery = true)\nList<User> getUsersByRoleNative(@Param(\"role\") String role);\n```"
         }
       ]
     }
