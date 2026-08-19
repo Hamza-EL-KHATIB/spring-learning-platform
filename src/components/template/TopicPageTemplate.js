@@ -127,14 +127,13 @@ const TopicBody = ({ topic, opts }) => {
             <IntroBox items={intro} />
             <div className="space-y-3">
                 {sections.map(([key, value], idx) => {
-                    const label = prettifyKey(key);
-                    // A lone section repeating the topic's own name adds a
-                    // redundant panel — render its content directly instead.
-                    if (sections.length === 1 && label.toLowerCase() === topic.title?.toLowerCase()) {
+                    // A topic with a single payload is already labelled by its
+                    // own heading — a panel around it just nests for nothing.
+                    if (sections.length === 1) {
                         return <div key={idx}>{renderContent(value, deriveType(key), opts, key)}</div>;
                     }
                     return (
-                        <SectionPanel key={idx} title={label}>
+                        <SectionPanel key={idx} title={prettifyKey(key)}>
                             {renderContent(value, deriveType(key), opts, key)}
                         </SectionPanel>
                     );
