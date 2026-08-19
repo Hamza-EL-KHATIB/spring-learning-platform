@@ -1,19 +1,49 @@
 {
   "id": "java-collections-framework",
   "title": "Java Collections Framework",
-  "tags": ["java", "collections", "backend", "data-structures", "interview"],
+  "tags": [
+    "java",
+    "collections",
+    "backend",
+    "data-structures",
+    "interview"
+  ],
   "topics": [
     {
       "id": "overview",
       "title": "Overview",
       "description": "The Java Collections Framework provides a unified, well-designed architecture for representing and manipulating groups of objects. It offers a comprehensive set of interfaces, implementations, and algorithms to dramatically improve programming quality and efficiency when working with groups of objects.",
       "features": [
-        {"name": "Architecture", "description": "Unified hierarchy for collections", "interviewRelevance": 5},
-        {"name": "Performance", "description": "Different implementations for different needs", "interviewRelevance": 5},
-        {"name": "Thread Safety", "description": "Options for concurrent access", "interviewRelevance": 4},
-        {"name": "Utility Methods", "description": "Sort, search, synchronize operations", "interviewRelevance": 4},
-        {"name": "Iteration", "description": "Standard patterns across collections", "interviewRelevance": 3},
-        {"name": "Java 8+ Integration", "description": "Stream and functional operations", "interviewRelevance": 4}
+        {
+          "name": "Architecture",
+          "description": "Unified hierarchy for collections",
+          "interviewRelevance": 5
+        },
+        {
+          "name": "Performance",
+          "description": "Different implementations for different needs",
+          "interviewRelevance": 5
+        },
+        {
+          "name": "Thread Safety",
+          "description": "Options for concurrent access",
+          "interviewRelevance": 4
+        },
+        {
+          "name": "Utility Methods",
+          "description": "Sort, search, synchronize operations",
+          "interviewRelevance": 4
+        },
+        {
+          "name": "Iteration",
+          "description": "Standard patterns across collections",
+          "interviewRelevance": 3
+        },
+        {
+          "name": "Java 8+ Integration",
+          "description": "Stream and functional operations",
+          "interviewRelevance": 4
+        }
       ]
     },
     {
@@ -69,15 +99,38 @@
                 "Not thread-safe"
               ],
               "keyPoints": [
-                {"category": "Time Complexity", "points": [
-                  "Access: O(1)",
-                  "Add/Remove at end: Amortized O(1)",
-                  "Add/Remove in middle: O(n)"
-                ]},
-                {"category": "Memory Overhead", "points": ["Low to moderate"]},
-                {"category": "Default Initial Capacity", "points": ["10 elements"]},
-                {"category": "Growth Strategy", "points": ["Increases by 50% when full"]},
-                {"category": "Synchronized", "points": ["No (use Collections.synchronizedList() if needed)"]}
+                {
+                  "category": "Time Complexity",
+                  "points": [
+                    "Access: O(1)",
+                    "Add/Remove at end: Amortized O(1)",
+                    "Add/Remove in middle: O(n)"
+                  ]
+                },
+                {
+                  "category": "Memory Overhead",
+                  "points": [
+                    "Low to moderate"
+                  ]
+                },
+                {
+                  "category": "Default Initial Capacity",
+                  "points": [
+                    "10 elements"
+                  ]
+                },
+                {
+                  "category": "Growth Strategy",
+                  "points": [
+                    "Increases by 50% when full"
+                  ]
+                },
+                {
+                  "category": "Synchronized",
+                  "points": [
+                    "No (use Collections.synchronizedList() if needed)"
+                  ]
+                }
               ]
             },
             {
@@ -91,14 +144,32 @@
                 "More memory overhead"
               ],
               "keyPoints": [
-                {"category": "Time Complexity", "points": [
-                  "Access: O(n)",
-                  "Add/Remove at beginning/end: O(1)",
-                  "Add/Remove in middle: O(n) to find position, then O(1)"
-                ]},
-                {"category": "Memory Overhead", "points": ["Higher (stores previous and next pointers)"]},
-                {"category": "Special Feature", "points": ["Implements both List and Deque interfaces"]},
-                {"category": "Synchronized", "points": ["No"]}
+                {
+                  "category": "Time Complexity",
+                  "points": [
+                    "Access: O(n)",
+                    "Add/Remove at beginning/end: O(1)",
+                    "Add/Remove in middle: O(n) to find position, then O(1)"
+                  ]
+                },
+                {
+                  "category": "Memory Overhead",
+                  "points": [
+                    "Higher (stores previous and next pointers)"
+                  ]
+                },
+                {
+                  "category": "Special Feature",
+                  "points": [
+                    "Implements both List and Deque interfaces"
+                  ]
+                },
+                {
+                  "category": "Synchronized",
+                  "points": [
+                    "No"
+                  ]
+                }
               ]
             },
             {
@@ -111,9 +182,24 @@
                 "Generally considered legacy code"
               ],
               "keyPoints": [
-                {"category": "Thread Safety", "points": ["Synchronized (all methods are thread-safe)"]},
-                {"category": "Performance", "points": ["Lower than ArrayList due to synchronization overhead"]},
-                {"category": "Legacy Status", "points": ["Generally replaced by ArrayList with explicit synchronization when needed"]}
+                {
+                  "category": "Thread Safety",
+                  "points": [
+                    "Synchronized (all methods are thread-safe)"
+                  ]
+                },
+                {
+                  "category": "Performance",
+                  "points": [
+                    "Lower than ArrayList due to synchronization overhead"
+                  ]
+                },
+                {
+                  "category": "Legacy Status",
+                  "points": [
+                    "Generally replaced by ArrayList with explicit synchronization when needed"
+                  ]
+                }
               ]
             }
           ]
@@ -133,10 +219,30 @@
                 "O(1) operations for add, remove, and contains"
               ],
               "keyPoints": [
-                {"category": "Time Complexity", "points": ["O(1) for add, remove, contains"]},
-                {"category": "Ordering", "points": ["No guaranteed order"]},
-                {"category": "Nulls", "points": ["Permits one null element"]},
-                {"category": "Implementation", "points": ["Backed by HashMap"]}
+                {
+                  "category": "Time Complexity",
+                  "points": [
+                    "O(1) for add, remove, contains"
+                  ]
+                },
+                {
+                  "category": "Ordering",
+                  "points": [
+                    "No guaranteed order"
+                  ]
+                },
+                {
+                  "category": "Nulls",
+                  "points": [
+                    "Permits one null element"
+                  ]
+                },
+                {
+                  "category": "Implementation",
+                  "points": [
+                    "Backed by HashMap"
+                  ]
+                }
               ]
             },
             {
@@ -150,10 +256,30 @@
                 "No duplicates allowed"
               ],
               "keyPoints": [
-                {"category": "Time Complexity", "points": ["O(log n) for add, remove, contains"]},
-                {"category": "Ordering", "points": ["Elements are stored in sorted order"]},
-                {"category": "Implementation", "points": ["Backed by TreeMap (Red-Black Tree)"]},
-                {"category": "Requirements", "points": ["Elements must be comparable or a comparator must be provided"]}
+                {
+                  "category": "Time Complexity",
+                  "points": [
+                    "O(log n) for add, remove, contains"
+                  ]
+                },
+                {
+                  "category": "Ordering",
+                  "points": [
+                    "Elements are stored in sorted order"
+                  ]
+                },
+                {
+                  "category": "Implementation",
+                  "points": [
+                    "Backed by TreeMap (Red-Black Tree)"
+                  ]
+                },
+                {
+                  "category": "Requirements",
+                  "points": [
+                    "Elements must be comparable or a comparator must be provided"
+                  ]
+                }
               ]
             },
             {
@@ -166,10 +292,30 @@
                 "Higher memory usage due to linked list backing"
               ],
               "keyPoints": [
-                {"category": "Time Complexity", "points": ["O(1) for add, remove, contains"]},
-                {"category": "Ordering", "points": ["Maintains insertion order"]},
-                {"category": "Implementation", "points": ["Hash table and linked list implementation"]},
-                {"category": "Memory Usage", "points": ["Slightly higher than HashSet"]}
+                {
+                  "category": "Time Complexity",
+                  "points": [
+                    "O(1) for add, remove, contains"
+                  ]
+                },
+                {
+                  "category": "Ordering",
+                  "points": [
+                    "Maintains insertion order"
+                  ]
+                },
+                {
+                  "category": "Implementation",
+                  "points": [
+                    "Hash table and linked list implementation"
+                  ]
+                },
+                {
+                  "category": "Memory Usage",
+                  "points": [
+                    "Slightly higher than HashSet"
+                  ]
+                }
               ]
             }
           ]
@@ -188,13 +334,26 @@
                 "O(log n) time complexity for insertions"
               ],
               "keyPoints": [
-                {"category": "Time Complexity", "points": [
-                  "Insert: O(log n)",
-                  "Peek: O(1)",
-                  "Poll: O(log n)"
-                ]},
-                {"category": "Ordering", "points": ["Natural order or specified comparator"]},
-                {"category": "Implementation", "points": ["Typically a min-heap"]}
+                {
+                  "category": "Time Complexity",
+                  "points": [
+                    "Insert: O(log n)",
+                    "Peek: O(1)",
+                    "Poll: O(log n)"
+                  ]
+                },
+                {
+                  "category": "Ordering",
+                  "points": [
+                    "Natural order or specified comparator"
+                  ]
+                },
+                {
+                  "category": "Implementation",
+                  "points": [
+                    "Typically a min-heap"
+                  ]
+                }
               ]
             },
             {
@@ -207,8 +366,18 @@
                 "Doubly-linked structure allows fast additions/removals"
               ],
               "keyPoints": [
-                {"category": "Implementation", "points": ["Uses LinkedList's doubly-linked structure"]},
-                {"category": "Usage Pattern", "points": ["Used when a simple FIFO queue is needed"]}
+                {
+                  "category": "Implementation",
+                  "points": [
+                    "Uses LinkedList's doubly-linked structure"
+                  ]
+                },
+                {
+                  "category": "Usage Pattern",
+                  "points": [
+                    "Used when a simple FIFO queue is needed"
+                  ]
+                }
               ]
             },
             {
@@ -221,9 +390,25 @@
                 "No capacity restrictions"
               ],
               "keyPoints": [
-                {"category": "Performance", "points": ["More efficient than Stack when used as a stack", "More efficient than LinkedList when used as a queue"]},
-                {"category": "Null Elements", "points": ["Does not permit null elements"]},
-                {"category": "Implementation", "points": ["Circular array"]}
+                {
+                  "category": "Performance",
+                  "points": [
+                    "More efficient than Stack when used as a stack",
+                    "More efficient than LinkedList when used as a queue"
+                  ]
+                },
+                {
+                  "category": "Null Elements",
+                  "points": [
+                    "Does not permit null elements"
+                  ]
+                },
+                {
+                  "category": "Implementation",
+                  "points": [
+                    "Circular array"
+                  ]
+                }
               ]
             }
           ]
@@ -243,12 +428,42 @@
                 "O(1) time complexity for basic operations"
               ],
               "keyPoints": [
-                {"category": "Time Complexity", "points": ["O(1) for put, get, remove"]},
-                {"category": "Ordering", "points": ["No guaranteed order"]},
-                {"category": "Nulls", "points": ["Allows one null key and multiple null values"]},
-                {"category": "Load Factor", "points": ["Default 0.75 (resize at 75% capacity)"]},
-                {"category": "Initial Capacity", "points": ["Default 16 buckets"]},
-                {"category": "Internal Structure", "points": ["Array of linked lists, converted to balanced trees when buckets get large (Java 8+)"]}
+                {
+                  "category": "Time Complexity",
+                  "points": [
+                    "O(1) for put, get, remove"
+                  ]
+                },
+                {
+                  "category": "Ordering",
+                  "points": [
+                    "No guaranteed order"
+                  ]
+                },
+                {
+                  "category": "Nulls",
+                  "points": [
+                    "Allows one null key and multiple null values"
+                  ]
+                },
+                {
+                  "category": "Load Factor",
+                  "points": [
+                    "Default 0.75 (resize at 75% capacity)"
+                  ]
+                },
+                {
+                  "category": "Initial Capacity",
+                  "points": [
+                    "Default 16 buckets"
+                  ]
+                },
+                {
+                  "category": "Internal Structure",
+                  "points": [
+                    "Array of linked lists, converted to balanced trees when buckets get large (Java 8+)"
+                  ]
+                }
               ]
             },
             {
@@ -261,10 +476,30 @@
                 "No null keys allowed"
               ],
               "keyPoints": [
-                {"category": "Time Complexity", "points": ["O(log n) for put, get, remove"]},
-                {"category": "Ordering", "points": ["Sorted according to natural ordering or comparator"]},
-                {"category": "Implementation", "points": ["Red-Black Tree"]},
-                {"category": "Requirements", "points": ["Keys must be comparable or a comparator must be provided"]}
+                {
+                  "category": "Time Complexity",
+                  "points": [
+                    "O(log n) for put, get, remove"
+                  ]
+                },
+                {
+                  "category": "Ordering",
+                  "points": [
+                    "Sorted according to natural ordering or comparator"
+                  ]
+                },
+                {
+                  "category": "Implementation",
+                  "points": [
+                    "Red-Black Tree"
+                  ]
+                },
+                {
+                  "category": "Requirements",
+                  "points": [
+                    "Keys must be comparable or a comparator must be provided"
+                  ]
+                }
               ]
             },
             {
@@ -277,10 +512,30 @@
                 "O(1) time complexity for operations"
               ],
               "keyPoints": [
-                {"category": "Time Complexity", "points": ["O(1) for put, get, remove"]},
-                {"category": "Ordering", "points": ["Maintains insertion order by default, can be configured for access order"]},
-                {"category": "Implementation", "points": ["Hash table and doubly-linked list"]},
-                {"category": "LRU Cache", "points": ["Can be configured to maintain access order (recently accessed entries at the end)"]}
+                {
+                  "category": "Time Complexity",
+                  "points": [
+                    "O(1) for put, get, remove"
+                  ]
+                },
+                {
+                  "category": "Ordering",
+                  "points": [
+                    "Maintains insertion order by default, can be configured for access order"
+                  ]
+                },
+                {
+                  "category": "Implementation",
+                  "points": [
+                    "Hash table and doubly-linked list"
+                  ]
+                },
+                {
+                  "category": "LRU Cache",
+                  "points": [
+                    "Can be configured to maintain access order (recently accessed entries at the end)"
+                  ]
+                }
               ]
             },
             {
@@ -293,10 +548,32 @@
                 "No lock on the entire map"
               ],
               "keyPoints": [
-                {"category": "Thread Safety", "points": ["Thread-safe without locking entire map"]},
-                {"category": "Concurrency", "points": ["Java 8+: lock-free CAS on empty bins, plus synchronized on the first node of a bin, so only the bin being written is locked", "Reads never block", "The Segment-based locking of Java 7 is gone (Segment survives only for serialization compatibility) - do not describe modern ConcurrentHashMap as segmented"]},
-                {"category": "Null Policy", "points": ["Does not allow null keys or values"]},
-                {"category": "Performance", "points": ["High concurrency with minimal locking"]}
+                {
+                  "category": "Thread Safety",
+                  "points": [
+                    "Thread-safe without locking entire map"
+                  ]
+                },
+                {
+                  "category": "Concurrency",
+                  "points": [
+                    "Java 8+: lock-free CAS on empty bins, plus synchronized on the first node of a bin, so only the bin being written is locked",
+                    "Reads never block",
+                    "The Segment-based locking of Java 7 is gone (Segment survives only for serialization compatibility) - do not describe modern ConcurrentHashMap as segmented"
+                  ]
+                },
+                {
+                  "category": "Null Policy",
+                  "points": [
+                    "Does not allow null keys or values"
+                  ]
+                },
+                {
+                  "category": "Performance",
+                  "points": [
+                    "High concurrency with minimal locking"
+                  ]
+                }
               ]
             }
           ]
@@ -426,14 +703,42 @@
         }
       ],
       "comparison": {
-        "headers": ["Aspect", "Comparable", "Comparator"],
+        "headers": [
+          "Aspect",
+          "Comparable",
+          "Comparator"
+        ],
         "rows": [
-          ["Interface", "implements Comparable<T>", "Separate implements Comparator<T> class"],
-          ["Method", "compareTo(T o)", "compare(T o1, T o2)"],
-          ["Location", "In the class being compared", "Separate utility class"],
-          ["Usage", "Collections.sort(list)", "Collections.sort(list, comparator)"],
-          ["Multiple orderings", "No (one \"natural\" order)", "Yes (multiple possible orderings)"],
-          ["Control", "Requires modifying the class", "Works with unmodifiable classes"]
+          [
+            "Interface",
+            "implements Comparable<T>",
+            "Separate implements Comparator<T> class"
+          ],
+          [
+            "Method",
+            "compareTo(T o)",
+            "compare(T o1, T o2)"
+          ],
+          [
+            "Location",
+            "In the class being compared",
+            "Separate utility class"
+          ],
+          [
+            "Usage",
+            "Collections.sort(list)",
+            "Collections.sort(list, comparator)"
+          ],
+          [
+            "Multiple orderings",
+            "No (one \"natural\" order)",
+            "Yes (multiple possible orderings)"
+          ],
+          [
+            "Control",
+            "Requires modifying the class",
+            "Works with unmodifiable classes"
+          ]
         ]
       }
     },
@@ -532,7 +837,7 @@
         {
           "id": "arraylist-vs-linkedlist",
           "question": "What is the difference between ArrayList and LinkedList?",
-          "answer": "- **ArrayList** uses a dynamic array - O(1) random access, O(n) insertions/deletions in middle\n- **LinkedList** uses doubly-linked list - O(1) insertions/deletions at known positions, O(n) random access\n- ArrayList is more memory-efficient while LinkedList has overhead for node pointers\n- ArrayList is preferred for frequent access operations, LinkedList for frequent insertions/deletions"
+          "answer": "- ArrayList uses a dynamic array - O(1) random access, O(n) insertions/deletions in middle\n- LinkedList uses doubly-linked list - O(1) insertions/deletions at known positions, O(n) random access\n- ArrayList is more memory-efficient while LinkedList has overhead for node pointers\n- ArrayList is preferred for frequent access operations, LinkedList for frequent insertions/deletions"
         },
         {
           "id": "arraylist-resize",
@@ -557,7 +862,7 @@
         {
           "id": "list-set-map-difference",
           "question": "What is the difference between List, Set, and Map?",
-          "answer": "- **List**: An ordered collection that allows duplicates (ArrayList, LinkedList)\n- **Set**: A collection that doesn't allow duplicates (HashSet, TreeSet)\n- **Map**: A collection of key-value pairs with unique keys (HashMap, TreeMap)\n\nEach serves different purposes: List for sequential data with position, Set for unique elements, and Map for lookups by key."
+          "answer": "- List: An ordered collection that allows duplicates (ArrayList, LinkedList)\n- Set: A collection that doesn't allow duplicates (HashSet, TreeSet)\n- Map: A collection of key-value pairs with unique keys (HashMap, TreeMap)\n\nEach serves different purposes: List for sequential data with position, Set for unique elements, and Map for lookups by key."
         },
         {
           "id": "immutable-collection",
@@ -582,6 +887,17 @@
       ]
     }
   ],
-  "relatedTopics": ["Java Fundamentals", "Stream API", "Concurrency", "Performance Optimization"],
-  "additionalTags": ["collections-framework", "data-structures", "hashmap", "arraylist", "treeset"]
+  "relatedTopics": [
+    "Java Fundamentals",
+    "Stream API",
+    "Concurrency",
+    "Performance Optimization"
+  ],
+  "additionalTags": [
+    "collections-framework",
+    "data-structures",
+    "hashmap",
+    "arraylist",
+    "treeset"
+  ]
 }

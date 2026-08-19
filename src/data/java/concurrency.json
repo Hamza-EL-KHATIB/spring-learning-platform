@@ -1,25 +1,75 @@
 {
   "title": "Java Concurrency",
   "id": "java-concurrency",
-  "tags": ["java", "concurrency", "multithreading", "backend", "interview"],
+  "tags": [
+    "java",
+    "concurrency",
+    "multithreading",
+    "backend",
+    "interview"
+  ],
   "sections": [
     {
       "id": "core-concepts",
       "title": "Core Concepts Overview",
       "content": "Java concurrency is a powerful but complex aspect of the language that enables concurrent execution and parallel processing. Mastering these concepts is essential for developing high-performance, responsive, and efficient applications.",
       "table": {
-        "headers": ["Concept", "Primary Purpose", "Interview Relevance"],
+        "headers": [
+          "Concept",
+          "Primary Purpose",
+          "Interview Relevance"
+        ],
         "rows": [
-          ["Threads", "Basic unit of concurrent execution", "★★★★★"],
-          ["Synchronization", "Controlling access to shared resources", "★★★★★"],
-          ["Thread Safety", "Ensuring correct behavior in concurrent environments", "★★★★★"],
-          ["Locks & Atomic Classes", "Fine-grained concurrency control", "★★★★☆"],
-          ["Thread Coordination", "Communication between threads", "★★★★☆"],
-          ["Executor Framework", "Higher-level thread management", "★★★★☆"],
-          ["CompletableFuture", "Modern async programming", "★★★☆☆"],
-          ["Concurrent Collections", "Thread-safe data structures", "★★★★☆"],
-          ["Thread-Local Storage", "Thread-confined data", "★★★☆☆"],
-          ["Concurrency Issues", "Deadlocks, race conditions, etc.", "★★★★★"]
+          [
+            "Threads",
+            "Basic unit of concurrent execution",
+            "★★★★★"
+          ],
+          [
+            "Synchronization",
+            "Controlling access to shared resources",
+            "★★★★★"
+          ],
+          [
+            "Thread Safety",
+            "Ensuring correct behavior in concurrent environments",
+            "★★★★★"
+          ],
+          [
+            "Locks & Atomic Classes",
+            "Fine-grained concurrency control",
+            "★★★★☆"
+          ],
+          [
+            "Thread Coordination",
+            "Communication between threads",
+            "★★★★☆"
+          ],
+          [
+            "Executor Framework",
+            "Higher-level thread management",
+            "★★★★☆"
+          ],
+          [
+            "CompletableFuture",
+            "Modern async programming",
+            "★★★☆☆"
+          ],
+          [
+            "Concurrent Collections",
+            "Thread-safe data structures",
+            "★★★★☆"
+          ],
+          [
+            "Thread-Local Storage",
+            "Thread-confined data",
+            "★★★☆☆"
+          ],
+          [
+            "Concurrency Issues",
+            "Deadlocks, race conditions, etc.",
+            "★★★★★"
+          ]
         ]
       }
     },
@@ -69,20 +119,41 @@
         {
           "method": "Extending Thread",
           "example": "class MyThread extends Thread {\n    public void run() {\n        // Thread logic here\n        System.out.println(\"Thread running\");\n    }\n}\n\n// Usage\nMyThread thread = new MyThread();\nthread.start();",
-          "pros": ["Direct access to thread methods", "Simpler for beginners"],
-          "cons": ["Cannot extend other classes", "Wastes single inheritance opportunity"]
+          "pros": [
+            "Direct access to thread methods",
+            "Simpler for beginners"
+          ],
+          "cons": [
+            "Cannot extend other classes",
+            "Wastes single inheritance opportunity"
+          ]
         },
         {
           "method": "Implementing Runnable",
           "example": "class MyRunnable implements Runnable {\n    public void run() {\n        // Thread logic here\n        System.out.println(\"Thread running\");\n    }\n}\n\n// Usage\nThread thread = new Thread(new MyRunnable());\nthread.start();",
-          "pros": ["Can extend other classes", "Better for task abstraction", "Better separates task from execution mechanism", "Allows same task to be executed by different thread implementations"],
-          "cons": ["No direct access to thread methods", "Slightly more verbose"]
+          "pros": [
+            "Can extend other classes",
+            "Better for task abstraction",
+            "Better separates task from execution mechanism",
+            "Allows same task to be executed by different thread implementations"
+          ],
+          "cons": [
+            "No direct access to thread methods",
+            "Slightly more verbose"
+          ]
         },
         {
           "method": "Using Lambda Expressions",
           "example": "Thread thread = new Thread(() -> {\n    // Thread logic here\n    System.out.println(\"Thread running\");\n});\nthread.start();",
-          "pros": ["Concise", "Functional style", "Modern approach (Java 8+)"],
-          "cons": ["Limited to simple tasks", "Less readable for complex logic"]
+          "pros": [
+            "Concise",
+            "Functional style",
+            "Modern approach (Java 8+)"
+          ],
+          "cons": [
+            "Limited to simple tasks",
+            "Less readable for complex logic"
+          ]
         }
       ],
       "note": "Implementing Runnable is generally preferred over extending Thread because it doesn't waste your single inheritance opportunity, better separates the task from the execution mechanism, and allows the same task to be executed by different thread implementations."
@@ -91,13 +162,31 @@
       "id": "thread-vs-process",
       "title": "Thread vs Process",
       "table": {
-        "headers": ["Process", "Thread"],
+        "headers": [
+          "Process",
+          "Thread"
+        ],
         "rows": [
-          ["Independent program execution", "Lightweight execution unit within a process"],
-          ["Has its own memory space", "Shares memory space with other threads in process"],
-          ["More resource-intensive to create", "Less resource-intensive to create"],
-          ["Inter-process communication is complex", "Inter-thread communication is simpler"],
-          ["If one process crashes, others are unaffected", "If one thread crashes, it may crash the entire process"]
+          [
+            "Independent program execution",
+            "Lightweight execution unit within a process"
+          ],
+          [
+            "Has its own memory space",
+            "Shares memory space with other threads in process"
+          ],
+          [
+            "More resource-intensive to create",
+            "Less resource-intensive to create"
+          ],
+          [
+            "Inter-process communication is complex",
+            "Inter-thread communication is simpler"
+          ],
+          [
+            "If one process crashes, others are unaffected",
+            "If one thread crashes, it may crash the entire process"
+          ]
         ]
       }
     },
@@ -302,12 +391,27 @@
           "id": "execute-vs-submit",
           "title": "execute() vs submit()",
           "table": {
-            "headers": ["execute()", "submit()"],
+            "headers": [
+              "execute()",
+              "submit()"
+            ],
             "rows": [
-              ["Returns void", "Returns a Future object"],
-              ["Only accepts Runnable", "Accepts both Runnable and Callable"],
-              ["Exceptions go to the uncaught exception handler", "Exceptions are encapsulated in the Future"],
-              ["Simpler usage", "More control and monitoring"]
+              [
+                "Returns void",
+                "Returns a Future object"
+              ],
+              [
+                "Only accepts Runnable",
+                "Accepts both Runnable and Callable"
+              ],
+              [
+                "Exceptions go to the uncaught exception handler",
+                "Exceptions are encapsulated in the Future"
+              ],
+              [
+                "Simpler usage",
+                "More control and monitoring"
+              ]
             ]
           },
           "example": "// execute\nexecutor.execute(() -> System.out.println(\"Task executed\"));\n\n// submit with Runnable (Future<null>)\nFuture<?> future1 = executor.submit(() -> System.out.println(\"Task executed\"));\n\n// submit with Callable (Future<String>)\nFuture<String> future2 = executor.submit(() -> \"Task result\");"
@@ -333,13 +437,37 @@
       "content": "Virtual threads are lightweight threads scheduled by the JVM onto a small pool of OS \"carrier\" threads. When a virtual thread blocks on I/O, it unmounts and parks in the heap — the carrier immediately runs another virtual thread. Blocking becomes nearly free, so simple blocking code scales like async code.",
       "example": "// One virtual thread per task — no pool sizing, no tuning\ntry (var executor = Executors.newVirtualThreadPerTaskExecutor()) {\n    List<Future<Order>> results = ids.stream()\n        .map(id -> executor.submit(() -> client.fetchOrder(id)))  // 10k concurrent calls: fine\n        .toList();\n}\n\n// Creating individual virtual threads\nThread vt = Thread.ofVirtual().name(\"vt-\", 0).start(task);\nThread.startVirtualThread(task);",
       "table": {
-        "headers": ["Aspect", "Platform thread", "Virtual thread"],
+        "headers": [
+          "Aspect",
+          "Platform thread",
+          "Virtual thread"
+        ],
         "rows": [
-          ["Managed by", "OS scheduler", "JVM scheduler (ForkJoinPool carriers)"],
-          ["Stack", "~1 MB reserved", "Grows/shrinks on heap, starts tiny"],
-          ["Practical count", "Thousands", "Millions"],
-          ["Blocking cost", "Wastes an OS thread", "Unmounts — near-free"],
-          ["Best for", "CPU-bound work", "I/O-bound concurrency"]
+          [
+            "Managed by",
+            "OS scheduler",
+            "JVM scheduler (ForkJoinPool carriers)"
+          ],
+          [
+            "Stack",
+            "~1 MB reserved",
+            "Grows/shrinks on heap, starts tiny"
+          ],
+          [
+            "Practical count",
+            "Thousands",
+            "Millions"
+          ],
+          [
+            "Blocking cost",
+            "Wastes an OS thread",
+            "Unmounts — near-free"
+          ],
+          [
+            "Best for",
+            "CPU-bound work",
+            "I/O-bound concurrency"
+          ]
         ]
       },
       "rules": [
@@ -387,7 +515,7 @@
           "example": "ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();\n\n// Basic operations are thread-safe\nmap.put(\"key\", 1);\nmap.get(\"key\");\nmap.remove(\"key\");\n\n// Atomic operations\nmap.putIfAbsent(\"key\", 1);\nmap.replace(\"key\", 1, 2);\nmap.remove(\"key\", 1);\n\n// Aggregate operations (Java 8+)\nmap.forEach(4, (key, value) -> System.out.println(key + \"=\" + value));\nint sum = map.reduceValues(4, Integer::sum);",
           "characteristics": [
             "Thread-safe without external synchronization",
-            "Better concurrency using segment locking",
+            "Fine-grained locking: since Java 8, lock-free reads plus CAS and per-bucket synchronized writes (the pre-Java-8 Segment array is gone)",
             "Doesn't allow null keys or values",
             "Iteration doesn't throw ConcurrentModificationException",
             "Lock striping for better performance",
@@ -563,7 +691,11 @@
             {
               "code": "try {\n    // Use the executor\n} finally {\n    executor.shutdown();\n}"
             },
-            "2. Use try-with-resources with AutoCloseable ExecutorService wrapper"
+            "2. On Java 19+, ExecutorService itself implements AutoCloseable, so try-with-resources shuts it down and awaits termination for you (no wrapper needed)",
+            {
+              "code": "// Java 19+\ntry (ExecutorService executor = Executors.newFixedThreadPool(4)) {\n    executor.submit(task);\n} // close() calls shutdown() and blocks until all tasks finish"
+            },
+            "3. Prefer a bounded pool and always set a timeout with awaitTermination(), falling back to shutdownNow()"
           ]
         }
       ]
@@ -634,7 +766,7 @@
         },
         {
           "question": "How does ConcurrentHashMap provide thread safety?",
-          "answer": "ConcurrentHashMap uses a segmented approach or fine-grained locking to provide thread safety without locking the entire map. Key features:\n\n- Uses multiple locks (one for each segment/bucket) for better concurrency\n- Allows concurrent reads without locking\n- Provides atomic operations like putIfAbsent, replace\n- Doesn't allow null keys or values\n- Efficient concurrent access without blocking all threads"
+          "answer": "ConcurrentHashMap provides thread safety without ever locking the whole map. Key features:\n\n- Fine-grained locking: since Java 8 it locks only the individual bucket being written, using CAS for the common case and synchronized on the bucket's first node when a bin is contended. (Before Java 8 it used a fixed array of Segments, each an independent ReentrantLock — this is the \"segment locking\" answer you will still hear, but it describes Java 7 and earlier.)\n- Reads are lock-free — values and node references are volatile, so get() never blocks\n- Provides atomic operations like putIfAbsent, replace, compute and merge\n- Doesn't allow null keys or values (so a null return unambiguously means \"absent\")\n- Iterators are weakly consistent: they never throw ConcurrentModificationException and may or may not reflect writes made after creation"
         },
         {
           "question": "What is a deadlock and how can it be prevented?",
@@ -646,11 +778,11 @@
         },
         {
           "question": "Explain the difference between Callable and Runnable.",
-          "answer": "Both represent tasks that can be executed by a thread, but:\n\n**Runnable:**\n- No return value (void run() method)\n- Cannot throw checked exceptions\n- Used with both Thread and ExecutorService\n\n**Callable:**\n- Returns a value (V call() method)\n- Can throw checked exceptions\n- Used primarily with ExecutorService\n- Returns a Future object to retrieve the result"
+          "answer": "Both represent tasks that can be executed by a thread, but:\n\nRunnable:\n- No return value (void run() method)\n- Cannot throw checked exceptions\n- Used with both Thread and ExecutorService\n\nCallable:\n- Returns a value (V call() method)\n- Can throw checked exceptions\n- Used primarily with ExecutorService\n- Returns a Future object to retrieve the result"
         },
         {
           "question": "What is the difference between CountDownLatch and CyclicBarrier?",
-          "answer": "Both help synchronize threads, but:\n\n**CountDownLatch:**\n- One-time barrier with fixed count\n- Count decreases via countDown() calls\n- Waiting thread(s) released when count reaches zero\n- Cannot be reset once count reaches zero\n\n**CyclicBarrier:**\n- Reusable barrier for multiple threads\n- All threads wait at barrier until last thread arrives\n- Automatically resets for reuse\n- Optional action can be executed when barrier trips"
+          "answer": "Both help synchronize threads, but:\n\nCountDownLatch:\n- One-time barrier with fixed count\n- Count decreases via countDown() calls\n- Waiting thread(s) released when count reaches zero\n- Cannot be reset once count reaches zero\n\nCyclicBarrier:\n- Reusable barrier for multiple threads\n- All threads wait at barrier until last thread arrives\n- Automatically resets for reuse\n- Optional action can be executed when barrier trips"
         },
         {
           "question": "How do you handle exceptions in threads?",
@@ -717,5 +849,12 @@
       ]
     }
   ],
-  "footer_tags": ["multithreading", "parallel-processing", "executor-framework", "thread-safety", "deadlocks", "race-conditions"]
+  "footer_tags": [
+    "multithreading",
+    "parallel-processing",
+    "executor-framework",
+    "thread-safety",
+    "deadlocks",
+    "race-conditions"
+  ]
 }

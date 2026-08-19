@@ -6,7 +6,6 @@
       "name": "Single Responsibility Principle",
       "acronym": "SRP",
       "definition": "A class should have only one reason to change.",
-      "interviewRelevance": 5,
       "key_concepts": [
         "Each class should have a single responsibility or purpose",
         "\"Reason to change\" refers to a specific stakeholder or functionality requirement",
@@ -43,13 +42,13 @@
       "interview_question": {
         "question": "How do you implement the Single Responsibility Principle in your projects?",
         "answer": "I implement SRP by:\n- Creating smaller, focused classes with clear purposes\n- Separating concerns into their respective layers (repository for data access, service for business logic)\n- Using composition to combine functionality without bloating classes\n- Refactoring when I notice a class has multiple responsibilities or reasons to change\n\nFor example, in a Spring application, instead of one large service class handling user management, email notifications and report generation, I'd create separate UserService, NotificationService and ReportService classes."
-      }
+      },
+      "interviewRelevance": 5
     },
     {
       "name": "Open-Closed Principle",
       "acronym": "OCP",
       "definition": "Software entities should be open for extension but closed for modification.",
-      "interviewRelevance": 4,
       "key_concepts": [
         "Design classes so that you can add new functionality without changing existing code",
         "Use abstractions (interfaces and abstract classes) to enable extension",
@@ -84,13 +83,13 @@
       "interview_question": {
         "question": "How does the Open-Closed Principle relate to interfaces and abstract classes?",
         "answer": "OCP guides us to design software so new functionality can be added without modifying existing code. Interfaces and abstract classes make that possible by:\n- Providing stable contracts that clients can depend on\n- Allowing new implementations to be added without changing existing code\n- Enabling polymorphic behavior where new classes can be used in place of existing ones\n- Creating explicit extension points for plugins or modules\n\nFor instance, by defining a PaymentProcessor interface we can add new payment methods (Bitcoin, Apple Pay) without touching the existing payment flow."
-      }
+      },
+      "interviewRelevance": 4
     },
     {
       "name": "Liskov Substitution Principle",
       "acronym": "LSP",
       "definition": "Subtypes must be substitutable for their base types without altering the correctness of the program.",
-      "interviewRelevance": 4,
       "key_concepts": [
         "Objects of a superclass should be replaceable with objects of a subclass without breaking functionality",
         "Subclasses should extend the capabilities of the parent class without reducing them",
@@ -125,13 +124,13 @@
       "interview_question": {
         "question": "What's a real example of the Liskov Substitution Principle being violated?",
         "answer": "The classic example is the Rectangle-Square problem:\n- A Rectangle has width and height that can be set independently\n- A Square is a special Rectangle where width equals height\n- If Square extends Rectangle but overrides setWidth() to set both dimensions, it violates client expectations\n- Code that works with Rectangle can break with Square, even though mathematically a square is a rectangle\n\nThis violates LSP because Square doesn't honour Rectangle's behavioral contract. A better design separates the hierarchy or uses composition instead of inheritance."
-      }
+      },
+      "interviewRelevance": 4
     },
     {
       "name": "Interface Segregation Principle",
       "acronym": "ISP",
       "definition": "Clients should not be forced to depend on interfaces they do not use.",
-      "interviewRelevance": 3,
       "key_concepts": [
         "Create smaller, more specific interfaces rather than large general-purpose ones",
         "Classes should only implement the methods they actually need",
@@ -166,13 +165,13 @@
       "interview_question": {
         "question": "How do you identify violations of the Interface Segregation Principle?",
         "answer": "I look for:\n- Large interfaces with methods that aren't implemented by all classes\n- Implementations throwing UnsupportedOperationException\n- Classes implementing an interface but using only a small subset of its methods\n- Clients that call only a few methods of a large interface\n\nWhen I find these, I refactor by splitting the interface into smaller, cohesive interfaces that each represent a specific capability or role."
-      }
+      },
+      "interviewRelevance": 3
     },
     {
       "name": "Dependency Inversion Principle",
       "acronym": "DIP",
       "definition": "High-level modules should not depend on low-level modules; both should depend on abstractions. Abstractions should not depend on details — details should depend on abstractions.",
-      "interviewRelevance": 5,
       "key_concepts": [
         "Create stable interfaces between the layers of your application",
         "High-level policy should not depend on low-level implementation details",
@@ -208,7 +207,8 @@
       "interview_question": {
         "question": "What's the difference between Dependency Inversion and Dependency Injection?",
         "answer": "Dependency Inversion is a principle (the \"D\" in SOLID): high-level modules should depend on abstractions, not on details.\n\nDependency Injection is a pattern for implementing DIP. It works by:\n- Providing dependencies to a class rather than letting the class create them\n- Moving responsibility for constructing dependencies outside the class\n- Making testing easier, since mock dependencies can be injected\n\nIn short, DIP tells you what to do (depend on abstractions) and DI is one way to do it (inject those abstractions)."
-      }
+      },
+      "interviewRelevance": 5
     }
   ],
   "practical_applications": {
@@ -237,19 +237,33 @@
     "design_patterns": [
       {
         "principle": "OCP",
-        "patterns": ["Strategy", "Template Method", "Decorator"]
+        "patterns": [
+          "Strategy",
+          "Template Method",
+          "Decorator"
+        ]
       },
       {
         "principle": "LSP",
-        "patterns": ["Composite", "Null Object"]
+        "patterns": [
+          "Composite",
+          "Null Object"
+        ]
       },
       {
         "principle": "ISP",
-        "patterns": ["Adapter", "Facade"]
+        "patterns": [
+          "Adapter",
+          "Facade"
+        ]
       },
       {
         "principle": "DIP",
-        "patterns": ["Factory", "Abstract Factory", "Dependency Injection"]
+        "patterns": [
+          "Factory",
+          "Abstract Factory",
+          "Dependency Injection"
+        ]
       }
     ],
     "microservices": {

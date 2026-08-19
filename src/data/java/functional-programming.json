@@ -1,7 +1,13 @@
 {
   "id": "java-functional-programming",
   "title": "Functional Programming",
-  "tags": ["java", "functional-programming", "lambda", "streams", "backend"],
+  "tags": [
+    "java",
+    "functional-programming",
+    "lambda",
+    "streams",
+    "backend"
+  ],
   "topics": [
     {
       "id": "introduction",
@@ -16,15 +22,47 @@
       "title": "Core Concepts Overview",
       "description": "The fundamental principles that define functional programming paradigm",
       "conceptTable": {
-        "headers": ["Concept", "Description", "Interview Relevance"],
+        "headers": [
+          "Concept",
+          "Description",
+          "Interview Relevance"
+        ],
         "rows": [
-          ["Pure Functions", "Functions without side effects that return the same output for the same input", "★★★★☆"],
-          ["Immutability", "Creating unchangeable objects to avoid state mutation", "★★★★☆"],
-          ["First-Class Functions", "Functions that can be passed as arguments, returned from other functions, and assigned to variables", "★★★★★"],
-          ["Higher-Order Functions", "Functions that take functions as parameters or return functions", "★★★★★"],
-          ["Function Composition", "Building complex functions by combining simpler ones", "★★★☆☆"],
-          ["Referential Transparency", "Expressions that can be replaced with their values without changing program behavior", "★★☆☆☆"],
-          ["Declarative Programming", "Expressing logic without describing control flow", "★★★★☆"]
+          [
+            "Pure Functions",
+            "Functions without side effects that return the same output for the same input",
+            "★★★★☆"
+          ],
+          [
+            "Immutability",
+            "Creating unchangeable objects to avoid state mutation",
+            "★★★★☆"
+          ],
+          [
+            "First-Class Functions",
+            "Functions that can be passed as arguments, returned from other functions, and assigned to variables",
+            "★★★★★"
+          ],
+          [
+            "Higher-Order Functions",
+            "Functions that take functions as parameters or return functions",
+            "★★★★★"
+          ],
+          [
+            "Function Composition",
+            "Building complex functions by combining simpler ones",
+            "★★★☆☆"
+          ],
+          [
+            "Referential Transparency",
+            "Expressions that can be replaced with their values without changing program behavior",
+            "★★☆☆☆"
+          ],
+          [
+            "Declarative Programming",
+            "Expressing logic without describing control flow",
+            "★★★★☆"
+          ]
         ]
       }
     },
@@ -37,17 +75,67 @@
           "id": "built-in-interfaces",
           "title": "Key Built-in Functional Interfaces",
           "table": {
-            "headers": ["Interface", "Method", "Description", "Example Use Case"],
+            "headers": [
+              "Interface",
+              "Method",
+              "Description",
+              "Example Use Case"
+            ],
             "rows": [
-              ["`Function<T,R>`", "`R apply(T t)`", "Transforms input into output", "Converting String to Integer"],
-              ["`Predicate<T>`", "`boolean test(T t)`", "Boolean test on input", "Filtering collections"],
-              ["`Consumer<T>`", "`void accept(T t)`", "Performs operation with no return", "Printing elements"],
-              ["`Supplier<T>`", "`T get()`", "Provides values without input", "Lazy value generation"],
-              ["`UnaryOperator<T>`", "`T apply(T t)`", "Same input/output type transformation", "String transformation"],
-              ["`BinaryOperator<T>`", "`T apply(T t1, T t2)`", "Combines two inputs into one output", "Summing two numbers"],
-              ["`BiFunction<T,U,R>`", "`R apply(T t, U u)`", "Two inputs, one output operation", "Combining values"],
-              ["`BiConsumer<T,U>`", "`void accept(T t, U u)`", "Consumes two inputs, no output", "Adding to a map"],
-              ["`BiPredicate<T,U>`", "`boolean test(T t, U u)`", "Tests two inputs for condition", "Comparing objects"]
+              [
+                "`Function<T,R>`",
+                "`R apply(T t)`",
+                "Transforms input into output",
+                "Converting String to Integer"
+              ],
+              [
+                "`Predicate<T>`",
+                "`boolean test(T t)`",
+                "Boolean test on input",
+                "Filtering collections"
+              ],
+              [
+                "`Consumer<T>`",
+                "`void accept(T t)`",
+                "Performs operation with no return",
+                "Printing elements"
+              ],
+              [
+                "`Supplier<T>`",
+                "`T get()`",
+                "Provides values without input",
+                "Lazy value generation"
+              ],
+              [
+                "`UnaryOperator<T>`",
+                "`T apply(T t)`",
+                "Same input/output type transformation",
+                "String transformation"
+              ],
+              [
+                "`BinaryOperator<T>`",
+                "`T apply(T t1, T t2)`",
+                "Combines two inputs into one output",
+                "Summing two numbers"
+              ],
+              [
+                "`BiFunction<T,U,R>`",
+                "`R apply(T t, U u)`",
+                "Two inputs, one output operation",
+                "Combining values"
+              ],
+              [
+                "`BiConsumer<T,U>`",
+                "`void accept(T t, U u)`",
+                "Consumes two inputs, no output",
+                "Adding to a map"
+              ],
+              [
+                "`BiPredicate<T,U>`",
+                "`boolean test(T t, U u)`",
+                "Tests two inputs for condition",
+                "Comparing objects"
+              ]
             ]
           }
         },
@@ -84,12 +172,37 @@
           "id": "reference-types",
           "title": "Types of Method References",
           "table": {
-            "headers": ["Type", "Syntax", "Lambda Equivalent", "Example"],
+            "headers": [
+              "Type",
+              "Syntax",
+              "Lambda Equivalent",
+              "Example"
+            ],
             "rows": [
-              ["Static Method", "`ClassName::staticMethod`", "`(args) -> ClassName.staticMethod(args)`", "`Math::max`"],
-              ["Instance Method of Particular Object", "`instance::instanceMethod`", "`(args) -> instance.instanceMethod(args)`", "`System.out::println`"],
-              ["Instance Method of Arbitrary Object", "`ClassName::instanceMethod`", "`(obj, args) -> obj.instanceMethod(args)`", "`String::length`"],
-              ["Constructor", "`ClassName::new`", "`(args) -> new ClassName(args)`", "`ArrayList::new`"]
+              [
+                "Static Method",
+                "`ClassName::staticMethod`",
+                "`(args) -> ClassName.staticMethod(args)`",
+                "`Math::max`"
+              ],
+              [
+                "Instance Method of Particular Object",
+                "`instance::instanceMethod`",
+                "`(args) -> instance.instanceMethod(args)`",
+                "`System.out::println`"
+              ],
+              [
+                "Instance Method of Arbitrary Object",
+                "`ClassName::instanceMethod`",
+                "`(obj, args) -> obj.instanceMethod(args)`",
+                "`String::length`"
+              ],
+              [
+                "Constructor",
+                "`ClassName::new`",
+                "`(args) -> new ClassName(args)`",
+                "`ArrayList::new`"
+              ]
             ]
           }
         },
@@ -314,7 +427,7 @@
         {
           "id": "advantages-challenges",
           "question": "What are the advantages and challenges of functional programming in Java?",
-          "answer": "**Advantages**:\n\n1. **Readability and Expressiveness**: Concise, declarative code that shows what's being done rather than how\n2. **Reduced Mutable State**: Less state mutation means fewer bugs related to state management\n3. **Easier Concurrency**: Pure functions and immutability simplify parallel processing\n4. **Improved Testability**: Pure functions are easier to test as they depend only on their inputs\n5. **Composition**: Building complex operations from simpler ones increases reusability\n6. **Higher Abstraction Level**: Focus on operations rather than implementation details\n\n**Challenges**:\n\n1. **Learning Curve**: Developers from imperative backgrounds may find functional concepts challenging\n2. **Performance Overhead**: Immutability can sometimes lead to increased object creation\n3. **Debugging**: Stack traces for streams and lambdas can be harder to interpret\n4. **Type Inference Limitations**: Java's type inference isn't as powerful as in some functional languages\n5. **Exception Handling**: Checked exceptions don't work well with functional interfaces\n6. **Integration with Legacy Code**: Mixing functional and imperative styles can be challenging\n7. **Limited Pattern Matching**: Java lacks comprehensive pattern matching (though this is improving in recent versions)\n\nJava's approach to functional programming is pragmatic, offering functional features within an object-oriented language rather than being a pure functional language. This provides flexibility but requires understanding both paradigms for effective use."
+          "answer": "Advantages:\n\n1. Readability and Expressiveness: Concise, declarative code that shows what's being done rather than how\n2. Reduced Mutable State: Less state mutation means fewer bugs related to state management\n3. Easier Concurrency: Pure functions and immutability simplify parallel processing\n4. Improved Testability: Pure functions are easier to test as they depend only on their inputs\n5. Composition: Building complex operations from simpler ones increases reusability\n6. Higher Abstraction Level: Focus on operations rather than implementation details\n\nChallenges:\n\n1. Learning Curve: Developers from imperative backgrounds may find functional concepts challenging\n2. Performance Overhead: Immutability can sometimes lead to increased object creation\n3. Debugging: Stack traces for streams and lambdas can be harder to interpret\n4. Type Inference Limitations: Java's type inference isn't as powerful as in some functional languages\n5. Exception Handling: Checked exceptions don't work well with functional interfaces\n6. Integration with Legacy Code: Mixing functional and imperative styles can be challenging\n7. Limited Pattern Matching: Java lacks comprehensive pattern matching (though this is improving in recent versions)\n\nJava's approach to functional programming is pragmatic, offering functional features within an object-oriented language rather than being a pure functional language. This provides flexibility but requires understanding both paradigms for effective use."
         }
       ]
     },
