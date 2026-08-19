@@ -1,6 +1,11 @@
 {
   "title": "Exceptions",
-  "tags": ["java", "error-handling", "backend", "fundamentals"],
+  "tags": [
+    "java",
+    "error-handling",
+    "backend",
+    "fundamentals"
+  ],
   "topics": [
     {
       "id": "core-concepts",
@@ -97,19 +102,19 @@
           ],
           "examples": [
             {
-              "exception": "IOException",
+              "name": "IOException",
               "description": "Input/output operations failed or interrupted"
             },
             {
-              "exception": "SQLException",
+              "name": "SQLException",
               "description": "Database access error or other SQL-related issues"
             },
             {
-              "exception": "ClassNotFoundException",
+              "name": "ClassNotFoundException",
               "description": "Application tries to load a class through its string name"
             },
             {
-              "exception": "InterruptedException",
+              "name": "InterruptedException",
               "description": "Thread is interrupted during execution"
             }
           ],
@@ -134,27 +139,27 @@
           ],
           "examples": [
             {
-              "exception": "NullPointerException",
+              "name": "NullPointerException",
               "description": "Attempting to access methods or fields of a null object"
             },
             {
-              "exception": "ArrayIndexOutOfBoundsException",
+              "name": "ArrayIndexOutOfBoundsException",
               "description": "Attempting to access an array element outside its bounds"
             },
             {
-              "exception": "ArithmeticException",
+              "name": "ArithmeticException",
               "description": "Arithmetic errors such as division by zero"
             },
             {
-              "exception": "ClassCastException",
+              "name": "ClassCastException",
               "description": "Invalid casting between incompatible classes"
             },
             {
-              "exception": "IllegalArgumentException",
+              "name": "IllegalArgumentException",
               "description": "Method received an argument that is invalid"
             },
             {
-              "exception": "IllegalStateException",
+              "name": "IllegalStateException",
               "description": "Method called at an illegal or inappropriate time"
             }
           ],
@@ -175,11 +180,11 @@
           ],
           "examples": [
             {
-              "error": "OutOfMemoryError",
+              "name": "OutOfMemoryError",
               "description": "Indicates that the JVM has run out of memory"
             },
             {
-              "error": "StackOverflowError",
+              "name": "StackOverflowError",
               "description": "Occurs when there is excessive deep recursion, causing the call stack to exceed its limit"
             }
           ]
@@ -245,7 +250,9 @@
           "id": "throw",
           "method": "throw",
           "description": "Used to explicitly throw an exception",
-          "properties": ["Can throw both built-in and custom exceptions"],
+          "properties": [
+            "Can throw both built-in and custom exceptions"
+          ],
           "code": {
             "language": "java",
             "snippet": "if (age < 0) {\n    throw new IllegalArgumentException(\"Age cannot be negative\");\n}"
@@ -255,7 +262,9 @@
           "id": "throws",
           "method": "throws",
           "description": "Used in method signature to declare that it can throw checked exceptions",
-          "properties": ["Multiple exceptions can be declared with a comma-separated list"],
+          "properties": [
+            "Multiple exceptions can be declared with a comma-separated list"
+          ],
           "code": {
             "language": "java",
             "snippet": "public void readFile() throws IOException, FileNotFoundException {\n    // Method implementation\n}"
@@ -268,12 +277,32 @@
       "title": "Exception-Related Keywords",
       "description": "Java has two similarly named keywords that play opposite roles: throw raises an exception, throws declares that a method may raise one.",
       "comparison": {
-        "headers": ["Aspect", "throw", "throws"],
+        "headers": [
+          "Aspect",
+          "throw",
+          "throws"
+        ],
         "rows": [
-          ["Where it appears", "Inside a method or block body", "In the method signature, after the parameter list"],
-          ["What follows it", "A single Throwable instance", "One or more exception class names, comma-separated"],
-          ["Effect", "Actually raises the exception at that point", "Declares that callers must handle or propagate it"],
-          ["Used with", "Both built-in and custom exceptions", "Mainly checked exceptions (unchecked may be declared for documentation)"]
+          [
+            "Where it appears",
+            "Inside a method or block body",
+            "In the method signature, after the parameter list"
+          ],
+          [
+            "What follows it",
+            "A single Throwable instance",
+            "One or more exception class names, comma-separated"
+          ],
+          [
+            "Effect",
+            "Actually raises the exception at that point",
+            "Declares that callers must handle or propagate it"
+          ],
+          [
+            "Used with",
+            "Both built-in and custom exceptions",
+            "Mainly checked exceptions (unchecked may be declared for documentation)"
+          ]
         ]
       },
       "keywords": [
@@ -364,7 +393,9 @@
         "Add any additional fields or methods needed",
         "Use the custom exception in application code where needed"
       ],
-      "bestPractices": ["Include descriptive messages and relevant data"],
+      "bestPractices": [
+        "Include descriptive messages and relevant data"
+      ],
       "examples": [
         {
           "type": "checked",
@@ -501,7 +532,7 @@
         },
         {
           "question": "How do you handle exceptions in a Spring Boot application?",
-          "answer": "In Spring Boot, you can handle exceptions using:\n\n1. **@ExceptionHandler**: Method-level annotation to handle exceptions thrown by specific controller methods\n\n2. **@ControllerAdvice/@RestControllerAdvice**: Class-level annotation for global exception handling",
+          "answer": "In Spring Boot, you can handle exceptions using:\n\n1. @ExceptionHandler: Method-level annotation to handle exceptions thrown by specific controller methods\n\n2. @ControllerAdvice/@RestControllerAdvice: Class-level annotation for global exception handling",
           "code": [
             {
               "name": "@ExceptionHandler example",
@@ -524,7 +555,11 @@
         "Logging Best Practices",
         "CompletableFuture"
       ],
-      "additionalTags": ["exception-handling", "java-core", "interviews"]
+      "additionalTags": [
+        "exception-handling",
+        "java-core",
+        "interviews"
+      ]
     }
   ]
 }

@@ -26,7 +26,7 @@
               "multi-content": [
                 {
                   "title": "Description",
-                  "simple-content": "A transaction is an **atomic** unit of work; either all of its data modifications are performed, or none of them are performed."
+                  "simple-content": "A transaction is an atomic unit of work; either all of its data modifications are performed, or none of them are performed."
                 },
                 {
                   "title": "Key Points",
@@ -53,7 +53,7 @@
               "multi-content": [
                 {
                   "title": "Description",
-                  "simple-content": "A transaction must transform the database from one **consistent** state to another consistent state, maintaining all defined rules and constraints."
+                  "simple-content": "A transaction must transform the database from one consistent state to another consistent state, maintaining all defined rules and constraints."
                 },
                 {
                   "title": "Key Points",
@@ -75,7 +75,7 @@
               "multi-content": [
                 {
                   "title": "Description",
-                  "simple-content": "Transactions are **isolated** from each other until they are completed, despite being executed concurrently."
+                  "simple-content": "Transactions are isolated from each other until they are completed, despite being executed concurrently."
                 },
                 {
                   "title": "Key Points",
@@ -110,7 +110,7 @@
               "multi-content": [
                 {
                   "title": "Description",
-                  "simple-content": "Once a transaction has been **committed**, the changes it has made to the data persist, even in the event of system failures."
+                  "simple-content": "Once a transaction has been committed, the changes it has made to the data persist, even in the event of system failures."
                 },
                 {
                   "title": "Key Points",
@@ -146,7 +146,7 @@
                 },
                 {
                   "title": "Prevents",
-                  "multi-content": []
+                  "simple-content": "Nothing — this is the weakest level and blocks none of the read anomalies."
                 },
                 {
                   "title": "Allows",
@@ -231,7 +231,7 @@
                 },
                 {
                   "title": "Allows",
-                  "multi-content": []
+                  "simple-content": "None — no dirty reads, non-repeatable reads or phantom reads."
                 },
                 {
                   "title": "Usage",
@@ -1007,7 +1007,7 @@
             },
             {
               "title": "Answer",
-              "simple-content": "ACID stands for Atomicity, Consistency, Isolation, and Durability. These are the four key properties that guarantee reliable processing of database transactions.\n\n- **Atomicity** ensures that all operations in a transaction either complete entirely or have no effect.\n- **Consistency** ensures that a transaction brings the database from one valid state to another.\n- **Isolation** ensures that concurrent transactions don't interfere with each other.\n- **Durability** ensures that once a transaction is committed, it remains so, even in the event of system failure."
+              "simple-content": "ACID stands for Atomicity, Consistency, Isolation, and Durability. These are the four key properties that guarantee reliable processing of database transactions.\n\n- Atomicity ensures that all operations in a transaction either complete entirely or have no effect.\n- Consistency ensures that a transaction brings the database from one valid state to another.\n- Isolation ensures that concurrent transactions don't interfere with each other.\n- Durability ensures that once a transaction is committed, it remains so, even in the event of system failure."
             }
           ]
         },
@@ -1033,7 +1033,7 @@
             },
             {
               "title": "Answer",
-              "simple-content": "Transaction isolation levels control how changes made by one transaction are visible to other concurrent transactions:\n\n- **READ_UNCOMMITTED**: Allows dirty reads (uncommitted changes from other transactions), non-repeatable reads, and phantom reads. Offers highest performance but lowest safety.\n- **READ_COMMITTED**: Prevents dirty reads but allows non-repeatable reads and phantom reads. A good balance between performance and safety.\n- **REPEATABLE_READ**: Prevents dirty reads and non-repeatable reads but allows phantom reads. Provides better consistency guarantees.\n- **SERIALIZABLE**: Prevents all concurrency issues (dirty reads, non-repeatable reads, phantom reads) but has the lowest concurrency and performance."
+              "simple-content": "Transaction isolation levels control how changes made by one transaction are visible to other concurrent transactions:\n\n- READ_UNCOMMITTED: Allows dirty reads (uncommitted changes from other transactions), non-repeatable reads, and phantom reads. Offers highest performance but lowest safety.\n- READ_COMMITTED: Prevents dirty reads but allows non-repeatable reads and phantom reads. A good balance between performance and safety.\n- REPEATABLE_READ: Prevents dirty reads and non-repeatable reads but allows phantom reads. Provides better consistency guarantees.\n- SERIALIZABLE: Prevents all concurrency issues (dirty reads, non-repeatable reads, phantom reads) but has the lowest concurrency and performance."
             }
           ]
         },
@@ -1046,7 +1046,7 @@
             },
             {
               "title": "Answer",
-              "simple-content": "Transaction propagation defines how transactions relate to each other when transactional methods call other transactional methods:\n\n- **REQUIRED** (default): Use current transaction, create new if none exists. This is appropriate for most use cases.\n- **REQUIRES_NEW**: Always create a new transaction. Use when you need operations to execute in an independent transaction, even if a transaction already exists.\n- **SUPPORTS**: Use current transaction if one exists, otherwise execute non-transactionally. Suitable for read operations that don't necessarily need a transaction.\n- **MANDATORY**: Use existing transaction, throw exception if none exists. Use when an operation must always be part of a larger transaction.\n- **NESTED**: Execute within a nested transaction if current transaction exists. Useful when you want to be able to roll back specific parts of a transaction."
+              "simple-content": "Transaction propagation defines how transactions relate to each other when transactional methods call other transactional methods:\n\n- REQUIRED (default): Use current transaction, create new if none exists. This is appropriate for most use cases.\n- REQUIRES_NEW: Always create a new transaction. Use when you need operations to execute in an independent transaction, even if a transaction already exists.\n- SUPPORTS: Use current transaction if one exists, otherwise execute non-transactionally. Suitable for read operations that don't necessarily need a transaction.\n- MANDATORY: Use existing transaction, throw exception if none exists. Use when an operation must always be part of a larger transaction.\n- NESTED: Execute within a nested transaction if current transaction exists. Useful when you want to be able to roll back specific parts of a transaction."
             }
           ]
         },
@@ -1072,7 +1072,7 @@
             },
             {
               "title": "Answer",
-              "simple-content": "For distributed transactions, there are several approaches:\n\n1. **Two-Phase Commit (2PC)**: A protocol that ensures either all participants commit or all abort a transaction. It's reliable but can impact performance and availability.\n    \n2. **Saga Pattern**: Breaking a distributed transaction into a sequence of local transactions, with compensating transactions to undo changes if a step fails. This is more scalable but has eventual consistency.\n    \n3. **Outbox Pattern**: Write to local database and an outbox table in the same transaction, then asynchronously process the outbox entries to trigger changes in other systems.\n    \n4. **Change Data Capture (CDC)**: Monitor database transaction logs to detect changes and propagate them to other systems.\n    \nFor simpler scenarios in Spring, JTA (Java Transaction API) with an appropriate transaction manager can handle transactions across multiple resources."
+              "simple-content": "For distributed transactions, there are several approaches:\n\n1. Two-Phase Commit (2PC): A protocol that ensures either all participants commit or all abort a transaction. It's reliable but can impact performance and availability.\n    \n2. Saga Pattern: Breaking a distributed transaction into a sequence of local transactions, with compensating transactions to undo changes if a step fails. This is more scalable but has eventual consistency.\n    \n3. Outbox Pattern: Write to local database and an outbox table in the same transaction, then asynchronously process the outbox entries to trigger changes in other systems.\n    \n4. Change Data Capture (CDC): Monitor database transaction logs to detect changes and propagate them to other systems.\n    \nFor simpler scenarios in Spring, JTA (Java Transaction API) with an appropriate transaction manager can handle transactions across multiple resources."
             }
           ]
         }

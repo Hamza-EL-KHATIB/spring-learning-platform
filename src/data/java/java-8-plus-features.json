@@ -1,7 +1,65 @@
 {
   "title": "Java 8+ Features",
-  "tags": ["java", "functional-programming", "streams", "lambda", "backend"],
+  "tags": [
+    "java",
+    "functional-programming",
+    "streams",
+    "lambda",
+    "backend"
+  ],
   "sections": [
+    {
+      "id": "overview",
+      "title": "Core Concepts Overview",
+      "description": "Java 8 introduced transformative features that fundamentally changed how Java code is written, making it more concise, functional and expressive. Later versions (9, 10, 11 and beyond) built on those foundations with incremental improvements.",
+      "features": [
+        {
+          "name": "Lambda Expressions",
+          "description": "Enable functional programming",
+          "interviewRelevance": 5
+        },
+        {
+          "name": "Stream API",
+          "description": "Process collections in a functional style",
+          "interviewRelevance": 5
+        },
+        {
+          "name": "Functional Interfaces",
+          "description": "Provide the target types that lambdas implement",
+          "interviewRelevance": 4
+        },
+        {
+          "name": "Optional",
+          "description": "Better null handling",
+          "interviewRelevance": 4
+        },
+        {
+          "name": "Method References",
+          "description": "Shorthand for lambdas that just call an existing method",
+          "interviewRelevance": 3
+        },
+        {
+          "name": "Default Methods",
+          "description": "Allow interfaces to evolve without breaking implementers",
+          "interviewRelevance": 3
+        },
+        {
+          "name": "CompletableFuture",
+          "description": "Improved asynchronous programming",
+          "interviewRelevance": 3
+        },
+        {
+          "name": "Date/Time API",
+          "description": "Modern, immutable date and time handling",
+          "interviewRelevance": 2
+        },
+        {
+          "name": "Base64 Encoding",
+          "description": "Simplified encoding and decoding",
+          "interviewRelevance": 1
+        }
+      ]
+    },
     {
       "id": "lambdaExpressions",
       "title": "Lambda Expressions",
@@ -74,15 +132,55 @@
           "title": "Key Built-in Functional Interfaces",
           "tables": [
             {
-              "headers": ["Interface", "Method", "Description", "Example Use Case"],
+              "headers": [
+                "Interface",
+                "Method",
+                "Description",
+                "Example Use Case"
+              ],
               "rows": [
-                ["`Function<T,R>`", "`R apply(T t)`", "Transforms input into output", "String to Integer transformation"],
-                ["`Predicate<T>`", "`boolean test(T t)`", "Boolean test on input", "Filtering collections"],
-                ["`Consumer<T>`", "`void accept(T t)`", "Consumes input with no return", "Printing elements"],
-                ["`Supplier<T>`", "`T get()`", "Supplies values with no input", "Lazy value generation"],
-                ["`BiFunction<T,U,R>`", "`R apply(T t, U u)`", "Function with two inputs", "Combining two values"],
-                ["`UnaryOperator<T>`", "`T apply(T t)`", "Special function where input and output types match", "Transforming a value of the same type"],
-                ["`BinaryOperator<T>`", "`T apply(T t1, T t2)`", "Combines two arguments of same type", "Mathematical operations"]
+                [
+                  "`Function<T,R>`",
+                  "`R apply(T t)`",
+                  "Transforms input into output",
+                  "String to Integer transformation"
+                ],
+                [
+                  "`Predicate<T>`",
+                  "`boolean test(T t)`",
+                  "Boolean test on input",
+                  "Filtering collections"
+                ],
+                [
+                  "`Consumer<T>`",
+                  "`void accept(T t)`",
+                  "Consumes input with no return",
+                  "Printing elements"
+                ],
+                [
+                  "`Supplier<T>`",
+                  "`T get()`",
+                  "Supplies values with no input",
+                  "Lazy value generation"
+                ],
+                [
+                  "`BiFunction<T,U,R>`",
+                  "`R apply(T t, U u)`",
+                  "Function with two inputs",
+                  "Combining two values"
+                ],
+                [
+                  "`UnaryOperator<T>`",
+                  "`T apply(T t)`",
+                  "Special function where input and output types match",
+                  "Transforming a value of the same type"
+                ],
+                [
+                  "`BinaryOperator<T>`",
+                  "`T apply(T t1, T t2)`",
+                  "Combines two arguments of same type",
+                  "Mathematical operations"
+                ]
               ]
             }
           ]
@@ -146,12 +244,37 @@
           "title": "Types of Method References",
           "tables": [
             {
-              "headers": ["Type", "Syntax", "Lambda Equivalent", "Example"],
+              "headers": [
+                "Type",
+                "Syntax",
+                "Lambda Equivalent",
+                "Example"
+              ],
               "rows": [
-                ["Static Method", "`ClassName::staticMethod`", "`(args) -> ClassName.staticMethod(args)`", "`Math::max`"],
-                ["Instance Method of Particular Object", "`instance::instanceMethod`", "`(args) -> instance.instanceMethod(args)`", "`System.out::println`"],
-                ["Instance Method of Arbitrary Object", "`ClassName::instanceMethod`", "`(obj, args) -> obj.instanceMethod(args)`", "`String::length`"],
-                ["Constructor", "`ClassName::new`", "`(args) -> new ClassName(args)`", "`ArrayList::new`"]
+                [
+                  "Static Method",
+                  "`ClassName::staticMethod`",
+                  "`(args) -> ClassName.staticMethod(args)`",
+                  "`Math::max`"
+                ],
+                [
+                  "Instance Method of Particular Object",
+                  "`instance::instanceMethod`",
+                  "`(args) -> instance.instanceMethod(args)`",
+                  "`System.out::println`"
+                ],
+                [
+                  "Instance Method of Arbitrary Object",
+                  "`ClassName::instanceMethod`",
+                  "`(obj, args) -> obj.instanceMethod(args)`",
+                  "`String::length`"
+                ],
+                [
+                  "Constructor",
+                  "`ClassName::new`",
+                  "`(args) -> new ClassName(args)`",
+                  "`ArrayList::new`"
+                ]
               ]
             }
           ]
@@ -278,16 +401,52 @@
           ],
           "tables": [
             {
-              "headers": ["Operation", "Description", "Example"],
+              "headers": [
+                "Operation",
+                "Description",
+                "Example"
+              ],
               "rows": [
-                ["`filter()`", "Filters elements based on a predicate", "`stream.filter(n -> n > 10)`"],
-                ["`map()`", "Transforms elements using a function", "`stream.map(String::toUpperCase)`"],
-                ["`flatMap()`", "Transforms and flattens nested streams", "`stream.flatMap(Collection::stream)`"],
-                ["`distinct()`", "Removes duplicates", "`stream.distinct()`"],
-                ["`sorted()`", "Sorts elements", "`stream.sorted(Comparator.naturalOrder())`"],
-                ["`peek()`", "Performs action on elements (debugging)", "`stream.peek(System.out::println)`"],
-                ["`limit()`", "Limits stream to a size", "`stream.limit(10)`"],
-                ["`skip()`", "Skips first n elements", "`stream.skip(5)`"]
+                [
+                  "`filter()`",
+                  "Filters elements based on a predicate",
+                  "`stream.filter(n -> n > 10)`"
+                ],
+                [
+                  "`map()`",
+                  "Transforms elements using a function",
+                  "`stream.map(String::toUpperCase)`"
+                ],
+                [
+                  "`flatMap()`",
+                  "Transforms and flattens nested streams",
+                  "`stream.flatMap(Collection::stream)`"
+                ],
+                [
+                  "`distinct()`",
+                  "Removes duplicates",
+                  "`stream.distinct()`"
+                ],
+                [
+                  "`sorted()`",
+                  "Sorts elements",
+                  "`stream.sorted(Comparator.naturalOrder())`"
+                ],
+                [
+                  "`peek()`",
+                  "Performs action on elements (debugging)",
+                  "`stream.peek(System.out::println)`"
+                ],
+                [
+                  "`limit()`",
+                  "Limits stream to a size",
+                  "`stream.limit(10)`"
+                ],
+                [
+                  "`skip()`",
+                  "Skips first n elements",
+                  "`stream.skip(5)`"
+                ]
               ]
             }
           ]
@@ -368,27 +527,79 @@
           ],
           "tables": [
             {
-              "headers": ["Operation", "Description", "Example"],
+              "headers": [
+                "Operation",
+                "Description",
+                "Example"
+              ],
               "rows": [
-                ["`forEach()`", "Performs action on each element", "`stream.forEach(System.out::println)`"],
-                ["`collect()`", "Collects elements into a container", "`stream.collect(Collectors.toList())`"],
-                ["`reduce()`", "Reduces elements to a single value", "`stream.reduce(0, Integer::sum)`"],
-                ["`count()`", "Counts elements", "`stream.count()`"],
-                ["`anyMatch()`", "Returns true if any element matches", "`stream.anyMatch(s -> s.length() > 5)`"],
-                ["`allMatch()`", "Returns true if all elements match", "`stream.allMatch(n -> n > 0)`"],
-                ["`noneMatch()`", "Returns true if no elements match", "`stream.noneMatch(n -> n < 0)`"],
-                ["`findFirst()`", "Returns first element (Optional)", "`stream.findFirst()`"],
-                ["`findAny()`", "Returns any element (Optional)", "`stream.findAny()`"],
-                ["`min()`", "Returns minimum element", "`stream.min(Comparator.naturalOrder())`"],
-                ["`max()`", "Returns maximum element", "`stream.max(Comparator.naturalOrder())`"],
-                ["`toArray()`", "Converts to array", "`stream.toArray()`"]
+                [
+                  "`forEach()`",
+                  "Performs action on each element",
+                  "`stream.forEach(System.out::println)`"
+                ],
+                [
+                  "`collect()`",
+                  "Collects elements into a container",
+                  "`stream.collect(Collectors.toList())`"
+                ],
+                [
+                  "`reduce()`",
+                  "Reduces elements to a single value",
+                  "`stream.reduce(0, Integer::sum)`"
+                ],
+                [
+                  "`count()`",
+                  "Counts elements",
+                  "`stream.count()`"
+                ],
+                [
+                  "`anyMatch()`",
+                  "Returns true if any element matches",
+                  "`stream.anyMatch(s -> s.length() > 5)`"
+                ],
+                [
+                  "`allMatch()`",
+                  "Returns true if all elements match",
+                  "`stream.allMatch(n -> n > 0)`"
+                ],
+                [
+                  "`noneMatch()`",
+                  "Returns true if no elements match",
+                  "`stream.noneMatch(n -> n < 0)`"
+                ],
+                [
+                  "`findFirst()`",
+                  "Returns first element (Optional)",
+                  "`stream.findFirst()`"
+                ],
+                [
+                  "`findAny()`",
+                  "Returns any element (Optional)",
+                  "`stream.findAny()`"
+                ],
+                [
+                  "`min()`",
+                  "Returns minimum element",
+                  "`stream.min(Comparator.naturalOrder())`"
+                ],
+                [
+                  "`max()`",
+                  "Returns maximum element",
+                  "`stream.max(Comparator.naturalOrder())`"
+                ],
+                [
+                  "`toArray()`",
+                  "Converts to array",
+                  "`stream.toArray()`"
+                ]
               ]
             }
           ]
         },
         {
           "title": "Specialized Streams",
-          "content": "**IntStream**, **LongStream**, **DoubleStream**: Primitive specializations\n- More efficient than object streams for numeric operations\n- Provide specialized operations like `sum()`, `average()`, `range()`",
+          "content": "IntStream, LongStream, DoubleStream: Primitive specializations\n- More efficient than object streams for numeric operations\n- Provide specialized operations like `sum()`, `average()`, `range()`",
           "methods": [
             {
               "name": "IntStream",
@@ -656,20 +867,72 @@
           ],
           "tables": [
             {
-              "headers": ["Method", "Description", "Example"],
+              "headers": [
+                "Method",
+                "Description",
+                "Example"
+              ],
               "rows": [
-                ["`of(T value)`", "Creates Optional with non-null value", "`Optional.of(\"value\")`"],
-                ["`ofNullable(T value)`", "Creates Optional that may be empty", "`Optional.ofNullable(getValue())`"],
-                ["`empty()`", "Creates empty Optional", "`Optional.empty()`"],
-                ["`isPresent()`", "Checks if value is present", "`optional.isPresent()`"],
-                ["`ifPresent(Consumer)`", "Executes action if present", "`optional.ifPresent(System.out::println)`"],
-                ["`get()`", "Returns value if present or throws", "`optional.get()`"],
-                ["`orElse(T)`", "Returns value or provided default", "`optional.orElse(\"default\")`"],
-                ["`orElseGet(Supplier)`", "Returns value or computed default", "`optional.orElseGet(() -> computeDefault())`"],
-                ["`orElseThrow(Supplier)`", "Returns value or throws exception", "`optional.orElseThrow(NoSuchElementException::new)`"],
-                ["`map(Function)`", "Transforms value if present", "`optional.map(String::toUpperCase)`"],
-                ["`flatMap(Function)`", "Transforms and flattens", "`optional.flatMap(this::findRelated)`"],
-                ["`filter(Predicate)`", "Applies filter to value", "`optional.filter(s -> s.length() > 3)`"]
+                [
+                  "`of(T value)`",
+                  "Creates Optional with non-null value",
+                  "`Optional.of(\"value\")`"
+                ],
+                [
+                  "`ofNullable(T value)`",
+                  "Creates Optional that may be empty",
+                  "`Optional.ofNullable(getValue())`"
+                ],
+                [
+                  "`empty()`",
+                  "Creates empty Optional",
+                  "`Optional.empty()`"
+                ],
+                [
+                  "`isPresent()`",
+                  "Checks if value is present",
+                  "`optional.isPresent()`"
+                ],
+                [
+                  "`ifPresent(Consumer)`",
+                  "Executes action if present",
+                  "`optional.ifPresent(System.out::println)`"
+                ],
+                [
+                  "`get()`",
+                  "Returns value if present or throws",
+                  "`optional.get()`"
+                ],
+                [
+                  "`orElse(T)`",
+                  "Returns value or provided default",
+                  "`optional.orElse(\"default\")`"
+                ],
+                [
+                  "`orElseGet(Supplier)`",
+                  "Returns value or computed default",
+                  "`optional.orElseGet(() -> computeDefault())`"
+                ],
+                [
+                  "`orElseThrow(Supplier)`",
+                  "Returns value or throws exception",
+                  "`optional.orElseThrow(NoSuchElementException::new)`"
+                ],
+                [
+                  "`map(Function)`",
+                  "Transforms value if present",
+                  "`optional.map(String::toUpperCase)`"
+                ],
+                [
+                  "`flatMap(Function)`",
+                  "Transforms and flattens",
+                  "`optional.flatMap(this::findRelated)`"
+                ],
+                [
+                  "`filter(Predicate)`",
+                  "Applies filter to value",
+                  "`optional.filter(s -> s.length() > 3)`"
+                ]
               ]
             }
           ]
@@ -902,15 +1165,47 @@
           ],
           "tables": [
             {
-              "headers": ["Class", "Description", "Example"],
+              "headers": [
+                "Class",
+                "Description",
+                "Example"
+              ],
               "rows": [
-                ["`LocalDate`", "Date without time or timezone", "`LocalDate.now()`"],
-                ["`LocalTime`", "Time without date or timezone", "`LocalTime.of(13, 30)`"],
-                ["`LocalDateTime`", "Date and time without timezone", "`LocalDateTime.now()`"],
-                ["`ZonedDateTime`", "Date and time with timezone", "`ZonedDateTime.now(ZoneId.of(\"Europe/Paris\"))`"],
-                ["`Instant`", "Point in time (epoch-based)", "`Instant.now()`"],
-                ["`Duration`", "Time-based amount", "`Duration.between(start, end)`"],
-                ["`Period`", "Date-based amount", "`Period.between(startDate, endDate)`"]
+                [
+                  "`LocalDate`",
+                  "Date without time or timezone",
+                  "`LocalDate.now()`"
+                ],
+                [
+                  "`LocalTime`",
+                  "Time without date or timezone",
+                  "`LocalTime.of(13, 30)`"
+                ],
+                [
+                  "`LocalDateTime`",
+                  "Date and time without timezone",
+                  "`LocalDateTime.now()`"
+                ],
+                [
+                  "`ZonedDateTime`",
+                  "Date and time with timezone",
+                  "`ZonedDateTime.now(ZoneId.of(\"Europe/Paris\"))`"
+                ],
+                [
+                  "`Instant`",
+                  "Point in time (epoch-based)",
+                  "`Instant.now()`"
+                ],
+                [
+                  "`Duration`",
+                  "Time-based amount",
+                  "`Duration.between(start, end)`"
+                ],
+                [
+                  "`Period`",
+                  "Date-based amount",
+                  "`Period.between(startDate, endDate)`"
+                ]
               ]
             }
           ]
@@ -975,17 +1270,17 @@
         {
           "title": "Key Module Concepts",
           "list": [
-            "**Strong Encapsulation**: Only exported packages are accessible",
-            "**Reliable Configuration**: Dependencies are explicitly declared",
-            "**Improved Performance**: Better startup time and memory footprint",
-            "**Scalability**: Better supports large applications"
+            "Strong Encapsulation: Only exported packages are accessible",
+            "Reliable Configuration: Dependencies are explicitly declared",
+            "Improved Performance: Better startup time and memory footprint",
+            "Scalability: Better supports large applications"
           ]
         }
       ]
     },
     {
       "id": "nashorn",
-      "title": "Nashorn JavaScript Engine",
+      "title": "Nashorn JavaScript Engine (Removed in JDK 15)",
       "description": "DEPRECATED AND REMOVED. Nashorn was the JavaScript engine bundled with the JDK from Java 8 (replacing Rhino). It was deprecated for removal in JDK 11 (JEP 335) and removed from the JDK entirely in JDK 15 (JEP 372). On JDK 15 and later it exists only as a standalone dependency, org.openjdk.nashorn:nashorn-core, which must be added to the project explicitly. For new work the current recommendation is GraalVM JavaScript (org.graalvm.js), which is the actively maintained, ECMAScript-current engine. Nashorn still comes up in interviews as history: know that it shipped in Java 8, that it is gone from the JDK, and what replaced it.",
       "features": [
         {
@@ -1225,7 +1520,13 @@
         "[[Concurrency]]",
         "[[Effective Java Practices]]"
       ],
-      "tags": ["lambda", "streams", "optional", "completablefuture", "functional-interfaces"]
+      "tags": [
+        "lambda",
+        "streams",
+        "optional",
+        "completablefuture",
+        "functional-interfaces"
+      ]
     }
   ]
 }

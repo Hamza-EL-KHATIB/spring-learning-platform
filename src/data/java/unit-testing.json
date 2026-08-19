@@ -1,23 +1,70 @@
 {
   "id": "java-unit-testing-mocking",
   "title": "Unit Testing & Mocking",
-  "tags": ["java", "testing", "junit", "mockito", "backend", "tdd"],
+  "tags": [
+    "java",
+    "testing",
+    "junit",
+    "mockito",
+    "backend",
+    "tdd"
+  ],
   "topics": [
     {
       "id": "core-concepts",
       "title": "Core Concepts Overview",
       "description": "Unit testing and mocking are foundational skills for professional Java developers, ensuring code quality, reliability, and maintainability. These practices are particularly important in enterprise environments where Spring Boot is commonly used.",
       "features": [
-        {"name": "Unit Testing Basics", "description": "Validate individual components in isolation", "interviewRelevance": 5},
-        {"name": "JUnit Annotations & Lifecycle", "description": "Structure and control test execution", "interviewRelevance": 5},
-        {"name": "Test-Driven Development (TDD)", "description": "Development process with tests first", "interviewRelevance": 4},
-        {"name": "Mocking Frameworks", "description": "Isolate units from dependencies", "interviewRelevance": 5},
-        {"name": "Test Doubles (Mocks vs Stubs)", "description": "Different ways to simulate dependencies", "interviewRelevance": 4},
-        {"name": "Assertions & Verifications", "description": "Validate test results and interactions", "interviewRelevance": 4},
-        {"name": "Testing Best Practices", "description": "Guidelines for effective testing", "interviewRelevance": 3},
-        {"name": "Spring Boot Testing", "description": "Spring-specific testing techniques", "interviewRelevance": 4},
-        {"name": "Test Coverage", "description": "Measure and improve test quality", "interviewRelevance": 3},
-        {"name": "Integration Testing", "description": "Testing component interactions", "interviewRelevance": 3}
+        {
+          "name": "Unit Testing Basics",
+          "description": "Validate individual components in isolation",
+          "interviewRelevance": 5
+        },
+        {
+          "name": "JUnit Annotations & Lifecycle",
+          "description": "Structure and control test execution",
+          "interviewRelevance": 5
+        },
+        {
+          "name": "Test-Driven Development (TDD)",
+          "description": "Development process with tests first",
+          "interviewRelevance": 4
+        },
+        {
+          "name": "Mocking Frameworks",
+          "description": "Isolate units from dependencies",
+          "interviewRelevance": 5
+        },
+        {
+          "name": "Test Doubles (Mocks vs Stubs)",
+          "description": "Different ways to simulate dependencies",
+          "interviewRelevance": 4
+        },
+        {
+          "name": "Assertions & Verifications",
+          "description": "Validate test results and interactions",
+          "interviewRelevance": 4
+        },
+        {
+          "name": "Testing Best Practices",
+          "description": "Guidelines for effective testing",
+          "interviewRelevance": 3
+        },
+        {
+          "name": "Spring Boot Testing",
+          "description": "Spring-specific testing techniques",
+          "interviewRelevance": 4
+        },
+        {
+          "name": "Test Coverage",
+          "description": "Measure and improve test quality",
+          "interviewRelevance": 3
+        },
+        {
+          "name": "Integration Testing",
+          "description": "Testing component interactions",
+          "interviewRelevance": 3
+        }
       ]
     },
     {
@@ -25,20 +72,20 @@
       "title": "Unit Testing Fundamentals",
       "description": "Unit testing is the practice of testing individual components (units) of software in isolation to validate that they work as expected.",
       "characteristics": [
-        "Tests should be **isolated** (independent of each other)",
-        "Tests should be **deterministic** (same result every time)",
-        "Tests should be **automated** (run without manual intervention)",
-        "Tests should be **fast** (quick feedback loop)",
-        "Tests should be **readable** (clear intent)"
+        "Tests should be isolated (independent of each other)",
+        "Tests should be deterministic (same result every time)",
+        "Tests should be automated (run without manual intervention)",
+        "Tests should be fast (quick feedback loop)",
+        "Tests should be readable (clear intent)"
       ],
       "patterns": [
         {
           "name": "AAA Pattern",
           "description": "A good unit test follows the \"AAA\" pattern:",
           "steps": [
-            "**Arrange**: Set up the test conditions and data",
-            "**Act**: Call the method being tested",
-            "**Assert**: Verify the expected outcome"
+            "Arrange: Set up the test conditions and data",
+            "Act: Call the method being tested",
+            "Assert: Verify the expected outcome"
           ],
           "code": "public interface Collection<E> extends Iterable<E> {\n    boolean add(E element);\n    boolean remove(Object element);\n    boolean contains(Object element);\n    int size();\n    boolean isEmpty();\n    Iterator<E> iterator();\n    // Other methods...\n}"
         }
@@ -57,18 +104,62 @@
           "title": "Key Annotations",
           "tables": [
             {
-              "headers": ["Annotation", "Purpose", "Example Usage"],
+              "headers": [
+                "Annotation",
+                "Purpose",
+                "Example Usage"
+              ],
               "rows": [
-                ["@Test", "Marks a method as a test", "@Test void testMethod() { ... }"],
-                ["@BeforeEach", "Executes before each test method", "@BeforeEach void setup() { ... }"],
-                ["@AfterEach", "Executes after each test method", "@AfterEach void tearDown() { ... }"],
-                ["@BeforeAll", "Executes once before all test methods (static)", "@BeforeAll static void init() { ... }"],
-                ["@AfterAll", "Executes once after all test methods (static)", "@AfterAll static void cleanup() { ... }"],
-                ["@Disabled", "Disables a test method or class", "@Disabled(\"WIP\") @Test void test() { ... }"],
-                ["@DisplayName", "Custom test name", "@DisplayName(\"When user exists\") @Test void test() { ... }"],
-                ["@ParameterizedTest", "Test with multiple parameters", "@ParameterizedTest @ValueSource(ints = {1, 2}) void test(int val) { ... }"],
-                ["@Nested", "Nested test class", "@Nested class WhenUserExists { ... }"],
-                ["@Tag", "Tag for filtering tests", "@Tag(\"slow\") @Test void test() { ... }"]
+                [
+                  "@Test",
+                  "Marks a method as a test",
+                  "@Test void testMethod() { ... }"
+                ],
+                [
+                  "@BeforeEach",
+                  "Executes before each test method",
+                  "@BeforeEach void setup() { ... }"
+                ],
+                [
+                  "@AfterEach",
+                  "Executes after each test method",
+                  "@AfterEach void tearDown() { ... }"
+                ],
+                [
+                  "@BeforeAll",
+                  "Executes once before all test methods (static)",
+                  "@BeforeAll static void init() { ... }"
+                ],
+                [
+                  "@AfterAll",
+                  "Executes once after all test methods (static)",
+                  "@AfterAll static void cleanup() { ... }"
+                ],
+                [
+                  "@Disabled",
+                  "Disables a test method or class",
+                  "@Disabled(\"WIP\") @Test void test() { ... }"
+                ],
+                [
+                  "@DisplayName",
+                  "Custom test name",
+                  "@DisplayName(\"When user exists\") @Test void test() { ... }"
+                ],
+                [
+                  "@ParameterizedTest",
+                  "Test with multiple parameters",
+                  "@ParameterizedTest @ValueSource(ints = {1, 2}) void test(int val) { ... }"
+                ],
+                [
+                  "@Nested",
+                  "Nested test class",
+                  "@Nested class WhenUserExists { ... }"
+                ],
+                [
+                  "@Tag",
+                  "Tag for filtering tests",
+                  "@Tag(\"slow\") @Test void test() { ... }"
+                ]
               ]
             }
           ]
@@ -124,18 +215,18 @@
       "title": "Test-Driven Development (TDD)",
       "description": "Test-Driven Development is a development approach where tests are written before the implementation code. It follows a cyclical process known as \"Red-Green-Refactor\":",
       "process": [
-        "**Red**: Write a failing test that defines a feature or improvement",
-        "**Green**: Write the minimum amount of code to make the test pass",
-        "**Refactor**: Optimize the code while keeping the tests passing"
+        "Red: Write a failing test that defines a feature or improvement",
+        "Green: Write the minimum amount of code to make the test pass",
+        "Refactor: Optimize the code while keeping the tests passing"
       ],
       "benefits": [
-        "**Improved design**: TDD encourages modular, loosely coupled code since testable code requires good design",
-        "**Higher test coverage**: Nearly 100% test coverage comes naturally as no code is written without a failing test first",
-        "**Faster debugging**: When a test fails, you know exactly what's broken and where",
-        "**Living documentation**: Tests serve as executable documentation of what the code should do",
-        "**Confidence in refactoring**: Comprehensive tests allow safer refactoring and code improvements",
-        "**Reduced defect rates**: Studies show TDD can reduce defect rates by 40-80%",
-        "**Faster development in the long run**: While initially slower, TDD reduces debugging time and rework"
+        "Improved design: TDD encourages modular, loosely coupled code since testable code requires good design",
+        "Higher test coverage: Nearly 100% test coverage comes naturally as no code is written without a failing test first",
+        "Faster debugging: When a test fails, you know exactly what's broken and where",
+        "Living documentation: Tests serve as executable documentation of what the code should do",
+        "Confidence in refactoring: Comprehensive tests allow safer refactoring and code improvements",
+        "Reduced defect rates: Studies show TDD can reduce defect rates by 40-80%",
+        "Faster development in the long run: While initially slower, TDD reduces debugging time and rework"
       ],
       "example": {
         "language": "java",
@@ -147,10 +238,22 @@
       "title": "Mockito",
       "description": "Mockito is a popular mocking framework for Java, used to create substitute objects that mimic the behavior of real objects in controlled ways.",
       "concepts": [
-        {"name": "Mock", "description": "A substitute for a real object with programmable behavior"},
-        {"name": "Stub", "description": "A pre-programmed mock that returns specific values"},
-        {"name": "Spy", "description": "A partial mock that uses real object behavior unless specified otherwise"},
-        {"name": "Verify", "description": "Check if and how a mock was called"}
+        {
+          "name": "Mock",
+          "description": "A substitute for a real object with programmable behavior"
+        },
+        {
+          "name": "Stub",
+          "description": "A pre-programmed mock that returns specific values"
+        },
+        {
+          "name": "Spy",
+          "description": "A partial mock that uses real object behavior unless specified otherwise"
+        },
+        {
+          "name": "Verify",
+          "description": "Check if and how a mock was called"
+        }
       ],
       "examples": [
         {
@@ -225,13 +328,41 @@
       "title": "Spring Boot Testing",
       "description": "Spring Boot provides comprehensive testing support for different types of tests.",
       "testSlices": [
-        {"annotation": "@WebMvcTest", "purpose": "Test MVC controllers", "loads": "Controllers, WebMvcConfigurer, etc."},
-        {"annotation": "@DataJpaTest", "purpose": "Test JPA repositories", "loads": "JPA entities, repositories, DataSource"},
-        {"annotation": "@RestClientTest", "purpose": "Test REST clients", "loads": "RestTemplateBuilder, etc."},
-        {"annotation": "@JsonTest", "purpose": "Test JSON serialization", "loads": "Jackson, Gson, etc."},
-        {"annotation": "@WebFluxTest", "purpose": "Test WebFlux controllers", "loads": "WebFlux controllers, WebFluxConfigurer, etc."},
-        {"annotation": "@JdbcTest", "purpose": "Test JDBC code", "loads": "DataSource, JdbcTemplate"},
-        {"annotation": "@DataMongoTest", "purpose": "Test MongoDB repositories", "loads": "MongoDB repositories"}
+        {
+          "annotation": "@WebMvcTest",
+          "purpose": "Test MVC controllers",
+          "loads": "Controllers, WebMvcConfigurer, etc."
+        },
+        {
+          "annotation": "@DataJpaTest",
+          "purpose": "Test JPA repositories",
+          "loads": "JPA entities, repositories, DataSource"
+        },
+        {
+          "annotation": "@RestClientTest",
+          "purpose": "Test REST clients",
+          "loads": "RestTemplateBuilder, etc."
+        },
+        {
+          "annotation": "@JsonTest",
+          "purpose": "Test JSON serialization",
+          "loads": "Jackson, Gson, etc."
+        },
+        {
+          "annotation": "@WebFluxTest",
+          "purpose": "Test WebFlux controllers",
+          "loads": "WebFlux controllers, WebFluxConfigurer, etc."
+        },
+        {
+          "annotation": "@JdbcTest",
+          "purpose": "Test JDBC code",
+          "loads": "DataSource, JdbcTemplate"
+        },
+        {
+          "annotation": "@DataMongoTest",
+          "purpose": "Test MongoDB repositories",
+          "loads": "MongoDB repositories"
+        }
       ],
       "examples": [
         {
@@ -271,31 +402,31 @@
         {
           "title": "Writing Maintainable Tests",
           "items": [
-            "**Test one concept per test**: Focus each test on a specific behavior",
-            "**Use descriptive test names**: Clear intention of what's being tested",
-            "**Follow the AAA pattern**: Arrange, Act, Assert",
-            "**Minimize test interdependence**: Tests should work in isolation",
-            "**Keep tests simple**: Avoid complex logic in tests"
+            "Test one concept per test: Focus each test on a specific behavior",
+            "Use descriptive test names: Clear intention of what's being tested",
+            "Follow the AAA pattern: Arrange, Act, Assert",
+            "Minimize test interdependence: Tests should work in isolation",
+            "Keep tests simple: Avoid complex logic in tests"
           ]
         },
         {
           "title": "Test Naming Conventions",
           "description": "Good test names clearly communicate what is being tested, under what conditions, and what the expected outcome is",
           "formats": [
-            "**test[Feature][Condition][ExpectedResult]**: testCalculateAreaWithPositiveValuesShouldReturnCorrectResult",
-            "**[Feature][Condition][ExpectedResult]**: calculateAreaWithPositiveValuesShouldReturnCorrectResult",
-            "**should[ExpectedResult]When[Condition]**: shouldReturnCorrectAreaWhenValuesArePositive",
-            "**given[Condition]When[Action]Then[Result] (BDD style)**: givenPositiveValuesWhenCalculatingAreaThenReturnsCorrectResult"
+            "test[Feature][Condition][ExpectedResult]: testCalculateAreaWithPositiveValuesShouldReturnCorrectResult",
+            "[Feature][Condition][ExpectedResult]: calculateAreaWithPositiveValuesShouldReturnCorrectResult",
+            "should[ExpectedResult]When[Condition]: shouldReturnCorrectAreaWhenValuesArePositive",
+            "given[Condition]When[Action]Then[Result] (BDD style): givenPositiveValuesWhenCalculatingAreaThenReturnsCorrectResult"
           ]
         },
         {
           "title": "Common Pitfalls",
           "items": [
-            "**Testing implementation details**: Focus on behavior, not implementation",
-            "**Brittle tests**: Tests that break with minor changes",
-            "**Overlapping tests**: Multiple tests covering the same functionality",
-            "**Slow tests**: Long-running tests that slow down the feedback loop",
-            "**Test data in production code**: Code written solely to satisfy tests"
+            "Testing implementation details: Focus on behavior, not implementation",
+            "Brittle tests: Tests that break with minor changes",
+            "Overlapping tests: Multiple tests covering the same functionality",
+            "Slow tests: Long-running tests that slow down the feedback loop",
+            "Test data in production code: Code written solely to satisfy tests"
           ]
         },
         {
@@ -312,22 +443,26 @@
       "title": "Test Coverage",
       "description": "Test coverage measures the percentage of your code that is executed by tests.",
       "coverageTypes": [
-        "**Line Coverage**: Percentage of code lines executed",
-        "**Branch Coverage**: Percentage of branches (if/else, switch) executed",
-        "**Path Coverage**: Percentage of possible execution paths",
-        "**Method Coverage**: Percentage of methods called"
+        "Line Coverage: Percentage of code lines executed",
+        "Branch Coverage: Percentage of branches (if/else, switch) executed",
+        "Path Coverage: Percentage of possible execution paths",
+        "Method Coverage: Percentage of methods called"
       ],
-      "tools": ["JaCoCo", "Cobertura", "Clover"],
+      "tools": [
+        "JaCoCo",
+        "Cobertura",
+        "Clover"
+      ],
       "configuration": {
         "language": "xml",
         "snippet": "<!-- JaCoCo Maven Configuration -->\n<plugin>\n    <groupId>org.jacoco</groupId>\n    <artifactId>jacoco-maven-plugin</artifactId>\n    <version>0.8.7</version>\n    <executions>\n        <execution>\n            <goals>\n                <goal>prepare-agent</goal>\n            </goals>\n        </execution>\n        <execution>\n            <id>report</id>\n            <phase>test</phase>\n            <goals>\n                <goal>report</goal>\n            </goals>\n        </execution>\n    </executions>\n</plugin>"
       },
       "bestPractices": [
-        "**Don't chase 100% coverage**: Focus on critical code paths",
-        "**Use coverage as a guide, not a goal**: Quality > quantity",
-        "**Combine coverage with mutation testing**: Test effectiveness",
-        "**Cover edge cases and error scenarios**: Not just happy paths",
-        "**Set reasonable targets**: 70-80% is often a good balance"
+        "Don't chase 100% coverage: Focus on critical code paths",
+        "Use coverage as a guide, not a goal: Quality > quantity",
+        "Combine coverage with mutation testing: Test effectiveness",
+        "Cover edge cases and error scenarios: Not just happy paths",
+        "Set reasonable targets: 70-80% is often a good balance"
       ]
     },
     {
@@ -342,17 +477,17 @@
         {
           "id": "mocking-purpose",
           "question": "What is mocking and why do we use it in unit testing?",
-          "answer": "Mocking is a technique where we replace real dependencies with objects that simulate their behavior in a controlled way. This is essential for true unit testing, where we want to test a component in isolation.\n\nWe use mocking for several reasons:\n\n- **Isolation**: Test the unit without being affected by its dependencies\n- **Speed**: Avoid slow external systems (databases, web services)\n- **Determinism**: Ensure consistent test results regardless of external state\n- **Availability**: Test when real dependencies are unavailable\n- **Error Simulation**: Easily simulate error conditions from dependencies\n- **Verification**: Confirm interactions between the unit and its dependencies\n\nMockito is one of the most popular mocking frameworks in Java. It allows us to create mock objects, stub their behavior, and verify interactions."
+          "answer": "Mocking is a technique where we replace real dependencies with objects that simulate their behavior in a controlled way. This is essential for true unit testing, where we want to test a component in isolation.\n\nWe use mocking for several reasons:\n\n- Isolation: Test the unit without being affected by its dependencies\n- Speed: Avoid slow external systems (databases, web services)\n- Determinism: Ensure consistent test results regardless of external state\n- Availability: Test when real dependencies are unavailable\n- Error Simulation: Easily simulate error conditions from dependencies\n- Verification: Confirm interactions between the unit and its dependencies\n\nMockito is one of the most popular mocking frameworks in Java. It allows us to create mock objects, stub their behavior, and verify interactions."
         },
         {
           "id": "mock-vs-spy",
           "question": "Explain the difference between @Mock and @Spy in Mockito.",
-          "answer": "Both `@Mock` and `@Spy` are Mockito annotations for creating test doubles, but they behave differently:\n\n**@Mock**:\n\n- Creates a complete mock object with no real functionality\n- All methods return default values (null, 0, false) unless stubbed\n- You must explicitly define behavior for methods you want to return specific values\n- Used when you want to completely replace an object with a test double\n\n**@Spy**:\n\n- Creates a partial mock that calls real methods unless specifically stubbed\n- Real implementation is invoked for unstubbed methods\n- Useful when you want to override only some behaviors while keeping the rest\n- Generally used with real objects, not interfaces\n\nThe key difference is that `@Mock` creates a shell with no behavior, while `@Spy` creates a wrapper around a real object that allows you to selectively override methods."
+          "answer": "Both `@Mock` and `@Spy` are Mockito annotations for creating test doubles, but they behave differently:\n\n@Mock:\n\n- Creates a complete mock object with no real functionality\n- All methods return default values (null, 0, false) unless stubbed\n- You must explicitly define behavior for methods you want to return specific values\n- Used when you want to completely replace an object with a test double\n\n@Spy:\n\n- Creates a partial mock that calls real methods unless specifically stubbed\n- Real implementation is invoked for unstubbed methods\n- Useful when you want to override only some behaviors while keeping the rest\n- Generally used with real objects, not interfaces\n\nThe key difference is that `@Mock` creates a shell with no behavior, while `@Spy` creates a wrapper around a real object that allows you to selectively override methods."
         },
         {
           "id": "junit-lifecycle",
           "question": "What is the purpose of @BeforeEach and @AfterEach annotations in JUnit 5?",
-          "answer": "`@BeforeEach` and `@AfterEach` are JUnit 5 annotations that help manage the test lifecycle:\n\n**@BeforeEach**:\n\n- Methods annotated with `@BeforeEach` run before each test method in the class\n- Used for setup operations like initializing objects, preparing test data, etc.\n- Each test gets a fresh setup, promoting test isolation\n- Equivalent to `@Before` in JUnit 4\n\n**@AfterEach**:\n\n- Methods annotated with `@AfterEach` run after each test method in the class\n- Used for cleanup operations like closing resources, resetting state, etc.\n- Ensures proper cleanup regardless of whether the test passed or failed\n- Equivalent to `@After` in JUnit 4\n\nThese annotations ensure each test starts with a clean state and properly cleans up after itself, which is crucial for test isolation and reliability."
+          "answer": "`@BeforeEach` and `@AfterEach` are JUnit 5 annotations that help manage the test lifecycle:\n\n@BeforeEach:\n\n- Methods annotated with `@BeforeEach` run before each test method in the class\n- Used for setup operations like initializing objects, preparing test data, etc.\n- Each test gets a fresh setup, promoting test isolation\n- Equivalent to `@Before` in JUnit 4\n\n@AfterEach:\n\n- Methods annotated with `@AfterEach` run after each test method in the class\n- Used for cleanup operations like closing resources, resetting state, etc.\n- Ensures proper cleanup regardless of whether the test passed or failed\n- Equivalent to `@After` in JUnit 4\n\nThese annotations ensure each test starts with a clean state and properly cleans up after itself, which is crucial for test isolation and reliability."
         },
         {
           "id": "exceptions-testing",
@@ -362,7 +497,7 @@
         {
           "id": "tdd-benefits",
           "question": "What is Test-Driven Development (TDD) and what are its benefits?",
-          "answer": "Test-Driven Development is a software development approach where tests are written before the implementation code. It follows a cyclical process:\n\n1. **Red**: Write a failing test that defines the desired functionality\n2. **Green**: Write the minimum amount of code necessary to make the test pass\n3. **Refactor**: Improve the code while ensuring the tests still pass\n\nBenefits of TDD include:\n\n- **Better design**: Writing tests first forces you to think about the interface and responsibilities before implementation\n- **Higher quality code**: TDD tends to produce more modular, loosely coupled code with clearer responsibilities\n- **Built-in regression testing**: Changes that break existing functionality are immediately detected\n- **Documentation by example**: Tests serve as executable documentation of how the code should behave\n- **Focused development**: Helps prevent scope creep by focusing only on what needs to be implemented\n- **Confidence in refactoring**: With comprehensive test coverage, you can refactor with confidence"
+          "answer": "Test-Driven Development is a software development approach where tests are written before the implementation code. It follows a cyclical process:\n\n1. Red: Write a failing test that defines the desired functionality\n2. Green: Write the minimum amount of code necessary to make the test pass\n3. Refactor: Improve the code while ensuring the tests still pass\n\nBenefits of TDD include:\n\n- Better design: Writing tests first forces you to think about the interface and responsibilities before implementation\n- Higher quality code: TDD tends to produce more modular, loosely coupled code with clearer responsibilities\n- Built-in regression testing: Changes that break existing functionality are immediately detected\n- Documentation by example: Tests serve as executable documentation of how the code should behave\n- Focused development: Helps prevent scope creep by focusing only on what needs to be implemented\n- Confidence in refactoring: With comprehensive test coverage, you can refactor with confidence"
         },
         {
           "id": "async-testing",
@@ -377,12 +512,12 @@
         {
           "id": "database-testing",
           "question": "How do you handle database tests in Spring Boot?",
-          "answer": "Spring Boot offers several approaches for database testing:\n\n**@DataJpaTest**:\n\n- Configures an in-memory database\n- Sets up Spring Data JPA repositories\n- Auto-configures Hibernate, Spring Data, and the DataSource\n- Each test transaction is rolled back by default\n\n**TestEntityManager**:\n\n- Helper for JPA entity operations in tests\n- Useful for setting up test data\n\n**@JdbcTest**:\n\n- For testing JDBC components\n- Auto-configures an in-memory database and JdbcTemplate\n\n**TestContainers**:\n\n- Third-party library that provides real database instances in Docker containers\n- Useful for testing with the same database used in production\n\nDatabase tests generally should use a separate database from development/production, configure through Spring profiles, and include proper cleanup between tests."
+          "answer": "Spring Boot offers several approaches for database testing:\n\n@DataJpaTest:\n\n- Configures an in-memory database\n- Sets up Spring Data JPA repositories\n- Auto-configures Hibernate, Spring Data, and the DataSource\n- Each test transaction is rolled back by default\n\nTestEntityManager:\n\n- Helper for JPA entity operations in tests\n- Useful for setting up test data\n\n@JdbcTest:\n\n- For testing JDBC components\n- Auto-configures an in-memory database and JdbcTemplate\n\nTestContainers:\n\n- Third-party library that provides real database instances in Docker containers\n- Useful for testing with the same database used in production\n\nDatabase tests generally should use a separate database from development/production, configure through Spring profiles, and include proper cleanup between tests."
         },
         {
           "id": "test-data-strategies",
           "question": "What are some strategies for maintaining test data in a database-driven application?",
-          "answer": "Maintaining test data is crucial for reliable database tests. Here are several strategies:\n\n**Test-specific database**:\n\n- Use a separate database for testing\n- Configure through Spring profiles\n- Ensures tests don't interfere with development or production data\n\n**In-memory database**:\n\n- Use H2, HSQLDB, or Derby for tests\n- Fast and isolated\n- Automatically created and destroyed\n\n**Database cleanup**:\n\n- Clear or reset data before/after tests\n- Use `@Transactional` for automatic rollback\n- Implement custom cleanup methods\n\n**TestContainers**:\n\n- Use Docker containers for tests\n- Provides fresh database instances for each test suite\n- Supports various database types (MySQL, PostgreSQL, etc.)\n\n**Database seeding**:\n\n- Pre-populate the database with known test data\n- Use SQL scripts, Flyway, or programmatic seeding\n\n**Fixture classes**:\n\n- Create reusable methods for generating test entities\n- Promotes consistency across tests"
+          "answer": "Maintaining test data is crucial for reliable database tests. Here are several strategies:\n\nTest-specific database:\n\n- Use a separate database for testing\n- Configure through Spring profiles\n- Ensures tests don't interfere with development or production data\n\nIn-memory database:\n\n- Use H2, HSQLDB, or Derby for tests\n- Fast and isolated\n- Automatically created and destroyed\n\nDatabase cleanup:\n\n- Clear or reset data before/after tests\n- Use `@Transactional` for automatic rollback\n- Implement custom cleanup methods\n\nTestContainers:\n\n- Use Docker containers for tests\n- Provides fresh database instances for each test suite\n- Supports various database types (MySQL, PostgreSQL, etc.)\n\nDatabase seeding:\n\n- Pre-populate the database with known test data\n- Use SQL scripts, Flyway, or programmatic seeding\n\nFixture classes:\n\n- Create reusable methods for generating test entities\n- Promotes consistency across tests"
         }
       ]
     },
@@ -429,7 +564,10 @@
         {
           "name": "Performance Testing",
           "description": "Testing application performance ensures it meets responsiveness, throughput, and scalability requirements.",
-          "tools": ["JMeter", "Gatling"],
+          "tools": [
+            "JMeter",
+            "Gatling"
+          ],
           "code": {
             "language": "java",
             "snippet": "// Gatling simulation example\npublic class UserApiSimulation extends Simulation {\n    HttpProtocolBuilder httpProtocol = http\n        .baseUrl(\"http://localhost:8080\")\n        .acceptHeader(\"application/json\");\n        \n    ScenarioBuilder scn = scenario(\"User API Load Test\")\n        .exec(http(\"Get All Users\")\n            .get(\"/api/users\")\n            .check(status().is(200)))\n        .pause(1)\n        .exec(http(\"Get Specific User\")\n            .get(\"/api/users/1\")\n            .check(status().is(200)));\n            \n    {\n        setUp(\n            scn.injectOpen(rampUsers(100).during(30))\n        ).protocols(httpProtocol);\n    }\n}"
@@ -496,11 +634,26 @@
         {
           "name": "Online Resources",
           "items": [
-            {"name": "JUnit 5 User Guide", "url": "https://junit.org/junit5/docs/current/user-guide/"},
-            {"name": "Mockito Documentation", "url": "https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html"},
-            {"name": "Spring Boot Testing Documentation", "url": "https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing"},
-            {"name": "Baeldung Testing Tutorials", "url": "https://www.baeldung.com/category/testing/"},
-            {"name": "Martin Fowler's article on Test Double", "url": "https://martinfowler.com/bliki/TestDouble.html"}
+            {
+              "name": "JUnit 5 User Guide",
+              "url": "https://junit.org/junit5/docs/current/user-guide/"
+            },
+            {
+              "name": "Mockito Documentation",
+              "url": "https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html"
+            },
+            {
+              "name": "Spring Boot Testing Documentation",
+              "url": "https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing"
+            },
+            {
+              "name": "Baeldung Testing Tutorials",
+              "url": "https://www.baeldung.com/category/testing/"
+            },
+            {
+              "name": "Martin Fowler's article on Test Double",
+              "url": "https://martinfowler.com/bliki/TestDouble.html"
+            }
           ]
         }
       ]
@@ -513,5 +666,12 @@
     "continuous-integration",
     "design-patterns"
   ],
-  "additionalTags": ["unit-testing", "mocking", "junit5", "mockito", "test-doubles", "test-driven-development"]
+  "additionalTags": [
+    "unit-testing",
+    "mocking",
+    "junit5",
+    "mockito",
+    "test-doubles",
+    "test-driven-development"
+  ]
 }

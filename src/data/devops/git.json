@@ -57,6 +57,14 @@
           ]
         },
         {
+          "name": "git status",
+          "description": "Show which files are modified, staged or untracked",
+          "usage": [
+            "git status",
+            "git status -s"
+          ]
+        },
+        {
           "name": "git add",
           "description": "Add files to staging area",
           "usage": [
@@ -70,18 +78,70 @@
           "description": "Create a new commit with staged changes",
           "usage": [
             "git commit -m \"message\"",
-            "git commit -am \"message\""
+            "git commit -am \"message\"",
+            "git commit --amend -m \"corrected message\""
+          ],
+          "note": "--amend replaces the previous commit, so avoid it once the commit has been pushed."
+        },
+        {
+          "name": "git log",
+          "description": "Show the commit history of the current branch",
+          "usage": [
+            "git log",
+            "git log --oneline",
+            "git log --graph --oneline --all"
           ]
+        },
+        {
+          "name": "git restore",
+          "description": "Discard working-tree changes or unstage files (Git 2.23+)",
+          "usage": [
+            "git restore <file>",
+            "git restore --staged <file>",
+            "git restore --source=HEAD~1 <file>"
+          ],
+          "note": "The modern replacement for the file-related uses of git checkout -- <file> and git reset HEAD <file>."
         },
         {
           "name": "git push",
           "description": "Upload local commits to remote repository",
-          "usage": "git push origin <branch-name>"
+          "usage": [
+            "git push origin <branch-name>",
+            "git push -u origin <branch-name>",
+            "git push --force-with-lease origin <branch-name>"
+          ],
+          "options": [
+            "-u (set the upstream branch on the first push)",
+            "--force-with-lease (rewrite the remote branch, but refuse if someone else pushed since your last fetch)",
+            "--tags (push all local tags)"
+          ],
+          "note": "After a rebase the branch must be force-pushed; prefer --force-with-lease over a bare --force."
+        },
+        {
+          "name": "git fetch",
+          "description": "Download remote commits without merging them into your branch",
+          "usage": [
+            "git fetch origin",
+            "git fetch --all --prune"
+          ],
+          "note": "git pull is git fetch followed by git merge (or git rebase with --rebase)."
         },
         {
           "name": "git pull",
           "description": "Download and integrate remote changes",
-          "usage": "git pull origin <branch-name>"
+          "usage": [
+            "git pull origin <branch-name>",
+            "git pull --rebase origin <branch-name>"
+          ]
+        },
+        {
+          "name": "git remote",
+          "description": "Manage the remote repositories a clone tracks",
+          "usage": [
+            "git remote -v",
+            "git remote add origin <repository-url>",
+            "git remote remove origin"
+          ]
         }
       ]
     },
@@ -94,22 +154,43 @@
           "description": "List, create, or delete branches",
           "usage": [
             "git branch",
+            "git branch -a",
             "git branch <branch-name>",
-            "git branch -d <branch-name>"
-          ]
+            "git branch -d <branch-name>",
+            "git branch -D <branch-name>"
+          ],
+          "note": "-d refuses to delete a branch with unmerged commits; -D forces the delete."
+        },
+        {
+          "name": "git switch",
+          "description": "Change the branch you are working on (Git 2.23+)",
+          "usage": [
+            "git switch <branch-name>",
+            "git switch -c <new-branch>",
+            "git switch -"
+          ],
+          "note": "The modern single-purpose alternative to git checkout for branches; git restore covers files."
         },
         {
           "name": "git checkout",
           "description": "Switch branches or restore files",
           "usage": [
             "git checkout <branch-name>",
-            "git checkout -b <new-branch>"
-          ]
+            "git checkout -b <new-branch>",
+            "git checkout -- <file>"
+          ],
+          "note": "Still valid, but git switch (branches) and git restore (files) are the modern equivalents."
         },
         {
           "name": "git merge",
           "description": "Combine branches",
-          "usage": "git merge <branch-name>"
+          "usage": "git merge <branch-name>",
+          "options": [
+            "--no-ff (always create a merge commit)",
+            "--squash (bring the changes in as one uncommitted change set)",
+            "--continue (finish the merge after resolving conflicts)",
+            "--abort (stop and restore the state before the merge)"
+          ]
         },
         {
           "name": "git rebase",
@@ -154,6 +235,7 @@
           "description": "Single main branch with short-lived feature branches",
           "principles": [
             "Small, frequent commits",
+            "Short-lived feature branches, typically merged within a day",
             "Feature flags for incomplete features",
             "Continuous integration"
           ]
@@ -205,10 +287,108 @@
               "description": "Apply and remove stashed changes"
             },
             {
+              "command": "git stash apply",
+              "description": "Apply stashed changes but keep the entry in the stash"
+            },
+            {
               "command": "git stash list",
               "description": "List stashed changes"
+            },
+            {
+              "command": "git stash clear",
+              "description": "Delete every stashed entry"
             }
           ]
+        },
+        {
+          "name": "git reset",
+          "description": "Move the current branch tip to another commit, rewriting local history",
+          "usage": [
+            "git reset --soft HEAD~1",
+            "git reset HEAD~1",
+            "git reset --hard HEAD~1",
+            "git reset HEAD <file>"
+          ],
+          "modes": [
+            "--soft: moves the branch tip only; the changes stay staged",
+            "--mixed (default): moves the tip and unstages the changes; files keep their edits",
+            "--hard: moves the tip and discards changes in the staging area and working tree"
+          ],
+          "warning": "Never reset a branch other people have pulled - it rewrites shared history. Use git revert instead."
+        },
+        {
+          "name": "git revert",
+          "description": "Create a new commit that undoes an earlier commit, leaving history intact",
+          "usage": [
+            "git revert <commit-hash>",
+            "git revert --no-commit <commit-hash>",
+            "git revert -m 1 <merge-commit-hash>"
+          ],
+          "note": "Safe on shared branches because it adds a commit instead of rewriting existing ones.",
+          "comparison": {
+            "headers": [
+              "Aspect",
+              "git reset",
+              "git revert"
+            ],
+            "rows": [
+              [
+                "History",
+                "Rewrites it - the commits leave the branch",
+                "Preserves it - adds an inverse commit"
+              ],
+              [
+                "Shared branches",
+                "Unsafe - forces everyone else to recover",
+                "Safe - the recommended undo"
+              ],
+              [
+                "Typical use",
+                "Local commits that were never pushed",
+                "Commits already pushed or released"
+              ],
+              [
+                "Working tree",
+                "Can discard changes with --hard",
+                "Only the reverted changes are touched"
+              ]
+            ]
+          }
+        },
+        {
+          "name": "git reflog",
+          "description": "Log of every position HEAD has held, including commits no branch points at any more",
+          "usage": [
+            "git reflog",
+            "git reset --hard HEAD@{2}",
+            "git checkout <lost-commit-hash>"
+          ],
+          "note": "The standard way to recover work lost to a bad reset, rebase or branch delete.",
+          "warning": "Reflog entries are local only and expire after about 90 days by default."
+        },
+        {
+          "name": "git bisect",
+          "description": "Binary search through history to find the commit that introduced a bug",
+          "usage": [
+            "git bisect start",
+            "git bisect bad",
+            "git bisect good <known-good-commit>",
+            "git bisect run ./test.sh",
+            "git bisect reset"
+          ],
+          "note": "Git checks out a midpoint commit each round; mark it good or bad until the first bad commit is found."
+        },
+        {
+          "name": "git tag",
+          "description": "Mark a specific commit, normally a release",
+          "usage": [
+            "git tag",
+            "git tag v1.0.0",
+            "git tag -a v1.0.0 -m \"Release version 1.0.0\"",
+            "git push origin --tags",
+            "git tag -d v1.0.0"
+          ],
+          "note": "Annotated tags (-a) store an author, date and message; tags are not pushed by default."
         }
       ]
     },
@@ -274,21 +454,34 @@
             "git status to identify conflicting files",
             "Resolve conflicts in editor",
             "git add resolved files",
-            "Complete merge with git commit"
+            "Complete merge with git commit (or git merge --continue)",
+            "git merge --abort to back out and restore the pre-merge state"
           ]
         },
         {
           "problem": "Undo Last Commit",
           "solution": [
             "git reset --soft HEAD~1 (preserve changes)",
-            "git reset --hard HEAD~1 (discard changes)"
+            "git reset --hard HEAD~1 (discard changes)",
+            "git revert <commit-hash> if the commit is already pushed - never reset a shared branch"
           ]
         },
         {
           "problem": "Wrong Branch Commit",
           "solution": [
-            "git cherry-pick to correct branch",
-            "Remove from wrong branch"
+            "git log to copy the hash of the misplaced commit",
+            "git switch <correct-branch> (or git checkout)",
+            "git cherry-pick <commit-hash>",
+            "Back on the wrong branch, git reset --hard HEAD~1 - only if the commit was never pushed",
+            "If it was already pushed, git revert <commit-hash> on the wrong branch instead"
+          ]
+        },
+        {
+          "problem": "Recover a Lost Commit",
+          "solution": [
+            "git reflog to find the hash HEAD pointed at before the mistake",
+            "git reset --hard HEAD@{n} to move the branch back",
+            "Or git checkout <hash> then git switch -c recovery to rescue it onto a new branch"
           ]
         }
       ]
