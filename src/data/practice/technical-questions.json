@@ -175,7 +175,7 @@
               "question": "What is the difference between HashMap and ConcurrentHashMap?",
               "answer": [
                 "HashMap: Not thread-safe, faster in single-threaded environments",
-                "ConcurrentHashMap: Thread-safe, uses segment locking for better concurrency, suitable for multi-threaded environments",
+                "ConcurrentHashMap: Thread-safe, locks only the bin being written (per-bin locking since Java 8; segment locking was the Java 7 design), suitable for multi-threaded environments",
                 "ConcurrentHashMap doesn't allow null keys or values"
               ]
             },
