@@ -3,7 +3,7 @@ import { BookOpen, FileText, Code2 } from 'lucide-react';
 import CodeBlock from './CodeBlock';
 import renderContent from './ContentRenderer';
 import { getSectionIcon } from './icons';
-import { deriveType, prettifyKey, humanizeTitle } from './primitives';
+import { deriveType, prettifyKey, humanizeTitle, StarRating } from './primitives';
 import { ActivePanel, PageHeader, PageTabs, useTabs } from './shell';
 
 // Accepts either root convention: { topics: [...] } or { sections: [...] }.
@@ -111,9 +111,14 @@ const TopicBody = ({ topic, opts }) => {
     }
 
     // Old-style topic: intro prose + one panel per payload key
-    const sections = Object.entries(topic).filter(
+    const payload = Object.entries(topic).filter(
         ([key, value]) => !META_KEYS.has(key) && !isBlank(value)
     );
+    // Scalars (a relevance score, a one-word label) don't deserve a whole
+    // panel each — collect them into one compact row instead.
+    const meta = payload.filter(([, value]) => typeof value === 'number');
+    const sections = payload.filter(([, value]) => typeof value !== 'number');
+
     const intro = [
         ['Description', topic.description],
         ['Overview', topic.content],
@@ -124,6 +129,18 @@ const TopicBody = ({ topic, opts }) => {
     return (
         <>
             <IntroBox items={intro} />
+            {meta.length > 0 && (
+                <div className="flex flex-wrap items-center gap-4 mb-3">
+                    {meta.map(([key, value]) => (
+                        <div key={key} className="flex items-center gap-2">
+                            <span className="text-xs text-gray-400">{prettifyKey(key)}</span>
+                            {/relevance/i.test(key) && value <= 5
+                                ? <StarRating value={value} />
+                                : <span className="text-sm text-gray-300">{value}</span>}
+                        </div>
+                    ))}
+                </div>
+            )}
             <div className="space-y-3">
                 {sections.map(([key, value], idx) => {
                     // A topic with a single payload is already labelled by its
