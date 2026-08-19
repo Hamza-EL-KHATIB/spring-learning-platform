@@ -1,9 +1,9 @@
 // src/components/layout/Header.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Github, Menu, X, GraduationCap } from "lucide-react";
+import { Github, Menu, X, GraduationCap, Search } from "lucide-react";
 
-const Header = () => {
+const Header = ({ onOpenSearch }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
@@ -35,6 +35,16 @@ const Header = () => {
 
                         {/* Utility Links */}
                         <div className="flex items-center space-x-4 pl-2 border-l border-gray-700">
+                            <button
+                                onClick={onOpenSearch}
+                                className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-800/70 border border-gray-700 text-gray-400 hover:text-white hover:border-purple-500/40 transition-colors"
+                                title="Search topics (Ctrl+K)"
+                            >
+                                <Search className="w-4 h-4" />
+                                <span className="text-sm">Search</span>
+                                <kbd className="px-1.5 py-0.5 text-[10px] border border-gray-600 rounded">Ctrl K</kbd>
+                            </button>
+
                             <Link
                                 to="/learn/german"
                                 className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
@@ -62,7 +72,14 @@ const Header = () => {
                     </div>
 
                     {/* Mobile menu button */}
-                    <div className="md:hidden">
+                    <div className="md:hidden flex items-center gap-2">
+                        <button
+                            onClick={onOpenSearch}
+                            className="text-gray-400 hover:text-white focus:outline-none"
+                            title="Search topics"
+                        >
+                            <Search className="w-6 h-6" />
+                        </button>
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             className="text-gray-400 hover:text-white focus:outline-none"

@@ -1,99 +1,19 @@
-import React, {useState} from 'react';
-import {Link, useLocation} from 'react-router-dom';
-import {
-    ChevronRight,
-    Database,
-    Server,
-    Box,
-    GitBranch,
-    Users,
-    Code,
-    Activity,
-    Cpu,
-    Layers,
-    X, BookOpen
-} from 'lucide-react';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { ChevronRight, ChevronDown, X } from 'lucide-react';
+import { navigationGroups } from '../../navigation';
 
+// Every section stays reachable in one click — during an interview you don't
+// want to hop through a landing page to change subject.
 const Sidebar = () => {
-    const location = useLocation();
-    const currentPath = location.pathname;
-    const section = currentPath.split('/')[1];
+    const { pathname } = useLocation();
+    const section = pathname.split('/')[1];
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    // Groups default to expanded for the current section; clicking one overrides that.
+    const [overrides, setOverrides] = useState({});
 
-    const navigationGroups = {
-        java: {
-            title: "Java Core",
-            icon: <Code className="w-5 h-5"/>,
-            items: [
-                { path: '/java/fundamentals', title: 'Java Fundamentals', icon: <BookOpen className="w-4 h-4"/>},
-                {path: '/java/collections', title: 'Collections Framework', icon: <Layers className="w-4 h-4"/>},
-                {
-                    path: '/java/concurrency',
-                    title: 'Concurrency & Multithreading',
-                    icon: <Activity className="w-4 h-4"/>
-                },
-                {path: '/java/exceptions', title: 'Exception Handling', icon: <Box className="w-4 h-4"/>},
-                {path: '/java/features', title: 'Java Features', icon: <Cpu className="w-4 h-4"/>},
-                { title: "Unit Testing", path: "/java/testing", icon: <Box className="w-4 h-4"/> },
-                { title: "Functional Programming", path: "/java/functional-programming", icon: <Box className="w-4 h-4"/> },
-            ]
-        },
-        spring: {
-            title: "Spring Framework",
-            icon: <Server className="w-5 h-5"/>,
-            items: [
-                {path: '/spring/core', title: 'Spring Core'},
-                {path: '/spring/boot', title: 'Spring Boot'},
-                {path: '/spring/data', title: 'Spring Data'},
-                {path: '/spring/security', title: 'Spring Security'},
-                {path: '/spring/rest', title: 'REST APIs'},
-                {path: '/spring/graphql', title: 'GraphQL'},
-                {path: '/spring/definitions', title: 'Spring Definitions'}
-            ]
-        },
-        databases: {
-            title: "Database Technologies",
-            icon: <Database className="w-5 h-5"/>,
-            items: [
-                {path: '/databases/sql', title: 'SQL Fundamentals'},
-                {path: '/databases/hibernate', title: 'Hibernate ORM'},
-                {path: '/databases/transactions', title: 'Transactions'},
-                {path: '/databases/redis', title: 'Redis'}
-            ]
-        },
-        architecture: {
-            title: "Architecture",
-            icon: <Box className="w-5 h-5"/>,
-            items: [
-                {path: '/architecture/design-patterns', title: 'Design Patterns'},
-                {path: '/architecture/solid', title: 'SOLID Principles'},
-                { path: '/architecture/principles', title: 'YAGNI, KISS, DRY' }
-            ]
-        },
-        devops: {
-            title: "DevOps",
-            icon: <GitBranch className="w-5 h-5"/>,
-            items: [
-                {path: '/devops/git', title: 'Git'}
-            ]
-        },
-        agile: {
-            title: "Agile",
-            icon: <Users className="w-5 h-5"/>,
-            items: [
-                {path: '/agile/scrum', title: 'Scrum'}
-            ]
-        },
-        "best-practices": {
-            title: "Best Practices",
-            icon: <Code className="w-5 h-5"/>,
-            items: [
-                {path: '/best-practices/code-reviews', title: 'Code Reviews'}
-            ]
-        }
-    };
-
-    const currentGroup = navigationGroups[section];
+    const isExpanded = (key) => overrides[key] ?? key === section;
+    const toggle = (key) => setOverrides((state) => ({ ...state, [key]: !isExpanded(key) }));
 
     return (
         <>
@@ -107,94 +27,77 @@ const Sidebar = () => {
                 rounded-lg border border-purple-500/20
                 hover:border-purple-500/40
                 transition-all duration-300 shadow-lg backdrop-blur-sm"
+                title="Browse sections"
             >
-                {isSidebarOpen ? <X className="w-5 h-5"/> : <ChevronRight className="w-5 h-5"/>}
+                {isSidebarOpen ? <X className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
             </button>
 
-            {/* Main Sidebar */}
-            <div className={`lg:block ${isSidebarOpen ? 'block' : 'hidden'} 
-            lg:static fixed inset-y-0 left-0 
-            z-40 w-80 p-4 
-            transition-transform duration-300 
-            bg-gray-900/95 lg:bg-transparent 
-            lg:translate-x-0 lg:shadow-none shadow-md
-            lg:sticky lg:top-20`}
+            <div
+                className={`lg:block ${isSidebarOpen ? 'block' : 'hidden'}
+                lg:static fixed inset-y-0 left-0
+                z-40 w-80 p-4
+                transition-transform duration-300
+                bg-gray-900/95 lg:bg-transparent
+                lg:translate-x-0 lg:shadow-none shadow-md
+                lg:sticky lg:top-20 overflow-y-auto lg:max-h-[calc(100vh-6rem)]`}
             >
                 <div className="h-full flex flex-col bg-gray-800 rounded-lg">
-                    {/* Mobile Close Button */}
                     <button
-                        className="lg:hidden text-white p-4"
+                        className="lg:hidden text-white p-4 self-end"
                         onClick={() => setIsSidebarOpen(false)}
                     >
-                        <X className="w-6 h-6"/>
+                        <X className="w-6 h-6" />
                     </button>
 
-                    {currentGroup && (
-                        <div className="p-4">
-                            {/* Section Title */}
-                            <div className="flex items-center space-x-3 mb-6">
-                                {currentGroup.icon}
-                                <h2 className="text-lg font-semibold text-white">
-                                    {currentGroup.title}
-                                </h2>
-                            </div>
+                    <nav className="p-3 space-y-1">
+                        {navigationGroups.map((group) => {
+                            const expanded = isExpanded(group.key);
+                            const isCurrent = group.key === section;
 
-                            {/* Topics Navigation */}
-                            <div className="mb-8">
-                                <h3 className="text-sm font-medium text-gray-400 mb-3">
-                                    Topics
-                                </h3>
-                                <nav className="space-y-1">
-                                    {currentGroup.items.map((item) => (
-                                        <Link
-                                            key={item.path}
-                                            to={item.path}
-                                            className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
-                                                currentPath === item.path
-                                                    ? 'bg-purple-500/10 text-purple-400'
-                                                    : 'text-gray-300 hover:bg-gray-700/50 hover:text-white'
-                                            }`}
-                                        >
-                                            {item.icon ? (
-                                                <span className="mr-3">{item.icon}</span>
-                                            ) : (
-                                                <ChevronRight className={`w-4 h-4 mr-2 ${
-                                                    currentPath === item.path ? 'text-purple-400' : 'text-gray-500'
-                                                }`}/>
-                                            )}
-                                            {item.title}
-                                        </Link>
-                                    ))}
-                                </nav>
-                            </div>
+                            return (
+                                <div key={group.key}>
+                                    <button
+                                        onClick={() => toggle(group.key)}
+                                        className={`flex items-center gap-2 w-full px-3 py-2 rounded-lg transition-colors ${
+                                            isCurrent
+                                                ? 'text-white bg-gray-700/40'
+                                                : 'text-gray-300 hover:bg-gray-700/40 hover:text-white'
+                                        }`}
+                                    >
+                                        <span className={isCurrent ? 'text-purple-400' : 'text-gray-400'}>
+                                            {group.icon}
+                                        </span>
+                                        <span className="flex-1 text-left text-sm font-medium">{group.title}</span>
+                                        {expanded
+                                            ? <ChevronDown className="w-4 h-4 text-gray-500" />
+                                            : <ChevronRight className="w-4 h-4 text-gray-500" />}
+                                    </button>
 
-                            {/* Related Sections */}
-                            <div>
-                                <h3 className="text-sm font-medium text-gray-400 mb-3">
-                                    Related Sections
-                                </h3>
-                                <nav className="space-y-1">
-                                    {Object.entries(navigationGroups)
-                                        .filter(([key]) => key !== section)
-                                        .slice(0, 3)
-                                        .map(([key, group]) => (
-                                            <Link
-                                                key={key}
-                                                to={group.items[0].path}
-                                                className="flex items-center px-3 py-2 text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg transition-colors"
-                                            >
-                                                {group.icon}
-                                                <span className="ml-3">{group.title}</span>
-                                            </Link>
-                                        ))}
-                                </nav>
-                            </div>
-                        </div>
-                    )}
+                                    {expanded && (
+                                        <div className="mt-1 mb-2 ml-4 pl-3 border-l border-gray-700/70 space-y-0.5">
+                                            {group.items.map((item) => (
+                                                <Link
+                                                    key={item.path}
+                                                    to={item.path}
+                                                    onClick={() => setIsSidebarOpen(false)}
+                                                    className={`block px-3 py-1.5 rounded-md text-sm transition-colors ${
+                                                        pathname === item.path
+                                                            ? 'bg-purple-500/10 text-purple-300'
+                                                            : 'text-gray-400 hover:bg-gray-700/50 hover:text-white'
+                                                    }`}
+                                                >
+                                                    {item.title}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </nav>
                 </div>
             </div>
 
-            {/* Mobile Overlay */}
             {isSidebarOpen && (
                 <div
                     className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm lg:hidden"

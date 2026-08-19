@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { BookOpen, FileText, Code2 } from 'lucide-react';
 import FloatingMenu from '../layout/FloatingMenu';
 import CodeBlock from './CodeBlock';
@@ -169,6 +170,8 @@ const TopicPageTemplate = ({
 }) => {
     const topics = normalizeTopics(data);
     const storageKey = persistKey ? `topic-tab:${persistKey}` : null;
+    const [searchParams] = useSearchParams();
+    const requestedTopic = searchParams.get('topic');
 
     const [activeId, setActiveId] = useState(() => {
         if (storageKey) {
@@ -177,6 +180,15 @@ const TopicPageTemplate = ({
         }
         return topics[0] ? topicId(topics[0]) : null;
     });
+
+    // Quick-search links carry ?topic=… so a result opens on the right tab
+    useEffect(() => {
+        if (!requestedTopic) return;
+        const match = topics.find(
+            (t) => topicId(t) === requestedTopic || t.title === requestedTopic
+        );
+        if (match) setActiveId(topicId(match));
+    }, [requestedTopic]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const selectTopic = (id) => {
         setActiveId(id);
