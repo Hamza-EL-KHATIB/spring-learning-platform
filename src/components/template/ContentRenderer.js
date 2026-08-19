@@ -67,7 +67,7 @@ const findPair = (obj) => {
 
 // Renders any JSON value with sensible defaults. `opts.images` maps a
 // diagram/file name from the JSON to an imported image module.
-export const renderContent = (content, contentType = 'default', opts = {}, key = null) => {
+export const renderContent = (content, contentType = 'default', opts = {}, key = null, depth = 0) => {
     if (content === null || content === undefined) return null;
 
     // ---- primitives ----
@@ -111,7 +111,7 @@ export const renderContent = (content, contentType = 'default', opts = {}, key =
         return (
             <div className="space-y-3">
                 {content.map((item, idx) => (
-                    <div key={idx}>{renderContent(item, contentType, opts, key)}</div>
+                    <div key={idx}>{renderContent(item, contentType, opts, key, depth)}</div>
                 ))}
             </div>
         );
@@ -122,7 +122,7 @@ export const renderContent = (content, contentType = 'default', opts = {}, key =
         // New-style: code_examples group
         if (content.title === 'code_examples' && content['multi-content']) {
             return (
-                <ContentCard title="Code Examples" contentType="code" className="mb-3">
+                <ContentCard title="Code Examples" contentType="code" className="mb-3" depth={depth}>
                     <div className="space-y-3">
                         {content['multi-content'].map((example, idx) => (
                             <CodeBlock key={idx} code={example['simple-content']} title={example.title} language={opts.language} />
@@ -139,8 +139,8 @@ export const renderContent = (content, contentType = 'default', opts = {}, key =
                 return <CodeBlock code={content['simple-content']} title={content.title} language={opts.language} />;
             }
             return (
-                <ContentCard title={content.title} contentType={deriveType(content.title, contentType)} className="mb-3">
-                    {renderContent(content['simple-content'], deriveType(content.title, contentType), opts)}
+                <ContentCard title={content.title} contentType={deriveType(content.title, contentType)} className="mb-3" depth={depth}>
+                    {renderContent(content['simple-content'], deriveType(content.title, contentType), opts, null, depth + 1)}
                 </ContentCard>
             );
         }
@@ -149,8 +149,8 @@ export const renderContent = (content, contentType = 'default', opts = {}, key =
         if (content.title && content['multi-content']) {
             const derived = deriveType(content.title, contentType);
             return (
-                <ContentCard title={content.title} contentType={derived} className="mb-3">
-                    {renderContent(content['multi-content'], derived, opts)}
+                <ContentCard title={content.title} contentType={derived} className="mb-3" depth={depth}>
+                    {renderContent(content['multi-content'], derived, opts, null, depth + 1)}
                 </ContentCard>
             );
         }
@@ -181,7 +181,7 @@ export const renderContent = (content, contentType = 'default', opts = {}, key =
             return (
                 <div className="space-y-3">
                     {rest.map(([k, v], idx) => (
-                        <div key={idx}>{renderEntry(k, v, contentType, opts)}</div>
+                        <div key={idx}>{renderEntry(k, v, contentType, opts, depth)}</div>
                     ))}
                     <CodePair bad={pair.bad} good={pair.good} language={opts.language} />
                 </div>
@@ -196,20 +196,23 @@ export const renderContent = (content, contentType = 'default', opts = {}, key =
         const entries = Object.entries(content).filter(
             ([k, v]) => !SKIP_KEYS.has(k) && k !== 'description' && !BODY_KEYS.has(k) && !isEmpty(v)
         );
+        // When this object gets its own card, its entries sit inside it and so
+        // are one level deeper; without a heading they stay at this level.
+        const childDepth = heading ? depth + 1 : depth;
         const body = (
             <div className="space-y-3">
                 {bodyText.map((text, idx) => <Paragraph key={idx} text={text} />)}
                 {entries.map(([k, v], idx) => (
-                    <div key={idx}>{renderEntry(k, v, contentType, opts)}</div>
+                    <div key={idx}>{renderEntry(k, v, contentType, opts, childDepth)}</div>
                 ))}
             </div>
         );
 
         if (heading) {
             return (
-                <ContentCard title={heading} contentType={deriveType(heading, contentType)} className="mb-1">
+                <ContentCard title={heading} contentType={deriveType(heading, contentType)} className="mb-1" depth={depth}>
                     {content.answer !== undefined
-                        ? renderContent(content.answer, contentType, opts)
+                        ? renderContent(content.answer, contentType, opts, null, depth + 1)
                         : body}
                 </ContentCard>
             );
@@ -221,7 +224,7 @@ export const renderContent = (content, contentType = 'default', opts = {}, key =
 };
 
 // Renders one key/value entry of an old-style payload object
-const renderEntry = (key, value, contentType, opts) => {
+const renderEntry = (key, value, contentType, opts, depth = 0) => {
     // Interview-relevance star widget
     if (key === 'interviewRelevance' && typeof value === 'number') {
         return <StarRating value={value} />;
@@ -230,7 +233,19 @@ const renderEntry = (key, value, contentType, opts) => {
     // Code-ish values render bare (no wrapping card needed)
     if (typeof value === 'string' && (CODE_KEYS.test(key) || key === 'diagram' || key === 'pseudocode' ||
         (EXAMPLE_KEYS.test(key) && looksLikeCode(value)))) {
-        return renderContent(value, contentType, opts, key);
+        return renderContent(value, contentType, opts, key, depth);
+    }
+
+    // Source under an unrecognised key ("problematic", "incorrect", …) still
+    // needs a code block. Require a newline plus code punctuation so ordinary
+    // prose isn't mistaken for code.
+    if (typeof value === 'string' && value.includes('\n') && /[;{}]|=>|->|::/.test(value)) {
+        return (
+            <div>
+                <p className="text-sm font-medium text-purple-300 mb-1">{prettifyKey(key)}</p>
+                <CodeBlock code={value} language={opts.language} />
+            </div>
+        );
     }
 
     const nestedType = deriveType(key, contentType);
@@ -247,8 +262,8 @@ const renderEntry = (key, value, contentType, opts) => {
 
     // Everything else → labeled card
     return (
-        <ContentCard title={prettifyKey(key)} contentType={nestedType}>
-            {renderContent(value, nestedType, opts, key)}
+        <ContentCard title={prettifyKey(key)} contentType={nestedType} depth={depth}>
+            {renderContent(value, nestedType, opts, key, depth + 1)}
         </ContentCard>
     );
 };

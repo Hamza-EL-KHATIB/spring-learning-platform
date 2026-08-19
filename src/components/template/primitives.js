@@ -49,20 +49,52 @@ const CARD_COLORS = {
     disadvantages: 'bg-gradient-to-br from-red-900/20 to-red-800/10 border-red-500/30',
 };
 
-export const ContentCard = ({ title, children, className = '', contentType = 'default' }) => {
-    const colorClasses = CARD_COLORS[contentType] || 'bg-gray-800/70 border-gray-700/50';
-
+/**
+ * Content is often nested several levels deep. Drawing a full card at every
+ * level stacks borders and padding until the text is a narrow column, so card
+ * chrome fades with depth: boxed at the top, a hairline rule below that, then
+ * just a heading. Content is never indented under its heading — that indent
+ * compounds with depth and is what eats the width.
+ */
+export const ContentCard = ({ title, children, className = '', contentType = 'default', depth = 0 }) => {
     if (!title && !children) return null;
 
+    // Only the outermost level gets an icon: deeper down it offsets the heading
+    // from the body text below it, which reads as broken alignment.
+    const heading = title && (
+        <div className="flex items-center gap-2 mb-1.5">
+            {depth === 0 && (
+                <div className="p-1.5 bg-gray-800/70 rounded-md">{getSectionIcon(title)}</div>
+            )}
+            <h4 className={`font-semibold ${depth === 0 ? 'text-base text-white' : 'text-sm text-gray-200'}`}>
+                {humanizeTitle(title)}
+            </h4>
+        </div>
+    );
+
+    if (depth >= 2) {
+        return (
+            <div className={`text-sm ${className}`}>
+                {heading}
+                <div>{children}</div>
+            </div>
+        );
+    }
+
+    if (depth === 1) {
+        return (
+            <div className={`border-l-2 border-gray-700/60 pl-3 text-sm ${className}`}>
+                {heading}
+                <div>{children}</div>
+            </div>
+        );
+    }
+
+    const colorClasses = CARD_COLORS[contentType] || 'bg-gray-800/70 border-gray-700/50';
     return (
         <div className={`rounded-md p-3 border backdrop-blur-sm transition-all ${colorClasses} ${className} hover:shadow-md text-sm`}>
-            {title && (
-                <div className="flex items-center gap-2 mb-2">
-                    <div className="p-1.5 bg-gray-800/70 rounded-md">{getSectionIcon(title)}</div>
-                    <h4 className="text-base font-semibold text-white">{humanizeTitle(title)}</h4>
-                </div>
-            )}
-            <div className={title ? 'ml-8' : ''}>{children}</div>
+            {heading}
+            <div>{children}</div>
         </div>
     );
 };
