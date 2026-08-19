@@ -1,0 +1,29 @@
+# Local development: hot reload on http://localhost:3000
+#   docker compose up dev
+#
+# Production preview (same image your server runs): http://localhost:8080
+#   docker compose up --build web
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      # Keep the image's node_modules; the host's are the wrong platform
+      - /app/node_modules
+    environment:
+      - BROWSER=none
+    stdin_open: true
+    tty: true
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    restart: unless-stopped

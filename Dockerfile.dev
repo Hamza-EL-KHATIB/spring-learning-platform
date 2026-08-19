@@ -1,0 +1,18 @@
+# Local development image: CRA dev server with hot reload.
+# Source is bind-mounted by compose, so this image only carries dependencies.
+FROM node:20-alpine
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+COPY . .
+
+EXPOSE 3000
+
+# CHOKIDAR_USEPOLLING makes file watching work across the bind mount on
+# Windows and macOS, where inotify events don't cross the VM boundary.
+ENV CHOKIDAR_USEPOLLING=true
+ENV WATCHPACK_POLLING=true
+
+CMD ["npm", "start"]

@@ -1,0 +1,12 @@
+node_modules
+build
+.git
+.github
+.idea
+.claude
+coverage
+npm-debug.log*
+Dockerfile*
+docker-compose.yml
+.dockerignore
+src/generated

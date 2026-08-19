@@ -23,7 +23,9 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
-package-lock.json
+
+# package-lock.json is committed on purpose: Docker builds run `npm ci`,
+# which needs it, and it keeps prod builds reproducible.
 
 # generated at build time by scripts/build-search-index.js
 /src/generated
