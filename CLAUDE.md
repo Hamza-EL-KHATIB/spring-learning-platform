@@ -66,11 +66,16 @@ Either root convention works — `{ title, topics: [...] }` or `{ title, section
 }
 ```
 
-### Adding a new topic page requires touching four places
+### Navigation
+
+`src/navigation.js` is the single source of truth — the sidebar, the home page grid, and the search index all read from it, so adding a page there gets it into all three.
+
+`src/searchIndex.js` imports every data file and flattens it into one entry per page plus one per topic tab, powering the Ctrl+K / `/` palette (`src/components/layout/QuickSearch.js`, mounted in `Layout`). Topic results link to `?topic=<tab>`, which `TopicPageTemplate` reads to open on that tab. Where a page's tabs don't match what users search for — design patterns are searched by pattern name but tabbed by category — `entriesFor` maps the searchable label to the tab that contains it; keep that mapping right when adding such a page.
+
+### Adding a new topic page requires touching three places
 
 1. Add the JSON in `src/data/<category>/`
-2. Create the page component in `src/pages/topics/<category>/` (a `TopicPageTemplate` one-liner)
-3. Add the route in `src/App.js` (dedicated routes must come before the `/:section/:topic` fallback)
-4. Add entries in `src/components/layout/Sidebar.js` (`navigationGroups`) **and** `src/pages/HomePage.js` (`categories`) — both are hand-maintained link lists, and a page missing from either is effectively unreachable
+2. Create the page component in `src/pages/topics/<category>/` (a `TopicPageTemplate` one-liner) and route it in `src/App.js` (dedicated routes must come before the `/:section/:topic` fallback)
+3. Add it to `navigationGroups` in `src/navigation.js`, and to the import map in `src/searchIndex.js` so its topics are searchable
 
 German-language pages (`src/pages/topics/german/`) are a separate feature set with their own routes (`/learn/*`, `/german/*`) and do not follow the topic-page pattern.
