@@ -29,6 +29,8 @@ import RedisPage from './pages/topics/databases/RedisPage';
 import DesignPatternsPage from './pages/topics/architecture/DesignPatternsPage';
 import SolidPage from './pages/topics/architecture/SolidPage';
 import PrinciplesPage from './pages/topics/architecture/PrinciplesPage';
+import MicroservicesPage from './pages/topics/architecture/MicroservicesPage';
+import KafkaPage from './pages/topics/architecture/KafkaPage';
 
 // DevOps imports
 import GitPage from './pages/topics/devops/GitPage';
@@ -97,6 +99,8 @@ const App = () => {
                         <Route path="/architecture/design-patterns" element={<DesignPatternsPage/>}/>
                         <Route path="/architecture/solid" element={<SolidPage/>}/>
                         <Route path="/architecture/principles" element={<PrinciplesPage/>}/>
+                        <Route path="/architecture/microservices" element={<MicroservicesPage/>}/>
+                        <Route path="/architecture/kafka" element={<KafkaPage/>}/>
 
                         {/* DevOps Routes */}
                         <Route path="/devops/git" element={<GitPage/>}/>

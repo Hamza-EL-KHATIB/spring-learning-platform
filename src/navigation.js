@@ -53,6 +53,8 @@ export const navigationGroups = [
             { path: '/architecture/design-patterns', title: 'Design Patterns', description: 'GoF patterns with diagrams' },
             { path: '/architecture/solid', title: 'SOLID Principles', description: 'Five design principles' },
             { path: '/architecture/principles', title: 'YAGNI, KISS, DRY', description: 'Everyday design heuristics' },
+            { path: '/architecture/microservices', title: 'Microservices', description: 'Boundaries, resilience, patterns' },
+            { path: '/architecture/kafka', title: 'Kafka & Messaging', description: 'Event-driven architecture' },
         ],
     },
     {
