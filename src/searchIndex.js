@@ -23,6 +23,8 @@ import solid from './data/architecture/solid.json';
 import principles from './data/architecture/principles.json';
 import microservices from './data/architecture/microservices.json';
 import kafka from './data/architecture/kafka.json';
+import systemDesign from './data/architecture/system-design.json';
+import jvmInternals from './data/java/jvm-internals.json';
 import git from './data/devops/git.json';
 import scrum from './data/scrum/scrum.json';
 import codeReviews from './data/bestPractices/codeReviews.json';
@@ -52,6 +54,8 @@ const dataByPath = {
     '/architecture/principles': principles,
     '/architecture/microservices': microservices,
     '/architecture/kafka': kafka,
+    '/architecture/system-design': systemDesign,
+    '/java/jvm': jvmInternals,
     '/devops/git': git,
     '/agile/scrum': scrum,
     '/best-practices/code-reviews': codeReviews,

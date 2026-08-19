@@ -17,6 +17,15 @@ export const deriveType = (title, fallback = 'default') => {
     return fallback;
 };
 
+// Technical keys are full of acronyms; title-casing alone turns "zgc_over_g1"
+// into "Zgc Over G1". Keep these uppercase.
+const ACRONYMS = new Set([
+    'jvm', 'gc', 'zgc', 'g1', 'jit', 'oom', 'api', 'apis', 'rest', 'http', 'https',
+    'sql', 'nosql', 'jpa', 'orm', 'jwt', 'cap', 'acid', 'cqrs', 'ddd', 'dto', 'pojo',
+    'cpu', 'io', 'url', 'uri', 'qps', 'tps', 'dau', 'sla', 'tls', 'ssl', 'aop',
+    'ioc', 'di', 'crud', 'cdn', 'dns', 'ci', 'cd', 'tdd', 'bdd', 'lru', 'ttl',
+]);
+
 // "camelCaseKey_or-snake" → "Camel Case Key Or Snake"
 export const prettifyKey = (key) => {
     if (!key) return '';
@@ -25,7 +34,13 @@ export const prettifyKey = (key) => {
         .replace(/([a-z])([A-Z])/g, '$1 $2')
         .replace(/\s+/g, ' ')
         .trim()
-        .replace(/\b\w/g, (c) => c.toUpperCase());
+        .split(' ')
+        .map((word) =>
+            ACRONYMS.has(word.toLowerCase())
+                ? word.toUpperCase()
+                : word.charAt(0).toUpperCase() + word.slice(1)
+        )
+        .join(' ');
 };
 
 // JSON section titles are a mix of raw keys ("benefits", "code_examples") and

@@ -1,0 +1,209 @@
+{
+  "title": "JVM Internals & GC",
+  "tags": ["java", "jvm", "garbage-collection", "performance", "interview"],
+  "topics": [
+    {
+      "title": "Overview",
+      "description": "The six areas this note covers, with how often each one actually comes up in interviews.",
+      "interviewRelevance": 5,
+      "core_concepts": {
+        "headers": ["Concept", "What it is", "Interview relevance"],
+        "rows": [
+          ["JVM Memory Areas", "Heap, stack, metaspace, code cache", "★★★★★"],
+          ["Garbage Collection", "Automatic memory reclamation", "★★★★★"],
+          ["GC Algorithms", "Serial, Parallel, G1, ZGC, Shenandoah", "★★★★☆"],
+          ["Class Loading", "How classes reach the JVM", "★★★☆☆"],
+          ["JIT Compilation", "Bytecode to native code at runtime", "★★★☆☆"],
+          ["Troubleshooting", "Heap dumps, thread dumps, profiling", "★★★★☆"]
+        ]
+      }
+    },
+    {
+      "title": "Memory Areas",
+      "description": "What lives where in a running JVM, and which flag sizes it.",
+      "interviewRelevance": 5,
+      "diagram": "┌─────────────────────────────────────────────┐\n│                    HEAP                     │\n│  ┌──────────────────┐  ┌─────────────────┐  │\n│  │  Young Generation │  │ Old Generation  │  │\n│  │  Eden │ S0 │ S1   │  │   (Tenured)     │  │\n│  └──────────────────┘  └─────────────────┘  │\n├─────────────────────────────────────────────┤\n│  Metaspace (class metadata, native memory)  │\n│  Code Cache (JIT-compiled code)             │\n├─────────────────────────────────────────────┤\n│  Per-thread: JVM Stack │ PC Register │      │\n│              Native Method Stack            │\n└─────────────────────────────────────────────┘",
+      "areas": [
+        {
+          "title": "Heap",
+          "description": "All objects and arrays. Shared across threads. Sized with -Xms (initial) and -Xmx (max)."
+        },
+        {
+          "title": "Young generation",
+          "description": "New objects land in Eden. Survivors of a minor GC are copied between the survivor spaces S0 and S1, and are eventually promoted to the old generation after surviving enough cycles (the tenuring threshold)."
+        },
+        {
+          "title": "Old generation",
+          "description": "Long-lived objects. Collected by major or full GC, which is more expensive."
+        },
+        {
+          "title": "Metaspace",
+          "description": "Class metadata; replaced PermGen in Java 8. Grows in native memory, capped with -XX:MaxMetaspaceSize."
+        },
+        {
+          "title": "Thread stacks",
+          "description": "One per thread, sized with -Xss. Holds frames with local variables and partial results. Throws StackOverflowError when exceeded."
+        }
+      ]
+    },
+    {
+      "title": "Generational GC",
+      "description": "Most objects die young. Every mainstream collector is built to exploit that.",
+      "interviewRelevance": 5,
+      "collection_types": [
+        {
+          "title": "Minor GC",
+          "description": "Collects only the young generation. Frequent, fast, copies few survivors."
+        },
+        {
+          "title": "Major / Full GC",
+          "description": "Includes the old generation, and possibly metaspace. Slower, and historically stop-the-world."
+        },
+        {
+          "title": "Stop-the-world (STW)",
+          "description": "Application threads are paused while GC works. Modern collectors minimize STW pauses."
+        }
+      ],
+      "how_reclamation_works": "The JVM tracks reachability from GC roots: thread stacks, static fields, JNI references. Unreachable objects are reclaimed. G1 and ZGC do most of that work concurrently to keep pauses short.",
+      "minor_vs_major_in_one_line": "Minor collects the young generation only, fast and frequent. Major or full includes the old generation — in older collectors a long stop-the-world event, while G1 and ZGC avoid full GCs unless degraded."
+    },
+    {
+      "title": "GC Algorithms",
+      "description": "Pick by pause target, not by fashion. G1 is the default since Java 9 and is the right answer for most services.",
+      "interviewRelevance": 4,
+      "collectors": {
+        "headers": ["Collector", "Strategy", "Pause target", "When to use"],
+        "rows": [
+          ["Serial (-XX:+UseSerialGC)", "Single-threaded", "Long", "Tiny heaps, single-CPU containers"],
+          ["Parallel (-XX:+UseParallelGC)", "Multi-threaded, throughput-first", "Long but efficient", "Batch jobs where total throughput beats latency"],
+          ["G1 (-XX:+UseG1GC)", "Region-based, concurrent marking, incremental compaction", "~200 ms default, tunable", "Default since Java 9. General-purpose services"],
+          ["ZGC (-XX:+UseZGC)", "Colored pointers, fully concurrent", "Sub-millisecond", "Large heaps (multi-GB to TB), low-latency APIs. Generational ZGC is the default ZGC mode since Java 23"],
+          ["Shenandoah", "Brooks pointers, fully concurrent", "Sub-10 ms", "Similar niche to ZGC, mainly Red Hat builds"]
+        ]
+      },
+      "g1_in_one_paragraph": "The answer interviewers want: G1 divides the heap into equal-sized regions of 1 to 32 MB. Each region acts as Eden, survivor or old as needed. It marks live objects concurrently, then evacuates the regions with the most garbage first — hence Garbage First — giving predictable pauses controlled by -XX:MaxGCPauseMillis.",
+      "zgc_over_g1": "Choose ZGC for latency-critical services with large heaps where even 100-200 ms pauses hurt: trading, real-time APIs. The trade-off is slightly more CPU and memory overhead. For typical CRUD services default G1 is fine — saying so shows judgment."
+    },
+    {
+      "title": "Tuning Flags",
+      "description": "The flags worth knowing by heart, plus the container rule that catches people out.",
+      "interviewRelevance": 4,
+      "common_flags": {
+        "language": "bash",
+        "code": "-Xms4g -Xmx4g              # fixed heap avoids resize pauses; common in containers\n-XX:MaxGCPauseMillis=100   # G1 pause goal\n-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/dumps\n-Xlog:gc*:file=gc.log      # unified GC logging (Java 9+)\n-XX:MaxRAMPercentage=75.0  # container-aware sizing instead of -Xmx"
+      },
+      "container_awareness": "Since Java 10 the JVM reads cgroup limits. In Kubernetes use MaxRAMPercentage rather than hardcoding -Xmx.",
+      "forcing_gc": "System.gc() is only a hint, and is often disabled with -XX:+DisableExplicitGC. You cannot deterministically force a collection, and a design should never depend on it."
+    },
+    {
+      "title": "OOM Diagnosis",
+      "description": "Naming the right OutOfMemoryError variant, and the leak that caused it, is most of the answer.",
+      "interviewRelevance": 5,
+      "error_types": [
+        {
+          "title": "OutOfMemoryError: Java heap space",
+          "description": "The heap is exhausted — either a leak or an undersized heap."
+        },
+        {
+          "title": "OutOfMemoryError: Metaspace",
+          "description": "Too many classes, often a classloader leak."
+        },
+        {
+          "title": "OutOfMemoryError: unable to create native thread",
+          "description": "Thread limits reached."
+        },
+        {
+          "title": "OutOfMemoryError: Direct buffer memory",
+          "description": "Off-heap direct buffers exhausted."
+        },
+        {
+          "title": "StackOverflowError",
+          "description": "Deep or unbounded recursion. Not an OutOfMemoryError, but the distinction is the point."
+        }
+      ],
+      "debug_flow": [
+        "Enable a heap dump on OOME: -XX:+HeapDumpOnOutOfMemoryError",
+        "Analyze retained sizes in Eclipse MAT",
+        "Look for the dominator holding the memory"
+      ],
+      "classic_leak_causes": [
+        "Static collections that only grow",
+        "Unclosed resources",
+        "ThreadLocal not removed in thread pools",
+        "Listener registrations never removed",
+        "Caches without eviction"
+      ]
+    },
+    {
+      "title": "Troubleshooting",
+      "description": "Symptom to tool, so you can name the command instead of describing it vaguely.",
+      "interviewRelevance": 4,
+      "toolbox": {
+        "headers": ["Symptom", "Tool / approach"],
+        "rows": [
+          ["Memory leak suspicion", "jmap -dump or -XX:+HeapDumpOnOutOfMemoryError, then Eclipse MAT or VisualVM — look at the dominator tree and retained size"],
+          ["High CPU", "jstack <pid> several times, find hot threads by matching top -H thread id to hex to stack"],
+          ["Long pauses", "GC logs via -Xlog:gc*, read in GCEasy or GCViewer"],
+          ["Live inspection", "jcmd — one tool for dumps, VM flags and native memory: jcmd <pid> VM.native_memory"],
+          ["Production profiling", "Java Flight Recorder: jcmd <pid> JFR.start — low overhead, analyze in JDK Mission Control"]
+        ]
+      }
+    },
+    {
+      "title": "Class Loading",
+      "description": "Three phases, and one delegation rule that explains why you cannot replace java.lang.String.",
+      "interviewRelevance": 3,
+      "phases": [
+        {
+          "title": "1. Loading",
+          "description": "Bytes become a Class object, through the Bootstrap, Platform and Application classloader hierarchy."
+        },
+        {
+          "title": "2. Linking",
+          "description": "Verify, prepare (static defaults), resolve references."
+        },
+        {
+          "title": "3. Initialization",
+          "description": "Static initializers run, lazily, on first active use."
+        }
+      ],
+      "parent_delegation": "A classloader asks its parent first, which prevents user code replacing java.lang.String. Breaking delegation deliberately is how app servers and plugin systems isolate versions."
+    },
+    {
+      "title": "JIT Compilation",
+      "description": "Bytecode starts interpreted; hot methods get compiled.",
+      "interviewRelevance": 3,
+      "tiered_compilation": "Hot methods are compiled by C1 (client) and then C2 (server). That escalation is what tiered compilation means.",
+      "optimizations": [
+        "Inlining",
+        "Escape analysis — may allocate on the stack or eliminate locks",
+        "Loop unrolling",
+        "Devirtualization"
+      ],
+      "why_it_matters": "Warm-up affects benchmarks, which is why microbenchmarks need JMH rather than a System.nanoTime() loop."
+    },
+    {
+      "title": "Reference Types",
+      "description": "The four reachability strengths and what each one is for.",
+      "interviewRelevance": 3,
+      "references": [
+        {
+          "title": "Strong",
+          "description": "Normal references. Never collected while reachable."
+        },
+        {
+          "title": "Soft",
+          "description": "Collected only under memory pressure. Used for caches."
+        },
+        {
+          "title": "Weak",
+          "description": "Collected at the next GC once only weakly reachable. Used by WeakHashMap and canonical maps."
+        },
+        {
+          "title": "Phantom",
+          "description": "Enqueued after finalization, for cleanup hooks. Cleaner uses these, replacing finalize() which is deprecated for removal."
+        }
+      ]
+    }
+  ]
+}

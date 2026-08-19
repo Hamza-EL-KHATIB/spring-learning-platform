@@ -18,6 +18,7 @@ export const navigationGroups = [
             { path: '/java/features', title: 'Java Features', description: 'Java 8+ capabilities' },
             { path: '/java/testing', title: 'Unit Testing', description: 'JUnit and Mockito' },
             { path: '/java/functional-programming', title: 'Functional Programming', description: 'Streams, lambdas, optionals' },
+            { path: '/java/jvm', title: 'JVM Internals & GC', description: 'Memory, collectors, tuning, OOM' },
         ],
     },
     {
@@ -55,6 +56,7 @@ export const navigationGroups = [
             { path: '/architecture/principles', title: 'YAGNI, KISS, DRY', description: 'Everyday design heuristics' },
             { path: '/architecture/microservices', title: 'Microservices', description: 'Boundaries, resilience, patterns' },
             { path: '/architecture/kafka', title: 'Kafka & Messaging', description: 'Event-driven architecture' },
+            { path: '/architecture/system-design', title: 'System Design', description: 'Framework, building blocks, trade-offs' },
         ],
     },
     {
