@@ -1,103 +1,81 @@
 import React, { useState } from 'react';
 import { Book, Info, Table, ClipboardCheck } from 'lucide-react';
 import cases from '../../../data/german/cases.json';
+import { ActivePanel, PageHeader, PageTabs, useTabs } from '../../../components/template/shell';
+import { ContentCard, StyledListItem } from '../../../components/template/primitives';
+
+const TABS = [
+    { id: 'introduction', title: 'Introduction', icon: <Info className="w-4 h-4" /> },
+    { id: 'cases', title: 'Cases', icon: <Book className="w-4 h-4" /> },
+    { id: 'twoWayPrepositions', title: 'Two-Way Prepositions', icon: <Table className="w-4 h-4" /> },
+    { id: 'memoryAids', title: 'Memory Aids', icon: <ClipboardCheck className="w-4 h-4" /> },
+];
+
+// term + meaning pairs (verbs, prepositions)
+const TriggerList = ({ items, type }) => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+        {items.map((item, idx) => (
+            <div
+                key={idx}
+                className="bg-gray-800/70 border border-gray-700/50 rounded-md px-3 py-2 flex items-center justify-between gap-2"
+            >
+                <span className="text-purple-300 text-sm">{item[type]}</span>
+                <span className="text-gray-400 text-xs">{item.meaning}</span>
+            </div>
+        ))}
+    </div>
+);
+
+const Examples = ({ examples }) => (
+    <div className="space-y-2">
+        {examples.map((example, idx) => (
+            <div key={idx} className="bg-gray-800/70 border border-gray-700/50 rounded-md p-3">
+                <p className="text-white mb-1">{example.german}</p>
+                <p className="text-gray-300 text-sm mb-1">{example.english}</p>
+                <p className="text-gray-500 text-xs">{example.explanation}</p>
+            </div>
+        ))}
+    </div>
+);
 
 const CasesPage = () => {
     const [activeCase, setActiveCase] = useState('nominativ');
-    const [activeTab, setActiveTab] = useState('introduction'); // tabs: introduction, cases, twoWayPrepositions, memoryAids
-
-    // Component for rendering verb and preposition lists
-    const TriggerList = ({ items, type }) => (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-            {items.map((item, idx) => (
-                <div key={idx} className="bg-gray-800/50 rounded px-3 py-2 flex items-center justify-between">
-                    <span className="text-purple-300">{item[type]}</span>
-                    <span className="text-gray-400 text-sm">{item.meaning}</span>
-                </div>
-            ))}
-        </div>
-    );
-
-    // Component for rendering examples
-    const Examples = ({ examples }) => (
-        <div className="space-y-4">
-            {examples.map((example, idx) => (
-                <div key={idx} className="bg-gray-800/50 rounded-lg p-4">
-                    <p className="text-lg text-white mb-2">{example.german}</p>
-                    <p className="text-gray-300 mb-2">{example.english}</p>
-                    <p className="text-sm text-gray-400">{example.explanation}</p>
-                </div>
-            ))}
-        </div>
-    );
-
-    // Tabs configuration
-    const tabs = [
-        { key: 'introduction', label: 'Introduction', icon: Info },
-        { key: 'cases', label: 'Cases', icon: Book },
-        { key: 'twoWayPrepositions', label: 'Two-Way Prepositions', icon: Table },
-        { key: 'memoryAids', label: 'Memory Aids', icon: ClipboardCheck }
-    ];
+    const { activeId, select, activeTab } = useTabs(TABS, 'german-cases-rules');
+    const current = cases.cases[activeCase];
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-6">
-            <div className="max-w-6xl mx-auto space-y-6">
-                {/* Title */}
-                <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">German Cases (Fälle)</h1>
+        <div>
+            <PageHeader title="German Cases (Fälle)" subtitle={cases.introduction.description} />
 
-                {/* Tabs Navigation */}
-                <div className="flex gap-2 overflow-x-auto pb-2 mb-6 border-b border-gray-800">
-                    {tabs.map((tab) => {
-                        const Icon = tab.icon;
-                        return (
-                            <button
-                                key={tab.key}
-                                onClick={() => setActiveTab(tab.key)}
-                                className={`flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-t-md font-medium transition-colors whitespace-nowrap ${
-                                    activeTab === tab.key
-                                        ? 'bg-gray-800 text-white border border-gray-700 border-b-0'
-                                        : 'text-gray-400 hover:text-white'
-                                }`}
-                            >
-                                <Icon className="w-5 h-5 text-purple-400" />
-                                <span className="text-sm sm:text-base">{tab.label}</span>
-                            </button>
-                        );
-                    })}
-                </div>
+            <PageTabs tabs={TABS} activeId={activeId} onChange={select} />
 
-                {/* Tab Content */}
-                {activeTab === 'introduction' && (
-                    <div className="p-4 sm:p-6 bg-gray-800/50 rounded-lg space-y-6">
-                        <p className="text-gray-300 text-sm sm:text-base">{cases.introduction.description}</p>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            {cases.introduction.key_questions.map((item, idx) => (
-                                <div key={idx} className="bg-gray-800 rounded-lg p-4">
-                                    <h3 className="text-base sm:text-lg font-semibold text-purple-400 mb-2">{item.case}</h3>
-                                    <ul className="list-disc list-inside text-gray-300 text-sm sm:text-base">
-                                        {item.questions.map((q, qIdx) => (
-                                            <li key={qIdx}>{q}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
+            <ActivePanel title={activeTab?.title} icon={activeTab?.icon}>
+                {activeId === 'introduction' && (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        {cases.introduction.key_questions.map((item, idx) => (
+                            <ContentCard key={idx} title={item.case}>
+                                <ul className="space-y-1">
+                                    {item.questions.map((q, qIdx) => (
+                                        <StyledListItem key={qIdx}>{q}</StyledListItem>
+                                    ))}
+                                </ul>
+                            </ContentCard>
+                        ))}
                     </div>
                 )}
 
-                {activeTab === 'cases' && (
-                    <div className="space-y-4">
-                        {/* Case Selection Tabs */}
-                        <div className="flex space-x-2 mb-4 overflow-x-auto">
+                {activeId === 'cases' && (
+                    <div className="space-y-3">
+                        {/* Case selector, styled like the main tab bar */}
+                        <div className="flex flex-wrap gap-2 p-1 bg-gray-800/50 rounded-lg border border-gray-700/50">
                             {Object.keys(cases.cases).map((caseKey) => (
                                 <button
                                     key={caseKey}
                                     onClick={() => setActiveCase(caseKey)}
-                                    className={`px-3 py-2 rounded-lg font-medium transition-colors whitespace-nowrap ${
+                                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all border ${
                                         activeCase === caseKey
-                                            ? 'bg-purple-600 text-white'
-                                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                                            ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border-purple-500/30'
+                                            : 'bg-gray-800/50 text-gray-400 border-gray-700/50 hover:bg-gray-700/50 hover:text-gray-300'
                                     }`}
                                 >
                                     {cases.cases[caseKey].name}
@@ -105,98 +83,83 @@ const CasesPage = () => {
                             ))}
                         </div>
 
-                        {/* Active Case Content */}
-                        <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 space-y-6">
-                            <div>
-                                <h3 className="text-lg sm:text-xl font-semibold mb-2">{cases.cases[activeCase].name}</h3>
-                                <p className="text-gray-300 text-sm sm:text-base">{cases.cases[activeCase].definition}</p>
-                            </div>
+                        <ContentCard title={current.name} contentType="definition">
+                            <p className="text-gray-300 text-sm">{current.definition}</p>
+                        </ContentCard>
 
-                            <div>
-                                <h4 className="text-base sm:text-lg font-semibold mb-3">Usage</h4>
-                                <ul className="list-disc list-inside space-y-2 text-sm sm:text-base text-gray-300">
-                                    {cases.cases[activeCase].usage.map((use, idx) => (
-                                        <li key={idx}>{use}</li>
-                                    ))}
-                                </ul>
-                            </div>
+                        <ContentCard title="Usage">
+                            <ul className="space-y-1">
+                                {current.usage.map((use, idx) => (
+                                    <StyledListItem key={idx}>{use}</StyledListItem>
+                                ))}
+                            </ul>
+                        </ContentCard>
 
-                            {/* Verbs */}
-                            {cases.cases[activeCase].common_triggers.verbs.length > 0 && (
-                                <div>
-                                    <h4 className="text-base sm:text-lg font-semibold mb-3">Common Verbs</h4>
-                                    <TriggerList items={cases.cases[activeCase].common_triggers.verbs} type="verb" />
-                                </div>
-                            )}
+                        {current.common_triggers.verbs.length > 0 && (
+                            <ContentCard title="Common Verbs">
+                                <TriggerList items={current.common_triggers.verbs} type="verb" />
+                            </ContentCard>
+                        )}
 
-                            {/* Prepositions */}
-                            {cases.cases[activeCase].common_triggers.prepositions.length > 0 && (
-                                <div>
-                                    <h4 className="text-base sm:text-lg font-semibold mb-3">Common Prepositions</h4>
-                                    <TriggerList items={cases.cases[activeCase].common_triggers.prepositions} type="preposition" />
-                                </div>
-                            )}
+                        {current.common_triggers.prepositions.length > 0 && (
+                            <ContentCard title="Common Prepositions">
+                                <TriggerList items={current.common_triggers.prepositions} type="preposition" />
+                            </ContentCard>
+                        )}
 
-                            {/* Examples */}
-                            <div>
-                                <h4 className="text-base sm:text-lg font-semibold mb-3">Examples</h4>
-                                <Examples examples={cases.cases[activeCase].examples} />
-                            </div>
-                        </div>
+                        <ContentCard title="Examples" contentType="example">
+                            <Examples examples={current.examples} />
+                        </ContentCard>
                     </div>
                 )}
 
-                {activeTab === 'twoWayPrepositions' && (
-                    <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 space-y-6">
-                        <p className="text-gray-300 text-sm sm:text-base">{cases.two_way_prepositions.description}</p>
+                {activeId === 'twoWayPrepositions' && (
+                    <div className="space-y-3">
+                        <p className="text-gray-300 text-sm">{cases.two_way_prepositions.description}</p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                            <div className="bg-gray-800 p-3 sm:p-4 rounded-lg">
-                                <h4 className="font-medium text-purple-400 mb-2 text-sm sm:text-base">Akkusativ (Motion)</h4>
-                                <p className="text-gray-300 text-xs sm:text-sm">{cases.two_way_prepositions.rule.motion_akkusativ}</p>
-                            </div>
-                            <div className="bg-gray-800 p-3 sm:p-4 rounded-lg">
-                                <h4 className="font-medium text-purple-400 mb-2 text-sm sm:text-base">Dativ (Location)</h4>
-                                <p className="text-gray-300 text-xs sm:text-sm">{cases.two_way_prepositions.rule.location_dativ}</p>
-                            </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <ContentCard title="Akkusativ (Motion)" contentType="features">
+                                <p className="text-gray-300 text-sm">{cases.two_way_prepositions.rule.motion_akkusativ}</p>
+                            </ContentCard>
+                            <ContentCard title="Dativ (Location)" contentType="types">
+                                <p className="text-gray-300 text-sm">{cases.two_way_prepositions.rule.location_dativ}</p>
+                            </ContentCard>
                         </div>
 
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                             {cases.two_way_prepositions.list.map((prep, idx) => (
-                                <div key={idx} className="bg-gray-800 p-3 rounded-lg">
-                                    <p className="text-purple-400 font-medium text-sm sm:text-base">{prep.preposition}</p>
-                                    <p className="text-gray-400 text-xs sm:text-sm">{prep.meaning}</p>
+                                <div key={idx} className="bg-gray-800/70 border border-gray-700/50 rounded-md p-3">
+                                    <p className="text-purple-300 font-medium text-sm">{prep.preposition}</p>
+                                    <p className="text-gray-400 text-xs">{prep.meaning}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
                 )}
 
-                {activeTab === 'memoryAids' && (
-                    <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 space-y-6">
-                        <div>
-                            <h4 className="text-base sm:text-lg font-semibold mb-3">Logic</h4>
-                            <ul className="list-disc list-inside space-y-2 text-sm sm:text-base text-gray-300">
+                {activeId === 'memoryAids' && (
+                    <div className="space-y-3">
+                        <ContentCard title="Logic">
+                            <ul className="space-y-1">
                                 {cases.memory_aids.logic.map((item, idx) => (
-                                    <li key={idx}>{item}</li>
+                                    <StyledListItem key={idx}>{item}</StyledListItem>
                                 ))}
                             </ul>
-                        </div>
+                        </ContentCard>
 
-                        <div>
-                            <h4 className="text-base sm:text-lg font-semibold mb-3">Quick Tests</h4>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <ContentCard title="Quick Tests" contentType="benefits">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                                 {cases.memory_aids.quick_tests.map((test, idx) => (
-                                    <div key={idx} className="bg-gray-800 p-3 sm:p-4 rounded-lg">
-                                        <h5 className="text-purple-400 font-medium mb-2 text-sm sm:text-base">{test.name}</h5>
-                                        <p className="text-gray-300 text-xs sm:text-sm">{test.hint}</p>
+                                    <div key={idx} className="bg-gray-800/70 border border-gray-700/50 rounded-md p-3">
+                                        <h5 className="text-purple-300 font-medium mb-1 text-sm">{test.name}</h5>
+                                        <p className="text-gray-300 text-xs">{test.hint}</p>
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </ContentCard>
                     </div>
                 )}
-            </div>
+            </ActivePanel>
         </div>
     );
 };

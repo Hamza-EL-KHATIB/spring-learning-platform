@@ -14,7 +14,7 @@ const EndingsOverview = () => {
 
     return (
         <div className="space-y-8">
-            <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-cyan-500/20">
+            <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-700/50">
                 <div className="flex items-center mb-4">
                     <Table className="w-5 h-5 text-cyan-400 mr-2" />
                     <h2 className="text-base sm:text-lg font-semibold text-white">Adjective Endings Overview</h2>
@@ -68,7 +68,7 @@ const EndingsOverview = () => {
             </div>
 
             {/* Quick Tips */}
-            <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-purple-500/20">
+            <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-700/50">
                 <h3 className="text-base sm:text-lg font-semibold text-white mb-4">Memory Aids</h3>
                 <ul className="list-disc list-inside space-y-2 text-gray-300 text-sm">
                     {adjectivesJson.memory_aids.map((tip, index) => (
@@ -107,10 +107,10 @@ const DetailedExplanations = () => {
                             <button
                                 key={caseType}
                                 onClick={() => setActiveCase(caseType)}
-                                className={`px-3 py-2 text-sm rounded-lg font-medium whitespace-nowrap ${
+                                className={`px-3 py-1.5 text-sm rounded-md font-medium whitespace-nowrap transition-all ${
                                     activeCase === caseType
-                                        ? 'bg-purple-500 text-white'
-                                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                                        ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border border-purple-500/30'
+                                        : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50 hover:text-gray-300'
                                 }`}
                             >
                                 {caseType.charAt(0).toUpperCase() + caseType.slice(1)}
@@ -126,10 +126,10 @@ const DetailedExplanations = () => {
                             <button
                                 key={type}
                                 onClick={() => setActiveArticleType(type)}
-                                className={`px-3 py-2 text-sm rounded-lg font-medium whitespace-nowrap ${
+                                className={`px-3 py-1.5 text-sm rounded-md font-medium whitespace-nowrap transition-all ${
                                     activeArticleType === type
                                         ? 'bg-cyan-500 text-white'
-                                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                                        : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50 hover:text-gray-300'
                                 }`}
                             >
                                 {data.description}
@@ -141,7 +141,7 @@ const DetailedExplanations = () => {
 
             {/* Pattern Description */}
             {currentPattern && (
-                <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-purple-500/20">
+                <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-700/50">
                     <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">{currentPattern.description}</h3>
                     <p className="text-gray-300 text-sm sm:text-base mb-4">{currentPattern.explanation}</p>
                     {currentPattern.pattern_hints && (
@@ -171,7 +171,7 @@ const DetailedExplanations = () => {
 };
 
 const ExplanationCard = () => (
-    <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-cyan-500/20">
+    <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 border border-gray-700/50">
         <div className="flex items-center mb-4">
             <Info className="w-5 h-5 text-cyan-400 mr-2" />
             <h2 className="text-base sm:text-lg font-semibold text-white">Understanding German Adjective Endings</h2>
@@ -193,7 +193,7 @@ const GenderSection = ({ gender, data }) => {
     if (!data || !data.example) return null;
 
     return (
-        <div className="bg-gray-800 rounded-lg p-4 sm:p-6 border border-purple-500/20">
+        <div className="bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-700/50">
             <div className="mb-4">
                 <h3 className="text-lg sm:text-xl font-semibold text-white capitalize mb-2">{gender}</h3>
                 <div className="inline-block bg-cyan-950/50 border border-cyan-500/50 text-cyan-300 px-3 py-1 rounded-lg">
@@ -257,11 +257,11 @@ const AdjectivesPage = () => {
     const [activeTab, setActiveTab] = useState('overview');
 
     return (
-        <div className="min-h-screen bg-gray-900 py-6 sm:py-8">
+        <div>
             <div className="max-w-7xl mx-auto px-4">
                 {/* Header */}
                 <div className="mb-6 sm:mb-8">
-                    <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+                    <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">
                         German Adjective Patterns
                     </h1>
                     <p className="text-gray-400 text-sm sm:text-base">
@@ -273,20 +273,20 @@ const AdjectivesPage = () => {
                 <div className="flex space-x-2 sm:space-x-4 mb-6 overflow-x-auto">
                     <button
                         onClick={() => setActiveTab('overview')}
-                        className={`px-3 py-2 text-sm sm:text-base rounded-lg font-medium whitespace-nowrap ${
+                        className={`px-3 py-1.5 text-sm rounded-md font-medium whitespace-nowrap transition-all ${
                             activeTab === 'overview'
-                                ? 'bg-purple-500 text-white'
-                                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                                ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border border-purple-500/30'
+                                : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50 hover:text-gray-300'
                         }`}
                     >
                         Overview Tables
                     </button>
                     <button
                         onClick={() => setActiveTab('detailed')}
-                        className={`px-3 py-2 text-sm sm:text-base rounded-lg font-medium whitespace-nowrap ${
+                        className={`px-3 py-1.5 text-sm rounded-md font-medium whitespace-nowrap transition-all ${
                             activeTab === 'detailed'
-                                ? 'bg-purple-500 text-white'
-                                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                                ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border border-purple-500/30'
+                                : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50 hover:text-gray-300'
                         }`}
                     >
                         Detailed Explanations

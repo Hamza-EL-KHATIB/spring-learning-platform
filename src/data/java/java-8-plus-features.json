@@ -688,7 +688,7 @@
           "code": [
             {
               "language": "java",
-              "snippet": "// Java 9\noptional.ifPresentOrElse(\n    value -> System.out.println(\"Found: \" + value),\n    () -> System.out.println(\"Not found\")\n);\n\n// Java 9\nOptional<String> result = optional.or(() -> Optional.of(\"default\"));\n\n// Java 10\nStream<String> stream = optional.stream(); // Returns empty or singleton stream"
+              "snippet": "// Java 9\noptional.ifPresentOrElse(\n    value -> System.out.println(\"Found: \" + value),\n    () -> System.out.println(\"Not found\")\n);\n\n// Java 9\nOptional<String> result = optional.or(() -> Optional.of(\"default\"));\n\n// Java 9 (ifPresentOrElse, or and stream were all added together in 9)\nStream<String> stream = optional.stream(); // Returns empty or singleton stream\n\n// Java 10 - no-arg orElseThrow(), a self-documenting alias for get()\nString value = optional.orElseThrow(); // throws NoSuchElementException if empty\n\n// Java 11\nboolean missing = optional.isEmpty();"
             }
           ]
         }
@@ -986,22 +986,32 @@
     {
       "id": "nashorn",
       "title": "Nashorn JavaScript Engine",
-      "description": "Nashorn is a lightweight JavaScript engine integrated into Java, enabling dynamic scripting by allowing JavaScript code to be embedded and executed within Java applications.",
+      "description": "DEPRECATED AND REMOVED. Nashorn was the JavaScript engine bundled with the JDK from Java 8 (replacing Rhino). It was deprecated for removal in JDK 11 (JEP 335) and removed from the JDK entirely in JDK 15 (JEP 372). On JDK 15 and later it exists only as a standalone dependency, org.openjdk.nashorn:nashorn-core, which must be added to the project explicitly. For new work the current recommendation is GraalVM JavaScript (org.graalvm.js), which is the actively maintained, ECMAScript-current engine. Nashorn still comes up in interviews as history: know that it shipped in Java 8, that it is gone from the JDK, and what replaced it.",
       "features": [
         {
-          "aspect": "Integration",
-          "description": "Allows JavaScript code to be directly embedded into Java applications, facilitating dynamic scripting and seamless integration with Java libraries.",
+          "feature": "Availability Timeline",
+          "description": "Java 8: shipped in the JDK as the replacement for Rhino. JDK 11: deprecated for removal (JEP 335). JDK 15: removed from the JDK (JEP 372). JDK 15+: available only as the external org.openjdk.nashorn:nashorn-core artifact.",
+          "example": "<!-- JDK 15+ only: Nashorn is no longer in the JDK -->\n<dependency>\n  <groupId>org.openjdk.nashorn</groupId>\n  <artifactId>nashorn-core</artifactId>\n  <version>15.4</version>\n</dependency>"
+        },
+        {
+          "feature": "Integration Model",
+          "description": "Nashorn plugs into the standard javax.script (JSR-223) API, so JavaScript can be evaluated from Java and Java objects can be shared with the script. That JSR-223 model is unchanged; only the engine behind it has moved out of the JDK.",
           "example": "ScriptEngine engine = new ScriptEngineManager().getEngineByName(\"nashorn\");"
         },
         {
-          "aspect": "Performance",
-          "description": "Offers improved performance compared to previous JavaScript engines, making it more efficient for executing JavaScript code."
+          "feature": "Why It Was Removed",
+          "description": "Nashorn targeted ECMAScript 5.1 and became costly to maintain against the rapid pace of the ECMAScript specification. It was never updated to modern JavaScript, and GraalVM JavaScript now provides an up-to-date, higher-performance engine, so the JDK team dropped it rather than keep two engines alive."
+        },
+        {
+          "feature": "Modern Replacement",
+          "description": "Use GraalVM JavaScript. It is JSR-223 compatible, so the ScriptEngine code shape stays the same, but it tracks current ECMAScript and is actively maintained. It runs on a stock JDK via the org.graalvm.js:js dependency (best performance on GraalVM itself).",
+          "example": "ScriptEngine engine = new ScriptEngineManager().getEngineByName(\"graal.js\");"
         }
       ],
       "code": [
         {
           "language": "java",
-          "snippet": "// Get the Nashorn engine\nScriptEngine engine = new ScriptEngineManager().getEngineByName(\"nashorn\");\n\n// Evaluate JavaScript\nObject result = engine.eval(\"var x = 10; x * 2;\");\nSystem.out.println(result);  // 20\n\n// Access Java objects from JavaScript\nengine.put(\"javaList\", new ArrayList<String>());\nengine.eval(\"javaList.add('Hello from JavaScript');\");\n\n// Use JavaScript functions from Java\nengine.eval(\"function greet(name) { return 'Hello, ' + name; }\");\nInvocable invocable = (Invocable) engine;\nString greeting = (String) invocable.invokeFunction(\"greet\", \"World\");\nSystem.out.println(greeting);  // Hello, World"
+          "snippet": "// HISTORICAL: works out of the box only on Java 8 - 14 (deprecated from 11).\n// On JDK 15+ getEngineByName(\"nashorn\") returns null unless the standalone\n// org.openjdk.nashorn:nashorn-core artifact is on the classpath.\nScriptEngine engine = new ScriptEngineManager().getEngineByName(\"nashorn\");\nif (engine == null) {\n    throw new IllegalStateException(\"Nashorn not available - removed from the JDK in 15 (JEP 372)\");\n}\n\n// Evaluate JavaScript\nObject result = engine.eval(\"var x = 10; x * 2;\");\nSystem.out.println(result);  // 20\n\n// Access Java objects from JavaScript\nengine.put(\"javaList\", new ArrayList<String>());\nengine.eval(\"javaList.add('Hello from JavaScript');\");\n\n// Use JavaScript functions from Java\nengine.eval(\"function greet(name) { return 'Hello, ' + name; }\");\nInvocable invocable = (Invocable) engine;\nString greeting = (String) invocable.invokeFunction(\"greet\", \"World\");\nSystem.out.println(greeting);  // Hello, World\n\n// MODERN EQUIVALENT - GraalVM JavaScript, same JSR-223 API:\n// ScriptEngine js = new ScriptEngineManager().getEngineByName(\"graal.js\");"
         }
       ]
     },

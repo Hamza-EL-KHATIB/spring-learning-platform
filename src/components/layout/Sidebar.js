@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight, ChevronDown, X } from 'lucide-react';
-import { navigationGroups } from '../../navigation';
+import { navigationGroups, sectionKey } from '../../navigation';
 
 // Every section stays reachable in one click — during an interview you don't
 // want to hop through a landing page to change subject.
 const Sidebar = () => {
     const { pathname } = useLocation();
-    const section = pathname.split('/')[1];
+    const section = sectionKey(pathname.split('/')[1]);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     // Groups default to expanded for the current section; clicking one overrides that.
     const [overrides, setOverrides] = useState({});

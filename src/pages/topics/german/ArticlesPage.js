@@ -605,52 +605,30 @@ const ArticlesPage = () => {
 
     return (
         <>
-            <style>
-                {`
-                .custom-scrollbar::-webkit-scrollbar {
-                    height: 15px;
-                    background: transparent;
-                }
-                
-                .custom-scrollbar::-webkit-scrollbar-track {
-                    background: rgba(31, 41, 55, 0.5);
-                    border-radius: 3px;
-                }
-                
-                .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: #4F46E5;
-                    border-radius: 3px;
-                }
-                
-                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: #6366F1;
-                }
-            `}
-            </style>
 
-            <div className="min-h-screen bg-gray-900">
-                <div className="container mx-auto px-4 py-8">
-                    <div className="max-w-4xl mx-auto">
+            <div>
+                <div>
+                    <div>
                         {/* Title Section */}
                         <div className="mb-8">
-                            <h1 className="text-3xl font-bold text-white">German Articles</h1>
+                            <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">German Articles</h1>
                             <p className="text-gray-400 mt-2">
                                 Learn about German articles and their various forms, endings, and usage.
                             </p>
                         </div>
 
                         {/* Main Card with Tabs */}
-                        <div className="bg-gray-800/50 rounded-xl border border-gray-700">
-                            <div className="relative w-full overflow-x-auto bg-gray-800/80 custom-scrollbar">
-                                <div className="flex min-w-max border-b border-gray-700/50">
+                        <div className="bg-gray-800/50 rounded-md border border-gray-700/50">
+                            <div className="w-full bg-gray-800/50 rounded-t-md border-b border-gray-700/50">
+                                <div className="flex flex-wrap gap-2 p-1">
                                     {articleTypes.map((type) => (
                                         <button
                                             key={type.id}
                                             onClick={() => setActiveTab(type.id)}
-                                            className={`px-6 py-4 whitespace-nowrap font-medium transition-all hover:bg-gray-700/30 ${
+                                            className={`px-3 py-1.5 rounded-md text-sm whitespace-nowrap font-medium transition-all ${
                                                 activeTab === type.id
-                                                    ? 'text-purple-400 border-b-2 border-purple-400 bg-gray-700/20'
-                                                    : 'text-gray-400'
+                                                    ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border border-purple-500/30'
+                                                    : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50 hover:text-gray-300'
                                             }`}
                                         >
                                             {type.title}
