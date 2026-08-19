@@ -31,7 +31,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:search-index": "node scripts/build-search-index.js",
+    "prestart": "node scripts/build-search-index.js",
+    "prebuild": "node scripts/build-search-index.js"
   },
   "eslintConfig": {
     "extends": [

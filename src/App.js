@@ -1,76 +1,84 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
-import TopicPage from './pages/TopicPage';
+const TopicPage = lazy(() => import('./pages/TopicPage'));
 // Java imports
-import CollectionsPage from './pages/topics/java/CollectionsPage';
-import ConcurrencyPage from './pages/topics/java/ConcurrencyPage';
-import ExceptionsPage from './pages/topics/java/ExceptionsPage';
-import FeaturesPage from './pages/topics/java/FeaturesPage';
-import UnitTestingPage from './pages/topics/java/UnitTestingPage';
+const CollectionsPage = lazy(() => import('./pages/topics/java/CollectionsPage'));
+const ConcurrencyPage = lazy(() => import('./pages/topics/java/ConcurrencyPage'));
+const ExceptionsPage = lazy(() => import('./pages/topics/java/ExceptionsPage'));
+const FeaturesPage = lazy(() => import('./pages/topics/java/FeaturesPage'));
+const UnitTestingPage = lazy(() => import('./pages/topics/java/UnitTestingPage'));
 
 // Spring imports
-import SpringBootPage from './pages/topics/spring/BootPage';
-import SpringCorePage from './pages/topics/spring/CorePage';
-import SpringDataPage from './pages/topics/spring/DataPage';
-import SecurityPage from './pages/topics/spring/SecurityPage';
-import SpringRestPage from './pages/topics/spring/RestPage';
-import SpringGraphQLPage from './pages/topics/spring/GraphQLPage';
-import SpringDefinitionsPage from './pages/topics/spring/DefinitionsPage';
+const SpringBootPage = lazy(() => import('./pages/topics/spring/BootPage'));
+const SpringCorePage = lazy(() => import('./pages/topics/spring/CorePage'));
+const SpringDataPage = lazy(() => import('./pages/topics/spring/DataPage'));
+const SecurityPage = lazy(() => import('./pages/topics/spring/SecurityPage'));
+const SpringRestPage = lazy(() => import('./pages/topics/spring/RestPage'));
+const SpringGraphQLPage = lazy(() => import('./pages/topics/spring/GraphQLPage'));
+const SpringDefinitionsPage = lazy(() => import('./pages/topics/spring/DefinitionsPage'));
 
 // Database imports
-import SQLPage from './pages/topics/databases/SQLPage';
-import HibernatePage from './pages/topics/databases/HibernatePage';
-import TransactionsPage from './pages/topics/databases/TransactionsPage';
-import RedisPage from './pages/topics/databases/RedisPage';
-import NoSQLPage from './pages/topics/databases/NoSQLPage';
+const SQLPage = lazy(() => import('./pages/topics/databases/SQLPage'));
+const HibernatePage = lazy(() => import('./pages/topics/databases/HibernatePage'));
+const TransactionsPage = lazy(() => import('./pages/topics/databases/TransactionsPage'));
+const RedisPage = lazy(() => import('./pages/topics/databases/RedisPage'));
+const NoSQLPage = lazy(() => import('./pages/topics/databases/NoSQLPage'));
 
 // Architecture imports
-import DesignPatternsPage from './pages/topics/architecture/DesignPatternsPage';
-import SolidPage from './pages/topics/architecture/SolidPage';
-import PrinciplesPage from './pages/topics/architecture/PrinciplesPage';
-import MicroservicesPage from './pages/topics/architecture/MicroservicesPage';
-import KafkaPage from './pages/topics/architecture/KafkaPage';
-import SystemDesignPage from './pages/topics/architecture/SystemDesignPage';
-import PerformancePage from './pages/topics/architecture/PerformancePage';
+const DesignPatternsPage = lazy(() => import('./pages/topics/architecture/DesignPatternsPage'));
+const SolidPage = lazy(() => import('./pages/topics/architecture/SolidPage'));
+const PrinciplesPage = lazy(() => import('./pages/topics/architecture/PrinciplesPage'));
+const MicroservicesPage = lazy(() => import('./pages/topics/architecture/MicroservicesPage'));
+const KafkaPage = lazy(() => import('./pages/topics/architecture/KafkaPage'));
+const SystemDesignPage = lazy(() => import('./pages/topics/architecture/SystemDesignPage'));
+const PerformancePage = lazy(() => import('./pages/topics/architecture/PerformancePage'));
 
 // DevOps imports
-import GitPage from './pages/topics/devops/GitPage';
-import CicdPage from './pages/topics/devops/CicdPage';
-import ContainersPage from './pages/topics/devops/ContainersPage';
-import PracticesPage from './pages/topics/devops/PracticesPage';
-import CloudPage from './pages/topics/devops/CloudPage';
+const GitPage = lazy(() => import('./pages/topics/devops/GitPage'));
+const CicdPage = lazy(() => import('./pages/topics/devops/CicdPage'));
+const ContainersPage = lazy(() => import('./pages/topics/devops/ContainersPage'));
+const PracticesPage = lazy(() => import('./pages/topics/devops/PracticesPage'));
+const CloudPage = lazy(() => import('./pages/topics/devops/CloudPage'));
 
 // Agile imports
-import ScrumPage from './pages/topics/agile/ScrumPage';
+const ScrumPage = lazy(() => import('./pages/topics/agile/ScrumPage'));
 
-import VocabularyPage from './pages/topics/german/VocabularyPage';
+const VocabularyPage = lazy(() => import('./pages/topics/german/VocabularyPage'));
 
-import KonjugationPage from "./pages/topics/german/KonjugationPage";
+const KonjugationPage = lazy(() => import('./pages/topics/german/KonjugationPage'));
 
-import CodeReviewsPage from "./pages/topics/bestPractices/CodeReviewsPage";
-import QuestionBankPage from "./pages/topics/practice/QuestionBankPage";
-import QaByLevelPage from "./pages/topics/practice/QaByLevelPage";
-import DsaPatternsPage from "./pages/topics/practice/DsaPatternsPage";
-import ScenariosPage from "./pages/topics/practice/ScenariosPage";
-import BehavioralPage from "./pages/topics/practice/BehavioralPage";
+const CodeReviewsPage = lazy(() => import('./pages/topics/bestPractices/CodeReviewsPage'));
+const QuestionBankPage = lazy(() => import('./pages/topics/practice/QuestionBankPage'));
+const QaByLevelPage = lazy(() => import('./pages/topics/practice/QaByLevelPage'));
+const DsaPatternsPage = lazy(() => import('./pages/topics/practice/DsaPatternsPage'));
+const ScenariosPage = lazy(() => import('./pages/topics/practice/ScenariosPage'));
+const BehavioralPage = lazy(() => import('./pages/topics/practice/BehavioralPage'));
 
-import LearningPortal from './pages/LearningPortal';
+const LearningPortal = lazy(() => import('./pages/LearningPortal'));
 
-import GermanCasesPage from "./pages/topics/german/GermanCasesPage";
-import ArticlesPage from "./pages/topics/german/ArticlesPage";
-import AdjectivesPage from "./pages/topics/german/AdjectivesPage";
-import CasesPage from "./pages/topics/german/CasesPage";
-import JavaFundamentalsPage from "./pages/topics/java/JavaFundamentalsPage";
-import FunctionalProgrammingPage from "./pages/topics/java/FunctionalProgrammingPage";
-import JvmInternalsPage from "./pages/topics/java/JvmInternalsPage";
-import ModernJavaPage from "./pages/topics/java/ModernJavaPage";
+const GermanCasesPage = lazy(() => import('./pages/topics/german/GermanCasesPage'));
+const ArticlesPage = lazy(() => import('./pages/topics/german/ArticlesPage'));
+const AdjectivesPage = lazy(() => import('./pages/topics/german/AdjectivesPage'));
+const CasesPage = lazy(() => import('./pages/topics/german/CasesPage'));
+const JavaFundamentalsPage = lazy(() => import('./pages/topics/java/JavaFundamentalsPage'));
+const FunctionalProgrammingPage = lazy(() => import('./pages/topics/java/FunctionalProgrammingPage'));
+const JvmInternalsPage = lazy(() => import('./pages/topics/java/JvmInternalsPage'));
+const ModernJavaPage = lazy(() => import('./pages/topics/java/ModernJavaPage'));
+
+// Shown while a route's chunk (and its content JSON) downloads.
+const PageLoading = () => (
+    <div className="flex items-center justify-center py-24" role="status" aria-label="Loading">
+        <div className="w-6 h-6 rounded-full border-2 border-purple-500/30 border-t-purple-400 animate-spin" />
+    </div>
+);
 
 const App = () => {
     return (
         <Router>
             <Layout>
+                <Suspense fallback={<PageLoading />}>
                 <Routes>
                         <Route path="/" element={<HomePage/>}/>
 
@@ -151,6 +159,7 @@ const App = () => {
                             </div>
                         }/>
                     </Routes>
+                </Suspense>
             </Layout>
         </Router>
     );
