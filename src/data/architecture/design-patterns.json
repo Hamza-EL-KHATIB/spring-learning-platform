@@ -8,73 +8,176 @@
       "patterns": [
         {
           "name": "Singleton",
-          "description": "Ensures a class has only one instance and provides global point of access to it",
+          "description": "Ensures a class has only one instance and provides a global point of access to it.",
+          "analogy": "Like having one president for a country at any given time.",
           "diagram": "Singleton.png",
           "use_cases": [
             "Database connections",
             "Configuration settings",
-            "Logger instances"
+            "Logger instances",
+            "For shared resources (database connections, thread pools)",
+            "Logging services",
+            "Spring application context"
           ],
-          "implementation": {
-            "code": "public class Singleton {\n    private static volatile Singleton instance;\n    private Singleton() {}\n\n    public static Singleton getInstance() {\n        if (instance == null) {\n            synchronized(Singleton.class) {\n                if (instance == null) {\n                    instance = new Singleton();\n                }\n            }\n        }\n        return instance;\n    }\n}"
-          },
+          "when_to_use": [
+            "When you need exactly one instance of a class",
+            "When the instance should be accessible globally",
+            "For shared resources with controlled access"
+          ],
+          "implementations": [
+            {
+              "title": "Traditional Java way (Thread-safe with double-checked locking)",
+              "code": "public class DatabaseConnection {\n    private static volatile DatabaseConnection instance;\n    \n    private DatabaseConnection() {\n        // Private constructor prevents direct instantiation\n    }\n    \n    public static DatabaseConnection getInstance() {\n        if (instance == null) {\n            synchronized (DatabaseConnection.class) {\n                if (instance == null) {\n                    instance = new DatabaseConnection();\n                }\n            }\n        }\n        return instance;\n    }\n    \n    public void connect() {\n        // Connection logic\n    }\n}"
+            },
+            {
+              "title": "In Spring, it's much simpler",
+              "code": "@Component  // or @Service, @Repository, etc.\npublic class DatabaseService {\n    // Spring automatically makes this a singleton!\n}"
+            }
+          ],
           "considerations": [
             "Thread safety",
             "Lazy initialization",
-            "Double-checked locking"
-          ]
+            "Double-checked locking",
+            "Singleton scope management in Spring context"
+          ],
+          "spring_usage": "In Spring, every bean is a singleton by default!",
+          "how_it_works": "Spring manages the entire lifecycle, ensuring only one instance exists without you writing a single line of singleton code."
         },
         {
           "name": "Factory Method",
-          "description": "Defines an interface for creating objects but lets subclasses decide which class to instantiate",
+          "description": "Defines an interface for creating an object, but lets subclasses decide which class to instantiate.",
+          "analogy": "Like a restaurant where you order a meal (the interface), but the chef decides how to prepare it (the implementation).",
           "diagram": "Factory Method.png",
           "use_cases": [
             "Framework document creation",
             "Cross-platform UI elements",
-            "Plugin architectures"
+            "Plugin architectures",
+            "When a class can't anticipate which objects it must create",
+            "When you want to delegate responsibility to subclasses",
+            "Spring bean creation"
           ],
-          "implementation": {
-            "code": "public interface Product {}\n\npublic interface Creator {\n    Product createProduct();\n}\n\npublic class ConcreteCreator implements Creator {\n    @Override\n    public Product createProduct() {\n        return new ConcreteProduct();\n    }\n}\n\npublic class ConcreteProduct implements Product {\n    // Implementation details\n}"
-          }
+          "when_to_use": [
+            "When a class can't anticipate which objects it must create",
+            "When you want to delegate responsibility to subclasses",
+            "When you need to work with objects through a common interface"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Factory Method Pattern",
+              "code": "public interface Product {}\n\npublic interface Creator {\n    Product createProduct();\n}\n\npublic class ConcreteCreator implements Creator {\n    @Override\n    public Product createProduct() {\n        return new ConcreteProduct();\n    }\n}\n\npublic class ConcreteProduct implements Product {\n    // Implementation details\n}"
+            },
+            {
+              "title": "Spring Example",
+              "code": "// Interface\npublic interface PaymentProcessor {\n    void processPayment(double amount);\n}\n\n// Concrete implementations\n@Component\npublic class CreditCardProcessor implements PaymentProcessor {\n    @Override\n    public void processPayment(double amount) {\n        System.out.println(\"Processing credit card payment of $\" + amount);\n    }\n}\n\n@Component\npublic class PayPalProcessor implements PaymentProcessor {\n    @Override\n    public void processPayment(double amount) {\n        System.out.println(\"Processing PayPal payment of $\" + amount);\n    }\n}\n\n// Factory (simplified)\n@Service\npublic class PaymentFactory {\n    @Autowired\n    private List<PaymentProcessor> processors;\n    \n    private Map<String, PaymentProcessor> processorMap = new HashMap<>();\n    \n    @PostConstruct\n    public void init() {\n        for (PaymentProcessor processor : processors) {\n            String name = processor.getClass().getSimpleName();\n            processorMap.put(name, processor);\n        }\n    }\n    \n    public PaymentProcessor getProcessor(String type) {\n        return processorMap.get(type);\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring's BeanFactory is a sophisticated implementation of this pattern.",
+          "how_it_works": "Spring creates objects with the right dependencies automatically, handling all the complexity of instantiation."
         },
         {
           "name": "Abstract Factory",
-          "description": "Provides an interface for creating families of related or dependent objects",
+          "description": "Provides an interface for creating families of related or dependent objects without specifying their concrete classes.",
+          "analogy": "Like a furniture factory that can produce chairs, tables, and sofas in various styles (modern, Victorian, etc.).",
           "diagram": "Abstract Factory.png",
           "use_cases": [
             "Cross-platform UI toolkits",
             "Database access layer",
-            "Multiple rendering engines"
+            "Multiple rendering engines",
+            "When system must be independent of how products are created",
+            "When families of related products are designed to be used together",
+            "Environment-specific bean configurations"
           ],
-          "implementation": {
-            "code": "public interface AbstractFactory {\n    ProductA createProductA();\n    ProductB createProductB();\n}\n\npublic class ConcreteFactory1 implements AbstractFactory {\n    @Override\n    public ProductA createProductA() {\n        return new ProductA1();\n    }\n\n    @Override\n    public ProductB createProductB() {\n        return new ProductB1();\n    }\n}\n\n// Similarly, define ProductA, ProductB, ProductA1, ProductB1 classes."
-          }
+          "when_to_use": [
+            "When the system needs to be independent of how its products are created",
+            "When you need to ensure that libraries work with families of related objects",
+            "When you want to provide a class library of products and reveal just their interfaces"
+          ],
+          "implementations": [
+            {
+              "title": "Abstract Factory Implementation",
+              "code": "public interface AbstractFactory {\n    ProductA createProductA();\n    ProductB createProductB();\n}\n\npublic class ConcreteFactory1 implements AbstractFactory {\n    @Override\n    public ProductA createProductA() {\n        return new ProductA1();\n    }\n\n    @Override\n    public ProductB createProductB() {\n        return new ProductB1();\n    }\n}\n\n// Similarly, define ProductA, ProductB, ProductA1, ProductB1 classes."
+            },
+            {
+              "title": "Spring Example",
+              "code": "// Data source factories\npublic interface DataSourceFactory {\n    Connection createConnection();\n    Statement createStatement();\n}\n\n@Component(\"mysql\")\npublic class MySqlDataSourceFactory implements DataSourceFactory {\n    @Override\n    public Connection createConnection() {\n        // MySQL-specific connection\n        return new MySqlConnection();\n    }\n    \n    @Override\n    public Statement createStatement() {\n        // MySQL-specific statement\n        return new MySqlStatement();\n    }\n}\n\n@Component(\"postgres\")\npublic class PostgresDataSourceFactory implements DataSourceFactory {\n    @Override\n    public Connection createConnection() {\n        // Postgres-specific connection\n        return new PostgresConnection();\n    }\n    \n    @Override\n    public Statement createStatement() {\n        // Postgres-specific statement\n        return new PostgresStatement();\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring's ApplicationContext implementing different context types"
         },
         {
           "name": "Builder",
-          "description": "Separates construction of complex object from its representation",
+          "description": "Separates the construction of a complex object from its representation.",
+          "analogy": "Like a sandwich shop where you specify each ingredient step by step until your custom sandwich is complete.",
           "diagram": "Builder.png",
           "use_cases": [
             "Complex object construction",
             "Object with many optional parameters",
-            "Immutable objects"
+            "Immutable objects",
+            "When you need to create complex objects with many optional parameters",
+            "To avoid telescoping constructors",
+            "Spring's RestTemplateBuilder"
           ],
-          "implementation": {
-            "code": "public class Product {\n    private final String partA;\n    private final String partB;\n    private final String partC;\n\n    private Product(Builder builder) {\n        this.partA = builder.partA;\n        this.partB = builder.partB;\n        this.partC = builder.partC;\n    }\n\n    public static class Builder {\n        private String partA;\n        private String partB;\n        private String partC;\n\n        public Builder setPartA(String partA) {\n            this.partA = partA;\n            return this;\n        }\n\n        public Builder setPartB(String partB) {\n            this.partB = partB;\n            return this;\n        }\n\n        public Builder setPartC(String partC) {\n            this.partC = partC;\n            return this;\n        }\n\n        public Product build() {\n            return new Product(this);\n        }\n    }\n}"
-          }
+          "when_to_use": [
+            "When you need to create complex objects with many optional parameters",
+            "To avoid telescoping constructors (constructors with many parameters)",
+            "To create immutable objects",
+            "When construction involves multiple steps"
+          ],
+          "implementations": [
+            {
+              "title": "Builder Implementation",
+              "code": "public class Product {\n    private final String partA;\n    private final String partB;\n    private final String partC;\n\n    private Product(Builder builder) {\n        this.partA = builder.partA;\n        this.partB = builder.partB;\n        this.partC = builder.partC;\n    }\n\n    public static class Builder {\n        private String partA;\n        private String partB;\n        private String partC;\n\n        public Builder setPartA(String partA) {\n            this.partA = partA;\n            return this;\n        }\n\n        public Builder setPartB(String partB) {\n            this.partB = partB;\n            return this;\n        }\n\n        public Builder setPartC(String partC) {\n            this.partC = partC;\n            return this;\n        }\n\n        public Product build() {\n            return new Product(this);\n        }\n    }\n}"
+            },
+            {
+              "title": "User Object with Builder",
+              "code": "public class User {\n    // Final fields for immutability\n    private final String firstName;  // Required\n    private final String lastName;   // Required\n    private final int age;           // Optional\n    private final String phone;      // Optional\n    private final String address;    // Optional\n    \n    private User(UserBuilder builder) {\n        this.firstName = builder.firstName;\n        this.lastName = builder.lastName;\n        this.age = builder.age;\n        this.phone = builder.phone;\n        this.address = builder.address;\n    }\n    \n    // Getters (no setters for immutability)\n    \n    public static class UserBuilder {\n        // Required parameters\n        private final String firstName;\n        private final String lastName;\n        \n        // Optional parameters - initialized with default values\n        private int age = 0;\n        private String phone = \"\";\n        private String address = \"\";\n        \n        public UserBuilder(String firstName, String lastName) {\n            this.firstName = firstName;\n            this.lastName = lastName;\n        }\n        \n        public UserBuilder age(int age) {\n            this.age = age;\n            return this;\n        }\n        \n        public UserBuilder phone(String phone) {\n            this.phone = phone;\n            return this;\n        }\n        \n        public UserBuilder address(String address) {\n            this.address = address;\n            return this;\n        }\n        \n        public User build() {\n            return new User(this);\n        }\n    }\n}\n\n// Usage\nUser user = new User.UserBuilder(\"John\", \"Doe\")\n    .age(30)\n    .phone(\"1234567890\")\n    .address(\"123 Street, City\")\n    .build();"
+            }
+          ],
+          "considerations": [
+            "Clear building steps",
+            "Final validation",
+            "Immutability",
+            "Director pattern integration"
+          ],
+          "java_usage": "StringBuilder, Lombok's @Builder",
+          "how_it_works": "Construct complex objects step by step with fluent interfaces, making complex creation feel elegant."
         },
         {
           "name": "Prototype",
-          "description": "Creates new objects by cloning an existing instance",
+          "description": "Creates new objects by cloning an existing instance.",
+          "analogy": "Like a blueprint that can be duplicated to create identical objects quickly.",
           "diagram": "Prototype.png",
           "use_cases": [
             "Object creation is expensive",
             "Dynamic object configuration",
-            "Avoiding subclass explosion"
+            "Avoiding subclass explosion",
+            "When system should be independent of how products are created",
+            "When instances of a class can have one of only a few different combinations of state",
+            "Non-singleton Spring beans"
           ],
-          "implementation": {
-            "code": "public class Prototype implements Cloneable {\n    private String field;\n\n    public Prototype(String field) {\n        this.field = field;\n    }\n\n    @Override\n    protected Prototype clone() throws CloneNotSupportedException {\n        return (Prototype) super.clone();\n    }\n}"
-          }
+          "when_to_use": [
+            "When object creation is expensive",
+            "When instances of a class can have limited combinations of state",
+            "When you need to avoid building a class hierarchy of factories",
+            "When classes to instantiate are specified at run-time"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Prototype Pattern",
+              "code": "public class Prototype implements Cloneable {\n    private String field;\n\n    public Prototype(String field) {\n        this.field = field;\n    }\n\n    @Override\n    protected Prototype clone() throws CloneNotSupportedException {\n        return (Prototype) super.clone();\n    }\n}"
+            },
+            {
+              "title": "Spring Prototype Scope",
+              "code": "// In Spring, you can specify a bean as prototype instead of singleton\n@Component\n@Scope(\"prototype\") \npublic class PrototypeBean {\n    private String property;\n    \n    public void setProperty(String property) {\n        this.property = property;\n    }\n    \n    public String getProperty() {\n        return property;\n    }\n}\n\n// Usage\n@Service\npublic class SomeService {\n    @Autowired\n    private ApplicationContext context;\n    \n    public void doSomething() {\n        // Each time you get the bean, you get a new instance\n        PrototypeBean bean1 = context.getBean(PrototypeBean.class);\n        bean1.setProperty(\"Value 1\");\n        \n        PrototypeBean bean2 = context.getBean(PrototypeBean.class);\n        bean2.setProperty(\"Value 2\");\n        \n        // bean1 and bean2 are different instances\n        System.out.println(bean1 == bean2); // false\n    }\n}"
+            }
+          ],
+          "considerations": [
+            "Deep vs shallow copying",
+            "Clone method override",
+            "Resource management",
+            "Spring bean scope configuration"
+          ],
+          "spring_usage": "Spring beans with prototype scope"
         }
       ]
     },
@@ -84,94 +187,227 @@
       "patterns": [
         {
           "name": "Adapter",
-          "description": "Converts interface of a class into another interface clients expect",
+          "description": "Allows incompatible interfaces to work together by wrapping an instance of one class with a new adapter class.",
+          "analogy": "Like a power adapter that allows a US plug to work in a European socket.",
           "diagram": "Adapter.png",
           "use_cases": [
             "Integration with legacy code",
             "Third-party library integration",
-            "Multiple interface compatibility"
+            "Multiple interface compatibility",
+            "When you need to integrate with a legacy system or third-party library",
+            "When you want to reuse existing classes that don't have the interface you need"
           ],
-          "implementation": {
-            "code": "public interface Target {\n    void request();\n}\n\npublic class Adaptee {\n    public void specificRequest() {\n        System.out.println(\"Called specificRequest()\");\n    }\n}\n\npublic class Adapter implements Target {\n    private Adaptee adaptee;\n\n    public Adapter(Adaptee adaptee) {\n        this.adaptee = adaptee;\n    }\n\n    @Override\n    public void request() {\n        adaptee.specificRequest();\n    }\n}"
-          }
+          "when_to_use": [
+            "When you need to use an existing class with an incompatible interface",
+            "When you want to create a reusable class that cooperates with classes that don't have compatible interfaces",
+            "When you need to use several existing subclasses but it's impractical to adapt their interface"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Adapter Pattern",
+              "code": "public interface Target {\n    void request();\n}\n\npublic class Adaptee {\n    public void specificRequest() {\n        System.out.println(\"Called specificRequest()\");\n    }\n}\n\npublic class Adapter implements Target {\n    private Adaptee adaptee;\n\n    public Adapter(Adaptee adaptee) {\n        this.adaptee = adaptee;\n    }\n\n    @Override\n    public void request() {\n        adaptee.specificRequest();\n    }\n}"
+            },
+            {
+              "title": "Legacy User System Adapter in Spring",
+              "code": "// Existing interface that our code expects\npublic interface UserService {\n    User findById(Long id);\n    List<User> findAll();\n}\n\n// Third-party or legacy code with a different interface\npublic class LegacyUserSystem {\n    public UserDTO getUserById(Long userId) {\n        // Implementation\n        return new UserDTO();\n    }\n    \n    public List<UserDTO> getAllUsers() {\n        // Implementation\n        return new ArrayList<>();\n    }\n}\n\n// Adapter makes LegacyUserSystem work with our UserService interface\n@Service\npublic class LegacyUserAdapter implements UserService {\n    private final LegacyUserSystem legacySystem;\n    \n    public LegacyUserAdapter(LegacyUserSystem legacySystem) {\n        this.legacySystem = legacySystem;\n    }\n    \n    @Override\n    public User findById(Long id) {\n        // Convert from the legacy format to our format\n        UserDTO legacyUser = legacySystem.getUserById(id);\n        return convertToUser(legacyUser);\n    }\n    \n    @Override\n    public List<User> findAll() {\n        List<UserDTO> legacyUsers = legacySystem.getAllUsers();\n        return legacyUsers.stream()\n            .map(this::convertToUser)\n            .collect(Collectors.toList());\n    }\n    \n    private User convertToUser(UserDTO dto) {\n        // Conversion logic\n        User user = new User();\n        // Map fields from dto to user\n        return user;\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring's HandlerAdapter, view adapters"
         },
         {
           "name": "Bridge",
-          "description": "Separates abstraction from implementation so they can vary independently",
+          "description": "Separates abstraction from implementation so they can vary independently.",
+          "analogy": "Like remote controls (abstraction) working with different devices (implementation).",
           "diagram": "Bridge.png",
           "use_cases": [
             "Cross-platform applications",
             "Multiple variant support",
-            "Interface and implementation separation"
+            "Interface and implementation separation",
+            "When you want to avoid permanent binding between abstraction and implementation",
+            "When both abstraction and implementation should be extensible through subclasses"
           ],
-          "implementation": {
-            "code": "public interface Implementor {\n    void operationImpl();\n}\n\npublic class ConcreteImplementorA implements Implementor {\n    @Override\n    public void operationImpl() {\n        System.out.println(\"ConcreteImplementorA operationImpl\");\n    }\n}\n\npublic abstract class Abstraction {\n    protected Implementor implementor;\n\n    protected Abstraction(Implementor implementor) {\n        this.implementor = implementor;\n    }\n\n    public abstract void operation();\n}\n\npublic class RefinedAbstraction extends Abstraction {\n    public RefinedAbstraction(Implementor implementor) {\n        super(implementor);\n    }\n\n    @Override\n    public void operation() {\n        implementor.operationImpl();\n    }\n}"
-          }
+          "when_to_use": [
+            "When you want to avoid a permanent binding between an abstraction and its implementation",
+            "When both the abstractions and their implementations should be extensible independently",
+            "When changes in the implementation should not impact the client code",
+            "When you have a proliferation of classes resulting from a coupled interface and numerous implementations"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Bridge Pattern",
+              "code": "public interface Implementor {\n    void operationImpl();\n}\n\npublic class ConcreteImplementorA implements Implementor {\n    @Override\n    public void operationImpl() {\n        System.out.println(\"ConcreteImplementorA operationImpl\");\n    }\n}\n\npublic abstract class Abstraction {\n    protected Implementor implementor;\n\n    protected Abstraction(Implementor implementor) {\n        this.implementor = implementor;\n    }\n\n    public abstract void operation();\n}\n\npublic class RefinedAbstraction extends Abstraction {\n    public RefinedAbstraction(Implementor implementor) {\n        super(implementor);\n    }\n\n    @Override\n    public void operation() {\n        implementor.operationImpl();\n    }\n}"
+            },
+            {
+              "title": "Spring Example with Messaging",
+              "code": "// Bridge interface for message senders\npublic interface MessageSender {\n    void sendMessage(String message);\n}\n\n// Concrete implementations\n@Component\npublic class EmailSender implements MessageSender {\n    @Override\n    public void sendMessage(String message) {\n        System.out.println(\"Sending email: \" + message);\n    }\n}\n\n@Component\npublic class SMSSender implements MessageSender {\n    @Override\n    public void sendMessage(String message) {\n        System.out.println(\"Sending SMS: \" + message);\n    }\n}\n\n// Abstract message\npublic abstract class Message {\n    protected MessageSender messageSender;\n    \n    public Message(MessageSender messageSender) {\n        this.messageSender = messageSender;\n    }\n    \n    public abstract void send();\n}\n\n// Concrete message types\npublic class UserNotification extends Message {\n    private String userMessage;\n    \n    public UserNotification(MessageSender messageSender, String userMessage) {\n        super(messageSender);\n        this.userMessage = userMessage;\n    }\n    \n    @Override\n    public void send() {\n        messageSender.sendMessage(userMessage);\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring's transaction abstraction, resource abstraction"
         },
         {
           "name": "Composite",
-          "description": "Composes objects into tree structures to represent part-whole hierarchies",
+          "description": "Composes objects into tree structures to represent part-whole hierarchies.",
+          "analogy": "Like an organizational chart where both individual employees and departments are treated uniformly.",
           "diagram": "Composite.png",
           "use_cases": [
             "GUI components",
             "File system structures",
-            "Organization hierarchies"
+            "Organization hierarchies",
+            "When clients need to ignore difference between compositions of objects and individual objects",
+            "When object structure can have nested compositions",
+            "Bean hierarchies"
           ],
-          "implementation": {
-            "code": "public abstract class Component {\n    public void add(Component component) { throw new UnsupportedOperationException(); }\n    public void remove(Component component) { throw new UnsupportedOperationException(); }\n    public Component getChild(int i) { throw new UnsupportedOperationException(); }\n    public abstract void operation();\n}\n\npublic class Leaf extends Component {\n    @Override\n    public void operation() {\n        System.out.println(\"Leaf operation\");\n    }\n}\n\npublic class Composite extends Component {\n    private List<Component> children = new ArrayList<>();\n\n    @Override\n    public void add(Component component) {\n        children.add(component);\n    }\n\n    @Override\n    public void remove(Component component) {\n        children.remove(component);\n    }\n\n    @Override\n    public Component getChild(int i) {\n        return children.get(i);\n    }\n\n    @Override\n    public void operation() {\n        for (Component component : children) {\n            component.operation();\n        }\n    }\n}"
-          }
+          "when_to_use": [
+            "When you want to represent part-whole hierarchies of objects",
+            "When you want clients to be able to ignore the difference between compositions of objects and individual objects",
+            "When the structure can have nested compositions",
+            "When you want the client code to work with all objects in the hierarchy uniformly"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Composite Pattern",
+              "code": "public abstract class Component {\n    public void add(Component component) { throw new UnsupportedOperationException(); }\n    public void remove(Component component) { throw new UnsupportedOperationException(); }\n    public Component getChild(int i) { throw new UnsupportedOperationException(); }\n    public abstract void operation();\n}\n\npublic class Leaf extends Component {\n    @Override\n    public void operation() {\n        System.out.println(\"Leaf operation\");\n    }\n}\n\npublic class Composite extends Component {\n    private List<Component> children = new ArrayList<>();\n\n    @Override\n    public void add(Component component) {\n        children.add(component);\n    }\n\n    @Override\n    public void remove(Component component) {\n        children.remove(component);\n    }\n\n    @Override\n    public Component getChild(int i) {\n        return children.get(i);\n    }\n\n    @Override\n    public void operation() {\n        for (Component component : children) {\n            component.operation();\n        }\n    }\n}"
+            },
+            {
+              "title": "Spring Security Example",
+              "code": "// In Spring Security, authorities and roles form a composite pattern\npublic interface GrantedAuthority {\n    String getAuthority();\n}\n\n// SimpleGrantedAuthority is a leaf\npublic class SimpleGrantedAuthority implements GrantedAuthority {\n    private final String authority;\n    \n    public SimpleGrantedAuthority(String authority) {\n        this.authority = authority;\n    }\n    \n    @Override\n    public String getAuthority() {\n        return authority;\n    }\n}\n\n// Roles are composites that can contain multiple authorities\npublic class Role implements GrantedAuthority {\n    private final String role;\n    private final Set<GrantedAuthority> authorities = new HashSet<>();\n    \n    public Role(String role) {\n        this.role = role;\n    }\n    \n    public void addAuthority(GrantedAuthority authority) {\n        authorities.add(authority);\n    }\n    \n    @Override\n    public String getAuthority() {\n        return role;\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring's component hierarchy, validation composites"
         },
         {
           "name": "Decorator",
-          "description": "Attaches additional responsibilities to objects dynamically",
+          "description": "Attaches additional responsibilities to objects dynamically without modifying their structure.",
+          "analogy": "Like adding toppings to an ice cream cone - the core is still ice cream, but you've enhanced it.",
           "diagram": "Decorator.png",
           "use_cases": [
             "I/O streams",
             "UI component enhancement",
-            "Dynamic feature addition"
+            "Dynamic feature addition",
+            "When you need to add functionality to objects without changing their underlying code",
+            "When extension by subclassing is impractical",
+            "Cross-cutting concerns"
           ],
-          "implementation": {
-            "code": "public interface Component {\n    void operation();\n}\n\npublic class ConcreteComponent implements Component {\n    @Override\n    public void operation() {\n        System.out.println(\"ConcreteComponent operation\");\n    }\n}\n\npublic abstract class Decorator implements Component {\n    protected Component component;\n\n    public Decorator(Component component) {\n        this.component = component;\n    }\n\n    @Override\n    public void operation() {\n        component.operation();\n    }\n}\n\npublic class ConcreteDecorator extends Decorator {\n    public ConcreteDecorator(Component component) {\n        super(component);\n    }\n\n    @Override\n    public void operation() {\n        super.operation();\n        addedBehavior();\n    }\n\n    private void addedBehavior() {\n        System.out.println(\"Added Behavior\");\n    }\n}"
-          }
+          "when_to_use": [
+            "When you need to add functionality to objects without changing their underlying code",
+            "When extension by subclassing is impractical or leads to excessive subclasses",
+            "When you need to dynamically add or remove object behaviors",
+            "When you want to add responsibilities to individual objects without affecting others"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Decorator Pattern",
+              "code": "public interface Component {\n    void operation();\n}\n\npublic class ConcreteComponent implements Component {\n    @Override\n    public void operation() {\n        System.out.println(\"ConcreteComponent operation\");\n    }\n}\n\npublic abstract class Decorator implements Component {\n    protected Component component;\n\n    public Decorator(Component component) {\n        this.component = component;\n    }\n\n    @Override\n    public void operation() {\n        component.operation();\n    }\n}\n\npublic class ConcreteDecorator extends Decorator {\n    public ConcreteDecorator(Component component) {\n        super(component);\n    }\n\n    @Override\n    public void operation() {\n        super.operation();\n        addedBehavior();\n    }\n\n    private void addedBehavior() {\n        System.out.println(\"Added Behavior\");\n    }\n}"
+            },
+            {
+              "title": "Data Source Example",
+              "code": "// Component interface\npublic interface DataSource {\n    void writeData(String data);\n    String readData();\n}\n\n// Concrete component\npublic class FileDataSource implements DataSource {\n    private String filename;\n    \n    public FileDataSource(String filename) {\n        this.filename = filename;\n    }\n    \n    @Override\n    public void writeData(String data) {\n        // Write to file\n    }\n    \n    @Override\n    public String readData() {\n        // Read from file\n        return \"data from file\";\n    }\n}\n\n// Base decorator\npublic abstract class DataSourceDecorator implements DataSource {\n    private DataSource wrappee;\n    \n    public DataSourceDecorator(DataSource source) {\n        this.wrappee = source;\n    }\n    \n    @Override\n    public void writeData(String data) {\n        wrappee.writeData(data);\n    }\n    \n    @Override\n    public String readData() {\n        return wrappee.readData();\n    }\n}\n\n// Concrete decorators\npublic class EncryptionDecorator extends DataSourceDecorator {\n    public EncryptionDecorator(DataSource source) {\n        super(source);\n    }\n    \n    @Override\n    public void writeData(String data) {\n        // Encrypt the data\n        String encrypted = encrypt(data);\n        super.writeData(encrypted);\n    }\n    \n    @Override\n    public String readData() {\n        // Decrypt the data\n        String data = super.readData();\n        return decrypt(data);\n    }\n    \n    private String encrypt(String data) {\n        // Encryption logic\n        return \"ENCRYPTED: \" + data;\n    }\n    \n    private String decrypt(String data) {\n        // Decryption logic\n        return data.replace(\"ENCRYPTED: \", \"\");\n    }\n}\n\npublic class CompressionDecorator extends DataSourceDecorator {\n    public CompressionDecorator(DataSource source) {\n        super(source);\n    }\n    \n    @Override\n    public void writeData(String data) {\n        // Compress the data\n        String compressed = compress(data);\n        super.writeData(compressed);\n    }\n    \n    @Override\n    public String readData() {\n        // Decompress the data\n        String data = super.readData();\n        return decompress(data);\n    }\n    \n    private String compress(String data) {\n        // Compression logic\n        return \"COMPRESSED: \" + data;\n    }\n    \n    private String decompress(String data) {\n        // Decompression logic\n        return data.replace(\"COMPRESSED: \", \"\");\n    }\n}\n\n// Usage\nDataSource source = new EncryptionDecorator(\n                      new CompressionDecorator(\n                        new FileDataSource(\"file.txt\")));\nsource.writeData(\"Hello, World!\");"
+            }
+          ],
+          "java_usage": "Java I/O streams",
+          "how_it_works": "Stack capabilities by composing objects rather than inheritance, creating flexible, modular code."
         },
         {
           "name": "Facade",
-          "description": "Provides unified interface to a set of interfaces in a subsystem",
+          "description": "Provides a unified interface to a set of interfaces in a subsystem.",
+          "analogy": "Like a customer service department that handles all customer inquiries without exposing internal departments.",
           "diagram": "Facade.png",
           "use_cases": [
             "Complex subsystem simplification",
             "Library wrapping",
-            "API unification"
+            "API unification",
+            "When you need to provide a simple interface to a complex subsystem",
+            "When there are many dependencies between clients and implementation classes",
+            "Database access abstraction"
           ],
-          "implementation": {
-            "code": "public class SubsystemA {\n    public void operationA() {\n        System.out.println(\"SubsystemA operation\");\n    }\n}\n\npublic class SubsystemB {\n    public void operationB() {\n        System.out.println(\"SubsystemB operation\");\n    }\n}\n\npublic class Facade {\n    private SubsystemA subsystemA = new SubsystemA();\n    private SubsystemB subsystemB = new SubsystemB();\n\n    public void operation() {\n        subsystemA.operationA();\n        subsystemB.operationB();\n    }\n}"
-          }
+          "when_to_use": [
+            "When you need to provide a simple interface to a complex subsystem",
+            "When you want to layer your subsystems",
+            "When you want to decouple your subsystem from clients and other subsystems",
+            "When you need to structure a subsystem into layers"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Facade Pattern",
+              "code": "public class SubsystemA {\n    public void operationA() {\n        System.out.println(\"SubsystemA operation\");\n    }\n}\n\npublic class SubsystemB {\n    public void operationB() {\n        System.out.println(\"SubsystemB operation\");\n    }\n}\n\npublic class Facade {\n    private SubsystemA subsystemA = new SubsystemA();\n    private SubsystemB subsystemB = new SubsystemB();\n\n    public void operation() {\n        subsystemA.operationA();\n        subsystemB.operationB();\n    }\n}"
+            },
+            {
+              "title": "Spring Boot Service Facade",
+              "code": "// Complex subsystem components\n@Repository\npublic class UserRepository {\n    public User findById(Long id) { /* DB access */ }\n    public void save(User user) { /* DB access */ }\n}\n\n@Repository\npublic class OrderRepository {\n    public List<Order> findByUser(User user) { /* DB access */ }\n    public void save(Order order) { /* DB access */ }\n}\n\n@Component\npublic class EmailNotifier {\n    public void sendOrderConfirmation(Order order) { /* Email logic */ }\n    public void sendShippingUpdate(Order order) { /* Email logic */ }\n}\n\n@Component\npublic class PaymentProcessor {\n    public boolean processPayment(Order order) { /* Payment logic */ }\n}\n\n// Facade that simplifies interactions with the subsystem\n@Service\npublic class OrderFacade {\n    private final UserRepository userRepository;\n    private final OrderRepository orderRepository;\n    private final EmailNotifier emailNotifier;\n    private final PaymentProcessor paymentProcessor;\n    \n    @Autowired\n    public OrderFacade(UserRepository userRepository, OrderRepository orderRepository,\n                       EmailNotifier emailNotifier, PaymentProcessor paymentProcessor) {\n        this.userRepository = userRepository;\n        this.orderRepository = orderRepository;\n        this.emailNotifier = emailNotifier;\n        this.paymentProcessor = paymentProcessor;\n    }\n    \n    // Facade method that simplifies the order placement process\n    public boolean placeOrder(Long userId, OrderRequest request) {\n        User user = userRepository.findById(userId);\n        \n        Order order = createOrderFromRequest(request, user);\n        boolean paymentSuccessful = paymentProcessor.processPayment(order);\n        \n        if (paymentSuccessful) {\n            orderRepository.save(order);\n            emailNotifier.sendOrderConfirmation(order);\n            return true;\n        }\n        \n        return false;\n    }\n    \n    private Order createOrderFromRequest(OrderRequest request, User user) {\n        // Map from request to Order entity\n        return new Order(user, request.getItems(), request.getShippingAddress());\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring's JdbcTemplate, RestTemplate, TransactionTemplate",
+          "how_it_works": "The template handles all the boilerplate while you focus on the unique parts, creating cleaner, more focused code."
         },
         {
           "name": "Flyweight",
-          "description": "Uses sharing to support large numbers of fine-grained objects efficiently",
+          "description": "Uses sharing to support large numbers of fine-grained objects efficiently.",
+          "analogy": "Like a character library in a word processor where each character is only stored once but displayed multiple times.",
           "diagram": "Flyweight.png",
           "use_cases": [
             "Text formatting",
             "Game object management",
-            "Character rendering"
+            "Character rendering",
+            "When an application uses a large number of objects that have some shared state",
+            "When the application needs many objects that would use too much memory",
+            "Database connection pooling"
           ],
-          "implementation": {
-            "code": "public interface Flyweight {\n    void operation(String extrinsicState);\n}\n\npublic class ConcreteFlyweight implements Flyweight {\n    private String intrinsicState;\n\n    public ConcreteFlyweight(String intrinsicState) {\n        this.intrinsicState = intrinsicState;\n    }\n\n    @Override\n    public void operation(String extrinsicState) {\n        System.out.println(\"Intrinsic State: \" + intrinsicState + \", Extrinsic State: \" + extrinsicState);\n    }\n}\n\npublic class FlyweightFactory {\n    private Map<String, Flyweight> flyweights = new HashMap<>();\n\n    public Flyweight getFlyweight(String key) {\n        if (!flyweights.containsKey(key)) {\n            flyweights.put(key, new ConcreteFlyweight(key));\n        }\n        return flyweights.get(key);\n    }\n}"
-          }
+          "when_to_use": [
+            "When an application uses a large number of objects",
+            "When storage costs are high because of the quantity of objects",
+            "When most object state can be made extrinsic",
+            "When many objects can be replaced by a few shared objects"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Flyweight Pattern",
+              "code": "public interface Flyweight {\n    void operation(String extrinsicState);\n}\n\npublic class ConcreteFlyweight implements Flyweight {\n    private String intrinsicState;\n\n    public ConcreteFlyweight(String intrinsicState) {\n        this.intrinsicState = intrinsicState;\n    }\n\n    @Override\n    public void operation(String extrinsicState) {\n        System.out.println(\"Intrinsic State: \" + intrinsicState + \", Extrinsic State: \" + extrinsicState);\n    }\n}\n\npublic class FlyweightFactory {\n    private Map<String, Flyweight> flyweights = new HashMap<>();\n\n    public Flyweight getFlyweight(String key) {\n        if (!flyweights.containsKey(key)) {\n            flyweights.put(key, new ConcreteFlyweight(key));\n        }\n        return flyweights.get(key);\n    }\n}"
+            },
+            {
+              "title": "Spring Cache Implementation",
+              "code": "// Using Spring's caching capabilities as a form of flyweight pattern\npublic interface EmployeeRepository extends JpaRepository<Employee, Long> {\n    // Methods that perform database operations\n}\n\n@Service\npublic class EmployeeService {\n    private final EmployeeRepository employeeRepository;\n    \n    @Autowired\n    public EmployeeService(EmployeeRepository employeeRepository) {\n        this.employeeRepository = employeeRepository;\n    }\n    \n    @Cacheable(\"employees\") // Spring caches the result based on method parameters\n    public Employee getEmployeeById(Long id) {\n        // This database call is expensive and is cached\n        return employeeRepository.findById(id)\n                .orElseThrow(() -> new RuntimeException(\"Employee not found\"));\n    }\n    \n    @CacheEvict(value = \"employees\", key = \"#employee.id\")\n    public void updateEmployee(Employee employee) {\n        employeeRepository.save(employee);\n    }\n    \n    @CacheEvict(value = \"employees\", allEntries = true)\n    public void clearCache() {\n        // This method will remove all entries from the cache\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring's cache abstractions"
         },
         {
           "name": "Proxy",
-          "description": "Provides a surrogate or placeholder for another object",
+          "description": "Provides a surrogate or placeholder for another object to control access to it.",
+          "analogy": "Like a bouncer at a club who controls who gets access to the club.",
           "diagram": "Proxy.png",
           "use_cases": [
             "Lazy loading",
             "Access control",
-            "Remote resource access"
+            "Remote resource access",
+            "For lazy loading of expensive resources",
+            "For logging requests or adding authentication",
+            "Transaction management"
           ],
-          "implementation": {
-            "code": "public interface Subject {\n    void request();\n}\n\npublic class RealSubject implements Subject {\n    @Override\n    public void request() {\n        System.out.println(\"RealSubject request\");\n    }\n}\n\npublic class Proxy implements Subject {\n    private RealSubject realSubject;\n\n    @Override\n    public void request() {\n        if (realSubject == null) {\n            realSubject = new RealSubject();\n        }\n        realSubject.request();\n    }\n}"
-          }
+          "when_to_use": [
+            "For lazy loading of expensive resources",
+            "For access control to the original object",
+            "For logging requests or adding authentication",
+            "For implementing remote access",
+            "When you need a more versatile or sophisticated reference to an object than a simple pointer"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Proxy Pattern",
+              "code": "public interface Subject {\n    void request();\n}\n\npublic class RealSubject implements Subject {\n    @Override\n    public void request() {\n        System.out.println(\"RealSubject request\");\n    }\n}\n\npublic class Proxy implements Subject {\n    private RealSubject realSubject;\n\n    @Override\n    public void request() {\n        if (realSubject == null) {\n            realSubject = new RealSubject();\n        }\n        realSubject.request();\n    }\n}"
+            },
+            {
+              "title": "Spring AOP Example",
+              "code": "// Subject interface\npublic interface ExpensiveService {\n    void performOperation();\n}\n\n// Real subject\npublic class RealExpensiveService implements ExpensiveService {\n    public RealExpensiveService() {\n        // Heavy initialization\n        System.out.println(\"Creating expensive service - this takes time!\");\n    }\n    \n    @Override\n    public void performOperation() {\n        System.out.println(\"Performing expensive operation\");\n    }\n}\n\n// Proxy\npublic class ExpensiveServiceProxy implements ExpensiveService {\n    private ExpensiveService service;\n    \n    @Override\n    public void performOperation() {\n        // Lazy initialization\n        if (service == null) {\n            service = new RealExpensiveService();\n        }\n        \n        // Additional behaviors can be added here\n        System.out.println(\"Proxy: logging before operation\");\n        \n        // Delegating to the real service\n        service.performOperation();\n        \n        System.out.println(\"Proxy: logging after operation\");\n    }\n}\n\n// In Spring Boot, proxies are created automatically for aspects\n@Aspect\n@Component\npublic class LoggingAspect {\n    @Around(\"execution(* com.example.service.*.*(..))\") \n    public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {\n        long start = System.currentTimeMillis();\n        \n        Object proceed = joinPoint.proceed();\n        \n        long executionTime = System.currentTimeMillis() - start;\n        System.out.println(joinPoint.getSignature() + \" executed in \" + executionTime + \"ms\");\n        return proceed;\n    }\n}"
+            }
+          ],
+          "considerations": [
+            "Performance overhead",
+            "Proxy transparency",
+            "Interface vs class proxies",
+            "CGLib vs JDK dynamic proxies"
+          ],
+          "spring_usage": "Spring AOP and @Transactional use proxies under the hood.",
+          "how_it_works": "Spring dynamically creates proxy objects that add behavior (like transaction management) without modifying your original code."
         }
       ]
     },
@@ -181,68 +417,232 @@
       "patterns": [
         {
           "name": "Observer",
-          "description": "Defines one-to-many dependency between objects",
+          "description": "Defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified.",
+          "analogy": "Like subscribers to a YouTube channel who get notified when a new video is uploaded.",
           "diagram": "Observer.png",
           "use_cases": [
             "Event handling",
             "User interface updates",
-            "Pub/sub systems"
+            "Pub/sub systems",
+            "When a change to one object requires changing others, and you don't know how many objects need to change",
+            "When an object should be able to notify other objects without knowing who they are",
+            "Business event propagation"
           ],
-          "implementation": {
-            "code": "public interface Observer {\n    void update(String state);\n}\n\npublic class ConcreteObserver implements Observer {\n    private String observerState;\n\n    @Override\n    public void update(String state) {\n        observerState = state;\n        System.out.println(\"Observer state updated to \" + observerState);\n    }\n}\n\npublic class Subject {\n    private List<Observer> observers = new ArrayList<>();\n    private String state;\n\n    public void attach(Observer observer) {\n        observers.add(observer);\n    }\n\n    public void detach(Observer observer) {\n        observers.remove(observer);\n    }\n\n    public void notifyObservers() {\n        for (Observer observer : observers) {\n            observer.update(state);\n        }\n    }\n\n    public void setState(String state) {\n        this.state = state;\n        notifyObservers();\n    }\n}"
-          }
+          "when_to_use": [
+            "When a change to one object requires changing others, and you don't know how many objects need to change",
+            "When an object should be able to notify other objects without knowing who they are",
+            "When you need to respect the principle of loose coupling",
+            "When you want a publish-subscribe interaction model"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Observer Pattern",
+              "code": "public interface Observer {\n    void update(String state);\n}\n\npublic class ConcreteObserver implements Observer {\n    private String observerState;\n\n    @Override\n    public void update(String state) {\n        observerState = state;\n        System.out.println(\"Observer state updated to \" + observerState);\n    }\n}\n\npublic class Subject {\n    private List<Observer> observers = new ArrayList<>();\n    private String state;\n\n    public void attach(Observer observer) {\n        observers.add(observer);\n    }\n\n    public void detach(Observer observer) {\n        observers.remove(observer);\n    }\n\n    public void notifyObservers() {\n        for (Observer observer : observers) {\n            observer.update(state);\n        }\n    }\n\n    public void setState(String state) {\n        this.state = state;\n        notifyObservers();\n    }\n}"
+            },
+            {
+              "title": "Spring Event Example",
+              "code": "// Event class in Spring\npublic class UserCreatedEvent {\n    private final User user;\n    \n    public UserCreatedEvent(User user) {\n        this.user = user;\n    }\n    \n    public User getUser() {\n        return user;\n    }\n}\n\n// Publisher\n@Service\npublic class UserService {\n    private final ApplicationEventPublisher eventPublisher;\n    \n    @Autowired\n    public UserService(ApplicationEventPublisher eventPublisher) {\n        this.eventPublisher = eventPublisher;\n    }\n    \n    public User createUser(String name, String email) {\n        User user = new User(name, email);\n        // Save user to database...\n        \n        // Publish event\n        eventPublisher.publishEvent(new UserCreatedEvent(user));\n        \n        return user;\n    }\n}\n\n// Observer/Listener\n@Component\npublic class EmailService {\n    @EventListener\n    public void handleUserCreated(UserCreatedEvent event) {\n        User user = event.getUser();\n        System.out.println(\"Sending welcome email to: \" + user.getEmail());\n        // Send email logic...\n    }\n}\n\n@Component\npublic class NotificationService {\n    @EventListener\n    public void handleUserCreated(UserCreatedEvent event) {\n        User user = event.getUser();\n        System.out.println(\"Creating notification for new user: \" + user.getName());\n        // Create notification logic...\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring's event mechanism is an implementation of the observer pattern.",
+          "how_it_works": "Components can react to events without direct coupling to the source, creating a beautifully decoupled system."
         },
         {
           "name": "Strategy",
-          "description": "Defines family of algorithms and makes them interchangeable",
+          "description": "Defines a family of algorithms, encapsulates each one, and makes them interchangeable.",
+          "analogy": "Like choosing a transportation method (car, bike, bus) based on weather, distance, or time constraints.",
           "diagram": "Strategy.png",
           "use_cases": [
             "Payment processing",
             "Sorting algorithms",
-            "Validation strategies"
+            "Validation strategies",
+            "When you want to define a class that will have one behavior that is similar to other behaviors in a list",
+            "When you need to use different variants of an algorithm within an object",
+            "Authentication methods"
           ],
-          "implementation": {
-            "code": "public interface Strategy {\n    void execute();\n}\n\npublic class ConcreteStrategyA implements Strategy {\n    @Override\n    public void execute() {\n        System.out.println(\"Strategy A execution\");\n    }\n}\n\npublic class Context {\n    private Strategy strategy;\n\n    public Context(Strategy strategy) {\n        this.strategy = strategy;\n    }\n\n    public void executeStrategy() {\n        strategy.execute();\n    }\n}"
-          }
+          "when_to_use": [
+            "When you want to define a class that will have one behavior that is similar to other behaviors in a list",
+            "When you need to use different variants of an algorithm within an object",
+            "When an algorithm uses data that clients shouldn't know about",
+            "When a class defines many behaviors as conditional statements"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Strategy Pattern",
+              "code": "public interface Strategy {\n    void execute();\n}\n\npublic class ConcreteStrategyA implements Strategy {\n    @Override\n    public void execute() {\n        System.out.println(\"Strategy A execution\");\n    }\n}\n\npublic class Context {\n    private Strategy strategy;\n\n    public Context(Strategy strategy) {\n        this.strategy = strategy;\n    }\n\n    public void executeStrategy() {\n        strategy.execute();\n    }\n}"
+            },
+            {
+              "title": "Payment Strategy Example",
+              "code": "// Strategy interface\npublic interface PaymentStrategy {\n    void pay(double amount);\n}\n\n// Concrete strategies\n@Component\npublic class CreditCardStrategy implements PaymentStrategy {\n    @Override\n    public void pay(double amount) {\n        System.out.println(\"Paid $\" + amount + \" using credit card\");\n    }\n}\n\n@Component\npublic class PayPalStrategy implements PaymentStrategy {\n    @Override\n    public void pay(double amount) {\n        System.out.println(\"Paid $\" + amount + \" using PayPal\");\n    }\n}\n\n@Component\npublic class BankTransferStrategy implements PaymentStrategy {\n    @Override\n    public void pay(double amount) {\n        System.out.println(\"Paid $\" + amount + \" using bank transfer\");\n    }\n}\n\n// Context\n@Service\npublic class PaymentService {\n    private final Map<String, PaymentStrategy> strategies;\n    \n    @Autowired\n    public PaymentService(List<PaymentStrategy> strategyList) {\n        strategies = strategyList.stream()\n            .collect(Collectors.toMap(\n                strategy -> strategy.getClass().getSimpleName(),\n                strategy -> strategy\n            ));\n    }\n    \n    public void processPayment(String strategyName, double amount) {\n        PaymentStrategy strategy = strategies.get(strategyName);\n        if (strategy == null) {\n            throw new IllegalArgumentException(\"Unknown payment strategy: \" + strategyName);\n        }\n        strategy.pay(amount);\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring's Resource abstraction, authentication providers",
+          "how_it_works": "You can swap strategies without changing the client code, creating adaptable, flexible systems."
         },
         {
           "name": "Template Method",
-          "description": "Defines skeleton of algorithm, letting subclasses override specific steps",
+          "description": "Defines the skeleton of an algorithm in a method, deferring some steps to subclasses.",
+          "analogy": "Like a recipe that outlines the general steps (mix, bake, cool) but leaves specific ingredients to variations.",
           "diagram": "Template Method.png",
           "use_cases": [
             "Framework operations",
             "Data processing pipelines",
-            "Document generation"
+            "Document generation",
+            "When you want to let clients extend only particular steps of an algorithm, but not the whole algorithm",
+            "When you have several classes that contain almost identical algorithms with some minor differences",
+            "Database operations"
           ],
-          "implementation": {
-            "code": "public abstract class AbstractClass {\n    public final void templateMethod() {\n        primitiveOperation1();\n        primitiveOperation2();\n    }\n\n    protected abstract void primitiveOperation1();\n    protected abstract void primitiveOperation2();\n}\n\npublic class ConcreteClass extends AbstractClass {\n    @Override\n    protected void primitiveOperation1() {\n        System.out.println(\"Primitive Operation 1\");\n    }\n\n    @Override\n    protected void primitiveOperation2() {\n        System.out.println(\"Primitive Operation 2\");\n    }\n}"
-          }
+          "when_to_use": [
+            "When you want to let clients extend only particular steps of an algorithm, but not the whole algorithm",
+            "When you have several classes that contain almost identical algorithms with some minor differences",
+            "When you want to control subclasses extensions",
+            "When you want to avoid code duplication by factoring common behavior into a single class"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Template Method Pattern",
+              "code": "public abstract class AbstractClass {\n    public final void templateMethod() {\n        primitiveOperation1();\n        primitiveOperation2();\n    }\n\n    protected abstract void primitiveOperation1();\n    protected abstract void primitiveOperation2();\n}\n\npublic class ConcreteClass extends AbstractClass {\n    @Override\n    protected void primitiveOperation1() {\n        System.out.println(\"Primitive Operation 1\");\n    }\n\n    @Override\n    protected void primitiveOperation2() {\n        System.out.println(\"Primitive Operation 2\");\n    }\n}"
+            },
+            {
+              "title": "Document Processor Example",
+              "code": "// Abstract template\npublic abstract class DocumentProcessor {\n    // Template method\n    public final void processDocument(String document) {\n        readDocument(document);\n        processContent();\n        saveDocument();\n    }\n    \n    // This step is common for all implementations\n    private void readDocument(String document) {\n        System.out.println(\"Reading document: \" + document);\n    }\n    \n    // This step varies and must be implemented by subclasses\n    protected abstract void processContent();\n    \n    // This step is common for all implementations\n    private void saveDocument() {\n        System.out.println(\"Saving processed document\");\n    }\n}\n\n// Concrete implementations\n@Service\npublic class PdfDocumentProcessor extends DocumentProcessor {\n    @Override\n    protected void processContent() {\n        System.out.println(\"Processing PDF content\");\n    }\n}\n\n@Service\npublic class WordDocumentProcessor extends DocumentProcessor {\n    @Override\n    protected void processContent() {\n        System.out.println(\"Processing Word content\");\n    }\n}\n\n// In Spring's JdbcTemplate\njdbcTemplate.query(\"SELECT * FROM users\", (rs, rowNum) -> {\n    // This is the abstract step we're implementing\n    User user = new User();\n    user.setId(rs.getLong(\"id\"));\n    user.setName(rs.getString(\"name\"));\n    return user;\n});"
+            }
+          ],
+          "spring_usage": "Spring's JdbcTemplate is a great example of this pattern.",
+          "how_it_works": "The template handles all the boilerplate while you focus on the unique parts, creating cleaner, more focused code."
         },
         {
           "name": "State",
-          "description": "Allows object to alter behavior when internal state changes",
+          "description": "Allows object to alter behavior when internal state changes.",
+          "analogy": "Like a traffic light that changes its behavior based on its current state (red, yellow, green).",
           "diagram": "State.png",
           "use_cases": [
             "Workflow management",
             "Game states",
-            "Order processing"
+            "Order processing",
+            "When an object's behavior depends on its state",
+            "When operations have large conditional statements that depend on the object's state",
+            "Document approval flows"
           ],
-          "implementation": {
-            "code": "public interface State {\n    void handle(Context context);\n}\n\npublic class ConcreteStateA implements State {\n    @Override\n    public void handle(Context context) {\n        System.out.println(\"State A handling\");\n        context.setState(new ConcreteStateB());\n    }\n}\n\npublic class ConcreteStateB implements State {\n    @Override\n    public void handle(Context context) {\n        System.out.println(\"State B handling\");\n        context.setState(new ConcreteStateA());\n    }\n}\n\npublic class Context {\n    private State state;\n\n    public Context(State state) {\n        this.state = state;\n    }\n\n    public void setState(State state) {\n        this.state = state;\n    }\n\n    public void request() {\n        state.handle(this);\n    }\n}"
-          }
+          "when_to_use": [
+            "When an object's behavior depends on its state, and it must change its behavior at runtime depending on that state",
+            "When operations have large, multipart conditional statements that depend on the object's state",
+            "When you want to avoid exposing state-specific behaviors across multiple classes",
+            "When state transitions are explicit"
+          ],
+          "implementations": [
+            {
+              "title": "Basic State Pattern",
+              "code": "public interface State {\n    void handle(Context context);\n}\n\npublic class ConcreteStateA implements State {\n    @Override\n    public void handle(Context context) {\n        System.out.println(\"State A handling\");\n        context.setState(new ConcreteStateB());\n    }\n}\n\npublic class ConcreteStateB implements State {\n    @Override\n    public void handle(Context context) {\n        System.out.println(\"State B handling\");\n        context.setState(new ConcreteStateA());\n    }\n}\n\npublic class Context {\n    private State state;\n\n    public Context(State state) {\n        this.state = state;\n    }\n\n    public void setState(State state) {\n        this.state = state;\n    }\n\n    public void request() {\n        state.handle(this);\n    }\n}"
+            },
+            {
+              "title": "Order Processing State Example",
+              "code": "// Order states\npublic interface OrderState {\n    void process(OrderContext context);\n    void cancel(OrderContext context);\n    void ship(OrderContext context);\n    String getStatus();\n}\n\n@Component\npublic class NewOrderState implements OrderState {\n    @Override\n    public void process(OrderContext context) {\n        System.out.println(\"Processing new order\");\n        context.setState(context.getProcessingState());\n    }\n    \n    @Override\n    public void cancel(OrderContext context) {\n        System.out.println(\"Cancelling new order\");\n        context.setState(context.getCancelledState());\n    }\n    \n    @Override\n    public void ship(OrderContext context) {\n        System.out.println(\"Cannot ship a new order - must process first\");\n    }\n    \n    @Override\n    public String getStatus() {\n        return \"NEW\";\n    }\n}\n\n@Component\npublic class ProcessingOrderState implements OrderState {\n    @Override\n    public void process(OrderContext context) {\n        System.out.println(\"Order is already being processed\");\n    }\n    \n    @Override\n    public void cancel(OrderContext context) {\n        System.out.println(\"Cancelling processing order\");\n        context.setState(context.getCancelledState());\n    }\n    \n    @Override\n    public void ship(OrderContext context) {\n        System.out.println(\"Shipping order\");\n        context.setState(context.getShippedState());\n    }\n    \n    @Override\n    public String getStatus() {\n        return \"PROCESSING\";\n    }\n}\n\n// States for Shipped and Cancelled would be implemented similarly\n\n// Context\n@Component\npublic class OrderContext {\n    @Autowired private NewOrderState newState;\n    @Autowired private ProcessingOrderState processingState;\n    @Autowired private ShippedOrderState shippedState;\n    @Autowired private CancelledOrderState cancelledState;\n    \n    private OrderState currentState;\n    private String orderId;\n    \n    // Initialize with new state when an order is created\n    public void createOrder(String orderId) {\n        this.orderId = orderId;\n        this.currentState = newState;\n    }\n    \n    // Methods that delegate to the current state\n    public void processOrder() {\n        currentState.process(this);\n    }\n    \n    public void cancelOrder() {\n        currentState.cancel(this);\n    }\n    \n    public void shipOrder() {\n        currentState.ship(this);\n    }\n    \n    public String getOrderStatus() {\n        return currentState.getStatus();\n    }\n    \n    // State change method\n    public void setState(OrderState state) {\n        this.currentState = state;\n    }\n    \n    // Getter methods for states\n    public NewOrderState getNewState() {\n        return newState;\n    }\n    \n    public ProcessingOrderState getProcessingState() {\n        return processingState;\n    }\n    \n    public ShippedOrderState getShippedState() {\n        return shippedState;\n    }\n    \n    public CancelledOrderState getCancelledState() {\n        return cancelledState;\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring State Machine"
         },
         {
           "name": "Visitor",
-          "description": "Represents an operation to be performed on elements of an object structure",
+          "description": "Represents an operation to be performed on elements of an object structure.",
+          "analogy": "Like a tour guide who knows how to navigate through different parts of a museum.",
           "diagram": "Visitor.png",
           "use_cases": [
             "Document object model",
             "Compiler operations",
-            "Object structure traversal"
+            "Object structure traversal",
+            "When you need to perform operations across a disparate object structure",
+            "When you want to add new operations without changing classes of the elements on which it operates",
+            "Bean definition processing"
           ],
-          "implementation": {
-            "code": "public interface Visitor {\n    void visit(ElementA element);\n    void visit(ElementB element);\n}\n\npublic interface Element {\n    void accept(Visitor visitor);\n}\n\npublic class ElementA implements Element {\n    @Override\n    public void accept(Visitor visitor) {\n        visitor.visit(this);\n    }\n}\n\npublic class ElementB implements Element {\n    @Override\n    public void accept(Visitor visitor) {\n        visitor.visit(this);\n    }\n}\n\npublic class ConcreteVisitor implements Visitor {\n    @Override\n    public void visit(ElementA element) {\n        System.out.println(\"Visited ElementA\");\n    }\n\n    @Override\n    public void visit(ElementB element) {\n        System.out.println(\"Visited ElementB\");\n    }\n}"
-          }
+          "when_to_use": [
+            "When you need to perform operations across a disparate object structure",
+            "When many distinct and unrelated operations need to be performed on objects in an object structure",
+            "When the object structure classes rarely change, but you often want to define new operations over the structure",
+            "When you want to avoid polluting the object structure classes with various operation methods"
+          ],
+          "implementations": [
+            {
+              "title": "Basic Visitor Pattern",
+              "code": "public interface Visitor {\n    void visit(ElementA element);\n    void visit(ElementB element);\n}\n\npublic interface Element {\n    void accept(Visitor visitor);\n}\n\npublic class ElementA implements Element {\n    @Override\n    public void accept(Visitor visitor) {\n        visitor.visit(this);\n    }\n}\n\npublic class ElementB implements Element {\n    @Override\n    public void accept(Visitor visitor) {\n        visitor.visit(this);\n    }\n}\n\npublic class ConcreteVisitor implements Visitor {\n    @Override\n    public void visit(ElementA element) {\n        System.out.println(\"Visited ElementA\");\n    }\n\n    @Override\n    public void visit(ElementB element) {\n        System.out.println(\"Visited ElementB\");\n    }\n}"
+            },
+            {
+              "title": "Document Visitor Example",
+              "code": "// Element interface and implementations\npublic interface DocumentElement {\n    void accept(DocumentVisitor visitor);\n}\n\npublic class TextElement implements DocumentElement {\n    private String text;\n    \n    public TextElement(String text) {\n        this.text = text;\n    }\n    \n    public String getText() {\n        return text;\n    }\n    \n    @Override\n    public void accept(DocumentVisitor visitor) {\n        visitor.visit(this);\n    }\n}\n\npublic class ImageElement implements DocumentElement {\n    private String source;\n    private int width;\n    private int height;\n    \n    public ImageElement(String source, int width, int height) {\n        this.source = source;\n        this.width = width;\n        this.height = height;\n    }\n    \n    // Getters\n    \n    @Override\n    public void accept(DocumentVisitor visitor) {\n        visitor.visit(this);\n    }\n}\n\npublic class TableElement implements DocumentElement {\n    private int rows;\n    private int columns;\n    private List<String> data;\n    \n    // Constructor and getters\n    \n    @Override\n    public void accept(DocumentVisitor visitor) {\n        visitor.visit(this);\n    }\n}\n\n// Visitor interface and implementations\npublic interface DocumentVisitor {\n    void visit(TextElement element);\n    void visit(ImageElement element);\n    void visit(TableElement element);\n}\n\n@Component\npublic class HTMLExportVisitor implements DocumentVisitor {\n    private StringBuilder html = new StringBuilder();\n    \n    @Override\n    public void visit(TextElement element) {\n        html.append(\"<p>\").append(element.getText()).append(\"</p>\\n\");\n    }\n    \n    @Override\n    public void visit(ImageElement element) {\n        html.append(\"<img src=\\\"\").append(element.getSource())\n            .append(\"\\\" width=\\\"\").append(element.getWidth())\n            .append(\"\\\" height=\\\"\").append(element.getHeight())\n            .append(\"\\\" />\\n\");\n    }\n    \n    @Override\n    public void visit(TableElement element) {\n        html.append(\"<table>\\n\");\n        // Table rendering logic\n        html.append(\"</table>\\n\");\n    }\n    \n    public String getHTML() {\n        return html.toString();\n    }\n}\n\n@Component\npublic class MarkdownExportVisitor implements DocumentVisitor {\n    private StringBuilder markdown = new StringBuilder();\n    \n    @Override\n    public void visit(TextElement element) {\n        markdown.append(element.getText()).append(\"\\n\\n\");\n    }\n    \n    @Override\n    public void visit(ImageElement element) {\n        markdown.append(\"![image](\").append(element.getSource()).append(\")\\n\\n\");\n    }\n    \n    @Override\n    public void visit(TableElement element) {\n        // Markdown table rendering logic\n    }\n    \n    public String getMarkdown() {\n        return markdown.toString();\n    }\n}\n\n// Using the visitors\n@Service\npublic class DocumentExportService {\n    @Autowired\n    private HTMLExportVisitor htmlExporter;\n    \n    @Autowired\n    private MarkdownExportVisitor markdownExporter;\n    \n    public String exportToHTML(List<DocumentElement> document) {\n        for (DocumentElement element : document) {\n            element.accept(htmlExporter);\n        }\n        return htmlExporter.getHTML();\n    }\n    \n    public String exportToMarkdown(List<DocumentElement> document) {\n        for (DocumentElement element : document) {\n            element.accept(markdownExporter);\n        }\n        return markdownExporter.getMarkdown();\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring's BeanDefinitionVisitor"
+        },
+        {
+          "name": "Chain of Responsibility",
+          "description": "Passes a request along a chain of handlers until one handles it",
+          "use_cases": [
+            "Request processing",
+            "Event handling chains",
+            "Error handling",
+            "Authentication and authorization"
+          ],
+          "implementations": [
+            {
+              "title": "Implementation",
+              "code": "// In Servlet filters\npublic class AuthenticationFilter implements Filter {\n    @Override\n    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) \n                        throws IOException, ServletException {\n        // Authentication logic\n        if (authenticated) {\n            // Pass to the next filter in the chain\n            chain.doFilter(request, response);\n        } else {\n            // Break the chain - don't proceed\n            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);\n        }\n    }\n}"
+            }
+          ],
+          "spring_usage": "Spring Security filters, interceptors",
+          "how_it_works": "Requests flow through a chain of handlers, each with the option to process and/or pass along."
+        },
+        {
+          "name": "Command",
+          "description": "Encapsulates a request as an object",
+          "use_cases": [
+            "Action history",
+            "Transaction systems",
+            "Task scheduling",
+            "Thread management"
+          ],
+          "implementations": [
+            {
+              "title": "Implementation",
+              "code": "// The Runnable interface is essentially a command\nRunnable emailCommand = () -> sendEmail();\nRunnable smsCommand = () -> sendSMS();\n\n// The executor service acts as the invoker\nExecutorService executor = Executors.newFixedThreadPool(2);\nexecutor.submit(emailCommand);\nexecutor.submit(smsCommand);"
+            }
+          ],
+          "java_usage": "Java's Runnable interface, ExecutorService",
+          "how_it_works": "Encapsulates operations as objects, allowing for queuing, logging, or undoing actions."
+        },
+        {
+          "name": "Mediator",
+          "description": "Defines an object that encapsulates how a set of objects interact",
+          "use_cases": [
+            "GUI components communication",
+            "Air traffic control",
+            "Chat rooms",
+            "Service orchestration"
+          ],
+          "implementations": [
+            {
+              "title": "Implementation",
+              "code": "// ApplicationContext acts as a mediator between beans\n@Service\npublic class OrderService {\n    private final PaymentService paymentService;\n    private final InventoryService inventoryService;\n    private final NotificationService notificationService;\n    \n    // Constructor injection\n    // Spring context mediates the relationships between services\n}"
+            }
+          ],
+          "spring_usage": "Spring ApplicationContext as mediator"
+        },
+        {
+          "name": "Iterator",
+          "description": "Provides a way to access elements of a collection sequentially",
+          "use_cases": [
+            "Collection traversal",
+            "Database result sets",
+            "Custom container access",
+            "Stream processing"
+          ],
+          "implementations": [
+            {
+              "title": "Implementation",
+              "code": "List<String> names = Arrays.asList(\"Alice\", \"Bob\", \"Charlie\");\n\n// Using iterator explicitly\nIterator<String> iterator = names.iterator();\nwhile (iterator.hasNext()) {\n    System.out.println(iterator.next());\n}\n\n// Or with enhanced for-loop (which uses Iterator under the hood)\nfor (String name : names) {\n    System.out.println(name);\n}"
+            }
+          ],
+          "java_usage": "Java Collections Framework",
+          "how_it_works": "Traverse collections without exposing their internal structure."
         }
       ]
     }
@@ -265,22 +665,164 @@
       "Pattern misuse",
       "Premature abstraction",
       "Rigid implementation"
+    ],
+    "implementation_tips": [
+      "Start simple - Don't over-engineer; use patterns only when they add value",
+      "Understand the problem first - Choose a pattern based on the problem, not the other way around",
+      "Combine patterns - Real-world solutions often involve multiple patterns",
+      "Consider Spring's built-in implementations - Spring already implements many patterns for you",
+      "Document your use of patterns - Help other developers understand your design decisions"
+    ],
+    "patterns_in_spring_boot": [
+      "Dependency Injection - The core of Spring is based on the Dependency Inversion Principle",
+      "Factory Pattern - Spring's BeanFactory creates objects",
+      "Singleton Pattern - Beans are singletons by default",
+      "Proxy Pattern - Used for AOP and transaction management",
+      "Template Method Pattern - JdbcTemplate, RestTemplate, etc.",
+      "Observer Pattern - Spring's event system"
     ]
   },
   "relationships": {
     "commonly_combined": [
       {
-        "patterns": ["Factory Method", "Singleton"],
+        "patterns": [
+          "Factory Method",
+          "Singleton"
+        ],
         "use_case": "Managing shared resource creation"
       },
       {
-        "patterns": ["Composite", "Iterator"],
+        "patterns": [
+          "Composite",
+          "Iterator"
+        ],
         "use_case": "Traversing complex structures"
       },
       {
-        "patterns": ["Observer", "Mediator"],
+        "patterns": [
+          "Observer",
+          "Mediator"
+        ],
         "use_case": "Event handling systems"
+      },
+      {
+        "patterns": [
+          "Factory + Strategy"
+        ],
+        "use_case": "Dynamic algorithm selection (e.g., Spring's view resolver mechanism)"
+      },
+      {
+        "patterns": [
+          "Decorator + Proxy"
+        ],
+        "use_case": "Layered behavior enhancement (e.g., Spring Security with custom filters)"
+      },
+      {
+        "patterns": [
+          "Observer + Mediator"
+        ],
+        "use_case": "Coordinated event handling (e.g., Spring's ApplicationContext events)"
+      },
+      {
+        "patterns": [
+          "Template Method + Strategy"
+        ],
+        "use_case": "Flexible algorithms with shared structure (e.g., Spring's DataAccessObject pattern)"
+      },
+      {
+        "patterns": [
+          "Singleton + Factory"
+        ],
+        "use_case": "Controlled access to object creation (e.g., Spring's BeanFactory)"
       }
-    ]
+    ],
+    "selection_guide": {
+      "headers": [
+        "If You Need To...",
+        "Consider Using..."
+      ],
+      "rows": [
+        [
+          "Create one instance of a class",
+          "Singleton"
+        ],
+        [
+          "Construct complex objects",
+          "Builder"
+        ],
+        [
+          "Create objects without specifying exact class",
+          "Factory Method"
+        ],
+        [
+          "Create families of related objects",
+          "Abstract Factory"
+        ],
+        [
+          "Add responsibilities dynamically",
+          "Decorator"
+        ],
+        [
+          "Make incompatible interfaces work together",
+          "Adapter"
+        ],
+        [
+          "Control access to an object",
+          "Proxy"
+        ],
+        [
+          "Compose objects into tree structures",
+          "Composite"
+        ],
+        [
+          "Simplify a complex subsystem",
+          "Facade"
+        ],
+        [
+          "Notify multiple objects about events",
+          "Observer"
+        ],
+        [
+          "Define a family of interchangeable algorithms",
+          "Strategy"
+        ],
+        [
+          "Define steps of an algorithm, allowing subclasses to implement steps",
+          "Template Method"
+        ],
+        [
+          "Change an object's behavior when state changes",
+          "State"
+        ],
+        [
+          "Process elements sequentially",
+          "Iterator"
+        ],
+        [
+          "Handle requests through a chain of handlers",
+          "Chain of Responsibility"
+        ],
+        [
+          "Represent and execute grammar",
+          "Interpreter"
+        ],
+        [
+          "Create new objects by copying existing ones",
+          "Prototype"
+        ],
+        [
+          "Efficiently share fine-grained objects",
+          "Flyweight"
+        ],
+        [
+          "Separate abstraction from implementation",
+          "Bridge"
+        ],
+        [
+          "Perform operations on object structure elements",
+          "Visitor"
+        ]
+      ]
+    }
   }
 }

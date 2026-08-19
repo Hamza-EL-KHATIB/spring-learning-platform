@@ -104,12 +104,12 @@ const KonjugationPage = () => {
     const activeVerb = filteredVerbs[activeVerbIndex];
 
     return (
-        <div className="min-h-screen bg-gray-900">
-            <div className="container mx-auto px-4 py-8">
+        <div>
+            <div>
                 {/* Header */}
                 <div className="max-w-6xl mx-auto mb-8">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                        <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                        <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                             German Verb Conjugation
                         </h1>
                         <button
@@ -215,7 +215,7 @@ const KonjugationPage = () => {
                                     </button>
                                 </div>
 
-                                <div className="max-h-[calc(100vh-300px)] overflow-y-auto">
+                                <div className="max-h-[calc(100vh-300px)] overflow-y-auto custom-scrollbar">
                                     <div className="p-4 space-y-2">
                                         {filteredVerbs.map((verb, index) => (
                                             <button
@@ -252,7 +252,7 @@ const KonjugationPage = () => {
                                         </button>
                                     </div>
                                 </div>
-                                <div className="overflow-y-auto overscroll-contain p-4 flex-1 touch-pan-y">
+                                <div className="overflow-y-auto custom-scrollbar overscroll-contain p-4 flex-1 touch-pan-y">
                                     {filteredVerbs.map((verb, index) => (
                                         <button
                                             key={index}

@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import { Search, Eye, EyeOff, X, ChevronRight, BookOpenCheck, BookOpen } from 'lucide-react';
 import vocabularyData from '../../../data/german/a1.json';
 import VocabularyTabs from './VocabularyTabs';
-import './VocabularyPage.css';
 
 const VocabularyPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -40,12 +39,12 @@ const VocabularyPage = () => {
     }, [filteredData]);
 
     return (
-        <div className="min-h-screen bg-gray-900">
-            <div className="container mx-auto px-4 py-8">
+        <div>
+            <div>
                 {/* Header */}
                 <div className="max-w-6xl mx-auto mb-8">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                        <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                        <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
                             German A1 Vocabulary
                         </h1>
                         <div className="flex items-center gap-4">
@@ -151,7 +150,7 @@ const VocabularyPage = () => {
                                     </button>
                                 </div>
                             </div>
-                            <div className="overflow-y-auto overscroll-contain p-4 flex-1 touch-pan-y">
+                            <div className="overflow-y-auto overscroll-contain custom-scrollbar p-4 flex-1 touch-pan-y">
                                 <VocabularyTabs
                                     activeTab={activeTab}
                                     setActiveTab={(tab) => {

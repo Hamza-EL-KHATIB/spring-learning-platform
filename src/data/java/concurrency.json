@@ -328,6 +328,55 @@
       ]
     },
     {
+      "id": "virtual-threads",
+      "title": "Virtual Threads (Java 21+)",
+      "content": "Virtual threads are lightweight threads scheduled by the JVM onto a small pool of OS \"carrier\" threads. When a virtual thread blocks on I/O, it unmounts and parks in the heap — the carrier immediately runs another virtual thread. Blocking becomes nearly free, so simple blocking code scales like async code.",
+      "example": "// One virtual thread per task — no pool sizing, no tuning\ntry (var executor = Executors.newVirtualThreadPerTaskExecutor()) {\n    List<Future<Order>> results = ids.stream()\n        .map(id -> executor.submit(() -> client.fetchOrder(id)))  // 10k concurrent calls: fine\n        .toList();\n}\n\n// Creating individual virtual threads\nThread vt = Thread.ofVirtual().name(\"vt-\", 0).start(task);\nThread.startVirtualThread(task);",
+      "table": {
+        "headers": ["Aspect", "Platform thread", "Virtual thread"],
+        "rows": [
+          ["Managed by", "OS scheduler", "JVM scheduler (ForkJoinPool carriers)"],
+          ["Stack", "~1 MB reserved", "Grows/shrinks on heap, starts tiny"],
+          ["Practical count", "Thousands", "Millions"],
+          ["Blocking cost", "Wastes an OS thread", "Unmounts — near-free"],
+          ["Best for", "CPU-bound work", "I/O-bound concurrency"]
+        ]
+      },
+      "rules": [
+        {
+          "title": "Never pool virtual threads",
+          "description": "Creation is the cheap part — create one virtual thread per task instead of reusing them from a pool."
+        },
+        {
+          "title": "Pinning",
+          "description": "Blocking inside a `synchronized` block or a native call prevents unmounting and \"pins\" the carrier thread (Java 24 removed the `synchronized` limitation, but know the term). Prefer `ReentrantLock` around blocking sections on Java 21."
+        },
+        {
+          "title": "ThreadLocal vs Scoped Values",
+          "description": "ThreadLocal still works, but millions of threads × ThreadLocals means real memory pressure — Scoped Values (final in Java 25) are the successor."
+        },
+        {
+          "title": "No gain for CPU-bound work",
+          "description": "You still have the same number of cores — keep using a sized pool for CPU-bound tasks."
+        },
+        {
+          "title": "Semaphores replace pool size",
+          "description": "A Semaphore, not the thread pool size, is how you limit concurrency toward a fragile downstream service."
+        },
+        {
+          "title": "Spring Boot 3.2+",
+          "description": "Set `spring.threads.virtual.enabled=true` so Tomcat request handling and `@Async` run on virtual threads."
+        }
+      ],
+      "structuredConcurrency": [
+        {
+          "title": "Structured Concurrency (preview)",
+          "content": "Treats a family of concurrent subtasks as one unit — fork children in a scope, join once, failures cancel siblings, no leaked threads.",
+          "code": "try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {\n    var user   = scope.fork(() -> userService.find(id));\n    var orders = scope.fork(() -> orderService.findAll(id));\n    scope.join().throwIfFailed();\n    return new Dashboard(user.get(), orders.get());\n}"
+        }
+      ]
+    },
+    {
       "id": "concurrent-collections",
       "title": "Concurrent Collections",
       "content": "Thread-safe collection implementations designed for concurrent access.",

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Code, Server, Database, Box, GitBranch, Users, FileCheck,
+    Code, Server, Database, Box, GitBranch, Users, FileCheck, GraduationCap,
 } from 'lucide-react';
 
 // Single source of truth for site navigation. Sidebar, HomePage and the
@@ -79,6 +79,23 @@ export const navigationGroups = [
             { path: '/best-practices/code-reviews', title: 'Code Reviews', description: 'Review protocol and checklist' },
         ],
     },
+    {
+        key: 'german',
+        title: 'German',
+        icon: <GraduationCap className="w-5 h-5" />,
+        items: [
+            { path: '/learn/vocabulary', title: 'Vocabulary', description: 'Essential words by theme' },
+            { path: '/learn/konjugation', title: 'Verb Conjugation', description: 'Verbs across tenses' },
+            { path: '/german/articles', title: 'Articles', description: 'Using and declining articles' },
+            { path: '/german/adjectives', title: 'Adjective Endings', description: 'Endings across cases' },
+            { path: '/german/cases', title: 'Case Rules', description: 'Rules and tricks for the four cases' },
+            { path: '/learn/german-cases', title: 'Cases Reference', description: 'Full case tables' },
+        ],
+    },
 ];
+
+// German pages live under two URL prefixes but are one section in the sidebar
+const SECTION_ALIASES = { learn: 'german' };
+export const sectionKey = (segment) => SECTION_ALIASES[segment] || segment;
 
 export const findGroup = (key) => navigationGroups.find((group) => group.key === key);

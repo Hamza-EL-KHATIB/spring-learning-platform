@@ -9,17 +9,10 @@ const Layout = ({ children }) => {
     const { pathname } = useLocation();
     const search = useQuickSearch();
 
-    const showSidebar = ![
-        '/',
-        '/learn/vocabulary',
-        '/learn/konjugation',
-        '/learn/german',
-        '/learn/german-cases',
-        '/learn/german-case-rules',
-        '/german/articles',
-        '/german/adjectives',
-        '/german/cases',
-    ].includes(pathname);
+    // Most pages get the sidebar. The hubs and the two master-detail tools go
+    // full-width — vocabulary and conjugation carry their own list sidebar, and
+    // two side-by-side sidebars leave the content column too narrow to read.
+    const showSidebar = !['/', '/learn/german', '/learn/vocabulary', '/learn/konjugation'].includes(pathname);
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-900">

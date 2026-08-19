@@ -264,6 +264,97 @@
       ]
     },
     {
+      "id": "exception-keywords",
+      "title": "Exception-Related Keywords",
+      "description": "Java has two similarly named keywords that play opposite roles: throw raises an exception, throws declares that a method may raise one.",
+      "comparison": {
+        "headers": ["Aspect", "throw", "throws"],
+        "rows": [
+          ["Where it appears", "Inside a method or block body", "In the method signature, after the parameter list"],
+          ["What follows it", "A single Throwable instance", "One or more exception class names, comma-separated"],
+          ["Effect", "Actually raises the exception at that point", "Declares that callers must handle or propagate it"],
+          ["Used with", "Both built-in and custom exceptions", "Mainly checked exceptions (unchecked may be declared for documentation)"]
+        ]
+      },
+      "keywords": [
+        {
+          "term": "throw",
+          "description": "Used to explicitly throw an exception",
+          "properties": [
+            "Can throw both built-in and custom exceptions",
+            "Takes exactly one Throwable instance",
+            "Statements after a throw in the same block are unreachable"
+          ],
+          "code": {
+            "language": "java",
+            "snippet": "if (age < 0) {\n    throw new IllegalArgumentException(\"Age cannot be negative\");\n}"
+          }
+        },
+        {
+          "term": "throws",
+          "description": "Used in a method signature to declare that it can throw checked exceptions",
+          "properties": [
+            "Multiple exceptions can be declared with a comma-separated list",
+            "Forces callers to either catch the exception or declare it themselves",
+            "An overriding method cannot declare broader checked exceptions than the method it overrides"
+          ],
+          "code": {
+            "language": "java",
+            "snippet": "public void readFile() throws IOException, FileNotFoundException {\n    // Method implementation\n}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "common-exceptions",
+      "title": "Common Java Exceptions",
+      "description": "A quick reference of the exception classes that appear most often in day-to-day Java code and in interviews.",
+      "runtimeExceptions": [
+        {
+          "name": "NullPointerException",
+          "description": "Attempting to access methods or fields of a null object"
+        },
+        {
+          "name": "ArrayIndexOutOfBoundsException",
+          "description": "Attempting to access an array element outside its bounds"
+        },
+        {
+          "name": "ArithmeticException",
+          "description": "Arithmetic errors such as division by zero"
+        },
+        {
+          "name": "ClassCastException",
+          "description": "Invalid casting between incompatible classes"
+        },
+        {
+          "name": "IllegalArgumentException",
+          "description": "Method received an argument that is invalid"
+        },
+        {
+          "name": "IllegalStateException",
+          "description": "Method called at an illegal or inappropriate time"
+        }
+      ],
+      "checkedExceptions": [
+        {
+          "name": "IOException",
+          "description": "Input/output operations failed or interrupted"
+        },
+        {
+          "name": "SQLException",
+          "description": "Database access error or other SQL-related issues"
+        },
+        {
+          "name": "ClassNotFoundException",
+          "description": "Application tries to load a class through its string name"
+        },
+        {
+          "name": "InterruptedException",
+          "description": "Thread is interrupted during execution"
+        }
+      ]
+    },
+    {
       "id": "custom-exceptions",
       "title": "Custom Exceptions",
       "description": "Used to represent application-specific error conditions",

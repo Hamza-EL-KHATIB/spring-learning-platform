@@ -1,6 +1,6 @@
 {
   "title": "Scrum Framework",
-  "description": "An agile framework for managing complex projects",
+  "description": "Scrum is an agile framework for managing complex projects, characterized by iterative progress and team self-organization. It emphasizes delivering working increments of a product while adapting to changing requirements.",
   "core_components": {
     "roles": [
       {
@@ -9,7 +9,8 @@
           "Facilitate Scrum events",
           "Remove impediments",
           "Coach team on Scrum practices",
-          "Protect team from interruptions"
+          "Protect team from interruptions",
+          "Ensure the Scrum process is followed correctly"
         ]
       },
       {
@@ -18,7 +19,9 @@
           "Define and prioritize backlog",
           "Maximize product value",
           "Represent stakeholder interests",
-          "Make scope decisions"
+          "Make scope decisions",
+          "Provide clear requirements and acceptance criteria",
+          "Has final authority on product features"
         ]
       },
       {
@@ -27,8 +30,11 @@
           "Deliver product increments",
           "Self-organize",
           "Cross-functional collaboration",
-          "Technical implementation"
-        ]
+          "Technical implementation",
+          "Collectively responsible for delivery",
+          "Has autonomy in how to accomplish work"
+        ],
+        "team_size": "Typically 3-9 members"
       }
     ],
     "events": [
@@ -39,7 +45,8 @@
         "key_points": [
           "Fixed time-box",
           "Consistent duration",
-          "No changes that endanger sprint goal"
+          "No changes that endanger sprint goal",
+          "Protected from scope creep"
         ]
       },
       {
@@ -50,16 +57,24 @@
           "Sprint goal",
           "Sprint backlog",
           "Delivery plan"
+        ],
+        "key_questions": [
+          "What can be delivered?",
+          "How will it be done?"
         ]
       },
       {
         "name": "Daily Scrum",
         "duration": "15 minutes",
-        "purpose": "Synchronize activities",
+        "purpose": "Synchronize activities and create a plan for the next 24 hours",
         "key_questions": [
           "What did I do yesterday?",
           "What will I do today?",
           "Are there any impediments?"
+        ],
+        "notes": [
+          "For the Development Team only (others may attend but not participate)",
+          "Held at the same time and place each day"
         ]
       },
       {
@@ -70,6 +85,10 @@
           "Demo completed work",
           "Gather feedback",
           "Update backlog"
+        ],
+        "notes": [
+          "Collaborative discussion about what was done",
+          "Informal meeting, not a status report"
         ]
       },
       {
@@ -81,6 +100,10 @@
           "Relationships",
           "Processes",
           "Tools"
+        ],
+        "notes": [
+          "Identifies what went well and what could be improved",
+          "Produces a concrete action plan for the next sprint"
         ]
       }
     ],
@@ -93,6 +116,10 @@
           "Never complete",
           "Continuously refined",
           "Prioritized"
+        ],
+        "notes": [
+          "Owned by the Product Owner",
+          "Single source of requirements"
         ]
       },
       {
@@ -102,6 +129,10 @@
           "Sprint goal",
           "Selected product backlog items",
           "Delivery plan"
+        ],
+        "notes": [
+          "Visible, real-time picture of the work planned",
+          "Belongs to the Development Team"
         ]
       },
       {
@@ -111,53 +142,167 @@
           "Must be usable",
           "Must meet Definition of Done",
           "Must be potentially releasable"
+        ],
+        "notes": [
+          "Concrete measure of progress"
+        ]
+      },
+      {
+        "name": "Definition of Done",
+        "description": "Shared understanding of what \"complete\" means",
+        "purpose": "Ensures transparency and quality",
+        "typical_criteria": [
+          "Code reviewed",
+          "Tested",
+          "Documented"
         ]
       }
     ]
   },
-  "key_concepts": {
-    "transparency": "Everyone sees what's happening",
-    "inspection": "Regular check on progress and artifacts",
-    "adaptation": "Adjust based on inspection results"
-  },
+  "key_concepts": [
+    {
+      "concept": "Transparency",
+      "description": "Everyone sees what's happening",
+      "key_points": [
+        "Common language and definitions",
+        "Shared understanding of \"Done\""
+      ]
+    },
+    {
+      "concept": "Inspection",
+      "description": "Regular check on progress and artifacts",
+      "key_points": [
+        "Detection of undesirable variances",
+        "Frequent enough without impeding work"
+      ]
+    },
+    {
+      "concept": "Adaptation",
+      "description": "Adjust based on inspection results",
+      "key_points": [
+        "Timely adjustments minimize deviation",
+        "Occurs at all Scrum events"
+      ]
+    },
+    {
+      "concept": "Scrum vs. Other Methodologies",
+      "description": "How Scrum compares to other ways of organizing delivery work.",
+      "comparison": {
+        "headers": [
+          "Comparison",
+          "Scrum",
+          "The Other Approach"
+        ],
+        "rows": [
+          [
+            "Scrum vs. Kanban",
+            "Fixed-length iterations, prescribed roles and events",
+            "Kanban: continuous flow, fewer prescribed roles, limited WIP"
+          ],
+          [
+            "Scrum vs. Waterfall",
+            "Iterative, adaptive, incremental delivery",
+            "Waterfall: sequential phases, complete specification upfront"
+          ],
+          [
+            "Scrum vs. XP",
+            "Project management framework",
+            "XP: engineering practices (TDD, pair programming, continuous integration)"
+          ]
+        ]
+      }
+    },
+    {
+      "concept": "Scaling Scrum",
+      "description": "Frameworks used to apply Scrum across multiple teams working on one product.",
+      "frameworks": [
+        "Scrum of Scrums",
+        "LeSS (Large-Scale Scrum)",
+        "SAFe (Scaled Agile Framework)",
+        "Nexus"
+      ]
+    }
+  ],
   "best_practices": {
     "backlog_management": [
-      "Regular refinement",
+      "Regular refinement (grooming)",
       "Clear acceptance criteria",
       "Properly sized stories",
-      "INVEST criteria for stories"
+      "INVEST criteria for stories (Independent, Negotiable, Valuable, Estimable, Small, Testable)",
+      "Prioritization techniques (MoSCoW, value vs. effort)"
     ],
     "sprint_execution": [
-      "Protect the team",
-      "Maintain focus",
+      "Protect the team from interruptions",
+      "Maintain focus on the sprint goal",
       "Daily communication",
-      "Continuous improvement"
+      "Continuous improvement",
+      "Address impediments quickly",
+      "Visualize work (Scrum/Kanban board)"
     ],
     "team_collaboration": [
       "Self-organization",
       "Cross-functional skills",
       "Direct communication",
-      "Shared responsibility"
+      "Shared responsibility",
+      "Co-location when possible",
+      "Information radiators"
+    ],
+    "interview_tips": [
+      "Emphasize practical experience over theoretical knowledge",
+      "Be prepared to describe how you've implemented Scrum in real projects",
+      "Discuss challenges you've faced with Scrum implementation and how you addressed them",
+      "Understand the difference between \"doing Agile\" and \"being Agile\"",
+      "Be honest about what worked and what didn't in your experience"
     ]
   },
   "common_pitfalls": [
     "Treating Scrum as a rigid process",
     "Skipping ceremonies",
     "Poor backlog management",
-    "Lack of team empowerment"
+    "Lack of team empowerment",
+    "Micromanagement by the Scrum Master or managers",
+    "No true Product Owner authority",
+    "Focusing on velocity over value",
+    "Incomplete Definition of Done"
   ],
   "metrics": [
     {
       "name": "Velocity",
-      "description": "Amount of work completed per sprint"
+      "description": "Amount of work completed per sprint",
+      "notes": [
+        "Used for planning and capacity forecasting",
+        "Should be used as a team metric, not an individual one"
+      ]
     },
     {
       "name": "Burndown Chart",
-      "description": "Visual representation of work remaining"
+      "description": "Visual representation of work remaining",
+      "notes": [
+        "Shows progress toward the sprint goal",
+        "Identifies potential delays early"
+      ]
     },
     {
       "name": "Sprint Goal Achievement",
-      "description": "Success rate in meeting sprint goals"
+      "description": "Success rate in meeting sprint goals",
+      "notes": [
+        "Measures the team's ability to deliver on commitments"
+      ]
+    },
+    {
+      "name": "Lead/Cycle Time",
+      "description": "Time taken from task creation to completion",
+      "notes": [
+        "Helps identify process bottlenecks"
+      ]
+    },
+    {
+      "name": "Team Happiness",
+      "description": "Team health and sustainability indicator",
+      "notes": [
+        "Often measured through retrospectives",
+        "Indicates whether the current pace is sustainable"
+      ]
     }
   ]
 }

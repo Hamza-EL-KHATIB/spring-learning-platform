@@ -190,7 +190,7 @@
               "keyPoints": [
                 {"category": "Time Complexity", "points": [
                   "Insert: O(log n)",
-                  "Peak: O(1)",
+                  "Peek: O(1)",
                   "Poll: O(log n)"
                 ]},
                 {"category": "Ordering", "points": ["Natural order or specified comparator"]},
@@ -294,7 +294,7 @@
               ],
               "keyPoints": [
                 {"category": "Thread Safety", "points": ["Thread-safe without locking entire map"]},
-                {"category": "Concurrency", "points": ["Uses segmentation to allow multiple threads to modify different parts simultaneously"]},
+                {"category": "Concurrency", "points": ["Java 8+: lock-free CAS on empty bins, plus synchronized on the first node of a bin, so only the bin being written is locked", "Reads never block", "The Segment-based locking of Java 7 is gone (Segment survives only for serialization compatibility) - do not describe modern ConcurrentHashMap as segmented"]},
                 {"category": "Null Policy", "points": ["Does not allow null keys or values"]},
                 {"category": "Performance", "points": ["High concurrency with minimal locking"]}
               ]
@@ -552,7 +552,7 @@
         {
           "id": "hashmap-vs-concurrenthashmap",
           "question": "What is the difference between HashMap and ConcurrentHashMap?",
-          "answer": "- **HashMap** is not thread-safe and will cause issues if accessed concurrently\n- **ConcurrentHashMap** is thread-safe and designed for concurrent access by:\n    - Using segmented locking instead of synchronizing the entire map\n    - Allowing concurrent reads without locking\n    - Providing atomic operations like putIfAbsent and compute\n- ConcurrentHashMap doesn't allow null keys/values unlike HashMap\n- ConcurrentHashMap has better performance under high concurrency"
+          "answer": "- **HashMap** is not thread-safe and will cause issues if accessed concurrently\n- **ConcurrentHashMap** is thread-safe and designed for concurrent access by:\n    - Locking only the bucket being written (synchronized on the bin's first node), never the whole map\n    - Using lock-free CAS to install the first node of an empty bucket\n    - Allowing concurrent reads without locking\n    - Providing atomic operations like putIfAbsent, compute and merge\n- ConcurrentHashMap doesn't allow null keys/values unlike HashMap\n- ConcurrentHashMap has better performance under high concurrency\n\n**Common interview trap**: the segment/stripe-based locking (`Segment`, `concurrencyLevel`) is the **Java 7** design. It was replaced in Java 8 by per-bucket locking with CAS; the `Segment` class remains only for serialization compatibility, and the `concurrencyLevel` constructor argument is now just a sizing hint."
         },
         {
           "id": "list-set-map-difference",
