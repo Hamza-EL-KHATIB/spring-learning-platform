@@ -1,62 +1,66 @@
-# Content gaps
+# Content coverage
 
-Topics that exist in the Obsidian vault (`<notes vault>`)
-but have no page in the app. Adding one is a JSON file in `src/data/`, a five-line
-page component, a route in `App.js`, and entries in `src/navigation.js` and
+Every topic in the Obsidian vault (`<notes vault>`)
+now has a page. This file records what was imported, the judgement calls made along
+the way, and what is genuinely left.
+
+To add a page: JSON in `src/data/`, a `TopicPageTemplate` one-liner in
+`src/pages/topics/`, a route in `App.js`, and entries in `src/navigation.js` and
 `src/searchIndex.js` — see CLAUDE.md.
 
-Sizes are of the vault source. Nothing here has been imported yet.
+## Imported
 
-## Imported ✅
-
-These were the critical gaps; all five now have pages.
-
-| Topic | Page | Route |
+| Topic | Route | Vault source |
 |---|---|---|
-| Microservices | 13 tabs | `/architecture/microservices` |
-| Kafka & Messaging | 11 tabs | `/architecture/kafka` |
-| System Design | 13 tabs | `/architecture/system-design` |
-| JVM Internals & GC | 10 tabs | `/java/jvm` |
-| Technical Questions | 207 questions, 11 tabs | `/practice/questions` |
+| Microservices | `/architecture/microservices` | `Architecture/Microservices.md` + both json cuts |
+| Kafka & Messaging | `/architecture/kafka` | `Architecture/Kafka & Messaging.md` |
+| System Design | `/architecture/system-design` | `Architecture/System Design.md` |
+| JVM Internals & GC | `/java/jvm` | `Java Core/JVM Internals & GC.md` |
+| Modern Java (21-25) | `/java/modern` | `Java Core/Modern Java (21-25).md` |
+| NoSQL Concepts | `/databases/nosql` | `Databases/NoSQL Concepts.md` |
+| CI/CD Pipeline | `/devops/cicd` | `Agile & DevOps/CI-CD Pipeline.md` |
+| Docker & Kubernetes | `/devops/containers` | `Agile & DevOps/Docker & Kubernetes.md` |
+| DevOps Practices | `/devops/practices` | `Agile & DevOps/DevOps Practices.md` |
+| Cloud Fundamentals | `/devops/cloud` | `Agile & DevOps/Cloud Fundamentals (AWS & Azure).md` |
+| Question Bank (207 q) | `/practice/questions` | `Practice/json/technical-questions.json` |
+| Q&A by Level (133 q) | `/practice/by-level` | `Java-Interview-QA.md` (vault root) |
+| DSA Patterns & Big-O | `/practice/dsa` | `Practice/DSA Patterns & Big-O.md` |
+| Technical Scenarios | `/practice/scenarios` | `Practice/Technical Scenarios.md` |
+| Behavioral & HR | `/practice/behavioral` | `HR & Behavioral Preparation/` (3 notes) + `Practice/Behavioral Scenarios.md` |
 
-Notes on those imports: the two microservices cuts (`Architecture/json/` and
-`Agile & DevOps/json/`) turned out to be the same content in different shapes and
-were reconciled. The JVM note's interview answers were filed under the topic each
-one is about rather than duplicated into a questions tab. Vault `[[wikilinks]]` and
-`#hashtag` footers were dropped; the hashtags became the pages' tag pills.
+## Judgement calls worth knowing
 
-## High value
+**Two question banks, two axes.** `/practice/questions` is organised by subject,
+`/practice/by-level` by seniority. The level-based one came from the 120 KB unfiled
+root note; its topic sections duplicated the subject bank, so ~30 such questions were
+dropped and only the seniority material kept.
 
-| Topic | Vault source | Size | Note |
-|---|---|---|---|
-| Modern Java (21-25) | `Java Core/Modern Java (21-25).md` | 7.5 KB | Records, sealed types, pattern matching, virtual threads. The app stops at Java 8+. |
-| DevOps Practices | `Agile & DevOps/DevOps Practices.md` + json | 36 KB JSON | Largest unused vault JSON. |
-| Technical Scenarios | `Practice/Technical Scenarios.md` | 12.3 KB | "How would you handle…" prompts; complements the Q&A bank. |
-| DSA Patterns & Big-O | `Practice/DSA Patterns & Big-O.md` | 7.5 KB | Screening rounds are frequently DSA-only. |
-| HR & Behavioral | `HR & Behavioral Preparation/` (3 notes + json) | 43 KB | STAR answers; every loop has a behavioural round. |
-| Java-Interview-QA | vault root `Java-Interview-QA.md` | 120 KB | Biggest single note, unfiled. Overlaps the imported Technical Questions bank — de-duplicate against `/practice/questions` before importing. |
+**Behavioral & HR merges four overlapping notes** into themed tabs rather than one tab
+per source. Each story is told once: STAR breakdowns in the STAR Method tab, the rest
+as prose in Signature Stories.
 
-## Empty placeholder files already in the repo
+**Some vault JSON files are structural mirrors of their `.md`,** not extra content —
+`nosql-concepts.json`, `devops-practices.json` and the three HR companions all turned
+out to be subsets. Check before assuming a `json/` file adds anything.
 
-These import cleanly today only because nothing references them. `nosql.json` is
-referenced from a commented-out import in `TopicPage.js`.
+**Deliberate non-duplication:** the Git command reference inside `DevOps Practices.md`
+was left out because `/devops/git` already covers it; the JVM note's interview answers
+were filed under the topic each one is about rather than given a questions tab.
 
-| Repo file | Vault source | Status |
-|---|---|---|
-| `src/data/databases/nosql.json` | `Databases/NoSQL Concepts.md` + json (27 KB) | 0 bytes — source ready, interview-critical |
-| `src/data/devops/cicd.json` | `Agile & DevOps/CI-CD Pipeline.md` (10.8 KB) | 0 bytes — source ready |
-| `src/data/devops/containers.json` | `Agile & DevOps/Docker & Kubernetes.md` (6.9 KB) | 0 bytes — source ready |
-| `src/data/architecture/best-practices.json` | none | 0 bytes, no source — delete |
-| `src/data/architecture/performance.json` | none | 0 bytes, no source — would need writing from scratch |
+**Dropped everywhere:** vault-internal `[[wikilinks]]`, "Related Topics" lists, and
+`#hashtag` footers (the hashtags became each page's tag pills).
 
-## Medium
+## What's actually left
 
-Cloud Fundamentals (AWS & Azure) 6 KB · Questions to Ask 7.1 KB · Strengths and
-Weaknesses 5.3 KB · Behavioral Scenarios 9.3 KB (overlaps the HR notes — merge).
+Nothing in the vault is unconverted. Remaining ideas, in rough value order:
 
-`Architecture/Design Patterns in Spring Boot & Java.md` (23 KB) was partially
-harvested into `design-patterns.json`; its `advanced_patterns`,
-`network_proxy_types` and `pattern_decision_guide` sections remain unused.
+- **Deleted as unusable:** `architecture/best-practices.json` and
+  `architecture/performance.json` were 0 bytes with no vault source. Performance
+  tuning is a real gap, but there is no note to import — it would need writing.
+- `Architecture/Design Patterns in Spring Boot & Java.md` was partially harvested into
+  `design-patterns.json`; its `advanced_patterns`, `network_proxy_types` and
+  `pattern_decision_guide` sections remain unused and could justify their own page.
+- `src/data/topics.json` is dead — nothing imports it. Safe to delete.
 
 ## Known vault errors
 
