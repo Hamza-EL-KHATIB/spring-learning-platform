@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React from 'react';
 import { BookOpen, FileText, Code2 } from 'lucide-react';
-import FloatingMenu from '../layout/FloatingMenu';
 import CodeBlock from './CodeBlock';
 import renderContent from './ContentRenderer';
-import { getSectionIcon, getTopicIcon } from './icons';
-import { TagPills, deriveType, prettifyKey, humanizeTitle } from './primitives';
+import { getSectionIcon } from './icons';
+import { deriveType, prettifyKey, humanizeTitle } from './primitives';
+import { ActivePanel, PageHeader, PageTabs, useTabs } from './shell';
 
 // Accepts either root convention: { topics: [...] } or { sections: [...] }.
 // Pages with exotic roots build a topics[] array themselves before passing data in.
@@ -168,101 +167,30 @@ const TopicPageTemplate = ({
     footer,
 }) => {
     const topics = normalizeTopics(data);
-    const storageKey = persistKey ? `topic-tab:${persistKey}` : null;
-    const [searchParams] = useSearchParams();
-    const requestedTopic = searchParams.get('topic');
+    const tabs = topics.map((topic) => ({
+        id: topicId(topic),
+        title: topic.title,
+        icon: iconOverrides[topic.title],
+        topic,
+    }));
 
-    const [activeId, setActiveId] = useState(() => {
-        if (storageKey) {
-            const saved = localStorage.getItem(storageKey);
-            if (saved && topics.some((t) => topicId(t) === saved)) return saved;
-        }
-        return topics[0] ? topicId(topics[0]) : null;
-    });
-
-    // Quick-search links carry ?topic=… so a result opens on the right tab
-    useEffect(() => {
-        if (!requestedTopic) return;
-        const match = topics.find(
-            (t) => topicId(t) === requestedTopic || t.title === requestedTopic
-        );
-        if (match) setActiveId(topicId(match));
-    }, [requestedTopic]); // eslint-disable-line react-hooks/exhaustive-deps
-
-    const selectTopic = (id) => {
-        setActiveId(id);
-        if (storageKey) localStorage.setItem(storageKey, id);
-    };
-
-    const activeTopic = topics.find((t) => topicId(t) === activeId);
+    const { activeId, select, activeTab } = useTabs(tabs, persistKey);
+    const activeTopic = activeTab?.topic;
     const opts = { images, language, resolveDiagram };
-    const showTabs = topics.length > 1;
 
     return (
         <div className="min-h-screen bg-gray-900">
-            {/* Page header */}
-            <div className="mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-4 border border-purple-500/30 shadow-md">
-                <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                    {data.title}
-                </h1>
-                <TagPills tags={data.tags} />
-                {header}
-            </div>
+            <PageHeader title={data.title} tags={data.tags}>{header}</PageHeader>
 
-            {/* Tab bar */}
-            {showTabs && (
-                <div className="mb-4 flex flex-wrap gap-2 p-1 bg-gray-800/50 rounded-lg border border-gray-700/50">
-                    {topics.map((topic) => {
-                        const id = topicId(topic);
-                        return (
-                            <button
-                                key={id}
-                                onClick={() => selectTopic(id)}
-                                className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
-                                    activeId === id
-                                        ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border border-purple-500/30'
-                                        : 'bg-gray-800/50 text-gray-400 border border-gray-700/50 hover:bg-gray-700/50 hover:text-gray-300'
-                                }`}
-                            >
-                                {iconOverrides[topic.title] || getTopicIcon(topic.title)}
-                                <span className="ml-1">{topic.title}</span>
-                            </button>
-                        );
-                    })}
-                </div>
-            )}
+            <PageTabs tabs={tabs} activeId={activeId} onChange={select} />
 
-            {/* Active topic */}
-            <div className="space-y-4">
-                <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-lg p-4 border border-purple-500/20 shadow-md">
-                    <div className="flex items-center gap-2 mb-4">
-                        <div className="p-1.5 bg-gray-800/70 rounded-md">
-                            {iconOverrides[activeTopic?.title] || getTopicIcon(activeTopic?.title)}
-                        </div>
-                        <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                            {activeTopic?.title}
-                        </h2>
-                    </div>
-                    {(renderTopic && activeTopic && renderTopic(activeTopic)) || (
-                        <TopicBody topic={activeTopic} opts={opts} />
-                    )}
-                </div>
-            </div>
+            <ActivePanel title={activeTopic?.title} icon={iconOverrides[activeTopic?.title]}>
+                {(renderTopic && activeTopic && renderTopic(activeTopic)) || (
+                    <TopicBody topic={activeTopic} opts={opts} />
+                )}
+            </ActivePanel>
 
             {footer && <div className="mt-6 space-y-4">{footer}</div>}
-
-            {/* Mobile quick-nav */}
-            {showTabs && (
-                <FloatingMenu
-                    tabs={topics.map((t) => ({
-                        id: topicId(t),
-                        title: t.title,
-                        icon: iconOverrides[t.title] || getTopicIcon(t.title),
-                    }))}
-                    activeTab={activeId}
-                    onTabChange={selectTopic}
-                />
-            )}
         </div>
     );
 };
