@@ -1,42 +1,26 @@
-// src/pages/HomePage.js with translations
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-    BookOpen,
-    Server,
-    Database,
-    Activity,
-    Box,
-    Folder,
-    FolderTree,
-    Binary,
-    Cpu,
-    Users,
-    RefreshCw,
-    FileCode,
-    XSquare,
-    BookOpenCheck,
-    LayoutGrid,
-    FileCheck,
-    GitBranch
-} from 'lucide-react';
-const CategorySection = ({ title, items }) => (
+import { Search, ChevronRight } from 'lucide-react';
+import { navigationGroups } from '../navigation';
+
+const CategorySection = ({ group }) => (
     <div className="bg-gray-800/40 rounded-lg p-6 border border-gray-700/50">
-        <h3 className="text-lg font-semibold text-white mb-4">{title}</h3>
-        <div className="grid gap-2">
-            {items.map((item, index) => (
+        <div className="flex items-center gap-3 mb-4">
+            <span className="text-purple-400">{group.icon}</span>
+            <h3 className="text-lg font-semibold text-white">{group.title}</h3>
+        </div>
+        <div className="grid gap-1">
+            {group.items.map((item) => (
                 <Link
-                    key={index}
+                    key={item.path}
                     to={item.path}
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors group"
+                    className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-gray-700/50 transition-colors group"
                 >
-                    <div className="p-2 bg-gray-800/50 rounded-lg group-hover:bg-gray-700">
-                        <item.icon className="w-4 h-4 text-gray-400 group-hover:text-cyan-400" />
-                    </div>
-                    <div>
-                        <div className="text-gray-200 group-hover:text-white">{item.title}</div>
+                    <ChevronRight className="w-4 h-4 text-gray-600 group-hover:text-cyan-400 shrink-0" />
+                    <div className="min-w-0">
+                        <div className="text-gray-200 group-hover:text-white text-sm">{item.title}</div>
                         {item.description && (
-                            <div className="text-sm text-gray-400">{item.description}</div>
+                            <div className="text-xs text-gray-500">{item.description}</div>
                         )}
                     </div>
                 </Link>
@@ -45,83 +29,33 @@ const CategorySection = ({ title, items }) => (
     </div>
 );
 
-const HomePage = () => {
-    const categories = {
-        java: {
-            title: "Java Core",
-            items: [
-                { title: "Java Fundamentals", path: "/java/fundamentals", icon: BookOpen, description: "Fundamentals of Java" },
-                { title: "Collections Framework", path: "/java/collections", icon: Folder, description: "Lists, Sets, Maps, and more" },
-                { title: "Concurrency & Multithreading", path: "/java/concurrency", icon: Activity, description: "Threads, executors, synchronization" },
-                { title: "Exception Handling", path: "/java/exceptions", icon: Box, description: "Error handling and management" },
-                { title: "Java Features", path: "/java/features", icon: Cpu, description: "Modern Java capabilities" },
-                { title: "Unit Testing", path: "/java/testing", icon: FileCheck, description: "Testing with JUnit and Mockito" },
-                { title: "Functional Programming", path: "/java/functional-programming", icon: FileCheck, description: "Functional programming concepts in Java" },
-            ]
-        },
-        spring: {
-            title: "Spring Framework",
-            items: [
-                { title: "Spring Core", path: "/spring/core", icon: Server, description: "IoC, DI, and core concepts" },
-                { title: "Spring Boot", path: "/spring/boot", icon: XSquare, description: "Auto-configuration and features" },
-                { title: "Spring Data", path: "/spring/data", icon: Database, description: "Data access and repositories" },
-                { title: "Spring Security", path: "/spring/security", icon: Binary, description: "Authentication and authorization" },
-                { title: "REST APIs", path: "/spring/rest", icon: FileCode, description: "RESTful web services" },
-                { title: "GraphQL", path: "/spring/graphql", icon: FileCode, description: "GraphQL APIs" },
-                { title: "Spring Definitions", path: "/spring/definitions", icon: BookOpenCheck, description: "Core Spring concepts and terminology" }
-            ]
-        },
-        databases: {
-            title: "Database Technologies",
-            items: [
-                { title: "SQL Fundamentals", path: "/databases/sql", icon: Database, description: "SQL basics and advanced queries" },
-                { title: "Hibernate", path: "/databases/hibernate", icon: FolderTree, description: "ORM and entity management" },
-                { title: "Transactions", path: "/databases/transactions", icon: RefreshCw, description: "Transaction management" },
-                { title: "Redis", path: "/databases/redis", icon: Binary, description: "In-memory data structure store" }
-            ]
-        },
-        architecture: {
-            title: "Software Architecture",
-            items: [
-                { title: "Design Patterns", path: "/architecture/design-patterns", icon: LayoutGrid, description: "Common software patterns" },
-                { title: "SOLID Principles", path: "/architecture/solid", icon: BookOpenCheck, description: "Design principles" },
-                { title: "YAGNI, KISS, DRY", path: "/architecture/principles", icon: BookOpenCheck, description: "Design principles" },
-            ]
-        },
-        devops: {
-            title: "DevOps & Tools",
-            items: [
-                { title: "Git", path: "/devops/git", icon: GitBranch, description: "Version control workflows and commands" }
-            ]
-        },
-        processes: {
-            title: "Processes",
-            items: [
-                { title: "Scrum Framework", path: "/agile/scrum", icon: Users, description: "Agile project management with Scrum" }
-            ]
-        },
-        bestPractices: {
-            title: "Best Practices",
-            items: [
-                { title: "Code Review", path: "/best-practices/code-reviews", icon: FileCheck, description: "Code review guidelines" }
-            ]
-        }
-    };
-
-    return (
-        <div className="space-y-8">
-            {/* All Categories */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {Object.values(categories).map((category) => (
-                    <CategorySection
-                        key={category.title}
-                        title={category.title}
-                        items={category.items}
-                    />
-                ))}
+const HomePage = () => (
+    <div className="space-y-8">
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-6 border border-purple-500/30">
+            <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                Interview & Training Notes
+            </h1>
+            <p className="text-gray-400 mt-2 text-sm">
+                Press{' '}
+                <kbd className="px-1.5 py-0.5 text-xs border border-gray-600 rounded text-gray-300">Ctrl</kbd>
+                {' '}+{' '}
+                <kbd className="px-1.5 py-0.5 text-xs border border-gray-600 rounded text-gray-300">K</kbd>
+                {' '}(or{' '}
+                <kbd className="px-1.5 py-0.5 text-xs border border-gray-600 rounded text-gray-300">/</kbd>
+                ) to jump straight to any topic.
+            </p>
+            <div className="flex items-center gap-2 mt-3 text-xs text-gray-500">
+                <Search className="w-3.5 h-3.5" />
+                <span>Search covers every page and every topic tab.</span>
             </div>
         </div>
-    );
-};
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {navigationGroups.map((group) => (
+                <CategorySection key={group.key} group={group} />
+            ))}
+        </div>
+    </div>
+);
 
 export default HomePage;
