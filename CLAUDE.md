@@ -43,11 +43,18 @@ Two things there are load-bearing and easy to break:
 - `package-lock.json` is committed on purpose; `npm ci` in the build needs it. If it drifts
   out of sync with `package.json`, the Docker build fails while local builds keep working.
 
-## Critical: the data directory and .gitignore
+## Content data
 
-**`src/data/` is listed in `.gitignore`** (a leftover from a plan to symlink it from an external directory). The English JSON files were restored from git history (commit 5840e57) and exist on disk, but changes to them are invisible to `git status` unless they are tracked/staged. Be careful: `git clean -x` would delete them. The French `-fr.json` variants were deliberately not restored — do not recreate them. If builds fail with "Module not found: .../data/...", the content is recoverable from commit 5840e57 (`git checkout 5840e57 -- src/data/...`).
+`src/data/<category>/<name>.json`, categories: `spring/`, `java/`, `databases/`,
+`architecture/`, `bestPractices/`, `devops/`, `scrum/`, `practice/`, `german/`, plus
+`images/` (design-pattern diagrams). All tracked in git.
 
-Layout: `src/data/<category>/<name>.json` with categories `spring/`, `java/`, `databases/`, `architecture/`, `bestPractices/`, `devops/`, `scrum/`, `german/`, plus `images/` (design-pattern diagrams).
+The content is transcribed from an Obsidian vault outside the repo
+(`Interview Prep`); `CONTENT-GAPS.md` records what came from where and the
+de-duplication decisions. Some vault `json/` files are structural mirrors of their
+`.md` and add nothing — check before importing one.
+
+Only English. A former EN/FR system was removed; do not recreate `-fr.json` files.
 
 ## Architecture
 
