@@ -7,18 +7,23 @@ page component, a route in `App.js`, and entries in `src/navigation.js` and
 
 Sizes are of the vault source. Nothing here has been imported yet.
 
-## Critical for a Spring backend role
+## Imported ✅
 
-| Topic | Vault source | Size | Why it matters |
-|---|---|---|---|
-| Microservices | `Architecture/Microservices.md` + `json/microservices.json` | 24 KB | Service boundaries, resilience patterns, saga, inter-service comms. Biggest single gap. |
-| Kafka & Messaging | `Architecture/Kafka & Messaging.md` | 7.4 KB | Partitions, consumer groups, delivery semantics. Expected wherever Kafka is on the JD. |
-| System Design | `Architecture/System Design.md` | 7.2 KB | Usually its own interview stage; nothing in the app covers it. |
-| JVM Internals & GC | `Java Core/JVM Internals & GC.md` | 8.5 KB | Heap/metaspace, GC algorithms, tuning flags, OOM diagnosis. Classic senior differentiator. |
-| Technical Questions | `Practice/Technical Questions.md` + `json/technical-questions.json` | 104 KB JSON | Largest asset in the vault, entirely unused. Would suit a dedicated Practice section. |
+These were the critical gaps; all five now have pages.
 
-There is a second cut of microservices under `Agile & DevOps/json/microservices.json`
-(16 KB) — reconcile the two before importing either.
+| Topic | Page | Route |
+|---|---|---|
+| Microservices | 13 tabs | `/architecture/microservices` |
+| Kafka & Messaging | 11 tabs | `/architecture/kafka` |
+| System Design | 13 tabs | `/architecture/system-design` |
+| JVM Internals & GC | 10 tabs | `/java/jvm` |
+| Technical Questions | 207 questions, 11 tabs | `/practice/questions` |
+
+Notes on those imports: the two microservices cuts (`Architecture/json/` and
+`Agile & DevOps/json/`) turned out to be the same content in different shapes and
+were reconciled. The JVM note's interview answers were filed under the topic each
+one is about rather than duplicated into a questions tab. Vault `[[wikilinks]]` and
+`#hashtag` footers were dropped; the hashtags became the pages' tag pills.
 
 ## High value
 
@@ -29,7 +34,7 @@ There is a second cut of microservices under `Agile & DevOps/json/microservices.
 | Technical Scenarios | `Practice/Technical Scenarios.md` | 12.3 KB | "How would you handle…" prompts; complements the Q&A bank. |
 | DSA Patterns & Big-O | `Practice/DSA Patterns & Big-O.md` | 7.5 KB | Screening rounds are frequently DSA-only. |
 | HR & Behavioral | `HR & Behavioral Preparation/` (3 notes + json) | 43 KB | STAR answers; every loop has a behavioural round. |
-| Java-Interview-QA | vault root `Java-Interview-QA.md` | 120 KB | Biggest single note, unfiled. Likely overlaps Technical Questions — de-duplicate first. |
+| Java-Interview-QA | vault root `Java-Interview-QA.md` | 120 KB | Biggest single note, unfiled. Overlaps the imported Technical Questions bank — de-duplicate against `/practice/questions` before importing. |
 
 ## Empty placeholder files already in the repo
 
