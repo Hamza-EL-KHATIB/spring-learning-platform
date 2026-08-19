@@ -59,6 +59,7 @@ export const navigationGroups = [
             { path: '/architecture/microservices', title: 'Microservices', description: 'Boundaries, resilience, patterns' },
             { path: '/architecture/kafka', title: 'Kafka & Messaging', description: 'Event-driven architecture' },
             { path: '/architecture/system-design', title: 'System Design', description: 'Framework, building blocks, trade-offs' },
+            { path: '/architecture/performance', title: 'Performance Tuning', description: 'Profiling, queries, caching, latency' },
         ],
     },
     {
