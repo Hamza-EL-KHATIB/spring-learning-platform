@@ -19,6 +19,7 @@ export const navigationGroups = [
             { path: '/java/testing', title: 'Unit Testing', description: 'JUnit and Mockito' },
             { path: '/java/functional-programming', title: 'Functional Programming', description: 'Streams, lambdas, optionals' },
             { path: '/java/jvm', title: 'JVM Internals & GC', description: 'Memory, collectors, tuning, OOM' },
+            { path: '/java/modern', title: 'Modern Java (21-25)', description: 'Records, sealed types, virtual threads' },
         ],
     },
     {
@@ -44,6 +45,7 @@ export const navigationGroups = [
             { path: '/databases/hibernate', title: 'Hibernate ORM', description: 'Entities, caching, mapping' },
             { path: '/databases/transactions', title: 'Transactions', description: 'ACID, isolation, propagation' },
             { path: '/databases/redis', title: 'Redis', description: 'In-memory data structure store' },
+            { path: '/databases/nosql', title: 'NoSQL Concepts', description: 'Document, key-value, graph, CAP' },
         ],
     },
     {
@@ -65,6 +67,10 @@ export const navigationGroups = [
         icon: <GitBranch className="w-5 h-5" />,
         items: [
             { path: '/devops/git', title: 'Git', description: 'Workflows and commands' },
+            { path: '/devops/cicd', title: 'CI/CD Pipeline', description: 'Stages, tools, deployment strategies' },
+            { path: '/devops/containers', title: 'Docker & Kubernetes', description: 'Images, manifests, probes, rollouts' },
+            { path: '/devops/practices', title: 'DevOps Practices', description: 'IaC, monitoring, DevSecOps, culture' },
+            { path: '/devops/cloud', title: 'Cloud Fundamentals', description: 'AWS and Azure service map' },
         ],
     },
     {
@@ -81,6 +87,10 @@ export const navigationGroups = [
         icon: <HelpCircle className="w-5 h-5" />,
         items: [
             { path: '/practice/questions', title: 'Question Bank', description: '200+ questions by area' },
+            { path: '/practice/by-level', title: 'Q&A by Level', description: 'Junior, intermediate, senior' },
+            { path: '/practice/dsa', title: 'DSA Patterns & Big-O', description: 'Complexity and coding patterns' },
+            { path: '/practice/scenarios', title: 'Technical Scenarios', description: 'How would you handle...' },
+            { path: '/practice/behavioral', title: 'Behavioral & HR', description: 'STAR stories and HR questions' },
         ],
     },
     {

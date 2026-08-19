@@ -1,0 +1,193 @@
+{
+  "title": "DSA Patterns & Big-O",
+  "tags": ["dsa", "algorithms", "big-o", "live-coding", "interview"],
+  "topics": [
+    {
+      "title": "Big-O Cheat Sheet",
+      "description": "Complexity of the data structures that cover almost every live-coding round, plus how to read the target complexity straight off the input constraints.",
+      "interviewRelevance": 5,
+      "complexities": {
+        "headers": ["Structure", "Access", "Search", "Insert", "Delete", "Notes"],
+        "rows": [
+          ["Array / ArrayList", "O(1)", "O(n)", "O(n), O(1) amortized append", "O(n)", ""],
+          ["LinkedList", "O(n)", "O(n)", "O(1) at known node", "O(1) at known node", "Rarely the right answer"],
+          ["HashMap / HashSet", "n/a", "O(1) avg", "O(1) avg", "O(1) avg", "O(n) worst (collisions)"],
+          ["TreeMap / TreeSet", "n/a", "O(log n)", "O(log n)", "O(log n)", "Sorted order, floor/ceiling"],
+          ["PriorityQueue (heap)", "peek O(1)", "n/a", "O(log n)", "poll O(log n)", "Top-K problems"],
+          ["ArrayDeque", "O(1) ends", "n/a", "O(1) ends", "O(1) ends", "Use as stack AND queue"]
+        ]
+      },
+      "sorting": "Arrays.sort is O(n log n): dual-pivot quicksort for primitives, TimSort for objects (stable).",
+      "reading_the_constraints": [
+        "n up to 10^5 to 10^6: you need O(n) or O(n log n).",
+        "n up to about 1000: O(n^2) is fine.",
+        "n up to about 20: exponential or bitmask solutions are acceptable."
+      ]
+    },
+    {
+      "title": "Hashing & Counting",
+      "description": "Trade memory for a lookup. The first thing to try when a brute force does repeated searching.",
+      "interviewRelevance": 5,
+      "use_for": [
+        "Two Sum and complement lookups",
+        "Group anagrams",
+        "First unique character",
+        "Frequency counting of any kind"
+      ],
+      "say_out_loud": "Can I trade memory for a lookup?",
+      "code": "Map<Integer,Integer> seen = new HashMap<>();\nfor (int i = 0; i < nums.length; i++) {\n    Integer j = seen.get(target - nums[i]);\n    if (j != null) return new int[]{j, i};\n    seen.put(nums[i], i);\n}"
+    },
+    {
+      "title": "Two Pointers",
+      "description": "Walk two indices over sorted data, or inward from both ends, to drop a nested loop.",
+      "interviewRelevance": 5,
+      "use_for": [
+        "Pair sum in a sorted array",
+        "Container with most water",
+        "Palindrome check",
+        "Deduplicate in place"
+      ],
+      "code": "int l = 0, r = arr.length - 1;\nwhile (l < r) {\n    int sum = arr[l] + arr[r];\n    if (sum == target) return true;\n    if (sum < target) l++; else r--;\n}"
+    },
+    {
+      "title": "Sliding Window",
+      "description": "Grow the window on the right, shrink from the left while it violates the invariant. For subarray and substring problems with a property.",
+      "interviewRelevance": 5,
+      "use_for": [
+        "Longest substring without repeating characters",
+        "Maximum sum of a window of size k",
+        "Minimum window containing given characters"
+      ],
+      "code": "Map<Character,Integer> count = new HashMap<>();\nint left = 0, best = 0;\nfor (int right = 0; right < s.length(); right++) {\n    count.merge(s.charAt(right), 1, Integer::sum);\n    while (count.get(s.charAt(right)) > 1) {   // window invalid\n        count.merge(s.charAt(left), -1, Integer::sum);\n        left++;\n    }\n    best = Math.max(best, right - left + 1);\n}"
+    },
+    {
+      "title": "Stack",
+      "description": "Matching, nearest-greater and undo problems. A monotonic stack answers next-greater questions in one pass.",
+      "interviewRelevance": 4,
+      "use_for": [
+        "Valid parentheses",
+        "Next greater element (monotonic stack)",
+        "Expression evaluation",
+        "Undo history"
+      ],
+      "code": "Deque<Character> st = new ArrayDeque<>();\nfor (char c : s.toCharArray()) {\n    switch (c) {\n        case '(' -> st.push(')');\n        case '[' -> st.push(']');\n        case '{' -> st.push('}');\n        default  -> { if (st.isEmpty() || st.pop() != c) return false; }\n    }\n}\nreturn st.isEmpty();"
+    },
+    {
+      "title": "Binary Search",
+      "description": "Classic search on sorted data, and the harder variant: binary search the answer space for the minimum value that satisfies a condition.",
+      "interviewRelevance": 5,
+      "use_for": [
+        "Find a target in a sorted array",
+        "Search in a rotated sorted array",
+        "Minimum capacity or speed satisfying a condition (Koko eating bananas, ship packages in D days)"
+      ],
+      "code": "int lo = 0, hi = arr.length - 1;\nwhile (lo <= hi) {\n    int mid = lo + (hi - lo) / 2;      // overflow-safe\n    if (arr[mid] == target) return mid;\n    if (arr[mid] < target) lo = mid + 1; else hi = mid - 1;\n}"
+    },
+    {
+      "title": "BFS & DFS",
+      "description": "Breadth-first for shortest path and level order; depth-first for trees, islands and backtracking. Backtracking is choose, recurse, un-choose.",
+      "interviewRelevance": 5,
+      "use_for": [
+        "BFS: tree level order, rotten oranges, word ladder, shortest steps in a grid",
+        "DFS: number of islands, maximum tree depth, path sum",
+        "Backtracking: permutations, subsets, combinations"
+      ],
+      "templates": [
+        {
+          "title": "BFS by levels on a grid",
+          "code": "Queue<int[]> q = new ArrayDeque<>();\nq.add(start); visited[start[0]][start[1]] = true;\nint dist = 0;\nwhile (!q.isEmpty()) {\n    for (int sz = q.size(); sz > 0; sz--) {       // process one level\n        int[] cur = q.poll();\n        for (int[] d : new int[][]{{0,1},{1,0},{0,-1},{-1,0}}) {\n            int r = cur[0]+d[0], c = cur[1]+d[1];\n            if (inBounds(r,c) && !visited[r][c] && grid[r][c] != WALL) {\n                visited[r][c] = true; q.add(new int[]{r,c});\n            }\n        }\n    }\n    dist++;\n}"
+        },
+        {
+          "title": "Backtracking (permutations)",
+          "code": "void backtrack(List<List<Integer>> res, List<Integer> cur, int[] nums, boolean[] used) {\n    if (cur.size() == nums.length) { res.add(new ArrayList<>(cur)); return; }\n    for (int i = 0; i < nums.length; i++) {\n        if (used[i]) continue;\n        used[i] = true; cur.add(nums[i]);\n        backtrack(res, cur, nums, used);\n        cur.remove(cur.size() - 1); used[i] = false;\n    }\n}"
+        }
+      ]
+    },
+    {
+      "title": "Heap & Top-K",
+      "description": "Keep a heap of size K instead of sorting everything. Also the tool for K-way merges.",
+      "interviewRelevance": 4,
+      "use_for": [
+        "K largest or Kth largest element",
+        "K closest points to the origin",
+        "Merge K sorted lists",
+        "Meeting rooms: min heap of end times"
+      ],
+      "code": "PriorityQueue<Integer> minHeap = new PriorityQueue<>();   // keep size K\nfor (int x : nums) {\n    minHeap.offer(x);\n    if (minHeap.size() > k) minHeap.poll();\n}\nreturn minHeap.peek();   // Kth largest"
+    },
+    {
+      "title": "Prefix Sums & Intervals",
+      "description": "Two small patterns that show up constantly and take one line of setup each.",
+      "interviewRelevance": 4,
+      "patterns": [
+        {
+          "pattern": "Prefix sums",
+          "description": "Precompute running totals so any range sum is O(1). Combine with a HashMap of seen prefixes for subarray sum equals K."
+        },
+        {
+          "pattern": "Intervals",
+          "description": "Sort by start, then merge overlapping intervals in one sweep. Meeting rooms uses a min heap of end times to count concurrent intervals."
+        }
+      ]
+    },
+    {
+      "title": "Dynamic Programming",
+      "description": "Recognize it, do not fear it. Framework: state, recurrence, base case, iteration order. Say the four out loud; a one-dimensional table usually suffices in an interview.",
+      "interviewRelevance": 4,
+      "use_for": [
+        "Climbing stairs",
+        "Coin change",
+        "House robber",
+        "Longest common subsequence",
+        "Word break"
+      ],
+      "code": "int[] dp = new int[amount + 1];\nArrays.fill(dp, amount + 1); dp[0] = 0;\nfor (int coin : coins)\n    for (int a = coin; a <= amount; a++)\n        dp[a] = Math.min(dp[a], dp[a - coin] + 1);"
+    },
+    {
+      "title": "Graphs & Topo Sort",
+      "description": "Model the input as an adjacency list first, then pick the traversal. BFS with in-degrees (Kahn's algorithm) is the easiest topological sort to code live.",
+      "interviewRelevance": 4,
+      "use_for": [
+        "Course schedule and cycle detection",
+        "Build order and dependency resolution",
+        "Any problem phrased as nodes and prerequisites"
+      ]
+    },
+    {
+      "title": "Java Live-Coding Tips",
+      "description": "Small choices that make the code read as idiomatic Java under time pressure.",
+      "interviewRelevance": 4,
+      "tips": [
+        "Use Deque (ArrayDeque) for stacks and queues, not Stack or LinkedList.",
+        "Use StringBuilder inside loops; s.toCharArray() for character iteration.",
+        "Map.merge and computeIfAbsent shorten counting code: map.computeIfAbsent(key, k -> new ArrayList<>()).add(v);",
+        "Streams are fine for one-liners, but write explicit loops when the interviewer wants to see complexity thinking.",
+        "Guard integer overflow: use long for sums and products, and lo + (hi - lo) / 2 for the midpoint.",
+        "Know Comparator.comparing(...).thenComparing(...) and Arrays.sort(arr, (a, b) -> ...)."
+      ]
+    },
+    {
+      "title": "Interview Loop & Plan",
+      "description": "The spoken routine to run on every problem, plus a four-week practice schedule.",
+      "interviewRelevance": 5,
+      "steps": [
+        "Restate the problem and clarify constraints: sizes, duplicates, negatives, empty input.",
+        "Walk one happy path and one edge case by hand.",
+        "State the brute force out loud, name its complexity, then improve it (O(n^2) with nested loops; a HashMap gets us to O(n)).",
+        "Code while narrating. Small helper methods keep it clean.",
+        "Trace the example; check edges: empty, single element, all elements equal.",
+        "State the final time and space complexity unprompted."
+      ],
+      "practice_plan": {
+        "headers": ["Week", "Focus", "Problems"],
+        "rows": [
+          ["1", "Arrays, hashing, two pointers, sliding window", "Two Sum, Group Anagrams, Longest Substring Without Repeats, 3Sum, Product Except Self"],
+          ["2", "Stack, binary search, intervals, linked list", "Valid Parentheses, Min Stack, Search Rotated Array, Merge Intervals, Reverse List, LRU Cache"],
+          ["3", "Trees, BFS/DFS, heap", "Level Order, Validate BST, Lowest Common Ancestor, Number of Islands, K Closest Points, Merge K Lists"],
+          ["4", "DP, graphs, mock rounds", "Climbing Stairs, Coin Change, House Robber, Course Schedule, Word Break, plus two timed 45-minute mocks"]
+        ]
+      },
+      "tracking": "Log every solved problem together with which pattern it used. Pattern recognition is the skill being trained, not the problem count."
+    }
+  ]
+}

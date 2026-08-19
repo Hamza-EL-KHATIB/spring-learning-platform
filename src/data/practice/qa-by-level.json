@@ -1,0 +1,1238 @@
+{
+  "title": "Q&A by Level",
+  "tags": ["interview", "practice", "java", "spring"],
+  "topics": [
+    {
+      "title": "Junior",
+      "description": "Foundational Java, Spring Boot, REST and testing questions expected from a junior backend developer.",
+      "categories": [
+        {
+          "name": "Java Core Concepts",
+          "questions": [
+            {
+              "question": "What is a NullPointerException in Java, and how do you prevent it?",
+              "answer": [
+                "A NullPointerException occurs when a variable that is expected to contain an object reference is null, and an operation is performed on that variable.",
+                "Add null checks before operations",
+                "Use Optional<T> to represent nullable values",
+                "Use Objects.requireNonNull() for method parameters",
+                "Use annotation-based null analysis (@Nullable, @NonNull)"
+              ]
+            },
+            {
+              "question": "What collections in Java maintain insertion order, and when would you use each?",
+              "answer": [
+                "ArrayList: general-purpose list with good random access, poor for frequent insertions/deletions",
+                "LinkedList: good for frequent insertions/deletions, poor random access",
+                "LinkedHashMap / LinkedHashSet: hash-based collections that maintain insertion order",
+                "TreeMap / TreeSet: maintain sorted order, not insertion order"
+              ]
+            },
+            {
+              "question": "What is the difference between a Set and a Map?",
+              "answer": {
+                "table": [
+                  {
+                    "Aspect": "Purpose",
+                    "Set": "Collection that contains no duplicate elements; implements the mathematical set abstraction",
+                    "Map": "Object that maps keys to values"
+                  },
+                  {
+                    "Aspect": "Duplicates",
+                    "Set": "No duplicate elements",
+                    "Map": "No duplicate keys; each key maps to at most one value"
+                  },
+                  {
+                    "Aspect": "Implementations",
+                    "Set": "HashSet, LinkedHashSet, TreeSet",
+                    "Map": "HashMap, LinkedHashMap, TreeMap"
+                  },
+                  {
+                    "Aspect": "Common methods",
+                    "Set": "add(), remove(), contains(), size()",
+                    "Map": "put(), get(), remove(), containsKey(), keySet(), values()"
+                  }
+                ]
+              }
+            },
+            {
+              "question": "What is the difference between a static method and an instance method in Java?",
+              "answer": [
+                "Static methods belong to the class itself, not to instances",
+                "They can be called using the class name without creating an object",
+                "They cannot access instance variables or methods directly",
+                "Instance methods belong to objects and can access all variables and methods of the class"
+              ]
+            },
+            {
+              "question": "What is a Java package, and why is it useful?",
+              "answer": [
+                "A namespace that organizes related classes and interfaces",
+                "Provides access protection and namespace management",
+                "Helps avoid naming conflicts",
+                "Makes it easier to locate and use related types"
+              ]
+            },
+            {
+              "question": "Is it allowed to have a try block without a catch?",
+              "answer": "Yes, but only in these scenarios.\n\n1. Try-finally block:\n\n```java\ntry {\n    // risky code\n} finally {\n    // cleanup code\n}\n```\n\n2. Try-with-resources (automatic resource management):\n\n```java\ntry (FileInputStream fis = new FileInputStream(\"file.txt\")) {\n    // use resource\n} // resource automatically closed\n```"
+            },
+            {
+              "question": "How does try-with-resources work?",
+              "answer": "Introduced in Java 7. It automatically closes resources that implement `AutoCloseable`. Resources are closed in reverse order of creation, `close()` is called even if an exception occurs, and suppressed exceptions are attached to the primary exception.\n\n```java\ntry (BufferedReader br = new BufferedReader(new FileReader(\"file.txt\"));\n     PrintWriter pw = new PrintWriter(\"output.txt\")) {\n    // use resources\n} catch (IOException e) {\n    // handle exception\n}\n// Both resources automatically closed\n```"
+            },
+            {
+              "question": "Can you use toList() with forEach() in Java Streams?",
+              "answer": "No. You cannot chain `toList()` with `forEach()` because `toList()` is a terminal operation that returns a `List<T>` and `forEach()` is also a terminal operation that returns void. You can only have one terminal operation per stream, and the stream is consumed once a terminal operation is called.\n\nWrong approach:\n\n```java\n// This will NOT compile\nlist.stream()\n    .filter(x -> x > 5)\n    .toList()           // Terminal operation - returns List\n    .forEach(System.out::println); // Cannot chain after terminal operation\n```\n\nOption 1: use forEach() directly on the stream:\n\n```java\nlist.stream()\n    .filter(x -> x > 5)\n    .forEach(System.out::println);\n```\n\nOption 2: collect to a list first, then iterate:\n\n```java\nList<Integer> filteredList = list.stream()\n    .filter(x -> x > 5)\n    .toList();\n\nfilteredList.forEach(System.out::println);\n```\n\nOption 3: use peek() for side effects while still collecting:\n\n```java\nList<Integer> result = list.stream()\n    .filter(x -> x > 5)\n    .peek(System.out::println) // Intermediate operation\n    .toList();\n```\n\nTerminal operations: `forEach()`, `toList()`, `collect()`, `reduce()`, `count()`, `anyMatch()`. Intermediate operations: `filter()`, `map()`, `peek()`, `sorted()`, `distinct()`."
+            }
+          ]
+        },
+        {
+          "name": "Java Quick Fire",
+          "questions": [
+            {
+              "question": "Which is the correct Java lambda syntax?",
+              "answer": "`() -> 9`. Java uses the arrow token `->`, not `=>`."
+            },
+            {
+              "question": "What is shown in this example, a shallow copy or a deep copy?",
+              "answer": "A shallow copy. Only the reference is copied, so both variables point to the same object.\n\n```java\nPerson p1 = new Person(\"John\");\nPerson p2 = p1;\np2.setName(\"Jane\");\n// Now p1.name is also \"Jane\"\n```"
+            },
+            {
+              "question": "When is an object eligible for garbage collection?",
+              "answer": "When it is no longer reachable from any GC root."
+            },
+            {
+              "question": "How do you add a comment in Java?",
+              "answer": [
+                "`// This is a comment` for single-line comments",
+                "`/* This is a comment */` for multi-line comments",
+                "`# This is a comment` is not valid Java",
+                "`- This is a comment` is not valid Java"
+              ]
+            },
+            {
+              "question": "Why use a buffer when reading from a Reader?",
+              "answer": "It reduces the number of system calls. A buffered reader pulls roughly 8KB chunks at a time instead of one character per call."
+            },
+            {
+              "question": "Which interface must an object implement to be written with ObjectOutputStream.writeObject()?",
+              "answer": "`Serializable`."
+            }
+          ]
+        },
+        {
+          "name": "Spring Boot Fundamentals",
+          "questions": [
+            {
+              "question": "What Spring Boot starters do you commonly use?",
+              "answer": [
+                "spring-boot-starter-web: for RESTful APIs",
+                "spring-boot-starter-data-jpa: for database access",
+                "spring-boot-starter-security: for authentication and authorization",
+                "spring-boot-starter-test: for testing support",
+                "spring-boot-starter-actuator: for monitoring",
+                "spring-boot-starter-cache: for caching functionality"
+              ]
+            },
+            {
+              "question": "How do you configure different application profiles?",
+              "answer": [
+                "Multiple properties files: application-{profile}.yml or .properties",
+                "@Profile annotation for conditional beans",
+                "Environment variables for CI/CD: SPRING_PROFILES_ACTIVE=prod",
+                "@ConditionalOnProperty for feature flags"
+              ]
+            },
+            {
+              "question": "What version of Spring Boot have you worked with most recently, and what does it bring?",
+              "answer": [
+                "Spring Boot 3.2, which supports Java 17+ and has improved native compilation with GraalVM",
+                "Includes enhanced observability with Micrometer",
+                "Supports virtual threads from Java 21",
+                "Features improved auto-configuration and the new RestClient"
+              ]
+            },
+            {
+              "question": "What is the difference between @Service and @Repository?",
+              "answer": {
+                "table": [
+                  {
+                    "Aspect": "Layer",
+                    "@Service": "Business logic layer",
+                    "@Repository": "Data access layer (DAO)"
+                  },
+                  {
+                    "Aspect": "Extra behaviour",
+                    "@Service": "No additional functionality beyond @Component",
+                    "@Repository": "Provides exception translation: converts database-specific exceptions to Spring's DataAccessException"
+                  },
+                  {
+                    "Aspect": "Typical use",
+                    "@Service": "Service classes holding business rules",
+                    "@Repository": "DAO classes, enabling automatic exception handling"
+                  }
+                ]
+              }
+            },
+            {
+              "question": "What is the difference between @Service and @Component?",
+              "answer": "Both are functionally identical: both create singleton beans, both enable component scanning and dependency injection, and both can be combined with `@Scope`.\n\n`@Component` is the generic stereotype and the base annotation for all Spring-managed components. Use it when the class does not fit another stereotype category, for example utility or helper classes.\n\n`@Service` is a specialised form of `@Component` that carries the semantic meaning of the business logic layer. It adds no extra features but makes architecture layers obvious.\n\n```java\n@Component\npublic class EmailValidator {\n    public boolean isValid(String email) {\n        return email.contains(\"@\");\n    }\n}\n\n@Service\npublic class OrderService {\n    public void processOrder(Order order) {\n        // Business rules and logic\n    }\n}\n```"
+            }
+          ]
+        },
+        {
+          "name": "RESTful APIs",
+          "questions": [
+            {
+              "question": "Explain the different HTTP methods and their proper use cases in RESTful APIs.",
+              "answer": [
+                "GET: retrieve resources without side effects (safe, idempotent)",
+                "POST: create new resources or submit data (not idempotent)",
+                "PUT: update or replace existing resources (idempotent)",
+                "DELETE: remove resources (idempotent)",
+                "PATCH: partial updates to resources (not inherently idempotent)",
+                "HEAD: like GET but returns only headers (safe, idempotent)",
+                "OPTIONS: returns supported HTTP methods for a resource, used in CORS preflight (safe, idempotent)"
+              ]
+            },
+            {
+              "question": "What is idempotency in HTTP methods and which methods are idempotent?",
+              "answer": [
+                "Idempotency means multiple identical requests produce the same result as a single request, with no additional side effects after the first one",
+                "Idempotent methods: GET, PUT, DELETE, HEAD, OPTIONS",
+                "Non-idempotent methods: POST, and PATCH unless implemented to be idempotent",
+                "Idempotency is important for reliability and safe retries in distributed systems"
+              ]
+            },
+            {
+              "question": "What are the different HTTP status code categories and when should each be used?",
+              "answer": [
+                "1xx (Informational): request received, continuing process",
+                "2xx (Success): 200 OK standard success, 201 Created resource created, 204 No Content success with no response body",
+                "3xx (Redirection): 301 permanent redirect, 302 temporary redirect",
+                "4xx (Client Error): 400 Bad Request invalid syntax, 401 Unauthorized authentication required, 403 Forbidden no permission, 404 Not Found, 422 Unprocessable Entity semantically invalid",
+                "5xx (Server Error): 500 Internal Server Error generic failure, 503 Service Unavailable temporary outage"
+              ]
+            },
+            {
+              "question": "What is the HTTP method PUT?",
+              "answer": "PUT updates or replaces an entire resource at a specific URI, and can create the resource if it does not exist and the server supports it.\n\nKey characteristics: it is idempotent, so multiple identical PUT requests have the same effect as one and failed requests are safe to retry. It replaces the entire resource, so missing fields in the request body are typically removed or set to null. The request body must include the full representation of the resource.\n\n```java\n@PutMapping(\"/api/users/{id}\")\npublic ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {\n    user.setId(id);\n    User updatedUser = userService.updateUser(user);\n    return ResponseEntity.ok(updatedUser);\n}\n```\n\nUpdating an existing resource returns 200 OK; creating a new one returns 201 Created with a Location header."
+            }
+          ]
+        },
+        {
+          "name": "Testing",
+          "questions": [
+            {
+              "question": "What's the difference between @Mock, @InjectMocks, and @Spy in Mockito?",
+              "answer": {
+                "table": [
+                  {
+                    "Annotation": "@Mock",
+                    "What it creates": "A complete mock implementation returning default values unless stubbed",
+                    "Runs real code": "No"
+                  },
+                  {
+                    "Annotation": "@InjectMocks",
+                    "What it creates": "An instance of the class under test with the declared mocks injected into it",
+                    "Runs real code": "Yes, it is the real object under test"
+                  },
+                  {
+                    "Annotation": "@Spy",
+                    "What it creates": "A partial mock wrapping a real object",
+                    "Runs real code": "Yes, real methods run unless stubbed"
+                  }
+                ]
+              }
+            },
+            {
+              "question": "What is the purpose of the @SpringBootTest annotation?",
+              "answer": [
+                "It loads the full application context for integration testing",
+                "It can be customised to load only specific configuration classes",
+                "It provides a way to test components in a realistic environment"
+              ]
+            },
+            {
+              "question": "How do you test a REST controller in Spring Boot?",
+              "answer": [
+                "Use @WebMvcTest for focused controller slice tests",
+                "Use MockMvc to issue mock HTTP requests and verify responses",
+                "Use @MockBean to replace actual dependencies with mocks",
+                "Verify request mapping, status codes, and response content"
+              ]
+            },
+            {
+              "question": "Can you test private methods?",
+              "answer": "Generally you should not test private methods directly. They are implementation details that may change without affecting public behaviour, testing public methods should already cover their logic, and over-testing implementation makes tests brittle.\n\nTest through public methods:\n\n```java\npublic class Calculator {\n    public int add(int a, int b) {\n        return performAddition(a, b);\n    }\n\n    private int performAddition(int a, int b) {\n        return a + b;\n    }\n}\n\n@Test\nvoid testAdd() {\n    Calculator calc = new Calculator();\n    assertEquals(5, calc.add(2, 3)); // Tests the private method indirectly\n}\n```\n\nIf you must, use reflection:\n\n```java\n@Test\nvoid testPrivateMethod() throws Exception {\n    Calculator calc = new Calculator();\n    Method privateMethod = Calculator.class.getDeclaredMethod(\"performAddition\", int.class, int.class);\n    privateMethod.setAccessible(true);\n    int result = (int) privateMethod.invoke(calc, 2, 3);\n    assertEquals(5, result);\n}\n```\n\nOr make the method package-private with `@VisibleForTesting`. If a private method is complex enough to need its own tests, consider extracting it into a separate class."
+            },
+            {
+              "question": "How does @ParameterizedTest work?",
+              "answer": "It allows running the same test with different parameters supplied by a source annotation.\n\n```java\n@ParameterizedTest\n@ValueSource(strings = {\"hello\", \"world\", \"junit\"})\nvoid testStringLength(String input) {\n    assertTrue(input.length() > 0);\n}\n\n@ParameterizedTest\n@CsvSource({\n    \"1, 2, 3\",\n    \"4, 5, 9\",\n    \"10, 20, 30\"\n})\nvoid testAddition(int a, int b, int expected) {\n    assertEquals(expected, a + b);\n}\n```"
+            },
+            {
+              "question": "How do you implement a test where the expected result is an exception being thrown?",
+              "answer": "Use `assertThrows()`, which also lets you assert on the exception itself.\n\n```java\n@Test\nvoid testExceptionThrown() {\n    IllegalArgumentException exception = assertThrows(\n        IllegalArgumentException.class,\n        () -> userService.createUser(null)\n    );\n    assertEquals(\"User cannot be null\", exception.getMessage());\n}\n```\n\nThe older JUnit 4 approach used the annotation attribute:\n\n```java\n@Test(expected = IllegalArgumentException.class)\nvoid testException() {\n    userService.createUser(null);\n}\n```"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Intermediate",
+      "description": "Questions on the mechanics behind the frameworks: memory, concurrency models, filters, security configuration and data access.",
+      "categories": [
+        {
+          "name": "Java Concepts",
+          "questions": [
+            {
+              "question": "Explain Java's memory model, including the stack and the heap.",
+              "answer": [
+                "Stack: thread-specific memory area for method calls, local variables and references",
+                "Heap: shared memory for all objects and class instances",
+                "Method Area: stores class structures, method code and static variables",
+                "Memory is reclaimed through garbage collection",
+                "Typical memory issues: out-of-memory errors, memory leaks, stack overflow"
+              ]
+            },
+            {
+              "question": "How do inheritance and polymorphism work in Java, and what are their limitations?",
+              "answer": [
+                "Inheritance allows a class to inherit fields and methods from another class",
+                "Polymorphism allows objects to be treated as instances of their parent class",
+                "Limitation: single inheritance of implementation, a class can only extend one class",
+                "Limitation: the diamond problem with multiple inheritance, solved in Java with interfaces",
+                "Limitation: inheritance can lead to tight coupling",
+                "Limitation: runtime overhead for dynamic binding"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Java Concurrency",
+          "questions": [
+            {
+              "question": "How do you handle concurrency in Java applications?",
+              "answer": [
+                "Use thread safety mechanisms: synchronization, locks, atomic variables",
+                "Implement thread management with the Executor Framework and CompletableFuture",
+                "Use concurrent collections such as ConcurrentHashMap and CopyOnWriteArrayList",
+                "Apply concurrency patterns such as producer-consumer and thread-local storage",
+                "Use virtual threads for high-throughput IO (Java 21+)"
+              ]
+            },
+            {
+              "question": "How do you handle shared objects accessed by multiple threads?",
+              "answer": [
+                "Synchronization: use synchronized blocks for atomic operations",
+                "Explicit locks: ReentrantLock, ReadWriteLock for finer control",
+                "Concurrent collections: thread-safe collection implementations",
+                "Atomic operations: AtomicInteger, AtomicReference for lock-free updates",
+                "Immutability: create objects that cannot be modified after construction",
+                "Thread confinement: avoid sharing by confining objects to specific threads"
+              ]
+            },
+            {
+              "question": "What are the different concurrency models in Java?",
+              "answer": [
+                "Thread-based: the traditional Thread class and Runnable interface",
+                "Executor Framework: thread pool management and task submission",
+                "Fork/Join: divide-and-conquer parallelism for recursive tasks",
+                "CompletableFuture: composable asynchronous operations",
+                "Reactive Streams: asynchronous stream processing with backpressure",
+                "Virtual Threads (Java 21+): lightweight threads managed by the JVM"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spring Boot",
+          "questions": [
+            {
+              "question": "How do you manage transaction boundaries in Spring Boot applications?",
+              "answer": [
+                "Use @Transactional on service methods so the boundary matches the use case",
+                "Configure the readOnly flag for query optimization",
+                "Set isolation levels for specific consistency requirements",
+                "Define propagation behaviour for nested transactions",
+                "Specify rollback rules for exceptions"
+              ]
+            },
+            {
+              "question": "How do you handle custom error responses in Spring Boot?",
+              "answer": "Create error response DTOs for structured errors.\n\n```java\npublic class ErrorResponse {\n    private String code;\n    private String message;\n    private List<String> details;\n    private LocalDateTime timestamp;\n    // getters, constructors\n}\n```\n\nThen implement `@ControllerAdvice` with `@ExceptionHandler` methods.\n\n```java\n@RestControllerAdvice\npublic class GlobalExceptionHandler {\n    @ExceptionHandler(ResourceNotFoundException.class)\n    @ResponseStatus(HttpStatus.NOT_FOUND)\n    public ErrorResponse handleNotFound(ResourceNotFoundException ex) {\n        return new ErrorResponse(\"NOT_FOUND\", ex.getMessage());\n    }\n}\n```"
+            }
+          ]
+        },
+        {
+          "name": "Spring Quick Fire",
+          "questions": [
+            {
+              "question": "Which exception occurs for a circular dependency in Spring?",
+              "answer": "`BeanCurrentlyInCreationException`."
+            },
+            {
+              "question": "Which method in CrudRepository fetches an entity by its ID?",
+              "answer": "`findById`."
+            },
+            {
+              "question": "Which Spring Boot feature is not enabled by default with @SpringBootApplication?",
+              "answer": "Scheduled tasks. `@EnableScheduling` is required."
+            },
+            {
+              "question": "Which Spring interface is used for validation across modules?",
+              "answer": "`Validator`."
+            },
+            {
+              "question": "What is the effect of @DirtiesContext on tests?",
+              "answer": "It resets the Spring context after the test."
+            },
+            {
+              "question": "Which annotation enables Spring Batch?",
+              "answer": "`@EnableBatchProcessing`."
+            },
+            {
+              "question": "Which annotation enables Feign clients?",
+              "answer": "`@EnableFeignClients`."
+            },
+            {
+              "question": "Which Hibernate/JPA setting is used for PostgreSQL-native queries?",
+              "answer": "`nativeQuery = true` on the `@Query` annotation."
+            },
+            {
+              "question": "How can values be injected at runtime in Spring?",
+              "answer": [
+                "Property placeholders: `@Value` combined with `@PropertySource`",
+                "SpEL expressions: `@Value(\"#{...}\")`"
+              ]
+            },
+            {
+              "question": "Which annotation allows CORS for https://www.systems.com on the /item endpoint?",
+              "answer": "`@CrossOrigin(origins = \"https://www.systems.com\")`. The alternatives @ShareResource, @AccessControl and @CORS do not exist."
+            }
+          ]
+        },
+        {
+          "name": "Spring Boot Filters",
+          "questions": [
+            {
+              "question": "What are Filters in Spring Boot and how have you used them?",
+              "answer": "Filters intercept HTTP requests and responses before they reach controllers. They are part of the Java Servlet specification and are used for cross-cutting concerns such as authentication, logging and CORS. They can be registered with `@Component` or a `FilterRegistrationBean`.\n\n```java\n@Component\npublic class RequestLoggingFilter extends OncePerRequestFilter {\n    @Override\n    protected void doFilterInternal(HttpServletRequest request,\n                                    HttpServletResponse response,\n                                    FilterChain filterChain) throws ServletException, IOException {\n        log.info(\"Request URI: {}\", request.getRequestURI());\n        filterChain.doFilter(request, response);\n    }\n}\n```"
+            },
+            {
+              "question": "How do filters act as security barriers or validation gates for your APIs?",
+              "answer": [
+                "They can block requests by not calling filterChain.doFilter()",
+                "They validate authentication tokens before the request reaches controllers",
+                "They implement rate limiting to prevent abuse",
+                "They check API keys for service-to-service communication",
+                "They validate request content before processing"
+              ]
+            },
+            {
+              "question": "How do you handle filter ordering in Spring Boot?",
+              "answer": [
+                "With FilterRegistrationBean: use the setOrder() method",
+                "With @Component filters: use the @Order annotation",
+                "For Spring Security filters: use addFilterBefore / addFilterAfter",
+                "Lower order values have higher precedence"
+              ]
+            },
+            {
+              "question": "How do you create a custom filter in Spring Boot?",
+              "answer": "Implement the `Filter` interface or extend `OncePerRequestFilter`, override `doFilter()` or `doFilterInternal()`, register with `@Component` or a `FilterRegistrationBean`, and chain to the next filter with `filterChain.doFilter()`.\n\n```java\n@Component\n@Order(1)\npublic class CustomFilter implements Filter {\n    @Override\n    public void doFilter(ServletRequest request, ServletResponse response,\n                        FilterChain chain) throws IOException, ServletException {\n        // Pre-processing\n        chain.doFilter(request, response);\n        // Post-processing\n    }\n}\n```"
+            },
+            {
+              "question": "What is the difference between a filter and an interceptor in Spring Boot?",
+              "answer": {
+                "table": [
+                  {
+                    "Aspect": "Origin",
+                    "Filter": "Part of the Servlet specification",
+                    "Interceptor": "Part of Spring MVC"
+                  },
+                  {
+                    "Aspect": "Where it runs",
+                    "Filter": "On the HTTP request/response outside the Spring context",
+                    "Interceptor": "Within the Spring context, after the DispatcherServlet"
+                  },
+                  {
+                    "Aspect": "Access",
+                    "Filter": "Can modify request/response objects",
+                    "Interceptor": "Has access to handler information and ModelAndView"
+                  },
+                  {
+                    "Aspect": "Blocking",
+                    "Filter": "Can prevent a request from reaching the DispatcherServlet",
+                    "Interceptor": "Cannot transform request/response but can add attributes"
+                  }
+                ]
+              }
+            },
+            {
+              "question": "How can you conditionally apply filters based on request patterns?",
+              "answer": "Use URL patterns with a `FilterRegistrationBean`, implement the check inside `doFilter`/`doFilterInternal`, or use Spring Security's requestMatchers for security filters.\n\n```java\n@Bean\npublic FilterRegistrationBean<CustomFilter> customFilter() {\n    FilterRegistrationBean<CustomFilter> registrationBean = new FilterRegistrationBean<>();\n    registrationBean.setFilter(new CustomFilter());\n    registrationBean.addUrlPatterns(\"/api/*\");\n    return registrationBean;\n}\n```"
+            }
+          ]
+        },
+        {
+          "name": "Spring Security",
+          "questions": [
+            {
+              "question": "What HTTP header is commonly used for authentication tokens and how do you handle it?",
+              "answer": "The Authorization header. JWT uses the format `Authorization: Bearer eyJhbGciOiJIUzI1...` and Basic Auth uses `Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=`. In Spring Boot it is handled with filters, security configuration, or OAuth2 resource server configuration.\n\n```java\n@Component\npublic class JwtAuthenticationFilter extends OncePerRequestFilter {\n    @Override\n    protected void doFilterInternal(HttpServletRequest request,\n                                    HttpServletResponse response,\n                                    FilterChain filterChain) {\n        String authHeader = request.getHeader(\"Authorization\");\n        // Extract and validate token\n    }\n}\n```"
+            },
+            {
+              "question": "How do you configure Spring Security for a REST API with JWT authentication?",
+              "answer": [
+                "Configure the security filter chain",
+                "Define custom filters for JWT token validation",
+                "Set up the authentication manager",
+                "Define authorization rules for endpoints",
+                "Handle token generation and validation logic"
+              ]
+            },
+            {
+              "question": "What security vulnerabilities should you be aware of in Spring applications and how do you mitigate them?",
+              "answer": [
+                "SQL injection: use parameterized queries and JPA",
+                "CSRF: enable CSRF protection for browser-based clients",
+                "XSS: apply proper output encoding",
+                "Sensitive data exposure: use encryption and secure transport",
+                "Broken authentication: implement proper session management",
+                "Security misconfiguration: follow secure deployment guides"
+              ]
+            },
+            {
+              "question": "What annotations can you use to filter or manipulate HTTP headers in Spring Boot?",
+              "answer": [
+                "@RequestHeader: extract header values in controllers",
+                "ResponseEntity methods for setting response headers",
+                "@CrossOrigin: handle CORS headers",
+                "@HttpExchange / @Headers (Spring 6+): for declarative HTTP clients"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RESTful APIs",
+          "questions": [
+            {
+              "question": "How do you implement error handling and status codes in REST endpoints?",
+              "answer": [
+                "Create a consistent error response structure with code, message and details",
+                "Use appropriate HTTP status codes for different error scenarios",
+                "Implement a global exception handler with @ControllerAdvice to transform exceptions",
+                "Include correlation IDs for troubleshooting",
+                "Log errors with appropriate context"
+              ]
+            },
+            {
+              "question": "How do you document your REST APIs?",
+              "answer": [
+                "OpenAPI (Swagger) specifications",
+                "Automatic documentation generation with SpringDoc",
+                "Include examples, error responses and authentication requirements",
+                "Maintain additional context in a wiki for internal teams"
+              ]
+            },
+            {
+              "question": "Explain how you handle pagination in REST APIs.",
+              "answer": [
+                "Query parameters for offset-based pagination (page, size)",
+                "Cursor-based pagination for large datasets with performance concerns",
+                "Include metadata in the response: total items, pages, links",
+                "Support sorting parameters for result order control"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Design Patterns",
+          "questions": [
+            {
+              "question": "What is the Singleton pattern and how is it different in a Spring context?",
+              "answer": [
+                "Singleton ensures a class has only one instance and provides a global point of access to it",
+                "In Spring, beans are singleton by default but the instance is managed by the Spring container",
+                "Spring singletons are per application context, not JVM-wide",
+                "Thread safety is a concern for hand-written singletons, but is handled by Spring for container-managed beans"
+              ]
+            },
+            {
+              "question": "What is the Builder pattern and when would you use it?",
+              "answer": [
+                "A creational pattern that separates the construction of complex objects from their representation",
+                "Used for objects with many optional parameters",
+                "Provides a clear step-by-step construction process",
+                "Enhances readability and maintainability",
+                "Examples: StringBuilder, Lombok's @Builder"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hibernate and JPA",
+          "questions": [
+            {
+              "question": "How is a table's primary key mapped in Hibernate?",
+              "answer": "Primary keys are mapped with the `@Id` annotation, usually combined with `@GeneratedValue`.\n\n```java\n@Entity\npublic class User {\n    @Id\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Long id;\n\n    // Other fields\n}\n```\n\nGeneration strategies: `IDENTITY` (database auto-increment), `SEQUENCE` (database sequence), `TABLE` (separate table for ID generation), `AUTO` (the provider chooses)."
+            },
+            {
+              "question": "Is it possible to map a composite key? How?",
+              "answer": "Yes, using two approaches.\n\n1. `@EmbeddedId` with an `@Embeddable` class:\n\n```java\n@Embeddable\npublic class OrderItemId implements Serializable {\n    private Long orderId;\n    private Long productId;\n    // constructors, equals, hashCode\n}\n\n@Entity\npublic class OrderItem {\n    @EmbeddedId\n    private OrderItemId id;\n    // other fields\n}\n```\n\n2. `@IdClass`:\n\n```java\n@Entity\n@IdClass(OrderItemId.class)\npublic class OrderItem {\n    @Id\n    private Long orderId;\n    @Id\n    private Long productId;\n    // other fields\n}\n```"
+            },
+            {
+              "question": "What are the types of cascade in Hibernate?",
+              "answer": "Cascade types determine which operations are propagated to associated entities: `CascadeType.PERSIST` (save), `CascadeType.MERGE` (update), `CascadeType.REMOVE` (delete), `CascadeType.REFRESH` (refresh), `CascadeType.DETACH` (detach), and `CascadeType.ALL` for all of the above.\n\n```java\n@OneToMany(cascade = CascadeType.ALL, mappedBy = \"order\")\nprivate List<OrderItem> items;\n```"
+            }
+          ]
+        },
+        {
+          "name": "SQL and Databases",
+          "questions": [
+            {
+              "question": "Name some SQL aggregation functions.",
+              "answer": [
+                "COUNT(): number of rows",
+                "SUM(): total of numeric values",
+                "AVG(): average of numeric values",
+                "MIN(): minimum value",
+                "MAX(): maximum value",
+                "GROUP_CONCAT(): concatenate values (MySQL)",
+                "STRING_AGG(): concatenate values (PostgreSQL)"
+              ]
+            },
+            {
+              "question": "What is the difference between GROUP BY and HAVING?",
+              "answer": "`GROUP BY` groups rows that have the same values in the specified columns and is applied before aggregation, creating the groups that aggregate functions operate on. `HAVING` filters those groups after aggregation and can use aggregate functions in its condition. `WHERE` filters rows before grouping.\n\n```sql\nSELECT department, COUNT(*), AVG(salary)\nFROM employees\nWHERE hire_date > '2020-01-01'  -- Filter before grouping\nGROUP BY department\nHAVING COUNT(*) > 5;            -- Filter after grouping\n```"
+            },
+            {
+              "question": "What are the consequences of creating too many indexes on a table?",
+              "answer": [
+                "Increased storage space: each index requires additional disk space",
+                "Slower INSERT/UPDATE/DELETE: all relevant indexes must be updated",
+                "Index maintenance overhead: the database must keep indexes synchronized",
+                "Memory usage: indexes consume buffer pool memory",
+                "Query optimizer confusion: too many options can lead to poor execution plans",
+                "Best practice: only index frequently queried columns, monitor and remove unused indexes, and consider composite indexes for multi-column queries"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Senior",
+      "description": "Design-level questions on distributed systems, architecture, performance, security strategy and engineering process.",
+      "categories": [
+        {
+          "name": "Java Features",
+          "questions": [
+            {
+              "question": "What is the difference between Java 17 and Java 21?",
+              "answer": [
+                "Java 21 added Virtual Threads for efficient concurrency",
+                "Pattern Matching for switch expressions",
+                "Record Patterns for enhanced pattern matching",
+                "Sequenced Collections API",
+                "String Templates (preview feature)",
+                "Structured Concurrency API (preview)",
+                "Foreign Function and Memory API"
+              ]
+            },
+            {
+              "question": "How have you used sealed classes in your projects?",
+              "answer": [
+                "For domain models with a fixed set of subtypes",
+                "To enforce type safety and prevent unauthorized extensions",
+                "To improve compile-time checks and long-term maintenance"
+              ]
+            },
+            {
+              "question": "Explain the principles and benefits of Java's Project Loom (Virtual Threads).",
+              "answer": [
+                "Lightweight threads managed by the JVM",
+                "Not mapped one-to-one with OS threads",
+                "Enables high-throughput concurrent applications",
+                "Simplifies the concurrent programming model",
+                "Better resource utilization for IO-bound workloads"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Concurrency",
+          "questions": [
+            {
+              "question": "How would you design a thread-safe component in a high-concurrency environment?",
+              "answer": [
+                "Identify critical sections and shared resources",
+                "Apply appropriate synchronization mechanisms: locks, atomic classes",
+                "Consider immutability for shared state",
+                "Use thread-safe collections",
+                "Apply thread confinement where possible",
+                "Use higher-level concurrency utilities: ExecutorService, CompletableFuture",
+                "Profile and test for concurrency issues"
+              ]
+            },
+            {
+              "question": "Explain non-blocking algorithms and their advantages in high-throughput systems.",
+              "answer": [
+                "Algorithms that ensure thread safety without using locks",
+                "They use atomic operations and compare-and-swap (CAS)",
+                "No deadlocks or livelocks",
+                "Better scalability under high contention",
+                "Reduced thread scheduling overhead",
+                "Better performance for specific access patterns"
+              ]
+            },
+            {
+              "question": "How would you implement a custom thread pool and what considerations would you make?",
+              "answer": [
+                "Core pool size, maximum pool size and queue strategy",
+                "Thread factory for custom thread creation",
+                "Rejection policies for when the queue is full",
+                "Monitoring and metrics collection",
+                "A proper shutdown procedure",
+                "Handling uncaught exceptions in worker threads"
+              ]
+            },
+            {
+              "question": "What concurrency issues have you encountered and how did you resolve them?",
+              "answer": [
+                "Race conditions: fixed with proper synchronization",
+                "Deadlocks: resolved by consistent lock ordering",
+                "Thread starvation: adjusted thread priorities and timeouts",
+                "Performance bottlenecks: used profiling and implemented non-blocking algorithms",
+                "Memory consistency errors: added proper happens-before relationships"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spring Boot at Scale",
+          "questions": [
+            {
+              "question": "How would you design a microservices architecture using Spring Boot and Spring Cloud?",
+              "answer": [
+                "Service discovery with Eureka or Consul",
+                "API gateway with Spring Cloud Gateway",
+                "Circuit breakers with Resilience4j",
+                "Distributed configuration with Config Server",
+                "Observability with Micrometer, Zipkin and Spring Boot Actuator",
+                "Event-driven communication with message brokers",
+                "Consider data consistency patterns such as SAGA and event sourcing"
+              ]
+            },
+            {
+              "question": "How would you optimize a Spring Boot application for performance?",
+              "answer": [
+                "Profile and identify bottlenecks",
+                "Optimize database queries and connection pooling",
+                "Configure caching appropriately",
+                "Tune JVM parameters",
+                "Use asynchronous processing for non-critical paths",
+                "Configure thread pools appropriately",
+                "Consider reactive programming for I/O-bound applications",
+                "Optimize serialization and deserialization"
+              ]
+            },
+            {
+              "question": "How do you approach database migrations in Spring Boot applications?",
+              "answer": [
+                "Tools: Flyway or Liquibase",
+                "Version control for migration scripts",
+                "Testing migration scripts in isolated environments",
+                "Backward compatibility considerations",
+                "Rollback strategies",
+                "Integration with CI/CD pipelines"
+              ]
+            },
+            {
+              "question": "What strategies would you use for caching in a distributed Spring Boot application?",
+              "answer": [
+                "Local caching with Caffeine",
+                "Distributed caching with Redis or Hazelcast",
+                "Cache invalidation strategies",
+                "TTL and eviction policies",
+                "Cache-aside pattern implementation",
+                "Monitoring cache hit rates and performance",
+                "Consistent hashing for distributed cache scaling"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Architecture",
+          "questions": [
+            {
+              "question": "Explain Hexagonal Architecture and how you've implemented it.",
+              "answer": "Hexagonal Architecture, also known as Ports and Adapters, isolates core business logic from external concerns, makes the application technology-agnostic, enables easy testing through mock adapters, and promotes loose coupling.\n\nThe hexagon (application core) contains business logic and domain models, is independent of external technologies, and defines the interfaces (ports) for external interaction.\n\nPorts are interfaces that define how the core communicates with the outside world. Primary (driving/inbound) ports are triggered by external actors such as REST controllers or a CLI. Secondary (driven/outbound) ports are called by the core, such as repositories or message queues.\n\nAdapters implement ports and handle the external technology details. Primary adapters are REST controllers, web interfaces and CLIs; secondary adapters are database implementations and external API clients.\n\nA typical package structure:\n\n```\ncom.example.user\n├── domain/\n│   ├── User.java\n│   ├── UserDomainService.java\n│   └── UserStatus.java\n├── ports/\n│   ├── inbound/\n│   │   ├── UserUseCase.java\n│   │   └── CreateUserCommand.java\n│   └── outbound/\n│       └── UserRepository.java\n├── adapters/\n│   ├── inbound/\n│   │   ├── rest/\n│   │   │   ├── UserRestAdapter.java\n│   │   │   └── UserDto.java\n│   │   └── cli/\n│   │       └── UserCliAdapter.java\n│   └── outbound/\n│       ├── jpa/\n│       │   ├── JpaUserRepositoryAdapter.java\n│       │   └── UserEntity.java\n│       └── memory/\n│           └── InMemoryUserRepositoryAdapter.java\n└── application/\n    └── UserUseCaseImpl.java\n```\n\nUse it for complex domain logic that needs protection from external change, when multiple interfaces (REST, CLI, messaging) serve the same functionality, when testability requirements are high, for technology migration scenarios, and in domain-driven design implementations."
+            },
+            {
+              "question": "How do you structure your code following Domain-Driven Design principles?",
+              "answer": [
+                "Domain layer: entities, value objects, aggregates, domain events",
+                "Application layer: services orchestrating use cases, DTOs",
+                "Infrastructure layer: repository implementations, configurations",
+                "Interface layer: controllers, API endpoints",
+                "Use a ubiquitous language shared with domain experts",
+                "Identify bounded contexts with explicit boundaries"
+              ]
+            },
+            {
+              "question": "How do you handle domain events in a DDD architecture?",
+              "answer": [
+                "Implement domain events as immutable objects representing business occurrences",
+                "Raise events from aggregates when state changes",
+                "Collect and publish events from application services",
+                "Create event handlers to respond with side effects",
+                "This enables loose coupling between components"
+              ]
+            },
+            {
+              "question": "What is the Janus API Gateway?",
+              "answer": [
+                "A lightweight, open-source API gateway written in Go",
+                "Core features: request routing and load balancing, authentication and authorization, rate limiting and throttling, request/response transformation, monitoring and analytics, circuit breaker patterns",
+                "Use cases: single entry point for microservices, API versioning, a centralized security layer, request transformation, and cross-cutting concerns such as logging, monitoring and caching at the gateway level",
+                "Alternatives: Kong (more feature-rich, enterprise-focused), Zuul (Netflix, Spring Cloud), AWS API Gateway (managed), Traefik (modern reverse proxy)",
+                "Benefits: lightweight and fast, plugin architecture, configuration-driven setup, high performance for high-traffic scenarios"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Security Strategy",
+          "questions": [
+            {
+              "question": "How would you design a comprehensive security strategy for a microservices architecture?",
+              "answer": [
+                "Identity and access management",
+                "Service-to-service authentication with mTLS or JWT",
+                "API gateway for centralized authentication and authorization",
+                "Secret management with HashiCorp Vault or AWS Secrets Manager",
+                "Network security: segmentation and firewalls",
+                "Data encryption at rest and in transit",
+                "Monitoring and auditing",
+                "Regular security testing and updates"
+              ]
+            },
+            {
+              "question": "How would you implement fine-grained authorization in a complex application?",
+              "answer": [
+                "Role-based access control (RBAC)",
+                "Attribute-based access control (ABAC)",
+                "Custom permission evaluators",
+                "Method-level security",
+                "Domain-driven security with business rules",
+                "Authorization decision caching",
+                "Audit logging for authorization decisions"
+              ]
+            },
+            {
+              "question": "What security considerations are important when designing APIs that handle sensitive data?",
+              "answer": [
+                "Input validation and sanitization",
+                "Transport security (TLS)",
+                "Authentication and authorization",
+                "Rate limiting and throttling",
+                "Sensitive data handling: encryption, masking, tokenization",
+                "Security headers",
+                "API key rotation policies",
+                "Regular security reviews"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Testing and Quality",
+          "questions": [
+            {
+              "question": "How do you approach testing in a microservices architecture?",
+              "answer": [
+                "Unit testing for service logic",
+                "Integration testing with test containers",
+                "Contract testing, for example with Spring Cloud Contract",
+                "End-to-end testing for critical paths",
+                "Chaos engineering for resilience",
+                "Performance testing with realistic loads",
+                "Service virtualization for dependent services"
+              ]
+            },
+            {
+              "question": "How do you ensure code quality in a team environment?",
+              "answer": [
+                "Code reviews",
+                "Static code analysis tools",
+                "Automated test coverage requirements",
+                "Regular refactoring",
+                "Pair or mob programming",
+                "Architectural decision records",
+                "Technical debt tracking and management",
+                "Code style enforcement"
+              ]
+            },
+            {
+              "question": "How would you design a CI/CD pipeline for a Spring Boot application?",
+              "answer": [
+                "Source control integration",
+                "Build automation",
+                "Unit and integration testing",
+                "Static code analysis",
+                "Security scanning",
+                "Artifact generation",
+                "Environment-specific configuration",
+                "Automated deployment with rollback capability",
+                "Post-deployment verification"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Coding Challenges",
+      "description": "Live-coding tasks, bug hunts and algorithm problems taken from real interview rounds.",
+      "categories": [
+        {
+          "name": "Design and Implementation Tasks",
+          "questions": [
+            {
+              "question": "Implement a thread-safe cache with expiration.",
+              "answer": [
+                "Create a generic class that caches objects with a configurable TTL",
+                "Ensure thread safety",
+                "Handle concurrent access efficiently",
+                "Implement automatic cleanup of expired entries"
+              ]
+            },
+            {
+              "question": "Design and implement a rate limiter for a REST API.",
+              "answer": [
+                "Create a Spring Filter that limits requests based on client IP or API key",
+                "Implement a sliding window or token bucket algorithm",
+                "Make it configurable per endpoint",
+                "Handle rate limit exceeded scenarios gracefully"
+              ]
+            },
+            {
+              "question": "Implement a simple event-driven architecture using Spring's events.",
+              "answer": [
+                "Create domain events",
+                "Implement event publishers",
+                "Create event listeners",
+                "Demonstrate asynchronous event processing"
+              ]
+            },
+            {
+              "question": "Write a Spring Boot application that processes a CSV file asynchronously.",
+              "answer": [
+                "Accept a file upload",
+                "Process records in parallel",
+                "Handle errors gracefully",
+                "Provide progress updates",
+                "Implement proper resource management"
+              ]
+            },
+            {
+              "question": "Implement a reactive endpoint using Spring WebFlux.",
+              "answer": [
+                "Create a non-blocking endpoint that aggregates data from multiple sources",
+                "Handle errors properly",
+                "Implement appropriate backpressure",
+                "Add metrics and monitoring"
+              ]
+            },
+            {
+              "question": "Create a CRUD API for a REST service.",
+              "answer": [
+                "Retrieve data from an external source",
+                "Store it in an appropriate database structure",
+                "Create RESTful endpoints for Create, Read, Update and Delete operations",
+                "Implement proper error handling and validation"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Debugging Exercises",
+          "questions": [
+            {
+              "question": "There is a bug in the following code that is causing a deadlock. Can you identify and fix it?",
+              "answer": "```java\npublic class MyClass {\n    private final Object lock1 = new Object();\n    private final Object lock2 = new Object();\n\n    public void method1() {\n        synchronized (lock1) {\n            synchronized (lock2) {\n                // do something\n            }\n        }\n    }\n\n    public void method2() {\n        synchronized (lock2) {\n            synchronized (lock1) {\n                // do something\n            }\n        }\n    }\n}\n```\n\nThe deadlock occurs because method1 and method2 acquire the locks in different orders. To fix it, ensure both methods acquire locks in the same order.\n\n```java\npublic class MyClass {\n    private final Object lock1 = new Object();\n    private final Object lock2 = new Object();\n\n    public void method1() {\n        synchronized (lock1) {\n            synchronized (lock2) {\n                // do something\n            }\n        }\n    }\n\n    public void method2() {\n        synchronized (lock1) {\n            synchronized (lock2) {\n                // do something\n            }\n        }\n    }\n}\n```"
+            },
+            {
+              "question": "Fix this code to correctly implement a binary search algorithm.",
+              "answer": "```java\npublic static int binarySearch(int[] arr, int target) {\n    int low = 0;\n    int high = arr.length;\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (arr[mid] < target) {\n            low = mid + 1;\n        } else if (arr[mid] > target) {\n            high = mid - 1;\n        } else {\n            return mid;\n        }\n    }\n    return -1;\n}\n```\n\nThe high index should start at `arr.length - 1` instead of `arr.length`.\n\n```java\npublic static int binarySearch(int[] arr, int target) {\n    int low = 0;\n    int high = arr.length - 1;\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (arr[mid] < target) {\n            low = mid + 1;\n        } else if (arr[mid] > target) {\n            high = mid - 1;\n        } else {\n            return mid;\n        }\n    }\n    return -1;\n}\n```"
+            },
+            {
+              "question": "Make Counter.increment() thread-safe.",
+              "answer": "```java\n// 1. synchronized\npublic static synchronized int increment() { ... }\n\n// 2. AtomicInteger (preferred)\nprivate static AtomicInteger count = new AtomicInteger();\npublic static int increment() {\n    return count.incrementAndGet();\n}\n```"
+            }
+          ]
+        },
+        {
+          "name": "Algorithm Problems",
+          "questions": [
+            {
+              "question": "Given a string S of nonzero digits, return the maximum number of two-digit odd numbers you can build using the digits, where each digit can be used only once.",
+              "answer": "Examples: `S = \"126139944\"` returns `4` (for example 41, 83, 29, 41); `S = \"77\"` returns `1`.\n\n```java\nimport java.util.HashMap;\nimport java.util.Map;\n\nclass Solution {\n    public int solution(String S) {\n        Map<Character, Integer> digitCount = new HashMap<>();\n\n        // Count digit occurrences\n        for (char c : S.toCharArray()) {\n            digitCount.put(c, digitCount.getOrDefault(c, 0) + 1);\n        }\n\n        int result = 0;\n        int[] oddDigits = {1, 3, 5, 7, 9};\n\n        // Pair different digits first\n        for (int unitDigit : oddDigits) {\n            char unitChar = (char)(unitDigit + '0');\n            for (char tensChar = '1'; tensChar <= '9'; tensChar++) {\n                while (digitCount.getOrDefault(unitChar, 0) > 0 &&\n                       digitCount.getOrDefault(tensChar, 0) > 0) {\n                    if (tensChar != unitChar || digitCount.get(unitChar) > 1) {\n                        digitCount.put(unitChar, digitCount.get(unitChar) - 1);\n                        digitCount.put(tensChar, digitCount.get(tensChar) - 1);\n                        result++;\n                    } else {\n                        break;\n                    }\n                }\n            }\n        }\n\n        // Use same digits if needed\n        for (int unitDigit : oddDigits) {\n            char digit = (char)(unitDigit + '0');\n            while (digitCount.getOrDefault(digit, 0) >= 2) {\n                digitCount.put(digit, digitCount.get(digit) - 2);\n                result++;\n            }\n        }\n\n        return result;\n    }\n}\n```"
+            },
+            {
+              "question": "Given an array A of N integers, return the smallest positive integer greater than 0 that is not present in A.",
+              "answer": "Examples: `A = [1, 3, 6, 4, 1, 2]` returns `5`; `A = [1, 2, 3]` returns `4`; `A = [-1, -3]` returns `1`.\n\n```java\nimport java.util.HashSet;\nimport java.util.Set;\n\nclass Solution {\n    public int solution(int[] A) {\n        Set<Integer> set = new HashSet<>();\n        for (int num : A) {\n            if (num > 0) {\n                set.add(num);\n            }\n        }\n\n        int smallestMissing = 1;\n        while (set.contains(smallestMissing)) {\n            smallestMissing++;\n        }\n\n        return smallestMissing;\n    }\n}\n```"
+            },
+            {
+              "question": "Count the peaks in a list of sensor values, where a top peak is at least 5 above both neighbours and a bottom peak is at least 5 below both neighbours.",
+              "answer": "The first and last elements can never be peaks.\n\n```java\npublic static int countPeaks(List<Double> values) {\n    if (values.size() < 3) return 0;\n\n    int peaks = 0;\n    for (int i = 1; i < values.size() - 1; i++) {\n        double prev = values.get(i-1);\n        double curr = values.get(i);\n        double next = values.get(i+1);\n\n        if ((curr >= prev + 5 && curr >= next + 5) ||\n            (curr <= prev - 5 && curr <= next - 5)) {\n            peaks++;\n        }\n    }\n\n    return peaks;\n}\n```"
+            },
+            {
+              "question": "Reshape a string into lines of n characters, removing all spaces and adding no trailing newline.",
+              "answer": "Example: input `\"abc def\"` with n=2 produces `\"ab\\ncd\\nef\"`.\n\n```java\npublic static String reshape(String input, int n) {\n    // Remove all spaces\n    String noSpaces = input.replaceAll(\"\\\\s+\", \"\");\n\n    StringBuilder result = new StringBuilder();\n    for (int i = 0; i < noSpaces.length(); i++) {\n        result.append(noSpaces.charAt(i));\n        if ((i + 1) % n == 0 && i < noSpaces.length() - 1) {\n            result.append(\"\\n\");\n        }\n    }\n\n    return result.toString();\n}\n```"
+            },
+            {
+              "question": "Reverse a list and keep only the even numbers.",
+              "answer": "```java\nList<Integer> filterEvenStones(List<Integer> list) {\n    List<Integer> result = new ArrayList<>();\n    for (int i = list.size() - 1; i >= 0; i--) {\n        if (list.get(i) % 2 == 0) {\n            result.add(list.get(i));\n        }\n    }\n    return result;\n}\n```"
+            },
+            {
+              "question": "Implement isAnagram(word1, word2), case-insensitive.",
+              "answer": "```java\nboolean isAnagram(String word1, String word2) {\n    char[] a = word1.toLowerCase().toCharArray();\n    char[] b = word2.toLowerCase().toCharArray();\n    Arrays.sort(a);\n    Arrays.sort(b);\n    return Arrays.equals(a, b);\n}\n```"
+            },
+            {
+              "question": "Convert a byte count to KiB (1024) or MiB (1024 squared) with floor rounding.",
+              "answer": "```java\nString formatBytes(long bytes) {\n    if (bytes < 1024) {\n        return bytes + \"\";\n    } else if (bytes < 1048576) { // 1024 squared\n        return (bytes / 1024) + \" KB\";\n    } else {\n        return (bytes / 1048576) + \" MB\";\n    }\n}\n```"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Platform and Tooling",
+      "description": "Supplementary topics from the same prep notes: complexity, Git, code review, containers and frontend.",
+      "categories": [
+        {
+          "name": "Data Structures and Complexity",
+          "questions": [
+            {
+              "question": "What is Big O notation?",
+              "answer": [
+                "Big O notation describes the worst-case time complexity of an algorithm as input size grows",
+                "O(1) constant time: HashMap get/put operations",
+                "O(log n) logarithmic: binary search, balanced tree operations",
+                "O(n) linear: array traversal, linear search",
+                "O(n log n) linearithmic: merge sort, heap sort",
+                "O(n squared) quadratic: nested loops, bubble sort",
+                "O(2^n) exponential: naive recursive Fibonacci",
+                "It describes growth rate rather than absolute time, ignores constants and lower-order terms, and focuses on the dominant factor as n approaches infinity"
+              ]
+            },
+            {
+              "question": "What is the time complexity of the common Java data structures?",
+              "answer": {
+                "table": [
+                  {
+                    "Structure": "Array / ArrayList",
+                    "Access": "O(1)",
+                    "Search": "O(n)",
+                    "Insert": "O(1) at end, O(n) at beginning or middle",
+                    "Delete": "O(1) at end, O(n) at beginning or middle"
+                  },
+                  {
+                    "Structure": "LinkedList",
+                    "Access": "O(n)",
+                    "Search": "O(n)",
+                    "Insert": "O(1) at beginning or end, O(n) at middle",
+                    "Delete": "O(1) if the node reference is known, O(n) to find it"
+                  },
+                  {
+                    "Structure": "HashMap",
+                    "Access": "O(1) average, O(n) worst case",
+                    "Search": "O(1) average, O(n) worst case",
+                    "Insert": "O(1) average, O(n) worst case",
+                    "Delete": "O(1) average, O(n) worst case"
+                  },
+                  {
+                    "Structure": "TreeMap (Red-Black Tree)",
+                    "Access": "O(log n)",
+                    "Search": "O(log n)",
+                    "Insert": "O(log n)",
+                    "Delete": "O(log n)"
+                  },
+                  {
+                    "Structure": "HashSet",
+                    "Access": "n/a",
+                    "Search": "O(1) average, O(n) worst case",
+                    "Insert": "O(1) average, O(n) worst case",
+                    "Delete": "O(1) average, O(n) worst case"
+                  },
+                  {
+                    "Structure": "TreeSet",
+                    "Access": "n/a",
+                    "Search": "O(log n)",
+                    "Insert": "O(log n)",
+                    "Delete": "O(log n)"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Git and Version Control",
+          "questions": [
+            {
+              "question": "What is the difference between git pull and git fetch?",
+              "answer": {
+                "table": [
+                  {
+                    "Aspect": "git fetch",
+                    "Behaviour": "Downloads commits, files and refs from the remote repository without merging them",
+                    "Effect": "Updates remote-tracking branches such as origin/main; safe, does not modify the working directory"
+                  },
+                  {
+                    "Aspect": "git pull",
+                    "Behaviour": "Performs a fetch followed by a merge",
+                    "Effect": "Downloads and merges changes into the current branch; can create merge conflicts"
+                  }
+                ]
+              }
+            },
+            {
+              "question": "How does GitFlow work?",
+              "answer": "GitFlow is a branching model with specific branch types.\n\nMain branches: `main`/`master` holds production-ready code, `develop` is the integration branch for features.\n\nSupporting branches: `feature/*` for new features (branch from develop, merge back to develop), `release/*` to prepare releases (branch from develop, merge to main and develop), `hotfix/*` for critical production fixes (branch from main, merge to main and develop).\n\nWorkflow: create a feature branch from develop, work on the feature and merge it back to develop, create a release branch when ready, test the release and fix bugs then merge to main and develop, tag main with the version number, and for critical fixes create a hotfix branch from main."
+            },
+            {
+              "question": "Which Git command shows the commit history?",
+              "answer": "`git log`."
+            },
+            {
+              "question": "How do you make Git ignore log files?",
+              "answer": "Add `*.log` to `.gitignore`."
+            },
+            {
+              "question": "Which Git command merges the branch bugfix33 into master?",
+              "answer": "`git merge bugfix33`, run while master is checked out."
+            },
+            {
+              "question": "Which Git command shows commit summaries grouped by author?",
+              "answer": "`git shortlog`."
+            },
+            {
+              "question": "Which GitHub feature lets you freely modify a project without affecting the original?",
+              "answer": "A fork."
+            },
+            {
+              "question": "You have local commits C and D that are not yet pushed and the remote has new commits E and F. How do you pull while keeping history linear?",
+              "answer": "Use `git pull --rebase`. Your local commits are rewritten on top of the remote changes, giving `A — B — E — F — C' — D'` with no merge commit."
+            }
+          ]
+        },
+        {
+          "name": "Code Review and CI/CD",
+          "questions": [
+            {
+              "question": "What do you look for during a merge review?",
+              "answer": [
+                "Code quality: follows team conventions and standards, proper naming, no duplication, appropriate comments and documentation",
+                "Functionality: solves the intended problem, handles edge cases, appropriate error handling, no obvious bugs or logic errors",
+                "Testing: adequate coverage, meaningful tests, all tests pass, integration tests where appropriate",
+                "Security: no vulnerabilities, sensitive data is not exposed, input validation is present, authentication and authorization are correct",
+                "Performance: no obvious performance issues, database queries are optimized, caching is used appropriately, resource usage is reasonable",
+                "Design: maintainable and readable, follows SOLID principles, appropriate design patterns, separation of concerns",
+                "Dependencies: new dependencies are justified, version conflicts are resolved, deprecated dependencies are avoided"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Docker and Kubernetes",
+          "questions": [
+            {
+              "question": "How do you run an interactive bash shell on a running container named pycontainer?",
+              "answer": "`docker exec -it pycontainer /bin/bash`"
+            },
+            {
+              "question": "Which Dockerfile instruction checks container health at regular intervals?",
+              "answer": "`HEALTHCHECK`."
+            },
+            {
+              "question": "How do you remove all unused Docker images to free disk space?",
+              "answer": "`docker image prune -a`"
+            },
+            {
+              "question": "How do you gather logs for a Swarm service named billing?",
+              "answer": "`docker service logs billing`"
+            },
+            {
+              "question": "Which Dockerfile instruction sets environment variables?",
+              "answer": "`ENV`."
+            },
+            {
+              "question": "How do you specify a custom Dockerfile path for a Compose service?",
+              "answer": "```yaml\nbuild:\n  context: ./source\n  dockerfile: Dockerfile.build\n```"
+            },
+            {
+              "question": "Which Kubernetes object sets the maximum memory for containers in a namespace?",
+              "answer": "`LimitRange`."
+            },
+            {
+              "question": "What are the valid DaemonSet update strategies?",
+              "answer": [
+                "RollingUpdate",
+                "OnDelete"
+              ]
+            },
+            {
+              "question": "How do you restrict access to the backend pods so that only frontend pods can reach them?",
+              "answer": "Use a NetworkPolicy.\n\n```yaml\napiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\nmetadata:\n  name: access\nspec:\n  podSelector:\n    matchLabels:\n      app: backend\n  ingress:\n  - from:\n    - podSelector:\n        matchLabels:\n          app: frontend\n```"
+            }
+          ]
+        },
+        {
+          "name": "Angular and Frontend",
+          "questions": [
+            {
+              "question": "What is a necessary step to configure PurgeCSS in an Angular project?",
+              "answer": "Install PurgeCSS and specify the content paths in a PostCSS configuration file. Adding it to the styles field of the Angular CLI configuration, adding a purgecss script to package.json, or adding a purgecss option to angular.json are not the correct approach."
+            },
+            {
+              "question": "Which of these is NOT an existing Angular structural directive: ngIf, ngFor, ngSwitch, ngUnless?",
+              "answer": "`ngUnless`. The valid structural directives are `*ngIf`, `*ngFor` and `*ngSwitch`."
+            },
+            {
+              "question": "Which form control class does Angular add when a control is valid?",
+              "answer": "`ng-valid`."
+            },
+            {
+              "question": "Which module must you import to use HttpClient?",
+              "answer": "`HttpClientModule`, not `HttpModule`."
+            },
+            {
+              "question": "Which file holds the configuration rules for an Angular project?",
+              "answer": "`angular.json`."
+            },
+            {
+              "question": "Which Chrome extension is used for debugging Angular apps?",
+              "answer": "Angular DevTools."
+            },
+            {
+              "question": "Which module must you import for core browser functionality in Angular?",
+              "answer": "`BrowserModule`."
+            },
+            {
+              "question": "How do you decouple an Angular project from the CLI, for example to use webpack directly?",
+              "answer": "`ng eject`, which is deprecated. The modern approach is to use custom builders."
+            },
+            {
+              "question": "Complete a TransactionDetailComponent template that displays a fee as a percentage, an amount with currency symbol and thousands separators, and a time formatted as www yyyy MMMM dd hh-mm-ss.",
+              "answer": "Template:\n\n```html\n<div id=\"fee\">{{ getFormattedFee() }}</div>\n<div id=\"amount\">{{ getFormattedAmount() }}</div>\n<div id=\"time\">{{ getFormattedTime() }}</div>\n```\n\nComponent methods:\n\n```typescript\ngetFormattedFee(): string {\n    return (this.fee * 100).toFixed(2).padStart(5, '0') + '%';\n}\n\ngetFormattedAmount(): string {\n    const symbol = this.currency === 'EUR' ? '€' : '$';\n    return symbol + this.amount.toFixed(2).padStart(12, '0').replace(/\\B(?=(\\d{3})+(?!\\d))/g, ',');\n}\n\ngetFormattedTime(): string {\n    // Format date as: www yyyy MMMM dd hh-mm-ss (e.g., Mon 1997 July 01 12-32-00)\n    const date = new Date(this.time);\n    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];\n    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',\n                       'July', 'August', 'September', 'October', 'November', 'December'];\n\n    const day = dayNames[date.getDay()];\n    const year = date.getFullYear();\n    const month = monthNames[date.getMonth()];\n    const dayOfMonth = date.getDate().toString().padStart(2, '0');\n    const hours = date.getHours().toString().padStart(2, '0');\n    const minutes = date.getMinutes().toString().padStart(2, '0');\n    const seconds = date.getSeconds().toString().padStart(2, '0');\n\n    return `${day} ${year} ${month} ${dayOfMonth} ${hours}-${minutes}-${seconds}`;\n}\n```"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "title": "Cloud Fundamentals",
+  "tags": ["cloud", "aws", "azure", "serverless", "interview"],
+  "topics": [
+    {
+      "title": "Service Map",
+      "description": "The table to memorize so you are never caught cold by \"have you worked with cloud?\". Know the service names, what they are for, and how a Spring Boot app lands on them.",
+      "interviewRelevance": 5,
+      "services": {
+        "headers": ["Need", "AWS", "Azure", "What to know"],
+        "rows": [
+          ["VMs", "EC2", "Virtual Machines", "Instance types, autoscaling groups"],
+          ["Containers (managed K8s)", "EKS", "AKS", "Same K8s API; cloud manages the control plane"],
+          ["Containers (simpler)", "ECS / Fargate", "Container Apps", "Fargate and serverless mean no nodes to manage"],
+          ["Functions (serverless)", "Lambda", "Azure Functions", "Event-driven, pay per invocation, cold starts"],
+          ["Object storage", "S3", "Blob Storage", "Files, backups, static assets; presigned URLs"],
+          ["Relational DB", "RDS / Aurora", "Azure SQL / Database for PostgreSQL", "Managed backups, failover, read replicas"],
+          ["NoSQL", "DynamoDB", "Cosmos DB", "Key-value at scale, single-digit ms"],
+          ["Cache", "ElastiCache (Redis)", "Azure Cache for Redis", "Managed Redis"],
+          ["Queue", "SQS", "Storage Queues / Service Bus", "At-least-once, DLQ built in"],
+          ["Pub/Sub", "SNS", "Service Bus Topics / Event Grid", "Fan-out to many subscribers"],
+          ["Event streaming", "MSK / Kinesis", "Event Hubs", "Managed Kafka or Kafka-like"],
+          ["Secrets", "Secrets Manager / Parameter Store", "Key Vault", "Never env-var secrets in code or repo"],
+          ["Identity / permissions", "IAM", "Entra ID + RBAC", "Roles for services, not access keys"],
+          ["Load balancing", "ELB / ALB", "Load Balancer / App Gateway", "ALB is L7 with path routing"],
+          ["DNS + CDN", "Route 53 + CloudFront", "DNS + Front Door / CDN", "Edge caching"],
+          ["Monitoring", "CloudWatch", "Azure Monitor / App Insights", "Metrics, logs, alarms"]
+        ]
+      }
+    },
+    {
+      "title": "Regions & AZs",
+      "description": "A region is a geographic area; an availability zone is an isolated datacenter within it.",
+      "interviewRelevance": 4,
+      "key_points": [
+        "Run at least 2 AZs for production.",
+        "The load balancer spreads instances across AZs.",
+        "RDS multi-AZ means a synchronous standby with automatic failover.",
+        "Multi-region only when RTO and RPO demand it - it brings consistency complexity."
+      ]
+    },
+    {
+      "title": "IAM",
+      "description": "Identity and permissions in one paragraph, plus the sound bite interviewers are listening for.",
+      "interviewRelevance": 5,
+      "principles": [
+        {
+          "title": "Least privilege",
+          "description": "Grant the minimum set of actions on the minimum set of resources."
+        },
+        {
+          "title": "Roles, not keys",
+          "description": "Applications get roles - EC2 instance profile, EKS IRSA, pod identity - never hardcoded access keys."
+        },
+        {
+          "title": "Policies",
+          "description": "JSON allow or deny statements over actions plus resources."
+        }
+      ],
+      "sound_bite": "No credentials in code or config - the workload assumes a role and the SDK picks it up from the environment."
+    },
+    {
+      "title": "Messaging",
+      "description": "SQS vs SNS vs Kinesis/MSK, one of the most frequently asked cloud comparisons.",
+      "interviewRelevance": 5,
+      "options": [
+        {
+          "title": "SQS",
+          "description": "Queue with one consumer group semantics. The message is deleted after processing. Visibility timeout, and a DLQ after N failures."
+        },
+        {
+          "title": "SNS",
+          "description": "Pub/sub broadcast that pushes to many targets: SQS queues, Lambda, email. The classic combo is SNS to multiple SQS queues for fan-out."
+        },
+        {
+          "title": "Kinesis / MSK (Kafka)",
+          "description": "Ordered, replayable stream with multiple independent readers."
+        }
+      ]
+    },
+    {
+      "title": "Serverless Trade-offs",
+      "description": "Lambda has zero idle cost and scales instantly, but the constraints matter more than the pitch.",
+      "interviewRelevance": 4,
+      "tradeoffs": [
+        {
+          "title": "Cold starts",
+          "description": "Painful on the JVM. Mitigations: SnapStart, provisioned concurrency, or a lighter runtime."
+        },
+        {
+          "title": "Execution limit",
+          "description": "15 minutes maximum per invocation."
+        },
+        {
+          "title": "Stateless",
+          "description": "No local state survives between invocations."
+        },
+        {
+          "title": "Where it fits",
+          "description": "Good for glue code and event handlers, not for latency-sensitive core APIs. Say that judgment out loud."
+        }
+      ]
+    },
+    {
+      "title": "Hosting Spring Boot",
+      "description": "Where a Spring Boot app goes, in the order you would propose the options. Trade cost against control and ops maturity.",
+      "interviewRelevance": 4,
+      "options": [
+        {
+          "title": "1. Managed Kubernetes (EKS / AKS)",
+          "description": "If the organisation is container-native."
+        },
+        {
+          "title": "2. ECS Fargate / Azure Container Apps",
+          "description": "Containers with less ops overhead - no nodes to manage."
+        },
+        {
+          "title": "3. Elastic Beanstalk / App Service",
+          "description": "The \"just run my jar\" option."
+        }
+      ]
+    },
+    {
+      "title": "12-Factor Checklist",
+      "description": "The cloud-readiness highlights that come up when an interviewer asks what makes an app cloud-ready.",
+      "interviewRelevance": 4,
+      "factors": [
+        {
+          "title": "Config in the environment",
+          "description": "Not baked into the jar. Spring profiles plus environment overrides."
+        },
+        {
+          "title": "Stateless processes",
+          "description": "Session and state live in Redis or the DB; any instance can die."
+        },
+        {
+          "title": "Logs to stdout",
+          "description": "The platform ships them to CloudWatch or App Insights."
+        },
+        {
+          "title": "Disposability",
+          "description": "Fast startup and graceful shutdown via server.shutdown=graceful."
+        },
+        {
+          "title": "Dev/prod parity",
+          "description": "The same image everywhere; Testcontainers locally."
+        }
+      ]
+    },
+    {
+      "title": "Spring Integration",
+      "description": "The Spring and cloud integration names worth dropping in an interview.",
+      "interviewRelevance": 4,
+      "libraries": [
+        {
+          "title": "Spring Cloud AWS",
+          "description": "Starters spring-cloud-aws-starter-s3, -sqs and -secrets-manager give you SqsListener, S3Template, and secrets as property sources."
+        },
+        {
+          "title": "Spring Cloud Azure",
+          "description": "Starters for Key Vault as a property source, Service Bus, and Blob storage."
+        },
+        {
+          "title": "Configuration flow",
+          "description": "Secrets Manager or Key Vault becomes a property source feeding ConfigurationProperties - no code change between environments."
+        },
+        {
+          "title": "Metrics",
+          "description": "Micrometer exports to CloudWatch or Azure Monitor."
+        }
+      ]
+    },
+    {
+      "title": "Cost Awareness",
+      "description": "One-liners that show you have run something in production, not just deployed it.",
+      "interviewRelevance": 3,
+      "one_liners": [
+        "The biggest bills come from forgotten NAT gateways, oversized RDS, and cross-AZ traffic.",
+        "Spot instances for stateless workers, reserved or savings plans for the baseline.",
+        "S3 lifecycle rules move old data to Glacier."
+      ]
+    },
+    {
+      "title": "Interview Questions",
+      "description": "The five cloud questions a Java backend candidate should be able to answer cold.",
+      "interviewRelevance": 5,
+      "questions": [
+        {
+          "question": "Your service on EC2 or EKS needs to read from S3. How do you give it access?",
+          "description": "An IAM role attached to the instance or pod (instance profile, IRSA), with a policy scoped to the bucket and the actions. The SDK resolves credentials automatically. Never access keys in environment variables."
+        },
+        {
+          "question": "How would you make a single-region app highly available?",
+          "description": "Multi-AZ first: load balancer across AZs, RDS multi-AZ, Redis with replicas. Multi-region only if RTO and RPO demand it - route with weighted or failover DNS, replicate data with Aurora Global or Cosmos multi-region, and accept the consistency complexity."
+        },
+        {
+          "question": "How do you handle secrets in the cloud?",
+          "description": "Secrets Manager or Key Vault, injected at runtime as a property source or mounted volume, with rotation enabled. IAM or RBAC controls who reads them, and CloudTrail or Azure Monitor provides the audit trail."
+        },
+        {
+          "question": "Lambda vs a container service for a REST API?",
+          "description": "Spiky or low traffic with simple handlers points to Lambda, where idle cost is near zero. Steady traffic, JVM warmup and a complex framework point to containers. Mention cold starts and SnapStart for Java."
+        },
+        {
+          "question": "What changes in your Spring Boot app when moving to the cloud?",
+          "description": "Ideally only configuration: externalized config, stateless sessions, stdout logging, health probes exposed, object storage instead of local disk, and queue-backed async work. If code must change, the app was not 12-factor."
+        }
+      ]
+    }
+  ]
+}
