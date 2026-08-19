@@ -1,0 +1,739 @@
+{
+  "title": "Behavioral & HR",
+  "tags": ["behavioral", "hr", "star", "interview", "soft-skills"],
+  "topics": [
+    {
+      "title": "My Background",
+      "description": "The opening self-introduction: who I am, the project I work on, and the stack behind it.",
+      "interviewRelevance": 5,
+      "introduction": "I am Hamza EL KHATIB, a Java backend developer with a bachelor's degree and over 3 years of experience.",
+      "current_project": [
+        "I work with INDITEX, the company behind Zara, Pull&Bear and Stradivarius.",
+        "We build an application that their board members use to make business decisions.",
+        "It is a very international team, about 16 developers spread across Spain, Portugal and Morocco.",
+        "We use both Scrum and Kanban, depending on which squad you are assigned to."
+      ],
+      "technical_side": [
+        "Mainly Java 17 and Spring Boot.",
+        "I build both REST APIs and GraphQL endpoints.",
+        "MongoDB for configuration data and PostgreSQL for the main user data.",
+        "Recently a lot of report generation: Playwright for PDFs and Apache POI for Excel files."
+      ],
+      "quality_and_tools": [
+        "Tests with JUnit and Mockito, SonarQube for code quality and unit test coverage.",
+        "Grafana for monitoring.",
+        "The overall process is solid."
+      ],
+      "joining_the_project": "When I joined this project it was quite challenging. The previous team had left and everyone was new, with the most experienced developer having only 3 months on the project. We had to understand a complex codebase, fix existing bugs, learn new technologies and deliver features all at the same time. It was stressful at first, but we pushed through as a team and now we have a solid understanding of the system.",
+      "learning_and_motivation": [
+        "I am currently working towards my Oracle Java 21 certification.",
+        "I always try to learn something new, it keeps the job interesting.",
+        "I deal with real business data: sales numbers, inventory levels, customer trends.",
+        "The dashboards and reports I build help executives make million-dollar decisions, so the code has visible business impact."
+      ]
+    },
+    {
+      "title": "STAR Method",
+      "description": "Behavioral interviews assess how you handled specific past situations, on the assumption that the best predictor of future behaviour is past behaviour. STAR is the structure for every answer.",
+      "interviewRelevance": 5,
+      "components": [
+        {
+          "title": "Situation",
+          "description": "Describe the context.",
+          "key_point": "Be concise but specific."
+        },
+        {
+          "title": "Task",
+          "description": "Explain your responsibility.",
+          "key_point": "Focus on your specific role."
+        },
+        {
+          "title": "Action",
+          "description": "Detail the steps you took.",
+          "key_point": "Emphasize your own contribution."
+        },
+        {
+          "title": "Result",
+          "description": "Share the outcome.",
+          "key_point": "Quantify results whenever possible."
+        }
+      ],
+      "strength_example": [
+        {
+          "title": "Situation",
+          "description": "Our team needed to generate PDFs for business reports using Playwright."
+        },
+        {
+          "title": "Task",
+          "description": "I was assigned to optimize the process, which had excessive response times."
+        },
+        {
+          "title": "Action",
+          "description": "I implemented a solution splitting URLs across multiple browser tabs and cached the browser context."
+        },
+        {
+          "title": "Result",
+          "description": "Reduced PDF generation time by 60 percent, improving user experience and server load."
+        }
+      ],
+      "weakness_to_strength_example": [
+        {
+          "title": "Situation",
+          "description": "I received feedback that I should be more proactive in proposing improvements."
+        },
+        {
+          "title": "Task",
+          "description": "I needed to develop my initiative in identifying and addressing system issues."
+        },
+        {
+          "title": "Action",
+          "description": "I began systematically analyzing our codebase and processes, identifying optimization opportunities."
+        },
+        {
+          "title": "Result",
+          "description": "I proposed and implemented several significant improvements, including consolidating GraphQL APIs and creating comprehensive technical documentation."
+        }
+      ],
+      "preparation_checklist": [
+        "Research the company: understand their values, culture and challenges, and review their products, services and recent news.",
+        "Analyze the job description: identify the key competencies and match your experiences to their needs.",
+        "Prepare your stories: develop 5 to 7 versatile stories that adapt to different questions, and practise telling them in 1 to 2 minutes.",
+        "Anticipate follow-up questions: be ready with additional detail and with what you would do differently.",
+        "Practise with a partner: get feedback on clarity and conciseness, and time your responses to avoid over-talking."
+      ]
+    },
+    {
+      "title": "Signature Stories",
+      "description": "The prepared stories to reuse across questions. Each one is told once, adapted to whatever the interviewer asks.",
+      "interviewRelevance": 5,
+      "stories": [
+        {
+          "title": "PDF comparison tool (biggest achievement)",
+          "description": "In our PDF generation system migration project, we faced a critical challenge: ensuring that the data in the new reports exactly matched that of the old ones. Manual comparison was impossible given the volume, thousands of reports each containing hundreds of sensitive business data points. I identified this as a major risk for the migration and took the initiative to develop a specialized comparison tool. I designed and implemented a solution that automatically extracts text from the PDFs of both systems, normalizes the data to account for formatting differences, then performs a detailed point-by-point comparison. The tool highlights discrepancies with precise context, allowing targeted verification. This transformed a process that would have taken weeks into an automated operation of a few hours, with much higher accuracy. Thanks to this tool we identified and corrected several subtle inconsistencies in the new system before deployment, avoiding business decisions based on erroneous data. Management was so impressed that it has been integrated as a permanent component of our quality tool suite.",
+          "use_for": [
+            "Tell me about a significant achievement.",
+            "Describe a time when you took the lead on a project.",
+            "Tell me about a situation where you identified and implemented an improvement."
+          ]
+        },
+        {
+          "title": "Competing priorities at INDITEX",
+          "description": "In our project with INDITEX, we faced an urgent need to deploy a new feature while simultaneously addressing critical performance issues. I developed a two-track approach: I divided our team to allow parallel work on both priorities, implemented daily stand-ups specifically for cross-track coordination, and created a shared documentation system to ensure transparency. By clearly communicating priorities, establishing measurable milestones and running regular progress reviews, we delivered the new feature on time and improved system performance by 35 percent.",
+          "use_for": [
+            "How do you handle multiple competing priorities?",
+            "Describe a time when you had to work under a tight deadline."
+          ]
+        },
+        {
+          "title": "Learning fast in the current role",
+          "description": "I significantly developed my technical skills in Java and Spring Boot, particularly in performance optimization and API design. More specifically I learned how to use the Stream API effectively, CompletableFuture for asynchronous programming, MapStruct for object mapping and Playwright for PDF generation. I applied these to optimize our critical data processing pipelines, reducing processing time by 40 percent. I reinforced the learning by documenting the optimizations and running knowledge-sharing sessions for the team. I also gained solid experience in international teamwork and intercultural communication, and complex projects taught me the value of planning and documentation.",
+          "use_for": [
+            "Tell me about a time when you had to learn a new technology quickly.",
+            "What have you learned in your current role?"
+          ]
+        },
+        {
+          "title": "Growth areas and how I address them",
+          "description": "In my current role I identified several areas where I want to deepen my skills. First, DevOps and cloud computing: I use Docker for containerization but want to master Kubernetes for orchestration, since it has become an industry standard. In parallel I work on my personal learning platform project where I experiment with AWS to gain practical experience. On core skills, even though I use Java and Spring Boot daily, I want to go deeper into reactive programming with Spring WebFlux and the newer Java 21 features. For SQL I want to focus on optimizing complex queries and improving performance on large-scale databases. I have already started online courses and apply the knowledge in my personal projects.",
+          "use_for": [
+            "What areas are you working to improve?",
+            "What knowledge or experience do you lack and wish to improve?"
+          ]
+        },
+        {
+          "title": "Undocumented feature after the developer left",
+          "description": "I had to work on a feature that automatically generates monthly summary reports for INDITEX executives. The developer who built it had left the company and the feature stopped working after we updated our Playwright version. There was no documentation about how the report templates were structured or how the data mapping worked. First I traced through the code starting from the scheduled job to understand the complete flow, from data retrieval to PDF generation. Then I checked Azure Blob Storage to see which JSON files were being uploaded and their structure, and examined the Playwright scripts to understand how they transformed the data into the PDF format. I discovered that the issue was in the CSS selectors used by Playwright: they targeted HTML elements that had changed in the new version, and were hardcoded without any documentation of which dashboard elements they captured. I fixed the selectors by inspecting the updated HTML structure and testing with different browser configurations. Afterwards I wrote comprehensive documentation of the whole process, including the JSON structure, the Playwright selectors and troubleshooting steps, so future developers would not face the same problem.",
+          "use_for": [
+            "How would you take over a feature with no documentation?",
+            "Describe a debugging challenge you faced."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Story Categories",
+      "description": "The categories behavioral questions fall into, with the questions to expect and how to prepare each one. The prepared answers live in the Signature Stories tab.",
+      "interviewRelevance": 4,
+      "core_categories": [
+        {
+          "title": "Problem solving and technical challenges",
+          "description": "Prepare 2 to 3 stories about different types of technical problem: debugging complex issues, optimizing performance, implementing new features, managing technical debt.",
+          "questions": [
+            "Describe a technical challenge you faced and how you solved it.",
+            "Tell me about a time when you had to optimize code or application performance."
+          ]
+        },
+        {
+          "title": "Team collaboration and conflict",
+          "description": "Demonstrate empathy and communication, show your ability to compromise, and explain how you keep professional relationships healthy.",
+          "questions": [
+            "Tell me about a time when you had a conflict with a teammate and how you handled it.",
+            "Describe a situation where you had to work with a difficult team member."
+          ]
+        },
+        {
+          "title": "Leadership and initiative",
+          "description": "Focus on how you influenced outcomes without formal authority, emphasize your decision-making process, and highlight how you motivated others.",
+          "questions": [
+            "Describe a time when you took the lead on a project.",
+            "Tell me about a situation where you identified and implemented an improvement."
+          ]
+        },
+        {
+          "title": "Adaptability and learning",
+          "description": "Show enthusiasm for learning, describe your learning process, and connect the learning to delivered value.",
+          "questions": [
+            "Tell me about a time when you had to learn a new technology quickly.",
+            "Describe how you have adapted to changing requirements or priorities."
+          ]
+        },
+        {
+          "title": "Time management and prioritization",
+          "description": "Explain your prioritization framework, show how you communicate about priorities, and demonstrate that you adjust when circumstances change.",
+          "questions": [
+            "How do you handle multiple competing priorities?",
+            "Describe a time when you had to work under a tight deadline."
+          ]
+        },
+        {
+          "title": "Self-awareness and growth",
+          "description": "Show genuine self-awareness, describe concrete steps taken to improve, and connect the improvement to business impact.",
+          "questions": [
+            "What areas are you working to improve?",
+            "Describe a time when you received constructive criticism."
+          ]
+        }
+      ],
+      "specialized_categories": [
+        {
+          "title": "Agile and Scrum experience",
+          "description": "Demonstrate understanding of agile principles, show how you adapted agile to different environments, and highlight your contributions to team improvement.",
+          "questions": [
+            "How do you contribute to daily stand-ups and retrospectives?",
+            "How have you handled changing requirements mid-sprint?"
+          ]
+        },
+        {
+          "title": "Remote and distributed teams",
+          "description": "Emphasize proactive communication, show cultural awareness, and name the tools and processes you have used successfully.",
+          "questions": [
+            "How do you maintain effective communication in a remote environment?",
+            "Describe how you have collaborated effectively across time zones."
+          ]
+        },
+        {
+          "title": "Client and stakeholder interaction",
+          "description": "Emphasize communication skills, show how you build trust and manage expectations, and demonstrate understanding of business needs.",
+          "questions": [
+            "Tell me about a time when you explained technical concepts to non-technical stakeholders.",
+            "How have you handled difficult client requests or feedback?"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "HR Questions",
+      "description": "The standard HR round: motivation, mobility, ambitions and logistics.",
+      "interviewRelevance": 5,
+      "questions": [
+        {
+          "question": "Why do you want to work with us?",
+          "answer": "Your company is recognized for several aspects that perfectly match my values and professional aspirations. Firstly, your reputation for work-life balance and employee well-being is excellent. I particularly appreciate your commitment to professional development, with structured training programs and clear career advancement opportunities. The company culture focused on innovation and continuous learning is also very attractive. Moreover, your stability and ongoing growth show that it is an excellent environment in which to build a long-term career."
+        },
+        {
+          "question": "Why do you want to leave your current company?",
+          "answer": "I am very satisfied with my experience at NTT DATA. The company has offered me excellent growth opportunities, and I work on challenging projects with a talented team. My decision to seek a new position is primarily motivated by my desire to relocate to Europe.\n\nThis decision is the result of thorough reflection on my long-term personal and professional goals. Europe offers several advantages that are important to me: a universal healthcare system, strong economic stability and a high level of security. The European technology market is also very dynamic, with many innovative companies.\n\nHowever, I do not wish to compromise my professional standards just for the sake of moving. I am looking for a company that not only allows me to settle in Europe, but also offers a stimulating environment and technical challenges that meet my aspirations."
+        },
+        {
+          "question": "Why do you want to move to this country or city?",
+          "answer": "What primarily attracts me is the combination of several important factors. Firstly, the exceptional quality of life, with modern and well-developed infrastructure. The universal and high-quality healthcare system is also very attractive. Economic stability and high purchasing power provide better long-term prospects. The high level of security and the quality of public services matter to me as well. Finally, the dynamism of the technology sector and the number of professional opportunities make it an ideal destination for an IT professional."
+        },
+        {
+          "question": "What does a perfect job look like for you?",
+          "answer": "A perfect job has four essential criteria for me. First, a technology stack aligned with my interests and learning goals, such as Java, Spring Cloud and cloud computing. Second, real growth opportunities through internal training and mentoring. Third, a stable company with a clear long-term vision. Finally, a company culture that values its employees and maintains a good work-life balance."
+        },
+        {
+          "question": "Where do you see yourself in 2, 3 or 5 years?",
+          "answer": "In the short term I want to continue developing my technical expertise as a senior backend developer, with a particular focus on cloud-native architectures and microservices. In the medium term I want to take on more technical responsibilities and take part in the design of distributed systems. In the long term I aspire to become a software architect, contributing to the design of large-scale systems while sharing my knowledge with the team."
+        },
+        {
+          "question": "Why are you the best candidate for this position?",
+          "answer": "I have strong technical experience in Java and Spring development, with hands-on experience building scalable backend systems that handle high transaction volumes. I am used to working in multicultural teams and have shown that I adapt quickly to new environments and complex business domains. My experience with real-time data processing, API integrations and building systems that directly affect user experience translates well to challenges such as booking flows, inventory systems and customer-facing features. My commitment to continuous learning, evidenced by my Oracle Java certification, shows a constant drive for growth."
+        },
+        {
+          "question": "What do you do outside of work?",
+          "answer": "Outside of development I am learning German, currently at A2 level, and working on a learning platform as a personal project. I also enjoy cooking and spending time with my family and friends. These activities help me maintain a good work-life balance."
+        },
+        {
+          "question": "What is your notice period?",
+          "answer": "My notice period is two months. I have a good relationship with my manager and I am committed to a professional transition, documenting my projects and transferring my knowledge to the team."
+        },
+        {
+          "question": "Have you thought about your salary expectations?",
+          "answer": "To be honest, I do not have specific salary expectations as I am not yet very familiar with the local market. I prefer to hear your offer and discuss it based on the overall package, including social benefits and development opportunities."
+        }
+      ]
+    },
+    {
+      "title": "Motivation & Fit",
+      "description": "Company-specific research and how to shift emphasis depending on the type of company.",
+      "interviewRelevance": 4,
+      "company_research": [
+        {
+          "question": "Do you know Viator?",
+          "answer": "Viator is TripAdvisor's tours and experiences platform, connecting travellers with local tour operators worldwide. It is a global marketplace where people discover and book activities, tours, attractions and unique experiences in destinations around the world, from city walking tours and museum tickets to adventure activities and food tours. The platform manages complex inventory because tours have limited capacity, specific schedules and real-time availability that must be synchronized across thousands of tour operators globally. It has become a major part of TripAdvisor's business, representing a significant portion of their revenue, and serves millions of travellers."
+        },
+        {
+          "question": "Why do you want to join this project?",
+          "answer": "Technical challenge and scale: building systems for a global travel platform that handles millions of bookings and integrates with thousands of tour operators is exactly the kind of complex, high-scale development I want to be doing. Real-time inventory management, payment processing across multiple currencies and system reliability for travellers who depend on confirmed bookings are fascinating problems that align with my Spring Boot and microservices experience.\n\nImpact and purpose: there is something meaningful about building technology that helps people create memories and discover experiences. Every feature affects someone's trip, which makes the work more fulfilling than typical enterprise applications.\n\nLearning and growth: the travel technology space involves dynamic pricing, real-time availability, mobile-first design and integration with diverse third-party APIs. Working here would push me to grow technically while specializing in an industry that keeps innovating."
+        }
+      ],
+      "adjust_emphasis_by_company_type": [
+        {
+          "type": "Startups",
+          "description": "Initiative, adaptability, wearing multiple hats."
+        },
+        {
+          "type": "Large enterprises",
+          "description": "Process awareness, collaboration, stakeholder management."
+        },
+        {
+          "type": "Consulting firms",
+          "description": "Client focus, adaptability, fast learning."
+        },
+        {
+          "type": "Product companies",
+          "description": "User focus, attention to detail, product thinking."
+        }
+      ]
+    },
+    {
+      "title": "Ways of Working",
+      "description": "Day-to-day operational questions about the team, the stack and how a task travels from ticket to production.",
+      "interviewRelevance": 4,
+      "questions": [
+        {
+          "question": "What does a typical workday look like in your current project?",
+          "answer": "My day starts with a daily stand-up with the team. Then I work on developing new features or optimizing existing ones. I take part in code reviews and collaborate with colleagues on technical issues. I also dedicate time to documentation and to the continuous improvement of our codebase."
+        },
+        {
+          "question": "What does your team look like?",
+          "answer": "I work in a very diverse international team with members from Spain, Morocco, Portugal and Brazil. That diversity brings different perspectives and approaches to problem-solving. We communicate primarily in English, which has let me develop strong intercultural communication skills."
+        },
+        {
+          "question": "What is your preferred tech stack?",
+          "answer": "My preferred stack revolves around the Spring ecosystem with Java 17 and above. I appreciate Spring Boot for productivity and Spring Cloud for microservices, and I use PostgreSQL as my primary database. For monitoring I work with Grafana and Zipkin. On the DevOps side I have experience with Docker and I am interested in Kubernetes."
+        },
+        {
+          "question": "What is the flow of a task from assignment to delivery?",
+          "answer": "When I get assigned a user story I first read the acceptance criteria and ask for clarification if needed. Then I analyze the technical requirements: what database changes are needed, which APIs to modify, any new endpoints to create. I estimate the effort and break it into smaller tasks.\n\nDuring development I write the code following our team standards, create unit tests with JUnit and Mockito, and test locally. Once done I create a pull request and a teammate reviews it. We discuss the feedback and I make the necessary changes.\n\nAfter the code is merged it goes to our testing environment first. I verify everything works as expected, then we deploy to production. I monitor the deployment in Grafana to make sure there are no issues, and I update the technical documentation if needed."
+        }
+      ]
+    },
+    {
+      "title": "Code Reviews",
+      "description": "What I think code reviews are for, and exactly how they run in my current project.",
+      "interviewRelevance": 4,
+      "questions": [
+        {
+          "question": "What is your opinion on code reviews?",
+          "answer": "I consider code reviews essential for maintaining code quality and fostering mutual learning. They allow early detection of potential issues in the development cycle, and they spread knowledge and best practices within the team. I particularly appreciate the technical discussions that come out of them, as they often lead to more elegant and robust solutions."
+        },
+        {
+          "question": "How are code reviews done in your project?",
+          "answer": "When I finish developing a feature I create a pull request on GitHub and assign at least one reviewer, usually someone with expertise in the area. Before the review even starts, our GitHub Actions workflow automatically runs all our checks: JUnit tests, SonarQube analysis for code quality and coverage, and the INDITEX formatting style checks.\n\nWhen reviewing others' code I focus on several areas. First the business logic, to make sure it meets the requirements and handles edge cases. Then code structure and readability: are the methods well named, is the code self-documenting, are there overly complex sections that could be simplified. I also pay attention to performance, especially since we work with large datasets for INDITEX reports, so proper use of streams, efficient database queries and memory management around our Apache POI operations. Security matters too, particularly around data handling since we deal with sensitive business information. Finally I verify that error handling is in place and that the code follows our team's patterns and conventions.\n\nWhen I receive feedback on my pull requests I take it seriously and discuss when I have questions about a suggestion. Those conversations often lead to improvements neither of us initially thought of. Our team treats reviews as collaborative rather than critical. It is not only about catching bugs either: we share knowledge about new Java features, Spring Boot best practices and more efficient ways to handle operations, which is valuable given how different our backgrounds and experience levels are."
+        }
+      ]
+    },
+    {
+      "title": "Strengths",
+      "description": "The strengths to claim, each one attached to concrete evidence.",
+      "interviewRelevance": 4,
+      "technical_expertise": [
+        {
+          "title": "Java and Spring Boot",
+          "description": "Strong foundation in core Java concepts and Spring Boot implementation, with 3 years of practical experience."
+        },
+        {
+          "title": "Backend development",
+          "description": "Designing and implementing RESTful APIs, GraphQL services and database integration."
+        },
+        {
+          "title": "Problem solving",
+          "description": "Demonstrated ability to optimize systems, shown by optimizing PDF generation and reducing generation time by 60 percent."
+        },
+        {
+          "title": "Code quality",
+          "description": "Commitment to clean code, unit testing and documentation."
+        }
+      ],
+      "soft_skills": [
+        {
+          "title": "Continuous learning",
+          "description": "Proactive approach to learning new technologies such as Docker, Kubernetes and PostgreSQL."
+        },
+        {
+          "title": "Adaptability",
+          "description": "Experience working in diverse international teams with members from Spain, Morocco, Portugal and Brazil."
+        },
+        {
+          "title": "Communication",
+          "description": "Strong intercultural communication skills developed in multinational environments."
+        }
+      ],
+      "growth_mindset": [
+        {
+          "title": "Self-improvement",
+          "description": "Taking the initiative to learn German, currently at A2 level."
+        },
+        {
+          "title": "Side projects",
+          "description": "Developing a learning platform to expand skills and apply new technologies."
+        },
+        {
+          "title": "Initiative",
+          "description": "Creating architecture diagrams and documentation to improve team efficiency."
+        }
+      ],
+      "reflection_questions": [
+        "How have you applied your strengths to overcome challenges in your current role?",
+        "How does your personal side project demonstrate your commitment to growth?",
+        "How has working in a multicultural team shaped your communication style?"
+      ]
+    },
+    {
+      "title": "Weaknesses",
+      "description": "Honest areas for improvement plus the scripts that turn each one into evidence of self-awareness.",
+      "interviewRelevance": 5,
+      "technical_areas": [
+        {
+          "title": "DevOps knowledge",
+          "description": "Would benefit from a deeper understanding of containerization, orchestration and CI/CD pipelines."
+        },
+        {
+          "title": "Cloud computing",
+          "description": "Opportunity to gain more experience with cloud platforms such as AWS, Azure and GCP."
+        },
+        {
+          "title": "Reactive programming",
+          "description": "Limited experience with reactive frameworks such as Spring WebFlux and Project Reactor."
+        },
+        {
+          "title": "Performance optimization",
+          "description": "Could develop more advanced skills in database optimization and query performance tuning."
+        }
+      ],
+      "soft_skills_and_development": [
+        {
+          "title": "Proactivity in task management",
+          "description": "Based on supervisor feedback, improve at proactively proposing new tasks and improvements."
+        },
+        {
+          "title": "Technical leadership",
+          "description": "Could develop skills in guiding technical decisions and mentoring junior developers."
+        },
+        {
+          "title": "Project scope understanding",
+          "description": "Opportunity to improve understanding of long-term project vision and business requirements."
+        },
+        {
+          "title": "Architecture design",
+          "description": "Need stronger skills in system architecture design for large-scale applications."
+        },
+        {
+          "title": "Security implementation",
+          "description": "Opportunity to deepen knowledge of security best practices in backend systems."
+        },
+        {
+          "title": "Domain knowledge",
+          "description": "Could benefit from deeper understanding of specific business domains."
+        }
+      ],
+      "framing_scripts": [
+        {
+          "question": "What criticism has been given to you by your team or your supervisor?",
+          "answer": "During my annual review my supervisor suggested that I be more proactive in proposing tasks, bug fixes and new features. The observation was that although my technical work is of high quality, I often stuck to assigned tasks without taking the initiative to identify and propose improvements. The team needed developers who could not only execute tasks but also contribute to the evolution of the project. I took the feedback as an opportunity: I started analyzing our codebase and processes more actively, which let me identify important areas for improvement such as consolidating our GraphQL APIs and optimizing our PDF generation process. I also took the initiative to create architecture diagrams, document our technical decisions, maintain our technical wiki and organize knowledge-sharing sessions. These actions addressed the criticism and significantly improved onboarding of new team members and the overall maintainability of the project."
+        },
+        {
+          "question": "How do you frame a technical gap?",
+          "answer": "While I have strong experience with Java and Spring Boot, I recognize I need to deepen my knowledge of cloud platforms. I have been addressing this by studying AWS services through my personal project, where I am implementing cloud-based features for my learning platform application."
+        },
+        {
+          "question": "How do you demonstrate growth?",
+          "answer": "To address my need for a better understanding of project scope, I initiated regular discussions with product owners, which has resulted in a scheduled meeting with the product manager to give the team a more detailed vision of the project's future direction."
+        },
+        {
+          "question": "What criticisms do you have regarding your current company?",
+          "answer": "I do not have any major criticisms of my current company. NTT DATA is an excellent company that has allowed me to grow professionally. My motivations for looking elsewhere are purely personal, related to my desire to settle in Europe."
+        },
+        {
+          "question": "How would you change things in your current project?",
+          "answer": "I identified two areas that could significantly improve our efficiency. The first is visibility of the project scope: we have clear short-term objectives, but the long-term vision was not always well aligned between the technical teams and the business. I raised it with our product owners, who acknowledged the point and are organizing a meeting with the product manager to present a more detailed direction. The second is our suboptimal use of GraphQL: our architecture includes several GraphQL APIs that we essentially use as traditional REST APIs, which does not take advantage of GraphQL's key benefits. I proposed consolidating these endpoints into a single dynamic GraphQL API so clients can specify exactly the data they need, reducing transferred data and improving overall performance."
+        }
+      ]
+    },
+    {
+      "title": "Production Incidents",
+      "description": "Prepared answers for how did you fix a big production issue. Pick the option closest to what the role cares about.",
+      "interviewRelevance": 5,
+      "options": [
+        {
+          "title": "Option 1: Azure Blob Storage upload failures",
+          "answer": "We had a critical issue where our report generation system was failing because JSON files were not uploading to Azure Blob Storage. Business users could not generate their Excel reports and PDFs, which was blocking important executive meetings. I first checked our application logs and saw timeout exceptions when connecting to Azure. Then I checked the Azure portal and discovered that our storage account was hitting rate limits because multiple users were uploading large JSON files simultaneously. I investigated the code and found that we were not implementing proper retry logic or connection pooling for the Azure SDK. I fixed it by implementing exponential backoff retry policies and optimizing our blob upload strategy to use smaller chunks for large files. I also added monitoring in Grafana to track upload success rates and response times so we can detect this type of issue faster."
+        },
+        {
+          "title": "Option 2: Docker container memory issues",
+          "answer": "Our application containers were crashing during peak hours when multiple users generated reports simultaneously, especially with many concurrent API calls from INDITEX board members accessing dashboards and generating Excel reports at the same time. The containers ran out of memory and restarted, causing users to lose work and APIs to time out. I checked the Docker logs and saw OutOfMemoryError exceptions, especially when processing large datasets with Apache POI under high concurrent load. I analyzed the memory usage patterns and discovered that we were not properly disposing of workbook objects after creating Excel files, so under concurrent calls these leaks accumulated quickly. I fixed it by implementing proper resource management with try-with-resources blocks, optimizing Excel generation to process data in smaller batches, and adding request throttling to limit concurrent report generation. I also updated our Docker configuration with appropriate memory limits and added memory usage monitoring per API call and per container."
+        },
+        {
+          "title": "Option 3: Intermittent API data inconsistency",
+          "answer": "Business users reported that sometimes their dashboard data was inconsistent: the same query returned different results when called multiple times, but only for specific users and only during certain hours. The bug was intermittent and hard to reproduce. I started with Grafana but saw no obvious pattern in response times or error rates. The application logs showed the API calls completing successfully with 200 responses. I used IDE debugging with breakpoints and added detailed logging to track the exact data flow for affected users. When I realized the bug would take longer than estimated, I communicated that to our product owners and explained the complexity of intermittent issues. I also asked teammates for help: one suggested looking at user session patterns, another helped analyze the Redis cache behaviour. Through that I noticed the issue only happened when users had multiple browser tabs open. I created JUnit test cases simulating concurrent requests from the same user, and through thread analysis and Redis monitoring I found a race condition in our caching layer: with simultaneous calls, one request updated the cache while another was reading it. I fixed it with Redis distributed locks using SET with the NX and EX options so only one thread could modify the cache at a time, wrapped the cache operations in Redis transactions with MULTI and EXEC for atomic read-write, and updated our Spring Data Redis configuration to use RedisTemplate with proper serialization. I added Grafana monitoring of cache hit rates and concurrent user sessions to detect similar issues in the future."
+        }
+      ]
+    },
+    {
+      "title": "Performance & Cloud",
+      "description": "Answers for slow API diagnosis, CI/CD with GitHub Actions, and hands-on cloud exposure.",
+      "interviewRelevance": 5,
+      "slow_api_options": [
+        {
+          "title": "Option 1: Sequential microservice calls",
+          "answer": "I had a REST API taking over 12 seconds to return dashboard data because it fetched information from multiple INDITEX microservices: one for store data, another for sales figures, a third for inventory levels. I checked Grafana and saw that most of the time was spent waiting for external service calls. I added detailed logging and discovered we were calling these microservices sequentially, so if each took 3 to 4 seconds we waited for the total. Some services also had occasional timeout issues that made it worse. I implemented parallel calls with CompletableFuture.allOf to fetch from all three services simultaneously. For resilience I used Resilience4j, configured with a 50 percent failure rate threshold over a sliding window of 10 requests, so if a service fails 5 out of 10 times the circuit opens and we return cached data instead of waiting for timeouts. I applied it with CircuitBreaker annotations on our service methods and fallback methods returning cached data from Redis. I set connection timeouts to 3 seconds and read timeouts to 5 seconds per external call, plus exponential backoff retry with a maximum of 3 attempts. Response time dropped from 12 seconds to under 4, and the API became much more resilient to individual service failures."
+        },
+        {
+          "title": "Option 2: Expensive data aggregation",
+          "answer": "I had a REST API taking over 11 seconds to generate executive summary reports because it collected and aggregated data from 5 different INDITEX microservices: sales, inventory, customer, logistics and financial. Each service had a different response format and the API did complex transformations after receiving all responses. Grafana showed the external calls were reasonable but the application spent too much time processing and merging data. Reading the code I found nested loops matching data from different services, which gave O(n squared) complexity on large datasets, and we deserialized JSON responses into full objects even when we only needed a few fields. I implemented parallel service calls with CompletableFuture, used Jackson JsonView annotations to deserialize only the required fields, replaced the nested loops with HashMap lookups for O(1) matching, and used Java 8 streams with collectors to group and aggregate efficiently. I also added Redis caching for aggregated data that does not change often, with cache keys like summary report by date and store, and a TTL of 2 hours. Response time dropped from 11 seconds to under 3."
+        }
+      ],
+      "pipelines_and_cloud": [
+        {
+          "question": "Have you worked with CI/CD through GitHub Actions?",
+          "answer": "Yes. We have workflows set up for our main application that run automatically when we create pull requests. The workflow runs our JUnit tests, SonarQube analysis for code quality and coverage, and a script that checks the code against the INDITEX enforced formatting style. If all checks pass it builds a Docker image of the project. We do not deploy automatically: another workflow can be triggered manually to deploy to staging or the testing environment for QA. It catches issues early, keeps code quality up and enforces consistent formatting across the team before anything reaches the testing phase."
+        },
+        {
+          "question": "Do you have contact with cloud services? (Azure Blob Storage)",
+          "answer": "Yes, I work with Azure Blob Storage in my current role at INDITEX. I use it for two main features: uploading JSON files containing the data needed to generate PDFs with Playwright, and uploading JSON files to generate Excel reports with Apache POI. The configuration was straightforward because at INDITEX, when we want to use a new cloud service or framework, we request it from our infrastructure team and they provide the documentation, credentials and step-by-step guides. I followed their guide for Azure Blob Storage and got it working well. I am interested in learning more about AWS and GCP since they are becoming essential for scalable applications."
+        },
+        {
+          "question": "Do you have contact with cloud services? (API Gateway and OpenShift)",
+          "answer": "Yes, through our migration at INDITEX. We work with an API Gateway that handles routing between our microservices and manages authentication before requests reach our applications, which centralizes security and load balancing across all the INDITEX services. Before that setup we used OpenShift networks to manage our containerized applications and handle inter-service communication. Moving from OpenShift to the API Gateway approach simplified our architecture significantly: centralized authentication, better monitoring across services and more straightforward request routing. I am interested in learning more about AWS and GCP, especially container orchestration and serverless computing."
+        }
+      ]
+    },
+    {
+      "title": "Questions to Ask",
+      "description": "The quality of your questions often determines the quality of your opportunities. Ask questions that show genuine interest and let you evaluate the role, the culture and the working environment.",
+      "interviewRelevance": 5,
+      "visa_and_relocation": [
+        {
+          "question": "How does the visa sponsorship process work in your company?",
+          "purpose": "Understand the company's experience with visa sponsorship."
+        },
+        {
+          "question": "What is the typical timeframe for obtaining a work visa?",
+          "purpose": "Set realistic expectations about waiting periods."
+        },
+        {
+          "question": "What kind of relocation package does the company offer?",
+          "purpose": "Learn about financial and logistical support."
+        },
+        {
+          "question": "Do you provide temporary housing assistance initially?",
+          "purpose": "Assess short-term accommodation options."
+        },
+        {
+          "question": "What support is available for administrative procedures like banking, insurance and registration?",
+          "purpose": "Gauge the level of practical support for settling in."
+        }
+      ],
+      "settling_in": [
+        {
+          "question": "Is there support for finding permanent housing?",
+          "purpose": "Housing can be challenging in a new country."
+        },
+        {
+          "question": "How does the company support local administrative processes?",
+          "purpose": "Bureaucratic procedures can be complex abroad."
+        },
+        {
+          "question": "Do you provide language courses or cultural integration support?",
+          "purpose": "Assess commitment to helping with cultural adjustment."
+        },
+        {
+          "question": "Are there other international employees I could connect with?",
+          "purpose": "Identify a potential support network."
+        },
+        {
+          "question": "How does the company assist with healthcare system registration?",
+          "purpose": "Healthcare systems vary significantly between countries."
+        }
+      ],
+      "compensation": [
+        {
+          "question": "Could you explain the overall compensation structure?",
+          "purpose": "Understand salary, bonuses and variable components."
+        },
+        {
+          "question": "What is the bonus or incentive system, and how is it calculated?",
+          "purpose": "Learn about performance-based compensation."
+        },
+        {
+          "question": "Does the company offer equity, stock options or an employee share plan?",
+          "purpose": "Assess long-term financial opportunities."
+        },
+        {
+          "question": "How does the annual performance review and salary adjustment process work?",
+          "purpose": "Understand growth in compensation."
+        },
+        {
+          "question": "What is the typical salary progression for this role?",
+          "purpose": "Set expectations for financial growth."
+        }
+      ],
+      "benefits_and_environment": [
+        {
+          "question": "What healthcare coverage is provided?",
+          "purpose": "Understand medical benefits."
+        },
+        {
+          "question": "How does the retirement or pension system work?",
+          "purpose": "Assess long-term financial security."
+        },
+        {
+          "question": "What is your leave policy for vacation, sick days and personal time?",
+          "purpose": "Evaluate work-life balance support."
+        },
+        {
+          "question": "Do you have a budget for professional development and training?",
+          "purpose": "Assess investment in employee growth."
+        },
+        {
+          "question": "What is your policy on remote work and flexible schedules?",
+          "purpose": "Understand work flexibility."
+        },
+        {
+          "question": "What equipment and tools are provided for work?",
+          "purpose": "Learn about the technical setup."
+        }
+      ],
+      "team_and_role": [
+        {
+          "question": "Could you describe the team I would be working with?",
+          "purpose": "Understand team composition and dynamics."
+        },
+        {
+          "question": "What would my first 30, 60 and 90 days look like in this role?",
+          "purpose": "Set clear expectations for early success."
+        },
+        {
+          "question": "How is success measured in this position?",
+          "purpose": "Understand performance metrics."
+        },
+        {
+          "question": "What are the main challenges the team is currently facing?",
+          "purpose": "Identify potential early impact areas."
+        },
+        {
+          "question": "How does your team handle disagreements about technical approaches?",
+          "purpose": "Reveal how decisions are really made."
+        },
+        {
+          "question": "What technologies do you currently use, and are there plans to adopt new ones?",
+          "purpose": "Align technical expectations."
+        }
+      ],
+      "culture_and_growth": [
+        {
+          "question": "How would you describe the company culture?",
+          "purpose": "Assess values alignment."
+        },
+        {
+          "question": "What learning and development opportunities are available?",
+          "purpose": "Understand growth potential."
+        },
+        {
+          "question": "How does the company support career progression?",
+          "purpose": "Learn about advancement paths."
+        },
+        {
+          "question": "What has been your experience working here?",
+          "purpose": "Get personal insights from the interviewer."
+        },
+        {
+          "question": "Where do you see the company in 3 to 5 years?",
+          "purpose": "Assess stability and vision."
+        }
+      ],
+      "engineering_practices": [
+        {
+          "question": "What is your development process like, and do you follow agile methodologies?",
+          "purpose": "Understand workflow and methodology."
+        },
+        {
+          "question": "How do you handle code reviews and quality assurance?",
+          "purpose": "Assess commitment to code quality."
+        },
+        {
+          "question": "How is the CI/CD pipeline structured?",
+          "purpose": "Understand deployment practices."
+        },
+        {
+          "question": "What monitoring and observability tools do you use?",
+          "purpose": "Learn about operational maturity."
+        },
+        {
+          "question": "How do you approach technical debt?",
+          "purpose": "Assess engineering culture."
+        },
+        {
+          "question": "Do you support open source contribution or conference attendance?",
+          "purpose": "Evaluate the continuous learning culture."
+        }
+      ],
+      "project_specific": [
+        {
+          "question": "What are the main technical challenges in the project I would be working on?",
+          "purpose": "Identify potential learning areas."
+        },
+        {
+          "question": "How does this project align with the company's strategic goals?",
+          "purpose": "Understand the business context."
+        },
+        {
+          "question": "What is the tech stack for this specific project?",
+          "purpose": "Confirm technical fit."
+        },
+        {
+          "question": "How large is the codebase, and what is its current state?",
+          "purpose": "Gauge maintenance requirements."
+        },
+        {
+          "question": "What is the timeline and current phase of the project?",
+          "purpose": "Understand project maturity."
+        }
+      ],
+      "by_interview_stage": [
+        {
+          "title": "First round",
+          "description": "Focus on role clarification and basic company information: could you elaborate on the day-to-day responsibilities of this role, and how does this position contribute to the company's goals?"
+        },
+        {
+          "title": "Technical rounds",
+          "description": "Ask more specific technical questions: what version control and branching strategy do you use, and how do you approach testing and test coverage?"
+        },
+        {
+          "title": "Final rounds",
+          "description": "Focus on growth and timelines: what does success look like in this role after 6 months or one year, and what is your timeline for making a decision?"
+        }
+      ],
+      "tips": [
+        "Take notes during the interview to reference when asking your questions.",
+        "Listen actively so you do not ask about topics already covered.",
+        "Prepare more questions than you think you will need.",
+        "Prioritize your questions by what matters most to you.",
+        "Follow up on interesting points the interviewer raised.",
+        "Remember the interview is a two-way process: you are evaluating them as much as they are evaluating you."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "title": "Docker & Kubernetes",
+  "tags": ["docker", "kubernetes", "containers", "devops", "interview"],
+  "topics": [
+    {
+      "id": "docker-concepts",
+      "title": "Docker Concepts",
+      "description": "The five nouns every Docker question is built on, plus the classic container-versus-VM distinction.",
+      "interviewRelevance": 5,
+      "concepts": {
+        "headers": ["Concept", "Definition"],
+        "rows": [
+          ["Image", "Immutable, layered filesystem plus metadata (the recipe)"],
+          ["Container", "Running instance of an image with isolated process, network, and filesystem (namespaces + cgroups, not a VM, shares the host kernel)"],
+          ["Layer", "Each Dockerfile instruction; cached and shared between images"],
+          ["Registry", "Image storage (Docker Hub, ECR, Harbor); push and pull by tag"],
+          ["Volume", "Persistent data outside the container writable layer"]
+        ]
+      },
+      "containersVsVirtualMachines": "Containers share the host kernel and isolate at the process level, so they start in milliseconds with megabytes of overhead. VMs virtualize hardware with a full guest OS, giving stronger isolation at a much heavier cost."
+    },
+    {
+      "id": "dockerfile",
+      "title": "Dockerfile",
+      "description": "The multi-stage Spring Boot Dockerfile to know cold.",
+      "interviewRelevance": 5,
+      "dockerfile": [
+        {
+          "title": "Dockerfile (Spring Boot, multi-stage)",
+          "language": "docker",
+          "code": "# ---- build stage ----\nFROM eclipse-temurin:21-jdk AS build\nWORKDIR /app\nCOPY mvnw pom.xml ./\nCOPY .mvn .mvn\nRUN ./mvnw dependency:go-offline        # cached layer: deps only re-download when pom changes\nCOPY src src\nRUN ./mvnw -q package -DskipTests\n\n# ---- runtime stage ----\nFROM eclipse-temurin:21-jre\nRUN useradd -r appuser\nUSER appuser                            # never run as root\nWORKDIR /app\nCOPY --from=build /app/target/*.jar app.jar\nEXPOSE 8080\nENTRYPOINT [\"java\", \"-XX:MaxRAMPercentage=75.0\", \"-jar\", \"app.jar\"]"
+        }
+      ],
+      "talkingPoints": [
+        "Multi-stage build: small final image with no JDK or source in production",
+        "Layer ordering for cache: dependencies copied before source",
+        "Non-root user and a JRE-only base image",
+        "MaxRAMPercentage gives a container-aware heap"
+      ],
+      "alternatives": [
+        "Spring Boot bootBuildImage (buildpacks) or Jib: no Dockerfile at all"
+      ]
+    },
+    {
+      "id": "docker-compose",
+      "title": "Docker Compose",
+      "description": "Wiring an app and its database together for local development.",
+      "interviewRelevance": 3,
+      "compose": [
+        {
+          "title": "docker-compose.yml",
+          "language": "yaml",
+          "code": "services:\n  app:\n    build: .\n    ports: [\"8080:8080\"]\n    environment:\n      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/app\n    depends_on: [db]\n  db:\n    image: postgres:16\n    environment: { POSTGRES_PASSWORD: secret }\n    volumes: [pgdata:/var/lib/postgresql/data]\nvolumes:\n  pgdata:"
+        }
+      ],
+      "notes": [
+        "Services reach each other by service name through built-in DNS",
+        "For integration tests prefer Testcontainers: a real Postgres or Kafka per test run"
+      ]
+    },
+    {
+      "id": "k8s-objects",
+      "title": "Kubernetes Objects",
+      "description": "The core object model and how the pieces stack up in a typical service.",
+      "interviewRelevance": 5,
+      "objects": {
+        "headers": ["Object", "Purpose"],
+        "rows": [
+          ["Pod", "Smallest unit: usually one container plus shared network and storage; ephemeral"],
+          ["Deployment", "Desired state for N pod replicas; rolling updates and rollback"],
+          ["Service", "Stable virtual IP and DNS in front of pods (ClusterIP internal, NodePort and LoadBalancer external)"],
+          ["Ingress", "L7 HTTP routing (host and path to service) plus TLS"],
+          ["ConfigMap / Secret", "Config and credentials injected as env vars or files"],
+          ["HPA", "Horizontal Pod Autoscaler: scales replicas on CPU, memory, or custom metrics"],
+          ["StatefulSet / Job / CronJob", "Stateful apps with stable identity / one-off work / scheduled work"],
+          ["Namespace", "Logical isolation for dev, staging, and teams"]
+        ]
+      },
+      "diagram": "Ingress → Service (orders) → Deployment → Pods (3 replicas)\n                                   ↑ ConfigMap + Secret mounted"
+    },
+    {
+      "id": "deployment-manifest",
+      "title": "Deployment Manifest",
+      "description": "The Deployment fields that matter in review and in interviews.",
+      "interviewRelevance": 5,
+      "manifest": [
+        {
+          "title": "deployment.yaml",
+          "language": "yaml",
+          "code": "apiVersion: apps/v1\nkind: Deployment\nmetadata: { name: orders }\nspec:\n  replicas: 3\n  selector: { matchLabels: { app: orders } }\n  template:\n    metadata: { labels: { app: orders } }\n    spec:\n      containers:\n      - name: orders\n        image: registry/orders:1.4.2      # never :latest in prod\n        resources:\n          requests: { cpu: \"250m\", memory: \"512Mi\" }   # scheduling\n          limits:   { memory: \"1Gi\" }                  # OOMKill threshold\n        readinessProbe:\n          httpGet: { path: /actuator/health/readiness, port: 8080 }\n        livenessProbe:\n          httpGet: { path: /actuator/health/liveness, port: 8080 }\n        envFrom:\n        - configMapRef: { name: orders-config }\n        - secretRef:    { name: orders-secrets }"
+        }
+      ],
+      "keyPoints": [
+        "Pin an explicit image tag, never latest in production",
+        "Requests drive scheduling; memory limits are the OOMKill threshold",
+        "Config and credentials arrive via envFrom with a ConfigMap and a Secret"
+      ]
+    },
+    {
+      "id": "probes",
+      "title": "Probes",
+      "description": "A favourite interview question: what each probe means and how failing one differs.",
+      "interviewRelevance": 5,
+      "probes": [
+        {
+          "name": "Liveness",
+          "description": "Restart me if this fails, for deadlock detection. Keep it dumb: do not include database checks, or a database outage restarts your whole fleet."
+        },
+        {
+          "name": "Readiness",
+          "description": "Do not send me traffic yet, during startup, warmup, or while a dependency is down. Failing removes the pod from Service endpoints; it is not restarted."
+        }
+      ],
+      "springBoot": "Spring Boot exposes both liveness and readiness groups with management.endpoint.health.probes.enabled=true."
+    },
+    {
+      "id": "rollouts",
+      "title": "Rollouts & Scaling",
+      "description": "How new versions ship and how replica counts move.",
+      "interviewRelevance": 4,
+      "strategies": [
+        {
+          "strategy": "Rolling update (default)",
+          "description": "New pods come up gradually under maxSurge and maxUnavailable while old pods are drained. Use kubectl rollout undo to roll back."
+        },
+        {
+          "strategy": "Blue-green",
+          "description": "Two full environments with traffic switched at once. Instant rollback, double the cost."
+        },
+        {
+          "strategy": "Canary",
+          "description": "Send a small percentage to the new version, watch metrics, then ramp up. Driven by a service mesh or weighted ingress."
+        }
+      ],
+      "autoscaling": [
+        {
+          "title": "Horizontal Pod Autoscaler",
+          "language": "bash",
+          "code": "kubectl autoscale deployment orders --min=3 --max=10 --cpu-percent=70"
+        }
+      ]
+    },
+    {
+      "id": "kubectl",
+      "title": "kubectl Commands",
+      "description": "The survival set for working a live cluster.",
+      "interviewRelevance": 4,
+      "commands": [
+        {
+          "title": "kubectl survival commands",
+          "language": "bash",
+          "code": "kubectl get pods -n prod -o wide\nkubectl describe pod orders-7d9f...        # events section = why it's Pending/CrashLoop\nkubectl logs -f deploy/orders --previous   # logs of the crashed container\nkubectl exec -it orders-7d9f... -- sh\nkubectl rollout status deploy/orders\nkubectl rollout undo deploy/orders\nkubectl top pods                           # resource usage"
+        }
+      ]
+    },
+    {
+      "id": "debugging",
+      "title": "Debugging",
+      "description": "Working a CrashLoopBackOff, in order.",
+      "interviewRelevance": 4,
+      "steps": [
+        "kubectl describe the pod: was it OOMKilled, a bad image, or a failing probe?",
+        "kubectl logs --previous to read the crashed container's output",
+        "Check resource limits and the liveness probe first, the two usual suspects for Java apps",
+        "Heap larger than the memory limit, or slow startup against an aggressive probe, in which case add a startupProbe"
+      ]
+    },
+    {
+      "id": "interview-questions",
+      "title": "Interview Questions",
+      "description": "The five questions this topic is most often tested on.",
+      "interviewRelevance": 5,
+      "questions": [
+        {
+          "question": "What happens when you kubectl apply a Deployment update?",
+          "answer": "A new ReplicaSet is created; pods are scaled up and down per the rolling-update strategy; readiness probes gate traffic; the old ReplicaSet is kept for rollback history."
+        },
+        {
+          "question": "How do containers change how you configure a Spring Boot app?",
+          "answer": "Externalize everything, twelve-factor style: env vars and mounted ConfigMaps override application.yml via Spring's property precedence; secrets come from Secret objects or a vault and are never baked into images; the same image is promoted through all environments."
+        },
+        {
+          "question": "Why did your Java pod get OOMKilled even though the heap was fine?",
+          "answer": "Container memory is heap plus metaspace plus threads plus direct buffers plus native memory. The limit must cover the total: use MaxRAMPercentage rather than setting Xmx equal to the limit, and leave roughly 25 percent headroom."
+        },
+        {
+          "question": "Service versus Ingress?",
+          "answer": "A Service is a stable L4 endpoint that load balances across pods inside the cluster. An Ingress is an L7 router mapping external hostnames and paths to Services, with TLS termination."
+        },
+        {
+          "question": "How do you do zero-downtime deploys?",
+          "answer": "Readiness probes plus a rolling update plus graceful shutdown (server.shutdown=graceful, a preStop hook, and a termination grace period so in-flight requests finish) plus connection draining at the load balancer."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "title": "Modern Java (21-25)",
+  "tags": ["java", "java21", "java25", "virtual-threads", "records", "pattern-matching", "interview"],
+  "topics": [
+    {
+      "title": "LTS Timeline",
+      "description": "Interviewers love the \"what's new in Java\" question, especially since Java 21 (Sep 2023 LTS) and Java 25 (Sep 2025 LTS). Know which release owns which headline feature.",
+      "interviewRelevance": 4,
+      "versions": {
+        "headers": ["Version", "Released", "Status", "Headline features"],
+        "rows": [
+          ["17 LTS", "2021", "Widely deployed", "Sealed classes, records (finalized 16), pattern matching for instanceof"],
+          ["21 LTS", "2023", "Current mainstream", "Virtual threads, record patterns, pattern matching for switch, sequenced collections"],
+          ["25 LTS", "2025", "Newest LTS", "Scoped values, flexible constructor bodies, compact source files, module import declarations"]
+        ]
+      }
+    },
+    {
+      "title": "Virtual Threads",
+      "description": "Java 21's headline feature. Lightweight threads managed by the JVM, not the OS. Millions can run on a few carrier (platform) threads.",
+      "interviewRelevance": 5,
+      "how_they_work": "When a virtual thread blocks on I/O, its stack is unmounted from the carrier thread and parked in the heap; the carrier picks up another virtual thread. Blocking becomes cheap, so you can write simple blocking code with async-level scalability.",
+      "code": "// One virtual thread per task — no pooling needed\ntry (var executor = Executors.newVirtualThreadPerTaskExecutor()) {\n    IntStream.range(0, 10_000).forEach(i ->\n        executor.submit(() -> {\n            Thread.sleep(Duration.ofSeconds(1)); // parks the VT, frees the carrier\n            return fetchOrder(i);\n        }));\n}\n\nThread.ofVirtual().name(\"worker-\", 0).start(runnable);",
+      "talking_points": [
+        {
+          "title": "I/O-bound only",
+          "description": "Made for I/O-bound workloads such as HTTP calls and DB queries. CPU-bound work gains nothing."
+        },
+        {
+          "title": "Do not pool them",
+          "description": "Create one virtual thread per task. Pooling defeats the purpose."
+        },
+        {
+          "title": "Pinning",
+          "description": "A virtual thread cannot unmount inside synchronized blocks that block, or inside native calls, so it pins the carrier. Fix: use ReentrantLock instead of synchronized around blocking calls. Java 24 largely removed the synchronized pinning limitation, but mention the concept."
+        },
+        {
+          "title": "ThreadLocal cost",
+          "description": "ThreadLocal still works but is costly at millions of threads. Scoped Values are the successor."
+        },
+        {
+          "title": "Spring Boot 3.2+",
+          "description": "Setting spring.threads.virtual.enabled=true puts Tomcat request handling on virtual threads."
+        }
+      ],
+      "pooling_virtual_threads": {
+        "bad": "// Pooling virtual threads defeats the purpose\nvar executor = Executors.newFixedThreadPool(200, Thread.ofVirtual().factory());",
+        "good": "// One virtual thread per task — creation is cheap\nvar executor = Executors.newVirtualThreadPerTaskExecutor();"
+      },
+      "avoiding_carrier_pinning": {
+        "bad": "synchronized (lock) {\n    blockingIoCall();   // virtual thread cannot unmount - it pins the carrier\n}",
+        "good": "lock.lock();            // ReentrantLock\ntry {\n    blockingIoCall();   // virtual thread unmounts normally\n} finally {\n    lock.unlock();\n}"
+      }
+    },
+    {
+      "title": "Records",
+      "description": "Immutable data carriers introduced in the Java 17 era and still asked about constantly. Final fields, accessors, equals, hashCode and toString are generated.",
+      "interviewRelevance": 5,
+      "code": "public record Money(BigDecimal amount, Currency currency) {\n    public Money {                       // compact constructor = validation\n        if (amount.signum() < 0) throw new IllegalArgumentException();\n    }\n}",
+      "key_points": [
+        "Immutable data carriers: final fields plus generated accessors, equals, hashCode and toString.",
+        "Great for DTOs and query projections.",
+        "JPA entities cannot be records: JPA needs a no-arg constructor and mutable state.",
+        "A compact constructor is the place to put validation."
+      ],
+      "hand_written_class_vs_record": {
+        "bad": "public final class Money {\n    private final BigDecimal amount;\n    private final Currency currency;\n    // constructor, accessors, equals, hashCode, toString — all written by hand\n}",
+        "good": "public record Money(BigDecimal amount, Currency currency) { }"
+      }
+    },
+    {
+      "title": "Sealed Types",
+      "description": "Closed hierarchies: the compiler knows every subtype, which enables exhaustive switch without a default branch.",
+      "interviewRelevance": 4,
+      "code": "public sealed interface Shape permits Circle, Square, Rectangle {}\npublic record Circle(double radius) implements Shape {}",
+      "key_points": [
+        "permits lists the only allowed subtypes.",
+        "The compiler enforces exhaustiveness over an enum or a sealed hierarchy, so default becomes unnecessary.",
+        "Adding a new subtype turns every switch into a compile error - a feature, not a bug.",
+        "Records plus sealed types plus pattern matching is what the industry calls data-oriented programming."
+      ],
+      "exhaustive_switch": {
+        "bad": "String describe(Shape shape) {\n    return switch (shape) {\n        case Circle c -> \"circle\";\n        case Square s -> \"square\";\n        default       -> \"unknown\";   // hides the missing Rectangle case\n    };\n}",
+        "good": "String describe(Shape shape) {\n    return switch (shape) {\n        case Circle c    -> \"circle\";\n        case Square s    -> \"square\";\n        case Rectangle r -> \"rect\";\n    };  // exhaustive because Shape is sealed - a new subtype breaks the build\n}"
+      }
+    },
+    {
+      "title": "Pattern Matching",
+      "description": "From instanceof patterns in Java 16 to switch patterns with record deconstruction and guards in Java 21.",
+      "interviewRelevance": 5,
+      "code": [
+        {
+          "title": "instanceof pattern (Java 16+)",
+          "code": "if (obj instanceof String s && s.length() > 3) { ... }"
+        },
+        {
+          "title": "switch with patterns, records and guards (Java 21)",
+          "code": "String describe(Shape shape) {\n    return switch (shape) {\n        case Circle c when c.radius() > 10 -> \"big circle\";\n        case Circle c                      -> \"circle \" + c.radius();\n        case Square(double side)           -> \"square \" + side;   // record pattern\n        case Rectangle r                   -> \"rect\";\n    }; // exhaustive because Shape is sealed — no default needed\n}"
+        }
+      ],
+      "data_oriented_programming": "Records plus sealed types plus pattern-matched switch is data-oriented programming - the umbrella term worth dropping in interviews. It makes domain modelling exhaustive and terse.",
+      "cast_then_test_vs_pattern": {
+        "bad": "if (obj instanceof String) {\n    String s = (String) obj;      // explicit cast\n    if (s.length() > 3) { ... }\n}",
+        "good": "if (obj instanceof String s && s.length() > 3) { ... }"
+      }
+    },
+    {
+      "title": "Java 21 Extras",
+      "description": "The smaller Java 21 items that still come up, plus the one feature you should not claim shipped.",
+      "interviewRelevance": 3,
+      "sequenced_collections": [
+        "The SequencedCollection interface adds getFirst(), getLast() and reversed().",
+        "Implemented by List, Deque and LinkedHashSet.",
+        "Replaces the old assortment of first/last idioms that differed per collection."
+      ],
+      "string_templates": "Previewed in 21 and withdrawn in 23 for redesign. Do not cite it as a shipped feature."
+    },
+    {
+      "title": "Structured Concurrency",
+      "description": "StructuredTaskScope treats a group of subtasks as one unit: if one fails the siblings are cancelled, and results are joined in one place. Still preview or incubating through 25 - call it a preview.",
+      "interviewRelevance": 3,
+      "code": "try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {\n    var user  = scope.fork(() -> fetchUser(id));\n    var order = scope.fork(() -> fetchOrders(id));\n    scope.join().throwIfFailed();\n    return new Profile(user.get(), order.get());\n}"
+    },
+    {
+      "title": "Scoped Values",
+      "description": "Final in Java 25. Immutable per-thread context that stays cheap with virtual threads - the ThreadLocal successor.",
+      "interviewRelevance": 4,
+      "code": "// Scoped Values (25)\nstatic final ScopedValue<User> CURRENT_USER = ScopedValue.newInstance();\n\nScopedValue.where(CURRENT_USER, user).run(() -> handleRequest());\n// anywhere on the call chain:\nUser u = CURRENT_USER.get();   // immutable, no leak cleanup needed",
+      "key_points": [
+        "Immutable: the value is bound for the duration of a call, not mutated in place.",
+        "No cleanup or leak risk, unlike ThreadLocal.",
+        "Cheap at the scale virtual threads make possible."
+      ]
+    },
+    {
+      "title": "Java 22-25 Highlights",
+      "description": "The features shipped between the two LTS releases, and which version made each one final.",
+      "interviewRelevance": 3,
+      "features": {
+        "headers": ["Feature", "Version", "What it does"],
+        "rows": [
+          ["Unnamed variables _", "22", "catch (Exception _), unused lambda params"],
+          ["Stream Gatherers", "24 (final)", "Custom intermediate stream ops via Stream.gather(...) - windowing, folding"],
+          ["Class-File API", "24 (final)", "Standard bytecode parsing and generation (replaces ASM for the JDK)"],
+          ["Scoped Values", "25 (final)", "Immutable per-thread context, cheap with virtual threads - the ThreadLocal successor"],
+          ["Flexible constructor bodies", "25 (final)", "Statements allowed before super(...) - validate before calling super"],
+          ["Compact source files and instance main", "25 (final)", "void main() { ... } without class boilerplate - beginner-friendly entry points"],
+          ["Module import declarations", "25 (final)", "import module java.base; - import a whole module's exports"],
+          ["Compact object headers", "25 (product option)", "8-byte headers, smaller heap footprint"],
+          ["Generational ZGC default", "23", "ZGC collects the young generation separately"]
+        ]
+      }
+    },
+    {
+      "title": "Answer Framework",
+      "description": "How to answer \"what's new in Java that excites you?\" in about 60 seconds.",
+      "interviewRelevance": 5,
+      "structure": [
+        {
+          "title": "1. Virtual threads",
+          "description": "Changed how we write scalable I/O code, and Spring Boot enables them with a single property."
+        },
+        {
+          "title": "2. Data-oriented programming",
+          "description": "Records plus sealed types plus pattern-matched switch make domain modelling exhaustive and terse."
+        },
+        {
+          "title": "3. Java 25 LTS",
+          "description": "Scoped values as the ThreadLocal successor and flexible constructors. Mention your team's upgrade path, for example \"we're on 17, evaluating 21 to 25\"."
+        }
+      ]
+    },
+    {
+      "title": "Interview Questions",
+      "description": "The four questions this material is most often tested with.",
+      "interviewRelevance": 5,
+      "questions": [
+        {
+          "question": "Virtual threads vs platform threads?",
+          "description": "Platform threads are 1:1 with OS threads, have roughly 1MB stacks and top out in the thousands. Virtual threads are JVM-scheduled over carrier threads, have heap-allocated stacks, can number in the millions, and make blocking cheap. Same Thread API."
+        },
+        {
+          "question": "Do virtual threads replace reactive programming?",
+          "description": "Largely, for I/O concurrency: blocking style with virtual threads reaches similar throughput with far simpler code and stack traces. Reactive still wins for streaming and backpressure semantics. Balanced answers score points."
+        },
+        {
+          "question": "Why can't a JPA entity be a record?",
+          "description": "Records are immutable and have no no-arg constructor; JPA requires a no-arg constructor and field mutation via proxies. Records are ideal for projections and DTOs instead."
+        },
+        {
+          "question": "When is default unnecessary in a switch?",
+          "description": "When the selector is an enum or a sealed hierarchy and all cases are covered. The compiler enforces exhaustiveness, and adding a new subtype becomes a compile error at every switch - a feature, not a bug."
+        }
+      ]
+    }
+  ]
+}

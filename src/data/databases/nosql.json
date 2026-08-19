@@ -1,0 +1,378 @@
+{
+  "title": "NoSQL Concepts",
+  "tags": ["nosql", "databases", "interview"],
+  "topics": [
+    {
+      "id": "basics",
+      "title": "NoSQL Basics",
+      "description": "NoSQL (Not Only SQL) databases are designed to handle large volumes of unstructured or semi-structured data, offering more flexibility and scalability than traditional relational databases. They emerged to address the limitations of relational databases for web-scale applications and big data environments.",
+      "interviewRelevance": 5,
+      "coreCharacteristics": [
+        {
+          "concept": "Schema Flexibility",
+          "description": "Schema-less or dynamic schema: no predefined schema is required, so data structures can evolve over time. Adaptive data models accommodate structural changes without system downtime."
+        },
+        {
+          "concept": "Scalability",
+          "description": "Horizontal scalability: scale out by adding more servers or nodes. A distributed architecture spreads data across multiple nodes for better performance and fault tolerance."
+        },
+        {
+          "concept": "Performance",
+          "description": "Optimized for specific data models: each NoSQL type excels at different access patterns, and most are tuned for high read or high write throughput depending on their type."
+        }
+      ]
+    },
+    {
+      "id": "cap-base",
+      "title": "CAP & BASE",
+      "description": "The CAP theorem states that a distributed database system can only guarantee two of these three properties simultaneously. In contrast to the ACID properties of traditional relational databases, NoSQL often follows BASE instead.",
+      "interviewRelevance": 5,
+      "capProperties": [
+        {
+          "name": "Consistency",
+          "description": "All nodes see the same data at the same time."
+        },
+        {
+          "name": "Availability",
+          "description": "Every request receives a response, without a guarantee that it contains the most recent data."
+        },
+        {
+          "name": "Partition Tolerance",
+          "description": "The system continues to operate despite network partitions."
+        }
+      ],
+      "capTradeoff": "Most NoSQL databases prioritize availability and partition tolerance over strong consistency, often implementing eventual consistency models.",
+      "baseProperties": [
+        {
+          "name": "Basically Available",
+          "description": "The system guarantees availability."
+        },
+        {
+          "name": "Soft State",
+          "description": "The state of the system may change over time."
+        },
+        {
+          "name": "Eventual Consistency",
+          "description": "The system will eventually become consistent."
+        }
+      ]
+    },
+    {
+      "id": "document-stores",
+      "title": "Document Stores",
+      "description": "Store data as documents, usually JSON, BSON, or XML.",
+      "interviewRelevance": 5,
+      "engines": ["MongoDB", "CouchDB", "Firestore"],
+      "characteristics": [
+        "Documents are self-contained with all necessary information",
+        "Flexible schema allows for nested data",
+        "Good for content management, user profiles, and catalog data"
+      ],
+      "useCases": [
+        "Content management systems",
+        "E-commerce product catalogs",
+        "User profiles and preferences",
+        "Real-time analytics"
+      ]
+    },
+    {
+      "id": "key-value-stores",
+      "title": "Key-Value Stores",
+      "description": "The simplest NoSQL type, storing data as key-value pairs.",
+      "interviewRelevance": 4,
+      "engines": ["Redis", "DynamoDB", "Riak"],
+      "characteristics": [
+        "Very fast lookups via keys",
+        "Highly scalable",
+        "Limited querying capabilities"
+      ],
+      "useCases": [
+        "Caching",
+        "Session storage",
+        "User preferences",
+        "Shopping carts"
+      ]
+    },
+    {
+      "id": "column-family-stores",
+      "title": "Column-Family Stores",
+      "description": "Store data in column families, which are groups of related data.",
+      "interviewRelevance": 3,
+      "engines": ["Cassandra", "HBase", "ScyllaDB"],
+      "characteristics": [
+        "Optimized for queries over large datasets",
+        "Highly scalable for writes and reads",
+        "Schema flexibility at the column level"
+      ],
+      "useCases": [
+        "Time-series data",
+        "Weather data",
+        "IoT applications",
+        "Recommendation engines"
+      ]
+    },
+    {
+      "id": "graph-databases",
+      "title": "Graph Databases",
+      "description": "Store data in nodes and edges representing relationships.",
+      "interviewRelevance": 3,
+      "engines": ["Neo4j", "JanusGraph", "Amazon Neptune"],
+      "characteristics": [
+        "Optimized for querying complex relationships",
+        "Natural representation of connected data",
+        "Powerful traversal capabilities"
+      ],
+      "useCases": [
+        "Social networks",
+        "Fraud detection",
+        "Recommendation engines",
+        "Knowledge graphs"
+      ]
+    },
+    {
+      "id": "nosql-vs-sql",
+      "title": "NoSQL vs SQL",
+      "description": "How NoSQL and relational databases compare across the dimensions interviewers ask about.",
+      "interviewRelevance": 5,
+      "comparison": {
+        "headers": ["Aspect", "NoSQL", "SQL"],
+        "rows": [
+          ["Schema", "Flexible / dynamic", "Fixed / predefined"],
+          ["Scaling", "Horizontal scaling", "Primarily vertical scaling"],
+          ["Transaction Support", "Limited (varies by database)", "ACID compliance"],
+          ["Consistency", "Often eventual consistency", "Strong consistency"],
+          ["Query Language", "Database-specific", "Standardized SQL"],
+          ["Data Structure", "Various formats", "Tables with rows and columns"],
+          ["Use Cases", "Big data, real-time web apps", "Complex queries, transactions"]
+        ]
+      }
+    },
+    {
+      "id": "consistency-models",
+      "title": "Consistency Models",
+      "description": "NoSQL databases offer a spectrum of consistency guarantees rather than a single one.",
+      "interviewRelevance": 4,
+      "models": [
+        {
+          "name": "Eventual Consistency",
+          "description": "Data updates propagate through the system eventually. Different nodes may return different values during the propagation period. Improves availability and performance at the cost of immediate consistency."
+        },
+        {
+          "name": "Strong Consistency",
+          "description": "All reads receive the most recent write or an error. Ensures data integrity but may reduce availability during network partitions."
+        },
+        {
+          "name": "Causal Consistency",
+          "description": "Operations that are causally related appear in the same order to all processes. Unrelated operations may be observed in different orders."
+        }
+      ]
+    },
+    {
+      "id": "data-modeling",
+      "title": "Data Modeling",
+      "description": "NoSQL modeling optimizes for access patterns rather than normal forms.",
+      "interviewRelevance": 5,
+      "denormalization": [
+        "Redundant data is often intentionally stored across documents or entities",
+        "Reduces join operations by embedding related data",
+        "Improves read performance at the cost of write complexity"
+      ],
+      "embeddingVsReferencing": [
+        {
+          "strategy": "Embedding",
+          "description": "Including related data within a document.",
+          "pros": ["Faster reads", "Atomic operations"],
+          "cons": ["Document size limitations", "Update challenges"]
+        },
+        {
+          "strategy": "Referencing",
+          "description": "Storing references to related data.",
+          "pros": ["Avoids duplication", "Better for frequently changing data"],
+          "cons": ["Requires multiple queries", "No atomic operations"]
+        }
+      ]
+    },
+    {
+      "id": "sharding",
+      "title": "Sharding",
+      "description": "Sharding is the horizontal partitioning of data across multiple nodes.",
+      "interviewRelevance": 4,
+      "fundamentals": [
+        "Horizontal partitioning of data across multiple nodes",
+        "Improves scalability and performance",
+        "Common sharding keys: user ID, geographic location, time range"
+      ],
+      "types": [
+        {
+          "type": "Range-based sharding",
+          "description": "Divides data based on ranges of values."
+        },
+        {
+          "type": "Hash-based sharding",
+          "description": "Uses a hash function to determine data placement."
+        },
+        {
+          "type": "Directory-based sharding",
+          "description": "Maintains a lookup table for shard locations."
+        }
+      ]
+    },
+    {
+      "id": "patterns",
+      "title": "Patterns",
+      "description": "Common implementation patterns that put NoSQL stores to work in real architectures.",
+      "interviewRelevance": 4,
+      "implementationPatterns": [
+        {
+          "pattern": "Polyglot Persistence",
+          "description": "Using different database types for different data requirements. For example Redis for caching, MongoDB for user profiles, and Neo4j for relationships."
+        },
+        {
+          "pattern": "CQRS (Command Query Responsibility Segregation)",
+          "description": "Separating read and write operations, using different data models or even different databases for reads versus writes."
+        },
+        {
+          "pattern": "Event Sourcing",
+          "description": "Storing changes to application state as a sequence of events, often combined with NoSQL for event storage and processing."
+        }
+      ],
+      "microservices": [
+        "Each service can use the most appropriate database type",
+        "Supports independent deployment and scaling",
+        "Enables polyglot persistence (using multiple database technologies)"
+      ]
+    },
+    {
+      "id": "security-ops",
+      "title": "Security & Ops",
+      "description": "Security, performance tuning, and monitoring concerns specific to NoSQL deployments.",
+      "interviewRelevance": 3,
+      "security": [
+        {
+          "name": "Authentication and Authorization",
+          "description": "Many NoSQL databases have limited built-in security features, so application-level security controls should be implemented."
+        },
+        {
+          "name": "Data Encryption",
+          "description": "Encryption at rest and in transit, plus field-level encryption for sensitive data."
+        },
+        {
+          "name": "Injection Prevention",
+          "description": "NoSQL injection vulnerabilities differ from SQL injection, but input validation and parameterized queries remain important."
+        }
+      ],
+      "performanceOptimization": [
+        {
+          "name": "Indexing",
+          "description": "Create indexes appropriate to the NoSQL type and understand the performance impact of each index."
+        },
+        {
+          "name": "Query Optimization",
+          "description": "Design queries to leverage database strengths and avoid operations that cause full collection scans."
+        },
+        {
+          "name": "Caching Strategies",
+          "description": "Implement application-level caching and use dedicated caching layers such as Redis."
+        }
+      ],
+      "keyMetrics": [
+        "Read and write latency",
+        "Throughput",
+        "Error rates",
+        "Resource utilization: CPU, memory, disk"
+      ],
+      "managementTools": [
+        "Database-specific admin consoles",
+        "Monitoring solutions such as Prometheus and Grafana",
+        "Log aggregation and analysis"
+      ]
+    },
+    {
+      "id": "interview-questions",
+      "title": "Interview Questions",
+      "description": "The ten questions this topic is most often tested on.",
+      "interviewRelevance": 5,
+      "questions": [
+        {
+          "question": "What is NoSQL and why would you choose it over a relational database?",
+          "answer": [
+            "NoSQL offers schema flexibility, horizontal scalability, and specialized data models for specific use cases.",
+            "Choose NoSQL when dealing with large volumes of unstructured or semi-structured data, requiring high write throughput, or needing horizontal scalability."
+          ]
+        },
+        {
+          "question": "Explain the CAP theorem and how it applies to different NoSQL databases.",
+          "answer": [
+            "Most document stores prioritize CP (MongoDB in certain configurations) or AP (CouchDB)",
+            "Key-value stores often prioritize AP (Redis, DynamoDB)",
+            "Column-family stores typically favor AP (Cassandra) or CP (HBase)"
+          ]
+        },
+        {
+          "question": "How would you handle ACID transactions in a NoSQL environment?",
+          "answer": [
+            "Some NoSQL databases support limited transactions, for example MongoDB",
+            "Implement eventual consistency patterns like compensating transactions",
+            "Consider using multiple database technologies for different parts of the application"
+          ]
+        },
+        {
+          "question": "Describe the differences between MongoDB and Cassandra in terms of data model, scaling, and use cases.",
+          "answer": [
+            "MongoDB: document-oriented, master-slave architecture, flexible querying",
+            "Cassandra: column-family, masterless architecture, optimized for high write throughput"
+          ]
+        },
+        {
+          "question": "How would you design a NoSQL schema for a social media application?",
+          "answer": [
+            "Consider embedding versus referencing for user relationships",
+            "Use denormalization for frequently accessed data",
+            "Possibly combine different NoSQL types: graph for connections, document for profiles"
+          ]
+        },
+        {
+          "question": "What are the main challenges of migrating from SQL to NoSQL?",
+          "answer": [
+            "Redesigning data models and schemas",
+            "Rewriting queries and transactions",
+            "Ensuring data consistency during and after migration",
+            "Retraining development and operations teams"
+          ]
+        },
+        {
+          "question": "Explain sharding and partitioning in NoSQL databases.",
+          "answer": [
+            "Sharding is distributing data across multiple servers based on a shard key",
+            "Effective partitioning depends on workload analysis and access patterns",
+            "Requires careful key selection to avoid hotspots"
+          ]
+        },
+        {
+          "question": "How does NoSQL handle data consistency in a distributed environment?",
+          "answer": [
+            "Most implement eventual consistency models",
+            "Some offer stronger consistency guarantees with performance tradeoffs",
+            "Application design must account for consistency requirements"
+          ]
+        },
+        {
+          "question": "Compare Redis and MongoDB for caching use cases.",
+          "answer": [
+            "Redis: in-memory, faster, simpler data structures, built-in TTL",
+            "MongoDB: more flexible querying, persistent by default, better for complex documents"
+          ]
+        },
+        {
+          "question": "What monitoring metrics are important for NoSQL databases?",
+          "answer": [
+            "Read and write latency and throughput",
+            "Cache hit rates",
+            "Node health in distributed systems",
+            "Index usage statistics"
+          ]
+        }
+      ]
+    }
+  ]
+}

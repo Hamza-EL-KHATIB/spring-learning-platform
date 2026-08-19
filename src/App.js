@@ -24,6 +24,7 @@ import SQLPage from './pages/topics/databases/SQLPage';
 import HibernatePage from './pages/topics/databases/HibernatePage';
 import TransactionsPage from './pages/topics/databases/TransactionsPage';
 import RedisPage from './pages/topics/databases/RedisPage';
+import NoSQLPage from './pages/topics/databases/NoSQLPage';
 
 // Architecture imports
 import DesignPatternsPage from './pages/topics/architecture/DesignPatternsPage';
@@ -35,6 +36,10 @@ import SystemDesignPage from './pages/topics/architecture/SystemDesignPage';
 
 // DevOps imports
 import GitPage from './pages/topics/devops/GitPage';
+import CicdPage from './pages/topics/devops/CicdPage';
+import ContainersPage from './pages/topics/devops/ContainersPage';
+import PracticesPage from './pages/topics/devops/PracticesPage';
+import CloudPage from './pages/topics/devops/CloudPage';
 
 // Agile imports
 import ScrumPage from './pages/topics/agile/ScrumPage';
@@ -45,6 +50,10 @@ import KonjugationPage from "./pages/topics/german/KonjugationPage";
 
 import CodeReviewsPage from "./pages/topics/bestPractices/CodeReviewsPage";
 import QuestionBankPage from "./pages/topics/practice/QuestionBankPage";
+import QaByLevelPage from "./pages/topics/practice/QaByLevelPage";
+import DsaPatternsPage from "./pages/topics/practice/DsaPatternsPage";
+import ScenariosPage from "./pages/topics/practice/ScenariosPage";
+import BehavioralPage from "./pages/topics/practice/BehavioralPage";
 
 import LearningPortal from './pages/LearningPortal';
 
@@ -55,6 +64,7 @@ import CasesPage from "./pages/topics/german/CasesPage";
 import JavaFundamentalsPage from "./pages/topics/java/JavaFundamentalsPage";
 import FunctionalProgrammingPage from "./pages/topics/java/FunctionalProgrammingPage";
 import JvmInternalsPage from "./pages/topics/java/JvmInternalsPage";
+import ModernJavaPage from "./pages/topics/java/ModernJavaPage";
 
 const App = () => {
     return (
@@ -82,6 +92,7 @@ const App = () => {
                         <Route path="/java/testing" element={<UnitTestingPage/>}/>
                         <Route path="/java/functional-programming" element={<FunctionalProgrammingPage/>}/>
                         <Route path="/java/jvm" element={<JvmInternalsPage/>}/>
+                        <Route path="/java/modern" element={<ModernJavaPage/>}/>
 
                         {/* Spring Routes */}
                         <Route path="/spring/boot" element={<SpringBootPage/>}/>
@@ -97,6 +108,7 @@ const App = () => {
                         <Route path="/databases/hibernate" element={<HibernatePage/>}/>
                         <Route path="/databases/transactions" element={<TransactionsPage/>}/>
                         <Route path="/databases/redis" element={<RedisPage/>}/>
+                        <Route path="/databases/nosql" element={<NoSQLPage/>}/>
 
                         {/* Architecture Routes */}
                         <Route path="/architecture/design-patterns" element={<DesignPatternsPage/>}/>
@@ -108,12 +120,20 @@ const App = () => {
 
                         {/* DevOps Routes */}
                         <Route path="/devops/git" element={<GitPage/>}/>
+                        <Route path="/devops/cicd" element={<CicdPage/>}/>
+                        <Route path="/devops/containers" element={<ContainersPage/>}/>
+                        <Route path="/devops/practices" element={<PracticesPage/>}/>
+                        <Route path="/devops/cloud" element={<CloudPage/>}/>
 
                         {/* Agile Routes */}
                         <Route path="/agile/scrum" element={<ScrumPage/>}/>
 
                         {/* Practice Routes */}
                         <Route path="/practice/questions" element={<QuestionBankPage/>}/>
+                        <Route path="/practice/by-level" element={<QaByLevelPage/>}/>
+                        <Route path="/practice/dsa" element={<DsaPatternsPage/>}/>
+                        <Route path="/practice/scenarios" element={<ScenariosPage/>}/>
+                        <Route path="/practice/behavioral" element={<BehavioralPage/>}/>
 
                         {/* Best Practices Routes */}
                         <Route path="/best-practices/code-reviews" element={<CodeReviewsPage/>}/>

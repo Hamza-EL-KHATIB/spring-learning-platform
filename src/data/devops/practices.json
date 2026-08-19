@@ -1,0 +1,416 @@
+{
+  "title": "DevOps Practices",
+  "tags": ["devops", "cicd", "docker", "kubernetes", "iac", "monitoring", "interview"],
+  "topics": [
+    {
+      "title": "Core Concepts",
+      "description": "DevOps is a set of practices that combines software development (Dev) and IT operations (Ops) to shorten the systems development life cycle while delivering features, fixes and updates frequently, reliably, and in close alignment with business objectives.",
+      "interviewRelevance": 4,
+      "key_principles": [
+        {
+          "title": "Collaboration",
+          "description": "Breaking down silos between development and operations teams."
+        },
+        {
+          "title": "Automation",
+          "description": "Automating repetitive tasks to improve efficiency."
+        },
+        {
+          "title": "Continuous Integration and Delivery",
+          "description": "Frequently integrating code changes and delivering them to production."
+        },
+        {
+          "title": "Monitoring",
+          "description": "Continuous monitoring of applications and infrastructure."
+        },
+        {
+          "title": "Feedback Loops",
+          "description": "Quick feedback for rapid improvement."
+        }
+      ]
+    },
+    {
+      "title": "CI/CD Pipeline",
+      "description": "Continuous integration is a development practice where developers integrate code into a shared repository frequently, preferably several times a day. Each integration is verified by an automated build and automated tests.",
+      "interviewRelevance": 5,
+      "ci_key_components": [
+        "Source code management (Git)",
+        "Automated building",
+        "Automated testing",
+        "Reporting"
+      ],
+      "delivery_vs_deployment": [
+        {
+          "term": "Continuous Delivery",
+          "description": "The practice of automatically preparing code changes for release to production, ensuring code can be deployed at any time."
+        },
+        {
+          "term": "Continuous Deployment",
+          "description": "The practice of automatically deploying code changes to production after passing all tests."
+        }
+      ],
+      "pipeline_stages": [
+        {
+          "title": "1. Source",
+          "description": "Code checkout from the repository."
+        },
+        {
+          "title": "2. Build",
+          "description": "Compile code and generate artifacts."
+        },
+        {
+          "title": "3. Test",
+          "description": "Run unit, integration and functional tests."
+        },
+        {
+          "title": "4. Deploy",
+          "description": "Deploy to staging or production environments."
+        }
+      ],
+      "tools": [
+        { "name": "Jenkins", "description": "Open-source automation server." },
+        { "name": "GitHub Actions", "description": "CI/CD integrated within GitHub." },
+        { "name": "GitLab CI/CD", "description": "Integrated in GitLab." },
+        { "name": "Azure DevOps", "description": "Microsoft's DevOps service." },
+        { "name": "CircleCI", "description": "Cloud-based CI/CD service." }
+      ]
+    },
+    {
+      "title": "Branching Strategies",
+      "description": "Git is a distributed version control system that lets multiple developers collaborate by managing different versions of the codebase. The strategy you pick shapes how CI/CD, reviews and hotfixes work.",
+      "interviewRelevance": 4,
+      "strategies": [
+        {
+          "strategy": "Git Flow",
+          "description": "Master, develop, feature, release and hotfix branches.",
+          "branches": [
+            "develop is the main development branch",
+            "feature/* branches for new features",
+            "release/* branches for release preparation",
+            "hotfix/* branches for production fixes",
+            "master reflects production-ready code"
+          ]
+        },
+        {
+          "strategy": "GitHub Flow",
+          "description": "Simplified workflow with feature branches and a single main branch.",
+          "branches": [
+            "A single main branch represents deployable code",
+            "Feature branches for all changes",
+            "Pull requests for code review",
+            "Merge to main and deploy"
+          ]
+        },
+        {
+          "strategy": "Trunk-Based Development",
+          "description": "Short-lived feature branches with frequent merges to trunk.",
+          "branches": [
+            "Main development happens on trunk (the main branch)",
+            "Short-lived feature branches, typically under a day",
+            "Continuous integration with trunk",
+            "Feature toggles for incomplete features"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Containerization",
+      "description": "Docker packages an application and its dependencies together; Kubernetes orchestrates those containers at scale.",
+      "interviewRelevance": 5,
+      "docker": "Docker is a platform that uses containerization technology to package applications and their dependencies together.",
+      "docker_components": [
+        { "title": "Dockerfile", "description": "Text file containing the instructions to build a Docker image." },
+        { "title": "Image", "description": "Template for creating containers." },
+        { "title": "Container", "description": "Running instance of an image." },
+        { "title": "Registry", "description": "Repository for storing and distributing Docker images." },
+        { "title": "Docker Compose", "description": "Tool for defining and running multi-container applications." }
+      ],
+      "docker_commands": {
+        "title": "Common Docker commands",
+        "language": "bash",
+        "code": "docker build -t myapp .          # Build an image\ndocker run -p 8080:8080 myapp    # Run a container\ndocker ps                        # List running containers\ndocker stop container_id         # Stop a container"
+      },
+      "kubernetes": "Kubernetes is an open-source container orchestration platform for automating deployment, scaling and management of containerized applications.",
+      "kubernetes_concepts": [
+        { "title": "Pods", "description": "The smallest deployable units in Kubernetes." },
+        { "title": "Deployments", "description": "Manage the desired state for Pods and ReplicaSets." },
+        { "title": "Services", "description": "Abstract way to expose applications running on Pods." },
+        { "title": "Namespaces", "description": "Virtual clusters within a physical cluster." },
+        { "title": "ConfigMaps and Secrets", "description": "Configuration and sensitive data management." }
+      ],
+      "kubernetes_architecture": [
+        { "title": "Control Plane", "description": "API server, scheduler, controller manager, etcd." },
+        { "title": "Worker Nodes", "description": "Kubelet, container runtime, kube-proxy." }
+      ]
+    },
+    {
+      "title": "Infrastructure as Code",
+      "description": "IaC is the practice of managing and provisioning infrastructure through code instead of manual processes. Configuration management sits alongside it, keeping systems in a desired, consistent state.",
+      "interviewRelevance": 4,
+      "benefits": [
+        { "title": "Consistency", "description": "Eliminates configuration drift." },
+        { "title": "Repeatability", "description": "Consistent environments every time." },
+        { "title": "Scalability", "description": "Easy to scale infrastructure." },
+        { "title": "Versioning", "description": "Infrastructure changes can be version-controlled." },
+        { "title": "Documentation", "description": "The code serves as documentation." }
+      ],
+      "tools": [
+        { "name": "Terraform", "description": "Cloud-agnostic IaC tool." },
+        { "name": "AWS CloudFormation", "description": "AWS-specific IaC service." },
+        { "name": "Azure Resource Manager", "description": "Azure-specific IaC service." },
+        { "name": "Ansible", "description": "Automation tool for configuration management." },
+        { "name": "Puppet / Chef", "description": "Configuration management tools." }
+      ],
+      "configuration_management": "Configuration management ensures systems are in a desired, consistent state. It helps track and control changes to software and infrastructure.",
+      "configuration_management_benefits": [
+        "Consistency across environments",
+        "Reduced manual errors",
+        "Faster recovery from failures",
+        "Improved collaboration"
+      ],
+      "configuration_management_tools": [
+        { "name": "Ansible", "description": "Simple, agentless automation." },
+        { "name": "Puppet", "description": "Model-driven automation." },
+        { "name": "Chef", "description": "Code-driven automation." },
+        { "name": "SaltStack", "description": "Event-driven automation." }
+      ]
+    },
+    {
+      "title": "Monitoring",
+      "description": "Observability rests on metrics, logs and traces, with alerts on top of them.",
+      "interviewRelevance": 4,
+      "key_components": [
+        { "title": "Metrics", "description": "Numerical measurements collected at regular intervals." },
+        { "title": "Logs", "description": "Timestamped records of events." },
+        { "title": "Traces", "description": "Records of operations as they propagate through a system." },
+        { "title": "Alerts", "description": "Notifications triggered when certain conditions are met." }
+      ],
+      "tools": [
+        { "name": "Prometheus", "description": "Time-series database for metrics and alerting." },
+        { "name": "Grafana", "description": "Visualization and monitoring platform." },
+        { "name": "ELK Stack", "description": "Elasticsearch, Logstash and Kibana for log management." },
+        { "name": "Jaeger / Zipkin", "description": "Distributed tracing systems." },
+        { "name": "New Relic / Datadog", "description": "Commercial monitoring platforms." }
+      ]
+    },
+    {
+      "title": "DevSecOps",
+      "description": "Security folded into the delivery pipeline rather than bolted on at the end.",
+      "interviewRelevance": 4,
+      "principles": [
+        { "principle": "Shift Left", "description": "Integrate security early in the development lifecycle." },
+        { "principle": "Automation", "description": "Automate security testing and checks." },
+        { "principle": "Continuous Monitoring", "description": "Monitor for security issues in production." },
+        { "principle": "Least Privilege", "description": "Provide the minimum necessary access." }
+      ],
+      "practices": [
+        { "title": "SAST (Static Application Security Testing)", "description": "Analyze source code for security vulnerabilities." },
+        { "title": "DAST (Dynamic Application Security Testing)", "description": "Test running applications for vulnerabilities." },
+        { "title": "SCA (Software Composition Analysis)", "description": "Analyze dependencies for vulnerabilities." },
+        { "title": "Secret Management", "description": "Secure storage of sensitive information such as credentials and keys." },
+        { "title": "Compliance as Code", "description": "Automate compliance checks." }
+      ]
+    },
+    {
+      "title": "Spring Boot DevOps",
+      "description": "What the DevOps practices above look like applied to a Spring Boot service.",
+      "interviewRelevance": 5,
+      "best_practices": [
+        { "title": "Application Packaging", "description": "Package as an executable JAR or a container image." },
+        { "title": "Configuration Management", "description": "Externalize configuration with properties or YAML files." },
+        { "title": "Health Checks", "description": "Implement the /actuator/health endpoint." },
+        { "title": "Metrics Collection", "description": "Use Spring Boot Actuator with Micrometer." },
+        { "title": "Containerization", "description": "Create efficient Dockerfiles for Spring Boot apps." },
+        { "title": "CI/CD Integration", "description": "Set up pipelines for build, test and deployment." }
+      ],
+      "sample_dockerfile": {
+        "title": "Dockerfile",
+        "language": "docker",
+        "code": "FROM openjdk:17-jdk-slim\nWORKDIR /app\nCOPY target/*.jar app.jar\nEXPOSE 8080\nENTRYPOINT [\"java\", \"-jar\", \"app.jar\"]"
+      }
+    },
+    {
+      "title": "Deployment Patterns",
+      "description": "The three release strategies used for microservices, and the process behind each.",
+      "interviewRelevance": 5,
+      "blue_green_deployment": {
+        "description": "Reduces downtime by running two identical production environments.",
+        "process": [
+          "Blue environment is live, green is staging",
+          "Deploy the new version to green",
+          "Test the green environment",
+          "Switch traffic from blue to green",
+          "Blue becomes standby for the next deployment"
+        ]
+      },
+      "canary_deployment": {
+        "description": "Gradually shifts traffic from the old version to the new one.",
+        "process": [
+          "Deploy the new version alongside the old version",
+          "Route a small percentage of traffic to the new version",
+          "Monitor performance and errors",
+          "Gradually increase traffic to the new version",
+          "Complete the migration when confident"
+        ]
+      },
+      "rolling_deployment": {
+        "description": "Updates instances of an application incrementally rather than all at once.",
+        "process": [
+          "Deploy the new version to a subset of instances",
+          "Wait for a successful deployment",
+          "Continue with the next subset",
+          "Repeat until all instances are updated"
+        ]
+      }
+    },
+    {
+      "title": "Metrics & KPIs",
+      "description": "What a DevOps team measures, and how the measurements are collected.",
+      "interviewRelevance": 4,
+      "key_metrics": [
+        { "title": "Deployment Frequency", "description": "How often code is deployed to production." },
+        { "title": "Lead Time for Changes", "description": "Time between code commit and deployment." },
+        { "title": "Mean Time to Recovery (MTTR)", "description": "Time to restore service after a failure." },
+        { "title": "Change Failure Rate", "description": "Percentage of deployments causing failures." },
+        { "title": "Availability", "description": "System uptime percentage." }
+      ],
+      "implementing_measurements": [
+        "Use CI/CD tools to track deployment metrics",
+        "Implement monitoring for system availability",
+        "Track incidents and resolution times",
+        "Review regularly and set goals based on the metrics"
+      ]
+    },
+    {
+      "title": "Chaos Engineering",
+      "description": "The discipline of experimenting on a system to build confidence in its capability to withstand turbulent conditions in production.",
+      "interviewRelevance": 3,
+      "key_principles": [
+        "Build a hypothesis around steady-state behaviour",
+        "Introduce real-world events such as server failures and network issues",
+        "Run experiments in production",
+        "Automate experiments to run continuously"
+      ],
+      "tools": [
+        { "name": "Chaos Monkey", "description": "Randomly terminates instances." },
+        { "name": "Chaos Blade", "description": "Platform for chaos experiments." },
+        { "name": "Gremlin", "description": "Commercial chaos engineering platform." }
+      ]
+    },
+    {
+      "title": "DevOps Culture",
+      "description": "The values behind the tooling, and how teams put them into practice.",
+      "interviewRelevance": 3,
+      "core_values": [
+        { "title": "Collaboration", "description": "Break down silos between teams." },
+        { "title": "Automation", "description": "Automate repetitive tasks." },
+        { "title": "Measurement", "description": "Measure everything." },
+        { "title": "Sharing", "description": "Share knowledge and tools." }
+      ],
+      "implementing_the_culture": [
+        { "title": "Cross-functional Teams", "description": "Combine development and operations skills." },
+        { "title": "Shared Responsibility", "description": "Everyone is responsible for quality." },
+        { "title": "Continuous Learning", "description": "Regular learning and improvement." },
+        { "title": "Blameless Postmortems", "description": "Focus on learning from failures." }
+      ]
+    },
+    {
+      "title": "Interview Questions",
+      "description": "The ten DevOps questions this material is most often tested with.",
+      "interviewRelevance": 5,
+      "questions": [
+        {
+          "question": "What is the difference between Continuous Integration, Continuous Delivery and Continuous Deployment?",
+          "answer": [
+            "CI: automating the integration of code changes",
+            "CD (Delivery): ensuring code can be deployed at any time",
+            "CD (Deployment): automatically deploying all changes to production"
+          ]
+        },
+        {
+          "question": "Explain how you would set up a CI/CD pipeline for a Spring Boot application.",
+          "answer": [
+            "Source control setup (Git)",
+            "Build automation with Maven or Gradle",
+            "Unit and integration testing",
+            "Packaging as a JAR or Docker image",
+            "Deployment to staging and production",
+            "Monitoring and feedback"
+          ]
+        },
+        {
+          "question": "What are the benefits of Infrastructure as Code?",
+          "answer": [
+            "Consistency and repeatability",
+            "Version control for infrastructure",
+            "Automation of infrastructure changes",
+            "Documentation through code",
+            "Faster and more reliable deployments"
+          ]
+        },
+        {
+          "question": "Describe the branching strategy you prefer and why.",
+          "answer": [
+            "Explain the chosen strategy (Git Flow, GitHub Flow, trunk-based)",
+            "How it supports team collaboration",
+            "How it facilitates CI/CD",
+            "How it handles hotfixes and releases"
+          ]
+        },
+        {
+          "question": "How do you handle secrets in a CI/CD pipeline?",
+          "answer": [
+            "Use of secret management tools",
+            "Environment variables in CI systems",
+            "Vault integration",
+            "Avoiding hard-coded secrets in code"
+          ]
+        },
+        {
+          "question": "Explain the difference between Docker and Kubernetes.",
+          "answer": [
+            "Docker: container platform for packaging applications",
+            "Kubernetes: container orchestration platform for managing containerized applications at scale"
+          ]
+        },
+        {
+          "question": "How would you monitor a Spring Boot application in production?",
+          "answer": [
+            "Spring Boot Actuator for health and metrics",
+            "Prometheus for metrics collection",
+            "Grafana for visualization",
+            "Log aggregation with the ELK or EFK stack",
+            "Distributed tracing with Zipkin or Jaeger"
+          ]
+        },
+        {
+          "question": "What is chaos engineering and why is it important?",
+          "answer": [
+            "Deliberately introducing failures to test system resilience",
+            "Building confidence in system stability",
+            "Uncovering weaknesses before they cause outages",
+            "Examples of chaos engineering tools and practices"
+          ]
+        },
+        {
+          "question": "How do you approach database migrations in a CI/CD pipeline?",
+          "answer": [
+            "Use migration tools such as Flyway or Liquibase",
+            "Version control for database changes",
+            "Testing migrations in the CI pipeline",
+            "Rolling back failed migrations"
+          ]
+        },
+        {
+          "question": "What is the role of automated testing in DevOps?",
+          "answer": [
+            "Ensuring code quality",
+            "Enabling frequent releases",
+            "Providing fast feedback",
+            "Types of tests: unit, integration, acceptance, performance"
+          ]
+        }
+      ]
+    }
+  ]
+}

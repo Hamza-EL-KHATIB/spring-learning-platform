@@ -1,0 +1,588 @@
+{
+  "title": "Technical Scenarios",
+  "tags": ["scenarios", "system-design", "architecture", "interview"],
+  "topics": [
+    {
+      "title": "Microservices",
+      "description": "Decomposition, resilience and data ownership questions that open most architecture rounds.",
+      "interviewRelevance": 5,
+      "key_areas": [
+        {
+          "concept": "Migration strategy",
+          "description": "Decomposing a monolith requires identifying bounded contexts and establishing clear service boundaries."
+        },
+        {
+          "concept": "Resilience patterns",
+          "description": "Circuit breakers, bulkheads, timeouts and retries so that one failing service does not take the system down."
+        },
+        {
+          "concept": "Data management",
+          "description": "Each service owns its data. Introduce CQRS and event sourcing where the read and write models genuinely diverge."
+        }
+      ],
+      "communication": [
+        "Synchronous: REST, gRPC, GraphQL",
+        "Asynchronous: Kafka, RabbitMQ, ActiveMQ, AWS SQS and SNS"
+      ]
+    },
+    {
+      "title": "REST API Design",
+      "description": "Maturity levels, status codes, versioning and API security.",
+      "interviewRelevance": 5,
+      "richardson_maturity_model": [
+        "Level 0: a single endpoint, usually POST only",
+        "Level 1: multiple resources and endpoints",
+        "Level 2: HTTP verbs used correctly (GET, POST, PUT, DELETE)",
+        "Level 3: HATEOAS, hypermedia controls"
+      ],
+      "design_rules": [
+        {
+          "principle": "Status codes",
+          "description": "Use the appropriate HTTP status code: 2xx success, 4xx client errors, 5xx server errors."
+        },
+        {
+          "principle": "Versioning",
+          "description": "Version the API through the URL, a header, or content negotiation."
+        },
+        {
+          "principle": "Security",
+          "description": "Use OAuth 2.0 and JWT for authentication and authorization."
+        }
+      ]
+    },
+    {
+      "title": "Event-Driven Architecture",
+      "description": "Event styles and the trade-offs an interviewer expects you to name unprompted.",
+      "interviewRelevance": 4,
+      "patterns": [
+        {
+          "pattern": "Event notification",
+          "description": "Simple notifications that a state change happened; consumers call back for details."
+        },
+        {
+          "pattern": "Event-carried state transfer",
+          "description": "Events carry the data payload so consumers do not need to call back."
+        },
+        {
+          "pattern": "Event sourcing",
+          "description": "Events are the system of record; current state is a fold over the event log."
+        },
+        {
+          "pattern": "CQRS",
+          "description": "Separate read and write models, each optimized for its own access pattern."
+        }
+      ],
+      "benefits": ["Loose coupling", "Scalability", "Resilience"],
+      "challenges": ["Eventual consistency", "Debugging complexity"]
+    },
+    {
+      "title": "Design Patterns",
+      "description": "The classic catalogue plus where each one actually shows up in a Spring codebase.",
+      "interviewRelevance": 4,
+      "categories": [
+        {
+          "type": "Creational",
+          "description": "Factory, Builder, Singleton, Prototype"
+        },
+        {
+          "type": "Structural",
+          "description": "Adapter, Decorator, Composite, Proxy"
+        },
+        {
+          "type": "Behavioral",
+          "description": "Observer, Strategy, Command, Template Method"
+        }
+      ],
+      "in_practice": [
+        "Dependency Injection in Spring",
+        "Circuit Breaker with Resilience4j",
+        "Repository pattern with Spring Data"
+      ]
+    },
+    {
+      "title": "Distributed Systems",
+      "description": "CAP, consensus and the three ways to keep a transaction consistent across services.",
+      "interviewRelevance": 5,
+      "fundamentals": [
+        {
+          "concept": "CAP theorem",
+          "description": "Under a network partition you choose between consistency and availability; the trade-off drives the datastore choice."
+        },
+        {
+          "concept": "Consensus algorithms",
+          "description": "Raft and Paxos: how a cluster agrees on a single value or leader."
+        },
+        {
+          "concept": "Service discovery",
+          "description": "Eureka and Consul let services find each other without hardcoded addresses."
+        }
+      ],
+      "distributed_transactions": [
+        "Two-Phase Commit (2PC)",
+        "Saga pattern",
+        "Transactional Outbox pattern"
+      ]
+    },
+    {
+      "title": "Java Memory & Concurrency",
+      "description": "JVM memory areas, garbage collection, and the concurrency toolkit from threads up to virtual threads.",
+      "interviewRelevance": 5,
+      "memory_model": [
+        {
+          "concept": "Heap",
+          "description": "Object storage; the area tuned and collected by the garbage collector."
+        },
+        {
+          "concept": "Stack",
+          "description": "Method calls and local variables, one stack per thread."
+        },
+        {
+          "concept": "Metaspace",
+          "description": "Class metadata, native memory, replaced PermGen in Java 8."
+        }
+      ],
+      "garbage_collection": [
+        "Collectors: Serial, Parallel, G1, ZGC",
+        "Memory leaks: common causes such as unbounded caches, static references and unclosed resources",
+        "JVM options for tuning heap size and pause targets"
+      ],
+      "concurrency": [
+        {
+          "concept": "Threads vs processes",
+          "description": "A thread is a lightweight execution unit inside a process; a process has its own memory space."
+        },
+        {
+          "concept": "Thread states",
+          "description": "New, Runnable, Blocked, Waiting, Timed Waiting, Terminated."
+        },
+        {
+          "concept": "Thread management",
+          "description": "ThreadLocal for thread-scoped variables; pools of type Fixed, Cached, Scheduled and ForkJoinPool."
+        },
+        {
+          "concept": "Synchronization",
+          "description": "The synchronized keyword, ReentrantLock, atomic classes, and volatile for visibility."
+        },
+        {
+          "concept": "High-level concurrency",
+          "description": "ExecutorService, CompletableFuture, reactive programming with Project Reactor, and virtual threads in Java 21."
+        }
+      ]
+    },
+    {
+      "title": "Java Language Core",
+      "description": "Functional programming, collections and exception handling as they come up in scenario questions.",
+      "interviewRelevance": 4,
+      "functional_programming": [
+        {
+          "concept": "Lambda expressions",
+          "description": "Written as (params) -> expression."
+        },
+        {
+          "concept": "Streams API",
+          "description": "Transformations map, flatMap and filter; terminal operations collect, reduce and forEach."
+        },
+        {
+          "concept": "Functional interfaces",
+          "description": "Predicate, Function, Consumer, Supplier."
+        },
+        {
+          "concept": "Optional",
+          "description": "Handling absent values safely instead of returning null."
+        }
+      ],
+      "collections": [
+        "List: ArrayList, LinkedList",
+        "Set: HashSet, TreeSet",
+        "Map: HashMap, TreeMap, ConcurrentHashMap",
+        "Queue: PriorityQueue, Deque",
+        "Thread-safe: ConcurrentHashMap, CopyOnWriteArrayList, BlockingQueue"
+      ],
+      "exception_handling": [
+        {
+          "concept": "Checked vs unchecked",
+          "description": "Checked exceptions must be declared or handled (IOException); unchecked are runtime exceptions (NullPointerException)."
+        },
+        {
+          "concept": "Custom exceptions",
+          "description": "Create one when callers need to react differently; otherwise reuse the standard hierarchy."
+        },
+        {
+          "concept": "Try-with-resources",
+          "description": "Automatic resource management for anything implementing AutoCloseable."
+        },
+        {
+          "concept": "Best practices",
+          "description": "Fail fast, never swallow exceptions, log with context, and clean up resources deterministically."
+        }
+      ]
+    },
+    {
+      "title": "Spring Framework",
+      "description": "Core container, web layer, data access, security and the Spring Cloud stack.",
+      "interviewRelevance": 5,
+      "spring_core": [
+        {
+          "concept": "IoC container",
+          "description": "BeanFactory vs ApplicationContext, bean lifecycle, and scopes: singleton, prototype, request, session, application."
+        },
+        {
+          "concept": "Dependency injection",
+          "description": "Constructor injection is preferred; setter and field injection exist but hide dependencies."
+        },
+        {
+          "concept": "Spring Boot",
+          "description": "Auto-configuration, starters, Actuator, and externalized configuration."
+        }
+      ],
+      "spring_web": [
+        {
+          "concept": "Controller layer",
+          "description": "@Controller vs @RestController, @RequestMapping and its variants, and request-binding annotations."
+        },
+        {
+          "concept": "Response handling",
+          "description": "ResponseEntity for explicit status and headers; centralized error handling with @ControllerAdvice."
+        },
+        {
+          "concept": "Content negotiation",
+          "description": "Supported media types selected through the Accept header."
+        }
+      ],
+      "spring_data": [
+        {
+          "concept": "Repository pattern",
+          "description": "CrudRepository, JpaRepository, MongoRepository."
+        },
+        {
+          "concept": "Query methods",
+          "description": "Derived query methods, the @Query annotation, plus paging and sorting."
+        },
+        {
+          "concept": "Transactions",
+          "description": "@Transactional with its propagation types and isolation levels."
+        }
+      ],
+      "spring_security": [
+        {
+          "concept": "Authentication",
+          "description": "In-memory, JDBC and LDAP providers; OAuth2 and JWT; a custom UserDetailsService."
+        },
+        {
+          "concept": "Authorization",
+          "description": "Role-based access control, method security with @PreAuthorize and @PostAuthorize, and security expressions."
+        },
+        {
+          "concept": "CSRF and CORS",
+          "description": "Protection mechanisms and their configuration for browser and API clients."
+        }
+      ],
+      "spring_cloud": [
+        "Service discovery: Eureka",
+        "Configuration management: Config Server",
+        "API gateway: Spring Cloud Gateway",
+        "Circuit breaker: Resilience4j",
+        "Distributed tracing: Sleuth and Zipkin"
+      ]
+    },
+    {
+      "title": "Databases & Caching",
+      "description": "SQL, NoSQL, ORM performance and the cache patterns behind them.",
+      "interviewRelevance": 5,
+      "sql": [
+        {
+          "concept": "Transaction management",
+          "description": "ACID properties, isolation levels, and locking mechanisms."
+        },
+        {
+          "concept": "Optimization",
+          "description": "Indexing strategies, query rewriting, and reading execution plans."
+        },
+        {
+          "concept": "Advanced features",
+          "description": "Triggers, stored procedures and views."
+        },
+        {
+          "concept": "Scaling",
+          "description": "Replication, sharding and partitioning."
+        }
+      ],
+      "nosql": [
+        "Document: MongoDB",
+        "Key-value: Redis",
+        "Column-family: Cassandra",
+        "Graph: Neo4j",
+        "Each type sits at a different point of the CAP trade-off; choose by access pattern, not by hype"
+      ],
+      "orm_and_jpa": [
+        {
+          "concept": "Entity relationships",
+          "description": "One-to-one, one-to-many and many-to-many, with eager versus lazy loading."
+        },
+        {
+          "concept": "JPA vs Hibernate",
+          "description": "JPA is the specification; Hibernate is the most common implementation."
+        },
+        {
+          "concept": "Performance optimization",
+          "description": "Solve the N+1 problem with fetch joins or entity graphs, use batch processing, and apply first and second level caching."
+        }
+      ],
+      "caching": [
+        {
+          "type": "Cache types",
+          "description": "In-memory such as Ehcache and Caffeine; distributed such as Redis and Hazelcast."
+        },
+        {
+          "type": "Cache patterns",
+          "description": "Cache-aside, read-through, write-through and write-behind."
+        },
+        {
+          "type": "Consistency",
+          "description": "TTL expiry and explicit invalidation strategies."
+        }
+      ]
+    },
+    {
+      "title": "Observability",
+      "description": "Metrics, logging, tracing and health checks: what to instrument and with which tool.",
+      "interviewRelevance": 4,
+      "metrics": [
+        "Types: business, application, system and custom metrics",
+        "Tools: Micrometer, Prometheus, Grafana, New Relic"
+      ],
+      "logging": [
+        "Levels: DEBUG, INFO, WARN, ERROR",
+        "Structured logging in JSON so logs can be parsed by machines",
+        "Centralized logging with the ELK stack or Graylog"
+      ],
+      "tracing": [
+        "Distributed tracing with Zipkin, Jaeger or OpenTelemetry",
+        "Trace context propagated as TraceID and SpanID",
+        "Visualized as trace graphs and service maps"
+      ],
+      "health_checks": [
+        "Liveness probes: is the process alive",
+        "Readiness probes: can it accept traffic",
+        "Startup probes: has slow initialization finished",
+        "Implemented through Spring Boot Actuator health endpoints"
+      ]
+    },
+    {
+      "title": "DevOps & CI/CD",
+      "description": "Containers, pipelines, testing strategy and infrastructure as code.",
+      "interviewRelevance": 4,
+      "containerization": [
+        {
+          "concept": "Docker",
+          "description": "Dockerfile best practices, multi-stage builds, and Docker Compose for local stacks."
+        },
+        {
+          "concept": "Kubernetes",
+          "description": "Pods, Deployments, Services, ConfigMaps, Secrets, StatefulSets, and Helm charts for packaging."
+        }
+      ],
+      "pipelines": [
+        "Stages: build, test (unit, integration, end-to-end), deploy, verify",
+        "Tools: Jenkins, GitHub Actions, GitLab CI, Azure DevOps",
+        "Strategies: blue-green deployment, canary releases, feature flags"
+      ],
+      "testing_strategy": [
+        {
+          "concept": "Test pyramid",
+          "description": "Many unit tests with JUnit and Mockito, fewer integration tests with TestContainers, few end-to-end tests."
+        },
+        {
+          "concept": "API testing",
+          "description": "REST Assured, Pact for contract testing, Postman and Newman for collections."
+        },
+        {
+          "concept": "Performance testing",
+          "description": "JMeter, Gatling, K6."
+        }
+      ],
+      "infrastructure_as_code": [
+        "Configuration management: Ansible, Puppet, Chef",
+        "Provisioning: Terraform, CloudFormation, ARM templates"
+      ]
+    },
+    {
+      "title": "Security",
+      "description": "Authentication protocols, the OWASP Top 10, and secure coding habits.",
+      "interviewRelevance": 5,
+      "authentication_and_authorization": [
+        {
+          "concept": "OAuth 2.0 and OpenID Connect",
+          "description": "Grant types, token types and the flows appropriate to each client."
+        },
+        {
+          "concept": "JWT",
+          "description": "Structure of header, payload and signature; validation rules and best practices around expiry and secret rotation."
+        },
+        {
+          "concept": "SAML",
+          "description": "Enterprise single sign-on integration."
+        }
+      ],
+      "OWASP Top 10": [
+        "Injection",
+        "Broken authentication",
+        "Sensitive data exposure",
+        "XML external entities (XXE)",
+        "Broken access control",
+        "Security misconfiguration",
+        "Cross-site scripting (XSS)",
+        "Insecure deserialization",
+        "Using components with known vulnerabilities",
+        "Insufficient logging and monitoring"
+      ],
+      "secure_coding": [
+        {
+          "concept": "Input validation",
+          "description": "Sanitize input and use parameterized queries everywhere."
+        },
+        {
+          "concept": "Output encoding",
+          "description": "HTML and JavaScript encoding at the point of rendering."
+        },
+        {
+          "concept": "Secrets management",
+          "description": "HashiCorp Vault, Azure Key Vault, AWS KMS; never secrets in source control."
+        }
+      ]
+    },
+    {
+      "title": "Scenario Questions",
+      "description": "Open-ended how-would-you questions, with the bullet answer to talk through.",
+      "interviewRelevance": 5,
+      "architecture": [
+        {
+          "question": "How would you scale an e-commerce system?",
+          "answer": [
+            "Identify the bottlenecks: database, API layer, static content",
+            "Implement caching strategies",
+            "Serve static content from a CDN",
+            "Shard the database",
+            "Move order processing to an event-driven architecture"
+          ]
+        },
+        {
+          "question": "How would you break a monolith into microservices?",
+          "answer": [
+            "Analyze the business domains",
+            "Identify bounded contexts",
+            "Apply the strangler pattern rather than a big-bang rewrite",
+            "Ensure data consistency across the new services",
+            "Add service discovery and an API gateway"
+          ]
+        },
+        {
+          "question": "Design a distributed logging system.",
+          "answer": [
+            "Collection agents on each host or pod",
+            "Transport through Kafka or RabbitMQ",
+            "Storage in Elasticsearch",
+            "Processing with Logstash or Fluentd",
+            "Visualization in Kibana or Grafana"
+          ]
+        }
+      ],
+      "implementation": [
+        {
+          "question": "How would you handle concurrent updates to the same resource?",
+          "answer": [
+            "Optimistic locking with a version column",
+            "Pessimistic locking when contention is high",
+            "MVCC (multi-version concurrency control)",
+            "Event sourcing so writes are appends rather than updates"
+          ]
+        },
+        {
+          "question": "How would you ensure data consistency in a microservices architecture?",
+          "answer": [
+            "Two-phase commit where a coordinator is acceptable",
+            "Saga pattern with compensating actions",
+            "Transactional outbox pattern",
+            "Event sourcing"
+          ]
+        },
+        {
+          "question": "How would you handle distributed transactions?",
+          "answer": [
+            "2PC (two-phase commit)",
+            "Saga pattern, choreography or orchestration",
+            "Eventual consistency with compensation"
+          ]
+        }
+      ],
+      "performance": [
+        {
+          "question": "How would you diagnose and fix a slow API endpoint?",
+          "answer": [
+            "Profile the code to find where time is spent",
+            "Analyze the database queries",
+            "Check for N+1 problems",
+            "Add caching where the data allows it",
+            "Move slow work to asynchronous processing"
+          ]
+        },
+        {
+          "question": "How would you optimize database performance?",
+          "answer": [
+            "Review the indexing strategy",
+            "Rewrite the slow queries",
+            "Use connection pooling",
+            "Add read replicas",
+            "Shard when a single node is no longer enough"
+          ]
+        }
+      ],
+      "security_scenarios": [
+        {
+          "question": "How would you secure an API?",
+          "answer": [
+            "Authentication with OAuth2 or JWT",
+            "Authorization checks per resource",
+            "Rate limiting",
+            "Input validation",
+            "HTTPS everywhere",
+            "Correct CORS configuration",
+            "An API gateway as the single entry point"
+          ]
+        },
+        {
+          "question": "How would you handle sensitive data?",
+          "answer": [
+            "Encryption at rest",
+            "Encryption in transit",
+            "Data masking in logs and lower environments",
+            "Key rotation",
+            "Secure key management"
+          ]
+        }
+      ],
+      "devops_scenarios": [
+        {
+          "question": "How would you implement CI/CD for a microservices architecture?",
+          "answer": [
+            "Decide the repository structure: monorepo versus multiple repositories",
+            "Define the build strategy per service",
+            "Define the testing strategy across the pyramid",
+            "Choose deployment strategies such as blue-green or canary",
+            "Plan monitoring and rollback"
+          ]
+        },
+        {
+          "question": "How would you handle database migrations in a CI/CD pipeline?",
+          "answer": [
+            "Version migrations with Liquibase or Flyway",
+            "Keep every change backward compatible",
+            "Use blue-green deployments so old and new schema coexist",
+            "Roll out behind canary releases",
+            "Version the database alongside the application"
+          ]
+        }
+      ]
+    }
+  ]
+}

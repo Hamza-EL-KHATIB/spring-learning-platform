@@ -1,0 +1,455 @@
+{
+  "title": "CI/CD Pipeline",
+  "tags": ["cicd", "devops", "automation", "interview"],
+  "topics": [
+    {
+      "id": "ci-vs-cd",
+      "title": "CI vs CD",
+      "description": "A CI/CD pipeline automates building, testing, and deploying software so teams can deliver code changes more frequently and reliably.",
+      "interviewRelevance": 5,
+      "definitions": [
+        {
+          "term": "Continuous Integration (CI)",
+          "description": "Regularly merging code changes into a shared repository, followed by automated building and testing.",
+          "keyElements": [
+            "Automated build process",
+            "Code compilation",
+            "Unit and integration testing",
+            "Static code analysis",
+            "Code quality checks"
+          ],
+          "benefits": [
+            "Early detection of integration issues",
+            "Reduced manual effort",
+            "Consistent code quality",
+            "Increased development velocity"
+          ]
+        },
+        {
+          "term": "Continuous Delivery (CD)",
+          "description": "Automating the release process so that code can be reliably deployed to production at any time.",
+          "keyElements": [
+            "Automated deployment to staging and testing environments",
+            "User acceptance testing",
+            "Performance testing",
+            "Security scanning",
+            "Production deployment automation"
+          ],
+          "benefits": [
+            "Predictable and reliable releases",
+            "Reduced deployment risks",
+            "Faster time-to-market",
+            "Ability to gather user feedback quickly"
+          ]
+        },
+        {
+          "term": "Continuous Deployment",
+          "description": "An extension of continuous delivery where every change that passes all stages of the production pipeline is deployed to production automatically, without human intervention.",
+          "keyElements": [
+            "Continuous Delivery: changes are ready for production but require manual approval",
+            "Continuous Deployment: changes are automatically deployed to production"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pipeline-stages",
+      "title": "Pipeline Stages",
+      "description": "The six stages a change passes through from commit to release.",
+      "interviewRelevance": 5,
+      "stages": [
+        {
+          "name": "1. Source",
+          "activities": [
+            "Code is committed to a version control system such as Git or SVN",
+            "Webhooks trigger the pipeline",
+            "Code is pulled from the repository"
+          ]
+        },
+        {
+          "name": "2. Build",
+          "activities": [
+            "Code is compiled",
+            "Dependencies are resolved",
+            "Artifacts are generated: JAR, WAR, Docker images",
+            "Build failures terminate the pipeline"
+          ]
+        },
+        {
+          "name": "3. Test",
+          "activities": [
+            "Unit tests verify individual components",
+            "Integration tests verify component interactions",
+            "End-to-end tests verify entire application flows",
+            "Performance and load tests evaluate system behavior under load",
+            "Security scans identify vulnerabilities"
+          ]
+        },
+        {
+          "name": "4. Deployment",
+          "activities": [
+            "Artifacts are deployed to various environments",
+            "Configuration management is applied",
+            "Infrastructure provisioning when using infrastructure as code",
+            "Database migrations",
+            "Service restarts or replacements"
+          ]
+        },
+        {
+          "name": "5. Validation",
+          "activities": [
+            "Smoke tests verify basic functionality",
+            "Integration tests in the deployed environment",
+            "User acceptance testing (UAT)",
+            "Performance validation"
+          ]
+        },
+        {
+          "name": "6. Release",
+          "activities": [
+            "Final approval, for continuous delivery",
+            "Production deployment",
+            "Traffic shifting strategies: blue-green, canary",
+            "Rollback procedures"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "title": "Tools",
+      "description": "The CI/CD servers and infrastructure-as-code tools you are most likely to be asked about.",
+      "interviewRelevance": 3,
+      "pipelineTools": [
+        {
+          "name": "Jenkins",
+          "description": "Open-source automation server, highly customizable through an extensive plugin ecosystem, supports distributed builds."
+        },
+        {
+          "name": "GitHub Actions",
+          "description": "Integrated with GitHub repositories, YAML-based workflow configuration, easy integration with other GitHub features."
+        },
+        {
+          "name": "GitLab CI/CD",
+          "description": "Built into the GitLab platform, YAML-based pipeline definition, container registry integration."
+        },
+        {
+          "name": "Azure DevOps",
+          "description": "Microsoft end-to-end DevOps solution, integrated with Azure cloud services, offers both hosted and on-premises options."
+        },
+        {
+          "name": "CircleCI",
+          "description": "Cloud-based CI/CD service, configuration as code, optimized for parallelism."
+        },
+        {
+          "name": "TeamCity",
+          "description": "Commercial CI/CD server by JetBrains, user-friendly interface, built-in test reporting."
+        }
+      ],
+      "infrastructureAsCodeTools": [
+        "Terraform",
+        "AWS CloudFormation",
+        "Azure Resource Manager",
+        "Google Cloud Deployment Manager"
+      ]
+    },
+    {
+      "id": "pipeline-design",
+      "title": "Pipeline Design",
+      "description": "Design principles that keep a pipeline fast, repeatable, and trustworthy.",
+      "interviewRelevance": 4,
+      "principles": [
+        {
+          "principle": "Fast Feedback",
+          "practices": [
+            "Run quick tests first",
+            "Fail fast to provide immediate feedback",
+            "Parallelize independent tests"
+          ]
+        },
+        {
+          "principle": "Idempotency",
+          "practices": [
+            "Pipelines should be repeatable with the same outcome",
+            "Avoid state dependencies between pipeline runs"
+          ]
+        },
+        {
+          "principle": "Pipeline as Code",
+          "practices": [
+            "Define pipelines in version-controlled configuration files",
+            "Treat pipeline configuration like application code"
+          ]
+        },
+        {
+          "principle": "Comprehensive Testing",
+          "practices": [
+            "Follow the test pyramid: more unit tests, fewer end-to-end tests",
+            "Include security and performance testing",
+            "Implement test automation at all levels"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security",
+      "description": "Shifting security left by making it a pipeline stage rather than a release gate.",
+      "interviewRelevance": 4,
+      "automatedScanning": [
+        "SAST (Static Application Security Testing)",
+        "DAST (Dynamic Application Security Testing)",
+        "SCA (Software Composition Analysis)",
+        "Container scanning"
+      ],
+      "secretManagement": [
+        "Avoid hardcoding credentials in pipeline scripts",
+        "Use secret management tools integrated with CI/CD"
+      ],
+      "complianceChecks": [
+        "Enforce policy compliance as part of the pipeline",
+        "Generate compliance reports automatically"
+      ]
+    },
+    {
+      "id": "deployment-strategies",
+      "title": "Deployment Strategies",
+      "description": "How new versions reach production without taking it down.",
+      "interviewRelevance": 5,
+      "strategies": [
+        {
+          "strategy": "Blue-Green Deployment",
+          "howItWorks": [
+            "Maintain two identical production environments",
+            "Direct traffic from the old to the new version after validation",
+            "Easy rollback by switching traffic back"
+          ]
+        },
+        {
+          "strategy": "Canary Releases",
+          "howItWorks": [
+            "Release to a small percentage of users first",
+            "Monitor performance and errors",
+            "Gradually increase the percentage if successful"
+          ]
+        },
+        {
+          "strategy": "Feature Flags",
+          "howItWorks": [
+            "Deploy code to production but keep new features disabled",
+            "Enable features selectively for testing or gradual rollout",
+            "Decouple deployment from feature release"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "challenges",
+      "title": "Challenges",
+      "description": "The four failure modes that come up most often when a pipeline stops paying for itself.",
+      "interviewRelevance": 4,
+      "commonChallenges": [
+        {
+          "name": "Long-running Pipelines",
+          "solutions": [
+            "Optimize build and test processes",
+            "Parallelize independent stages",
+            "Implement caching strategies"
+          ]
+        },
+        {
+          "name": "Flaky Tests",
+          "solutions": [
+            "Identify and fix non-deterministic tests",
+            "Implement automatic retries with limitations",
+            "Quarantine problematic tests"
+          ]
+        },
+        {
+          "name": "Environment Differences",
+          "solutions": [
+            "Use containers to ensure consistency",
+            "Implement infrastructure as code",
+            "Make environment configuration explicit"
+          ]
+        },
+        {
+          "name": "Database Migrations",
+          "solutions": [
+            "Use versioned migration scripts",
+            "Implement rollback procedures",
+            "Test migrations in pre-production environments"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metrics",
+      "title": "Metrics",
+      "description": "What to measure to know whether the pipeline itself is healthy.",
+      "interviewRelevance": 3,
+      "pipelineMetrics": [
+        "Success and failure rate",
+        "Mean time to recovery (MTTR)",
+        "Lead time, from commit to production",
+        "Deployment frequency"
+      ],
+      "continuousImprovement": [
+        "Regular pipeline audits",
+        "Retrospectives after pipeline failures",
+        "Optimization of pipeline performance"
+      ]
+    },
+    {
+      "id": "gitops",
+      "title": "GitOps & Culture",
+      "description": "How CI/CD fits alongside DevOps culture, GitOps, and a microservices architecture.",
+      "interviewRelevance": 3,
+      "practices": [
+        {
+          "name": "DevOps Culture",
+          "principles": [
+            "Collaboration between development and operations",
+            "Shared responsibility for pipeline maintenance",
+            "Focus on automation and feedback"
+          ]
+        },
+        {
+          "name": "GitOps",
+          "principles": [
+            "Git as the single source of truth",
+            "Pull-based deployment model",
+            "Declarative infrastructure definition",
+            "Automated reconciliation"
+          ]
+        },
+        {
+          "name": "Microservices Architecture",
+          "principles": [
+            "Independent pipelines for each service",
+            "Service-specific testing strategies",
+            "Versioning and dependency management",
+            "Service contract testing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spring-boot",
+      "title": "Spring Boot",
+      "description": "Java and Spring Boot specific considerations when wiring up a pipeline.",
+      "interviewRelevance": 4,
+      "buildTools": [
+        {
+          "name": "Maven",
+          "description": "XML-based build configuration with a standardized lifecycle."
+        },
+        {
+          "name": "Gradle",
+          "description": "Flexible, Groovy-based build system with better dependency management."
+        }
+      ],
+      "testingFrameworks": [
+        "JUnit 5 for unit and integration testing",
+        "Spring Test for component testing",
+        "MockMvc for testing REST controllers",
+        "TestContainers for database integration testing"
+      ],
+      "containerization": [
+        "Dockerfile best practices for Spring Boot applications",
+        "Multi-stage builds to minimize image size",
+        "Externalized configuration via environment variables",
+        "Health checks for container orchestration"
+      ],
+      "springProfiles": [
+        "Use profiles for environment-specific configuration",
+        "Set active profiles during deployment",
+        "Separate application properties by environment"
+      ]
+    },
+    {
+      "id": "interview-questions",
+      "title": "Interview Questions",
+      "description": "The ten questions this topic is most often tested on.",
+      "interviewRelevance": 5,
+      "questions": [
+        {
+          "question": "What is the difference between Continuous Integration, Continuous Delivery, and Continuous Deployment?",
+          "answer": [
+            "CI: frequent integration of code changes with automated testing",
+            "CD: automating the release process for reliable production deployments",
+            "Continuous Deployment: automatically deploying every change to production"
+          ]
+        },
+        {
+          "question": "Explain the stages of a typical CI/CD pipeline.",
+          "answer": [
+            "Source, build, test, deployment, validation, and release stages"
+          ]
+        },
+        {
+          "question": "What tools have you used for implementing CI/CD pipelines?",
+          "answer": [
+            "Discuss experience with Jenkins, GitHub Actions, GitLab CI, and similar tools"
+          ]
+        },
+        {
+          "question": "How do you handle database changes in a CI/CD pipeline?",
+          "answer": [
+            "Tools like Liquibase or Flyway for versioned database migrations",
+            "Testing migration scripts in isolated environments",
+            "Rollback strategies for failed migrations"
+          ]
+        },
+        {
+          "question": "Explain different deployment strategies and when to use them.",
+          "answer": [
+            "Blue-green for quick rollbacks and zero downtime",
+            "Canary for gradual rollout with user feedback",
+            "Rolling updates for resource-constrained environments"
+          ]
+        },
+        {
+          "question": "How do you secure secrets in a CI/CD pipeline?",
+          "answer": [
+            "Secret management service integration",
+            "Environment variables for sensitive information",
+            "Avoiding hardcoded credentials"
+          ]
+        },
+        {
+          "question": "How do you ensure the quality of your CI/CD pipeline?",
+          "answer": [
+            "Monitoring pipeline metrics",
+            "Implementing comprehensive testing",
+            "Regular pipeline audits and improvements"
+          ]
+        },
+        {
+          "question": "What are feature flags and how do they relate to CI/CD?",
+          "answer": [
+            "Feature flags decouple deployment from feature release",
+            "They allow testing in production with limited exposure",
+            "They enable continuous deployment while controlling feature availability"
+          ]
+        },
+        {
+          "question": "How do you handle dependencies between microservices in a CI/CD pipeline?",
+          "answer": [
+            "Contract testing",
+            "Versioning APIs",
+            "Parallelizing independent service deployments"
+          ]
+        },
+        {
+          "question": "How do you implement infrastructure as code in your CI/CD pipeline?",
+          "answer": [
+            "Tools like Terraform, CloudFormation, or ARM templates",
+            "Version controlling infrastructure definitions",
+            "Testing infrastructure changes in isolated environments"
+          ]
+        }
+      ]
+    }
+  ]
+}
