@@ -26,7 +26,6 @@ To add a page: JSON in `src/data/`, a `TopicPageTemplate` one-liner in
 | Q&A by Level (133 q) | `/practice/by-level` | `Java-Interview-QA.md` (vault root) |
 | DSA Patterns & Big-O | `/practice/dsa` | `Practice/DSA Patterns & Big-O.md` |
 | Technical Scenarios | `/practice/scenarios` | `Practice/Technical Scenarios.md` |
-| Behavioral & HR | `/practice/behavioral` | `HR & Behavioral Preparation/` (3 notes) + `Practice/Behavioral Scenarios.md` |
 | Performance Tuning | `/architecture/performance` | none — written from scratch |
 
 ## Judgement calls worth knowing

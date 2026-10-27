@@ -62,7 +62,6 @@ const DATA_BY_PATH = {
     '/practice/by-level': 'practice/qa-by-level.json',
     '/practice/dsa': 'practice/dsa-patterns.json',
     '/practice/scenarios': 'practice/scenarios.json',
-    '/practice/behavioral': 'practice/behavioral.json',
 };
 
 // Searchable label -> the tab the page actually opens on. They differ where a

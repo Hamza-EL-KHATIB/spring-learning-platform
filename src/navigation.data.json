@@ -235,11 +235,6 @@
         "path": "/practice/scenarios",
         "title": "Technical Scenarios",
         "description": "How would you handle..."
-      },
-      {
-        "path": "/practice/behavioral",
-        "title": "Behavioral & HR",
-        "description": "STAR stories and HR questions"
       }
     ]
   },

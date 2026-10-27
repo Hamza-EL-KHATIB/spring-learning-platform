@@ -54,7 +54,6 @@ const QuestionBankPage = lazy(() => import('./pages/topics/practice/QuestionBank
 const QaByLevelPage = lazy(() => import('./pages/topics/practice/QaByLevelPage'));
 const DsaPatternsPage = lazy(() => import('./pages/topics/practice/DsaPatternsPage'));
 const ScenariosPage = lazy(() => import('./pages/topics/practice/ScenariosPage'));
-const BehavioralPage = lazy(() => import('./pages/topics/practice/BehavioralPage'));
 
 const LearningPortal = lazy(() => import('./pages/LearningPortal'));
 
@@ -143,7 +142,6 @@ const App = () => {
                         <Route path="/practice/by-level" element={<QaByLevelPage/>}/>
                         <Route path="/practice/dsa" element={<DsaPatternsPage/>}/>
                         <Route path="/practice/scenarios" element={<ScenariosPage/>}/>
-                        <Route path="/practice/behavioral" element={<BehavioralPage/>}/>
 
                         {/* Best Practices Routes */}
                         <Route path="/best-practices/code-reviews" element={<CodeReviewsPage/>}/>
